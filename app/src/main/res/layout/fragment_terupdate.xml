@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.nerita_hendra.i_fans.TerupdateFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <ImageView
+        android:id="@+id/imageView_harini"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@color/colorWhite" />
+
+    <TextView
+        android:id="@+id/textView_harini"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="84dp"
+        android:gravity="center"
+        android:text="TIDAK ADA PERTANDINGAN"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView_harini"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout">
+
+        <ImageView
+            android:id="@+id/imageView_terakhir"
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:layout_marginRight="2dp"
+            android:layout_weight="1"
+            android:src="@color/colorPrimaryDark" />
+
+        <ImageView
+            android:id="@+id/imageView_akandatang"
+            android:layout_width="190dp"
+            android:layout_height="100dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:src="@color/colorPrimaryDark" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

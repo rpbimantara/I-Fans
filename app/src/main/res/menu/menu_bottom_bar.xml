@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_home"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/action_berita"
+        android:enabled="true"
+        android:icon="@drawable/ic_berita"
+        android:title="Berita"
+        app:showAsAction="withText"/>
+
+    <item
+        android:id="@+id/action_belanja"
+        android:enabled="true"
+        android:icon="@drawable/ic_belanja"
+        android:title="Belanja"
+        app:showAsAction="withText"/>
+    <item
+        android:id="@+id/action_account"
+        android:enabled="true"
+        android:icon="@drawable/ic_account"
+        android:title="Profile"
+        app:showAsAction="withText"/>
+</menu>
