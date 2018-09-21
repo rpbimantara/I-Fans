@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Android Project\\IFans\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\support-media-compat-26.1.0.aar\\0d62aa9cbe6b3d761af8f5756ba5f302\\res\\values-v21\\values-v21.xml",
