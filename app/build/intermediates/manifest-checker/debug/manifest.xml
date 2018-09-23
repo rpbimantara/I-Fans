@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="19"
-        android:targetSdkVersion="26" />
+        android:targetSdkVersion="27" />
 
     <application
         android:allowBackup="true"
@@ -29,13 +29,6 @@
         </activity>
         <activity android:name="com.example.nerita_hendra.i_fans.HomeActivity" />
         <activity android:name="com.example.nerita_hendra.i_fans.LoginActivity" />
-
-        <meta-data
-            android:name="android.support.VERSION"
-            android:value="26.1.0" />
-        <meta-data
-            android:name="android.arch.lifecycle.VERSION"
-            android:value="27.0.0-SNAPSHOT" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"
