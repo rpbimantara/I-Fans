@@ -38,14 +38,13 @@ public class BelanjaFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_berita,container, false);
+        // Inflate the layout for this fragment\
+        View view = inflater.inflate(R.layout.fragment_belanja,container, false);
         // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager_belanja);
         setupViewPager(viewPager);
         // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabs);
+        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabs_belanja);
         tabs.setupWithViewPager(viewPager);
 
 

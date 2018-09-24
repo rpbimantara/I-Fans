@@ -44,10 +44,10 @@ public class BeritaFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_berita,container, false);
         // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager_berita);
         setupViewPager(viewPager);
         // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabs);
+        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabs_berita);
         tabs.setupWithViewPager(viewPager);
 
 
