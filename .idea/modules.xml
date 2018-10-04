@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/I-Fans.iml" filepath="$PROJECT_DIR$/I-Fans.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xMLRPC/xMLRPC.iml" filepath="$PROJECT_DIR$/xMLRPC/xMLRPC.iml" />
+      <module fileurl="file://$PROJECT_DIR$/xmlrpc-android/xmlrpc-android.iml" filepath="$PROJECT_DIR$/xmlrpc-android/xmlrpc-android.iml" />
     </modules>
   </component>
 </project>
