@@ -256,6 +256,10 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_jadwal.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_jadwal.xml"
+    },
+    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_secondary_text_material_dark.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\color\\abc_secondary_text_material_dark.xml"
     },
@@ -890,6 +894,10 @@
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_support_simple_spinner_dropdown_item.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_lelang.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_lelang.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
@@ -1762,6 +1770,10 @@
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_list_selector_disabled_holo_dark.9.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxhdpi-v4\\abc_list_selector_disabled_holo_dark.9.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_store.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_store.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_screen_simple_overlay_action_mode.xml.flat",
