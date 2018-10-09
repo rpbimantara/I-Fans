@@ -33,6 +33,20 @@
         </activity>
         <activity android:name="com.example.nerita_hendra.i_fans.HomeActivity" />
         <activity android:name="com.example.nerita_hendra.i_fans.LoginActivity" />
+        <activity android:name="com.example.nerita_hendra.i_fans.SingUpActivity" />
+        <activity
+            android:name="com.example.nerita_hendra.i_fans.TicketActivity"
+            android:parentActivityName="com.example.nerita_hendra.i_fans.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.nerita_hendra.i_fans.BeritaDetailActivity"
+            android:parentActivityName="com.example.nerita_hendra.i_fans.MainActivity" />
+        <activity
+            android:name="com.example.nerita_hendra.i_fans.DetailJadwalActivity"
+            android:parentActivityName="com.example.nerita_hendra.i_fans.MainActivity" />
     </application>
 
 </manifest>

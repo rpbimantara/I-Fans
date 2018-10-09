@@ -4,15 +4,18 @@
     <item android:title="Ticket"
         android:id="@+id/ticket"
         android:icon="@drawable/ic_ticket"
+        android:iconTint="@color/colorTrueState"
         app:showAsAction="always" />
 
     <item android:title="Checkout"
         android:id="@+id/checkout"
         android:icon="@drawable/ic_checkout"
+        android:iconTint="@color/colorTrueState"
         app:showAsAction="always"/>
 
     <item android:title="Logout"
         android:id="@+id/logout"
         android:icon="@drawable/ic_logout"
+        android:iconTint="@color/colorTrueState"
         app:showAsAction="always"/>
 </menu>

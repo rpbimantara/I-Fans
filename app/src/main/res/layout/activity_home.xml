@@ -31,6 +31,17 @@
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/shared_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:fabSize="normal"
+        app:layout_anchor="@id/navigation"
+        app:layout_anchorGravity="bottom|end"
+        app:srcCompat="@drawable/ic_checkout"
+        android:layout_marginBottom="?attr/actionBarSize"
+        app:useCompatPadding="true"/>
+
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
         android:layout_width="match_parent"
