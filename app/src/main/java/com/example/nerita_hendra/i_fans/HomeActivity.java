@@ -1,12 +1,16 @@
 package com.example.nerita_hendra.i_fans;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
 import android.support.design.internal.BottomNavigationMenuView;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -26,6 +30,9 @@ public class HomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private BottomNavigationView navigation;
     private Toolbar toolbar;
+    FloatingActionButton fabBtn;
+    SharedPrefManager sharedPrefManager;
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -63,6 +70,9 @@ public class HomeActivity extends AppCompatActivity {
         navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         disableShiftMode(navigation);
+        fabBtn = (FloatingActionButton) findViewById(R.id.shared_fab);
+        fabBtn.hide();
+        sharedPrefManager =  new SharedPrefManager(this);
 //        initTitle();
     }
 
@@ -79,14 +89,25 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_bar, menu);
+        Drawable ticket = menu.findItem(R.id.ticket).getIcon();
+        Drawable checkout = menu.findItem(R.id.checkout).getIcon();
+        Drawable logout = menu.findItem(R.id.logout).getIcon();
+        DrawableCompat.setTint(ticket, ContextCompat.getColor(this,R.color.colorTrueState));
+        DrawableCompat.setTint(checkout, ContextCompat.getColor(this,R.color.colorTrueState));
+        DrawableCompat.setTint(logout, ContextCompat.getColor(this,R.color.colorTrueState));
         return super.onCreateOptionsMenu(menu);
+    }
+
+    public FloatingActionButton getFabBtn() {
+        return fabBtn;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.ticket:
-                Toast.makeText(this, "Penjualan Ticket Online", Toast.LENGTH_SHORT).show();
+                Intent ticketIntent = new Intent(HomeActivity.this, DetailJadwalActivity.class);
+                startActivity(ticketIntent);
                 break;
             case R.id.checkout :
                 //Kode disini akan di eksekusi saat tombol search di klik
@@ -95,8 +116,9 @@ public class HomeActivity extends AppCompatActivity {
 
             case R.id.logout :
                 //Kode disini akan di eksekusi saat tombol search di klik
-                Intent logoutIntent = new Intent(HomeActivity.this, LoginActivity.class);
-                startActivity(logoutIntent);
+                sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
+                startActivity(new Intent(HomeActivity.this, LoginActivity.class)
+                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                 finish();
                 break;
         }
@@ -122,6 +144,7 @@ public class HomeActivity extends AppCompatActivity {
             //Timber.e(e, "Unable to change value of shift mode");
         }
     }
+
 
     private static class GooglePlusFragmentPageAdapter extends FragmentPagerAdapter {
 

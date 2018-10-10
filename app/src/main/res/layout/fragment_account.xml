@@ -37,6 +37,7 @@
                         android:src="@drawable/ic_account" />
 
                     <TextView
+                        android:id="@+id/txt_namaAccount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -46,6 +47,7 @@
                         android:textSize="21sp"
                         android:textStyle="bold" />
                     <TextView
+                        android:id="@+id/txt_IdAccount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_horizontal"
@@ -103,6 +105,7 @@
 
 
                             <TextView
+                                android:id="@+id/txt_koinAccount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
@@ -129,6 +132,7 @@
                                 android:textColor="@color/colorTrueState"/>
 
                             <TextView
+                                android:id="@+id/txt_FollowersAccount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
@@ -155,6 +159,7 @@
                                 android:textColor="@color/colorTrueState"/>
 
                             <TextView
+                                android:id="@+id/txt_FollowingAccount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
@@ -186,6 +191,7 @@
                         android:src="@drawable/ic_id_card"/>
 
                     <TextView
+                        android:id="@+id/txt_NIKAccount"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
@@ -206,6 +212,7 @@
                         android:tint="@color/colorPrimaryDark"
                         android:src="@drawable/ic_gender"/>
                     <TextView
+                        android:id="@+id/txt_kelaminAccount"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
@@ -226,6 +233,7 @@
                         android:tint="@color/colorPrimaryDark"
                         android:src="@drawable/ic_address"/>
                     <TextView
+                        android:id="@+id/txt_alamatAccount"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
@@ -246,6 +254,7 @@
                         android:tint="@color/colorPrimaryDark"
                         android:src="@drawable/ic_birth"/>
                     <TextView
+                        android:id="@+id/txt_ttlAccount"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
@@ -267,6 +276,7 @@
                         android:src="@drawable/ic_email"/>
 
                     <TextView
+                        android:id="@+id/txt_emailAccount"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
@@ -287,6 +297,7 @@
                         android:tint="@color/colorPrimaryDark"
                         android:src="@drawable/ic_phone"/>
                     <TextView
+                        android:id="@+id/txt_phoneAccount"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
@@ -307,6 +318,7 @@
                         android:tint="@color/colorPrimaryDark"
                         android:src="@drawable/ic_komunitas"/>
                     <TextView
+                        android:id="@+id/txt_komunitasAccount"
                         android:textStyle="bold"
                         android:layout_gravity="center_vertical"
                         android:layout_width="wrap_content"
