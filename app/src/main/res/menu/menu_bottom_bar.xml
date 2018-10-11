@@ -12,14 +12,14 @@
         android:id="@+id/action_berita"
         android:enabled="true"
         android:icon="@drawable/ic_berita"
-        android:title="Berita"
+        android:title="News"
         app:showAsAction="withText"/>
 
     <item
         android:id="@+id/action_belanja"
         android:enabled="true"
         android:icon="@drawable/ic_belanja"
-        android:title="Belanja"
+        android:title="Shop"
         app:showAsAction="withText"/>
     <item
         android:id="@+id/action_account"

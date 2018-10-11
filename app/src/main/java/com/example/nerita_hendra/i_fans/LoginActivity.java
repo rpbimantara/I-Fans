@@ -41,7 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btn_login);
         txtUsername = findViewById(R.id.input_username);
         txtPassword = findViewById(R.id.input_password);
-        System.out.println(uname +"--"+pass);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -50,8 +49,10 @@ public class LoginActivity extends AppCompatActivity {
 //                if (txtUsername.getText().equals("") && txtPassword.getText().equals("")){
                     Boolean checkLogin =  login(uname,pass);
                     if (checkLogin == true){
-                        int idUser = CheckActiveUser(uname,pass);
-                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_USER, idUser);
+                        String result[] = CheckActiveUser(uname,pass);
+                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_USER, Integer.valueOf(result[0]));
+                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_CLUB, Integer.valueOf(result[1]));
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_CLUB, result[2]);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_USER, uname);
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_PASSWORD_USER, pass);
                         sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
@@ -80,7 +81,6 @@ public class LoginActivity extends AppCompatActivity {
         try {
 
              ocT = OdooConnect.testConnection( user, pass);
-            System.out.println("OCT" +ocT);
 
         } catch (Exception ex) {
             System.out.println("Error1: " + ex);
@@ -88,8 +88,10 @@ public class LoginActivity extends AppCompatActivity {
         return ocT;
     }
 
-    public int CheckActiveUser(String user, String pass){
-        int id = 0;
+    public String[] CheckActiveUser(String user, String pass){
+        String id_user = "";
+        String id_club = "";
+        String nama_club = "";
         try {
             OdooConnect  oc = OdooConnect.connect(user, pass);
 
@@ -97,14 +99,16 @@ public class LoginActivity extends AppCompatActivity {
                     new Object[]{"login", "=", user},
                     new Object[]{"active", "=", true}}};
 
-            List<HashMap<String, Object>> data = oc.search_read("res.users", param, "id","partner_id");
-             id = (Integer) data.get(0).get("id");
-
-            System.out.println("ID" +id);
-
+            List<HashMap<String, Object>> data = oc.search_read("res.users", param, "id","club_id");
+            nama_club = data.get(0).get("club_id").toString();
+            Object[] paramClub = {new Object[]{
+                    new Object[]{"nama", "=",  data.get(0).get("club_id").toString()}}};
+            List<HashMap<String, Object>> dataClub = oc.search_read("persebaya.club", paramClub, "id");
+            id_user = data.get(0).get("id").toString();
+            id_club = dataClub.get(0).get("id").toString();
         } catch (Exception ex) {
             System.out.println("Error Check User Activity: " + ex);
         }
-        return id ;
+        return new String [] {id_user,id_club,nama_club} ;
     }
 }

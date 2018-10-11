@@ -14,9 +14,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 
 /**
@@ -69,8 +71,15 @@ public class ListBeritaFragment extends Fragment {
                 if(ChildView != null && gestureDetector.onTouchEvent(e)) {
 
                     RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                    System.out.println(ArrayListBerita.get(RecyclerViewItemPosition).getHeadline());
                     Intent intent = new Intent(getActivity(),BeritaDetailActivity.class);
+                    intent.putExtra("id",ArrayListBerita.get(RecyclerViewItemPosition).getId());
+                    intent.putExtra("title",ArrayListBerita.get(RecyclerViewItemPosition).getTitle());
+                    intent.putExtra("kategori",ArrayListBerita.get(RecyclerViewItemPosition).getKategori());
+                    intent.putExtra("headline",ArrayListBerita.get(RecyclerViewItemPosition).getHeadline());
+                    intent.putExtra("konten",ArrayListBerita.get(RecyclerViewItemPosition).getKonten());
+                    intent.putExtra("tanggalbuat",ArrayListBerita.get(RecyclerViewItemPosition).getTanggal());
+                    intent.putExtra("penulis",ArrayListBerita.get(RecyclerViewItemPosition).getPenulis());
+
                     startActivity(intent);
                 }
                 return false;
@@ -94,25 +103,33 @@ public class ListBeritaFragment extends Fragment {
             OdooConnect oc = OdooConnect.connect( user, pass);
 
             Object[] param = {new Object[]{
-                    new Object[]{"create_uid", "=", 0}}};
+                    new Object[]{"create_uid", "=", 1}}};
 
-            List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
+            List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
 
             for (int i = 0; i < data.size(); ++i) {
-                ArrayListBerita.add(new ListBerita("kategori_brita_id","headline","create_date"));
+                ArrayListBerita.add(new ListBerita(
+                        (Integer) data.get(i).get("id"),
+                        String.valueOf(data.get(i).get("title")),
+                        String.valueOf(data.get(i).get("kategori_brita_id")),
+                        String.valueOf(data.get(i).get("headline")),
+                        String.valueOf(data.get(i).get("content")),
+                        tanggal(String.valueOf(data.get(i).get("create_date")).substring(0,10)),
+                        String.valueOf(data.get(i).get("create_uid"))));
             }
-
         } catch (Exception ex) {
             System.out.println("Error: " + ex);
         }
-//        ArrayListBerita.add(new ListBerita("Persebaya U-19","PERSEBAYA","01-01-1990"));
-//        ArrayListBerita.add(new ListBerita("Persebaya Junior","PERSEBAYA","01-01-1990"));
-//        ArrayListBerita.add(new ListBerita("Persebaya U-17","PERSEBAYA","01-01-1990"));
-//        ArrayListBerita.add(new ListBerita("Persebaya U-16","PERSEBAYA","01-01-1990"));
-//        ArrayListBerita.add(new ListBerita("Persebaya U-15","PERSEBAYA","01-01-1990"));
-//        ArrayListBerita.add(new ListBerita("Persebaya","PERSEBAYA","01-01-1990"));
-//        ArrayListBerita.add(new ListBerita("Persebaya","PERSEBAYA","01-01-1990"));
-//        ArrayListBerita.add(new ListBerita("Persebaya","PERSEBAYA","01-01-1990"));
+    }
+
+    public String tanggal(String tgl){
+        try {
+            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
+        }catch (Exception ex){
+            System.out.println("Error Convert Tanggal: " + ex);
+        }
+
+        return tgl;
     }
 
 }

@@ -56,7 +56,7 @@ public class BelanjaFragment extends Fragment {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
         adapter.addFragment(new StoreFragment(), "Store");
-        adapter.addFragment(new LelangFragment(), "Lelang");
+        adapter.addFragment(new LelangFragment(), "Auction");
         viewPager.setAdapter(adapter);
 
     }

@@ -58,9 +58,9 @@ public class BeritaFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new ListBeritaFragment(), "Berita Hari ini");
-        adapter.addFragment(new JadwalFragment(), "Jadwal");
-        adapter.addFragment(new KlasemenFragment(), "Klasemen");
+        adapter.addFragment(new ListBeritaFragment(), "Today");
+        adapter.addFragment(new JadwalFragment(), "Schedule");
+        adapter.addFragment(new KlasemenFragment(), "Standings");
         viewPager.setAdapter(adapter);
 
     }

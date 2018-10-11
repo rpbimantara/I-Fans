@@ -55,7 +55,7 @@ public class HomeFragment extends Fragment {
     private void setupViewPager(ViewPager viewPager) {
 
         Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new TerupdateFragment(), "Terkini");
+        adapter.addFragment(new TerupdateFragment(), "Update");
         adapter.addFragment(new LiveFragment(), "Live");
         adapter.addFragment(new TeamFragment(), "Team");
         viewPager.setAdapter(adapter);

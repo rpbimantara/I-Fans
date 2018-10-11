@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 public class SharedPrefManager {
     public static final String SP_Persebaya_APP = "spPersebayaApp";
     public static final String SP_ID_USER = "spIdUser";
+    public static final String SP_ID_CLUB = "spIdClub";
+    public static final String SP_NAMA_CLUB = "spNamaClub";
     public static final String SP_NAMA_USER = "spNamaUser";
     public static final String SP_PASSWORD_USER = "spPasswordUser";
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
@@ -35,6 +37,14 @@ public class SharedPrefManager {
 
     public Integer getSpIdUser() {
         return sp.getInt(SP_ID_USER,0);
+    }
+
+    public Integer getSpIdClub() {
+        return sp.getInt(SP_ID_CLUB,0);
+    }
+
+    public String getSpNamaClub() {
+        return sp.getString(SP_NAMA_CLUB,"");
     }
 
     public String getSpNamaUser() {
