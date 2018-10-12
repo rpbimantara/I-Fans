@@ -1,14 +1,41 @@
 package com.example.nerita_hendra.i_fans;
 
 public class Klasemen {
-    private String txtNoUrut,txtTeamKlasemen, txtPlayKlasemen,txtSelisihGol,txtPoint;
+    private String txtNoUrut,txtTeamKlasemen, txtPlayKlasemen,txtWin,txtDraw,txtLose, txtSelisihGol,txtPoint;
 
-    public Klasemen(String txtNoUrut, String txtTeamKlasemen, String txtPlayKlasemen, String txtSelisihGol, String txtPoint) {
+    public Klasemen(String txtNoUrut, String txtTeamKlasemen, String txtPlayKlasemen, String txtWin,String txtDraw,String txtLose, String txtSelisihGol, String txtPoint) {
         this.txtNoUrut = txtNoUrut;
         this.txtTeamKlasemen = txtTeamKlasemen;
         this.txtPlayKlasemen = txtPlayKlasemen;
+        this.txtWin = txtWin;
+        this.txtDraw = txtDraw;
+        this.txtLose = txtLose;
         this.txtSelisihGol = txtSelisihGol;
         this.txtPoint = txtPoint;
+    }
+
+    public String getTxtWin() {
+        return txtWin;
+    }
+
+    public void setTxtWin(String txtWin) {
+        this.txtWin = txtWin;
+    }
+
+    public String getTxtDraw() {
+        return txtDraw;
+    }
+
+    public void setTxtDraw(String txtDraw) {
+        this.txtDraw = txtDraw;
+    }
+
+    public String getTxtLose() {
+        return txtLose;
+    }
+
+    public void setTxtLose(String txtLose) {
+        this.txtLose = txtLose;
     }
 
     public String getTxtNoUrut() {

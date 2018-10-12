@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -18,6 +20,8 @@ import java.util.ArrayList;
 public class KlasemenFragment extends Fragment {
 
     ArrayList<Klasemen> ArrayListKlasemen;
+    int RecyclerViewItemPosition ;
+    SharedPrefManager sharedPrefManager;
 
     public KlasemenFragment() {
         // Required empty public constructor
@@ -30,7 +34,8 @@ public class KlasemenFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_klasemen, container, false);
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_klasemen);
-        addData();
+        sharedPrefManager = new SharedPrefManager(getActivity());
+        addData(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser(),sharedPrefManager.getSpIdUser());
         AdapterKlasemen adapter = new AdapterKlasemen(ArrayListKlasemen);
         rv.setAdapter(adapter);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getActivity());
@@ -39,17 +44,37 @@ public class KlasemenFragment extends Fragment {
     }
 
 
-    void addData(){
+    void addData(String user, String pass,Integer IdUser){
         ArrayListKlasemen =  new ArrayList<>();
-        ArrayListKlasemen.add(new Klasemen("1","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("2","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("3","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("4","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("5","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("6","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("7","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("8","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("9","PERSIB BANDUNG","23","37-21","44"));
-        ArrayListKlasemen.add(new Klasemen("10","PERSIB BANDUNG","23","37-21","44"));
+        try {
+            OdooConnect oc = OdooConnect.connect( user, pass);
+
+            Object[] param = {new Object[]{
+                    new Object[]{"liga_id", "=", "1"}}};
+
+            List<HashMap<String, Object>> data = oc.search_read("persebaya.liga.klasemen", param, "id","club_id", "play","win","draw","lose","gm","gk","point");
+            ArrayListKlasemen.add(new Klasemen(
+                    String.valueOf("No."),
+                    String.valueOf("Club"),
+                    String.valueOf("P"),
+                    String.valueOf("Win"),
+                    String.valueOf("Draw"),
+                    String.valueOf("Lose"),
+                    String.valueOf("+/-"),
+                    String.valueOf("Pts")));
+            for (int i = 0; i < data.size(); ++i) {
+                ArrayListKlasemen.add(new Klasemen(
+                        String.valueOf(i+1),
+                        String.valueOf(data.get(i).get("club_id")),
+                        String.valueOf(data.get(i).get("play")),
+                        String.valueOf(data.get(i).get("win")),
+                        String.valueOf(data.get(i).get("draw")),
+                        String.valueOf(data.get(i).get("lose")),
+                        String.valueOf(data.get(i).get("gm")),
+                        String.valueOf( data.get(i).get("point"))));
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.nerita_hendra.i_fans;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
@@ -7,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,9 +46,16 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+                progressDialog.setIndeterminate(true);
+                progressDialog.setMessage("Authenticating...");
+                progressDialog.show();
                 uname = txtUsername.getText().toString();
                 pass = txtPassword.getText().toString();
-//                if (txtUsername.getText().equals("") && txtPassword.getText().equals("")){
+                if (uname.isEmpty() && pass.isEmpty()){
+                    Toast.makeText(LoginActivity.this,"Masukan username/password anda dengan benar!",Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+                }else{
                     Boolean checkLogin =  login(uname,pass);
                     if (checkLogin == true){
                         String result[] = CheckActiveUser(uname,pass);
@@ -60,12 +69,11 @@ public class LoginActivity extends AppCompatActivity {
                                 .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
                         txtUsername.setText("");
                         txtPassword.setText("");
+                        progressDialog.dismiss();
                     }else{
                         Toast.makeText(LoginActivity.this,"Segera aktifkan akun anda!",Toast.LENGTH_LONG).show();
                     }
-//                }else{
-//                    Toast.makeText(LoginActivity.this,"Masukan username/password anda dengan benar!",Toast.LENGTH_LONG).show();
-//                }
+                }
             }
         });
 

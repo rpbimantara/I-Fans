@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -24,6 +25,7 @@ import java.util.Locale;
 public class JadwalFragment extends Fragment {
 
     ArrayList<Jadwal> ArrayListJadwal;
+    ImageView imagestatus;
     SharedPrefManager sharedPrefManager;
 
     public JadwalFragment() {
@@ -37,6 +39,7 @@ public class JadwalFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_jadwal);
+        imagestatus = rootView.findViewById(R.id.klasemen_image);
         sharedPrefManager = new SharedPrefManager(getActivity());
         addData(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser(),sharedPrefManager.getSpIdUser());
         AdapterJadwal adapter = new AdapterJadwal(ArrayListJadwal);

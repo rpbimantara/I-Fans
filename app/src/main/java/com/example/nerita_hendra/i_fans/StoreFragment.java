@@ -1,15 +1,20 @@
 package com.example.nerita_hendra.i_fans;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 
 /**
@@ -18,6 +23,8 @@ import java.util.ArrayList;
 public class StoreFragment extends Fragment {
 
     ArrayList<Store> ArrayListStore;
+    int RecyclerViewItemPosition ;
+    SharedPrefManager sharedPrefManager;
 
 
     public StoreFragment() {
@@ -31,31 +38,68 @@ public class StoreFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_store,container,false);
         RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_store);
-        addData();
+        sharedPrefManager = new SharedPrefManager(getActivity());
+        addData(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser(),sharedPrefManager.getSpIdUser());
         AdapterStore adapter = new AdapterStore(ArrayListStore);
         rv.setAdapter(adapter);
-        RecyclerView.LayoutManager Glm = new GridLayoutManager(getActivity(),3);
+        RecyclerView.LayoutManager Glm = new GridLayoutManager(getActivity(),2);
         rv.setLayoutManager(Glm);
+        rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+            GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
+
+                @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
+
+                    return true;
+                }
+
+            });
+
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+
+                if(ChildView != null && gestureDetector.onTouchEvent(e)) {
+
+                    RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+                    Intent intent = new Intent(getActivity(),StoreDetailActivity.class);
+                    intent.putExtra("nama",ArrayListStore.get(RecyclerViewItemPosition).getNamabarang());
+                    intent.putExtra("harga",ArrayListStore.get(RecyclerViewItemPosition).getHargabarang());
+                    startActivity(intent);
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
         return rootView;
     }
 
-    void addData(){
+    void addData(String user, String pass,Integer IdUser){
         ArrayListStore = new ArrayList<>();
-        ArrayListStore.add(new Store("Baju","RP. 1.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 2.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 3.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 4.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 5.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 6.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 7.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 8.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 9.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 10.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 11.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 12.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 13.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 14.000.000"));
-        ArrayListStore.add(new Store("Baju","RP. 15.000.000"));
+        try {
+            OdooConnect oc = OdooConnect.connect( user, pass);
+
+            Object[] param = {new Object[]{
+                    new Object[]{"active", "=", true}}};
+
+            List<HashMap<String, Object>> data = oc.search_read("persebaya.merchandise", param, "id","nama_barang", "harga_barang","stock_total_barang","status_merch","create_uid");
+
+            for (int i = 0; i < data.size(); ++i) {
+                ArrayListStore.add(new Store(
+                        String.valueOf(data.get(i).get("nama_barang")),
+                        String.valueOf("Rp. " + data.get(i).get("harga_barang"))));
+            }
+        } catch (Exception ex) {
+            System.out.println("Error: " + ex);
+        }
     }
 
 }

@@ -2,13 +2,31 @@ package com.example.nerita_hendra.i_fans;
 
 public class lelang {
 
-    private String namalelang, waktulelang, bidlelang, binlelang;
+    private String namalelang, waktulelang, bidlelang, binlelang,inclelang,pemiliklelang;
 
-    public lelang(String namalelang, String waktulelang, String bidlelang, String binlelang) {
+    public lelang(String namalelang, String waktulelang, String bidlelang, String binlelang, String inclelang, String pemiliklelang) {
         this.namalelang = namalelang;
         this.waktulelang = waktulelang;
         this.bidlelang = bidlelang;
         this.binlelang = binlelang;
+        this.inclelang = inclelang;
+        this.pemiliklelang = pemiliklelang;
+    }
+
+    public String getInclelang() {
+        return inclelang;
+    }
+
+    public void setInclelang(String inclelang) {
+        this.inclelang = inclelang;
+    }
+
+    public String getPemiliklelang() {
+        return pemiliklelang;
+    }
+
+    public void setPemiliklelang(String pemiliklelang) {
+        this.pemiliklelang = pemiliklelang;
     }
 
     public String getNamalelang() {

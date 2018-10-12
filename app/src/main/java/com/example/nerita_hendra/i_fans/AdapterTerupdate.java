@@ -35,7 +35,7 @@ public class AdapterTerupdate extends RecyclerView.Adapter<AdapterTerupdate.Teru
 
     @Override
     public void onBindViewHolder(@NonNull TerupdateViewHolder holder, int position) {
-        holder.txtHeadlineTerupdate.setText(dataList.get(position).getTxtheadlineterupdate());
+        holder.txtHeadlineTerupdate.setText(dataList.get(position).getHeadline());
     }
 
     @Override

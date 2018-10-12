@@ -28,16 +28,17 @@
         <activity android:name=".SingUpActivity" />
         <activity
             android:name=".TicketActivity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".BeritaDetailActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".DetailJadwalActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".DetailJadwalActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".StoreDetailActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".LelangDetailActivity"></activity>
     </application>
 
 </manifest>
