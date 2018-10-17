@@ -1,7 +1,9 @@
 package com.example.nerita_hendra.i_fans;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -25,6 +27,11 @@ public class StoreFragment extends Fragment {
     ArrayList<Store> ArrayListStore;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
+    View rootView;
+    RecyclerView rv;
+    AdapterStore adapter;
+    RecyclerView.LayoutManager Glm;
+    ProgressDialog progressDialog;
 
 
     public StoreFragment() {
@@ -36,13 +43,11 @@ public class StoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_store,container,false);
-        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_store);
+        rootView = inflater.inflate(R.layout.fragment_store,container,false);
+        rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_store);
         sharedPrefManager = new SharedPrefManager(getActivity());
-        addData(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser(),sharedPrefManager.getSpIdUser());
-        AdapterStore adapter = new AdapterStore(ArrayListStore);
-        rv.setAdapter(adapter);
-        RecyclerView.LayoutManager Glm = new GridLayoutManager(getActivity(),2);
+        progressDialog = new ProgressDialog(getActivity());
+        Glm = new GridLayoutManager(getActivity(),3);
         rv.setLayoutManager(Glm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
@@ -79,26 +84,51 @@ public class StoreFragment extends Fragment {
 
             }
         });
+        new StoreTask().execute();
+        adapter = new AdapterStore(ArrayListStore);
+        rv.setAdapter(adapter);
         return rootView;
     }
 
-    void addData(String user, String pass,Integer IdUser){
-        ArrayListStore = new ArrayList<>();
-        try {
-            OdooConnect oc = OdooConnect.connect( user, pass);
 
-            Object[] param = {new Object[]{
-                    new Object[]{"active", "=", true}}};
+    public class StoreTask extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Loading...");
+            progressDialog.show();
+        }
 
-            List<HashMap<String, Object>> data = oc.search_read("persebaya.merchandise", param, "id","nama_barang", "harga_barang","stock_total_barang","status_merch","create_uid");
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
+        }
 
-            for (int i = 0; i < data.size(); ++i) {
-                ArrayListStore.add(new Store(
-                        String.valueOf(data.get(i).get("nama_barang")),
-                        String.valueOf("Rp. " + data.get(i).get("harga_barang"))));
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ArrayListStore = new ArrayList<>();
+            try {
+                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+
+                Object[] param = {new Object[]{
+                        new Object[]{"active", "=", true}}};
+
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.merchandise", param, "id","nama_barang", "harga_barang","stock_total_barang","status_merch","create_uid");
+
+                for (int i = 0; i < data.size(); ++i) {
+                    ArrayListStore.add(new Store(
+                            String.valueOf(data.get(i).get("nama_barang")),
+                            String.valueOf("Rp. " + data.get(i).get("harga_barang"))));
+                }
+            } catch (Exception ex) {
+                System.out.println("Error: " + ex);
             }
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
+            return null;
         }
     }
 

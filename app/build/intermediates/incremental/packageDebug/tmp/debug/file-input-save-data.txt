@@ -1,10 +1,10 @@
 #Internal package file, do not edit.
-#Sat Oct 13 02:31:25 ICT 2018
-1.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\113
+#Thu Oct 18 01:00:59 ICT 2018
+1.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\147
 2.path=classes.dex
 0.baseType=DIRECTORY
 3.baseType=DIRECTORY
-2.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\114
+2.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\148
 3.set=DEX
 2.set=DEX
 1.baseType=DIRECTORY
@@ -12,8 +12,8 @@
 count=4
 1.set=DEX
 0.path=classes.dex
-3.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\115
+3.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\150
 0.set=DEX
-0.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\116
+0.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\149
 2.baseType=DIRECTORY
 1.path=classes.dex

@@ -38,7 +38,8 @@
         <activity
             android:name=".StoreDetailActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".LelangDetailActivity"></activity>
+        <activity android:name=".LelangDetailActivity" />
+        <activity android:name=".ClubDetailActivity"></activity>
     </application>
 
 </manifest>

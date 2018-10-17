@@ -8,9 +8,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/SubProject" />
+            <option value="$PROJECT_DIR$/SubProject/odoo-mobile-api-1.0.0" />
             <option value="$PROJECT_DIR$/app" />
-            <option value="$PROJECT_DIR$/xMLRPC" />
-            <option value="$PROJECT_DIR$/xmlrpc-android" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

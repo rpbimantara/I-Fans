@@ -248,12 +248,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_home.png.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-mdpi\\ic_home.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_home.png.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-mdpi\\ic_home.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -492,12 +492,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_bottom_sheet_dialog.xml.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\0fc548c3863bb820dfc433e075114d1b\\res\\layout\\design_bottom_sheet_dialog.xml"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_select_dialog_material.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_bottom_sheet_dialog.xml.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\0fc548c3863bb820dfc433e075114d1b\\res\\layout\\design_bottom_sheet_dialog.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
@@ -788,12 +788,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\0fc548c3863bb820dfc433e075114d1b\\res\\drawable-xxxhdpi-v4\\design_ic_visibility.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_ticket.png.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-mdpi\\ic_ticket.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_detail.xml.flat",
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_detail.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_ticket.png.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-mdpi\\ic_ticket.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_action.xml.flat",
@@ -976,12 +976,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_lelang.xml.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_lelang.xml"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_time.png.flat",
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-xhdpi\\ic_time.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_lelang.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_lelang.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
@@ -1036,12 +1036,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-mdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\55bb98229aa6d065301497d088914dd1\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_navigation_item_separator.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\0fc548c3863bb820dfc433e075114d1b\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\55bb98229aa6d065301497d088914dd1\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_list_menu_item_radio.xml.flat",
@@ -1498,6 +1498,10 @@
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_hint_foreground_material_dark.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\color\\abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_club_detail.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_club_detail.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_search_api_material.xml.flat",

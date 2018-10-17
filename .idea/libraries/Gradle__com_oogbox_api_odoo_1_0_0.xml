@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.oogbox.api:odoo-1.0.0">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/odoo-1.0.0.aar/4a613e35a28da1b85abb8f5e7cf11690/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/odoo-1.0.0.aar/4a613e35a28da1b85abb8f5e7cf11690/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.oogbox.api/odoo/1.0.0/26ed4fd8fdb0ea4a9f919c87fec683d487d3639f/odoo-1.0.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

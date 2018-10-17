@@ -1,2 +1,1 @@
-include ':app', ':xmlrpc-android'
-include ':xMLRPC'
+include ':app', ':SubProject:odoo-mobile-api-1.0.0'

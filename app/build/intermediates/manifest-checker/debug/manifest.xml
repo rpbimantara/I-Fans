@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -47,6 +48,7 @@
             android:name="com.example.nerita_hendra.i_fans.StoreDetailActivity"
             android:parentActivityName="com.example.nerita_hendra.i_fans.MainActivity" />
         <activity android:name="com.example.nerita_hendra.i_fans.LelangDetailActivity" />
+        <activity android:name="com.example.nerita_hendra.i_fans.ClubDetailActivity" />
 
         <provider
             android:name="com.android.tools.ir.server.InstantRunContentProvider"

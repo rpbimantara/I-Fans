@@ -1,7 +1,9 @@
 package com.example.nerita_hendra.i_fans;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,6 +31,11 @@ public class ListBeritaFragment extends Fragment {
     private ArrayList<ListBerita> ArrayListBerita;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
+    View rootView;
+    RecyclerView rv;
+    AdapterListBerita adapter;
+    LinearLayoutManager llm;
+    ProgressDialog progressDialog;
 
     public ListBeritaFragment() {
         // Required empty public constructor
@@ -44,14 +51,11 @@ public class ListBeritaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        final View rootView = inflater.inflate(R.layout.fragment_list_berita, container, false);
-        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_list_berita);
-//        rv.setHasFixedSize(true);
+        rootView = inflater.inflate(R.layout.fragment_list_berita, container, false);
+        rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_list_berita);
         sharedPrefManager = new SharedPrefManager(getActivity());
-        addData(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser(),sharedPrefManager.getSpIdUser());
-        AdapterListBerita adapter = new AdapterListBerita(ArrayListBerita);
-        rv.setAdapter(adapter);
-        LinearLayoutManager llm = new LinearLayoutManager(getActivity());
+        progressDialog = new ProgressDialog(getActivity());
+        llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
@@ -66,7 +70,7 @@ public class ListBeritaFragment extends Fragment {
 
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-               View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+                View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
 
                 if(ChildView != null && gestureDetector.onTouchEvent(e)) {
 
@@ -94,32 +98,10 @@ public class ListBeritaFragment extends Fragment {
 
             }
         });
+        new BeritaTask().execute();
+        adapter = new AdapterListBerita(ArrayListBerita);
+        rv.setAdapter(adapter);
         return rootView;
-    }
-
-    void addData(String user, String pass,Integer IdUser){
-        ArrayListBerita = new ArrayList<>();
-        try {
-            OdooConnect oc = OdooConnect.connect( user, pass);
-
-            Object[] param = {new Object[]{
-                    new Object[]{"create_uid", "=", 1}}};
-
-            List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
-
-            for (int i = 0; i < data.size(); ++i) {
-                ArrayListBerita.add(new ListBerita(
-                        (Integer) data.get(i).get("id"),
-                        String.valueOf(data.get(i).get("title")),
-                        String.valueOf(data.get(i).get("kategori_brita_id")),
-                        String.valueOf(data.get(i).get("headline")),
-                        String.valueOf(data.get(i).get("content")),
-                        tanggal(String.valueOf(data.get(i).get("create_date")).substring(0,10)),
-                        String.valueOf(data.get(i).get("create_uid"))));
-            }
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
     }
 
     public String tanggal(String tgl){
@@ -130,6 +112,52 @@ public class ListBeritaFragment extends Fragment {
         }
 
         return tgl;
+    }
+
+    public class BeritaTask extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ArrayListBerita = new ArrayList<>();
+            try {
+                OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+
+                Object[] param = {new Object[]{
+                        new Object[]{"create_uid", "=", 1}}};
+
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
+
+                for (int i = 0; i < data.size(); ++i) {
+                    ArrayListBerita.add(new ListBerita(
+                            (Integer) data.get(i).get("id"),
+                            String.valueOf(data.get(i).get("title")),
+                            String.valueOf(data.get(i).get("kategori_brita_id")),
+                            String.valueOf(data.get(i).get("headline")),
+                            String.valueOf(data.get(i).get("content")),
+                            tanggal(String.valueOf(data.get(i).get("create_date")).substring(0,10)),
+                            String.valueOf(data.get(i).get("create_uid"))));
+                }
+            } catch (Exception ex) {
+                System.out.println("Error List Berita: " + ex);
+            }
+            return null;
+        }
     }
 
 }

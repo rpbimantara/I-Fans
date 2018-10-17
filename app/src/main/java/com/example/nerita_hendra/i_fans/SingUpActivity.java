@@ -4,11 +4,13 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class SingUpActivity extends AppCompatActivity {
 
     private TextView _login;
+    private Button  btn_singup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,5 +24,13 @@ public class SingUpActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        btn_singup = findViewById(R.id.btn_signup);
+        btn_singup.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 }

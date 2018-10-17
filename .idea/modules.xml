@@ -3,9 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/I-Fans.iml" filepath="$PROJECT_DIR$/I-Fans.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SubProject/SubProject.iml" filepath="$PROJECT_DIR$/SubProject/SubProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xMLRPC/xMLRPC.iml" filepath="$PROJECT_DIR$/xMLRPC/xMLRPC.iml" />
-      <module fileurl="file://$PROJECT_DIR$/xmlrpc-android/xmlrpc-android.iml" filepath="$PROJECT_DIR$/xmlrpc-android/xmlrpc-android.iml" />
+      <module fileurl="file://$PROJECT_DIR$/SubProject/odoo-mobile-api-1.0.0/odoo-mobile-api-1.0.0.iml" filepath="$PROJECT_DIR$/SubProject/odoo-mobile-api-1.0.0/odoo-mobile-api-1.0.0.iml" />
     </modules>
   </component>
 </project>

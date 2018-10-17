@@ -64,7 +64,7 @@ public class HomeActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         viewPager = findViewById(R.id.view_pager);
-        GooglePlusFragmentPageAdapter adapter = new GooglePlusFragmentPageAdapter(getSupportFragmentManager());
+        HomeFragmentPageAdapter adapter = new HomeFragmentPageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
         navigation = findViewById(R.id.navigation);
@@ -146,10 +146,10 @@ public class HomeActivity extends AppCompatActivity {
     }
 
 
-    private static class GooglePlusFragmentPageAdapter extends FragmentPagerAdapter {
+    private static class HomeFragmentPageAdapter extends FragmentPagerAdapter {
 
 
-        public GooglePlusFragmentPageAdapter(FragmentManager fm) {
+        public HomeFragmentPageAdapter(FragmentManager fm) {
             super(fm);
         }
 

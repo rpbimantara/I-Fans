@@ -1,8 +1,10 @@
 package com.example.nerita_hendra.i_fans;
 
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -30,6 +32,11 @@ public class TerupdateFragment extends Fragment {
     ArrayList<Terupdate> ArrayListTerupdate;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
+    ProgressDialog progressDialog;
+    RecyclerView rv;
+    AdapterTerupdate adapter;
+    View rootView;
+    RecyclerView.LayoutManager llm;
 
     public TerupdateFragment() {
         // Required empty public constructor
@@ -40,13 +47,11 @@ public class TerupdateFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_terupdate, container, false);
-        RecyclerView rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_hot_news);
+        rootView = inflater.inflate(R.layout.fragment_terupdate, container, false);
+        rv = rootView.findViewById(R.id.rv_recycler_view_hot_news);
         sharedPrefManager = new SharedPrefManager(getActivity());
-        addData(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser(),sharedPrefManager.getSpIdUser());
-        AdapterTerupdate adapter = new  AdapterTerupdate(ArrayListTerupdate);
-        rv.setAdapter(adapter);
-        RecyclerView.LayoutManager llm = new  LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        progressDialog = new ProgressDialog(getActivity());
+        llm = new  LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
@@ -61,7 +66,7 @@ public class TerupdateFragment extends Fragment {
 
             @Override
             public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-               View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+                View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
 
                 if(ChildView != null && gestureDetector.onTouchEvent(e)) {
 
@@ -89,33 +94,12 @@ public class TerupdateFragment extends Fragment {
 
             }
         });
+        new TerupdateTask().execute();
+        adapter = new  AdapterTerupdate(ArrayListTerupdate);
+        rv.setAdapter(adapter);
         return rootView;
     }
 
-    void addData(String user, String pass,Integer IdUser){
-        ArrayListTerupdate = new ArrayList<>();
-        try {
-            OdooConnect oc = OdooConnect.connect( user, pass);
-
-            Object[] param = {new Object[]{
-                    new Object[]{"create_uid", "=", 1}}};
-
-            List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
-
-            for (int i = 0; i < data.size(); ++i) {
-                ArrayListTerupdate.add(new Terupdate(
-                        (Integer) data.get(i).get("id"),
-                        String.valueOf(data.get(i).get("title")),
-                        String.valueOf(data.get(i).get("kategori_brita_id")),
-                        String.valueOf(data.get(i).get("headline")),
-                        String.valueOf(data.get(i).get("content")),
-                        tanggal(String.valueOf(data.get(i).get("create_date")).substring(0,10)),
-                        String.valueOf(data.get(i).get("create_uid"))));
-            }
-        } catch (Exception ex) {
-            System.out.println("Error: " + ex);
-        }
-    }
 
     public String tanggal(String tgl){
         try {
@@ -125,6 +109,52 @@ public class TerupdateFragment extends Fragment {
         }
 
         return tgl;
+    }
+
+    public class TerupdateTask extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Loading...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            progressDialog.dismiss();
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ArrayListTerupdate = new ArrayList<>();
+            try {
+                OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+
+                Object[] param = {new Object[]{
+                        new Object[]{"create_uid", "=", 1}}};
+
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
+
+                for (int i = 0; i < data.size(); ++i) {
+                    ArrayListTerupdate.add(new Terupdate(
+                            (Integer) data.get(i).get("id"),
+                            String.valueOf(data.get(i).get("title")),
+                            String.valueOf(data.get(i).get("kategori_brita_id")),
+                            String.valueOf(data.get(i).get("headline")),
+                            String.valueOf(data.get(i).get("content")),
+                            tanggal(String.valueOf(data.get(i).get("create_date")).substring(0,10)),
+                            String.valueOf(data.get(i).get("create_uid"))));
+                }
+            } catch (Exception ex) {
+                System.out.println("Error: " + ex);
+            }
+            return null;
+        }
     }
 
 }
