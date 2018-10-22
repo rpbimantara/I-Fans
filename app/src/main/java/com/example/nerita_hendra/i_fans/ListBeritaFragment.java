@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -28,14 +29,14 @@ import java.util.Locale;
  */
 public class ListBeritaFragment extends Fragment {
 
-    private ArrayList<ListBerita> ArrayListBerita;
+    ArrayList<ListBerita> ArrayListBerita;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
-    View rootView;
-    RecyclerView rv;
-    AdapterListBerita adapter;
-    LinearLayoutManager llm;
     ProgressDialog progressDialog;
+    RecyclerView rv;
+    View rootView;
+    RecyclerView.LayoutManager llm;
+    SwipeRefreshLayout swiper;
 
     public ListBeritaFragment() {
         // Required empty public constructor
@@ -52,10 +53,24 @@ public class ListBeritaFragment extends Fragment {
         // Inflate the layout for this fragment
 
         rootView = inflater.inflate(R.layout.fragment_list_berita, container, false);
-        rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_list_berita);
+        rv = rootView.findViewById(R.id.rv_recycler_view_list_berita);
+        swiper = rootView.findViewById(R.id.swiperefresh_list_berita);
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+            }
+        });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
+        load();
+        return rootView;
+    }
+
+    public void load(){
+        new BeritaTask().execute();
         llm = new LinearLayoutManager(getActivity());
+        rv.setAdapter(new AdapterListBerita(ArrayListBerita));
         rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
@@ -98,10 +113,6 @@ public class ListBeritaFragment extends Fragment {
 
             }
         });
-        new BeritaTask().execute();
-        adapter = new AdapterListBerita(ArrayListBerita);
-        rv.setAdapter(adapter);
-        return rootView;
     }
 
     public String tanggal(String tgl){
@@ -115,21 +126,15 @@ public class ListBeritaFragment extends Fragment {
     }
 
     public class BeritaTask extends AsyncTask<Void,Void,Void>{
+
         @Override
         protected void onPreExecute() {
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Loading...");
-            progressDialog.show();
+            swiper.setRefreshing(true);
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
+            swiper.setRefreshing(false);
         }
 
         @Override

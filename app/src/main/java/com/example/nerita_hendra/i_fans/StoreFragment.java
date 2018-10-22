@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -29,9 +30,9 @@ public class StoreFragment extends Fragment {
     SharedPrefManager sharedPrefManager;
     View rootView;
     RecyclerView rv;
-    AdapterStore adapter;
-    RecyclerView.LayoutManager Glm;
     ProgressDialog progressDialog;
+    AdapterStore adapter;
+    SwipeRefreshLayout swiper;
 
 
     public StoreFragment() {
@@ -44,11 +45,26 @@ public class StoreFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_store,container,false);
-        rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_store);
+        rv =  rootView.findViewById(R.id.rv_recycler_view_store);
+        swiper = rootView.findViewById(R.id.swiperefresh_store);
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        Glm = new GridLayoutManager(getActivity(),3);
-        rv.setLayoutManager(Glm);
+        load();
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+            }
+        });
+        return rootView;
+    }
+
+    public void load(){
+        new StoreTask().execute();
+        adapter = new AdapterStore(ArrayListStore);
+        rv.setHasFixedSize(true);
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
             GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
@@ -84,31 +100,19 @@ public class StoreFragment extends Fragment {
 
             }
         });
-        new StoreTask().execute();
-        adapter = new AdapterStore(ArrayListStore);
-        rv.setAdapter(adapter);
-        return rootView;
+        swiper.setRefreshing(false);
     }
-
 
     public class StoreTask extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Loading...");
-            progressDialog.show();
+            swiper.setRefreshing(true);
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
+            swiper.setRefreshing(false);
         }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
-        }
-
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListStore = new ArrayList<>();
@@ -125,6 +129,7 @@ public class StoreFragment extends Fragment {
                             String.valueOf(data.get(i).get("nama_barang")),
                             String.valueOf("Rp. " + data.get(i).get("harga_barang"))));
                 }
+                System.out.println("SIZE : " + ArrayListStore.size());
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);
             }

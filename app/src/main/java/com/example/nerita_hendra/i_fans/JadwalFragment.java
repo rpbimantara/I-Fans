@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -41,8 +42,8 @@ public class JadwalFragment extends Fragment {
     ProgressDialog progressDialog;
     RecyclerView rv;
     View rootView;
-    AdapterJadwal adapter;
     RecyclerView.LayoutManager llm;
+    SwipeRefreshLayout swiper;
 
 
     public JadwalFragment() {
@@ -55,16 +56,26 @@ public class JadwalFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
-        rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_jadwal);
+        rv =  rootView.findViewById(R.id.rv_recycler_view_jadwal);
+        swiper = rootView.findViewById(R.id.swiperefresh_jadwal);
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+            }
+        });
         imagestatus = rootView.findViewById(R.id.klasemen_image);
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        llm = new LinearLayoutManager(getActivity());
-        rv.setLayoutManager(llm);
-        new JadwalTask().execute();
-        adapter = new AdapterJadwal(ArrayListJadwal);
-        rv.setAdapter(adapter);
+        load();
         return rootView;
+    }
+
+    public void load(){
+        new JadwalTask().execute();
+        llm = new LinearLayoutManager(getActivity());
+        rv.setAdapter(new AdapterJadwal(ArrayListJadwal));
+        rv.setLayoutManager(llm);
     }
 
     public String tanggal(String tgl){
@@ -86,19 +97,12 @@ public class JadwalFragment extends Fragment {
     public class JadwalTask extends AsyncTask<Void, Void,Void>{
         @Override
         protected void onPreExecute() {
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Loading...");
-            progressDialog.show();
+            swiper.setRefreshing(true);
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
+            swiper.setRefreshing(false);
         }
 
         @Override

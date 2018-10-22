@@ -1,4 +1,0 @@
-#Thu Oct 18 01:00:57 ICT 2018
-base.0=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\142
-path.0=classes.dex
-renamed.0=classes.dex

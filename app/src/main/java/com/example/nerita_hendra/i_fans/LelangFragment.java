@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -27,11 +28,11 @@ public class LelangFragment extends Fragment {
     ArrayList<lelang> ArrayListLelang;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
-    View rootView;
-    RecyclerView rv;
-    AdapterLelang adapter;
     RecyclerView.LayoutManager llm;
+    RecyclerView rv;
+    View rootView;
     ProgressDialog progressDialog;
+    SwipeRefreshLayout swiper;
 
     public LelangFragment() {
         // Required empty public constructor
@@ -43,9 +44,23 @@ public class LelangFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_lelang, container, false);
-        rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_lelang);
+        rv =  rootView.findViewById(R.id.rv_recycler_view_lelang);
+        swiper = rootView.findViewById(R.id.swiperefresh_lelang);
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+            }
+        });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
+        load();
+        return rootView;
+    }
+
+    public void  load(){
+        new LelangAsyncTask().execute();
+        rv.setAdapter(new AdapterLelang(ArrayListLelang));
         llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -82,29 +97,18 @@ public class LelangFragment extends Fragment {
 
             }
         });
-        new LelangTask().execute();
-        adapter = new AdapterLelang(ArrayListLelang);
-        rv.setAdapter(adapter);
-        return rootView;
+        swiper.setRefreshing(false);
     }
 
-
-    public class LelangTask extends AsyncTask<Void,Void,Void>{
+    public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Loading...");
-            progressDialog.show();
+            swiper.setRefreshing(true);
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
+            swiper.setRefreshing(false);
         }
 
         @Override
@@ -127,6 +131,7 @@ public class LelangFragment extends Fragment {
                             String.valueOf(data.get(i).get("inc")),
                             String.valueOf( data.get(i).get("create_uid"))));
                 }
+
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);
             }

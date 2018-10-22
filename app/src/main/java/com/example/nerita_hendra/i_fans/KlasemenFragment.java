@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -30,7 +31,8 @@ public class KlasemenFragment extends Fragment {
     ProgressDialog progressDialog;
     View rootView;
     RecyclerView rv;
-    AdapterKlasemen adapter;
+    RecyclerView.LayoutManager llm;
+    SwipeRefreshLayout swiper;
 
     public KlasemenFragment() {
         // Required empty public constructor
@@ -42,10 +44,24 @@ public class KlasemenFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_klasemen, container, false);
-        rv = (RecyclerView) rootView.findViewById(R.id.rv_recycler_view_klasemen);
+        rv =  rootView.findViewById(R.id.rv_recycler_view_klasemen);
+        swiper = rootView.findViewById(R.id.swiperefresh_klasemen);
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+            }
+        });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        RecyclerView.LayoutManager llm = new LinearLayoutManager(getActivity());
+        load();
+        return rootView;
+    }
+
+    public void load(){
+        new KlasemenTask().execute();
+        llm = new LinearLayoutManager(getActivity());
+        rv.setAdapter(new AdapterKlasemen(ArrayListKlasemen));
         rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
@@ -88,28 +104,17 @@ public class KlasemenFragment extends Fragment {
 
             }
         });
-        new KlasemenTask().execute();
-        adapter = new AdapterKlasemen(ArrayListKlasemen);
-        rv.setAdapter(adapter);
-        return rootView;
     }
 
     public class KlasemenTask extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Loading...");
-            progressDialog.show();
+            swiper.setRefreshing(true);
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
+            swiper.setRefreshing(false);
         }
 
         @Override

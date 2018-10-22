@@ -1,34 +1,39 @@
-<android.support.v4.widget.NestedScrollView
+<android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swiperefresh_terupdate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="?attr/actionBarSize"
     tools:context="com.example.nerita_hendra.i_fans.TerupdateFragment">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <!-- TODO: Update blank fragment layout -->
-
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView_namaligaterupdate"
+            <!-- TODO: Update blank fragment layout -->
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="GOJEK LIGA 1 2018"
-                android:gravity="center"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                android:textStyle="bold" />
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textView_namaligaterupdate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GOJEK LIGA 1 2018"
+                    android:gravity="center"
+                    android:textColor="#000000"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -89,133 +94,135 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"/>
                     </LinearLayout>
-        </LinearLayout>
-
-            <TextView
-                android:id="@+id/textView_tglharini"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="10 JANUARI 2018"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/textView_stadionharini"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="GELORA BUNG TOMO"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/linearLayout"
-            android:layout_width="match_parent"
-            android:layout_height="111dp"
-            android:orientation="horizontal"
-            android:weightSum="2">
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/imageView_terakhir"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginRight="2dp"
-                    android:src="@color/colorPrimaryDark" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="4dp"
-                    android:weightSum="2">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="PREVIOUS MATCH"
-                        android:textColor="#000000"
-                        android:layout_weight="1"
-                        android:textSize="8sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/textView_lastliga"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="33 DESEMBER 2018"
-                        android:textColor="#000000"
-                        android:textSize="8sp"
-                        android:textStyle="bold" />
                 </LinearLayout>
 
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="3dp"
-                android:layout_weight="1">
-
-                <ImageView
-                    android:id="@+id/imageView_akandatang"
+                <TextView
+                    android:id="@+id/textView_tglharini"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginRight="2dp"
-                    android:layout_weight="1"
-                    android:src="@color/colorPrimaryDark" />
-                <LinearLayout
+                    android:gravity="center"
+                    android:text="10 JANUARI 2018"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_stadionharini"
                     android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="GELORA BUNG TOMO"
+                    android:textColor="#000000"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="111dp"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="4dp"
-                    android:weightSum="2">
-                    <TextView
+                    android:layout_margin="3dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageView_terakhir"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="2dp"
+                        android:src="@color/colorPrimaryDark" />
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="NEXT MATCH"
-                        android:textColor="#000000"
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+                        android:weightSum="2">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="PREVIOUS MATCH"
+                            android:textColor="#000000"
+                            android:layout_weight="1"
+                            android:textSize="8sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView_lastliga"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="33 DESEMBER 2018"
+                            android:textColor="#000000"
+                            android:textSize="8sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/imageView_akandatang"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="2dp"
                         android:layout_weight="1"
-                        android:textSize="8sp"
-                        android:textStyle="bold" />
-                    <TextView
-                        android:id="@+id/textView_nextliga"
+                        android:src="@color/colorPrimaryDark" />
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="right"
-                        android:text="33 DESEMBER 2018"
-                        android:textColor="#000000"
-                        android:textSize="8sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:padding="4dp"
+                        android:weightSum="2">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="NEXT MATCH"
+                            android:textColor="#000000"
+                            android:layout_weight="1"
+                            android:textSize="8sp"
+                            android:textStyle="bold" />
+                        <TextView
+                            android:id="@+id/textView_nextliga"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="33 DESEMBER 2018"
+                            android:textColor="#000000"
+                            android:textSize="8sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
 
 
-            </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_recycler_view_hot_news"
+                </RelativeLayout>
+            </LinearLayout>
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="?attr/actionBarSize">
+                android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_recycler_view_hot_news"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="?attr/actionBarSize">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+
         </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-
-    </LinearLayout>
-</android.support.v4.widget.NestedScrollView>
+</android.support.v4.widget.SwipeRefreshLayout>

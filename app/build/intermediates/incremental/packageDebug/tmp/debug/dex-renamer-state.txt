@@ -1,13 +1,4 @@
-#Thu Oct 18 01:00:59 ICT 2018
-path.3=classes.dex
-path.2=classes.dex
-path.1=classes.dex
+#Mon Oct 22 16:49:16 ICT 2018
+base.0=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
-renamed.3=classes4.dex
-renamed.2=classes3.dex
-renamed.1=classes2.dex
 renamed.0=classes.dex
-base.3=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\149
-base.2=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\147
-base.1=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\150
-base.0=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\148

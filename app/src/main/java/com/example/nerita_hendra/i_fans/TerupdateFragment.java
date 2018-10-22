@@ -8,6 +8,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.GestureDetector;
@@ -34,9 +35,9 @@ public class TerupdateFragment extends Fragment {
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
     RecyclerView rv;
-    AdapterTerupdate adapter;
     View rootView;
     RecyclerView.LayoutManager llm;
+    SwipeRefreshLayout swiper;
 
     public TerupdateFragment() {
         // Required empty public constructor
@@ -49,9 +50,23 @@ public class TerupdateFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_terupdate, container, false);
         rv = rootView.findViewById(R.id.rv_recycler_view_hot_news);
+        swiper = rootView.findViewById(R.id.swiperefresh_terupdate);
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                load();
+            }
+        });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
+        load();
+        return rootView;
+    }
+
+    public void load(){
+        new TerupdateTask().execute();
         llm = new  LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
+        rv.setAdapter(new  AdapterTerupdate(ArrayListTerupdate));
         rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
@@ -94,12 +109,8 @@ public class TerupdateFragment extends Fragment {
 
             }
         });
-        new TerupdateTask().execute();
-        adapter = new  AdapterTerupdate(ArrayListTerupdate);
-        rv.setAdapter(adapter);
-        return rootView;
+        swiper.setRefreshing(false);
     }
-
 
     public String tanggal(String tgl){
         try {
@@ -114,19 +125,12 @@ public class TerupdateFragment extends Fragment {
     public class TerupdateTask extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
-            progressDialog.setIndeterminate(true);
-            progressDialog.setMessage("Loading...");
-            progressDialog.show();
+            swiper.setRefreshing(true);
         }
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
+            swiper.setRefreshing(false);
         }
 
         @Override
