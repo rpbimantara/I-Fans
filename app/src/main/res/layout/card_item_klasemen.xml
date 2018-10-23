@@ -32,7 +32,6 @@
                 android:id="@+id/klasemen_image"
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:background="@drawable/ic_home"
                 android:backgroundTint="@color/colorTrueState"/>
 
             <TextView

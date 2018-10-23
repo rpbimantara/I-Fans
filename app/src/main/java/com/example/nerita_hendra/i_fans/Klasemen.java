@@ -1,10 +1,11 @@
 package com.example.nerita_hendra.i_fans;
 
 public class Klasemen {
-    private String txtNoUrut,txtTeamKlasemen, txtPlayKlasemen,txtWin,txtDraw,txtLose, txtSelisihGol,txtPoint;
+    private String txtNoUrut, txtFotoClub,txtTeamKlasemen, txtPlayKlasemen,txtWin,txtDraw,txtLose, txtSelisihGol,txtPoint;
 
-    public Klasemen(String txtNoUrut, String txtTeamKlasemen, String txtPlayKlasemen, String txtWin,String txtDraw,String txtLose, String txtSelisihGol, String txtPoint) {
+    public Klasemen(String txtNoUrut, String txtFotoClub, String txtTeamKlasemen, String txtPlayKlasemen, String txtWin,String txtDraw,String txtLose, String txtSelisihGol, String txtPoint) {
         this.txtNoUrut = txtNoUrut;
+        this.txtFotoClub = txtFotoClub;
         this.txtTeamKlasemen = txtTeamKlasemen;
         this.txtPlayKlasemen = txtPlayKlasemen;
         this.txtWin = txtWin;
@@ -76,5 +77,13 @@ public class Klasemen {
 
     public void setTxtPoint(String txtPoint) {
         this.txtPoint = txtPoint;
+    }
+
+    public String getTxtFotoClub() {
+        return txtFotoClub;
+    }
+
+    public void setTxtFotoClub(String txtFotoClub) {
+        this.txtFotoClub = txtFotoClub;
     }
 }

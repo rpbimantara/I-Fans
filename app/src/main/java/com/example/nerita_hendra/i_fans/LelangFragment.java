@@ -33,6 +33,7 @@ public class LelangFragment extends Fragment {
     View rootView;
     ProgressDialog progressDialog;
     SwipeRefreshLayout swiper;
+    AdapterLelang adapter;
 
     public LelangFragment() {
         // Required empty public constructor
@@ -46,23 +47,18 @@ public class LelangFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_lelang, container, false);
         rv =  rootView.findViewById(R.id.rv_recycler_view_lelang);
         swiper = rootView.findViewById(R.id.swiperefresh_lelang);
+        adapter = new AdapterLelang(ArrayListLelang);
+        rv.setAdapter(adapter);
+        llm = new LinearLayoutManager(getActivity());
+        rv.setLayoutManager(llm);
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                load();
+                new LelangAsyncTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        load();
-        return rootView;
-    }
-
-    public void  load(){
-        new LelangAsyncTask().execute();
-        rv.setAdapter(new AdapterLelang(ArrayListLelang));
-        llm = new LinearLayoutManager(getActivity());
-        rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
             GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
@@ -97,7 +93,8 @@ public class LelangFragment extends Fragment {
 
             }
         });
-        swiper.setRefreshing(false);
+        new LelangAsyncTask().execute();
+        return rootView;
     }
 
     public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{
@@ -108,6 +105,9 @@ public class LelangFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            adapter = new AdapterLelang(ArrayListLelang);
+            rv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
 

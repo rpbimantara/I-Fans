@@ -44,6 +44,7 @@ public class JadwalFragment extends Fragment {
     View rootView;
     RecyclerView.LayoutManager llm;
     SwipeRefreshLayout swiper;
+    AdapterJadwal adapter;
 
 
     public JadwalFragment() {
@@ -58,24 +59,22 @@ public class JadwalFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
         rv =  rootView.findViewById(R.id.rv_recycler_view_jadwal);
         swiper = rootView.findViewById(R.id.swiperefresh_jadwal);
+        llm = new LinearLayoutManager(getActivity());
+        adapter = new AdapterJadwal(ArrayListJadwal);
+        rv.setAdapter(adapter );
+        rv.setLayoutManager(llm);
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                load();
+
+                new JadwalTask().execute();
             }
         });
         imagestatus = rootView.findViewById(R.id.klasemen_image);
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        load();
-        return rootView;
-    }
-
-    public void load(){
         new JadwalTask().execute();
-        llm = new LinearLayoutManager(getActivity());
-        rv.setAdapter(new AdapterJadwal(ArrayListJadwal));
-        rv.setLayoutManager(llm);
+        return rootView;
     }
 
     public String tanggal(String tgl){
@@ -102,6 +101,9 @@ public class JadwalFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            adapter = new AdapterJadwal(ArrayListJadwal);
+            rv.setAdapter(adapter );
+            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
 
@@ -121,19 +123,35 @@ public class JadwalFragment extends Fragment {
                     String tgl = tanggal(dataJadwal.get(i).get("tgl_main").toString().substring(0,10));
                     String waktu = waktu(dataJadwal.get(i).get("tgl_main").toString().substring(12,16)) + " "+ "WIB";
                     if (dataJadwal.get(i).get("home").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
-                        ArrayListJadwal.add(new Jadwal(
-                                dataJadwal.get(i).get("away").toString(),
-                                dataJadwal.get(i).get("liga_id").toString(),
-                                tgl,
-                                dataJadwal.get(i).get("stadion_id").toString()
-                                ,waktu));
+                        Object[] paramclub = {new Object[]{
+                                new Object[]{"nama", "=", dataJadwal.get(i).get("away")}}};
+
+                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
+                        for (int c = 0; c < dataclub.size(); ++c) {
+                            ArrayListJadwal.add(new Jadwal(
+                                    dataJadwal.get(i).get("away").toString(),
+                                    String.valueOf(dataclub.get(c).get("foto_club")),
+                                    getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName()),
+                                    dataJadwal.get(i).get("liga_id").toString(),
+                                    tgl,
+                                    dataJadwal.get(i).get("stadion_id").toString()
+                                    , waktu));
+                        }
                     }else if (dataJadwal.get(i).get("away").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
-                        ArrayListJadwal.add(new Jadwal(
-                                dataJadwal.get(i).get("home").toString(),
-                                dataJadwal.get(i).get("liga_id").toString(),
-                                tgl,
-                                dataJadwal.get(i).get("stadion_id").toString()
-                                ,waktu));
+                        Object[] paramclub = {new Object[]{
+                                new Object[]{"nama", "=", dataJadwal.get(i).get("home")}}};
+
+                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
+                        for (int c = 0; c < dataclub.size(); ++c) {
+                            ArrayListJadwal.add(new Jadwal(
+                                    dataJadwal.get(i).get("home").toString(),
+                                    String.valueOf(dataclub.get(c).get("foto_club")),
+                                    getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName()),
+                                    dataJadwal.get(i).get("liga_id").toString(),
+                                    tgl,
+                                    dataJadwal.get(i).get("stadion_id").toString()
+                                    , waktu));
+                        }
                     }
 
                 }

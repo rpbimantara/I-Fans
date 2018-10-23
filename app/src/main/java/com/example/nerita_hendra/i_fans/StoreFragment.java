@@ -49,22 +49,15 @@ public class StoreFragment extends Fragment {
         swiper = rootView.findViewById(R.id.swiperefresh_store);
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        load();
+        adapter = new AdapterStore(ArrayListStore);
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                load();
+                new StoreTask().execute();
             }
         });
-        return rootView;
-    }
-
-    public void load(){
-        new StoreTask().execute();
-        adapter = new AdapterStore(ArrayListStore);
-        rv.setHasFixedSize(true);
-        rv.setAdapter(adapter);
-        rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
             GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
@@ -100,8 +93,10 @@ public class StoreFragment extends Fragment {
 
             }
         });
-        swiper.setRefreshing(false);
+        new StoreTask().execute();
+        return rootView;
     }
+
 
     public class StoreTask extends AsyncTask<Void,Void,Void>{
         @Override
@@ -111,6 +106,9 @@ public class StoreFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            adapter = new AdapterStore(ArrayListStore);
+            rv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
         @Override
@@ -129,7 +127,6 @@ public class StoreFragment extends Fragment {
                             String.valueOf(data.get(i).get("nama_barang")),
                             String.valueOf("Rp. " + data.get(i).get("harga_barang"))));
                 }
-                System.out.println("SIZE : " + ArrayListStore.size());
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);
             }

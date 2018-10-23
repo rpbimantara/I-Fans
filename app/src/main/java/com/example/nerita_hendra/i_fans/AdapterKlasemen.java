@@ -1,10 +1,14 @@
 package com.example.nerita_hendra.i_fans;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,6 +23,7 @@ public class AdapterKlasemen extends RecyclerView.Adapter<AdapterKlasemen.Klasem
 
     public class KlasemenViewHolder extends RecyclerView.ViewHolder{
         public TextView txtNoUrut,txtTeamKlasemen,txtPlayKlasemen,txtSelisihGol,txtPoint;
+        public ImageView imageClub;
 
         public KlasemenViewHolder(View itemView) {
             super(itemView);
@@ -27,6 +32,7 @@ public class AdapterKlasemen extends RecyclerView.Adapter<AdapterKlasemen.Klasem
             this.txtPlayKlasemen = (TextView) itemView.findViewById(R.id.txt_playklasemen);
             this.txtSelisihGol = (TextView) itemView.findViewById(R.id.txt_selisihgol);
             this.txtPoint = (TextView) itemView.findViewById(R.id.txt_point);
+            this.imageClub = (ImageView) itemView.findViewById(R.id.klasemen_image);
         }
     }
 
@@ -44,11 +50,23 @@ public class AdapterKlasemen extends RecyclerView.Adapter<AdapterKlasemen.Klasem
         holder.txtPlayKlasemen.setText(dataList.get(position).getTxtPlayKlasemen());
         holder.txtSelisihGol.setText(dataList.get(position).getTxtSelisihGol());
         holder.txtPoint.setText(dataList.get(position).getTxtPoint());
+        holder.imageClub.setImageBitmap(StringToBitMap(dataList.get(position).getTxtFotoClub()));
 
     }
 
     @Override
     public int getItemCount() {
         return (dataList != null) ? dataList.size() : 0;
+    }
+
+    public Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }catch(Exception e){
+            e.getMessage();
+            return null;
+        }
     }
 }

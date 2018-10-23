@@ -37,6 +37,7 @@ public class ListBeritaFragment extends Fragment {
     View rootView;
     RecyclerView.LayoutManager llm;
     SwipeRefreshLayout swiper;
+    AdapterListBerita adapter;
 
     public ListBeritaFragment() {
         // Required empty public constructor
@@ -55,23 +56,19 @@ public class ListBeritaFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_list_berita, container, false);
         rv = rootView.findViewById(R.id.rv_recycler_view_list_berita);
         swiper = rootView.findViewById(R.id.swiperefresh_list_berita);
+        llm = new LinearLayoutManager(getActivity());
+        adapter = new AdapterListBerita(ArrayListBerita);
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(llm);
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                load();
+                new BeritaTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        load();
-        return rootView;
-    }
 
-    public void load(){
-        new BeritaTask().execute();
-        llm = new LinearLayoutManager(getActivity());
-        rv.setAdapter(new AdapterListBerita(ArrayListBerita));
-        rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
             GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
@@ -113,7 +110,10 @@ public class ListBeritaFragment extends Fragment {
 
             }
         });
+        new BeritaTask().execute();
+        return rootView;
     }
+
 
     public String tanggal(String tgl){
         try {
@@ -134,6 +134,9 @@ public class ListBeritaFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            adapter = new AdapterListBerita(ArrayListBerita);
+            rv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
 

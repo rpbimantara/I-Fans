@@ -5,7 +5,6 @@
     android:id="@+id/swiperefresh_terupdate"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="?attr/actionBarSize"
     tools:context="com.example.nerita_hendra.i_fans.TerupdateFragment">
 
     <android.support.v4.widget.NestedScrollView
@@ -215,8 +214,7 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_recycler_view_hot_news"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="?attr/actionBarSize">
+                    android:layout_height="wrap_content">
 
                 </android.support.v7.widget.RecyclerView>
             </LinearLayout>

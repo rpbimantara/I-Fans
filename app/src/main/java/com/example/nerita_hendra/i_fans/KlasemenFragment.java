@@ -33,6 +33,7 @@ public class KlasemenFragment extends Fragment {
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
     SwipeRefreshLayout swiper;
+    AdapterKlasemen adapter;
 
     public KlasemenFragment() {
         // Required empty public constructor
@@ -46,23 +47,18 @@ public class KlasemenFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_klasemen, container, false);
         rv =  rootView.findViewById(R.id.rv_recycler_view_klasemen);
         swiper = rootView.findViewById(R.id.swiperefresh_klasemen);
+        llm = new LinearLayoutManager(getActivity());
+        adapter = new AdapterKlasemen(ArrayListKlasemen);
+        rv.setAdapter(adapter);
+        rv.setLayoutManager(llm);
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                load();
+                new KlasemenTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        load();
-        return rootView;
-    }
-
-    public void load(){
-        new KlasemenTask().execute();
-        llm = new LinearLayoutManager(getActivity());
-        rv.setAdapter(new AdapterKlasemen(ArrayListKlasemen));
-        rv.setLayoutManager(llm);
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
             GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
@@ -104,7 +100,10 @@ public class KlasemenFragment extends Fragment {
 
             }
         });
+        new KlasemenTask().execute();
+        return rootView;
     }
+
 
     public class KlasemenTask extends AsyncTask<Void,Void,Void>{
         @Override
@@ -114,6 +113,9 @@ public class KlasemenFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            adapter = new AdapterKlasemen(ArrayListKlasemen);
+            rv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
 
@@ -126,19 +128,26 @@ public class KlasemenFragment extends Fragment {
                 Object[] param = {new Object[]{
                         new Object[]{"liga_id", "=", "1"}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.liga.klasemen", param, "id","club_id", "play","win","draw","lose","gm","gk","point");
-                ArrayListKlasemen.add(new Klasemen(
-                        String.valueOf("No."),
-                        String.valueOf("Club"),
-                        String.valueOf("P"),
-                        String.valueOf("Win"),
-                        String.valueOf("Draw"),
-                        String.valueOf("Lose"),
-                        String.valueOf("+/-"),
-                        String.valueOf("Pts")));
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.liga.klasemen", param, "id","club_id","club_id.foto_club", "play","win","draw","lose","gm","gk","point");
+//                ArrayListKlasemen.add(new Klasemen(
+//                        String.valueOf("No."),
+//                        String.valueOf("Logo"),
+//                        String.valueOf("Club"),
+//                        String.valueOf("P"),
+//                        String.valueOf("Win"),
+//                        String.valueOf("Draw"),
+//                        String.valueOf("Lose"),
+//                        String.valueOf("+/-"),
+//                        String.valueOf("Pts")));
                 for (int i = 0; i < data.size(); ++i) {
+                    Object[] paramclub = {new Object[]{
+                            new Object[]{"nama", "=", data.get(i).get("club_id")}}};
+
+                    List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
+                    for (int c = 0; c < dataclub.size(); ++c) {
                     ArrayListKlasemen.add(new Klasemen(
                             String.valueOf(i+1),
+                            String.valueOf(dataclub.get(c).get("foto_club")),
                             String.valueOf(data.get(i).get("club_id")),
                             String.valueOf(data.get(i).get("play")),
                             String.valueOf(data.get(i).get("win")),
@@ -146,6 +155,7 @@ public class KlasemenFragment extends Fragment {
                             String.valueOf(data.get(i).get("lose")),
                             String.valueOf(data.get(i).get("gm")),
                             String.valueOf( data.get(i).get("point"))));
+                    }
                 }
             } catch (Exception ex) {
                 System.out.println("Error Klasemen Fragment: " + ex);
