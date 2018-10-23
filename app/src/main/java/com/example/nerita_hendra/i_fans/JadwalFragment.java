@@ -131,7 +131,7 @@ public class JadwalFragment extends Fragment {
                             ArrayListJadwal.add(new Jadwal(
                                     dataJadwal.get(i).get("away").toString(),
                                     String.valueOf(dataclub.get(c).get("foto_club")),
-                                    getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName()),
+                                    getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName()),
                                     dataJadwal.get(i).get("liga_id").toString(),
                                     tgl,
                                     dataJadwal.get(i).get("stadion_id").toString()
@@ -146,7 +146,7 @@ public class JadwalFragment extends Fragment {
                             ArrayListJadwal.add(new Jadwal(
                                     dataJadwal.get(i).get("home").toString(),
                                     String.valueOf(dataclub.get(c).get("foto_club")),
-                                    getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName()),
+                                    getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName()),
                                     dataJadwal.get(i).get("liga_id").toString(),
                                     tgl,
                                     dataJadwal.get(i).get("stadion_id").toString()
