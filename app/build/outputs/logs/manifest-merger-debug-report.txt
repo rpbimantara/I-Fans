@@ -5,21 +5,22 @@ INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-45:
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-45:12
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-45:12
 MERGED from [com.android.support:design:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\0fc548c3863bb820dfc433e075114d1b\AndroidManifest.xml:17:1-22:12
-MERGED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:2:1-18:12
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\e7661f4f0e82bf1e2f858cb6a1a6b854\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\52327cfb46a973036b90c87546ee9f3e\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\2175132b60f49a86799c8c95ffdfb4a2\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\99cf332f71c618e5826708392deb3cc7\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\2deede4cdf11f2ed521daa778df56a51\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\bfe407f990d97aa61f04b3b3de4e0764\AndroidManifest.xml:17:1-22:12
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\44654867b0d60bee3405d30dec5666ce\AndroidManifest.xml:2:1-11:12
 MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\d0a2871565496b323c0b75ee47f1cc5f\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\bfaf6e6895d0c50de96f593d5bffd6fe\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\40be145123b10bfee58cc6b1bc93c888\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\622b49d1b1c80585ee55e3033bf27c2e\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1107d00d4459a4593cd6c3f22bb0cb2c\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:transition:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\9e9b191c9047036b34d7188a1d191d9e\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\a2aa83b18ab1823f2fefed46f9df374e\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1107d00d4459a4593cd6c3f22bb0cb2c\AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\55bb98229aa6d065301497d088914dd1\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.volley:volley:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.0.0.aar\3e95441f2aeae492566807ecf0a64e85\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:exifinterface:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.1.aar\d0cd30c7a1a128ade05b1f76a6409145\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\457c45605eda8c322eceb0a2117f3256\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\b3e6660316514c71ea53298c049ab1fc\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\67b15f951ee421601f1640e83fec25b0\AndroidManifest.xml:17:1-22:12
@@ -43,8 +44,6 @@ INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-45:
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:5:5-67
-MERGED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:12:5-67
-MERGED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:12:5-67
 	android:name
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
@@ -57,12 +56,10 @@ ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:7:5-76
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:7:22-73
 application
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:9:5-43:19
-MERGED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:15:5-16:19
-MERGED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:15:5-16:19
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\99cf332f71c618e5826708392deb3cc7\AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\99cf332f71c618e5826708392deb3cc7\AndroidManifest.xml:9:5-20
-MERGED from [com.android.volley:volley:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.0.0.aar\3e95441f2aeae492566807ecf0a64e85\AndroidManifest.xml:9:5-20
-MERGED from [com.android.volley:volley:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.0.0.aar\3e95441f2aeae492566807ecf0a64e85\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\44654867b0d60bee3405d30dec5666ce\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\44654867b0d60bee3405d30dec5666ce\AndroidManifest.xml:9:5-20
 	android:supportsRtl
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:14:9-35
 	android:label
@@ -117,34 +114,40 @@ ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:32:9-34:58
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:34:13-55
 	android:name
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:33:13-49
-activity#com.example.nerita_hendra.i_fans.DetailJadwalActivity
+activity#com.example.nerita_hendra.i_fans.StoreDetailActivity
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:35:9-37:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:37:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:36:13-49
-activity#com.example.nerita_hendra.i_fans.StoreDetailActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:38:9-40:58
-	android:parentActivityName
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:40:13-55
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:39:13-48
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:36:13-48
 activity#com.example.nerita_hendra.i_fans.LelangDetailActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:41:9-58
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:38:9-58
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:41:19-55
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:38:19-55
 activity#com.example.nerita_hendra.i_fans.ClubDetailActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:42:9-65
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:39:9-56
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:42:19-53
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:39:19-53
+activity#com.example.nerita_hendra.i_fans.AccountEditActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:40:9-57
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:40:19-54
+activity#com.example.nerita_hendra.i_fans.LelangAddActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:41:9-55
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:41:19-52
+activity#com.example.nerita_hendra.i_fans.StoreAddActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:42:9-63
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:42:19-51
 uses-sdk
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 MERGED from [com.android.support:design:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\0fc548c3863bb820dfc433e075114d1b\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:design:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\0fc548c3863bb820dfc433e075114d1b\AndroidManifest.xml:20:5-44
-MERGED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:7:5-9:41
-MERGED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:7:5-9:41
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\e7661f4f0e82bf1e2f858cb6a1a6b854\AndroidManifest.xml:7:5-9:41
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\e7661f4f0e82bf1e2f858cb6a1a6b854\AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\52327cfb46a973036b90c87546ee9f3e\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\52327cfb46a973036b90c87546ee9f3e\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\2175132b60f49a86799c8c95ffdfb4a2\AndroidManifest.xml:20:5-44
@@ -155,6 +158,8 @@ MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Why\.gradle\caches\
 MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\2deede4cdf11f2ed521daa778df56a51\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\bfe407f990d97aa61f04b3b3de4e0764\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\bfe407f990d97aa61f04b3b3de4e0764\AndroidManifest.xml:20:5-44
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\44654867b0d60bee3405d30dec5666ce\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\44654867b0d60bee3405d30dec5666ce\AndroidManifest.xml:5:5-7:41
 MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\d0a2871565496b323c0b75ee47f1cc5f\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\d0a2871565496b323c0b75ee47f1cc5f\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\bfaf6e6895d0c50de96f593d5bffd6fe\AndroidManifest.xml:20:5-44
@@ -163,16 +168,16 @@ MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Why\.gradle\ca
 MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\40be145123b10bfee58cc6b1bc93c888\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\622b49d1b1c80585ee55e3033bf27c2e\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\622b49d1b1c80585ee55e3033bf27c2e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1107d00d4459a4593cd6c3f22bb0cb2c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1107d00d4459a4593cd6c3f22bb0cb2c\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:transition:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\9e9b191c9047036b34d7188a1d191d9e\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:transition:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\9e9b191c9047036b34d7188a1d191d9e\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\a2aa83b18ab1823f2fefed46f9df374e\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\a2aa83b18ab1823f2fefed46f9df374e\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1107d00d4459a4593cd6c3f22bb0cb2c\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\1107d00d4459a4593cd6c3f22bb0cb2c\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\55bb98229aa6d065301497d088914dd1\AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\55bb98229aa6d065301497d088914dd1\AndroidManifest.xml:20:5-44
-MERGED from [com.android.volley:volley:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.0.0.aar\3e95441f2aeae492566807ecf0a64e85\AndroidManifest.xml:7:5-43
-MERGED from [com.android.volley:volley:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.0.0.aar\3e95441f2aeae492566807ecf0a64e85\AndroidManifest.xml:7:5-43
+MERGED from [com.android.support:exifinterface:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.1.aar\d0cd30c7a1a128ade05b1f76a6409145\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.1.aar\d0cd30c7a1a128ade05b1f76a6409145\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\457c45605eda8c322eceb0a2117f3256\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\457c45605eda8c322eceb0a2117f3256\AndroidManifest.xml:20:5-44
 MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\b3e6660316514c71ea53298c049ab1fc\AndroidManifest.xml:20:5-44
@@ -191,7 +196,3 @@ INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
-uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:13:5-79
-	android:name
-		ADDED from [com.oogbox.api:odoo:1.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.0.aar\4a613e35a28da1b85abb8f5e7cf11690\AndroidManifest.xml:13:22-76

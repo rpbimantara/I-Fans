@@ -43,22 +43,22 @@ public class ClubDetailActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    LiveFragment tab1 = new LiveFragment();
+                    ClubSummaryFragment tab1 = new ClubSummaryFragment();
                     return tab1;
                 case 1:
-                    LiveFragment tab2 = new LiveFragment();
+                    ClubResultFragment tab2 = new ClubResultFragment();
                     return tab2;
                 case 2:
-                    LiveFragment tab3 = new LiveFragment();
+                    ClubScheduleFragment tab3 = new ClubScheduleFragment();
                     return tab3;
                 case 3:
-                    LiveFragment tab4 = new LiveFragment();
+                    ClubPlayerFragment tab4 = new ClubPlayerFragment();
                     return tab4;
                 case 4:
-                    LiveFragment tab5= new LiveFragment();
+                    ClubStatisticFragment tab5= new ClubStatisticFragment();
                     return tab5;
                 case 5:
-                    LiveFragment tab6 = new LiveFragment();
+                    ClubStandingFragment tab6 = new ClubStandingFragment();
                     return tab6;
             }
             return null;

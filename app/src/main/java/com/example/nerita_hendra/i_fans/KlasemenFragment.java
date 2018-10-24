@@ -28,7 +28,6 @@ public class KlasemenFragment extends Fragment {
     ArrayList<Klasemen> ArrayListKlasemen;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
-    ProgressDialog progressDialog;
     View rootView;
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
@@ -58,7 +57,6 @@ public class KlasemenFragment extends Fragment {
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
-        progressDialog = new ProgressDialog(getActivity());
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
             GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
@@ -78,14 +76,7 @@ public class KlasemenFragment extends Fragment {
 
                     RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                     Intent intent = new Intent(getActivity(),ClubDetailActivity.class);
-//                    intent.putExtra("id",ArrayListBerita.get(RecyclerViewItemPosition).getId());
-//                    intent.putExtra("title",ArrayListBerita.get(RecyclerViewItemPosition).getTitle());
-//                    intent.putExtra("kategori",ArrayListBerita.get(RecyclerViewItemPosition).getKategori());
-//                    intent.putExtra("headline",ArrayListBerita.get(RecyclerViewItemPosition).getHeadline());
-//                    intent.putExtra("konten",ArrayListBerita.get(RecyclerViewItemPosition).getKonten());
-//                    intent.putExtra("tanggalbuat",ArrayListBerita.get(RecyclerViewItemPosition).getTanggal());
-//                    intent.putExtra("penulis",ArrayListBerita.get(RecyclerViewItemPosition).getPenulis());
-
+                    intent.putExtra("nama",ArrayListKlasemen.get(RecyclerViewItemPosition).getTxtTeamKlasemen());
                     startActivity(intent);
                 }
                 return false;

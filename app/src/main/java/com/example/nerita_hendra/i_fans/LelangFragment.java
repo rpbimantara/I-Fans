@@ -97,6 +97,20 @@ public class LelangFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && isResumed()){
+            HomeActivity fabhome = (HomeActivity) getActivity();
+            fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("Lelang");
+                }
+            });
+        }
+    }
+
     public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {

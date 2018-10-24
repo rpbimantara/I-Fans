@@ -38,7 +38,7 @@
         app:fabSize="normal"
         app:layout_anchor="@id/navigation"
         app:layout_anchorGravity="bottom|end"
-        app:srcCompat="@drawable/ic_checkout"
+        app:srcCompat="@drawable/ic_edit"
         android:layout_marginBottom="?attr/actionBarSize"
         app:useCompatPadding="true"/>
 

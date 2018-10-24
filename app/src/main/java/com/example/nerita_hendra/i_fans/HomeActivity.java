@@ -33,6 +33,64 @@ public class HomeActivity extends AppCompatActivity {
     FloatingActionButton fabBtn;
     SharedPrefManager sharedPrefManager;
 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        viewPager = findViewById(R.id.view_pager);
+        HomeFragmentPageAdapter adapter = new HomeFragmentPageAdapter(getSupportFragmentManager());
+        viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                switch (position) {
+                    case 0:
+                        fabBtn.hide();
+                        break;
+                    case 1:
+                        fabBtn.hide();
+                        break;
+                    case 2:
+                        fabBtn.show();
+                        break;
+                    case 3:
+                        fabBtn.show();
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
+        navigation = findViewById(R.id.navigation);
+        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        disableShiftMode(navigation);
+        fabBtn = (FloatingActionButton) findViewById(R.id.shared_fab);
+        fabBtn.hide();
+        sharedPrefManager =  new SharedPrefManager(this);
+//        initTitle();
+    }
+
+//    private void initTitle() {
+//        toolbar.post(new Runnable() {
+//            @Override
+//            public void run() {
+//                toolbar.setTitle(navigation.getMenu().getItem(0).getTitle());
+//            }
+//        });
+//    }
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
@@ -58,34 +116,6 @@ public class HomeActivity extends AppCompatActivity {
     };
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        viewPager = findViewById(R.id.view_pager);
-        HomeFragmentPageAdapter adapter = new HomeFragmentPageAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(adapter);
-        viewPager.setOffscreenPageLimit(adapter.getCount() - 1);
-        navigation = findViewById(R.id.navigation);
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        disableShiftMode(navigation);
-        fabBtn = (FloatingActionButton) findViewById(R.id.shared_fab);
-        fabBtn.hide();
-        sharedPrefManager =  new SharedPrefManager(this);
-//        initTitle();
-    }
-
-//    private void initTitle() {
-//        toolbar.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                toolbar.setTitle(navigation.getMenu().getItem(0).getTitle());
-//            }
-//        });
-//    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_bar, menu);
@@ -106,8 +136,8 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.ticket:
-                Intent ticketIntent = new Intent(HomeActivity.this, DetailJadwalActivity.class);
-                startActivity(ticketIntent);
+//                Intent ticketIntent = new Intent(HomeActivity.this, DetailJadwalActivity.class);
+//                startActivity(ticketIntent);
                 break;
             case R.id.checkout :
                 //Kode disini akan di eksekusi saat tombol search di klik

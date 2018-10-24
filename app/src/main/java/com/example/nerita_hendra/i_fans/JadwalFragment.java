@@ -2,13 +2,16 @@ package com.example.nerita_hendra.i_fans;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -23,23 +26,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
-import oogbox.api.odoo.OdooClient;
-import oogbox.api.odoo.client.helper.OdooErrorException;
-import oogbox.api.odoo.client.helper.data.OdooRecord;
-import oogbox.api.odoo.client.helper.data.OdooResult;
-import oogbox.api.odoo.client.listeners.IOdooResponse;
-import oogbox.api.odoo.client.listeners.OdooErrorListener;
-
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class JadwalFragment extends Fragment {
 
     ArrayList<Jadwal> ArrayListJadwal;
-    ImageView imagestatus;
     SharedPrefManager sharedPrefManager;
-    ProgressDialog progressDialog;
+    int RecyclerViewItemPosition ;
     RecyclerView rv;
     View rootView;
     RecyclerView.LayoutManager llm;
@@ -70,9 +64,41 @@ public class JadwalFragment extends Fragment {
                 new JadwalTask().execute();
             }
         });
-        imagestatus = rootView.findViewById(R.id.klasemen_image);
+        rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+            GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
+
+                @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
+
+                    return true;
+                }
+
+            });
+
+            @Override
+            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+
+                if(ChildView != null && gestureDetector.onTouchEvent(e)) {
+
+                    RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+                    Intent intent = new Intent(getActivity(),ClubDetailActivity.class);
+                    intent.putExtra("nama",ArrayListJadwal.get(RecyclerViewItemPosition).getNamateam());
+                    startActivity(intent);
+                }
+                return false;
+            }
+
+            @Override
+            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+            }
+
+            @Override
+            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+            }
+        });
         sharedPrefManager = new SharedPrefManager(getActivity());
-        progressDialog = new ProgressDialog(getActivity());
         new JadwalTask().execute();
         return rootView;
     }

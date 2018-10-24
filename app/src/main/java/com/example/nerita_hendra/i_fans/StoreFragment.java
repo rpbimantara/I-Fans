@@ -97,6 +97,19 @@ public class StoreFragment extends Fragment {
         return rootView;
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser && isResumed()){
+            HomeActivity fabhome = (HomeActivity) getActivity();
+            fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    System.out.println("STORE");
+                }
+            });
+        }
+    }
 
     public class StoreTask extends AsyncTask<Void,Void,Void>{
         @Override

@@ -16,15 +16,6 @@ import android.widget.Toast;
 import java.util.HashMap;
 import java.util.List;
 
-import oogbox.api.odoo.OdooClient;
-import oogbox.api.odoo.OdooUser;
-import oogbox.api.odoo.client.AuthError;
-import oogbox.api.odoo.client.OdooVersion;
-import oogbox.api.odoo.client.helper.OdooErrorException;
-import oogbox.api.odoo.client.listeners.AuthenticateListener;
-import oogbox.api.odoo.client.listeners.OdooConnectListener;
-import oogbox.api.odoo.client.listeners.OdooErrorListener;
-
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText txtUsername,txtPassword;

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite"
+    tools:context=".AccountEditActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:fitsSystemWindows="true"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/Account_edit_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimaryDark"
+            app:layout_collapseMode="pin"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp">
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_id_card"/>
+
+                    <EditText
+                        android:id="@+id/editText_name"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textPersonName"
+                        android:hint="Name"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_id_card"/>
+
+                    <EditText
+                        android:id="@+id/editText_nik"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number"
+                        android:hint="NIK"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_gender"/>
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/radioButton_male"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorPrimaryDark"
+                            android:checked="true"
+                            android:text="Male"
+                            android:textColor="@color/colorTrueState" />
+
+                        <RadioButton
+                            android:id="@+id/radioButton_female"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:buttonTint="@color/colorPrimaryDark"
+                            android:text="Female"
+                            android:textColor="@color/colorTrueState" />
+                    </RadioGroup>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_address"/>
+                    <EditText
+                        android:id="@+id/editText_alamat"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textPersonName"
+                        android:hint="Alamat"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_birth"/>
+                    <EditText
+                        android:id="@+id/editText_date"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="date"
+                        android:hint="Birhtday"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_marginTop="15dp"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_email"/>
+
+                    <EditText
+                        android:id="@+id/editText_email"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textEmailAddress"
+                        android:hint="E-mail"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_phone"/>
+                    <EditText
+                        android:id="@+id/editText_phone"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="phone"
+                        android:hint="Phone"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:tint="@color/colorPrimaryDark"
+                        android:src="@drawable/ic_komunitas"/>
+                    <EditText
+                        android:id="@+id/editText_komunitas"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="textPersonName"
+                        android:hint="Community"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/button_save_account"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Save" />
+            </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
