@@ -20,7 +20,7 @@ public class ClubDetailActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setTitle("");
+        getSupportActionBar().setTitle(this.getIntent().getStringExtra("nama"));
         ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager_detail_club);
         ClubFragmentPageAdapter adapter = new ClubFragmentPageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);

@@ -113,6 +113,7 @@ public class ClubStandingFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListKlasemen =  new ArrayList<>();
+            Integer color = getResources().getColor(R.color.colorWhite);
             try {
                 OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
@@ -120,22 +121,28 @@ public class ClubStandingFragment extends Fragment {
                         new Object[]{"liga_id", "=", "1"}}};
 
                 List<HashMap<String, Object>> data = oc.search_read("persebaya.liga.klasemen", param, "id","club_id","club_id.foto_club", "play","win","draw","lose","gm","gk","point");
-//                ArrayListKlasemen.add(new Klasemen(
-//                        String.valueOf("No."),
-//                        String.valueOf("Logo"),
-//                        String.valueOf("Club"),
-//                        String.valueOf("P"),
-//                        String.valueOf("Win"),
-//                        String.valueOf("Draw"),
-//                        String.valueOf("Lose"),
-//                        String.valueOf("+/-"),
-//                        String.valueOf("Pts")));
+                ArrayListKlasemen.add(new Klasemen(
+                        String.valueOf("No."),
+                        String.valueOf("Logo"),
+                        String.valueOf("Club"),
+                        String.valueOf("P"),
+                        String.valueOf("Win"),
+                        String.valueOf("Draw"),
+                        String.valueOf("Lose"),
+                        String.valueOf("+/-"),
+                        String.valueOf("Pts"),
+                        color));
                 for (int i = 0; i < data.size(); ++i) {
                     Object[] paramclub = {new Object[]{
                             new Object[]{"nama", "=", data.get(i).get("club_id")}}};
 
                     List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
                     for (int c = 0; c < dataclub.size(); ++c) {
+                        if (data.get(i).get("club_id").toString().equalsIgnoreCase(getActivity().getIntent().getStringExtra("nama"))){
+                            color = getResources().getColor(R.color.colorYellow);
+                        }else{
+                            color = getResources().getColor(R.color.colorWhite);
+                        }
                         ArrayListKlasemen.add(new Klasemen(
                                 String.valueOf(i+1),
                                 String.valueOf(dataclub.get(c).get("foto_club")),
@@ -145,7 +152,7 @@ public class ClubStandingFragment extends Fragment {
                                 String.valueOf(data.get(i).get("draw")),
                                 String.valueOf(data.get(i).get("lose")),
                                 String.valueOf(data.get(i).get("gm")),
-                                String.valueOf( data.get(i).get("point"))));
+                                String.valueOf( data.get(i).get("point")),color));
                     }
                 }
             } catch (Exception ex) {

@@ -1,10 +1,14 @@
 package com.example.nerita_hendra.i_fans;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -19,11 +23,13 @@ public class AdapterStore extends RecyclerView.Adapter<AdapterStore.StoreViewHol
 
     public class StoreViewHolder extends RecyclerView.ViewHolder{
         public TextView txtNamaBarang,txtHargaBarang;
+        public ImageView imageStore;
 
         public StoreViewHolder(View itemView) {
             super(itemView);
             this.txtNamaBarang = (TextView) itemView.findViewById(R.id.txt_namaBarangStore);
             this.txtHargaBarang = (TextView) itemView.findViewById(R.id.txt_hargaBarangStore);
+            this.imageStore = (ImageView) itemView.findViewById(R.id.store_image);
         }
 
     }
@@ -32,6 +38,7 @@ public class AdapterStore extends RecyclerView.Adapter<AdapterStore.StoreViewHol
     public void onBindViewHolder(@NonNull AdapterStore.StoreViewHolder holder, int position) {
         holder.txtNamaBarang.setText(dataList.get(position).getNamabarang());
         holder.txtHargaBarang.setText(dataList.get(position).getHargabarang());
+        holder.imageStore.setImageBitmap(StringToBitMap(dataList.get(position).getImageStore()));
     }
 
 
@@ -45,5 +52,16 @@ public class AdapterStore extends RecyclerView.Adapter<AdapterStore.StoreViewHol
     @Override
     public int getItemCount() {
         return (dataList != null) ? dataList.size() : 0;
+    }
+
+    public Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }catch(Exception e){
+            e.getMessage();
+            return null;
+        }
     }
 }

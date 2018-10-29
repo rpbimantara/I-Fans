@@ -32,13 +32,13 @@ public class AccountEditActivity extends AppCompatActivity {
         ETphone = findViewById(R.id.editText_phone);
         ETcomunity = findViewById(R.id.editText_komunitas);
         progressDialog = new ProgressDialog(this);
-        btnDate = findViewById(R.id.btn_date);
-        btnDate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+//        btnDate = findViewById(R.id.btn_date);
+//        btnDate.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//            }
+//        });
 
         ETname.setText(getIntent().getExtras().get("name").toString());
         ETnik.setText(getIntent().getExtras().get("nik").toString());

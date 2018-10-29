@@ -5,6 +5,7 @@
     android:id="@+id/swiperefresh_lelang"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/colorWhite"
     tools:context="com.example.nerita_hendra.i_fans.LelangFragment">
 
         <android.support.v7.widget.RecyclerView

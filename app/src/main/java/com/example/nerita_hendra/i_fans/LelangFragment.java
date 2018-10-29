@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -134,11 +135,12 @@ public class LelangFragment extends Fragment {
                 Object[] param = {new Object[]{
                         new Object[]{"status_lelang", "=", "jalan"}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.lelang", param, "id","nama_barang", "ob","inc","binow","create_uid");
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.lelang", param, "id","image","nama_barang", "ob","inc","binow","create_uid");
 
                 for (int i = 0; i < data.size(); ++i) {
                     ArrayListLelang.add(new lelang(
                             String.valueOf(data.get(i).get("nama_barang")),
+                            String.valueOf(data.get(i).get("image")),
                             String.valueOf("24"),
                             String.valueOf(data.get(i).get("ob")),
                             String.valueOf(data.get(i).get("binow")),

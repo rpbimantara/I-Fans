@@ -133,10 +133,11 @@ public class StoreFragment extends Fragment {
                 Object[] param = {new Object[]{
                         new Object[]{"active", "=", true}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.merchandise", param, "id","nama_barang", "harga_barang","stock_total_barang","status_merch","create_uid");
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.merchandise", param, "id","image","nama_barang", "harga_barang","stock_total_barang","status_merch","create_uid");
 
                 for (int i = 0; i < data.size(); ++i) {
                     ArrayListStore.add(new Store(
+                            String.valueOf(data.get(i).get("image")),
                             String.valueOf(data.get(i).get("nama_barang")),
                             String.valueOf("Rp. " + data.get(i).get("harga_barang"))));
                 }

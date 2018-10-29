@@ -37,6 +37,7 @@ public class TerupdateFragment extends Fragment {
     RecyclerView rv;
     View rootView;
     RecyclerView.LayoutManager llm;
+    AdapterTerupdate adapter;
     SwipeRefreshLayout swiper;
 
     public TerupdateFragment() {
@@ -54,17 +55,11 @@ public class TerupdateFragment extends Fragment {
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                load();
+                new TerupdateTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        load();
-        return rootView;
-    }
-
-    public void load(){
-        new TerupdateTask().execute();
         llm = new  LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false);
         rv.setAdapter(new  AdapterTerupdate(ArrayListTerupdate));
         rv.setLayoutManager(llm);
@@ -109,7 +104,8 @@ public class TerupdateFragment extends Fragment {
 
             }
         });
-        swiper.setRefreshing(false);
+        new TerupdateTask().execute();
+        return rootView;
     }
 
     public String tanggal(String tgl){
@@ -130,7 +126,10 @@ public class TerupdateFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
+            adapter = new AdapterTerupdate(ArrayListTerupdate);
+            rv.setAdapter(adapter);
+            adapter.notifyDataSetChanged();
+            swiper.setRefreshing(false);swiper.setRefreshing(false);
         }
 
         @Override
@@ -142,11 +141,12 @@ public class TerupdateFragment extends Fragment {
                 Object[] param = {new Object[]{
                         new Object[]{"create_uid", "=", 1}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","image","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
 
                 for (int i = 0; i < data.size(); ++i) {
                     ArrayListTerupdate.add(new Terupdate(
                             (Integer) data.get(i).get("id"),
+                            String.valueOf(data.get(i).get("image")),
                             String.valueOf(data.get(i).get("title")),
                             String.valueOf(data.get(i).get("kategori_brita_id")),
                             String.valueOf(data.get(i).get("headline")),

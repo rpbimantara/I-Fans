@@ -2,6 +2,7 @@ package com.example.nerita_hendra.i_fans;
 
 public class Terupdate {
     private Integer id;
+    private String imageTerupdate;
     private String title;
     private String kategori;
     private String headline;
@@ -9,8 +10,9 @@ public class Terupdate {
     private String tanggal;
     private String penulis;
 
-    public Terupdate(Integer id, String title, String kategori, String headline, String konten, String tanggal, String penulis) {
+    public Terupdate(Integer id,String imageTerupdate,String title, String kategori, String headline, String konten, String tanggal, String penulis) {
         this.id = id;
+        this.imageTerupdate = imageTerupdate;
         this.title = title;
         this.kategori = kategori;
         this.headline = headline;
@@ -21,6 +23,14 @@ public class Terupdate {
 
     public Integer getId() {
         return id;
+    }
+
+    public String getImageTerupdate() {
+        return imageTerupdate;
+    }
+
+    public void setImageTerupdate(String imageTerupdate) {
+        this.imageTerupdate = imageTerupdate;
     }
 
     public void setId(Integer id) {

@@ -111,7 +111,7 @@
                                     android:layout_marginTop="5dp"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="Koin"
+                                    android:text="Coin"
                                     android:textColor="@color/colorTrueState"
                                     android:textSize="20sp" />
 
@@ -141,7 +141,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Followers"
+                                android:text="Store"
                                 android:textSize="20sp"
                                 android:textColor="@color/colorTrueState"/>
 
@@ -168,7 +168,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Following"
+                                android:text="Auction"
                                 android:textSize="20sp"
                                 android:textColor="@color/colorTrueState"/>
 
