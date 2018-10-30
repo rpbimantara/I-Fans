@@ -106,7 +106,8 @@ public class LelangFragment extends Fragment {
             fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println("Lelang");
+                    Intent AddLelang = new Intent(getActivity(),LelangAddActivity.class);
+                    startActivity(AddLelang);
                 }
             });
         }

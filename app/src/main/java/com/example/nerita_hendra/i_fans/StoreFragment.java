@@ -105,7 +105,8 @@ public class StoreFragment extends Fragment {
             fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    System.out.println("STORE");
+                    Intent AddStore = new Intent(getActivity(),StoreAddActivity.class);
+                    startActivity(AddStore);
                 }
             });
         }
