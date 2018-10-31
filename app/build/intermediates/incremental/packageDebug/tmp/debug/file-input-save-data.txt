@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Oct 30 14:12:58 ICT 2018
+#Tue Oct 30 15:34:45 ICT 2018
 0.baseType=DIRECTORY
 0.base=E\:\\Android Project\\I-Fans\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\68
 0.path=classes.dex
