@@ -136,8 +136,8 @@ public class HomeActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.ticket:
-//                Intent ticketIntent = new Intent(HomeActivity.this, DetailJadwalActivity.class);
-//                startActivity(ticketIntent);
+                Intent ticketIntent = new Intent(HomeActivity.this, TicketActivity.class);
+                startActivity(ticketIntent);
                 break;
             case R.id.checkout :
                 //Kode disini akan di eksekusi saat tombol search di klik

@@ -16,12 +16,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\55bb98229aa6d065301497d088914dd1\\res\\layout\\notification_template_part_time.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\0fc548c3863bb820dfc433e075114d1b\\res\\layout\\design_text_input_password_icon.xml"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\design-27.1.1.aar\\0fc548c3863bb820dfc433e075114d1b\\res\\layout\\design_text_input_password_icon.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
@@ -104,12 +104,12 @@
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-xhdpi\\ic_home.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_store_add.xml.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_store_add.xml"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_ic_match.png.flat",
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-hdpi\\ic_match.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_store_add.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_store_add.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_menu_item_action_area.xml.flat",
@@ -164,12 +164,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-hdpi-v4\\abc_scrubber_control_to_pressed_mtrl_005.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_crop_image_menu_rotate_right.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\android-image-cropper-2.7.0.aar\\e7661f4f0e82bf1e2f858cb6a1a6b854\\res\\drawable-xxhdpi-v4\\crop_image_menu_rotate_right.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_title_material.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_crop_image_menu_rotate_right.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\android-image-cropper-2.7.0.aar\\e7661f4f0e82bf1e2f858cb6a1a6b854\\res\\drawable-xxhdpi-v4\\crop_image_menu_rotate_right.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_switch_track.xml.flat",
@@ -184,16 +184,16 @@
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\fragment_list_berita.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_menu_overflow_material.xml.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable\\abc_ic_menu_overflow_material.xml"
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-mdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_textfield_search_activated_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-mdpi-v4\\abc_textfield_search_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_commit_search_api_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-mdpi-v4\\abc_ic_commit_search_api_mtrl_alpha.png"
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_menu_overflow_material.xml.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable\\abc_ic_menu_overflow_material.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_text_select_handle_left_mtrl_dark.png.flat",
@@ -228,12 +228,12 @@
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-xhdpi\\ic_ticket.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_btn_colored_text_material.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\color-v23\\abc_btn_colored_text_material.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_seek_thumb.xml.flat",
@@ -244,12 +244,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xhdpi-v4\\abc_btn_radio_to_on_mtrl_015.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_account_edit.xml.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_account_edit.xml"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_check_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xhdpi-v4\\abc_btn_check_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_account_edit.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_account_edit.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color-v21_abc_btn_colored_borderless_text_material.xml.flat",
@@ -272,24 +272,24 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_ic_home.png.flat",
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-mdpi\\ic_home.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_popup_background_mtrl_mult.9.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxhdpi-v4\\abc_popup_background_mtrl_mult.9.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_notification_bg_normal_pressed.9.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\support-compat-27.1.1.aar\\55bb98229aa6d065301497d088914dd1\\res\\drawable-xhdpi-v4\\notification_bg_normal_pressed.9.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_crop_image_menu_rotate_left.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\android-image-cropper-2.7.0.aar\\e7661f4f0e82bf1e2f858cb6a1a6b854\\res\\drawable-xhdpi-v4\\crop_image_menu_rotate_left.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_action_bar_title_item.xml.flat",
@@ -312,12 +312,12 @@
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_jadwal.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_secondary_text_material_dark.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\color\\abc_secondary_text_material_dark.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_btn_switch_to_on_mtrl_00001.9.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-xhdpi-v4\\abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_enter.xml.flat",
@@ -364,12 +364,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_default.xml.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\color-v23\\abc_tint_default.xml"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_tooltip_exit.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\anim\\abc_tooltip_exit.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_default.xml.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\color-v23\\abc_tint_default.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_alert_dialog_button_bar_material.xml.flat",
@@ -466,6 +466,10 @@
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_btn_radio_to_on_mtrl_000.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable-mdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_ticket_detail.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_ticket_detail.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_go_search_api_material.xml.flat",
@@ -622,6 +626,10 @@
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_ic_arrow_drop_right_black_24dp.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\52327cfb46a973036b90c87546ee9f3e\\res\\drawable\\abc_ic_arrow_drop_right_black_24dp.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_tiket.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_tiket.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_left_mtrl_light.png.flat",
@@ -802,10 +810,6 @@
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_foreground.png.flat",
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_foreground.png"
-    },
-    {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_ticket.xml.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\fragment_ticket.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_lelang_add.xml.flat",

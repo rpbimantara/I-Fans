@@ -48,6 +48,7 @@
         <activity android:name="com.example.nerita_hendra.i_fans.AccountEditActivity" />
         <activity android:name="com.example.nerita_hendra.i_fans.LelangAddActivity" />
         <activity android:name="com.example.nerita_hendra.i_fans.StoreAddActivity" />
+        <activity android:name="com.example.nerita_hendra.i_fans.TicketDetailActivity" />
     </application>
 
 </manifest>

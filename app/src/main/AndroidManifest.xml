@@ -39,7 +39,8 @@
         <activity android:name=".ClubDetailActivity" />
         <activity android:name=".AccountEditActivity" />
         <activity android:name=".LelangAddActivity" />
-        <activity android:name=".StoreAddActivity"></activity>
+        <activity android:name=".StoreAddActivity" />
+        <activity android:name=".TicketDetailActivity"></activity>
     </application>
 
 </manifest>

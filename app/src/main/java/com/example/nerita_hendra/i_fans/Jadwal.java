@@ -1,10 +1,10 @@
 package com.example.nerita_hendra.i_fans;
 
 public class Jadwal {
-    private String namateam,fototeam, namaliga, tglmain, namastadion, waktumain;
+    private String namateam,fototeam, namaliga, tglmain, namastadion, waktumain,jadwal_id;
     private Integer statusimage;
 
-    public Jadwal(String namateam,String fototeam,Integer statusimage, String namaliga, String tglmain, String namastadion, String waktumain) {
+    public Jadwal(String namateam,String fototeam,Integer statusimage, String namaliga, String tglmain, String namastadion, String waktumain,String jadwal_id) {
         this.namateam = namateam;
         this.fototeam = fototeam;
         this.namaliga = namaliga;
@@ -12,6 +12,7 @@ public class Jadwal {
         this.namastadion = namastadion;
         this.waktumain = waktumain;
         this.statusimage = statusimage;
+        this.jadwal_id = jadwal_id;
     }
 
     public String getNamateam() {
@@ -68,5 +69,13 @@ public class Jadwal {
 
     public void setStatusimage(Integer statusimage) {
         this.statusimage = statusimage;
+    }
+
+    public String getJadwal_id() {
+        return jadwal_id;
+    }
+
+    public void setJadwal_id(String jadwal_id) {
+        this.jadwal_id = jadwal_id;
     }
 }
