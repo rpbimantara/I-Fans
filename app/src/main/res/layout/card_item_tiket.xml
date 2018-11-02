@@ -44,35 +44,71 @@
                 android:background="@color/colorWhite"
                 android:padding="5dp">
 
-                <Button
-                    android:id="@+id/button_up"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:background="@color/colorPrimaryDark"
-                    android:text="+"/>
+                <!--<Button-->
+                    <!--android:id="@+id/button_up"-->
+                    <!--android:layout_width="50dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:gravity="center"-->
+                    <!--android:background="@color/colorPrimaryDark"-->
+                    <!--android:text="+"/>-->
 
-                <EditText
-                    android:id="@+id/editText_number_tiket"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:text="0"
-                    android:textColor="@color/colorTrueState"
-                    android:inputType="numberSigned" />
+                <!--<EditText-->
+                    <!--android:id="@+id/editText_number_tiket"-->
+                    <!--android:layout_width="50dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:ems="10"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="0"-->
+                    <!--android:textColor="@color/colorTrueState"-->
+                    <!--android:inputType="numberSigned" />-->
 
-                <Button
-                    android:id="@+id/button_down"
-                    android:layout_width="50dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="@color/colorPrimaryDark"
-                    android:gravity="center"
-                    android:text="-" />
+                <!--<Button-->
+                    <!--android:id="@+id/button_down"-->
+                    <!--android:layout_width="50dp"-->
+                    <!--android:layout_height="40dp"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:background="@color/colorPrimaryDark"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="-" />-->
 
+                <RadioGroup
+                    android:id="@+id/radioGrup_seat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/radioButton_0seat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="0" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton_1seat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:checked="true"
+                        android:buttonTint="@color/colorPrimaryDark"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="1" />
+
+                    <RadioButton
+                        android:id="@+id/radioButton_2seat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:buttonTint="@color/colorPrimaryDark"
+                        android:textColor="@color/colorPrimaryDark"
+                        android:text="2" />
+                </RadioGroup>
             </LinearLayout>
         </LinearLayout>
 
