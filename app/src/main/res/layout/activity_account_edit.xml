@@ -139,7 +139,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:inputType="textPersonName"
-                        android:hint="Alamat"
+                        android:hint="Address"
                         android:textColorHint="@color/colorTrueState"
                         android:textSize="15dp"
                         android:textColor="@color/colorTrueState"
@@ -157,13 +157,12 @@
                         android:layout_height="36dp"
                         android:tint="@color/colorPrimaryDark"
                         android:src="@drawable/ic_birth"/>
-                    <EditText
-                        android:id="@+id/editText_date"
+                    <TextView
+                        android:id="@+id/edit_date"
                         android:paddingLeft="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:inputType="date"
                         android:hint="Birhtday"
                         android:textColorHint="@color/colorTrueState"
                         android:textSize="15dp"

@@ -80,6 +80,12 @@ public class AccountFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        new AccountTask().execute();
+    }
+
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK){
@@ -168,13 +174,13 @@ public class AccountFragment extends Fragment {
                 Object[] param = {new Object[]{
                         new Object[]{"user_ids", "=",sharedPrefManager.getSpIdUser()}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id","name","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas","property_account_receivable_id","property_account_payable_id");
+                List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id","name","jeniskelamin","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas");
 
                 for (int i = 0; i < data.size(); ++i) {
                     dataPartner.add(String.valueOf(data.get(i).get("name")));
-                    dataPartner.add(String.valueOf(data.get(i).get("-")));
+                    dataPartner.add(String.valueOf(data.get(i).get("id")));
                     dataPartner.add(String.valueOf(data.get(i).get("nik")));
-                    dataPartner.add(String.valueOf(data.get(i).get("-")));
+                    dataPartner.add(String.valueOf(data.get(i).get("jeniskelamin")));
                     dataPartner.add(String.valueOf(data.get(i).get("street")));
                     dataPartner.add(String.valueOf(data.get(i).get("tgl_lahir")));
                     dataPartner.add(String.valueOf(data.get(i).get("email")));
@@ -183,8 +189,6 @@ public class AccountFragment extends Fragment {
                     dataPartner.add(String.valueOf(data.get(i).get("saldo")));
                     dataPartner.add(String.valueOf(data.get(i).get("image")));
                     dataPartner.add(String.valueOf(data.get(i).get("id")));
-                    System.out.println(data.get(i).get("property_account_receivable_id").toString());
-                    System.out.println(data.get(i).get("property_account_payable_id").toString());
                 }
 
             } catch (Exception ex) {

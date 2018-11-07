@@ -3,21 +3,28 @@ package com.example.nerita_hendra.i_fans;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class AccountEditActivity extends AppCompatActivity {
-    EditText ETname,ETnik,ETaddress,ETbirthday,ETmail,ETphone,ETcomunity;
+    EditText ETname,ETnik,ETaddress,ETmail,ETphone,ETcomunity;
+    TextView txtbirthday;
     Button btnSave,btnDate;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
+    private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +38,33 @@ public class AccountEditActivity extends AppCompatActivity {
         ETmail = findViewById(R.id.editText_email);
         ETphone = findViewById(R.id.editText_phone);
         ETcomunity = findViewById(R.id.editText_komunitas);
+        txtbirthday = findViewById(R.id.edit_date);
+        txtbirthday.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        AccountEditActivity.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        mDateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                String date = month + "/" + day + "/" + year;
+                txtbirthday.setText(date);
+            }
+        };
         progressDialog = new ProgressDialog(this);
-//        btnDate = findViewById(R.id.btn_date);
-//        btnDate.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
 
         ETname.setText(getIntent().getExtras().get("name").toString());
         ETnik.setText(getIntent().getExtras().get("nik").toString());
@@ -87,6 +113,7 @@ public class AccountEditActivity extends AppCompatActivity {
                         new HashMap() {{
                             put("name", ETname.getText().toString());
                             put("nik", ETnik.getText().toString());
+                            put("tgl_lahir",txtbirthday.getText().toString());
                             put("street", ETaddress.getText().toString());
                             put("email", ETmail.getText().toString());
                             put("phone", ETphone.getText().toString());
