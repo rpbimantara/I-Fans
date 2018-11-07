@@ -168,7 +168,7 @@ public class AccountFragment extends Fragment {
                 Object[] param = {new Object[]{
                         new Object[]{"user_ids", "=",sharedPrefManager.getSpIdUser()}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id","name","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas");
+                List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id","name","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas","property_account_receivable_id","property_account_payable_id");
 
                 for (int i = 0; i < data.size(); ++i) {
                     dataPartner.add(String.valueOf(data.get(i).get("name")));
@@ -183,6 +183,8 @@ public class AccountFragment extends Fragment {
                     dataPartner.add(String.valueOf(data.get(i).get("saldo")));
                     dataPartner.add(String.valueOf(data.get(i).get("image")));
                     dataPartner.add(String.valueOf(data.get(i).get("id")));
+                    System.out.println(data.get(i).get("property_account_receivable_id").toString());
+                    System.out.println(data.get(i).get("property_account_payable_id").toString());
                 }
 
             } catch (Exception ex) {

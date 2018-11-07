@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class SingUpActivity extends AppCompatActivity {
 
@@ -70,21 +71,30 @@ public class SingUpActivity extends AppCompatActivity {
         protected Boolean doInBackground(Void... voids) {
             Boolean cek = true;
             try {
-                OdooConnect oc = OdooConnect.connect("tes", "tes");
+                OdooConnect oc = OdooConnect.connect("createuser", "createuser");
 
                 @SuppressWarnings("unchecked")
-                Integer idC = oc.create("res.users", new HashMap() {{
+                Integer idUser = oc.create("res.users", new HashMap() {{
                     put("name", username.getText().toString());
                     put("login", username.getText().toString());
                     put("email", email.getText().toString());
                     put("password", password.getText().toString());
                     put("state", "active");
                 }});
-//                msgResult = idC.toString();
-                System.out.println(idC.toString());
-                if (idC.toString() == null){
+
+                if (idUser.toString() == null){
                     cek = false;
                 }else{
+                    Object[] param = {new Object[]{
+                            new Object[]{"user_ids", "=",Integer.valueOf(idUser)}}};
+
+                    List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id");
+                    Boolean idW = oc.write("res.partner", new Object[]{ data.get(0).get("id")},
+                            new HashMap() {{
+                                put("property_account_receivable_id",new String[]{"1","Account Receivable"});
+                                put("property_account_payable_id", new String[]{"2","Account Payable"});
+                            }});
+                    System.out.println(idW);
                     cek = true;
                 }
             } catch (Exception ex) {
@@ -94,4 +104,5 @@ public class SingUpActivity extends AppCompatActivity {
             return cek;
         }
     }
+
 }

@@ -35,7 +35,7 @@ public class AdapterTerupdate extends RecyclerView.Adapter<AdapterTerupdate.Teru
     @Override
     public TerupdateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_hot_news,parent,false);
-        view.setMinimumWidth(parent.getMeasuredWidth());
+//        view.setMinimumWidth(parent.getMeasuredWidth());
         return new TerupdateViewHolder(view);
     }
 

@@ -34,7 +34,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/E:/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/editor/ic_mode_edit_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/E:/android-studio/plugins/android/lib/android.jar!/images/material_design_icons/maps/ic_local_hospital_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -56,7 +56,33 @@
                                   <option name="values">
                                     <map>
                                       <entry key="imageAsset" value="C:\Users\Why\Downloads\Documents\id card.png" />
-                                      <entry key="outputName" value="ic_edit" />
+                                      <entry key="outputName" value="ic_medis" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcher">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="foregroundImage">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="scalingPercent" value="48" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="foregroundImage" value="C:\Users\Why\Downloads\Documents\persebaya-download-lengkap.png" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -77,11 +103,6 @@
                                 </PersistentState>
                               </value>
                             </entry>
-                          </map>
-                        </option>
-                        <option name="values">
-                          <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
                           </map>
                         </option>
                       </PersistentState>

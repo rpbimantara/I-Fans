@@ -31,7 +31,6 @@ public class AdapterStore extends RecyclerView.Adapter<AdapterStore.StoreViewHol
             this.txtHargaBarang = (TextView) itemView.findViewById(R.id.txt_hargaBarangStore);
             this.imageStore = (ImageView) itemView.findViewById(R.id.store_image);
         }
-
     }
 
     @Override
