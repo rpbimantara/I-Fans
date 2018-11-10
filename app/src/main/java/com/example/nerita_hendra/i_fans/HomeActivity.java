@@ -1,6 +1,10 @@
 package com.example.nerita_hendra.i_fans;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.design.internal.BottomNavigationItemView;
@@ -10,17 +14,21 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.lang.reflect.Field;
 
@@ -32,6 +40,8 @@ public class HomeActivity extends AppCompatActivity {
     private Toolbar toolbar;
     FloatingActionButton fabBtn;
     SharedPrefManager sharedPrefManager;
+    private BroadcastReceiver mRegistrationBroadcastReceiver;
+    private static final String TAG = HomeActivity.class.getSimpleName();
 
 
     @Override
@@ -80,16 +90,47 @@ public class HomeActivity extends AppCompatActivity {
         fabBtn.hide();
         sharedPrefManager =  new SharedPrefManager(this);
 //        initTitle();
+        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+
+                // checking for type intent filter
+                if (intent.getAction().equals(config.REGISTRATION_COMPLETE)) {
+                    // gcm successfully registered
+                    // now subscribe to `global` topic to receive app wide notifications
+                    FirebaseMessaging.getInstance().subscribeToTopic(config.TOPIC_GLOBAL);
+
+                } else if (intent.getAction().equals(config.PUSH_NOTIFICATION)) {
+                    // new push notification is received
+//                    String message = intent.getStringExtra("message");
+
+//                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
+                }
+            }
+        };
     }
 
-//    private void initTitle() {
-//        toolbar.post(new Runnable() {
-//            @Override
-//            public void run() {
-//                toolbar.setTitle(navigation.getMenu().getItem(0).getTitle());
-//            }
-//        });
-//    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // register GCM registration complete receiver
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(config.REGISTRATION_COMPLETE));
+
+        // register new push message receiver
+        // by doing this, the activity will be notified each time a new message arrives
+        LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
+                new IntentFilter(config.PUSH_NOTIFICATION));
+
+        // clear the notification area when the app is opened
+        NotificationUtils.clearNotifications(getApplicationContext());
+    }
+
+    @Override
+    protected void onPause() {
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mRegistrationBroadcastReceiver);
+        super.onPause();
+    }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {

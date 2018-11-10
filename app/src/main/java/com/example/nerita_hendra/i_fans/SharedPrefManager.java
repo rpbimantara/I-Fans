@@ -10,6 +10,7 @@ public class SharedPrefManager {
     public static final String SP_NAMA_CLUB = "spNamaClub";
     public static final String SP_NAMA_USER = "spNamaUser";
     public static final String SP_PASSWORD_USER = "spPasswordUser";
+    public static final String SP_REG_ID = "spRegId";
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
 
     SharedPreferences sp;
@@ -55,7 +56,13 @@ public class SharedPrefManager {
         return sp.getString(SP_PASSWORD_USER,"");
     }
 
+    public String getSpRegId() {
+        return sp.getString(SP_REG_ID,"");
+    }
+
     public Boolean getSPSudahLogin() {
         return sp.getBoolean(SP_SUDAH_LOGIN,false);
     }
+
+
 }

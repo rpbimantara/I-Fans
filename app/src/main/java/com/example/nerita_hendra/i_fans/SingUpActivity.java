@@ -5,14 +5,17 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.FirebaseInstanceIdService;
+
 import java.util.HashMap;
-import java.util.List;
 
 public class SingUpActivity extends AppCompatActivity {
 
@@ -44,7 +47,6 @@ public class SingUpActivity extends AppCompatActivity {
         username = findViewById(R.id.input_name_up);
         email = findViewById(R.id.input_email_up);
         password = findViewById(R.id.input_password_up);
-
     }
 
 
@@ -72,6 +74,7 @@ public class SingUpActivity extends AppCompatActivity {
             Boolean cek = true;
             try {
                 OdooConnect oc = OdooConnect.connect("createuser", "createuser");
+                final String RegId = FirebaseInstanceId.getInstance().getToken();
 
                 @SuppressWarnings("unchecked")
                 Integer idUser = oc.create("res.users", new HashMap() {{
@@ -80,21 +83,12 @@ public class SingUpActivity extends AppCompatActivity {
                     put("email", email.getText().toString());
                     put("password", password.getText().toString());
                     put("state", "active");
+                    put("fcm_reg_ids",RegId);
                 }});
 
                 if (idUser.toString() == null){
                     cek = false;
                 }else{
-                    Object[] param = {new Object[]{
-                            new Object[]{"user_ids", "=",Integer.valueOf(idUser)}}};
-
-                    List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id");
-                    Boolean idW = oc.write("res.partner", new Object[]{ data.get(0).get("id")},
-                            new HashMap() {{
-                                put("property_account_receivable_id",new String[]{"1","Account Receivable"});
-                                put("property_account_payable_id", new String[]{"2","Account Payable"});
-                            }});
-                    System.out.println(idW);
                     cek = true;
                 }
             } catch (Exception ex) {

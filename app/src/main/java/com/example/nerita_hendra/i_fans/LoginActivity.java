@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import android.os.StrictMode;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -82,6 +83,7 @@ public class LoginActivity extends AppCompatActivity {
         String id_user = "";
         String id_club = "";
         String nama_club = "";
+        String reg_id = "";
         try {
             OdooConnect  oc = OdooConnect.connect(user, pass);
 
@@ -89,17 +91,19 @@ public class LoginActivity extends AppCompatActivity {
                     new Object[]{"login", "=", user},
                     new Object[]{"active", "=", true}}};
 
-            List<HashMap<String, Object>> data = oc.search_read("res.users", param, "id","club_id");
+            List<HashMap<String, Object>> data = oc.search_read("res.users", param, "id","club_id","fcm_reg_ids");
             nama_club = data.get(0).get("club_id").toString();
+            reg_id = data.get(0).get("fcm_reg_ids").toString();
             Object[] paramClub = {new Object[]{
                     new Object[]{"nama", "=",  data.get(0).get("club_id").toString()}}};
             List<HashMap<String, Object>> dataClub = oc.search_read("persebaya.club", paramClub, "id");
             id_user = data.get(0).get("id").toString();
             id_club = dataClub.get(0).get("id").toString();
+            Log.e(LoginActivity.class.getSimpleName(),id_user+id_club+nama_club+reg_id);
         } catch (Exception ex) {
             System.out.println("Error Check User Activity: " + ex);
         }
-        return new String [] {id_user,id_club,nama_club} ;
+        return new String [] {id_user,id_club,nama_club,reg_id} ;
     }
 
     public class LoginTask extends AsyncTask<Void,Void,Void>{
@@ -129,6 +133,7 @@ public class LoginActivity extends AppCompatActivity {
                 sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_USER, Integer.valueOf(result[0]));
                 sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_CLUB, Integer.valueOf(result[1]));
                 sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_CLUB, result[2]);
+                sharedPrefManager.saveSPString(SharedPrefManager.SP_REG_ID, result[3]);
                 sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_USER, uname);
                 sharedPrefManager.saveSPString(SharedPrefManager.SP_PASSWORD_USER, pass);
                 sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
