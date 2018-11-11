@@ -47,7 +47,7 @@ public class TerupdateFragment extends Fragment {
     RecyclerView.LayoutManager llm;
     AdapterTerupdate adapter;
     SwipeRefreshLayout swiper;
-    TextView liganow,tglnow,stadionnow,tgllast,tglnext,teamHome,teamAway,teamNext,stadionNext;
+    TextView liganow,tglnow,stadionnow,tgllast,tglnext,teamHome,teamAway,teamNext,stadionNext,skornow;
     ImageView homeImage,awayImage,nextImage,nextStatus;
 
     public TerupdateFragment() {
@@ -64,6 +64,7 @@ public class TerupdateFragment extends Fragment {
         liganow = rootView.findViewById(R.id.textView_namaligaterupdate);
         tglnow = rootView.findViewById(R.id.textView_tglharini);
         stadionnow = rootView.findViewById(R.id.textView_stadionharini);
+        skornow = rootView.findViewById(R.id.txt_scoreterupdate);
         tgllast = rootView.findViewById(R.id.textView_lastliga);
         tglnext = rootView.findViewById(R.id.textView_nextliga);
         homeImage = rootView.findViewById(R.id.home_image);
@@ -130,7 +131,6 @@ public class TerupdateFragment extends Fragment {
         });
         new TerupdateTask().execute();
         new MatchTask().execute();
-        swiper.setRefreshing(true);
         return rootView;
     }
 
@@ -158,6 +158,30 @@ public class TerupdateFragment extends Fragment {
         }catch(Exception e){
             e.getMessage();
             return null;
+        }
+    }
+    public String nullChecker(String param){
+        return ((param == "null") || (param == "false") ? "0" : param);
+    }
+
+    public class SkorTask extends AsyncTask<Integer,Void,String>{
+        @Override
+        protected void onPostExecute(String s) {
+            skornow.setText(s);
+            swiper.setRefreshing(false);
+            super.onPostExecute(s);
+        }
+
+        @Override
+        protected String doInBackground(Integer... integers) {
+            OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            Object[] param = {new Object[]{
+                    new Object[]{"id", "=", integers}}};
+
+            List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","ft_home", "ft_away");
+            System.out.println();
+            String result = nullChecker(dataJadwal.get(0).get("ft_home").toString()) +" - " + nullChecker(dataJadwal.get(0).get("ft_away").toString());
+            return result;
         }
     }
 
@@ -192,6 +216,7 @@ public class TerupdateFragment extends Fragment {
                             counter = j;
                         }
                     }
+                    new SkorTask().execute(Integer.valueOf(ArrayListJadwal.get(counter).getJadwal_id()));
                     tgllast.setText(ArrayListJadwal.get(counter-1).getTglmain());
                     tglnext.setText(ArrayListJadwal.get(counter+1).getTglmain());
                     teamNext.setText(ArrayListJadwal.get(counter+1).getNamateam());
@@ -201,7 +226,6 @@ public class TerupdateFragment extends Fragment {
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
-            swiper.setRefreshing(false);
             super.onPostExecute(aVoid);
         }
 
@@ -281,7 +305,6 @@ public class TerupdateFragment extends Fragment {
             adapter = new AdapterTerupdate(ArrayListTerupdate);
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
-            swiper.setRefreshing(false);
         }
 
         @Override
