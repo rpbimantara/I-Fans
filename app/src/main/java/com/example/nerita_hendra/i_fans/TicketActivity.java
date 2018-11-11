@@ -119,7 +119,7 @@ public class TicketActivity extends AppCompatActivity {
                         new Object[]{"home", "=", sharedPrefManager.getSpNamaClub()},
                         new Object[]{"status_jadwal", "!=", "selesai"}}};
 
-                List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","liga_id", "tgl_main","home","away","stadion_id");
+                List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","liga_id", "tgl_main","home","away","stadion_id","status_jadwal");
 
                 for (int i = 0; i < dataJadwal.size(); ++i) {
                     String tgl = tanggal(dataJadwal.get(i).get("tgl_main").toString().substring(0,10));
@@ -137,7 +137,9 @@ public class TicketActivity extends AppCompatActivity {
                                     dataJadwal.get(i).get("liga_id").toString(),
                                     tgl,
                                     dataJadwal.get(i).get("stadion_id").toString()
-                                    , waktu,dataJadwal.get(i).get("id").toString()));
+                                    , waktu,
+                                    dataJadwal.get(i).get("id").toString(),
+                                    dataJadwal.get(i).get("status_jadwal").toString()));
                         }
                     }
                 }
