@@ -123,7 +123,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
-                                android:text="125"
+                                android:text="0"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -150,7 +150,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
-                                android:text="1205"
+                                android:text="0"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -177,7 +177,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
-                                android:text="360"
+                                android:text="0"
                                 android:textColor="@color/colorPrimaryDark"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -211,7 +211,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
-                        android:text="NIK"
                         android:textColor="@color/colorTrueState"/>
                 </LinearLayout>
                 <LinearLayout
@@ -232,7 +231,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
-                        android:text="Jenis Kelamin"
                         android:textColor="@color/colorTrueState"/>
                 </LinearLayout>
                 <LinearLayout
@@ -253,7 +251,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
-                        android:text="Alamat"
                         android:textColor="@color/colorTrueState"/>
                 </LinearLayout>
                 <LinearLayout
@@ -274,7 +271,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
-                        android:text="Tanggal Lahir"
                         android:textColor="@color/colorTrueState"/>
                 </LinearLayout>
                 <LinearLayout
@@ -296,7 +292,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
-                        android:text="Email"
                         android:textColor="@color/colorTrueState"/>
                 </LinearLayout>
                 <LinearLayout
@@ -317,7 +312,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
-                        android:text="Telephone"
                         android:textColor="@color/colorTrueState"/>
                 </LinearLayout>
                 <LinearLayout
@@ -338,7 +332,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="20dp"
-                        android:text="Komunitas"
                         android:textColor="@color/colorTrueState"/>
                 </LinearLayout>
             </LinearLayout>

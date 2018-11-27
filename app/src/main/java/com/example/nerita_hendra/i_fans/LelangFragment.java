@@ -17,6 +17,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -113,6 +115,14 @@ public class LelangFragment extends Fragment {
         }
     }
 
+    public void sortDate(){
+        Collections.sort(ArrayListLelang, new Comparator<lelang>() {
+            @Override
+            public int compare(lelang t1, lelang t2) {
+                return t1.getWaktulelang().compareTo(t2.getWaktulelang());
+            }
+        });
+    }
     public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
@@ -121,6 +131,7 @@ public class LelangFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            sortDate();
             adapter = new AdapterLelang(ArrayListLelang);
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -136,13 +147,14 @@ public class LelangFragment extends Fragment {
                 Object[] param = {new Object[]{
                         new Object[]{"status_lelang", "=", "jalan"}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.lelang", param, "id","image","nama_barang", "ob","inc","binow","create_uid");
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.lelang", param, "id","image","nama_barang","due_date", "ob","inc","binow","create_uid");
 
                 for (int i = 0; i < data.size(); ++i) {
                     ArrayListLelang.add(new lelang(
+                            String.valueOf(data.get(i).get("id")),
                             String.valueOf(data.get(i).get("nama_barang")),
                             String.valueOf(data.get(i).get("image")),
-                            String.valueOf("24"),
+                            String.valueOf(data.get(i).get("due_date")),
                             String.valueOf(data.get(i).get("ob")),
                             String.valueOf(data.get(i).get("binow")),
                             String.valueOf(data.get(i).get("inc")),

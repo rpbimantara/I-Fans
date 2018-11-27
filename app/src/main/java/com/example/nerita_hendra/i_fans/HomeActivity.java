@@ -70,7 +70,7 @@ public class HomeActivity extends AppCompatActivity {
                         fabBtn.hide();
                         break;
                     case 2:
-                        fabBtn.show();
+                        fabBtn.hide();
                         break;
                     case 3:
                         fabBtn.show();

@@ -2,9 +2,10 @@ package com.example.nerita_hendra.i_fans;
 
 public class lelang {
 
-    private String namalelang,lelangimage, waktulelang, bidlelang, binlelang,inclelang,pemiliklelang;
+    private String idlelang,namalelang,lelangimage, waktulelang, bidlelang, binlelang,inclelang,pemiliklelang;
 
-    public lelang(String namalelang,String lelangimage ,String waktulelang, String bidlelang, String binlelang, String inclelang, String pemiliklelang) {
+    public lelang(String idlelang,String namalelang,String lelangimage ,String waktulelang, String bidlelang, String binlelang, String inclelang, String pemiliklelang) {
+        this.idlelang = idlelang;
         this.namalelang = namalelang;
         this.lelangimage = lelangimage;
         this.waktulelang = waktulelang;
@@ -14,10 +15,17 @@ public class lelang {
         this.pemiliklelang = pemiliklelang;
     }
 
+    public String getIdlelang() {
+        return idlelang;
+    }
+
+    public void setIdlelang(String idlelang) {
+        this.idlelang = idlelang;
+    }
+
     public String getInclelang() {
         return inclelang;
     }
-
 
     public String getLelangimage() {
         return lelangimage;

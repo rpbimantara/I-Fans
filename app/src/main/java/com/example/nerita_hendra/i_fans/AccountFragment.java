@@ -153,13 +153,41 @@ public class AccountFragment extends Fragment {
             super.onPostExecute(result);
             txtName.setText(nullChecker(result.get(0).toString()));
             txtid.setText(nullChecker(result.get(1).toString()));
-            txtNIK.setText(result.get(2).toString());
-            txtJeniskelamin.setText(result.get(3).toString());
-            txtAlamat.setText(result.get(4).toString());
-            txtTTL.setText(result.get(5).toString());
-            txtemail.setText(result.get(6).toString());
-            txtTelephone.setText(result.get(7).toString());
-            txtKomunitas.setText(result.get(8).toString());
+            if(result.get(2).toString()== "false"){
+                txtNIK.setText("NIK");
+            }else{
+                txtNIK.setText(result.get(2).toString());
+            }
+            if(result.get(3).toString()== "false"){
+                txtJeniskelamin.setText("Gender");
+            }else{
+                txtJeniskelamin.setText(result.get(3).toString());
+            }
+            if(result.get(4).toString()== "false"){
+                txtAlamat.setText("Address");
+            }else{
+                txtAlamat.setText(result.get(4).toString());
+            }
+            if(result.get(5).toString()== "false"){
+                txtTTL.setText("Birthday");
+            }else{
+                txtTTL.setText(result.get(5).toString());
+            }
+            if(result.get(6).toString()== "false"){
+                txtemail.setText("E-mail");
+            }else{
+                txtemail.setText(result.get(6).toString());
+            }
+            if(result.get(7).toString()== "false"){
+                txtTelephone.setText("Phone");
+            }else{
+                txtTelephone.setText(result.get(7).toString());
+            }
+            if(result.get(8).toString()== "false"){
+                txtKomunitas.setText("Community");
+            }else{
+                txtKomunitas.setText(result.get(8).toString());
+            }
             txtKoin.setText(result.get(9).toString());
             imageUser.setImageBitmap(StringToBitMap(result.get(10).toString()));
             IdPartner = Integer.valueOf(result.get(11).toString());

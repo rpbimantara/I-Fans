@@ -30,9 +30,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="5dp"
-                android:orientation="vertical"
-                android:padding="5dp">
+                android:orientation="vertical">
                 <TextView
                     android:id="@+id/txt_waktulelang"
                     android:textColor="@color/colorPrimaryDark"
@@ -46,15 +44,35 @@
                     android:textColor="@color/colorTrueState"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:maxLines="1"
                     android:layout_weight="2"
                     />
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="5dp"
                     android:orientation="horizontal"
-                    android:padding="5dp"
-                    android:layout_weight="1">
+                    android:layout_weight="2">
+                    <TextView
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="BID"
+                        android:layout_weight="2"
+                        />
+                    <TextView
+                        android:textColor="@color/colorPrimaryDark"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="BIN"
+                        android:layout_weight="2"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_weight="1.5">
 
                     <Button
                         android:id="@+id/button_bid"
