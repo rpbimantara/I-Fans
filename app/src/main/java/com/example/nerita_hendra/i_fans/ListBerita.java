@@ -3,6 +3,7 @@ package com.example.nerita_hendra.i_fans;
 public class ListBerita {
 
     private Integer id;
+    private String image;
     private String title;
     private String kategori;
     private String headline;
@@ -11,14 +12,23 @@ public class ListBerita {
     private String penulis;
 
 
-    public ListBerita(Integer id, String title, String kategori, String headline, String konten, String tanggal, String penulis) {
+    public ListBerita(Integer id, String image,String title, String kategori, String headline, String konten, String tanggal, String penulis) {
         this.id = id;
+        this.image = image;
         this.title = title;
         this.kategori = kategori;
         this.headline = headline;
         this.konten = konten;
         this.tanggal = tanggal;
         this.penulis = penulis;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getKonten() {

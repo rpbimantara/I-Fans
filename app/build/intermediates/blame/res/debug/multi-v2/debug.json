@@ -1709,6 +1709,21 @@
             ]
         },
         {
+            "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\values-v18_values-v18.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\911fe154fc35e73ee7675eed9fdfa041\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\values-gl_values-gl.arsc.flat",
             "map": [
                 {
@@ -1794,21 +1809,6 @@
                         "startOffsets": "105,217,329,437,522,624,750,834,915,997,1104,1213,1312,1420,1524,1631,1790,4765",
                         "endColumns": "111,111,107,84,101,125,83,80,81,106,108,98,107,103,106,158,99,81",
                         "endOffsets": "212,324,432,517,619,745,829,910,992,1099,1208,1307,1415,1519,1626,1785,1885,4842"
-                    }
-                }
-            ]
-        },
-        {
-            "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\values-v18_values-v18.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\911fe154fc35e73ee7675eed9fdfa041\\res\\values-v18\\values-v18.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "48",
-                        "endOffsets": "99"
                     }
                 }
             ]
@@ -2238,21 +2238,6 @@
             ]
         },
         {
-            "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\values-large-v4_values-large-v4.arsc.flat",
-            "map": [
-                {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\911fe154fc35e73ee7675eed9fdfa041\\res\\values-large-v4\\values-large-v4.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9,10",
-                        "startColumns": "4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,114,185,256,326,396,464,532,636",
-                        "endColumns": "58,70,70,69,69,67,67,103,115",
-                        "endOffsets": "109,180,251,321,391,459,527,631,747"
-                    }
-                }
-            ]
-        },
-        {
             "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\values-en-rCA_values-en-rCA.arsc.flat",
             "map": [
                 {
@@ -2263,6 +2248,21 @@
                         "startOffsets": "105,209,309,417,501,601,716,793,869,951,1054,1158,1257,1362,1465,1569,1725,1825",
                         "endColumns": "103,99,107,83,99,114,76,75,81,102,103,98,104,102,103,155,99,81",
                         "endOffsets": "204,304,412,496,596,711,788,864,946,1049,1153,1252,1357,1460,1564,1720,1820,1902"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\values-large-v4_values-large-v4.arsc.flat",
+            "map": [
+                {
+                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\911fe154fc35e73ee7675eed9fdfa041\\res\\values-large-v4\\values-large-v4.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,114,185,256,326,396,464,532,636",
+                        "endColumns": "58,70,70,69,69,67,67,103,115",
+                        "endOffsets": "109,180,251,321,391,459,527,631,747"
                     }
                 }
             ]

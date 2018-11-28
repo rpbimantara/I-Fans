@@ -12,6 +12,8 @@ public class SharedPrefManager {
     public static final String SP_PASSWORD_USER = "spPasswordUser";
     public static final String SP_REG_ID = "spRegId";
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
+    public static final String SP_IMAGE_NEWS = "spImageNews";
+
 
     SharedPreferences sp;
     SharedPreferences.Editor spEditor;
@@ -64,5 +66,7 @@ public class SharedPrefManager {
         return sp.getBoolean(SP_SUDAH_LOGIN,false);
     }
 
-
+    public String getSpImageNews() {
+        return  sp.getString(SP_IMAGE_NEWS,"");
+    }
 }

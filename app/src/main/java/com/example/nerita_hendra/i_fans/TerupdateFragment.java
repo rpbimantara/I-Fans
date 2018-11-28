@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -104,18 +105,23 @@ public class TerupdateFragment extends Fragment {
                 View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
 
                 if(ChildView != null && gestureDetector.onTouchEvent(e)) {
+                    try {
+                        RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+                        Intent intent = new Intent(getActivity(),BeritaDetailActivity.class);
 
-                    RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                    Intent intent = new Intent(getActivity(),BeritaDetailActivity.class);
-                    intent.putExtra("id",ArrayListTerupdate.get(RecyclerViewItemPosition).getId());
-                    intent.putExtra("title",ArrayListTerupdate.get(RecyclerViewItemPosition).getTitle());
-                    intent.putExtra("kategori",ArrayListTerupdate.get(RecyclerViewItemPosition).getKategori());
-                    intent.putExtra("headline",ArrayListTerupdate.get(RecyclerViewItemPosition).getHeadline());
-                    intent.putExtra("konten",ArrayListTerupdate.get(RecyclerViewItemPosition).getKonten());
-                    intent.putExtra("tanggalbuat",ArrayListTerupdate.get(RecyclerViewItemPosition).getTanggal());
-                    intent.putExtra("penulis",ArrayListTerupdate.get(RecyclerViewItemPosition).getPenulis());
+                        intent.putExtra("id",ArrayListTerupdate.get(RecyclerViewItemPosition).getId());
+                        intent.putExtra("title",ArrayListTerupdate.get(RecyclerViewItemPosition).getTitle());
+                        intent.putExtra("kategori",ArrayListTerupdate.get(RecyclerViewItemPosition).getKategori());
+                        intent.putExtra("headline",ArrayListTerupdate.get(RecyclerViewItemPosition).getHeadline());
+                        intent.putExtra("konten",ArrayListTerupdate.get(RecyclerViewItemPosition).getKonten());
+                        intent.putExtra("tanggalbuat",ArrayListTerupdate.get(RecyclerViewItemPosition).getTanggal());
+                        intent.putExtra("penulis",ArrayListTerupdate.get(RecyclerViewItemPosition).getPenulis());
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_IMAGE_NEWS,ArrayListTerupdate.get(RecyclerViewItemPosition).getImageTerupdate());
+                        startActivity(intent);
+                    }catch (Exception err){
+                        System.out.println(err);
+                    }
 
-                    startActivity(intent);
                 }
                 return false;
             }

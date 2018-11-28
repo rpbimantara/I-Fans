@@ -19,9 +19,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -171,7 +173,7 @@ public class AccountFragment extends Fragment {
             if(result.get(5).toString()== "false"){
                 txtTTL.setText("Birthday");
             }else{
-                txtTTL.setText(result.get(5).toString());
+                txtTTL.setText(tanggal(result.get(5).toString()));
             }
             if(result.get(6).toString()== "false"){
                 txtemail.setText("E-mail");
@@ -255,5 +257,15 @@ public class AccountFragment extends Fragment {
 
     public String nullChecker(String param){
         return ((param == "null") || (param == "false") ? "N/A" : param);
+    }
+
+    public String tanggal(String tgl){
+        try {
+            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
+        }catch (Exception ex){
+            System.out.println("Error Convert Tanggal: " + ex);
+        }
+
+        return tgl;
     }
 }

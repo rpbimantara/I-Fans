@@ -62,6 +62,7 @@ public class LelangFragment extends Fragment {
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
+
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
             GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {

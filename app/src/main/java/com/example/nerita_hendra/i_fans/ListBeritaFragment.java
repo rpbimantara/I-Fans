@@ -19,6 +19,8 @@ import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -95,7 +97,7 @@ public class ListBeritaFragment extends Fragment {
                     intent.putExtra("konten",ArrayListBerita.get(RecyclerViewItemPosition).getKonten());
                     intent.putExtra("tanggalbuat",ArrayListBerita.get(RecyclerViewItemPosition).getTanggal());
                     intent.putExtra("penulis",ArrayListBerita.get(RecyclerViewItemPosition).getPenulis());
-
+                    sharedPrefManager.saveSPString(SharedPrefManager.SP_IMAGE_NEWS,ArrayListBerita.get(RecyclerViewItemPosition).getImage());
                     startActivity(intent);
                 }
                 return false;
@@ -124,7 +126,14 @@ public class ListBeritaFragment extends Fragment {
 
         return tgl;
     }
-
+    public void sortDate(){
+        Collections.sort(ArrayListBerita, new Comparator<ListBerita>() {
+            @Override
+            public int compare(ListBerita t1, ListBerita t2) {
+                return t1.getTanggal().compareTo(t2.getTanggal());
+            }
+        });
+    }
     public class BeritaTask extends AsyncTask<Void,Void,Void>{
 
         @Override
@@ -134,6 +143,7 @@ public class ListBeritaFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
+            sortDate();
             adapter = new AdapterListBerita(ArrayListBerita);
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
@@ -149,11 +159,12 @@ public class ListBeritaFragment extends Fragment {
                 Object[] param = {new Object[]{
                         new Object[]{"create_uid", "=", 1}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
+                List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id","image","title", "headline","content","kategori_brita_id","create_date","create_uid","write_date","write_uid");
 
                 for (int i = 0; i < data.size(); ++i) {
                     ArrayListBerita.add(new ListBerita(
                             (Integer) data.get(i).get("id"),
+                            String.valueOf(data.get(i).get("image")),
                             String.valueOf(data.get(i).get("title")),
                             String.valueOf(data.get(i).get("kategori_brita_id")),
                             String.valueOf(data.get(i).get("headline")),

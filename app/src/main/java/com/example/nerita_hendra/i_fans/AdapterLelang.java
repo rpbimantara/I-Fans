@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -45,11 +46,17 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final LelangViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final LelangViewHolder holder, final int position) {
         holder.txtNamaLelang.setText(dataList.get(position).getNamalelang());
         holder.btnBidLelang.setText(dataList.get(position).getBidlelang());
         holder.btnBinLelang.setText(dataList.get(position).getBinlelang());
         holder.imageLelang.setImageBitmap(StringToBitMap(dataList.get(position).getLelangimage()));
+        holder.btnBidLelang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(),dataList.get(position).getBidlelang().toString(),Toast.LENGTH_LONG).show();
+            }
+        });
 
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -72,20 +79,10 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
                         (millisUntilFinished - startTime[0]) / 1000;
 
                 String daysLeft = String.format("%d", serverUptimeSeconds / 86400);
-                //txtViewDays.setText(daysLeft);
-//                Log.d("daysLeft",daysLeft);
-
                 String hoursLeft = changeTime(String.format("%d", (serverUptimeSeconds % 86400) / 3600));
-                //txtViewHours.setText(hoursLeft);
-//                Log.d("hoursLeft",hoursLeft);
-
                 String minutesLeft = changeTime(String.format("%d", ((serverUptimeSeconds % 86400) % 3600) / 60));
-                //txtViewMinutes.setText(minutesLeft);
-//                Log.d("minutesLeft",minutesLeft);
-
                 String secondsLeft = changeTime(String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60));
-                //txtViewSecond.setText(secondsLeft);
-//                Log.d("secondsLeft",secondsLeft);
+
                 if (Integer.valueOf(daysLeft) > 0){
                     holder.txtWaktuLelang.setText(daysLeft + " Days " + hoursLeft + " : " + minutesLeft + " : " + secondsLeft);
                 }else{
@@ -95,6 +92,7 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
                 if (serverUptimeSeconds < 900){
                     holder.txtWaktuLelang.setTextColor(Color.RED);
                 }
+
                 if (serverUptimeSeconds < 0 ){
                     onFinish();
                 }
@@ -104,6 +102,8 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
             public void onFinish() {
                 holder.txtWaktuLelang.setText("Expired");
                 holder.txtWaktuLelang.setTextColor(Color.GREEN);
+                holder.btnBidLelang.setEnabled(false);
+                holder.btnBinLelang.setEnabled(false);
             }
         }.start();
     }
