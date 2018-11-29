@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:cardview-v7:27.1.1'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -29,11 +29,13 @@ dependencies {
     implementation 'com.android.support:design:27.1.1'
     implementation 'com.android.support:support-v4:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-    implementation group: 'de.timroes', name: 'aXMLRPC', version: '1.8.0'
+    implementation 'de.timroes:aXMLRPC:1.8.0'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
     implementation 'com.theartofdev.edmodo:android-image-cropper:2.7.+'
     implementation 'com.google.firebase:firebase-core:16.0.5'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
+    implementation 'com.mcxiaoke.volley:library:1.0.19'
 }
 
 apply plugin: 'com.google.gms.google-services'

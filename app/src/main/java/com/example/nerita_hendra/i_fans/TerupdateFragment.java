@@ -81,7 +81,7 @@ public class TerupdateFragment extends Fragment {
             @Override
             public void onRefresh() {
                 new TerupdateTask().execute();
-                new MatchTask().execute();
+//                new MatchTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
@@ -136,7 +136,7 @@ public class TerupdateFragment extends Fragment {
             }
         });
         new TerupdateTask().execute();
-        new MatchTask().execute();
+//        new MatchTask().execute();
         return rootView;
     }
 
@@ -185,7 +185,7 @@ public class TerupdateFragment extends Fragment {
                     new Object[]{"id", "=", integers}}};
 
             List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","ft_home", "ft_away");
-            System.out.println();
+
             String result = nullChecker(dataJadwal.get(0).get("ft_home").toString()) +" - " + nullChecker(dataJadwal.get(0).get("ft_away").toString());
             return result;
         }
@@ -204,6 +204,7 @@ public class TerupdateFragment extends Fragment {
                             tglnow.setText(ArrayListJadwal.get(j).getTglmain());
                             liganow.setText(ArrayListJadwal.get(j).getNamaliga());
                             stadionnow.setText(ArrayListJadwal.get(j).getNamastadion());
+                            System.out.println("STATUS IMAGE : "+ArrayListJadwal.get(j).getStatusimage());
                             if (ArrayListJadwal.get(j).getStatusimage() == getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName())){
                                 homeImage.setImageBitmap(StringToBitMap(aVoid));
                                 teamHome.setText(sharedPrefManager.getSpNamaClub());
@@ -294,7 +295,7 @@ public class TerupdateFragment extends Fragment {
                 }
 
             } catch (Exception ex) {
-                System.out.println("Error: " + ex);
+                System.out.println("Error Match Task: " + ex);
             }
             return fotoclub;
         }
@@ -336,7 +337,7 @@ public class TerupdateFragment extends Fragment {
                             String.valueOf(data.get(i).get("create_uid"))));
                 }
             } catch (Exception ex) {
-                System.out.println("Error: " + ex);
+                System.out.println("Error Terupdate TASK: " + ex);
             }
             return null;
         }
