@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,6 +73,11 @@ public class LelangFragment extends Fragment {
                     return true;
                 }
 
+                @Override
+                public boolean onDoubleTap(MotionEvent e) {
+                    Toast.makeText(getActivity(),"INI DOUBLE TAP",Toast.LENGTH_LONG).show();
+                    return super.onDoubleTap(e);
+                }
             });
 
             @Override
@@ -90,12 +96,14 @@ public class LelangFragment extends Fragment {
 
             @Override
             public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+
             }
 
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
             }
+
         });
         new LelangAsyncTask().execute();
         return rootView;

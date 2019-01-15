@@ -29,14 +29,14 @@ public class AdapterTicket extends RecyclerView.Adapter<AdapterTicket.TicketView
             super(itemView);
             kategoriTiket = itemView.findViewById(R.id.txt_kategori_tiket);
             hargaTiket = itemView.findViewById(R.id.txt_harga_tiket);
-            rb0seat = itemView.findViewById(R.id.radioButton_0seat);
+//            rb0seat = itemView.findViewById(R.id.radioButton_0seat);
             rb1seat = itemView.findViewById(R.id.radioButton_1seat);
             rb2seat = itemView.findViewById(R.id.radioButton_2seat);
             rgseat = itemView.findViewById(R.id.radioGrup_seat);
         }
     }
     @Override
-    public void onBindViewHolder(@NonNull final TicketViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final TicketViewHolder holder, final int position) {
         holder.kategoriTiket.setText(dataList.get(position).getKategoriTiket());
         holder.hargaTiket.setText(dataList.get(position).getHargaTiket());
         holder.rgseat.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -44,9 +44,9 @@ public class AdapterTicket extends RecyclerView.Adapter<AdapterTicket.TicketView
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
                 int jumlahtiket=0;
                 switch (i){
-                    case R.id.radioButton_0seat:
-                        jumlahtiket = 0;
-                        break;
+//                    case R.id.radioButton_0seat:
+//                        jumlahtiket = 0;
+//                        break;
                     case R.id.radioButton_1seat:
                         jumlahtiket = 1;
                         break;
@@ -54,7 +54,7 @@ public class AdapterTicket extends RecyclerView.Adapter<AdapterTicket.TicketView
                         jumlahtiket = 2;
                         break;
                 }
-                System.out.println(holder.kategoriTiket.getText().toString() +" - "+ jumlahtiket);
+                System.out.println(dataList.get(position).getId().toString() +" : "+holder.kategoriTiket.getText().toString() +" - "+ jumlahtiket);
             }
         });
     }

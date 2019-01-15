@@ -22,13 +22,13 @@ import java.util.Locale;
 
 public class TicketActivity extends AppCompatActivity {
 
-    ArrayList<Jadwal> ArrayListJadwal;
+    ArrayList<TiketList> ArrayListTiketList;
     SharedPrefManager sharedPrefManager;
     int RecyclerViewItemPosition ;
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
     SwipeRefreshLayout swiper;
-    AdapterJadwal adapter;
+    AdapterTiketList adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class TicketActivity extends AppCompatActivity {
         rv =  findViewById(R.id.rv_recycler_view_ticket);
         swiper = findViewById(R.id.swiperefresh_ticket);
         llm = new LinearLayoutManager(this);
-        adapter = new AdapterJadwal(ArrayListJadwal);
+        adapter = new AdapterTiketList(ArrayListTiketList);
         rv.setAdapter(adapter );
         rv.setLayoutManager(llm);
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -69,9 +69,7 @@ public class TicketActivity extends AppCompatActivity {
 
                     RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                     Intent intent = new Intent(TicketActivity.this,TicketDetailActivity.class);
-                    intent.putExtra("jadwal_id",ArrayListJadwal.get(RecyclerViewItemPosition).getJadwal_id());
-                    intent.putExtra("waktu",ArrayListJadwal.get(RecyclerViewItemPosition).getWaktumain());
-                    intent.putExtra("tgl",ArrayListJadwal.get(RecyclerViewItemPosition).getTglmain());
+                    intent.putExtra("id",ArrayListTiketList.get(RecyclerViewItemPosition).getId());
                     startActivity(intent);
                 }
                 return false;
@@ -101,7 +99,7 @@ public class TicketActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            adapter = new AdapterJadwal(ArrayListJadwal);
+            adapter = new AdapterTiketList(ArrayListTiketList);
             rv.setAdapter(adapter );
             adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
@@ -110,42 +108,63 @@ public class TicketActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            ArrayListJadwal = new ArrayList<>();
+            ArrayListTiketList = new ArrayList<>();
             try {
                 OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
                 Object[] param = {new Object[]{
-//                        new Object[]{"create_uid", "=", 1},
-                        new Object[]{"home", "=", sharedPrefManager.getSpNamaClub()},
-                        new Object[]{"status_jadwal", "!=", "selesai"}}};
+                        new Object[]{"state", "=", "confirm"}}};
 
-                List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","liga_id", "tgl_main","home","away","stadion_id","status_jadwal");
+                List<HashMap<String, Object>> dataTiketList = oc.search_read("event.event", param, "id","image","name", "date_begin","organizer_id","event_type_id");
 
-                for (int i = 0; i < dataJadwal.size(); ++i) {
-                    String tgl = tanggal(dataJadwal.get(i).get("tgl_main").toString().substring(0,10));
-                    String waktu = waktu(dataJadwal.get(i).get("tgl_main").toString().substring(12,16)) + " "+ "WIB";
-                    if (dataJadwal.get(i).get("home").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
-                        Object[] paramclub = {new Object[]{
-                                new Object[]{"nama", "=", dataJadwal.get(i).get("away")}}};
-
-                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-                        for (int c = 0; c < dataclub.size(); ++c) {
-                            ArrayListJadwal.add(new Jadwal(
-                                    dataJadwal.get(i).get("away").toString(),
-                                    String.valueOf(dataclub.get(c).get("foto_club")),
-                                    getResources().getIdentifier("ic_home","drawable",getPackageName()),
-                                    dataJadwal.get(i).get("liga_id").toString(),
-                                    tgl,
-                                    dataJadwal.get(i).get("stadion_id").toString()
-                                    , waktu,
-                                    dataJadwal.get(i).get("id").toString(),
-                                    dataJadwal.get(i).get("status_jadwal").toString()));
-                        }
-                    }
+                for (int i = 0; i < dataTiketList.size(); ++i) {
+                    ArrayListTiketList.add(new TiketList(
+                            dataTiketList.get(i).get("id").toString(),
+                            dataTiketList.get(i).get("image").toString(),
+                            dataTiketList.get(i).get("name").toString(),
+                            dataTiketList.get(i).get("date_begin").toString(),
+                            dataTiketList.get(i).get("organizer_id").toString(),
+                            dataTiketList.get(i).get("event_type_id").toString()
+                    ));
                 }
             } catch (Exception ex) {
                 System.out.println("Error Ticket Add data: " + ex);
             }
+//            try {
+//                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+//
+//                Object[] param = {new Object[]{
+////                        new Object[]{"create_uid", "=", 1},
+//                        new Object[]{"home", "=", sharedPrefManager.getSpNamaClub()},
+//                        new Object[]{"status_jadwal", "!=", "selesai"}}};
+//
+//                List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","liga_id", "tgl_main","home","away","stadion_id","status_jadwal");
+//
+//                for (int i = 0; i < dataJadwal.size(); ++i) {
+//                    String tgl = tanggal(dataJadwal.get(i).get("tgl_main").toString().substring(0,10));
+//                    String waktu = waktu(dataJadwal.get(i).get("tgl_main").toString().substring(12,16)) + " "+ "WIB";
+//                    if (dataJadwal.get(i).get("home").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
+//                        Object[] paramclub = {new Object[]{
+//                                new Object[]{"nama", "=", dataJadwal.get(i).get("away")}}};
+//
+//                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
+//                        for (int c = 0; c < dataclub.size(); ++c) {
+//                            ArrayListJadwal.add(new Jadwal(
+//                                    dataJadwal.get(i).get("away").toString(),
+//                                    String.valueOf(dataclub.get(c).get("foto_club")),
+//                                    getResources().getIdentifier("ic_home","drawable",getPackageName()),
+//                                    dataJadwal.get(i).get("liga_id").toString(),
+//                                    tgl,
+//                                    dataJadwal.get(i).get("stadion_id").toString()
+//                                    , waktu,
+//                                    dataJadwal.get(i).get("id").toString(),
+//                                    dataJadwal.get(i).get("status_jadwal").toString()));
+//                        }
+//                    }
+//                }
+//            } catch (Exception ex) {
+//                System.out.println("Error Ticket Add data: " + ex);
+//            }
             return null;
         }
     }

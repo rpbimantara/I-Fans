@@ -79,6 +79,7 @@ public class StoreFragment extends Fragment {
                     Intent intent = new Intent(getActivity(),StoreDetailActivity.class);
                     intent.putExtra("nama",ArrayListStore.get(RecyclerViewItemPosition).getNamabarang());
                     intent.putExtra("harga",ArrayListStore.get(RecyclerViewItemPosition).getHargabarang());
+                    intent.putExtra("deskripsi",ArrayListStore.get(RecyclerViewItemPosition).getDeskripsi());
                     startActivity(intent);
                 }
                 return false;
@@ -132,15 +133,23 @@ public class StoreFragment extends Fragment {
                 OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
                 Object[] param = {new Object[]{
-                        new Object[]{"active", "=", true}}};
+                        new Object[]{"active", "=", true},
+                        new Object[]{"type", "!=", "service"}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.merchandise", param, "id","image","nama_barang", "harga_barang","stock_total_barang","status_merch","create_uid");
+                List<HashMap<String, Object>> data = oc.search_read("product.template", param, "id","image_medium","name", "type","default_code","cated_ig","list_price","description_sale","description_picking","create_uid");
 
                 for (int i = 0; i < data.size(); ++i) {
+                    String code = " ";
+                    if (String.valueOf(data.get(i).get("default_code")).equalsIgnoreCase("false")){
+                        code = "";
+                    }else{
+                        code = "["+String.valueOf(data.get(i).get("default_code")) +"] ";
+                    }
                     ArrayListStore.add(new Store(
-                            String.valueOf(data.get(i).get("image")),
-                            String.valueOf(data.get(i).get("nama_barang")),
-                            String.valueOf("Rp. " + data.get(i).get("harga_barang"))));
+                            String.valueOf(data.get(i).get("image_medium")),
+                            code +String.valueOf(data.get(i).get("name")),
+                            String.valueOf("Rp. " + data.get(i).get("list_price")),
+                            String.valueOf(data.get(i).get("description_sale"))));
                 }
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);

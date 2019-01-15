@@ -66,7 +66,6 @@
                     android:layout_margin="10dp"
                     android:gravity="center_vertical"
                     android:lines="2"
-                    android:text="PERSEBAYA SURABAYA VS PERSIB BANDUNG"
                     android:textColor="@color/colorTrueState"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -90,7 +89,6 @@
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical"
                     android:lines="2"
-                    android:text="33 DESEMBER 2018 - 33 DESEMBER 2018"
                     android:textColor="@color/colorTrueState"
                     android:textStyle="bold" />
             </LinearLayout>
@@ -113,11 +111,31 @@
                     android:layout_gravity="center_vertical"
                     android:gravity="center_vertical"
                     android:lines="2"
-                    android:text="07:00 WIB - 08:00 WIB"
                     android:textColor="@color/colorTrueState"
                     android:textStyle="bold" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_margin="10dp"
+                    android:src="@drawable/ic_location" />
+
+                <TextView
+                    android:id="@+id/txt_lokasi_ticket"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:lines="2"
+                    android:textColor="@color/colorTrueState"
+                    android:textStyle="bold" />
+            </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">

@@ -69,8 +69,18 @@
                     android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Description"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/textView_deskripsi"
@@ -78,14 +88,23 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:gravity="center_vertical"
-                    android:text="@string/hello_blank_fragment"
                     android:textColor="@color/colorTrueState"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="12sp"/>
             </LinearLayout>
             <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:gravity="center_vertical"
+                    android:text="Variant"
+                    android:textColor="@color/colorPrimaryDark"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
                 <TextView
                     android:id="@+id/textView_tgl_detail_berita"
                     android:layout_width="match_parent"
@@ -94,8 +113,7 @@
                     android:gravity="center_vertical"
                     android:text="20 OKTOBER 2018"
                     android:textColor="@color/colorTrueState"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="12sp"/>
             </LinearLayout>
         </LinearLayout>
 

@@ -2,13 +2,22 @@ package com.example.nerita_hendra.i_fans;
 
 public class Tiket {
 
-    private String kategoriTiket,hargaTiket,jumlahTiket,sisaTiket;
+    private String id,kategoriTiket,hargaTiket,jumlahTiket,sisaTiket;
 
-    public Tiket(String kategoriTiket, String hargaTiket, String jumlahTiket,String sisaTiket) {
+    public Tiket(String id,String kategoriTiket, String hargaTiket, String jumlahTiket,String sisaTiket) {
+        this.id = id;
         this.kategoriTiket = kategoriTiket;
         this.hargaTiket = hargaTiket;
         this.jumlahTiket = jumlahTiket;
         this.sisaTiket = sisaTiket;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getKategoriTiket() {

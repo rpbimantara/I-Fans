@@ -140,7 +140,7 @@ public class JadwalFragment extends Fragment {
                 OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
                 Object[] param = {new Object[]{
-                        new Object[]{"create_uid", "=", 1}}};
+                        new Object[]{"durasi", "=", "90"}}};
 
                 List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","liga_id", "tgl_main","home","away","stadion_id","status_jadwal");
 
