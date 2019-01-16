@@ -77,6 +77,7 @@ public class StoreFragment extends Fragment {
 
                     RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                     Intent intent = new Intent(getActivity(),StoreDetailActivity.class);
+                    intent.putExtra("id",ArrayListStore.get(RecyclerViewItemPosition).getId());
                     intent.putExtra("nama",ArrayListStore.get(RecyclerViewItemPosition).getNamabarang());
                     intent.putExtra("harga",ArrayListStore.get(RecyclerViewItemPosition).getHargabarang());
                     intent.putExtra("deskripsi",ArrayListStore.get(RecyclerViewItemPosition).getDeskripsi());
@@ -140,16 +141,23 @@ public class StoreFragment extends Fragment {
 
                 for (int i = 0; i < data.size(); ++i) {
                     String code = " ";
-                    if (String.valueOf(data.get(i).get("default_code")).equalsIgnoreCase("false")){
-                        code = "";
-                    }else{
+                    String description = " - ";
+                    System.out.println(String.valueOf(data.get(i).get("default_code")));
+                    if (!String.valueOf(data.get(i).get("default_code")).equalsIgnoreCase("false")){
                         code = "["+String.valueOf(data.get(i).get("default_code")) +"] ";
                     }
+
+                    if (!String.valueOf(data.get(i).get("description_sale")).equalsIgnoreCase("false"))
+                    {
+                        description = String.valueOf(data.get(i).get("description_sale"));
+                    }
+
                     ArrayListStore.add(new Store(
+                            String.valueOf(data.get(i).get("id")),
                             String.valueOf(data.get(i).get("image_medium")),
                             code +String.valueOf(data.get(i).get("name")),
-                            String.valueOf("Rp. " + data.get(i).get("list_price")),
-                            String.valueOf(data.get(i).get("description_sale"))));
+                            String.valueOf(Math.round(Float.parseFloat(data.get(i).get("list_price").toString()))),
+                            description));
                 }
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);
