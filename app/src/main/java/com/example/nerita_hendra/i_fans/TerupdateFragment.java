@@ -312,6 +312,7 @@ public class TerupdateFragment extends Fragment {
             adapter = new AdapterTerupdate(ArrayListTerupdate);
             rv.setAdapter(adapter);
             adapter.notifyDataSetChanged();
+            swiper.setRefreshing(false);
         }
 
         @Override
