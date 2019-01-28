@@ -2,14 +2,13 @@ package com.example.nerita_hendra.i_fans;
 
 public class Store {
 
-    private String id,imageStore,namabarang,hargabarang,deskripsi;
+    private String id,imageStore,namabarang,hargabarang;
 
-    public Store(String id, String imageStore, String namabarang, String hargabarang,String deskripsi) {
+    public Store(String id, String imageStore, String namabarang, String hargabarang) {
         this.id = id;
         this.imageStore = imageStore;
         this.namabarang = namabarang;
         this.hargabarang = hargabarang;
-        this.deskripsi = deskripsi;
     }
 
     public String getId() {
@@ -44,11 +43,4 @@ public class Store {
         this.hargabarang = hargabarang;
     }
 
-    public String getDeskripsi() {
-        return deskripsi;
-    }
-
-    public void setDeskripsi(String deskripsi) {
-        this.deskripsi = deskripsi;
-    }
 }

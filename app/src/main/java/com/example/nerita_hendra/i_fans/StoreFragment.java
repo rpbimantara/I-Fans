@@ -80,7 +80,6 @@ public class StoreFragment extends Fragment {
                     intent.putExtra("id",ArrayListStore.get(RecyclerViewItemPosition).getId());
                     intent.putExtra("nama",ArrayListStore.get(RecyclerViewItemPosition).getNamabarang());
                     intent.putExtra("harga",ArrayListStore.get(RecyclerViewItemPosition).getHargabarang());
-                    intent.putExtra("deskripsi",ArrayListStore.get(RecyclerViewItemPosition).getDeskripsi());
                     startActivity(intent);
                 }
                 return false;
@@ -135,30 +134,23 @@ public class StoreFragment extends Fragment {
 
                 Object[] param = {new Object[]{
                         new Object[]{"active", "=", true},
-                        new Object[]{"type", "!=", "service"}}};
+                        new Object[]{"type", "=", "product"}}};
 
-                List<HashMap<String, Object>> data = oc.search_read("product.template", param, "id","image_medium","name", "type","default_code","cated_ig","list_price","description_sale","description_picking","create_uid");
+                List<HashMap<String, Object>> data = oc.search_read("product.template", param, "id","image_medium","name", "type","default_code","cated_ig","list_price");
 
                 for (int i = 0; i < data.size(); ++i) {
                     String code = " ";
-                    String description = " - ";
-                    System.out.println(String.valueOf(data.get(i).get("default_code")));
-                    if (!String.valueOf(data.get(i).get("default_code")).equalsIgnoreCase("false")){
+                    if (!String.valueOf(data.get(i).get("default_code")).equalsIgnoreCase("false") || !String.valueOf(data.get(i).get("default_code")).equalsIgnoreCase(" ")){
                         code = "["+String.valueOf(data.get(i).get("default_code")) +"] ";
-                    }
-
-                    if (!String.valueOf(data.get(i).get("description_sale")).equalsIgnoreCase("false"))
-                    {
-                        description = String.valueOf(data.get(i).get("description_sale"));
                     }
 
                     ArrayListStore.add(new Store(
                             String.valueOf(data.get(i).get("id")),
                             String.valueOf(data.get(i).get("image_medium")),
                             code +String.valueOf(data.get(i).get("name")),
-                            String.valueOf(Math.round(Float.parseFloat(data.get(i).get("list_price").toString()))),
-                            description));
+                            String.valueOf(Math.round(Float.parseFloat(data.get(i).get("list_price").toString())))));
                 }
+
             } catch (Exception ex) {
                 System.out.println("Error: " + ex);
             }

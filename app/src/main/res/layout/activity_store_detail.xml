@@ -103,11 +103,11 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:textSize="16sp"
                     android:textStyle="bold" />
+
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/rv_recycler_view_variant_store"
+                    android:id="@+id/rv_recycler_view_store_detail"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20px">
+                    android:layout_height="wrap_content">
 
                 </android.support.v7.widget.RecyclerView>
                 <TextView
@@ -126,9 +126,11 @@
                 android:layout_height="match_parent">
 
                 <Button
-                    android:id="@+id/button2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"/>
+                    android:id="@+id/button_checkout_store"
+                    android:layout_width="55dp"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@drawable/ic_add_shop"
+                    android:drawableTint="@color/colorWhite" />
 
                 <Button
                     android:id="@+id/button"
