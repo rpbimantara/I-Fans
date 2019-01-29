@@ -2,11 +2,20 @@ package com.example.nerita_hendra.i_fans;
 
 public class Variant {
     String id,variant_text,qty;
+    Boolean IsChecked;
 
     public Variant(String id, String variant_text, String qty) {
         this.id = id;
         this.variant_text = variant_text;
         this.qty = qty;
+    }
+
+    public Boolean getChecked() {
+        return IsChecked;
+    }
+
+    public void setChecked(Boolean checked) {
+        IsChecked = checked;
     }
 
     public String getId() {

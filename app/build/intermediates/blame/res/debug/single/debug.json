@@ -2020,6 +2020,10 @@
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-xxhdpi\\ic_time.png"
     },
     {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_checkout.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_checkout.xml"
+    },
+    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_abc_expanded_menu_layout.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\911fe154fc35e73ee7675eed9fdfa041\\res\\layout\\abc_expanded_menu_layout.xml"
     },

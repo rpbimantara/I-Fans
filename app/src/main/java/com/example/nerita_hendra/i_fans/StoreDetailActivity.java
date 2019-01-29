@@ -1,7 +1,10 @@
 package com.example.nerita_hendra.i_fans;
 
+import android.content.Context;
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,13 +12,19 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -28,6 +37,8 @@ public class StoreDetailActivity extends AppCompatActivity {
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
     AdapterStoreVariant adapter;
+    Context context;
+    Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +46,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_store_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_store_toolbar);
         setSupportActionBar(toolbar);
+        context = this;
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         txtNamaBarang = findViewById(R.id.textView_nama_barang);
@@ -47,6 +59,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         sharedPrefManager = new SharedPrefManager(this);
+        gson = new Gson();
         imageStore = findViewById(R.id.store_imageView);
         txtNamaBarang.setText(getIntent().getExtras().get("nama").toString());
         txtHargaBarang.setText(getIntent().getExtras().get("harga").toString());
@@ -54,42 +67,100 @@ public class StoreDetailActivity extends AppCompatActivity {
         btn_checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try{
-                    OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-
-                    Object[] param = {new Object[]{
-                            new Object[]{"partner_id", "=", 10},
-                            new Object[]{"state", "=", "draft"}}};
-                    List<HashMap<String, Object>> data = oc.search_read("sale.order", param, "id", "name");
-
-                    if (data.size() > 0){
-                        for (int i = 0; i < data.size(); ++i) {
-                            AddOrderLine(Integer.valueOf(data.get(i).get("id").toString()), Integer.valueOf(getIntent().getExtras().get("id").toString()));
-                        }
-                    }
-                    System.out.println("Num. of customers: " + data.size() + "\n");
-                } catch (Exception ex) {
-                    System.out.println("Error Checkout Button : " + ex);
-                }
+                new AddToCartTask().execute();
             }
         });
     }
 
-public String AddOrderLine(final Integer order_id, final Integer product_id){
+    public class AddToCartTask extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            AddToCart();
+            return null;
+        }
+    }
+
+    public void AddToCart (){
         try{
             OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
-            @SuppressWarnings("unchecked")
-            Integer idC = oc.create("sale.order.line", new HashMap() {{
-                put("order_id", order_id );
-                put("product_id", product_id);
-            }});
-            System.out.println(idC.toString());
-        }catch (Exception ex) {
-            System.out.println("Error Add order line : " + ex);
+            Object[] param = {new Object[]{
+                    new Object[]{"partner_id", "=", sharedPrefManager.getSpIdPartner()},
+                    new Object[]{"state", "=", "draft"}}};
+            List<HashMap<String, Object>> data = oc.search_read("sale.order", param, "id", "name");
+
+            if (data.size() > 0){
+
+                for (int i = 0; i < data.size(); ++i) {
+                    String jsonString = sharedPrefManager.getSpReturnFromRv();
+                    String[] listItem = gson.fromJson(jsonString, String[].class);
+                    if (listItem.length < 1) {
+                        Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        String report = "";
+                        int count = 0;
+                        for (int j=0; j<listItem.length;j++){
+                            report = AddOrderLineToDB(sharedPrefManager.getSpIdPartner(), Integer.valueOf(listItem[j]));
+                            if (report.equalsIgnoreCase("true")){
+                                count++;
+                            }else{
+                                Toast.makeText(context, "Failed Adding To Cart on Item : " +String.valueOf(count), Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                        }
+                        if (report.equalsIgnoreCase("true")){
+                            Toast.makeText(context, "Added To Cart!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }
+            }else {
+                try{
+                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                    final String Currentdatetime = sdf.format(new Date());
+                    Log.w("ASDASDAS",Currentdatetime);
+                    @SuppressWarnings("unchecked")
+                    Integer idC = oc.create("sale.order", new HashMap() {{
+                        put("partner_id", sharedPrefManager.getSpIdPartner() );
+                        put("date_order", Currentdatetime);
+                    }});
+                   AddToCart();
+                }catch (Exception ex) {
+                    System.out.println("Failed Add Sale Order : " + ex);
+                }
+            }
+        } catch (Exception ex) {
+            System.out.println("Error Checkout Button : " + ex);
         }
-        return null;
-}
+    }
+
+    public String AddOrderLineToDB(final Integer order_id, final Integer product_id){
+            boolean IsAdded=false;
+            try{
+                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+
+                @SuppressWarnings("unchecked")
+                Integer idC = oc.create("sale.order.line", new HashMap() {{
+                    put("order_id", order_id );
+                    put("product_id", product_id);
+                }});
+                System.out.println(idC.toString());
+                IsAdded = true;
+            }catch (Exception ex) {
+                IsAdded=false;
+                System.out.println("Error Add order line : " + ex);
+            }
+            return String.valueOf(IsAdded);
+    }
     public class StoreDetailTask extends AsyncTask<Void,Void,String[]>{
         @Override
         protected void onPreExecute() {

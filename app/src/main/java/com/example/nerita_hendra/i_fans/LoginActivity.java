@@ -81,6 +81,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public String[] CheckActiveUser(String user, String pass){
         String id_user = "";
+        String id_partner = "";
         String id_club = "";
         String nama_club = "";
         String reg_id = "";
@@ -91,7 +92,8 @@ public class LoginActivity extends AppCompatActivity {
                     new Object[]{"login", "=", user},
                     new Object[]{"active", "=", true}}};
 
-            List<HashMap<String, Object>> data = oc.search_read("res.users", param, "id","club_id","fcm_reg_ids");
+            List<HashMap<String, Object>> data = oc.search_read("res.users", param, "id","partner_id","club_id","fcm_reg_ids");
+
             nama_club = data.get(0).get("club_id").toString();
             reg_id = data.get(0).get("fcm_reg_ids").toString();
             Object[] paramClub = {new Object[]{
@@ -99,7 +101,6 @@ public class LoginActivity extends AppCompatActivity {
             List<HashMap<String, Object>> dataClub = oc.search_read("persebaya.club", paramClub, "id");
             id_user = data.get(0).get("id").toString();
             id_club = dataClub.get(0).get("id").toString();
-            Log.e(LoginActivity.class.getSimpleName(),id_user+id_club+nama_club+reg_id);
         } catch (Exception ex) {
             System.out.println("Error Check User Activity: " + ex);
         }

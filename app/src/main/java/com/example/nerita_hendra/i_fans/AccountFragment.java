@@ -207,6 +207,7 @@ public class AccountFragment extends Fragment {
                 List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id","name","jeniskelamin","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas");
 
                 for (int i = 0; i < data.size(); ++i) {
+                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_PARTNER, Integer.valueOf(data.get(i).get("id").toString()));
                     dataPartner.add(String.valueOf(data.get(i).get("name")));
                     dataPartner.add(String.valueOf(data.get(i).get("id")));
                     dataPartner.add(String.valueOf(data.get(i).get("nik")));
