@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -31,7 +33,7 @@ import java.util.List;
 public class StoreDetailActivity extends AppCompatActivity {
     TextView txtNamaBarang,txtHargaBarang,txtDeskripsi;
     SharedPrefManager sharedPrefManager;
-    Button btn_checkout;
+    Button btn_checkout,btn_buy_now;
     ImageView imageStore;
     ArrayList<Variant> ArrayListVariant;
     RecyclerView rv;
@@ -53,6 +55,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         txtHargaBarang = findViewById(R.id.textView_harga_barang);
         txtDeskripsi = findViewById(R.id.textView_deskripsi);
         btn_checkout = findViewById(R.id.button_checkout_store);
+        btn_buy_now = findViewById(R.id.button_buy_now_store);
         rv = findViewById(R.id.rv_recycler_view_store_detail);
         llm = new LinearLayoutManager(this);
         adapter = new AdapterStoreVariant(ArrayListVariant);
@@ -70,6 +73,19 @@ public class StoreDetailActivity extends AppCompatActivity {
                 new AddToCartTask().execute();
             }
         });
+
+        btn_buy_now.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+
+                Object[] param = {new Object[]{}};
+                Object[] fields = {new Object[]{}};
+
+                Object[] idW = oc.call("sale.order", "action_invoice_create", 0, 15, param, fields);
+//                System.out.println(idW.toString());
+            }
+        });
     }
 
     public class AddToCartTask extends AsyncTask<Void,Void,Void>{
@@ -85,61 +101,79 @@ public class StoreDetailActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            AddToCart();
+            try{
+                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+
+                Object[] param = {new Object[]{
+                        new Object[]{"partner_id", "=", sharedPrefManager.getSpIdPartner()},
+                        new Object[]{"state", "=", "draft"}}};
+                List<HashMap<String, Object>> data = oc.search_read("sale.order", param, "id", "name");
+
+                if (data.size() > 0){
+                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        @Override
+                        public void run() {
+                            AddToCart( );
+                        }
+                    });
+                }else {
+                    try{
+                        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                        final String Currentdatetime = sdf.format(new Date());
+
+                        @SuppressWarnings("unchecked")
+                        Integer idC = oc.create("sale.order", new HashMap() {{
+                            put("partner_id", sharedPrefManager.getSpIdPartner() );
+                            put("date_order", Currentdatetime);
+                        }});
+                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                            @Override
+                            public void run() {
+                                AddToCart( );
+                            }
+                        });
+                    }catch (Exception ex) {
+                        System.out.println("Failed Add Sale Order : " + ex);
+                    }
+                }
+            } catch (Exception ex) {
+                System.out.println("Error Checkout Button : " + ex);
+            }
             return null;
         }
     }
 
     public void AddToCart (){
-        try{
-            OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+        OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
-            Object[] param = {new Object[]{
-                    new Object[]{"partner_id", "=", sharedPrefManager.getSpIdPartner()},
-                    new Object[]{"state", "=", "draft"}}};
-            List<HashMap<String, Object>> data = oc.search_read("sale.order", param, "id", "name");
+        Object[] param = {new Object[]{
+                new Object[]{"partner_id", "=", sharedPrefManager.getSpIdPartner()},
+                new Object[]{"state", "=", "draft"}}};
+        List<HashMap<String, Object>> data = oc.search_read("sale.order", param, "id", "name");
 
-            if (data.size() > 0){
-
-                for (int i = 0; i < data.size(); ++i) {
-                    String jsonString = sharedPrefManager.getSpReturnFromRv();
-                    String[] listItem = gson.fromJson(jsonString, String[].class);
-                    if (listItem.length < 1) {
-                        Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
+        for (int i = 0; i < data.size(); ++i) {
+            String jsonString = sharedPrefManager.getSpReturnFromRv();
+            String[] listItem = gson.fromJson(jsonString, String[].class);
+            Integer order_id = Integer.valueOf(data.get(i).get("id").toString());
+            if (listItem.length < 1) {
+                Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
+            }else{
+                String report = "";
+                int count = 0;
+                for (int j=0; j<listItem.length;j++){
+                    report = AddOrderLineToDB(order_id, Integer.valueOf(listItem[j]));
+                    if (report.equalsIgnoreCase("true")){
+                        count++;
                     }else{
-                        String report = "";
-                        int count = 0;
-                        for (int j=0; j<listItem.length;j++){
-                            report = AddOrderLineToDB(sharedPrefManager.getSpIdPartner(), Integer.valueOf(listItem[j]));
-                            if (report.equalsIgnoreCase("true")){
-                                count++;
-                            }else{
-                                Toast.makeText(context, "Failed Adding To Cart on Item : " +String.valueOf(count), Toast.LENGTH_SHORT).show();
-                                break;
-                            }
-                        }
-                        if (report.equalsIgnoreCase("true")){
-                            Toast.makeText(context, "Added To Cart!", Toast.LENGTH_SHORT).show();
-                        }
+                        Toast.makeText(context, "Failed Adding To Cart on Item : " +String.valueOf(count), Toast.LENGTH_SHORT).show();
+//                        break;
                     }
+                    Log.w("Add to cart", report);
                 }
-            }else {
-                try{
-                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-                    final String Currentdatetime = sdf.format(new Date());
-                    Log.w("ASDASDAS",Currentdatetime);
-                    @SuppressWarnings("unchecked")
-                    Integer idC = oc.create("sale.order", new HashMap() {{
-                        put("partner_id", sharedPrefManager.getSpIdPartner() );
-                        put("date_order", Currentdatetime);
-                    }});
-                   AddToCart();
-                }catch (Exception ex) {
-                    System.out.println("Failed Add Sale Order : " + ex);
+                if (report.equalsIgnoreCase("true")){
+                    Toast.makeText(context, "Added To Cart!", Toast.LENGTH_SHORT).show();
                 }
             }
-        } catch (Exception ex) {
-            System.out.println("Error Checkout Button : " + ex);
         }
     }
 

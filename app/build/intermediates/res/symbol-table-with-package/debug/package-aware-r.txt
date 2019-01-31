@@ -959,10 +959,10 @@ int id blocking 0x7f080034
 int id bottom 0x7f080035
 int id btn_login 0x7f080036
 int id btn_signup 0x7f080037
-int id button 0x7f080038
-int id buttonPanel 0x7f080039
-int id button_bid 0x7f08003a
-int id button_bin 0x7f08003b
+int id buttonPanel 0x7f080038
+int id button_bid 0x7f080039
+int id button_bin 0x7f08003a
+int id button_buy_now_store 0x7f08003b
 int id button_checkout_store 0x7f08003c
 int id button_review_order 0x7f08003d
 int id button_save_account 0x7f08003e

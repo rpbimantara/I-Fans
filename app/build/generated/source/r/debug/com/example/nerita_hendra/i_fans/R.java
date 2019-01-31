@@ -4025,10 +4025,10 @@ public final class R {
     public static final int bottom=0x7f080035;
     public static final int btn_login=0x7f080036;
     public static final int btn_signup=0x7f080037;
-    public static final int button=0x7f080038;
-    public static final int buttonPanel=0x7f080039;
-    public static final int button_bid=0x7f08003a;
-    public static final int button_bin=0x7f08003b;
+    public static final int buttonPanel=0x7f080038;
+    public static final int button_bid=0x7f080039;
+    public static final int button_bin=0x7f08003a;
+    public static final int button_buy_now_store=0x7f08003b;
     public static final int button_checkout_store=0x7f08003c;
     public static final int button_review_order=0x7f08003d;
     public static final int button_save_account=0x7f08003e;
