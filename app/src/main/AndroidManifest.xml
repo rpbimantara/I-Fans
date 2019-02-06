@@ -13,7 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="com.google.firebase.API_KEY"
             android:value="AAAAWPlkJyo:APA91bEDEHnaZbu4AJsWMbb13-UO1h1cM3Ii2ddp15pfoXQL4P9rmi4h28vJxI3AgKwDVAf68yJ8siiqk1NGqCXkYgylHjpwV2N8GvoTtv6j2T2sjnBJVGQbvSq93HHaiLUNyxRdXsGt" />
@@ -45,13 +44,15 @@
         <activity android:name=".AccountEditActivity" />
         <activity android:name=".LelangAddActivity" />
         <activity android:name=".StoreAddActivity" />
-        <activity android:name=".TicketDetailActivity"></activity>
-        <service
-            android:name=".MyFirebaseMessagingService">
+        <activity android:name=".TicketDetailActivity" />
+
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <activity android:name=".CheckoutActivity"></activity>
     </application>
 
 </manifest>

@@ -240,6 +240,10 @@
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\fragment_store.xml"
     },
     {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_checkout.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_checkout.xml"
+    },
+    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_abc_textfield_search_default_mtrl_alpha.9.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\911fe154fc35e73ee7675eed9fdfa041\\res\\drawable-xhdpi-v4\\abc_textfield_search_default_mtrl_alpha.9.png"
     },

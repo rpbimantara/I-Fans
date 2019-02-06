@@ -73,7 +73,7 @@ public class SingUpActivity extends AppCompatActivity {
         protected Boolean doInBackground(Void... voids) {
             Boolean cek = true;
             try {
-                OdooConnect oc = OdooConnect.connect("createuser", "createuser");
+                OdooConnect oc = OdooConnect.connect("adminsu", "admin");
                 final String RegId = FirebaseInstanceId.getInstance().getToken();
 
                 @SuppressWarnings("unchecked")

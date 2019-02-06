@@ -79,11 +79,11 @@ public class StoreDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
-                Object[] param = {new Object[]{}};
-                Object[] fields = {new Object[]{}};
+                Object[] param = {new Object[]{
+                        new Object[]{"id", "=", 20}}};
 
-                Object[] idW = oc.call("sale.order", "action_invoice_create", 0, 15, param, fields);
-//                System.out.println(idW.toString());
+                Integer idW = oc.workflow("sale.order", "action_confirm",  param);
+                System.out.println(idW.toString());
             }
         });
     }
@@ -125,6 +125,7 @@ public class StoreDetailActivity extends AppCompatActivity {
                         Integer idC = oc.create("sale.order", new HashMap() {{
                             put("partner_id", sharedPrefManager.getSpIdPartner() );
                             put("date_order", Currentdatetime);
+                            put("state", "draft");
                         }});
                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                             @Override
@@ -168,7 +169,6 @@ public class StoreDetailActivity extends AppCompatActivity {
                         Toast.makeText(context, "Failed Adding To Cart on Item : " +String.valueOf(count), Toast.LENGTH_SHORT).show();
 //                        break;
                     }
-                    Log.w("Add to cart", report);
                 }
                 if (report.equalsIgnoreCase("true")){
                     Toast.makeText(context, "Added To Cart!", Toast.LENGTH_SHORT).show();

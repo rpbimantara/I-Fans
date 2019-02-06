@@ -181,10 +181,9 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(ticketIntent);
                 break;
             case R.id.checkout :
-                //Kode disini akan di eksekusi saat tombol search di klik
-                Toast.makeText(this, "Developer By : Rp.Bimantara", Toast.LENGTH_SHORT).show();
+                Intent CheckoutIntent = new Intent(HomeActivity.this,CheckoutActivity.class);
+                startActivity(CheckoutIntent);
                 break;
-
             case R.id.logout :
                 //Kode disini akan di eksekusi saat tombol search di klik
                 sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);

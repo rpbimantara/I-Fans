@@ -35,6 +35,7 @@ public class AdapterTicket extends RecyclerView.Adapter<AdapterTicket.TicketView
             rgseat = itemView.findViewById(R.id.radioGrup_seat);
         }
     }
+
     @Override
     public void onBindViewHolder(@NonNull final TicketViewHolder holder, final int position) {
         holder.kategoriTiket.setText(dataList.get(position).getKategoriTiket());
