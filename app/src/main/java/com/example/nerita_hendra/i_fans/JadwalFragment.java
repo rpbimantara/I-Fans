@@ -114,8 +114,8 @@ public class JadwalFragment extends Fragment {
     }
 
     public  String waktu(String waktu){
-        int output = Integer.valueOf(waktu.substring(0,1))+7;
-        waktu = String.valueOf(output) + waktu.substring(1,4);
+        int output = Integer.valueOf(waktu.substring(0,1));
+        waktu = String.valueOf(output) + waktu.substring(1,5);
         return waktu;
     }
 
@@ -147,7 +147,7 @@ public class JadwalFragment extends Fragment {
 
                 for (int i = 0; i < dataJadwal.size(); ++i) {
                     String tgl = tanggal(dataJadwal.get(i).get("tgl_main").toString().substring(0,10));
-                    String waktu = waktu(dataJadwal.get(i).get("tgl_main").toString().substring(12,16)) + " "+ "WIB";
+                    String waktu = waktu(dataJadwal.get(i).get("tgl_main").toString().substring(11,17)) + " "+ "WIB";
                     if (dataJadwal.get(i).get("home").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
                         Object[] paramclub = {new Object[]{
                                 new Object[]{"nama", "=", dataJadwal.get(i).get("away")}}};

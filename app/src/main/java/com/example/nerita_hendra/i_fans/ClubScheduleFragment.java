@@ -68,7 +68,7 @@ public class ClubScheduleFragment extends Fragment {
     }
 
     public  String waktu(String waktu){
-        int output = Integer.valueOf(waktu.substring(0,1))+7;
+        int output = Integer.valueOf(waktu.substring(0,1));
         waktu = String.valueOf(output) + waktu.substring(1,4);
         return waktu;
     }

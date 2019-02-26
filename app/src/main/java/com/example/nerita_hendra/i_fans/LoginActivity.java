@@ -104,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
         } catch (Exception ex) {
             System.out.println("Error Check User Activity: " + ex);
         }
-        Log.e("Warning error!!!!",id_club +id_user+nama_club+id_partner);
+
         return new String [] {id_user,id_club,nama_club,reg_id} ;
     }
 

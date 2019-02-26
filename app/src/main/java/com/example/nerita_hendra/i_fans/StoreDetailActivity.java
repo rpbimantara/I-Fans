@@ -82,7 +82,7 @@ public class StoreDetailActivity extends AppCompatActivity {
                 Object[] param = {new Object[]{
                         new Object[]{"id", "=", 20}}};
 
-                Integer idW = oc.workflow("sale.order", "action_confirm",  param);
+                Boolean idW = oc.workflow("sale.order", "action_confirm",  param);
                 System.out.println(idW.toString());
             }
         });
