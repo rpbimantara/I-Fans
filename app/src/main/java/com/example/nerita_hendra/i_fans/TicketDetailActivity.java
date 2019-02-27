@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
@@ -35,6 +36,10 @@ public class TicketDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ticket_detail);
+        Toolbar toolbar = findViewById(R.id.detail_tickt_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         txtNamatiket = (TextView) findViewById(R.id.txt_nama_ticket);
         txtTanggaltiket = (TextView) findViewById(R.id.txt_tgl_ticket);
         txtWaktutiket = (TextView) findViewById(R.id.txt_waktu_ticket);

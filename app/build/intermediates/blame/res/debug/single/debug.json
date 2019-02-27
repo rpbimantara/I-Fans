@@ -12,6 +12,10 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-27.1.1.aar\\911fe154fc35e73ee7675eed9fdfa041\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_match_detail.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_match_detail.xml"
+    },
+    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark_focused.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-1\\files-1.1\\play-services-base-16.0.1.aar\\cce611bcf124c06c765b822e33dc6c9a\\res\\drawable\\common_google_signin_btn_text_dark_focused.xml"
     },

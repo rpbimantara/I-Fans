@@ -44,7 +44,9 @@
         <activity android:name=".AccountEditActivity" />
         <activity android:name=".LelangAddActivity" />
         <activity android:name=".StoreAddActivity" />
-        <activity android:name=".TicketDetailActivity" />
+        <activity
+            android:name=".TicketDetailActivity"
+            android:parentActivityName=".MainActivity" />
 
         <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
@@ -52,7 +54,12 @@
             </intent-filter>
         </service>
 
-        <activity android:name=".CheckoutActivity"></activity>
+        <activity
+            android:name=".CheckoutActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".MatchDetailActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

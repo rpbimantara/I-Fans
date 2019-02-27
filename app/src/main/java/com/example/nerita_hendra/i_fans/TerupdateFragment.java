@@ -21,6 +21,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,6 +53,11 @@ public class TerupdateFragment extends Fragment {
     SwipeRefreshLayout swiper;
     TextView liganow,tglnow,stadionnow,tgllast,tglnext,teamHome,teamAway,teamNext,stadionNext,skornow,homelast,awaylast;
     ImageView homeImage,awayImage,nextImage,nextStatus,homeImageLast,awayImageLast;
+    LinearLayout lnNow;
+    RelativeLayout rlLast,rlNext;
+    int id_jadwal_now = 0;
+    int id_jadwal_last = 0;
+    int id_jadwal_next = 0;
 
     public TerupdateFragment() {
         // Required empty public constructor
@@ -63,6 +70,9 @@ public class TerupdateFragment extends Fragment {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_terupdate, container, false);
         rv = rootView.findViewById(R.id.rv_recycler_view_hot_news);
+        lnNow = rootView.findViewById(R.id.linearLayout_now);
+        rlLast = rootView.findViewById(R.id.RL_last);
+        rlNext = rootView.findViewById(R.id.RL_next);
         liganow = rootView.findViewById(R.id.textView_namaligaterupdate);
         tglnow = rootView.findViewById(R.id.textView_tglharini);
         stadionnow = rootView.findViewById(R.id.textView_stadionharini);
@@ -140,6 +150,31 @@ public class TerupdateFragment extends Fragment {
 
             }
         });
+        lnNow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),MatchDetailActivity.class);
+                intent.putExtra("id_jadwal",id_jadwal_now);
+                startActivity(intent);
+            }
+        });
+        rlNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),MatchDetailActivity.class);
+                intent.putExtra("id_jadwal",id_jadwal_next);
+                startActivity(intent);
+            }
+        });
+
+        rlLast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(),MatchDetailActivity.class);
+                intent.putExtra("id_jadwal",id_jadwal_last);
+                startActivity(intent);
+            }
+        });
         new TerupdateTask().execute();
         new MatchTask().execute();
         return rootView;
@@ -179,6 +214,7 @@ public class TerupdateFragment extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             skornow.setText(s);
+            swiper.setRefreshing(false);
             super.onPostExecute(s);
         }
 
@@ -200,7 +236,6 @@ public class TerupdateFragment extends Fragment {
         protected void onPostExecute(String[] s) {
             homelast.setText(s[0]);
             awaylast.setText(s[1]);
-            swiper.setRefreshing(false);
         }
 
         @Override
@@ -254,6 +289,7 @@ public class TerupdateFragment extends Fragment {
                     }
                     Log.e("Terupdate datematch : ", String.valueOf(counter));
                     new SkorTask().execute(Integer.valueOf(ArrayListJadwal.get(counter).getJadwal_id()));
+                    id_jadwal_now = Integer.valueOf(ArrayListJadwal.get(counter).getJadwal_id());
                     if (counter == 0){
                         tgllast.setText(ArrayListJadwal.get(counter).getTglmain());
 //                        new LastMatchTask().execute(Integer.valueOf(counter));
@@ -271,12 +307,14 @@ public class TerupdateFragment extends Fragment {
                         stadionNext.setText(ArrayListJadwal.get(counter+1).getNamastadion());
                         nextImage.setImageBitmap(StringToBitMap(ArrayListJadwal.get(counter+1).getFototeam()));
                         nextStatus.setImageResource(ArrayListJadwal.get(counter+1).getStatusimage());
+                        id_jadwal_next = Integer.valueOf(ArrayListJadwal.get(counter+1).getJadwal_id());
                     }else{
                         tglnext.setText(ArrayListJadwal.get(counter).getTglmain());
                         teamNext.setText(ArrayListJadwal.get(counter).getNamateam());
                         stadionNext.setText(ArrayListJadwal.get(counter).getNamastadion());
                         nextImage.setImageBitmap(StringToBitMap(ArrayListJadwal.get(counter).getFototeam()));
                         nextStatus.setImageResource(ArrayListJadwal.get(counter).getStatusimage());
+                        id_jadwal_next = Integer.valueOf(ArrayListJadwal.get(counter).getJadwal_id());
                     }
 
                 } catch (ParseException e) {

@@ -55,7 +55,9 @@
         <activity android:name="com.example.nerita_hendra.i_fans.AccountEditActivity" />
         <activity android:name="com.example.nerita_hendra.i_fans.LelangAddActivity" />
         <activity android:name="com.example.nerita_hendra.i_fans.StoreAddActivity" />
-        <activity android:name="com.example.nerita_hendra.i_fans.TicketDetailActivity" />
+        <activity
+            android:name="com.example.nerita_hendra.i_fans.TicketDetailActivity"
+            android:parentActivityName="com.example.nerita_hendra.i_fans.MainActivity" />
 
         <service android:name="com.example.nerita_hendra.i_fans.MyFirebaseMessagingService" >
             <intent-filter>
@@ -63,7 +65,12 @@
             </intent-filter>
         </service>
 
-        <activity android:name="com.example.nerita_hendra.i_fans.CheckoutActivity" />
+        <activity
+            android:name="com.example.nerita_hendra.i_fans.CheckoutActivity"
+            android:parentActivityName="com.example.nerita_hendra.i_fans.MainActivity" />
+        <activity
+            android:name="com.example.nerita_hendra.i_fans.MatchDetailActivity"
+            android:parentActivityName="com.example.nerita_hendra.i_fans.MainActivity" />
         <!--
              FirebaseMessagingService performs security checks at runtime,
              no need for explicit permissions despite exported="true"
