@@ -32,65 +32,74 @@ public class BeritaFragment extends Fragment {
         // Required empty public constructor
     }
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
+//        setRetainInstance(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_berita,container, false);
-        // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager_berita);
-        setupViewPager(viewPager);
-        // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabs_berita);
+        Adapter adapter = new Adapter(getChildFragmentManager());
+        ViewPager viewPager = view.findViewById(R.id.viewpager_berita);
+        TabLayout tabs = view.findViewById(R.id.tabs_berita);
+        viewPager.setAdapter(adapter);
         tabs.setupWithViewPager(viewPager);
-
 
         return view;
     }
 
     // Add Fragments to Tabs
-    private void setupViewPager(ViewPager viewPager) {
-
-        Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new ListBeritaFragment(), "Today");
-        adapter.addFragment(new JadwalFragment(), "Schedule");
-        adapter.addFragment(new KlasemenFragment(), "Standings");
-        viewPager.setAdapter(adapter);
-
-    }
+//    private void setupViewPager(ViewPager viewPager) {
+//
+//        Adapter adapter = new Adapter(getChildFragmentManager());
+//        adapter.addFragment(new ListBeritaFragment(), "Today");
+//        adapter.addFragment(new JadwalFragment(), "Schedule");
+//        adapter.addFragment(new KlasemenFragment(), "Standings");
+//        viewPager.setAdapter(adapter);
+//
+//    }
 
     static class Adapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
+        private int NUM_ITEMS = 3;
 
-        public Adapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
+        public Adapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
         }
 
         @Override
         public int getCount() {
-            return mFragmentList.size();
+            return NUM_ITEMS;
         }
 
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return ListBeritaFragment.newInstance();
+                case 1:
+                    return JadwalFragment.newInstance();
+                case 2:
+                    return KlasemenFragment.newInstance();
+                default:
+                    return ListBeritaFragment.newInstance();
+            }
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            switch (position) {
+                case 0:
+                    return "Today";
+                case 1:
+                    return "Schedule";
+                case 2:
+                    return "Standings";
+                default:
+                    return "Today";
+            }
         }
     }
 

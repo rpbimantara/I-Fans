@@ -21,10 +21,11 @@ import java.util.List;
  */
 public class HomeFragment extends Fragment {
 
-    public static HomeFragment newInstance(){
+    public static HomeFragment newInstance() {
         HomeFragment frag = new HomeFragment();
         return frag;
     }
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -32,62 +33,62 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setRetainInstance(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home,container, false);
-        // Setting ViewPager for each Tabs
-        ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager_home);
-        setupViewPager(viewPager);
-        // Set Tabs inside Toolbar
-        TabLayout tabs = (TabLayout) view.findViewById(R.id.tabs_home);
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        Adapter adapter = new Adapter(getChildFragmentManager());
+        ViewPager viewPager = view.findViewById(R.id.viewpager_home);
+        TabLayout tabs = view.findViewById(R.id.tabs_home);
+        viewPager.setAdapter(adapter);
         tabs.setupWithViewPager(viewPager);
 
 
         return view;
     }
 
-    // Add Fragments to Tabs
-    private void setupViewPager(ViewPager viewPager) {
+    public class Adapter extends FragmentPagerAdapter {
+        private int NUM_ITEMS = 3;
 
-        Adapter adapter = new Adapter(getChildFragmentManager());
-        adapter.addFragment(new TerupdateFragment(), "Update");
-        adapter.addFragment(new LiveFragment(), "Live");
-        adapter.addFragment(new TeamFragment(), "Team");
-        viewPager.setAdapter(adapter);
-
-    }
-
-    static class Adapter extends FragmentPagerAdapter {
-        private final List<Fragment> mFragmentList = new ArrayList<>();
-        private final List<String> mFragmentTitleList = new ArrayList<>();
-
-        public Adapter(FragmentManager manager) {
-            super(manager);
-        }
-
-        @Override
-        public Fragment getItem(int position) {
-            return mFragmentList.get(position);
+        public Adapter(FragmentManager fragmentManager) {
+            super(fragmentManager);
         }
 
         @Override
         public int getCount() {
-            return mFragmentList.size();
+            return NUM_ITEMS;
         }
 
-        public void addFragment(Fragment fragment, String title) {
-            mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return TerupdateFragment.newInstance();
+                case 1:
+                    return LiveFragment.newInstance();
+                case 2:
+                    return TeamFragment.newInstance();
+                default:
+                    return TeamFragment.newInstance();
+            }
         }
 
         @Override
         public CharSequence getPageTitle(int position) {
-            return mFragmentTitleList.get(position);
+            switch (position) {
+                case 0:
+                    return "Update";
+                case 1:
+                    return "Live";
+                case 2:
+                    return "Team";
+                default:
+                    return "Update";
+            }
         }
     }
 

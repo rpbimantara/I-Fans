@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +26,7 @@ public class TeamFragment extends Fragment {
     ArrayList<Team> ArrayListTeam;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
-    View rootView;
+    private View rootView;
     RecyclerView rv;
     ProgressDialog progressDialog;
     AdapterTeam adapter;
@@ -35,26 +36,40 @@ public class TeamFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
+
+    public static TeamFragment newInstance() {
+        Bundle args = new Bundle();
+        TeamFragment fragment = new TeamFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_team, container, false);
-        rv = rootView.findViewById(R.id.rv_recycler_view_team);
-        swiper = rootView.findViewById(R.id.swiperefresh_team);
-        sharedPrefManager = new SharedPrefManager(getActivity());
-        progressDialog = new ProgressDialog(getActivity());
-        adapter = new AdapterTeam(ArrayListTeam);
-        rv.setAdapter(adapter);
-        rv.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                new TeamTask().execute();
-            }
-        });
-        new TeamTask().execute();
+        if (rootView == null){
+            rootView = inflater.inflate(R.layout.fragment_team, container, false);
+            rv = rootView.findViewById(R.id.rv_recycler_view_team);
+            swiper = rootView.findViewById(R.id.swiperefresh_team);
+            sharedPrefManager = new SharedPrefManager(getActivity());
+            progressDialog = new ProgressDialog(getActivity());
+            adapter = new AdapterTeam(ArrayListTeam);
+            rv.setAdapter(adapter);
+            rv.setLayoutManager(new GridLayoutManager(getActivity(),2));
+            swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    new TeamTask().execute();
+                }
+            });
+            new TeamTask().execute();
+        }
         return rootView;
     }
 
@@ -81,7 +96,7 @@ public class TeamFragment extends Fragment {
                 OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
                 Object[] param = {new Object[]{
-                        new Object[]{"department_id", "=", 2}}};
+                        new Object[]{"club_id", "=", 75}}};
 
                 List<HashMap<String, Object>> data = oc.search_read("hr.employee", param, "id","image","name", "job_id","status_pemain");
 
@@ -95,7 +110,7 @@ public class TeamFragment extends Fragment {
                     ));
                 }
             } catch (Exception ex) {
-                System.out.println("Error: " + ex);
+                System.out.println("Error Team Fragment: " + ex);
             }
             return null;
         }

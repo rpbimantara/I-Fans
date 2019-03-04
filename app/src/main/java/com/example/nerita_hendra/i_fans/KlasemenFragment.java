@@ -38,6 +38,12 @@ public class KlasemenFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static KlasemenFragment newInstance() {
+        Bundle args = new Bundle();
+        KlasemenFragment fragment = new KlasemenFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -45,6 +45,12 @@ public class JadwalFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static JadwalFragment newInstance() {
+        Bundle args = new Bundle();
+        JadwalFragment fragment = new JadwalFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

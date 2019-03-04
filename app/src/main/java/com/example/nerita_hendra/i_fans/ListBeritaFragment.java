@@ -50,6 +50,12 @@ public class ListBeritaFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    public static ListBeritaFragment newInstance() {
+        Bundle args = new Bundle();
+        ListBeritaFragment fragment = new ListBeritaFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
