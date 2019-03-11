@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -18,6 +19,14 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 
 /**
@@ -34,6 +43,7 @@ public class ClubStandingFragment extends Fragment {
     RecyclerView.LayoutManager llm;
     SwipeRefreshLayout swiper;
     AdapterKlasemen adapter;
+    OdooClient client;
 
     public ClubStandingFragment() {
         // Required empty public constructor
@@ -104,60 +114,65 @@ public class ClubStandingFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            adapter = new AdapterKlasemen(ArrayListKlasemen);
-            rv.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListKlasemen =  new ArrayList<>();
-            Integer color = getResources().getColor(R.color.colorWhite);
-            try {
-                OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
 
-                Object[] param = {new Object[]{
-                        new Object[]{"liga_id", "=", "1"}}};
+                            OArguments arguments = new OArguments();
+                            arguments.addNULL();
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.liga.klasemen", param, "id","club_id","club_id.foto_club", "play","win","draw","lose","gm","gk","point");
-                ArrayListKlasemen.add(new Klasemen(
-                        String.valueOf("No."),
-                        String.valueOf("Logo"),
-                        String.valueOf("Club"),
-                        String.valueOf("P"),
-                        String.valueOf("Win"),
-                        String.valueOf("Draw"),
-                        String.valueOf("Lose"),
-                        String.valueOf("+/-"),
-                        String.valueOf("Pts"),
-                        color));
-                for (int i = 0; i < data.size(); ++i) {
-                    Object[] paramclub = {new Object[]{
-                            new Object[]{"nama", "=", data.get(i).get("club_id")}}};
+                            client.call_kw("persebaya.liga", "klasemen", arguments, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // response
+                                    OdooRecord[] Records = result.getRecords();
+                                    Integer color = getResources().getColor(R.color.colorWhite);
 
-                    List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-                    for (int c = 0; c < dataclub.size(); ++c) {
-                        if (data.get(i).get("club_id").toString().equalsIgnoreCase(getActivity().getIntent().getStringExtra("nama"))){
-                            color = getResources().getColor(R.color.colorYellow);
-                        }else{
-                            color = getResources().getColor(R.color.colorWhite);
+                                    ArrayListKlasemen.add(new Klasemen(
+                                            String.valueOf("No."),
+                                            String.valueOf("Logo"),
+                                            String.valueOf("Club"),
+                                            String.valueOf("P"),
+                                            String.valueOf("+/-"),
+                                            String.valueOf("Pts"),
+                                            color));
+                                    int i = 1;
+                                    Log.w("asdads",String.valueOf(Records.length));
+                                    for (final OdooRecord record : Records) {
+                                        if (record.getString("nama_club").equalsIgnoreCase(getActivity().getIntent().getStringExtra("nama"))){
+                                            color = getResources().getColor(R.color.colorYellow);
+                                        }else{
+                                            color = getResources().getColor(R.color.colorWhite);
+                                        }
+                                        ArrayListKlasemen.add(new Klasemen(
+                                                String.valueOf(i),
+                                                record.getString("foto_club"),
+                                                record.getString("nama_club"),
+                                                String.valueOf(record.getInt("play")),
+                                                String.valueOf(record.getInt("selisih_gol")),
+                                                String.valueOf(record.getInt("point")),
+                                                color));
+                                        i++;
+                                    }
+                                    adapter = new AdapterKlasemen(ArrayListKlasemen);
+                                    rv.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
                         }
-                        ArrayListKlasemen.add(new Klasemen(
-                                String.valueOf(i+1),
-                                String.valueOf(dataclub.get(c).get("foto_club")),
-                                String.valueOf(data.get(i).get("club_id")),
-                                String.valueOf(data.get(i).get("play")),
-                                String.valueOf(data.get(i).get("win")),
-                                String.valueOf(data.get(i).get("draw")),
-                                String.valueOf(data.get(i).get("lose")),
-                                String.valueOf(data.get(i).get("gm")),
-                                String.valueOf( data.get(i).get("point")),color));
-                    }
-                }
-            } catch (Exception ex) {
-                System.out.println("Error Klasemen Fragment: " + ex);
-            }
+                    })
+                    .build();
             return null;
         }
     }

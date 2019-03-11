@@ -17,6 +17,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.OdooErrorException;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,6 +42,7 @@ public class TeamFragment extends Fragment {
     ProgressDialog progressDialog;
     AdapterTeam adapter;
     SwipeRefreshLayout swiper;
+    OdooClient client;
 
     public TeamFragment() {
         // Required empty public constructor
@@ -82,9 +94,6 @@ public class TeamFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            adapter = new AdapterTeam(ArrayListTeam);
-            rv.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
             super.onPostExecute(aVoid);
         }
@@ -92,26 +101,44 @@ public class TeamFragment extends Fragment {
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListTeam = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            ODomain domain = new ODomain();
+                            domain.add("club_id", "=", sharedPrefManager.getSpIdClub());
 
-                Object[] param = {new Object[]{
-                        new Object[]{"club_id", "=", 75}}};
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id","image","name", "job_id","status_pemain");
 
-                List<HashMap<String, Object>> data = oc.search_read("hr.employee", param, "id","image","name", "job_id","status_pemain");
+                            int offset = 0;
+                            int limit = 80;
 
-                for (int i = 0; i < data.size(); ++i) {
-                    ArrayListTeam.add(new Team(
-                            data.get(i).get("name").toString(),
-                            data.get(i).get("image").toString(),
-                            data.get(i).get("status_pemain").toString(),
-                            data.get(i).get("job_id").toString(),
-                            ""
-                    ));
-                }
-            } catch (Exception ex) {
-                System.out.println("Error Team Fragment: " + ex);
-            }
+                            String sorting = "id DESC";
+
+                            client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        ArrayListTeam.add(new Team(
+                                                record.getString("name"),
+                                                record.getString("image"),
+                                                record.getString("status_pemain"),
+                                                record.getString("job_id"),
+                                                ""
+                                        ));
+                                    }
+                                    adapter = new AdapterTeam(ArrayListTeam);
+                                    rv.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    }).build();
             return null;
         }
     }

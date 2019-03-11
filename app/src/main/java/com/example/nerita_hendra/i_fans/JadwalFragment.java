@@ -56,56 +56,59 @@ public class JadwalFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
-        rv =  rootView.findViewById(R.id.rv_recycler_view_jadwal);
-        swiper = rootView.findViewById(R.id.swiperefresh_jadwal);
-        llm = new LinearLayoutManager(getActivity());
-        adapter = new AdapterJadwal(ArrayListJadwal);
-        rv.setAdapter(adapter );
-        rv.setLayoutManager(llm);
-        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
+        if (rootView == null) {
+            rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
+            rv = rootView.findViewById(R.id.rv_recycler_view_jadwal);
+            swiper = rootView.findViewById(R.id.swiperefresh_jadwal);
+            llm = new LinearLayoutManager(getActivity());
+            adapter = new AdapterJadwal(ArrayListJadwal);
+            rv.setAdapter(adapter);
+            rv.setLayoutManager(llm);
+            swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
 
-                new JadwalTask().execute();
-            }
-        });
-        rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-
-            GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
-
-                @Override public boolean onSingleTapUp(MotionEvent motionEvent) {
-
-                    return true;
+                    new JadwalTask().execute();
                 }
-
             });
+            rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+                GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
 
-                if(ChildView != null && gestureDetector.onTouchEvent(e)) {
+                    @Override
+                    public boolean onSingleTapUp(MotionEvent motionEvent) {
 
-                    RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                    Intent intent = new Intent(getActivity(),ClubDetailActivity.class);
-                    intent.putExtra("nama",ArrayListJadwal.get(RecyclerViewItemPosition).getNamateam());
-                    startActivity(intent);
+                        return true;
+                    }
+
+                });
+
+                @Override
+                public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                    View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+
+                    if (ChildView != null && gestureDetector.onTouchEvent(e)) {
+
+                        RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+                        Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
+                        intent.putExtra("nama", ArrayListJadwal.get(RecyclerViewItemPosition).getNamateam());
+                        startActivity(intent);
+                    }
+                    return false;
                 }
-                return false;
-            }
 
-            @Override
-            public void onTouchEvent(RecyclerView rv, MotionEvent e) {
-            }
+                @Override
+                public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+                }
 
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+                @Override
+                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
-            }
-        });
-        sharedPrefManager = new SharedPrefManager(getActivity());
-        new JadwalTask().execute();
+                }
+            });
+            sharedPrefManager = new SharedPrefManager(getActivity());
+            new JadwalTask().execute();
+        }
         return rootView;
     }
 

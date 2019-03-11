@@ -14,14 +14,28 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.OdooUser;
+import oogbox.api.odoo.client.AuthError;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.OdooErrorException;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.listeners.AuthenticateListener;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText txtUsername,txtPassword;
 
     private TextView _singupLink;
+    OdooClient client;
     String uname = "";
     String pass = "";
     SharedPrefManager sharedPrefManager;
@@ -56,10 +70,10 @@ public class LoginActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                 }else{
                     new LoginTask().execute();
+
                 }
             }
         });
-
         if (sharedPrefManager.getSPSudahLogin()){
             startActivity(new Intent(LoginActivity.this, HomeActivity.class)
                     .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
@@ -67,46 +81,38 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    public Boolean login(String user, String pass){
-        Boolean ocT = false;
-        try {
+    AuthenticateListener loginCallback = new AuthenticateListener() {
+        @Override
+        public void onLoginSuccess(final OdooUser user) {
+            List<Integer> ids = Arrays.asList(user.uid);
+            List<String> fields = Arrays.asList("club_id","fcm_reg_ids");
 
-             ocT = OdooConnect.testConnection( user, pass);
+            client.read("res.users", ids, fields, new IOdooResponse() {
+                @Override
+                public void onResult(OdooResult result) {
+                    OdooRecord[] records = result.getRecords();
 
-        } catch (Exception ex) {
-            System.out.println("Error1: " + ex);
+                    for(OdooRecord record: records) {
+                        Log.v("Name:", String.valueOf(record.getInt("club_id")));
+                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_USER, user.uid);
+                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_CLUB, record.getInt("club_id"));
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_CLUB, record.getString("club_id"));
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_REG_ID, record.getString("fcm_reg_ids"));
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_USER, user.username);
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_PASSWORD_USER, pass);
+                        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
+                    }
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class)
+                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                }
+            });
         }
-        return ocT;
-    }
-
-    public String[] CheckActiveUser(String user, String pass){
-        String id_user = "";
-        String id_partner = "";
-        String id_club = "";
-        String nama_club = "";
-        String reg_id = "";
-        try {
-            OdooConnect  oc = OdooConnect.connect(user, pass);
-
-            Object[] param = {new Object[]{
-                    new Object[]{"login", "=", user},
-                    new Object[]{"active", "=", true}}};
-
-            List<HashMap<String, Object>> data = oc.search_read("res.users", param, "id","partner_id","club_id","fcm_reg_ids");
-
-            nama_club = data.get(0).get("club_id").toString();
-            reg_id = data.get(0).get("fcm_reg_ids").toString();
-            Object[] paramClub = {new Object[]{
-                    new Object[]{"nama", "=",  data.get(0).get("club_id").toString()}}};
-            List<HashMap<String, Object>> dataClub = oc.search_read("persebaya.club", paramClub, "id");
-            id_user = data.get(0).get("id").toString();
-            id_club = dataClub.get(0).get("id").toString();
-        } catch (Exception ex) {
-            System.out.println("Error Check User Activity: " + ex);
+        @Override
+        public void onLoginFail(AuthError error) {
+            Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
         }
+    };
 
-        return new String [] {id_user,id_club,nama_club,reg_id} ;
-    }
 
     public class LoginTask extends AsyncTask<Void,Void,Void>{
 
@@ -129,21 +135,18 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            Boolean checkLogin =  login(uname,pass);
-            if (checkLogin == true){
-                String result[] = CheckActiveUser(uname,pass);
-                sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_USER, Integer.valueOf(result[0]));
-                sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_CLUB, Integer.valueOf(result[1]));
-                sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_CLUB, result[2]);
-                sharedPrefManager.saveSPString(SharedPrefManager.SP_REG_ID, result[3]);
-                sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_USER, uname);
-                sharedPrefManager.saveSPString(SharedPrefManager.SP_PASSWORD_USER, pass);
-                sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, true);
-                startActivity(new Intent(LoginActivity.this, HomeActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-            }else{
-                Toast.makeText(LoginActivity.this,"Segera aktifkan akun anda!",Toast.LENGTH_LONG).show();
-            }
+            client = new OdooClient.Builder(getApplicationContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
+                            client.authenticate(uname,pass, sharedPrefManager.getSP_db(), loginCallback);
+                        }
+                    })
+                    .build();
             return null;
         }
     }

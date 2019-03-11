@@ -7,11 +7,23 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
+
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 public class CheckoutActivity extends AppCompatActivity {
     ArrayList<Checkout> ArrayListCheckout;
@@ -20,6 +32,7 @@ public class CheckoutActivity extends AppCompatActivity {
     RecyclerView.LayoutManager llm;
     SwipeRefreshLayout swiper;
     AdapterCheckout adapter;
+    OdooClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,67 +62,51 @@ public class CheckoutActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            adapter = new AdapterCheckout(ArrayListCheckout);
-            rv.setAdapter(adapter );
-            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListCheckout = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getBaseContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
 
-                Object[] param = {new Object[]{
-                        new Object[]{"partner_id", "=", sharedPrefManager.getSpIdPartner()},
-                        new Object[]{"state", "=", "draft"}}};
-                List<HashMap<String, Object>> data = oc.search_read("sale.order", param, "id");
+                            OArguments arguments = new OArguments();
+                            arguments.add(sharedPrefManager.getSpIdPartner());
 
-                Object[] paramBarang = {new Object[]{
-                        new Object[]{"order_id", "=",Integer.valueOf(data.get(0).get("id").toString())}}};
+                            client.call_kw("sale.order.line", "get_checkout_list", arguments, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // response
+                                    OdooRecord[] Records = result.getRecords();
 
-                List<HashMap<String, Object>> dataBarang = oc.search_read("sale.order.line", paramBarang, "id","product_id","product_uom_qty","price_unit");
-
-                for (int i = 0; i < dataBarang.size(); ++i) {
-                    String[] barang = getProduct(dataBarang.get(i).get("product_id").toString());
-                    String harga = String.valueOf(Math.round(Float.parseFloat(dataBarang.get(i).get("price_unit").toString())));
-                    String qty = String.valueOf(Math.round(Float.parseFloat(dataBarang.get(i).get("product_uom_qty").toString())));
-                    ArrayListCheckout.add(new Checkout(
-                            barang[0],
-                            dataBarang.get(i).get("product_id").toString(),
-                            harga,
-                            qty,
-                            barang[1],
-                            barang[2]
-                    ));
-                }
-
-            }catch (Exception ex){
-                System.out.println("Error Checkout Activity : " + ex);
-            }
+                                    for (final OdooRecord record : Records) {
+                                        ArrayListCheckout.add(new Checkout(
+                                                String.valueOf(record.getInt("id")),
+                                                record.getString("nama"),
+                                                String.valueOf(Math.round(record.getFloat("harga"))),
+                                                String.valueOf(record.getInt("qty")),
+                                                record.getString("image"),
+                                                String.valueOf(record.getInt("stock"))
+                                                        ));
+                                    }
+                                    adapter = new AdapterCheckout(ArrayListCheckout);
+                                    rv.setAdapter(adapter );
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    })
+                    .build();
             return null;
         }
     }
 
-    public String[] getProduct(String product_name){
-        String Id ="";
-        String image="";
-        String qty_available="";
-        try{
-            OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-
-            Object[] param = {new Object[]{
-                    new Object[]{"display_name", "=", product_name}}};
-            List<HashMap<String, Object>> data = oc.search_read("product.product", param, "id","image_medium","qty_available");
-            Id = data.get(0).get("id").toString();
-            image = data.get(0).get("image_medium").toString();
-            qty_available = String.valueOf(Math.round(Float.parseFloat(data.get(0).get("qty_available").toString())));
-        }catch (Exception ex){
-            System.out.println("Error get PRoduct"+ex);
-        }
-
-        return new String[] {Id,image,qty_available};
-    }
 
 }

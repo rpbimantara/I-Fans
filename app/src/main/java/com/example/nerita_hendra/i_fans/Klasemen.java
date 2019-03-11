@@ -4,14 +4,11 @@ public class Klasemen {
     private String txtNoUrut, txtFotoClub,txtTeamKlasemen, txtPlayKlasemen,txtWin,txtDraw,txtLose, txtSelisihGol,txtPoint;
     private Integer txtLayoutColor;
 
-    public Klasemen(String txtNoUrut, String txtFotoClub, String txtTeamKlasemen, String txtPlayKlasemen, String txtWin,String txtDraw,String txtLose, String txtSelisihGol, String txtPoint, Integer txtLayoutColor) {
+    public Klasemen(String txtNoUrut, String txtFotoClub, String txtTeamKlasemen, String txtPlayKlasemen, String txtSelisihGol, String txtPoint, Integer txtLayoutColor) {
         this.txtNoUrut = txtNoUrut;
         this.txtFotoClub = txtFotoClub;
         this.txtTeamKlasemen = txtTeamKlasemen;
         this.txtPlayKlasemen = txtPlayKlasemen;
-        this.txtWin = txtWin;
-        this.txtDraw = txtDraw;
-        this.txtLose = txtLose;
         this.txtSelisihGol = txtSelisihGol;
         this.txtPoint = txtPoint;
         this.txtLayoutColor = txtLayoutColor;

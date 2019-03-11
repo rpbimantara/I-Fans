@@ -25,6 +25,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 import static android.app.Activity.RESULT_OK;
 
 
@@ -38,6 +48,7 @@ public class AccountFragment extends Fragment {
     FloatingActionButton fabImage;
     private Bitmap currentImage;
     Integer IdPartner;
+    OdooClient client;
 
     public static AccountFragment newInstance(){
         AccountFragment fragment = new AccountFragment();
@@ -77,15 +88,10 @@ public class AccountFragment extends Fragment {
                 startActivityForResult(photoPickerIntent, 1);
             }
         });
-        new  AccountTask().execute();
+        getData();
         return view;
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        new AccountTask().execute();
-    }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -103,6 +109,81 @@ public class AccountFragment extends Fragment {
             }
 
         }
+    }
+
+    public void getData(){
+        client = new OdooClient.Builder(getContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        // Success connection
+
+                        ODomain domain = new ODomain();
+                        domain.add("user_ids", "=", sharedPrefManager.getSpIdUser());
+
+                        OdooFields fields = new OdooFields();
+                        fields.addAll("id","name","jeniskelamin","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas");
+
+                        int offset = 0;
+                        int limit = 80;
+
+                        String sorting = "id DESC";
+
+                        client.searchRead("res.partner", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                OdooRecord[] records = result.getRecords();
+                                for (OdooRecord record : records) {
+                                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_PARTNER, record.getInt("id"));
+                                    txtName.setText(nullChecker(record.getString("name")));
+                                    txtid.setText(nullChecker(String.valueOf(Math.round(record.getFloat("id")))));
+                                    if(record.getString("nik")== "false"){
+                                        txtNIK.setText("NIK");
+                                    }else{
+                                        txtNIK.setText(record.getString("nik"));
+                                    }
+                                    if(record.getString("jeniskelamin")== "false"){
+                                        txtJeniskelamin.setText("Gender");
+                                    }else{
+                                        txtJeniskelamin.setText(record.getString("jeniskelamin"));
+                                    }
+                                    if(record.getString("street")== "false"){
+                                        txtAlamat.setText("Address");
+                                    }else{
+                                        txtAlamat.setText(record.getString("street"));
+                                    }
+                                    if(record.getString("tgl_lahir")== "false"){
+                                        txtTTL.setText("Birthday");
+                                    }else{
+                                        txtTTL.setText(tanggal(record.getString("tgl_lahir")));
+                                    }
+                                    if(record.getString("email")== "false"){
+                                        txtemail.setText("E-mail");
+                                    }else{
+                                        txtemail.setText(record.getString("email"));
+                                    }
+                                    if(record.getString("phone")== "false"){
+                                        txtTelephone.setText("Phone");
+                                    }else{
+                                        txtTelephone.setText(record.getString("phone"));
+                                    }
+                                    if(record.getString("komunitas")== "false"){
+                                        txtKomunitas.setText("Community");
+                                    }else{
+                                        txtKomunitas.setText(record.getString("komunitas"));
+                                    }
+                                    txtKoin.setText(String.valueOf(Math.round(record.getFloat("saldo"))));
+                                    imageUser.setImageBitmap(StringToBitMap(record.getString("image")));
+                                    IdPartner = Integer.valueOf(record.getInt("id"));
+                                }
+                            }
+                        });
+                    }
+                })
+                .build();
     }
 
     @Override
@@ -153,78 +234,40 @@ public class AccountFragment extends Fragment {
         @Override
         protected void onPostExecute(List result) {
             super.onPostExecute(result);
-            txtName.setText(nullChecker(result.get(0).toString()));
-            txtid.setText(nullChecker(result.get(1).toString()));
-            if(result.get(2).toString()== "false"){
-                txtNIK.setText("NIK");
-            }else{
-                txtNIK.setText(result.get(2).toString());
-            }
-            if(result.get(3).toString()== "false"){
-                txtJeniskelamin.setText("Gender");
-            }else{
-                txtJeniskelamin.setText(result.get(3).toString());
-            }
-            if(result.get(4).toString()== "false"){
-                txtAlamat.setText("Address");
-            }else{
-                txtAlamat.setText(result.get(4).toString());
-            }
-            if(result.get(5).toString()== "false"){
-                txtTTL.setText("Birthday");
-            }else{
-                txtTTL.setText(tanggal(result.get(5).toString()));
-            }
-            if(result.get(6).toString()== "false"){
-                txtemail.setText("E-mail");
-            }else{
-                txtemail.setText(result.get(6).toString());
-            }
-            if(result.get(7).toString()== "false"){
-                txtTelephone.setText("Phone");
-            }else{
-                txtTelephone.setText(result.get(7).toString());
-            }
-            if(result.get(8).toString()== "false"){
-                txtKomunitas.setText("Community");
-            }else{
-                txtKomunitas.setText(result.get(8).toString());
-            }
-            txtKoin.setText(result.get(9).toString());
-            imageUser.setImageBitmap(StringToBitMap(result.get(10).toString()));
-            IdPartner = Integer.valueOf(result.get(11).toString());
+
         }
 
         @Override
         protected List doInBackground(Void... voids) {
-            List<String> dataPartner = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+           final List<String> dataPartner = new ArrayList<>();
 
-                Object[] param = {new Object[]{
-                        new Object[]{"user_ids", "=",sharedPrefManager.getSpIdUser()}}};
-
-                List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id","name","jeniskelamin","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas");
-
-                for (int i = 0; i < data.size(); ++i) {
-                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_PARTNER, Integer.valueOf(data.get(i).get("id").toString()));
-                    dataPartner.add(String.valueOf(data.get(i).get("name")));
-                    dataPartner.add(String.valueOf(data.get(i).get("id")));
-                    dataPartner.add(String.valueOf(data.get(i).get("nik")));
-                    dataPartner.add(String.valueOf(data.get(i).get("jeniskelamin")));
-                    dataPartner.add(String.valueOf(data.get(i).get("street")));
-                    dataPartner.add(String.valueOf(data.get(i).get("tgl_lahir")));
-                    dataPartner.add(String.valueOf(data.get(i).get("email")));
-                    dataPartner.add(String.valueOf(data.get(i).get("phone")));
-                    dataPartner.add(String.valueOf(data.get(i).get("komunitas")));
-                    dataPartner.add(String.valueOf(data.get(i).get("saldo")));
-                    dataPartner.add(String.valueOf(data.get(i).get("image")));
-                    dataPartner.add(String.valueOf(data.get(i).get("id")));
-                }
-
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex);
-            }
+//            try {
+//                OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+//
+//                Object[] param = {new Object[]{
+//                        new Object[]{"user_ids", "=",sharedPrefManager.getSpIdUser()}}};
+//
+//                List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id","name","jeniskelamin","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas");
+//
+//                for (int i = 0; i < data.size(); ++i) {
+//                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_PARTNER, Integer.valueOf(data.get(i).get("id").toString()));
+//                    dataPartner.add(String.valueOf(data.get(i).get("name")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("id")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("nik")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("jeniskelamin")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("street")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("tgl_lahir")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("email")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("phone")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("komunitas")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("saldo")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("image")));
+//                    dataPartner.add(String.valueOf(data.get(i).get("id")));
+//                }
+//
+//            } catch (Exception ex) {
+//                System.out.println("Error: " + ex);
+//            }
             return dataPartner;
         }
     }

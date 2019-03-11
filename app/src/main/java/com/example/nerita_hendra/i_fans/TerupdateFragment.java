@@ -30,10 +30,21 @@ import java.io.ByteArrayOutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 
 /**
@@ -42,7 +53,8 @@ import java.util.Locale;
 public class TerupdateFragment extends Fragment {
 
     ArrayList<Terupdate> ArrayListTerupdate;
-    ArrayList<Jadwal> ArrayListJadwal;
+    ArrayList<Jadwal> ArrayListJadwalHome;
+    ArrayList<Jadwal> ArrayListJadwalAway;
     int RecyclerViewItemPosition;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
@@ -58,6 +70,7 @@ public class TerupdateFragment extends Fragment {
     int id_jadwal_now = 0;
     int id_jadwal_last = 0;
     int id_jadwal_next = 0;
+    OdooClient client;
 
     public TerupdateFragment() {
         // Required empty public constructor
@@ -206,12 +219,6 @@ public class TerupdateFragment extends Fragment {
         return tgl;
     }
 
-    public String waktu(String waktu) {
-        int output = Integer.valueOf(waktu.substring(0, 1));
-        waktu = String.valueOf(output) + waktu.substring(1, 4);
-        return waktu;
-    }
-
     public Bitmap StringToBitMap(String encodedString) {
         try {
             byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
@@ -227,228 +234,94 @@ public class TerupdateFragment extends Fragment {
         return ((param == "null") || (param == "false") ? "0" : param);
     }
 
-    public class SkorTask extends AsyncTask<Integer, Void, String> {
-        @Override
-        protected void onPostExecute(String s) {
-            skornow.setText(s);
-            swiper.setRefreshing(false);
-            super.onPostExecute(s);
-        }
-
-        @Override
-        protected String doInBackground(Integer... integers) {
-            OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(), sharedPrefManager.getSpPasswordUser());
-            Object[] param = {new Object[]{
-                    new Object[]{"id", "=", integers}}};
-
-            List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id", "ft_home", "ft_away");
-
-            String result = nullChecker(dataJadwal.get(0).get("ft_home").toString()) + " - " + nullChecker(dataJadwal.get(0).get("ft_away").toString());
-            return result;
-        }
-    }
-
-    public class LastMatchTask extends AsyncTask<Integer, Void, String[]> {
-        @Override
-        protected void onPostExecute(String[] s) {
-            homelast.setText(s[0]);
-            awaylast.setText(s[1]);
-        }
-
-        @Override
-        protected String[] doInBackground(Integer... integers) {
-            OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(), sharedPrefManager.getSpPasswordUser());
-            Object[] param = {new Object[]{
-                    new Object[]{"id", "=", integers}}};
-
-            List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id", "ft_home", "ft_away");
-
-//            Object[] paramclub = {new Object[]{
-//                    new Object[]{"nama", "=", dataJadwal.get(i).get("away")}}};
-//
-//            List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-
-//            String result = nullChecker(dataJadwal.get(0).get("ft_home").toString()) +" - " + nullChecker(dataJadwal.get(0).get("ft_away").toString());
-            return new String[]{dataJadwal.get(0).get("ft_home").toString(), dataJadwal.get(0).get("ft_away").toString()};
-        }
-    }
-
     public class MatchTask extends AsyncTask<Void, Void, String> {
         @Override
         protected void onPostExecute(String aVoid) {
-            try {
-                SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy", Locale.US);
-                int counter = 0;
-                for (int j = 0; j < ArrayListJadwal.size(); ++j) {
-                    Date dateMatch = sdf.parse(ArrayListJadwal.get(j).getTglmain());
-                    Date dateNow = new Date();
-                    if (dateMatch.before(dateNow)) {
-                        tglnow.setText(ArrayListJadwal.get(j).getTglmain());
-                        liganow.setText(ArrayListJadwal.get(j).getNamaliga());
-                        stadionnow.setText(ArrayListJadwal.get(j).getNamastadion());
-                        if (ArrayListJadwal.get(j).getStatusimage() == getContext().getResources().getIdentifier("ic_home", "drawable", getContext().getPackageName())) {
-                            homeImage.setImageBitmap(StringToBitMap(aVoid));
-                            teamHome.setText(sharedPrefManager.getSpNamaClub());
-                            awayImage.setImageBitmap(StringToBitMap(ArrayListJadwal.get(j).getFototeam()));
-                            teamAway.setText(ArrayListJadwal.get(j).getNamateam());
-                        } else {
-                            homeImage.setImageBitmap(StringToBitMap(ArrayListJadwal.get(j).getFototeam()));
-                            teamHome.setText(ArrayListJadwal.get(j).getNamateam());
-                            awayImage.setImageBitmap(StringToBitMap(aVoid));
-                            teamAway.setText(sharedPrefManager.getSpNamaClub());
-                        }
-                        counter = j;
-                    }
-                    if (dateMatch.equals(dateNow)) {
-                        tglnow.setText(ArrayListJadwal.get(j).getTglmain());
-                        counter = j;
-                    }
-                }
-
-                new SkorTask().execute(Integer.valueOf(ArrayListJadwal.get(counter).getJadwal_id()));
-                id_jadwal_now = Integer.valueOf(ArrayListJadwal.get(counter).getJadwal_id());
-                if (counter == 0) {
-                    tgllast.setText(ArrayListJadwal.get(counter).getTglmain());
-//                        new LastMatchTask().execute(Integer.valueOf(counter));
-                } else {
-                    tgllast.setText(ArrayListJadwal.get(counter - 1).getTglmain());
-//                        new LastMatchTask().execute(Integer.valueOf(counter-1));
-                }
-//                    homeImageLast.setImageBitmap(StringToBitMap(ArrayListJadwal.get(counter-1).getFototeam()));
-//                    awayImageLast.setImageBitmap(StringToBitMap(ArrayListJadwal.get(counter-1).getFototeam()));
-//                    homelast.setText("0");
-//                    awaylast.setText("0");
-                if (counter < ArrayListJadwal.size() - 1) {
-                    tglnext.setText(ArrayListJadwal.get(counter + 1).getTglmain());
-                    teamNext.setText(ArrayListJadwal.get(counter + 1).getNamateam());
-                    stadionNext.setText(ArrayListJadwal.get(counter + 1).getNamastadion());
-                    nextImage.setImageBitmap(StringToBitMap(ArrayListJadwal.get(counter + 1).getFototeam()));
-                    nextStatus.setImageResource(ArrayListJadwal.get(counter + 1).getStatusimage());
-                    id_jadwal_next = Integer.valueOf(ArrayListJadwal.get(counter + 1).getJadwal_id());
-                } else {
-                    tglnext.setText(ArrayListJadwal.get(counter).getTglmain());
-                    teamNext.setText(ArrayListJadwal.get(counter).getNamateam());
-                    stadionNext.setText(ArrayListJadwal.get(counter).getNamastadion());
-                    nextImage.setImageBitmap(StringToBitMap(ArrayListJadwal.get(counter).getFototeam()));
-                    nextStatus.setImageResource(ArrayListJadwal.get(counter).getStatusimage());
-                    id_jadwal_next = Integer.valueOf(ArrayListJadwal.get(counter).getJadwal_id());
-                }
-
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
             super.onPostExecute(aVoid);
         }
 
         @Override
         protected String doInBackground(Void... voids) {
-            ArrayListJadwal = new ArrayList<>();
-            String fotoclub = "";
-//            Log.e("ASDASDASDa", String.valueOf( System.nanoTime()));
-            try {
-                long startTime = System.nanoTime();
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(), sharedPrefManager.getSpPasswordUser());
-                Object[] param = {new Object[]{
-                    new Object[]{"durasi", "=", 90},
-                }};
-                List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id", "liga_id", "tgl_main", "home", "away", "stadion_id", "status_jadwal");
-                Log.d("tes", dataJadwal.toString());
-                Object[] paramclubactive = {new Object[]{
-                        new Object[]{"nama", "=", sharedPrefManager.getSpNamaClub()}}};
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
 
-                List<HashMap<String, Object>> clubactive = oc.search_read("persebaya.club", paramclubactive, "foto_club");
-                fotoclub = clubactive.get(0).get("foto_club").toString();
+                            OArguments arguments = new OArguments();
+                            arguments.addNULL();
 
-
-                long endTime = System.nanoTime();
-                long duration = (endTime - startTime);
-                Log.e("ASDASDASDa", String.valueOf(duration));
-                for (int i = 0; i < dataJadwal.size(); ++i) {
-                    String tgl = tanggal(dataJadwal.get(i).get("tgl_main").toString().substring(0, 10));
-                    String waktu = waktu(dataJadwal.get(i).get("tgl_main").toString().substring(11, 17)) + " " + "WIB";
-                    if (dataJadwal.get(i).get("home").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())) {
-                        Object[] paramclub = {new Object[]{
-                                new Object[]{"nama", "=", dataJadwal.get(i).get("away")}}};
-
-                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-                        for (int c = 0; c < dataclub.size(); ++c) {
-                            ArrayListJadwal.add(new Jadwal(
-                                    dataJadwal.get(i).get("away").toString(),
-                                    String.valueOf(dataclub.get(c).get("foto_club")),
-                                    getContext().getResources().getIdentifier("ic_home", "drawable", getContext().getPackageName()),
-                                    dataJadwal.get(i).get("liga_id").toString(),
-                                    tgl,
-                                    dataJadwal.get(i).get("stadion_id").toString()
-                                    , waktu,
-                                    dataJadwal.get(i).get("id").toString(),
-                                    dataJadwal.get(i).get("status_jadwal").toString()));
+                            client.call_kw("persebaya.jadwal", "jadwal_terkini", arguments, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // response
+                                    System.out.println(result.getString("away_now"));
+                                }
+                            });
                         }
-                    } else if (dataJadwal.get(i).get("away").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())) {
-                        Object[] paramclub = {new Object[]{
-                                new Object[]{"nama", "=", dataJadwal.get(i).get("home")}}};
-
-                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-                        for (int c = 0; c < dataclub.size(); ++c) {
-                            ArrayListJadwal.add(new Jadwal(
-                                    dataJadwal.get(i).get("home").toString(),
-                                    String.valueOf(dataclub.get(c).get("foto_club")),
-                                    getContext().getResources().getIdentifier("ic_away", "drawable", getContext().getPackageName()),
-                                    dataJadwal.get(i).get("liga_id").toString(),
-                                    tgl,
-                                    dataJadwal.get(i).get("stadion_id").toString()
-                                    , waktu,
-                                    dataJadwal.get(i).get("id").toString(),
-                                    dataJadwal.get(i).get("status_jadwal").toString()));
-                        }
-                    }
-
-                }
-
-            } catch (Exception ex) {
-                System.out.println("Error Match Task: " + ex);
-            }
-            return fotoclub;
+                    })
+                    .build();
+            return null;
         }
     }
 
     public class TerupdateTask extends AsyncTask<Void, Void, Void> {
         @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-        }
-
-        @Override
         protected void onPostExecute(Void aVoid) {
-            adapter = new AdapterTerupdate(ArrayListTerupdate);
-            rv.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
+            swiper.setRefreshing(false);
+            super.onPostExecute(aVoid);
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListTerupdate = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(), sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
 
-                Object[] param = {new Object[]{
-                        new Object[]{"create_uid", "=", 1}}};
+                            ODomain domain = new ODomain();
+                            domain.add("create_uid", "=", 1);
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.berita", param, "id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
 
-                for (int i = 0; i < data.size(); ++i) {
-                    ArrayListTerupdate.add(new Terupdate(
-                            (Integer) data.get(i).get("id"),
-                            String.valueOf(data.get(i).get("image")),
-                            String.valueOf(data.get(i).get("title")),
-                            String.valueOf(data.get(i).get("kategori_brita_id")),
-                            String.valueOf(data.get(i).get("headline")),
-                            String.valueOf(data.get(i).get("content")),
-                            tanggal(String.valueOf(data.get(i).get("create_date")).substring(0, 10)),
-                            String.valueOf(data.get(i).get("create_uid"))));
-                }
-            } catch (Exception ex) {
-                System.out.println("Error Terupdate TASK: " + ex);
-            }
+                            int offset = 0;
+                            int limit = 5;
+
+                            String sorting = "create_date DESC";
+
+                            client.searchRead("persebaya.berita", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        ArrayListTerupdate.add(new Terupdate(
+                                                record.getInt("id"),
+                                                record.getString("image"),
+                                                record.getString("title"),
+                                                record.getString("kategori_brita_id"),
+                                                record.getString("headline"),
+                                                record.getString("content"),
+                                                tanggal(record.getString("create_date").substring(0, 10)),
+                                                record.getString("create_uid")));
+                                    }
+                                    adapter = new AdapterTerupdate(ArrayListTerupdate);
+                                    rv.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    })
+                    .build();
+
             return null;
         }
     }

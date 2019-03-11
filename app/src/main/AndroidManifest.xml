@@ -41,7 +41,8 @@
             android:parentActivityName=".MainActivity" />
         <activity android:name=".LelangDetailActivity" />
         <activity android:name=".ClubDetailActivity" />
-        <activity android:name=".AccountEditActivity" />
+        <activity android:name=".AccountEditActivity"
+            android:parentActivityName=".MainActivity"/>
         <activity android:name=".LelangAddActivity" />
         <activity android:name=".StoreAddActivity" />
         <activity

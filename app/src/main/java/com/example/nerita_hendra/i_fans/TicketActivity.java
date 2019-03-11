@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -20,6 +21,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 public class TicketActivity extends AppCompatActivity {
 
     ArrayList<TiketList> ArrayListTiketList;
@@ -29,6 +39,7 @@ public class TicketActivity extends AppCompatActivity {
     RecyclerView.LayoutManager llm;
     SwipeRefreshLayout swiper;
     AdapterTiketList adapter;
+    OdooClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,9 +110,6 @@ public class TicketActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            adapter = new AdapterTiketList(ArrayListTiketList);
-            rv.setAdapter(adapter );
-            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
             super.onPostExecute(aVoid);
         }
@@ -109,62 +117,49 @@ public class TicketActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListTiketList = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getBaseContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
+                            ODomain domain = new ODomain();
+                            domain.add("state", "=", "confirm");
 
-                Object[] param = {new Object[]{
-                        new Object[]{"state", "=", "confirm"}}};
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id","image","name", "date_begin","organizer_id","event_type_id");
 
-                List<HashMap<String, Object>> dataTiketList = oc.search_read("event.event", param, "id","image","name", "date_begin","organizer_id","event_type_id");
+                            int offset = 0;
+                            int limit = 80;
 
-                for (int i = 0; i < dataTiketList.size(); ++i) {
-                    ArrayListTiketList.add(new TiketList(
-                            dataTiketList.get(i).get("id").toString(),
-                            dataTiketList.get(i).get("image").toString(),
-                            dataTiketList.get(i).get("name").toString(),
-                            dataTiketList.get(i).get("date_begin").toString(),
-                            dataTiketList.get(i).get("organizer_id").toString(),
-                            dataTiketList.get(i).get("event_type_id").toString()
-                    ));
-                }
-            } catch (Exception ex) {
-                System.out.println("Error Ticket Add data: " + ex);
-            }
-//            try {
-//                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-//
-//                Object[] param = {new Object[]{
-////                        new Object[]{"create_uid", "=", 1},
-//                        new Object[]{"home", "=", sharedPrefManager.getSpNamaClub()},
-//                        new Object[]{"status_jadwal", "!=", "selesai"}}};
-//
-//                List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","liga_id", "tgl_main","home","away","stadion_id","status_jadwal");
-//
-//                for (int i = 0; i < dataJadwal.size(); ++i) {
-//                    String tgl = tanggal(dataJadwal.get(i).get("tgl_main").toString().substring(0,10));
-//                    String waktu = waktu(dataJadwal.get(i).get("tgl_main").toString().substring(12,16)) + " "+ "WIB";
-//                    if (dataJadwal.get(i).get("home").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
-//                        Object[] paramclub = {new Object[]{
-//                                new Object[]{"nama", "=", dataJadwal.get(i).get("away")}}};
-//
-//                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-//                        for (int c = 0; c < dataclub.size(); ++c) {
-//                            ArrayListJadwal.add(new Jadwal(
-//                                    dataJadwal.get(i).get("away").toString(),
-//                                    String.valueOf(dataclub.get(c).get("foto_club")),
-//                                    getResources().getIdentifier("ic_home","drawable",getPackageName()),
-//                                    dataJadwal.get(i).get("liga_id").toString(),
-//                                    tgl,
-//                                    dataJadwal.get(i).get("stadion_id").toString()
-//                                    , waktu,
-//                                    dataJadwal.get(i).get("id").toString(),
-//                                    dataJadwal.get(i).get("status_jadwal").toString()));
-//                        }
-//                    }
-//                }
-//            } catch (Exception ex) {
-//                System.out.println("Error Ticket Add data: " + ex);
-//            }
+                            String sorting = "id ASC";
+
+                            client.searchRead("event.event", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                                            @Override
+                                            public void onResult(OdooResult result) {
+                                                OdooRecord[] records = result.getRecords();
+                                                for(OdooRecord record: records) {
+                                                     ArrayListTiketList.add(new TiketList(
+                                                            String.valueOf(record.getInt("id")),
+                                                            record.getString("image"),
+                                                             record.getString("name"),
+                                                             record.getString("date_begin"),
+                                                             record.getString("organizer_id"),
+                                                             record.getString("event_type_id")
+                                                    ));
+                                                }
+                                                Log.v("adsasdasd",String.valueOf(ArrayListTiketList.size()));
+                                                adapter = new AdapterTiketList(ArrayListTiketList);
+                                                rv.setAdapter(adapter );
+                                                adapter.notifyDataSetChanged();
+                                            }
+                                        });
+
+                        }
+                    })
+                    .build();
             return null;
         }
     }
@@ -177,11 +172,5 @@ public class TicketActivity extends AppCompatActivity {
         }
 
         return tgl;
-    }
-
-    public  String waktu(String waktu){
-        int output = Integer.valueOf(waktu.substring(0,1))+7;
-        waktu = String.valueOf(output) + waktu.substring(1,4);
-        return waktu;
     }
 }

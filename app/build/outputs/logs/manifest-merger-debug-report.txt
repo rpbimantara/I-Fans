@@ -1,85 +1,104 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
-MERGED from [com.android.support:design:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\e5407f683cb2bce728f383ba0916a66a\AndroidManifest.xml:17:1-22:12
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\ad6bb74238a001bd0d2049164cc5dbe5\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\911fe154fc35e73ee7675eed9fdfa041\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\762c1e10474ba0190f38e60aaf57ef8f\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\6bb1458edfe4c908d686a2f8fdc87ebf\AndroidManifest.xml:2:1-11:12
-MERGED from [com.google.firebase:firebase-messaging:17.3.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.3.4.aar\25455f1f5b972a9e900f5e60545c6318\AndroidManifest.xml:17:1-37:12
-MERGED from [com.google.firebase:firebase-core:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.5.aar\3155694e3a47527b7e7c467e72e24731\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:17:1-34:12
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:17:1-55:12
-MERGED from [com.google.android.gms:play-services-measurement-api:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.0.3.aar\b0f88090293cc710e206d4cb27b50291\AndroidManifest.xml:17:1-25:12
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:17:1-40:12
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:17:1-59:12
-MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:2:1-17:12
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\efdbf766e53119d76e2dc9a02a764ac5\AndroidManifest.xml:2:1-10:12
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:17:1-29:12
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\7c115ff9153409f2910abe5b84bce90f\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b5f948c39bdd3616453eef84300cb516\AndroidManifest.xml:17:1-25:12
-MERGED from [com.google.android.gms:play-services-measurement-base:16.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.0.4.aar\44891844f2fa4b9a69028e4e665d9281\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\2021c40c031b3b00111b8d439540c0ef\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\c98958c904e17fcb8fe97fc8bf0ef525\AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9a407322845e7953ca7341b33786fb24\AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\d25ae9e16b82b7b0fb0c20520453cb28\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\a3b9e26136b4f4529aab2958c9b55b28\AndroidManifest.xml:17:1-22:12
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\0ded03b9a0f1c9d3aa6331746353373a\AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\e05dd87d0ad53deabbeecbcc6d7611ad\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\52465e00c7d4460ee54eb00016a03903\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\dece339efb1e6c31544c16fe96b2e3bd\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\96baa81410b8e16dccc540bf80de23dc\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\19f9d1affc745a1b9fe1adfbe5134820\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:transition:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\5071a6dfab1755a8dec4d4f6c06bbc88\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\761a549c070e6e63efb34f7563bd3e77\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\9ac3f424f7e75fbb67f06803f5ea7f6e\AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:exifinterface:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.1.aar\254a2209d5306e08a591345569f7ed4b\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\bca107321e8007eb6a698f81ab229be4\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\b75397361f7b56d295376853e7d98af2\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\53af4cafef3b01fd021877df9fc3d84b\AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\6a63a381ead3318d5943d57495565912\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
+MERGED from [com.android.support:design:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\ac5578c8c245b483f98a35d2a9d1e3ae\AndroidManifest.xml:17:1-24:12
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\3a72b95ad2d109838263b08af1db4853\AndroidManifest.xml:2:1-11:12
+MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:2:1-18:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\2ace65d123379a20149626f6b209c2d4\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\dbf7239a529ef8bde75bebd34ef9243d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\ddb4dcc5047ac10aec5ad586995b98a2\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.4.0.aar\3150b4354622d6770682eb3f9518e1f1\AndroidManifest.xml:17:1-37:12
+MERGED from [com.google.firebase:firebase-core:16.0.7] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.7.aar\266bcc9e429c6016b14aae905a19f4a3\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:17:1-34:12
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:17:1-55:12
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.3.0.aar\c1b8f71263982a1c111e4d8c1c7f1b3f\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:17:1-59:12
+MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:2:1-17:12
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\0b4dbb1e829eb18f1df1b435876c44bd\AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\157f1b40d0c298c6e2197e7974719162\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b6b62404d2b100dbc85b286ee9cf7fe4\AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.3.0.aar\ceb37f505bddb3962a09a0e7ca9a26a5\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\0f512fe78e684d52ec34c6d214dae2a3\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\71e47bb629de7a132f332c791fc3ec9e\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\cb0674004a0b8377ea3e179c3d388e09\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\f277aea85c7f6824cd3c3646efffd837\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\70fdad230f0c151a71a5b0c440eb58a3\AndroidManifest.xml:17:1-22:12
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\7e38047031a3fb4d0cc22589b9801bec\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\81dc4ae0c5fad104cb5be2eaf37921f8\AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\43237409bcf2612bd4f11889a6d55e50\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\41509c1d892a3d4a732783830723563a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\e0f43ce6caa8d061020f26c04f8195ab\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\0d6553037df599f85a892a0a59e36595\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\173c2f2c0b1463a4c405ff40eeba0d22\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\e2de7effe3300220cf5c34605dfc36ad\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\e57e0fff7b501890942ed275f09d4a75\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\1fe93c281204ace57aa7a9bf0998cbea\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\8a7cc32cb703511672f818c05bb348ea\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\e419266a9ac853a92e546e7adb847ab6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\788cedc3a905b1f05941d08bc7829c0a\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d9d0d9a9db2e5ebfa88856a55875f698\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\ef3f2b698c399fe0b6323eb20c27400d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\ad5e57524298fe5dba5a819ee0dd0f6c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\afa35b91f600404711f1d51b5f5d51ca\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\96cd432e758819c506b7ed2cb9805338\AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\743c19fbd9deb77aa4efcd26745ab564\AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\40de4672a8f86f54fe180799db2f0cb6\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:exifinterface:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-28.0.0.aar\d1d2c9270f9e48f40d26d739c5e9e6be\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7ebcf9172e18b0bf03f10fbb18aa2a34\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\d49a06ed282fc828c8a693670e9e73b3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\3b4749a3bb8c6f83734a6360a3d66e0b\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\c25b5723cd6c65eb73b2957af85c242e\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\7e8d4aefbbb7e290de4d20ca95c3ea08\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\28cbe065fda8661fe98ccf5515866585\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\6985ebef5b9d9f2ae83060a3a2b6bd06\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\2ad7ff5b4d81e4e8d3aab62b0cc961c5\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\e73936f345a615c214ecda42615ec8f9\AndroidManifest.xml:17:1-22:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
 	package
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:3:5-47
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-65:12
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-66:12
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:5:5-67
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:23:5-67
+MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:12:5-67
+MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:12:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:6:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:22:5-79
 	android:name
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:6:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
@@ -87,43 +106,55 @@ ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:7:5-76
 	android:name
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:7:22-73
 application
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:9:5-63:19
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\6bb1458edfe4c908d686a2f8fdc87ebf\AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\6bb1458edfe4c908d686a2f8fdc87ebf\AndroidManifest.xml:9:5-20
-MERGED from [com.google.firebase:firebase-messaging:17.3.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.3.4.aar\25455f1f5b972a9e900f5e60545c6318\AndroidManifest.xml:22:5-35:19
-MERGED from [com.google.firebase:firebase-messaging:17.3.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.3.4.aar\25455f1f5b972a9e900f5e60545c6318\AndroidManifest.xml:22:5-35:19
-MERGED from [com.google.firebase:firebase-core:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.5.aar\3155694e3a47527b7e7c467e72e24731\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-core:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.5.aar\3155694e3a47527b7e7c467e72e24731\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:26:5-32:19
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:26:5-32:19
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:28:5-53:19
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:28:5-53:19
-MERGED from [com.google.android.gms:play-services-measurement-api:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.0.3.aar\b0f88090293cc710e206d4cb27b50291\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.android.gms:play-services-measurement-api:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.0.3.aar\b0f88090293cc710e206d4cb27b50291\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:28:5-38:19
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:28:5-38:19
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:28:5-57:19
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:28:5-57:19
-MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:9:5-15:19
-MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:9:5-15:19
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\efdbf766e53119d76e2dc9a02a764ac5\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\efdbf766e53119d76e2dc9a02a764ac5\AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\7c115ff9153409f2910abe5b84bce90f\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\7c115ff9153409f2910abe5b84bce90f\AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b5f948c39bdd3616453eef84300cb516\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b5f948c39bdd3616453eef84300cb516\AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.android.gms:play-services-measurement-base:16.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.0.4.aar\44891844f2fa4b9a69028e4e665d9281\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-measurement-base:16.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.0.4.aar\44891844f2fa4b9a69028e4e665d9281\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\2021c40c031b3b00111b8d439540c0ef\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\2021c40c031b3b00111b8d439540c0ef\AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\c98958c904e17fcb8fe97fc8bf0ef525\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\c98958c904e17fcb8fe97fc8bf0ef525\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9a407322845e7953ca7341b33786fb24\AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9a407322845e7953ca7341b33786fb24\AndroidManifest.xml:22:5-26:19
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\0ded03b9a0f1c9d3aa6331746353373a\AndroidManifest.xml:9:5-20
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\0ded03b9a0f1c9d3aa6331746353373a\AndroidManifest.xml:9:5-20
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:9:5-64:19
+MERGED from [com.android.support:design:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\ac5578c8c245b483f98a35d2a9d1e3ae\AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\ac5578c8c245b483f98a35d2a9d1e3ae\AndroidManifest.xml:22:5-20
+MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:15:5-16:19
+MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:15:5-16:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\ddb4dcc5047ac10aec5ad586995b98a2\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\ddb4dcc5047ac10aec5ad586995b98a2\AndroidManifest.xml:9:5-20
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.4.0.aar\3150b4354622d6770682eb3f9518e1f1\AndroidManifest.xml:22:5-35:19
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.4.0.aar\3150b4354622d6770682eb3f9518e1f1\AndroidManifest.xml:22:5-35:19
+MERGED from [com.google.firebase:firebase-core:16.0.7] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.7.aar\266bcc9e429c6016b14aae905a19f4a3\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-core:16.0.7] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.7.aar\266bcc9e429c6016b14aae905a19f4a3\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:26:5-32:19
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:26:5-32:19
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.3.0.aar\c1b8f71263982a1c111e4d8c1c7f1b3f\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.3.0.aar\c1b8f71263982a1c111e4d8c1c7f1b3f\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:28:5-57:19
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:28:5-57:19
+MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:9:5-15:19
+MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:9:5-15:19
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\0b4dbb1e829eb18f1df1b435876c44bd\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\0b4dbb1e829eb18f1df1b435876c44bd\AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\157f1b40d0c298c6e2197e7974719162\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\157f1b40d0c298c6e2197e7974719162\AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b6b62404d2b100dbc85b286ee9cf7fe4\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b6b62404d2b100dbc85b286ee9cf7fe4\AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.3.0.aar\ceb37f505bddb3962a09a0e7ca9a26a5\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.3.0.aar\ceb37f505bddb3962a09a0e7ca9a26a5\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\0f512fe78e684d52ec34c6d214dae2a3\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\0f512fe78e684d52ec34c6d214dae2a3\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\71e47bb629de7a132f332c791fc3ec9e\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\71e47bb629de7a132f332c791fc3ec9e\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\cb0674004a0b8377ea3e179c3d388e09\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\cb0674004a0b8377ea3e179c3d388e09\AndroidManifest.xml:22:5-26:19
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\7e38047031a3fb4d0cc22589b9801bec\AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\7e38047031a3fb4d0cc22589b9801bec\AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\81dc4ae0c5fad104cb5be2eaf37921f8\AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\81dc4ae0c5fad104cb5be2eaf37921f8\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\96cd432e758819c506b7ed2cb9805338\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\96cd432e758819c506b7ed2cb9805338\AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\743c19fbd9deb77aa4efcd26745ab564\AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\743c19fbd9deb77aa4efcd26745ab564\AndroidManifest.xml:22:5-23:19
+	android:appComponentFactory
+		ADDED from [com.android.support:support-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\96cd432e758819c506b7ed2cb9805338\AndroidManifest.xml:22:18-91
 	android:supportsRtl
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:14:9-35
 	android:label
@@ -199,123 +230,159 @@ ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:43:9-56
 	android:name
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:43:19-53
 activity#com.example.nerita_hendra.i_fans.AccountEditActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:44:9-57
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:44:9-45:57
+	android:parentActivityName
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:45:13-55
 	android:name
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:44:19-54
 activity#com.example.nerita_hendra.i_fans.LelangAddActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:45:9-55
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:46:9-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:45:19-52
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:46:19-52
 activity#com.example.nerita_hendra.i_fans.StoreAddActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:46:9-54
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:47:9-54
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:46:19-51
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:47:19-51
 activity#com.example.nerita_hendra.i_fans.TicketDetailActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:47:9-49:58
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:48:9-50:58
 	android:parentActivityName
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:49:13-55
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:50:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:48:13-49
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:49:13-49
 service#com.example.nerita_hendra.i_fans.MyFirebaseMessagingService
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:51:9-55:19
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:52:9-56:19
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:51:18-60
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:52:18-60
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:52:13-54:29
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:53:13-55:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:53:17-78
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:54:17-78
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:53:25-75
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:54:25-75
 activity#com.example.nerita_hendra.i_fans.CheckoutActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:57:9-59:58
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:58:9-60:58
 	android:parentActivityName
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:59:13-55
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:60:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:58:13-45
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:59:13-45
 activity#com.example.nerita_hendra.i_fans.MatchDetailActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:60:9-62:67
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:61:9-63:67
 	android:parentActivityName
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:62:13-55
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:63:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:61:13-48
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:62:13-48
 uses-sdk
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
-MERGED from [com.android.support:design:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\e5407f683cb2bce728f383ba0916a66a\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:design:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\e5407f683cb2bce728f383ba0916a66a\AndroidManifest.xml:20:5-44
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\ad6bb74238a001bd0d2049164cc5dbe5\AndroidManifest.xml:7:5-9:41
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\ad6bb74238a001bd0d2049164cc5dbe5\AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\911fe154fc35e73ee7675eed9fdfa041\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\911fe154fc35e73ee7675eed9fdfa041\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\762c1e10474ba0190f38e60aaf57ef8f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\762c1e10474ba0190f38e60aaf57ef8f\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\6bb1458edfe4c908d686a2f8fdc87ebf\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.0.2.aar\6bb1458edfe4c908d686a2f8fdc87ebf\AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-messaging:17.3.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.3.4.aar\25455f1f5b972a9e900f5e60545c6318\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-messaging:17.3.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.3.4.aar\25455f1f5b972a9e900f5e60545c6318\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-core:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.5.aar\3155694e3a47527b7e7c467e72e24731\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-core:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.5.aar\3155694e3a47527b7e7c467e72e24731\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-measurement-api:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.0.3.aar\b0f88090293cc710e206d4cb27b50291\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-measurement-api:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.0.3.aar\b0f88090293cc710e206d4cb27b50291\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\efdbf766e53119d76e2dc9a02a764ac5\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\efdbf766e53119d76e2dc9a02a764ac5\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\7c115ff9153409f2910abe5b84bce90f\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\7c115ff9153409f2910abe5b84bce90f\AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b5f948c39bdd3616453eef84300cb516\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b5f948c39bdd3616453eef84300cb516\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-measurement-base:16.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.0.4.aar\44891844f2fa4b9a69028e4e665d9281\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-measurement-base:16.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.0.4.aar\44891844f2fa4b9a69028e4e665d9281\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\2021c40c031b3b00111b8d439540c0ef\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\2021c40c031b3b00111b8d439540c0ef\AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\c98958c904e17fcb8fe97fc8bf0ef525\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\c98958c904e17fcb8fe97fc8bf0ef525\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9a407322845e7953ca7341b33786fb24\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9a407322845e7953ca7341b33786fb24\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\d25ae9e16b82b7b0fb0c20520453cb28\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\d25ae9e16b82b7b0fb0c20520453cb28\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\a3b9e26136b4f4529aab2958c9b55b28\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\a3b9e26136b4f4529aab2958c9b55b28\AndroidManifest.xml:20:5-44
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\0ded03b9a0f1c9d3aa6331746353373a\AndroidManifest.xml:5:5-7:41
-MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\0ded03b9a0f1c9d3aa6331746353373a\AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\e05dd87d0ad53deabbeecbcc6d7611ad\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\e05dd87d0ad53deabbeecbcc6d7611ad\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\52465e00c7d4460ee54eb00016a03903\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\52465e00c7d4460ee54eb00016a03903\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\dece339efb1e6c31544c16fe96b2e3bd\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\dece339efb1e6c31544c16fe96b2e3bd\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\96baa81410b8e16dccc540bf80de23dc\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\96baa81410b8e16dccc540bf80de23dc\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\19f9d1affc745a1b9fe1adfbe5134820\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\19f9d1affc745a1b9fe1adfbe5134820\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\5071a6dfab1755a8dec4d4f6c06bbc88\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\5071a6dfab1755a8dec4d4f6c06bbc88\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\761a549c070e6e63efb34f7563bd3e77\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\761a549c070e6e63efb34f7563bd3e77\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\9ac3f424f7e75fbb67f06803f5ea7f6e\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\9ac3f424f7e75fbb67f06803f5ea7f6e\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:exifinterface:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.1.aar\254a2209d5306e08a591345569f7ed4b\AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:exifinterface:27.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-27.1.1.aar\254a2209d5306e08a591345569f7ed4b\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\bca107321e8007eb6a698f81ab229be4\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\bca107321e8007eb6a698f81ab229be4\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\b75397361f7b56d295376853e7d98af2\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\b75397361f7b56d295376853e7d98af2\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\53af4cafef3b01fd021877df9fc3d84b\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\53af4cafef3b01fd021877df9fc3d84b\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\6a63a381ead3318d5943d57495565912\AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\6a63a381ead3318d5943d57495565912\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\ac5578c8c245b483f98a35d2a9d1e3ae\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\design-28.0.0.aar\ac5578c8c245b483f98a35d2a9d1e3ae\AndroidManifest.xml:20:5-44
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\3a72b95ad2d109838263b08af1db4853\AndroidManifest.xml:7:5-9:41
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\android-image-cropper-2.7.0.aar\3a72b95ad2d109838263b08af1db4853\AndroidManifest.xml:7:5-9:41
+MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:7:5-9:41
+MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\2ace65d123379a20149626f6b209c2d4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\appcompat-v7-28.0.0.aar\2ace65d123379a20149626f6b209c2d4\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\dbf7239a529ef8bde75bebd34ef9243d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cardview-v7-28.0.0.aar\dbf7239a529ef8bde75bebd34ef9243d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\ddb4dcc5047ac10aec5ad586995b98a2\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.3.aar\ddb4dcc5047ac10aec5ad586995b98a2\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.4.0.aar\3150b4354622d6770682eb3f9518e1f1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.4.0.aar\3150b4354622d6770682eb3f9518e1f1\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-core:16.0.7] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.7.aar\266bcc9e429c6016b14aae905a19f4a3\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-core:16.0.7] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-core-16.0.7.aar\266bcc9e429c6016b14aae905a19f4a3\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.3.0.aar\c1b8f71263982a1c111e4d8c1c7f1b3f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-api-16.3.0.aar\c1b8f71263982a1c111e4d8c1c7f1b3f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\0b4dbb1e829eb18f1df1b435876c44bd\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-interop-16.0.1.aar\0b4dbb1e829eb18f1df1b435876c44bd\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\157f1b40d0c298c6e2197e7974719162\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-tasks-16.0.1.aar\157f1b40d0c298c6e2197e7974719162\AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b6b62404d2b100dbc85b286ee9cf7fe4\AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-17.0.1.aar\b6b62404d2b100dbc85b286ee9cf7fe4\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.3.0.aar\ceb37f505bddb3962a09a0e7ca9a26a5\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-measurement-base-16.3.0.aar\ceb37f505bddb3962a09a0e7ca9a26a5\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\0f512fe78e684d52ec34c6d214dae2a3\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-stats-16.0.1.aar\0f512fe78e684d52ec34c6d214dae2a3\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\71e47bb629de7a132f332c791fc3ec9e\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-ads-identifier-16.0.0.aar\71e47bb629de7a132f332c791fc3ec9e\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\cb0674004a0b8377ea3e179c3d388e09\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\cb0674004a0b8377ea3e179c3d388e09\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\f277aea85c7f6824cd3c3646efffd837\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-v4-28.0.0.aar\f277aea85c7f6824cd3c3646efffd837\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\70fdad230f0c151a71a5b0c440eb58a3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-28.0.0.aar\70fdad230f0c151a71a5b0c440eb58a3\AndroidManifest.xml:20:5-44
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\7e38047031a3fb4d0cc22589b9801bec\AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:2.2.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\circleimageview-2.2.0.aar\7e38047031a3fb4d0cc22589b9801bec\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\81dc4ae0c5fad104cb5be2eaf37921f8\AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\volley-1.1.1.aar\81dc4ae0c5fad104cb5be2eaf37921f8\AndroidManifest.xml:7:5-43
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\43237409bcf2612bd4f11889a6d55e50\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-fragment-28.0.0.aar\43237409bcf2612bd4f11889a6d55e50\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\41509c1d892a3d4a732783830723563a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-28.0.0.aar\41509c1d892a3d4a732783830723563a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\e0f43ce6caa8d061020f26c04f8195ab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-ui-28.0.0.aar\e0f43ce6caa8d061020f26c04f8195ab\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\0d6553037df599f85a892a0a59e36595\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-core-utils-28.0.0.aar\0d6553037df599f85a892a0a59e36595\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\173c2f2c0b1463a4c405ff40eeba0d22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-28.0.0.aar\173c2f2c0b1463a4c405ff40eeba0d22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\e2de7effe3300220cf5c34605dfc36ad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\transition-28.0.0.aar\e2de7effe3300220cf5c34605dfc36ad\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\e57e0fff7b501890942ed275f09d4a75\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-media-compat-28.0.0.aar\e57e0fff7b501890942ed275f09d4a75\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\1fe93c281204ace57aa7a9bf0998cbea\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\loader-28.0.0.aar\1fe93c281204ace57aa7a9bf0998cbea\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\8a7cc32cb703511672f818c05bb348ea\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewpager-28.0.0.aar\8a7cc32cb703511672f818c05bb348ea\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\e419266a9ac853a92e546e7adb847ab6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\coordinatorlayout-28.0.0.aar\e419266a9ac853a92e546e7adb847ab6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\788cedc3a905b1f05941d08bc7829c0a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\drawerlayout-28.0.0.aar\788cedc3a905b1f05941d08bc7829c0a\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d9d0d9a9db2e5ebfa88856a55875f698\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\slidingpanelayout-28.0.0.aar\d9d0d9a9db2e5ebfa88856a55875f698\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\ef3f2b698c399fe0b6323eb20c27400d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\customview-28.0.0.aar\ef3f2b698c399fe0b6323eb20c27400d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\ad5e57524298fe5dba5a819ee0dd0f6c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\swiperefreshlayout-28.0.0.aar\ad5e57524298fe5dba5a819ee0dd0f6c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\afa35b91f600404711f1d51b5f5d51ca\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\asynclayoutinflater-28.0.0.aar\afa35b91f600404711f1d51b5f5d51ca\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\96cd432e758819c506b7ed2cb9805338\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\support-compat-28.0.0.aar\96cd432e758819c506b7ed2cb9805338\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\743c19fbd9deb77aa4efcd26745ab564\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\versionedparcelable-28.0.0.aar\743c19fbd9deb77aa4efcd26745ab564\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\40de4672a8f86f54fe180799db2f0cb6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\cursoradapter-28.0.0.aar\40de4672a8f86f54fe180799db2f0cb6\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-28.0.0.aar\d1d2c9270f9e48f40d26d739c5e9e6be\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\exifinterface-28.0.0.aar\d1d2c9270f9e48f40d26d739c5e9e6be\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7ebcf9172e18b0bf03f10fbb18aa2a34\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\7ebcf9172e18b0bf03f10fbb18aa2a34\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\d49a06ed282fc828c8a693670e9e73b3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\documentfile-28.0.0.aar\d49a06ed282fc828c8a693670e9e73b3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\3b4749a3bb8c6f83734a6360a3d66e0b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\localbroadcastmanager-28.0.0.aar\3b4749a3bb8c6f83734a6360a3d66e0b\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\c25b5723cd6c65eb73b2957af85c242e\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\print-28.0.0.aar\c25b5723cd6c65eb73b2957af85c242e\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\7e8d4aefbbb7e290de4d20ca95c3ea08\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.1.aar\7e8d4aefbbb7e290de4d20ca95c3ea08\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\28cbe065fda8661fe98ccf5515866585\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\interpolator-28.0.0.aar\28cbe065fda8661fe98ccf5515866585\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\6985ebef5b9d9f2ae83060a3a2b6bd06\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-1.1.1.aar\6985ebef5b9d9f2ae83060a3a2b6bd06\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\2ad7ff5b4d81e4e8d3aab62b0cc961c5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.1.aar\2ad7ff5b4d81e4e8d3aab62b0cc961c5\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\e73936f345a615c214ecda42615ec8f9\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\runtime-1.1.1.aar\e73936f345a615c214ecda42615ec8f9\AndroidManifest.xml:20:5-44
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 	android:targetSdkVersion
@@ -326,145 +393,149 @@ INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:13:5-79
+	android:name
+		ADDED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\odoo-1.0.4.aar\955e672c43410ad608f7a43ffd805ceb\AndroidManifest.xml:13:22-76
 service#com.google.firebase.messaging.FirebaseMessagingService
-ADDED from [com.google.firebase:firebase-messaging:17.3.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.3.4.aar\25455f1f5b972a9e900f5e60545c6318\AndroidManifest.xml:28:9-34:19
+ADDED from [com.google.firebase:firebase-messaging:17.4.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.4.0.aar\3150b4354622d6770682eb3f9518e1f1\AndroidManifest.xml:28:9-34:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:17.3.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.3.4.aar\25455f1f5b972a9e900f5e60545c6318\AndroidManifest.xml:30:13-36
+		ADDED from [com.google.firebase:firebase-messaging:17.4.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.4.0.aar\3150b4354622d6770682eb3f9518e1f1\AndroidManifest.xml:30:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:17.3.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.3.4.aar\25455f1f5b972a9e900f5e60545c6318\AndroidManifest.xml:29:13-82
+		ADDED from [com.google.firebase:firebase-messaging:17.4.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-messaging-17.4.0.aar\3150b4354622d6770682eb3f9518e1f1\AndroidManifest.xml:29:13-82
 uses-permission#android.permission.WAKE_LOCK
-ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:24:5-68
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:24:5-68
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:24:5-68
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:24:5-68
 	android:name
-		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:24:22-65
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:24:22-65
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:27:9-31:19
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:29:9-35:19
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:27:9-31:19
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:29:9-35:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:31:13-37
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:31:13-37
 	android:name
-		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:27:18-89
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:27:18-89
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
-ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:28:13-30:85
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:28:13-30:85
 	android:value
-		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:30:17-82
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:30:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.3.aar\da8876632cb106bd0bf84e78497d6907\AndroidManifest.xml:29:17-139
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-measurement-connector-impl-17.0.5.aar\c70eab20632424221ec3c941e655f7e9\AndroidManifest.xml:29:17-139
 uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
-ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:26:5-110
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:26:5-110
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:26:5-110
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:26:5-110
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:26:5-110
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:26:5-110
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:26:22-107
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:26:22-107
 receiver#com.google.android.gms.measurement.AppMeasurementReceiver
-ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:29:9-33:20
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:29:9-33:20
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:31:13-35
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:31:13-35
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:32:13-37
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:30:13-85
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:30:13-85
 receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
-ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:34:9-42:20
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:29:9-37:20
-MERGED from [com.google.firebase:firebase-analytics-impl:16.2.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.2.3.aar\e9872065872e0d31dff4c2bed88f6011\AndroidManifest.xml:29:9-37:20
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:34:9-42:20
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:29:9-37:20
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-impl-16.3.0.aar\3757a8c76683da9261c7921613021f89\AndroidManifest.xml:29:9-37:20
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:36:13-35
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:36:13-35
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:37:13-36
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:37:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:38:13-69
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:38:13-69
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:35:13-100
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:35:13-100
 intent-filter#action:name:com.android.vending.INSTALL_REFERRER
-ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:39:13-41:29
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:39:13-41:29
 action#com.android.vending.INSTALL_REFERRER
-ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:40:17-79
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:40:17-79
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:40:25-76
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:40:25-76
 service#com.google.android.gms.measurement.AppMeasurementService
-ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:44:9-47:40
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:44:9-47:40
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:46:13-35
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:46:13-35
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:47:13-37
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:47:13-37
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:45:13-84
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:45:13-84
 service#com.google.android.gms.measurement.AppMeasurementJobService
-ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:48:9-52:72
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:48:9-52:72
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:50:13-35
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:50:13-35
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:51:13-37
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:51:13-37
 	android:permission
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:52:13-69
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:52:13-69
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.0.5] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.0.5.aar\7e40588e20d96e1b3b82d2546652ecf5\AndroidManifest.xml:49:13-87
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-analytics-16.3.0.aar\0a99804023b2c7d90a68d5d4140a0a44\AndroidManifest.xml:49:13-87
 uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:26:5-82
+ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:26:5-82
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:26:22-79
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:26:22-79
 meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
-ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:32:13-34:85
+ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:32:13-34:85
 	android:value
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:34:17-82
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:34:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:33:17-96
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:33:17-96
 receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:37:9-44:20
+ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:37:9-44:20
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:39:13-36
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:39:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:40:13-73
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:40:13-73
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:38:13-78
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:38:13-78
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:41:13-43:29
+ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:41:13-43:29
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:42:17-81
+ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:42:17-81
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:42:25-78
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:42:25-78
 service#com.google.firebase.iid.FirebaseInstanceIdService
-ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:50:9-56:19
+ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:50:9-56:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:52:13-36
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:52:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:51:13-77
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:51:13-77
 intent-filter#action:name:com.google.firebase.INSTANCE_ID_EVENT
-ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:53:13-55:29
+ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:53:13-55:29
 	android:priority
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:53:28-51
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:53:28-51
 action#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:54:17-80
+ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:54:17-80
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.0.4] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.0.4.aar\fd2fbbb80ca6c458e75e5598fc9bd86d\AndroidManifest.xml:54:25-77
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-iid-17.1.0.aar\9cd97df36a3e1b9a9b2e1eaeaf78884f\AndroidManifest.xml:54:25-77
 provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:10:9-14:39
+ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:10:9-14:39
 	android:authorities
-		ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:12:13-72
+		ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:12:13-72
 	android:exported
-		ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:13:13-37
+		ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:13:13-37
 	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:14:13-36
+		ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:14:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\eb8c8351465c30e39e9e6babedc281f1\AndroidManifest.xml:11:13-77
+		ADDED from [com.google.firebase:firebase-common:16.0.3] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\firebase-common-16.0.3.aar\f2b01074d24bc6d806552185fa730029\AndroidManifest.xml:11:13-77
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:23:9-26:75
+ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:23:9-26:75
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:25:13-37
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:25:13-37
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:26:13-72
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:26:13-72
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\cce611bcf124c06c765b822e33dc6c9a\AndroidManifest.xml:24:13-79
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-base-16.0.1.aar\80ecc3f5cfa19b2e3518818138da3386\AndroidManifest.xml:24:13-79
 meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9a407322845e7953ca7341b33786fb24\AndroidManifest.xml:23:9-25:69
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\cb0674004a0b8377ea3e179c3d388e09\AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9a407322845e7953ca7341b33786fb24\AndroidManifest.xml:25:13-66
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\cb0674004a0b8377ea3e179c3d388e09\AndroidManifest.xml:25:13-66
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\9a407322845e7953ca7341b33786fb24\AndroidManifest.xml:24:13-58
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] C:\Users\Why\.gradle\caches\transforms-1\files-1.1\play-services-basement-16.0.1.aar\cb0674004a0b8377ea3e179c3d388e09\AndroidManifest.xml:24:13-58

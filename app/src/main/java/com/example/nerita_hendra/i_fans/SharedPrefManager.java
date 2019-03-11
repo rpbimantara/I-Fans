@@ -15,6 +15,8 @@ public class SharedPrefManager {
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
     public static final String SP_IMAGE_NEWS = "spImageNews";
     public static final String SP_RETURN_FROM_RV = "StringFromRV";
+    public static final String SP_Host_url = "StringURL";
+    public static final String SP_db = "StringDB";
 
 
     SharedPreferences sp;
@@ -78,5 +80,13 @@ public class SharedPrefManager {
 
     public String getSpReturnFromRv() {
         return sp.getString(SP_RETURN_FROM_RV,"");
+    }
+
+    public String getSP_Host_url() {
+        return sp.getString(SP_Host_url,"http://103.133.56.224:8069");
+    }
+
+    public String getSP_db() {
+        return sp.getString(SP_Host_url,"development");
     }
 }
