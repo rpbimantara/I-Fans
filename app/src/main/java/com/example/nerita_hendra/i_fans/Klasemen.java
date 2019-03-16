@@ -2,9 +2,9 @@ package com.example.nerita_hendra.i_fans;
 
 public class Klasemen {
     private String txtNoUrut, txtFotoClub,txtTeamKlasemen, txtPlayKlasemen,txtWin,txtDraw,txtLose, txtSelisihGol,txtPoint;
-    private Integer txtLayoutColor;
+    private Integer txtLayoutColor,id_club;
 
-    public Klasemen(String txtNoUrut, String txtFotoClub, String txtTeamKlasemen, String txtPlayKlasemen, String txtSelisihGol, String txtPoint, Integer txtLayoutColor) {
+    public Klasemen(String txtNoUrut, String txtFotoClub, String txtTeamKlasemen, String txtPlayKlasemen, String txtSelisihGol, String txtPoint, Integer txtLayoutColor,Integer id_club) {
         this.txtNoUrut = txtNoUrut;
         this.txtFotoClub = txtFotoClub;
         this.txtTeamKlasemen = txtTeamKlasemen;
@@ -12,6 +12,7 @@ public class Klasemen {
         this.txtSelisihGol = txtSelisihGol;
         this.txtPoint = txtPoint;
         this.txtLayoutColor = txtLayoutColor;
+        this.id_club = id_club;
     }
 
     public String getTxtWin() {
@@ -92,5 +93,13 @@ public class Klasemen {
 
     public void setTxtLayoutColor(Integer txtLayoutColor) {
         this.txtLayoutColor = txtLayoutColor;
+    }
+
+    public Integer getId_club() {
+        return id_club;
+    }
+
+    public void setId_club(Integer id_club) {
+        this.id_club = id_club;
     }
 }

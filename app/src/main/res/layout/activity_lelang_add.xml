@@ -158,13 +158,24 @@
                         <!--android:tint="@color/colorPrimaryDark"-->
                         <!--android:src="@drawable/ic_email"/>-->
 
-                    <EditText
-                        android:id="@+id/editText_Due_date"
+                    <!--<EditText-->
+                        <!--android:id="@+id/editText_Due_date"-->
+                        <!--android:paddingLeft="20dp"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_vertical"-->
+                        <!--android:inputType="number"-->
+                        <!--android:hint="Due Date"-->
+                        <!--android:textColorHint="@color/colorTrueState"-->
+                        <!--android:textSize="15dp"-->
+                        <!--android:textColor="@color/colorTrueState"-->
+                        <!--android:backgroundTint="@color/colorPrimaryDark"/>-->
+                    <TextView
+                        android:id="@+id/add_due_date"
                         android:paddingLeft="20dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:inputType="number"
                         android:hint="Due Date"
                         android:textColorHint="@color/colorTrueState"
                         android:textSize="15dp"

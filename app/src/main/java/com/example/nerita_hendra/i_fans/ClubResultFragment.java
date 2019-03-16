@@ -14,9 +14,18 @@ import android.view.ViewGroup;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 
 /**
@@ -31,6 +40,7 @@ public class ClubResultFragment extends Fragment {
     RecyclerView.LayoutManager llm;
     SwipeRefreshLayout swiper;
     AdapterJadwal adapter;
+    OdooClient client;
 
     public ClubResultFragment() {
         // Required empty public constructor
@@ -69,8 +79,8 @@ public class ClubResultFragment extends Fragment {
     }
 
     public  String waktu(String waktu){
-        int output = Integer.valueOf(waktu.substring(0,1))+7;
-        waktu = String.valueOf(output) + waktu.substring(1,4);
+        int output = Integer.valueOf(waktu.substring(0,1));
+        waktu = String.valueOf(output) + waktu.substring(1,5);
         return waktu;
     }
 
@@ -82,68 +92,58 @@ public class ClubResultFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            adapter = new AdapterJadwal(ArrayListJadwal);
-            rv.setAdapter(adapter );
-            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListJadwal = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
 
-                Object[] param = {new Object[]{
-                        new Object[]{"create_uid", "=", 1},
-                        new Object[]{"status_jadwal", "=", "selesai"}}};
+                            OArguments arguments = new OArguments();
+                            arguments.add(getActivity().getIntent().getIntExtra("id",0));
+                            arguments.add(Arrays.asList("selesai"));
 
-                List<HashMap<String, Object>> dataJadwal = oc.search_read("persebaya.jadwal", param, "id","liga_id", "tgl_main","home","away","stadion_id","status_jadwal");
-
-
-                for (int i = 0; i < dataJadwal.size(); ++i) {
-                    String tgl = tanggal(dataJadwal.get(i).get("tgl_main").toString().substring(0,10));
-                    String waktu = waktu(dataJadwal.get(i).get("tgl_main").toString().substring(12,16)) + " "+ "WIB";
-                    if (dataJadwal.get(i).get("home").toString().equalsIgnoreCase(getActivity().getIntent().getStringExtra("nama"))){
-                        Object[] paramclub = {new Object[]{
-                                new Object[]{"nama", "=", dataJadwal.get(i).get("away")}}};
-
-                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-                        for (int c = 0; c < dataclub.size(); ++c) {
-                            ArrayListJadwal.add(new Jadwal(
-                                    dataJadwal.get(i).get("away").toString(),
-                                    String.valueOf(dataclub.get(c).get("foto_club")),
-                                    getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName()),
-                                    dataJadwal.get(i).get("liga_id").toString(),
-                                    tgl,
-                                    dataJadwal.get(i).get("stadion_id").toString()
-                                    , waktu,
-                                    dataJadwal.get(i).get("id").toString(),
-                                    dataJadwal.get(i).get("status_jadwal").toString()));
+                            client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // response
+                                    OdooRecord[] Records = result.getRecords();
+                                    for (final OdooRecord record : Records) {
+                                        String tgl = tanggal(record.getString("date").substring(0,10));
+                                        String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
+                                        Integer status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
+                                        if (record.getBoolean("is_home") == false){
+                                            status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
+                                        }else {
+                                            status = getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName());
+                                        }
+                                        ArrayListJadwal.add(new Jadwal(
+                                                record.getString("nama_club"),
+                                                record.getString("foto_club"),
+                                                status,
+                                                record.getString("liga_id"),
+                                                tgl,
+                                                record.getString("stadion")
+                                                , waktu,
+                                                String.valueOf(record.getInt("id")),
+                                                record.getString("status_jadwal")));
+                                    }
+                                    adapter = new AdapterJadwal(ArrayListJadwal);
+                                    rv.setAdapter(adapter );
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
                         }
-                    }else if (dataJadwal.get(i).get("away").toString().equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
-                        Object[] paramclub = {new Object[]{
-                                new Object[]{"nama", "=", dataJadwal.get(i).get("home")}}};
-
-                        List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-                        for (int c = 0; c < dataclub.size(); ++c) {
-                            ArrayListJadwal.add(new Jadwal(
-                                    dataJadwal.get(i).get("home").toString(),
-                                    String.valueOf(dataclub.get(c).get("foto_club")),
-                                    getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName()),
-                                    dataJadwal.get(i).get("liga_id").toString(),
-                                    tgl,
-                                    dataJadwal.get(i).get("stadion_id").toString()
-                                    , waktu,
-                                    dataJadwal.get(i).get("id").toString(),
-                                    dataJadwal.get(i).get("status_jadwal").toString()));
-                        }
-                    }
-
-                }
-            } catch (Exception ex) {
-                System.out.println("Error Jadwal Fragment Add data: " + ex);
-            }
+                    })
+                    .build();
             return null;
         }
     }

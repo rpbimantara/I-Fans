@@ -1,8 +1,8 @@
 <component name="libraryTable">
   <library name="Gradle: com.oogbox.api:odoo:1.0.4@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/odoo-1.0.4.aar/955e672c43410ad608f7a43ffd805ceb/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/odoo-1.0.4.aar/955e672c43410ad608f7a43ffd805ceb/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/odoo-1.0.4.aar/1128786addb6f24341b5b417d25f0ca0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/odoo-1.0.4.aar/1128786addb6f24341b5b417d25f0ca0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

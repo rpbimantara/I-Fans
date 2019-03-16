@@ -32,6 +32,7 @@ import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
@@ -214,61 +215,26 @@ public class AccountFragment extends Fragment {
     public class SaveImageTask extends AsyncTask<Bitmap,Void,Void>{
         @Override
         protected Void doInBackground(final Bitmap... params) {
-            try {
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            OdooValues values = new OdooValues();
+                            values.put("image", getBase64ImageString(params[0]));
 
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-
-                Boolean idW = oc.write("res.users", new Object[]{ sharedPrefManager.getSpIdUser() },
-                        new HashMap() {{
-                            put("image", getBase64ImageString(params[0]));
-                        }});
-
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex);
-            }
+                            client.write("res.users", new Integer[]{sharedPrefManager.getSpIdUser()}, values, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // Success response
+                                    Toast.makeText(getContext(),result.toString(),Toast.LENGTH_LONG).show();
+                                }
+                            });
+                        }
+                    }).build();
             return null;
-        }
-    }
-
-    public class AccountTask extends AsyncTask<Void,Void,List<String>>{
-        @Override
-        protected void onPostExecute(List result) {
-            super.onPostExecute(result);
-
-        }
-
-        @Override
-        protected List doInBackground(Void... voids) {
-           final List<String> dataPartner = new ArrayList<>();
-
-//            try {
-//                OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-//
-//                Object[] param = {new Object[]{
-//                        new Object[]{"user_ids", "=",sharedPrefManager.getSpIdUser()}}};
-//
-//                List<HashMap<String, Object>> data = oc.search_read("res.partner", param, "id","name","jeniskelamin","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas");
-//
-//                for (int i = 0; i < data.size(); ++i) {
-//                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_PARTNER, Integer.valueOf(data.get(i).get("id").toString()));
-//                    dataPartner.add(String.valueOf(data.get(i).get("name")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("id")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("nik")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("jeniskelamin")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("street")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("tgl_lahir")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("email")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("phone")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("komunitas")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("saldo")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("image")));
-//                    dataPartner.add(String.valueOf(data.get(i).get("id")));
-//                }
-//
-//            } catch (Exception ex) {
-//                System.out.println("Error: " + ex);
-//            }
-            return dataPartner;
         }
     }
 

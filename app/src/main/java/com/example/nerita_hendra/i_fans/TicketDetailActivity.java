@@ -10,6 +10,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -17,9 +18,19 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 public class TicketDetailActivity extends AppCompatActivity {
     TextView txtNamatiket,txtTanggaltiket,txtWaktutiket;
@@ -31,6 +42,7 @@ public class TicketDetailActivity extends AppCompatActivity {
     AdapterTicket adapter;
     SharedPrefManager sharedPrefManager;
     ImageView imageTiket;
+    OdooClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,69 +70,92 @@ public class TicketDetailActivity extends AppCompatActivity {
 
             }
         });
-        new TicketDetailTask().execute();
+        new TicketTask().execute();
+        TicketDetail();
     }
 
-   public class TicketDetailTask extends AsyncTask<Void,Void,String[]>{
+    public void TicketDetail(){
+        client = new OdooClient.Builder(getApplicationContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                        List<String> fields = Arrays.asList("id","image","name","jadwal_id","date_begin","date_end","event_ticket_ids","address_id");
+
+                        client.read("event.event", ids, fields, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                OdooRecord[] records = result.getRecords();
+
+                                for(OdooRecord record: records) {
+                                    String tanggal = tanggal(record.getString("date_begin"));
+                                    String time =  waktu(record.getString("date_begin").substring(12,16)) +" WIB ";
+                                    txtNamatiket.setText(record.getString("name"));
+                                    txtTanggaltiket.setText(tanggal);
+                                    txtWaktutiket.setText(time);
+                                    imageTiket.setImageBitmap(StringToBitMap(record.getString("image")));
+                                }
+                            }
+                        });
+                    }
+                }).build();
+    }
+
+   public class TicketTask extends AsyncTask<Void,Void,Void>{
        @Override
        protected void onPreExecute() {
            super.onPreExecute();
        }
 
        @Override
-       protected void onPostExecute(String[] aVoid) {
-           txtNamatiket.setText(aVoid[0]);
-           txtTanggaltiket.setText(aVoid[1]);
-           txtWaktutiket.setText(aVoid[2]);
-           imageTiket.setImageBitmap(StringToBitMap(aVoid[3]));
-           adapter = new AdapterTicket(ArrayListTiket);
-           rv.setAdapter(adapter);
-           adapter.notifyDataSetChanged();
+       protected void onPostExecute(Void aVoid) {
            super.onPostExecute(aVoid);
        }
 
        @Override
-       protected String[] doInBackground(Void... voids) {
+       protected Void doInBackground(Void... voids) {
            ArrayListTiket = new ArrayList<>();
-           String nama = "";
-           String tanggal = "";
-           String time = "";
-           String imageCurrent = "";
-           String location = "";
-           try {
-               OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+           client = new OdooClient.Builder(getApplicationContext())
+                   .setHost(sharedPrefManager.getSP_Host_url())
+                   .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                   .setSynchronizedRequests(false)
+                   .setConnectListener(new OdooConnectListener() {
+                       @Override
+                       public void onConnected(OdooVersion version) {
+                           ODomain domain = new ODomain();
+                           domain.add("event_id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
 
-               Object[] param = {new Object[]{
-                       new Object[]{"id", "=", getIntent().getExtras().get("id")}}};
+                           OdooFields fields = new OdooFields();
+                           fields.addAll("id","name","price","seats_available");
 
-               List<HashMap<String, Object>> data = oc.search_read("event.event", param, "id","image","name","jadwal_id","date_begin","date_end","event_ticket_ids","address_id");
+                           int offset = 0;
+                           int limit = 80;
 
-               for (int i = 0; i < data.size(); ++i) {
-                   nama = data.get(i).get("name").toString();
-                   imageCurrent = data.get(i).get("image").toString();
-                   tanggal = tanggal(data.get(i).get("date_begin").toString());
-                   time =  waktu(data.get(i).get("date_begin").toString().substring(12,16)) +" WIB ";
-                   System.out.println(data.get(i).get("address_id").toString());
-               }
+                           String sorting = "id ASC";
 
-               Object[] paramTiket = {new Object[]{
-                       new Object[]{"event_id", "=",  Integer.valueOf(getIntent().getExtras().get("id").toString())}}};
-
-               List<HashMap<String, Object>> dataTiket = oc.search_read("event.event.ticket", paramTiket, "id","name","price","seats_available");
-
-               for (int t = 0; t < dataTiket.size(); ++t) {
-                   ArrayListTiket.add(new Tiket(
-                           dataTiket.get(t).get("id").toString(),
-                           dataTiket.get(t).get("name").toString(),
-                          String.valueOf(Math.round(Float.parseFloat(dataTiket.get(t).get("price").toString()))),
-                           "0",
-                           dataTiket.get(t).get("seats_available").toString()));
-               }
-
-           } catch (Exception ex) {
-               System.out.println("Error Ticket Add data: " + ex);
-           }
-           return new String [] {nama,tanggal,time,imageCurrent};
+                           client.searchRead("event.event.ticket", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                               @Override
+                               public void onResult(OdooResult result) {
+                                   OdooRecord[] records = result.getRecords();
+                                   for (OdooRecord record : records) {
+                                       ArrayListTiket.add(new Tiket(
+                                               String.valueOf(record.getInt("id")),
+                                               record.getString("name"),
+                                               String.valueOf(Math.round(record.getFloat("price"))),
+                                               "0",
+                                               String.valueOf(Math.round(record.getFloat("seats_available")))));
+                                   }
+                                   adapter = new AdapterTicket(ArrayListTiket);
+                                   rv.setAdapter(adapter);
+                                   adapter.notifyDataSetChanged();
+                               }
+                           });
+                       }
+                   }).build();
+           return null;
        }
    }
 

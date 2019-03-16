@@ -20,9 +20,11 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,8 +55,6 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 public class TerupdateFragment extends Fragment {
 
     ArrayList<Terupdate> ArrayListTerupdate;
-    ArrayList<Jadwal> ArrayListJadwalHome;
-    ArrayList<Jadwal> ArrayListJadwalAway;
     int RecyclerViewItemPosition;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
@@ -63,7 +63,7 @@ public class TerupdateFragment extends Fragment {
     RecyclerView.LayoutManager llm;
     AdapterTerupdate adapter;
     SwipeRefreshLayout swiper;
-    TextView liganow, tglnow, stadionnow, tgllast, tglnext, teamHome, teamAway, teamNext, stadionNext, skornow, homelast, awaylast;
+    TextView tglnow, stadionnow, tgllast, tglnext, teamHome, teamAway, teamNext, stadionNext, skornow, homelast, awaylast;
     ImageView homeImage, awayImage, nextImage, nextStatus, homeImageLast, awayImageLast;
     LinearLayout lnNow;
     RelativeLayout rlLast, rlNext;
@@ -71,6 +71,7 @@ public class TerupdateFragment extends Fragment {
     int id_jadwal_last = 0;
     int id_jadwal_next = 0;
     OdooClient client;
+    Spinner ligaSpiner;
 
     public TerupdateFragment() {
         // Required empty public constructor
@@ -99,7 +100,8 @@ public class TerupdateFragment extends Fragment {
             lnNow = rootView.findViewById(R.id.linearLayout_now);
             rlLast = rootView.findViewById(R.id.RL_last);
             rlNext = rootView.findViewById(R.id.RL_next);
-            liganow = rootView.findViewById(R.id.textView_namaligaterupdate);
+//            liganow = rootView.findViewById(R.id.textView_namaligaterupdate);
+            ligaSpiner = rootView.findViewById(R.id.ligaterupdate_spinner);
             tglnow = rootView.findViewById(R.id.textView_tglharini);
             stadionnow = rootView.findViewById(R.id.textView_stadionharini);
             skornow = rootView.findViewById(R.id.txt_scoreterupdate);
@@ -258,7 +260,10 @@ public class TerupdateFragment extends Fragment {
                                 @Override
                                 public void onResult(OdooResult result) {
                                     // response
-                                    System.out.println(result.getString("away_now"));
+                                    OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        Log.w("asdasdads",record.getString("id"));
+                                    }
                                 }
                             });
                         }

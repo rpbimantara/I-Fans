@@ -95,6 +95,7 @@ public class KlasemenFragment extends Fragment {
 
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                         Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
+                        intent.putExtra("id", ArrayListKlasemen.get(RecyclerViewItemPosition).getId_club());
                         intent.putExtra("nama", ArrayListKlasemen.get(RecyclerViewItemPosition).getTxtTeamKlasemen());
                         startActivity(intent);
                     }
@@ -156,9 +157,8 @@ public class KlasemenFragment extends Fragment {
                                             String.valueOf("P"),
                                             String.valueOf("+/-"),
                                             String.valueOf("Pts"),
-                                            color));
+                                            color,0));
                                     int i = 1;
-                                    Log.w("asdads",String.valueOf(Records.length));
                                     for (final OdooRecord record : Records) {
                                         if (record.getString("nama_club").equalsIgnoreCase("Persebaya")){
                                             color = getResources().getColor(R.color.colorYellow);
@@ -172,7 +172,8 @@ public class KlasemenFragment extends Fragment {
                                                 String.valueOf(record.getInt("play")),
                                                 String.valueOf(record.getInt("selisih_gol")),
                                                 String.valueOf(record.getInt("point")),
-                                                color));
+                                                color,
+                                                record.getInt("id_club")));
                                         i++;
                                     }
                                     adapter = new AdapterKlasemen(ArrayListKlasemen);
@@ -183,42 +184,7 @@ public class KlasemenFragment extends Fragment {
                         }
                     })
                     .build();
-//            Integer color = getResources().getColor(R.color.colorWhite);
-//            try {
-//                OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-//
-//                Object[] param = {new Object[]{
-//                        new Object[]{"liga_id", "=", "1"}}};
-//
-//                List<HashMap<String, Object>> data = oc.search_read("persebaya.liga.klasemen", param, "id","club_id","club_id.foto_club", "play","win","draw","lose","gm","gk","point");
 
-//                for (int i = 0; i < data.size(); ++i) {
-//                    Object[] paramclub = {new Object[]{
-//                            new Object[]{"nama", "=", data.get(i).get("club_id")}}};
-//
-//                    List<HashMap<String, Object>> dataclub = oc.search_read("persebaya.club", paramclub, "foto_club");
-//                    for (int c = 0; c < dataclub.size(); ++c) {
-//                        if (data.get(i).get("club_id").toString().equalsIgnoreCase("Persebaya")){
-//                            color = getResources().getColor(R.color.colorYellow);
-//                        }else{
-//                            color = getResources().getColor(R.color.colorWhite);
-//                        }
-//                        ArrayListKlasemen.add(new Klasemen(
-//                                String.valueOf(i+1),
-//                                String.valueOf(dataclub.get(c).get("foto_club")),
-//                                String.valueOf(data.get(i).get("club_id")),
-//                                String.valueOf(data.get(i).get("play")),
-//                                String.valueOf(data.get(i).get("win")),
-//                                String.valueOf(data.get(i).get("draw")),
-//                                String.valueOf(data.get(i).get("lose")),
-//                                String.valueOf(data.get(i).get("gm")),
-//                                String.valueOf( data.get(i).get("point")),
-//                                color));
-//                    }
-//                }
-//            } catch (Exception ex) {
-//                System.out.println("Error Klasemen Fragment: " + ex);
-//            }
             return null;
         }
     }

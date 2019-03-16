@@ -20,6 +20,16 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +38,8 @@ public class ClubSummaryFragment extends Fragment {
     TextView txtNamaStadion,txtNamaTeam,txtCoach,txtEST,txtCity,txtCEO,txtSupporter,txtAlias;
     ImageView imageclub,imageStadion;
     SharedPrefManager sharedPrefManager;
+    OdooClient client;
+
     public ClubSummaryFragment() {
         // Required empty public constructor
     }
@@ -50,61 +62,43 @@ public class ClubSummaryFragment extends Fragment {
         txtSupporter = view.findViewById(R.id.textView_supporter);
         txtAlias = view.findViewById(R.id.textView_alias);
         sharedPrefManager = new SharedPrefManager(getActivity());
-        new LoadDataAssyc().execute(getActivity().getIntent().getStringExtra("nama"));
+        LoadData();
         return view;
     }
 
-    public class LoadDataAssyc extends AsyncTask<String,Void,ArrayList<String>>{
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
+    public void LoadData(){
+        client = new OdooClient.Builder(getContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        OArguments arguments = new OArguments();
+                        arguments.add(getActivity().getIntent().getIntExtra("id",0));
 
-        @Override
-        protected void onPostExecute(ArrayList<String> aVoid) {
-            super.onPostExecute(aVoid);
-            txtNamaStadion.setText(aVoid.get(0));
-            imageclub.setImageBitmap(StringToBitMap(aVoid.get(1)));
-            imageStadion.setImageBitmap(StringToBitMap(aVoid.get(8)));
-            txtCoach.setText(aVoid.get(2));
-            txtEST.setText(tanggal(aVoid.get(3)));
-            txtCity.setText(aVoid.get(4));
-            txtCEO.setText(aVoid.get(5));
-            txtSupporter.setText(aVoid.get(6));
-            txtAlias.setText(aVoid.get(7));
-        }
-
-        @Override
-        protected ArrayList<String> doInBackground(String... voids) {
-            ArrayList<String> result = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect( sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-
-                Object[] param = {new Object[]{
-                        new Object[]{"nama", "=", voids[0]}}};
-
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.club", param, "foto_club","stadion","pelatih","tgl_berdiri","kota","presiden","suporter","julukan");
-
-                Object[] paramStadion = {new Object[]{
-                        new Object[]{"nama", "=",data.get(0).get("stadion").toString()}}};
-
-                List<HashMap<String, Object>> dataStadion = oc.search_read("persebaya.stadion", paramStadion, "id","image");
-
-                result.add(data.get(0).get("stadion").toString());
-                result.add(data.get(0).get("foto_club").toString());
-                result.add(data.get(0).get("pelatih").toString());
-                result.add(data.get(0).get("tgl_berdiri").toString());
-                result.add(data.get(0).get("kota").toString());
-                result.add(data.get(0).get("presiden").toString());
-                result.add(data.get(0).get("suporter").toString());
-                result.add(data.get(0).get("julukan").toString());
-                result.add(dataStadion.get(0).get("image").toString());
-            } catch (Exception ex) {
-                System.out.println("Error Summary: " + ex);
-            }
-            return result;
-        }
+                        client.call_kw("persebaya.club", "get_summary", arguments, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                // response
+                                OdooRecord[] Records = result.getRecords();
+                                for (final OdooRecord record : Records) {
+                                    txtNamaStadion.setText(record.getString("stadion"));
+                                    imageclub.setImageBitmap(StringToBitMap(record.getString("foto_club")));
+                                    imageStadion.setImageBitmap(StringToBitMap(record.getString("foto_stadion")));
+                                    txtCoach.setText(record.getString("coach"));
+                                    txtEST.setText(tanggal(record.getString("est")));
+                                    txtCity.setText(record.getString("city"));
+                                    txtCEO.setText(record.getString("ceo"));
+                                    txtSupporter.setText(record.getString("support"));
+                                    txtAlias.setText(record.getString("alias"));
+                                }
+                            }
+                        });
+                    }
+                }).build();
     }
+
 
     public Bitmap StringToBitMap(String encodedString){
         try{

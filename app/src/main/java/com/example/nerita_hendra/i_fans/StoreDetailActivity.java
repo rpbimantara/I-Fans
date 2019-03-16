@@ -30,6 +30,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.OdooErrorException;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 public class StoreDetailActivity extends AppCompatActivity {
     TextView txtNamaBarang,txtHargaBarang,txtDeskripsi;
     SharedPrefManager sharedPrefManager;
@@ -41,6 +53,11 @@ public class StoreDetailActivity extends AppCompatActivity {
     AdapterStoreVariant adapter;
     Context context;
     Gson gson;
+    OdooClient client;
+    String imageCurrent = "";
+    String variant = "Standard";
+    String description = "No Item Descriptions ";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +83,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         imageStore = findViewById(R.id.store_imageView);
         txtNamaBarang.setText(getIntent().getExtras().get("nama").toString());
         txtHargaBarang.setText(getIntent().getExtras().get("harga").toString());
-        new StoreDetailTask().execute();
+        StoreDetail();
         btn_checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -77,192 +94,161 @@ public class StoreDetailActivity extends AppCompatActivity {
         btn_buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
 
-                Object[] param = {new Object[]{
-                        new Object[]{"id", "=", 20}}};
-
-                Boolean idW = oc.workflow("sale.order", "action_confirm",  param);
-                System.out.println(idW.toString());
             }
         });
     }
 
     public class AddToCartTask extends AsyncTask<Void,Void,Void>{
         @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
-            try{
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-
-                Object[] param = {new Object[]{
-                        new Object[]{"partner_id", "=", sharedPrefManager.getSpIdPartner()},
-                        new Object[]{"state", "=", "draft"}}};
-                List<HashMap<String, Object>> data = oc.search_read("sale.order", param, "id", "name");
-
-                if (data.size() > 0){
-                    new Handler(Looper.getMainLooper()).post(new Runnable() {
+            client = new OdooClient.Builder(getApplicationContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
                         @Override
-                        public void run() {
-                            AddToCart( );
-                        }
-                    });
-                }else {
-                    try{
-                        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-                        final String Currentdatetime = sdf.format(new Date());
+                        public void onConnected(OdooVersion version) {
+                            ODomain domain = new ODomain();
+                            domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
+                            domain.add("state", "=", "draft");
 
-                        @SuppressWarnings("unchecked")
-                        Integer idC = oc.create("sale.order", new HashMap() {{
-                            put("partner_id", sharedPrefManager.getSpIdPartner() );
-                            put("date_order", Currentdatetime);
-                            put("state", "draft");
-                        }});
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                AddToCart( );
-                            }
-                        });
-                    }catch (Exception ex) {
-                        System.out.println("Failed Add Sale Order : " + ex);
-                    }
-                }
-            } catch (Exception ex) {
-                System.out.println("Error Checkout Button : " + ex);
-            }
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id", "name");
+
+                            int offset = 0;
+                            int limit = 80;
+
+                            String sorting = "id DESC";
+
+                            client.searchRead("sale.order", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    final OdooRecord[] records = result.getRecords();
+                                    if (result.getInt("length") > 0){
+                                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                for (OdooRecord record : records){
+                                                    AddToCart(record.getInt("id"));
+                                                }
+                                            }
+                                        });
+                                    }else {
+                                        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                                        final String Currentdatetime = sdf.format(new Date());
+
+                                        OdooValues values = new OdooValues();
+                                        values.put("partner_id", sharedPrefManager.getSpIdPartner());
+                                        values.put("date_order", Currentdatetime);
+                                        values.put("state", "draft");
+
+                                        client.create("sale.order", values, new IOdooResponse() {
+                                            @Override
+                                            public void onResult(final OdooResult result) {
+                                                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                                    @Override
+                                                    public void run() {
+                                                        AddToCart(result.getInt("result"));
+                                                    }
+                                                });
+                                            }
+
+                                            @Override
+                                            public boolean onError(OdooErrorException error) {
+                                                Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                                                return super.onError(error);
+                                            }
+                                        });
+                                    }
+                                }
+
+                                @Override
+                                public boolean onError(OdooErrorException error) {
+                                    Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                                    return super.onError(error);
+                                }
+                            });
+                        }
+                    }).build();
             return null;
         }
     }
 
-    public void AddToCart (){
-        OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-
-        Object[] param = {new Object[]{
-                new Object[]{"partner_id", "=", sharedPrefManager.getSpIdPartner()},
-                new Object[]{"state", "=", "draft"}}};
-        List<HashMap<String, Object>> data = oc.search_read("sale.order", param, "id", "name");
-
-        for (int i = 0; i < data.size(); ++i) {
-            String jsonString = sharedPrefManager.getSpReturnFromRv();
-            String[] listItem = gson.fromJson(jsonString, String[].class);
-            Integer order_id = Integer.valueOf(data.get(i).get("id").toString());
-            if (listItem.length < 1) {
+    public void AddToCart (Integer order_id){
+        String jsonString = sharedPrefManager.getSpReturnFromRv();
+        String[] listItem = gson.fromJson(jsonString, String[].class);
+            if (listItem.length <1){
                 Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
-            }else{
-                String report = "";
-                int count = 0;
+            }else {
                 for (int j=0; j<listItem.length;j++){
-                    report = AddOrderLineToDB(order_id, Integer.valueOf(listItem[j]));
-                    if (report.equalsIgnoreCase("true")){
-                        count++;
-                    }else{
-                        Toast.makeText(context, "Failed Adding To Cart on Item : " +String.valueOf(count), Toast.LENGTH_SHORT).show();
-//                        break;
-                    }
-                }
-                if (report.equalsIgnoreCase("true")){
-                    Toast.makeText(context, "Added To Cart!", Toast.LENGTH_SHORT).show();
+                    OdooValues values = new OdooValues();
+                    values.put("order_id", order_id );
+                    values.put("product_id", Integer.valueOf(listItem[j]));
+
+                    client.create("sale.order.line", values, new IOdooResponse() {
+                        @Override
+                        public void onResult(final OdooResult result) {
+                            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(context, "Added To Cart!", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+
+                        @Override
+                        public boolean onError(OdooErrorException error) {
+                            Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                            return super.onError(error);
+                        }
+                    });
                 }
             }
-        }
     }
 
-    public String AddOrderLineToDB(final Integer order_id, final Integer product_id){
-            boolean IsAdded=false;
-            try{
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+    public void StoreDetail(){
+        ArrayListVariant = new ArrayList<>();
+        client = new OdooClient.Builder(getApplicationContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        OArguments arguments = new OArguments();
+                        arguments.add(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                        client.call_kw("product.product", "get_detail_store", arguments, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                OdooRecord[] records = result.getRecords();
+                                for (OdooRecord record : records) {
+                                    imageCurrent = record.getString("image");
 
-                @SuppressWarnings("unchecked")
-                Integer idC = oc.create("sale.order.line", new HashMap() {{
-                    put("order_id", order_id );
-                    put("product_id", product_id);
-                }});
-                System.out.println(idC.toString());
-                IsAdded = true;
-            }catch (Exception ex) {
-                IsAdded=false;
-                System.out.println("Error Add order line : " + ex);
-            }
-            return String.valueOf(IsAdded);
-    }
-    public class StoreDetailTask extends AsyncTask<Void,Void,String[]>{
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
+                                    if (!record.getString("variant").equalsIgnoreCase("")){
+                                        variant =  record.getString("variant");
+                                    }
 
-        @Override
-        protected void onPostExecute(String[] strings) {
-            imageStore.setImageBitmap(StringToBitMap(strings[0]));
-            txtDeskripsi.setText(strings[1]);
-            adapter = new AdapterStoreVariant(ArrayListVariant);
-            rv.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-            super.onPostExecute(strings);
-        }
+                                    if (!record.getString("desc").equalsIgnoreCase("false"))
+                                    {
+                                        description = record.getString("desc");
+                                    }
+                                    ArrayListVariant.add(new Variant(
+                                            String.valueOf(record.getInt("id")),
+                                            variant,
+                                            String.valueOf(Math.round(record.getFloat("qty_available"))))
+                                    );
+                                }
 
-        @Override
-        protected String[] doInBackground(Void... voids) {
-            ArrayListVariant = new ArrayList<>();
-            String imageCurrent = "";
-            String variant = "Standard";
-            String description = "No Item Descriptions ";
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-
-                Object[] param = {new Object[]{
-                        new Object[]{"product_tmpl_id", "=",Integer.valueOf(getIntent().getExtras().get("id").toString())}}};
-
-                List<HashMap<String, Object>> data = oc.search_read("product.product", param, "id","image_medium","attribute_value_ids","qty_available","description_sale");
-
-                for (int i = 0; i < data.size(); ++i) {
-                    imageCurrent = String.valueOf(data.get(i).get("image_medium").toString());
-
-//
-                    if (!String.valueOf(data.get(i).get("attribute_value_ids").toString()).equalsIgnoreCase("")){
-                       variant =  String.valueOf(Variant_Text(data.get(i).get("attribute_value_ids").toString()));
+                                imageStore.setImageBitmap(StringToBitMap(imageCurrent));
+                                txtDeskripsi.setText(description);
+                                adapter = new AdapterStoreVariant(ArrayListVariant);
+                                rv.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
+                            }
+                        });
                     }
-
-                    if (!String.valueOf(data.get(i).get("description_sale")).equalsIgnoreCase("false"))
-                    {
-                        description = String.valueOf(data.get(i).get("description_sale"));
-                    }
-                    ArrayListVariant.add(new Variant(
-                            String.valueOf(data.get(i).get("id")),
-                            variant,
-                            String.valueOf(Math.round(Float.valueOf(data.get(i).get("qty_available").toString())))
-                    ));
-                }
-
-            } catch (Exception ex) {
-                System.out.println("Error Store Detail: " + ex);
-            }
-
-            return new String[]{imageCurrent,description};
-        }
-    }
-
-    public String Variant_Text(String Param){
-        String pattern = Param.toString().replaceAll("\\}|\\{| id=|name","");
-        String[] Split = pattern.split("=");
-        Param = "";
-        for (int j = 0; j < Split.length; j++){
-            if (!Split[j].equalsIgnoreCase("")) {
-                String tes = Split[j].substring(0, Split[j].indexOf(",")+1);
-                Param = Param.concat(tes);
-            }
-        }
-        return Param.substring(0,Param.length()-1);
+                }).build();
     }
 
     public Bitmap StringToBitMap(String encodedString){

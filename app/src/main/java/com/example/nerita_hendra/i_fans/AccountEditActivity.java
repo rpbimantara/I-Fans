@@ -1,5 +1,6 @@
 package com.example.nerita_hendra.i_fans;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DialogFragment;
 import android.app.ProgressDialog;
@@ -9,6 +10,7 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,13 +20,20 @@ import android.widget.TextView;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 public class AccountEditActivity extends AppCompatActivity {
     EditText ETname,ETnik,ETaddress,ETmail,ETphone,ETcomunity;
     TextView txtbirthday;
     Button btnSave,btnDate;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
-    private DatePickerDialog.OnDateSetListener mDateSetListener;
+    OdooClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,24 +55,17 @@ public class AccountEditActivity extends AppCompatActivity {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-
-                DatePickerDialog dialog = new DatePickerDialog(
-                        AccountEditActivity.this,
-                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
-                        mDateSetListener,
-                        year,month,day);
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                DatePickerDialog dialog = new DatePickerDialog(AccountEditActivity.this, AlertDialog.THEME_HOLO_LIGHT,new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month + 1;
+                        String date = month + "/" + dayOfMonth + "/" + year;
+                        txtbirthday.setText(date);
+                    }
+                },year,month,day);
                 dialog.show();
             }
         });
-        mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            @Override
-            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                month = month + 1;
-                String date = month + "/" + day + "/" + year;
-                txtbirthday.setText(date);
-            }
-        };
         progressDialog = new ProgressDialog(this);
 
         ETname.setText(getIntent().getExtras().get("name").toString());
@@ -96,34 +98,40 @@ public class AccountEditActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Boolean result) {
             super.onPostExecute(result);
-            if (result == true){
-                progressDialog.dismiss();
-                finish();
-            }
         }
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            Boolean idW = false;
-            try {
+            client = new OdooClient.Builder(getBaseContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            OdooValues values = new OdooValues();
+                            values.put("name", ETname.getText().toString());
+                            values.put("nik", ETnik.getText().toString());
+                            values.put("tgl_lahir",txtbirthday.getText().toString());
+                            values.put("street", ETaddress.getText().toString());
+                            values.put("email", ETmail.getText().toString());
+                            values.put("phone", ETphone.getText().toString());
+                            values.put("komunitas", ETcomunity.getText().toString());
 
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
-
-                idW = oc.write("res.partner", new Object[]{ Integer.valueOf(getIntent().getExtras().get("idPartner").toString()) },
-                        new HashMap() {{
-                            put("name", ETname.getText().toString());
-                            put("nik", ETnik.getText().toString());
-                            put("tgl_lahir",txtbirthday.getText().toString());
-                            put("street", ETaddress.getText().toString());
-                            put("email", ETmail.getText().toString());
-                            put("phone", ETphone.getText().toString());
-                            put("komunitas", ETcomunity.getText().toString());
-                        }});
-
-            } catch (Exception ex) {
-                System.out.println("Error SAVE TASK: " + ex);
-            }
-            return idW;
+                            client.write("res.partner", new Integer[]{Integer.valueOf(getIntent().getExtras().get("idPartner").toString())}, values, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // Success response
+                                    if (result.getBoolean("result") ==  true){
+                                        progressDialog.dismiss();
+                                        finish();
+                                    }
+                                    Log.w("wadsasd",result.toString());
+                                }
+                            });
+                        }
+                    }).build();
+            return null;
         }
     }
 }

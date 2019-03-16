@@ -12,10 +12,23 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.FirebaseInstanceIdService;
 
 import java.util.HashMap;
+
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.OdooUser;
+import oogbox.api.odoo.client.AuthError;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.OdooErrorException;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
+import oogbox.api.odoo.client.listeners.AuthenticateListener;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 public class SingUpActivity extends AppCompatActivity {
 
@@ -23,12 +36,16 @@ public class SingUpActivity extends AppCompatActivity {
     EditText username,email,password;
     private Button  btn_singup;
     ProgressDialog progressDialog;
+    Boolean cek = true;
+    OdooClient client;
+    SharedPrefManager sharedPrefManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
         progressDialog = new ProgressDialog(this);
+        sharedPrefManager = new SharedPrefManager(getBaseContext());
         _login = (TextView) findViewById(R.id.link_login);
         _login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,53 +66,68 @@ public class SingUpActivity extends AppCompatActivity {
         password = findViewById(R.id.input_password_up);
     }
 
+    AuthenticateListener loginCallback = new AuthenticateListener() {
+        @Override
+        public void onLoginSuccess(OdooUser user) {
+            final String RegId = FirebaseInstanceId.getInstance().getToken();
+            OdooValues values = new OdooValues();
+            values. put("name", username.getText().toString());
+            values.put("login", username.getText().toString());
+            values.put("email", email.getText().toString());
+            values.put("password", password.getText().toString());
+            values.put("state", "active");
+            values.put("fcm_reg_ids",RegId);
+
+            client.create("res.users", values, new IOdooResponse() {
+                @Override
+                public void onResult(OdooResult result) {
+                    // Success response
+                    progressDialog.dismiss();
+                    Toast.makeText(SingUpActivity.this,"Account Created!",Toast.LENGTH_LONG).show();
+                    finish();
+                }
+
+                @Override
+                public boolean onError(OdooErrorException error) {
+                    Toast.makeText(SingUpActivity.this,String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                    progressDialog.dismiss();
+                    return super.onError(error);
+                }
+            });
+        }
+
+        @Override
+        public void onLoginFail(AuthError error) {
+            Toast.makeText(SingUpActivity.this,String.valueOf(error.toString()),Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }
+    };
 
     public class SingupTask extends AsyncTask<Void,Void,Boolean>{
         @Override
         protected void onPreExecute() {
-            progressDialog.setMessage("Creating......");
-            progressDialog.show();
             super.onPreExecute();
         }
 
         @Override
         protected void onPostExecute(Boolean aVoid) {
-            progressDialog.dismiss();
-            if (aVoid == true){
-                finish();
-            }else{
-                Toast.makeText(SingUpActivity.this,"Failed creating account!!",Toast.LENGTH_LONG).show();
-            }
             super.onPostExecute(aVoid);
         }
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            Boolean cek = true;
-            try {
-                OdooConnect oc = OdooConnect.connect("adminsu", "admin");
-                final String RegId = FirebaseInstanceId.getInstance().getToken();
-
-                @SuppressWarnings("unchecked")
-                Integer idUser = oc.create("res.users", new HashMap() {{
-                    put("name", username.getText().toString());
-                    put("login", username.getText().toString());
-                    put("email", email.getText().toString());
-                    put("password", password.getText().toString());
-                    put("state", "active");
-                    put("fcm_reg_ids",RegId);
-                }});
-
-                if (idUser.toString() == null){
-                    cek = false;
-                }else{
-                    cek = true;
-                }
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex);
-
-            }
-            return cek;
+            client = new OdooClient.Builder(getBaseContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            progressDialog.setMessage("Creating......");
+                            progressDialog.show();
+                            client.authenticate("adminsu","admin", sharedPrefManager.getSP_db(), loginCallback);
+                        }
+                    }).build();
+            return null;
         }
     }
 

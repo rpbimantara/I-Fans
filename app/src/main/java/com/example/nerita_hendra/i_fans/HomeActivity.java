@@ -63,14 +63,8 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
-                    case 0:
-                        fabBtn.hide();
-                        break;
-                    case 1:
-                        fabBtn.hide();
-                        break;
                     case 2:
-                        fabBtn.hide();
+                        fabBtn.show();
                         break;
                     case 3:
                         fabBtn.show();

@@ -19,6 +19,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,6 +42,7 @@ public class StoreFragment extends Fragment {
     ProgressDialog progressDialog;
     AdapterStore adapter;
     SwipeRefreshLayout swiper;
+    OdooClient client;
 
 
     public StoreFragment() {
@@ -121,39 +131,54 @@ public class StoreFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            adapter = new AdapterStore(ArrayListStore);
-            rv.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListStore = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            ODomain domain = new ODomain();
+                            domain.add("active", "=", true);
+                            domain.add("type", "=", "product");
 
-                Object[] param = {new Object[]{
-                        new Object[]{"active", "=", true},
-                        new Object[]{"type", "=", "product"}}};
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id","image_medium","name", "type","default_code","cated_ig","list_price");
 
-                List<HashMap<String, Object>> data = oc.search_read("product.template", param, "id","image_medium","name", "type","default_code","cated_ig","list_price");
+                            int offset = 0;
+                            int limit = 80;
 
-                for (int i = 0; i < data.size(); ++i) {
-                    String code = " ";
-                    if (!String.valueOf(data.get(i).get("default_code")).equalsIgnoreCase("false") || !String.valueOf(data.get(i).get("default_code")).equalsIgnoreCase(" ")){
-                        code = "["+String.valueOf(data.get(i).get("default_code")) +"] ";
-                    }
+                            String sorting = "id ASC";
 
-                    ArrayListStore.add(new Store(
-                            String.valueOf(data.get(i).get("id")),
-                            String.valueOf(data.get(i).get("image_medium")),
-                            code +String.valueOf(data.get(i).get("name")),
-                            String.valueOf(Math.round(Float.parseFloat(data.get(i).get("list_price").toString())))));
-                }
+                            client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        String code = " ";
+                                        if (!record.getString("default_code").equalsIgnoreCase("false") || !record.getString("default_code").equalsIgnoreCase(" ")){
+                                            code = "["+record.getString("default_code") +"] ";
+                                        }
 
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex);
-            }
+                                        ArrayListStore.add(new Store(
+                                               String.valueOf(record.getInt("id")),
+                                                record.getString("image_medium"),
+                                                code +record.getString("name"),
+                                                String.valueOf(Math.round(record.getFloat("list_price")))));
+                                    }
+                                    adapter = new AdapterStore(ArrayListStore);
+                                    rv.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+                                }
+
+                            });
+                        }
+                    }).build();
             return null;
         }
     }

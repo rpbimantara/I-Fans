@@ -25,7 +25,7 @@ public class AdapterTeam extends RecyclerView.Adapter<AdapterTeam.TeamViewHolder
     }
 
     public class TeamViewHolder extends RecyclerView.ViewHolder{
-        public TextView txtname;
+        public TextView txtname,txtNoPunggung;
         public ImageView image;
         public Bitmap icon;
         public FloatingActionButton fab_icon;
@@ -34,6 +34,7 @@ public class AdapterTeam extends RecyclerView.Adapter<AdapterTeam.TeamViewHolder
             super(itemView);
             this.txtname = itemView.findViewById(R.id.txt_namastaff);
             this.image = itemView.findViewById(R.id.image_staff);
+            this.txtNoPunggung = itemView.findViewById(R.id.txt_nostaff);
             this.fab_icon = itemView.findViewById(R.id.team_fab);
             this.fab_icon.setImageResource(R.drawable.ic_medis);
         }
@@ -49,6 +50,11 @@ public class AdapterTeam extends RecyclerView.Adapter<AdapterTeam.TeamViewHolder
     @Override
     public void onBindViewHolder(@NonNull TeamViewHolder holder, int position) {
         holder.txtname.setText(dataList.get(position).getNama());
+        if (dataList.get(position).getNo_punggung() == "0"){
+            holder.txtNoPunggung.setText("");
+        }else {
+            holder.txtNoPunggung.setText(dataList.get(position).getNo_punggung());
+        }
         holder.image.setImageBitmap(StringToBitMap(dataList.get(position).getFoto()));
     }
 

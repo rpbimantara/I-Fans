@@ -146,7 +146,7 @@ public class ClubStandingFragment extends Fragment {
                                             String.valueOf("P"),
                                             String.valueOf("+/-"),
                                             String.valueOf("Pts"),
-                                            color));
+                                            color,0));
                                     int i = 1;
                                     Log.w("asdads",String.valueOf(Records.length));
                                     for (final OdooRecord record : Records) {
@@ -162,7 +162,8 @@ public class ClubStandingFragment extends Fragment {
                                                 String.valueOf(record.getInt("play")),
                                                 String.valueOf(record.getInt("selisih_gol")),
                                                 String.valueOf(record.getInt("point")),
-                                                color));
+                                                color,
+                                                record.getInt("id_club")));
                                         i++;
                                     }
                                     adapter = new AdapterKlasemen(ArrayListKlasemen);

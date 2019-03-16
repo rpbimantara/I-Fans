@@ -112,7 +112,7 @@ public class TeamFragment extends Fragment {
                             domain.add("club_id", "=", sharedPrefManager.getSpIdClub());
 
                             OdooFields fields = new OdooFields();
-                            fields.addAll("id","image","name", "job_id","status_pemain");
+                            fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
 
                             int offset = 0;
                             int limit = 80;
@@ -129,7 +129,7 @@ public class TeamFragment extends Fragment {
                                                 record.getString("image"),
                                                 record.getString("status_pemain"),
                                                 record.getString("job_id"),
-                                                ""
+                                                String.valueOf(record.getInt("no_punggung"))
                                         ));
                                     }
                                     adapter = new AdapterTeam(ArrayListTeam);

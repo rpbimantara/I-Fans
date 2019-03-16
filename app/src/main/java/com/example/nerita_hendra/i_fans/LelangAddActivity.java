@@ -1,9 +1,13 @@
 
 package com.example.nerita_hendra.i_fans;
 
+import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
@@ -11,22 +15,37 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.util.Calendar;
 import java.util.HashMap;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.OdooErrorException;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 public class LelangAddActivity extends AppCompatActivity {
-    EditText etName,etOb,etInc,etBin,etDuedate,etdeskripsi;
+    EditText etName,etOb,etInc,etBin,etdeskripsi;
+    TextView txtDuedate;
     ImageView imageUser;
     private Bitmap currentImage;
     SharedPrefManager sharedPrefManager;
     FloatingActionButton fabImageLelang;
     ProgressDialog progressDialog;
     Button savebtn;
+    OdooClient client;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +68,27 @@ public class LelangAddActivity extends AppCompatActivity {
         etOb = findViewById(R.id.editText_openBid);
         etInc = findViewById(R.id.editText_INC);
         etBin = findViewById(R.id.editText_BIN);
-        etDuedate = findViewById(R.id.editText_Due_date);
+        txtDuedate = findViewById(R.id.add_due_date);
         etdeskripsi = findViewById(R.id.editText_Deskripsi);
+        txtDuedate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar cal = Calendar.getInstance();
+                int year = cal.get(Calendar.YEAR);
+                int month = cal.get(Calendar.MONTH);
+                int day = cal.get(Calendar.DAY_OF_MONTH);
+                DatePickerDialog dialog = new DatePickerDialog(LelangAddActivity.this, AlertDialog.THEME_HOLO_LIGHT,new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                        month = month + 1;
+                        String date = month + "/" + dayOfMonth + "/" + year;
+                        txtDuedate.setText(date);
+                    }
+                },year,month,day);
+                dialog.show();
+            }
+        });
+
         fabImageLelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,7 +108,6 @@ public class LelangAddActivity extends AppCompatActivity {
                 try{
                     currentImage = MediaStore.Images.Media.getBitmap(getContentResolver(), photoUri);
                     imageUser.setImageBitmap(currentImage);
-//                    new AccountFragment.SaveImageTask().execute(currentImage);
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -81,41 +118,44 @@ public class LelangAddActivity extends AppCompatActivity {
 
     public class SaveLelangTask extends AsyncTask<Void,Void,Void>{
         @Override
-        protected void onPreExecute() {
-            progressDialog.setMessage("Saving.....");
-            progressDialog.show();
-            super.onPreExecute();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
-            finish();
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getBaseContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSynchronizedRequests(false)
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            progressDialog.setMessage("Saving.....");
+                            progressDialog.show();
+                            OdooValues values = new OdooValues();
+                            values.put("foto_lelang", getBase64ImageString(currentImage));
+                            values.put("nama_barang", etName.getText().toString());
+                            values.put("ob", etOb.getText().toString());
+                            values.put("inc", etInc.getText().toString());
+                            values.put("binow", etBin.getText().toString());
+                            values.put("deskripsi_barang", etdeskripsi.getText().toString());
+                            values.put("due_date", txtDuedate.getText().toString());
+                            values.put("create_uid", sharedPrefManager.getSpIdUser());
 
-                @SuppressWarnings("unchecked")
-                Integer idC = oc.create("persebaya.lelang", new HashMap() {{
-                    put("image", getBase64ImageString(currentImage));
-                    put("nama_barang", etName.getText().toString());
-                    put("ob", etOb.getText().toString());
-                    put("inc", etInc.getText().toString());
-                    put("binow", etBin.getText().toString());
-                    put("deskripsi_barang", etdeskripsi.getText().toString());
-                    put("create_uid", sharedPrefManager.getSpIdUser());
-                }});
-//                msgResult = idC.toString();
-                System.out.println(idC.toString());
+                            client.create("persebaya.lelang", values, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // Success response
+                                    progressDialog.dismiss();
+                                    Toast.makeText(getBaseContext(),"Auction Created!",Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
 
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex);
-
-            }
+                                @Override
+                                public boolean onError(OdooErrorException error) {
+                                    Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                                    progressDialog.dismiss();
+                                    return super.onError(error);
+                                }
+                            });
+                        }
+                    }).build();
             return null;
         }
     }

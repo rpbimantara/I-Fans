@@ -23,6 +23,15 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +47,7 @@ public class LelangFragment extends Fragment {
     ProgressDialog progressDialog;
     SwipeRefreshLayout swiper;
     AdapterLelang adapter;
+    OdooClient client;
 
     public LelangFragment() {
         // Required empty public constructor
@@ -124,14 +134,6 @@ public class LelangFragment extends Fragment {
         }
     }
 
-    public void sortDate(){
-        Collections.sort(ArrayListLelang, new Comparator<lelang>() {
-            @Override
-            public int compare(lelang t1, lelang t2) {
-                return t1.getWaktulelang().compareTo(t2.getWaktulelang());
-            }
-        });
-    }
     public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{
         @Override
         protected void onPreExecute() {
@@ -140,39 +142,52 @@ public class LelangFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            sortDate();
-            adapter = new AdapterLelang(ArrayListLelang);
-            rv.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
             swiper.setRefreshing(false);
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
             ArrayListLelang = new ArrayList<>();
-            try {
-                OdooConnect oc = OdooConnect.connect(sharedPrefManager.getSpNamaUser(),sharedPrefManager.getSpPasswordUser());
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            ODomain domain = new ODomain();
+                            domain.add("status_lelang", "=", "jalan");
 
-                Object[] param = {new Object[]{
-                        new Object[]{"status_lelang", "=", "jalan"}}};
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id","foto_lelang","nama_barang","due_date", "ob","inc","binow","create_uid");
 
-                List<HashMap<String, Object>> data = oc.search_read("persebaya.lelang", param, "id","image","nama_barang","due_date", "ob","inc","binow","create_uid");
+                            int offset = 0;
+                            int limit = 80;
 
-                for (int i = 0; i < data.size(); ++i) {
-                    ArrayListLelang.add(new lelang(
-                            String.valueOf(data.get(i).get("id")),
-                            String.valueOf(data.get(i).get("nama_barang")),
-                            String.valueOf(data.get(i).get("image")),
-                            String.valueOf(data.get(i).get("due_date")),
-                            String.valueOf(data.get(i).get("ob")),
-                            String.valueOf(data.get(i).get("binow")),
-                            String.valueOf(data.get(i).get("inc")),
-                            String.valueOf( data.get(i).get("create_uid"))));
-                }
+                            String sorting = "due_date DESC";
 
-            } catch (Exception ex) {
-                System.out.println("Error: " + ex);
-            }
+                            client.searchRead("persebaya.lelang", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        ArrayListLelang.add(new lelang(
+                                                String.valueOf(record.getInt("id")),
+                                                record.getString("nama_barang"),
+                                                record.getString("foto_lelang"),
+                                                record.getString("due_date"),
+                                                String.valueOf(Math.round(record.getFloat("ob"))),
+                                                String.valueOf(Math.round(record.getFloat("binow"))),
+                                                String.valueOf(Math.round(record.getFloat("inc"))),
+                                                record.getString("create_uid")));
+                                    }
+                                    adapter = new AdapterLelang(ArrayListLelang);
+                                    rv.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    }).build();
             return null;
         }
     }
