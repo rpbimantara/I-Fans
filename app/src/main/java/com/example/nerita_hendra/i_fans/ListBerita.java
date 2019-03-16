@@ -4,23 +4,17 @@ public class ListBerita {
 
     private Integer id;
     private String image;
-    private String title;
     private String kategori;
     private String headline;
-    private String konten;
     private String tanggal;
-    private String penulis;
 
 
-    public ListBerita(Integer id, String image,String title, String kategori, String headline, String konten, String tanggal, String penulis) {
+    public ListBerita(Integer id, String image, String kategori, String headline,String tanggal) {
         this.id = id;
         this.image = image;
-        this.title = title;
         this.kategori = kategori;
         this.headline = headline;
-        this.konten = konten;
         this.tanggal = tanggal;
-        this.penulis = penulis;
     }
 
     public String getImage() {
@@ -31,13 +25,6 @@ public class ListBerita {
         this.image = image;
     }
 
-    public String getKonten() {
-        return konten;
-    }
-
-    public void setKonten(String konten) {
-        this.konten = konten;
-    }
 
     public Integer getId() {
         return id;
@@ -45,22 +32,6 @@ public class ListBerita {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getPenulis() {
-        return penulis;
-    }
-
-    public void setPenulis(String penulis) {
-        this.penulis = penulis;
     }
 
     public String getKategori() {
@@ -87,12 +58,4 @@ public class ListBerita {
         this.tanggal = tanggal;
     }
 
-    @Override
-    public String toString() {
-        return "ListBerita{" +
-                "kategori='" + kategori + '\'' +
-                ", headline='" + headline + '\'' +
-                ", tanggal='" + tanggal + '\'' +
-                '}';
-    }
 }

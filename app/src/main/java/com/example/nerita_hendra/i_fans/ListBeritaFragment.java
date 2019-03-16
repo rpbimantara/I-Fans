@@ -108,13 +108,6 @@ public class ListBeritaFragment extends Fragment {
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                         Intent intent = new Intent(getActivity(), BeritaDetailActivity.class);
                         intent.putExtra("id", ArrayListBerita.get(RecyclerViewItemPosition).getId());
-                        intent.putExtra("title", ArrayListBerita.get(RecyclerViewItemPosition).getTitle());
-                        intent.putExtra("kategori", ArrayListBerita.get(RecyclerViewItemPosition).getKategori());
-                        intent.putExtra("headline", ArrayListBerita.get(RecyclerViewItemPosition).getHeadline());
-                        intent.putExtra("konten", ArrayListBerita.get(RecyclerViewItemPosition).getKonten());
-                        intent.putExtra("tanggalbuat", ArrayListBerita.get(RecyclerViewItemPosition).getTanggal());
-                        intent.putExtra("penulis", ArrayListBerita.get(RecyclerViewItemPosition).getPenulis());
-                        sharedPrefManager.saveSPString(SharedPrefManager.SP_IMAGE_NEWS, ArrayListBerita.get(RecyclerViewItemPosition).getImage());
                         startActivity(intent);
                     }
                     return false;
@@ -191,12 +184,9 @@ public class ListBeritaFragment extends Fragment {
                                         ArrayListBerita.add(new ListBerita(
                                                 record.getInt("id"),
                                                 record.getString("image"),
-                                                record.getString("title"),
                                                 record.getString("kategori_brita_id"),
                                                 record.getString("headline"),
-                                                record.getString("content"),
-                                                tanggal(record.getString("create_date").substring(0, 10)),
-                                                record.getString("create_uid")));
+                                                record.getString("create_date")));
                                     }
                                     adapter = new AdapterListBerita(ArrayListBerita);
                                     rv.setAdapter(adapter);

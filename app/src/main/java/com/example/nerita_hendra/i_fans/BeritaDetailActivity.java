@@ -10,19 +10,29 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 public class BeritaDetailActivity extends AppCompatActivity {
     TextView txtTitle,txtHeadline,txtKonten,txtTanggal;
     ImageView image;
     SharedPrefManager sharedPrefManager;
+    OdooClient client;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_berita_detail);
         sharedPrefManager = new SharedPrefManager(this);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
-        toolbar.setTitle(getIntent().getExtras().get("kategori").toString());
+        toolbar = findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
@@ -31,12 +41,39 @@ public class BeritaDetailActivity extends AppCompatActivity {
         txtKonten = findViewById(R.id.textView_konten_detail_berita);
         txtTanggal = findViewById(R.id.textView_tgl_detail_berita);
         image = findViewById(R.id.berita_detail_imageView);
-        txtTitle.setText(getIntent().getExtras().get("title").toString());
-        txtHeadline.setText(getIntent().getExtras().get("headline").toString());
-        txtKonten.setText(getIntent().getExtras().get("konten").toString());
-        txtTanggal.setText(getIntent().getExtras().get("tanggalbuat").toString() + " - " +getIntent().getExtras().get("penulis").toString());
-        image.setImageBitmap(StringToBitMap(sharedPrefManager.getSpImageNews()));
+
     }
+
+    public  void LoadBerita(){
+        client = new OdooClient.Builder(getApplicationContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession("f35afb7584ea1195be5400d65415d6ab8f7a9440")
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                        List<String> fields = Arrays.asList("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
+
+                        client.read("persebaya.berita", ids, fields, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                OdooRecord[] records = result.getRecords();
+
+                                for(OdooRecord record: records) {
+                                    toolbar.setTitle(record.getString("kategori_brita_id"));
+                                    txtTitle.setText(record.getString("tittle"));
+                                    txtHeadline.setText(record.getString("headline"));
+                                    txtKonten.setText(record.getString("content"));
+                                    txtTanggal.setText(record.getString("tittle")+ " - " +record.getString("create_uid"));
+                                    image.setImageBitmap(StringToBitMap(record.getString("image")));
+                                }
+                            }
+                        });
+                    }
+                }).build();
+    }
+
     public Bitmap StringToBitMap(String encodedString){
         try{
             byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);

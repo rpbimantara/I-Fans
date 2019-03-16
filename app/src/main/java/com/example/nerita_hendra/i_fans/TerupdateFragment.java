@@ -152,15 +152,7 @@ public class TerupdateFragment extends Fragment {
                         try {
                             RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                             Intent intent = new Intent(getActivity(), BeritaDetailActivity.class);
-
                             intent.putExtra("id", ArrayListTerupdate.get(RecyclerViewItemPosition).getId());
-                            intent.putExtra("title", ArrayListTerupdate.get(RecyclerViewItemPosition).getTitle());
-                            intent.putExtra("kategori", ArrayListTerupdate.get(RecyclerViewItemPosition).getKategori());
-                            intent.putExtra("headline", ArrayListTerupdate.get(RecyclerViewItemPosition).getHeadline());
-                            intent.putExtra("konten", ArrayListTerupdate.get(RecyclerViewItemPosition).getKonten());
-                            intent.putExtra("tanggalbuat", ArrayListTerupdate.get(RecyclerViewItemPosition).getTanggal());
-                            intent.putExtra("penulis", ArrayListTerupdate.get(RecyclerViewItemPosition).getPenulis());
-                            sharedPrefManager.saveSPString(SharedPrefManager.SP_IMAGE_NEWS, ArrayListTerupdate.get(RecyclerViewItemPosition).getImageTerupdate());
                             startActivity(intent);
                         } catch (Exception err) {
                             System.out.println(err);
@@ -311,12 +303,8 @@ public class TerupdateFragment extends Fragment {
                                         ArrayListTerupdate.add(new Terupdate(
                                                 record.getInt("id"),
                                                 record.getString("image"),
-                                                record.getString("title"),
                                                 record.getString("kategori_brita_id"),
-                                                record.getString("headline"),
-                                                record.getString("content"),
-                                                tanggal(record.getString("create_date").substring(0, 10)),
-                                                record.getString("create_uid")));
+                                                record.getString("headline")));
                                     }
                                     adapter = new AdapterTerupdate(ArrayListTerupdate);
                                     rv.setAdapter(adapter);
