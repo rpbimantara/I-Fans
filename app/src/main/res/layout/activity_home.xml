@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    tools:context="com.example.nerita_hendra.i_fans.HomeActivity">
+    tools:context="com.alpha.test.i_fans.HomeActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
@@ -25,7 +25,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <com.example.nerita_hendra.i_fans.CustomViewPager
+    <com.alpha.test.i_fans.CustomViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -49,6 +49,7 @@
         android:layout_gravity="bottom"
         android:background="@color/colorPrimaryDark"
         app:itemIconTint="@drawable/state_list"
+        app:labelVisibilityMode="labeled"
         app:itemTextColor="@drawable/state_list"
         android:foregroundGravity="bottom"
         app:menu="@menu/menu_bottom_bar"/>

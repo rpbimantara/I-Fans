@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    tools:context="com.example.nerita_hendra.i_fans.MainActivity">
+    tools:context="com.alpha.test.i_fans.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"

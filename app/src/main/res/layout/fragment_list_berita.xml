@@ -6,7 +6,7 @@
     android:background="@color/colorWhite"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.example.nerita_hendra.i_fans.ListBeritaFragment">
+    tools:context="com.alpha.test.i_fans.ListBeritaFragment">
 
 
         <!-- TODO: Update blank fragment layout -->

@@ -4,7 +4,7 @@
     android:layout_height="wrap_content"
     android:id="@+id/swiperefresh_team"
     android:background="@color/colorWhite"
-    tools:context="com.example.nerita_hendra.i_fans.TeamFragment">
+    tools:context="com.alpha.test.i_fans.TeamFragment">
 
     <!-- TODO: Update blank fragment layout -->
     <android.support.v7.widget.RecyclerView

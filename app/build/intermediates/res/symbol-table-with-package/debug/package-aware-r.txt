@@ -1,4 +1,4 @@
-com.example.nerita_hendra.i_fans
+com.alpha.test.i_fans
 anim abc_fade_in
 anim abc_fade_out
 anim abc_grow_fade_in_from_bottom
@@ -1299,6 +1299,7 @@ id imageView_homelast
 id imageView_status_jadwal
 id imageView_teamnext
 id image_AddLelang
+id image_TeamDetail
 id image_UserAccount
 id image_fab
 id image_fab_Add_Lelang
@@ -1318,6 +1319,7 @@ id klasemen_image
 id labeled
 id largeLabel
 id left
+id lelang_detail_imageView
 id lelang_image
 id ligaterupdate_spinner
 id light
@@ -1369,6 +1371,7 @@ id radioButton_2seat
 id radioButton_female
 id radioButton_male
 id radioGrup_seat
+id ratingBar2
 id rectangle
 id right
 id right_icon
@@ -1465,13 +1468,16 @@ id textSpacerNoTitle
 id textStart
 id textView
 id textView_alias
+id textView_bid_detail_lelang
 id textView_ceo
 id textView_city
 id textView_deskripsi
+id textView_deskripsi_lelang
 id textView_est
 id textView_harga_barang
 id textView_head_coach
 id textView_headhline_detail_berita
+id textView_info_detail_lelang
 id textView_judul_detail_berita
 id textView_konten_detail_berita
 id textView_lastliga
@@ -1480,7 +1486,6 @@ id textView_nama_barang_lelang
 id textView_namastadion_summary
 id textView_namateam_summary
 id textView_nextliga
-id textView_ob_lelang
 id textView_stadionharini
 id textView_supporter
 id textView_tgl_detail_berita
@@ -1633,6 +1638,7 @@ layout activity_match_detail
 layout activity_sing_up
 layout activity_store_add
 layout activity_store_detail
+layout activity_team_detail
 layout activity_ticket
 layout activity_ticket_detail
 layout card_item_berita

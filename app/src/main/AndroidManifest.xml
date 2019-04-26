@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.nerita_hendra.i_fans">
+    package="com.alpha.test.i_fans">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -12,13 +13,17 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:largeHeap="true"
         android:theme="@style/AppTheme">
+        <activity android:name="com.alpha.test.i_fans.TeamDetailActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity"></activity>
+
         <meta-data
             android:name="com.google.firebase.API_KEY"
             android:value="AAAAWPlkJyo:APA91bEDEHnaZbu4AJsWMbb13-UO1h1cM3Ii2ddp15pfoXQL4P9rmi4h28vJxI3AgKwDVAf68yJ8siiqk1NGqCXkYgylHjpwV2N8GvoTtv6j2T2sjnBJVGQbvSq93HHaiLUNyxRdXsGt" />
 
         <activity
-            android:name=".MainActivity"
+            android:name="com.alpha.test.i_fans.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -27,41 +32,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".HomeActivity" />
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SingUpActivity" />
+        <activity android:name="com.alpha.test.i_fans.HomeActivity" />
+        <activity android:name="com.alpha.test.i_fans.LoginActivity" />
+        <activity android:name="com.alpha.test.i_fans.SingUpActivity" />
         <activity
-            android:name=".TicketActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.alpha.test.i_fans.TicketActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
         <activity
-            android:name=".BeritaDetailActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.alpha.test.i_fans.BeritaDetailActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
         <activity
-            android:name=".StoreDetailActivity"
-            android:parentActivityName=".MainActivity" />
-        <activity android:name=".LelangDetailActivity" />
-        <activity android:name=".ClubDetailActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".AccountEditActivity"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".LelangAddActivity" />
-        <activity android:name=".StoreAddActivity" />
+            android:name="com.alpha.test.i_fans.StoreDetailActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+        <activity android:name="com.alpha.test.i_fans.LelangDetailActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity"/>
         <activity
-            android:name=".TicketDetailActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.alpha.test.i_fans.ClubDetailActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+        <activity
+            android:name="com.alpha.test.i_fans.AccountEditActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+        <activity android:name="com.alpha.test.i_fans.LelangAddActivity" />
+        <activity android:name="com.alpha.test.i_fans.StoreAddActivity" />
+        <activity
+            android:name="com.alpha.test.i_fans.TicketDetailActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
 
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name="com.alpha.test.i_fans.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
         <activity
-            android:name=".CheckoutActivity"
-            android:parentActivityName=".MainActivity" />
+            android:name="com.alpha.test.i_fans.CheckoutActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
         <activity
-            android:name=".MatchDetailActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:name="com.alpha.test.i_fans.MatchDetailActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
     </application>
 
 </manifest>

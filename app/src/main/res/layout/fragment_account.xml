@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.example.nerita_hendra.i_fans.MainActivity"
+    tools:context="com.alpha.test.i_fans.MainActivity"
     android:background="@color/colorWhite">
 
     <android.support.v4.widget.NestedScrollView
