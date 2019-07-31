@@ -424,6 +424,23 @@ attr maxButtonHeight
 attr maxImageSize
 attr measureWithLargestChild
 attr menu
+attr ms_arrow_tint
+attr ms_background_color
+attr ms_background_selector
+attr ms_dropdown_height
+attr ms_dropdown_max_height
+attr ms_hide_arrow
+attr ms_hint
+attr ms_hint_color
+attr ms_padding_bottom
+attr ms_padding_left
+attr ms_padding_right
+attr ms_padding_top
+attr ms_popup_padding_bottom
+attr ms_popup_padding_left
+attr ms_popup_padding_right
+attr ms_popup_padding_top
+attr ms_text_color
 attr multiChoiceItemLayout
 attr navigationContentDescription
 attr navigationIcon
@@ -898,6 +915,11 @@ dimen hint_pressed_alpha_material_light
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
+dimen ms__item_height
+dimen ms__padding_left
+dimen ms__padding_top
+dimen ms__popup_padding_left
+dimen ms__popup_padding_top
 dimen mtrl_bottomappbar_fabOffsetEndMode
 dimen mtrl_bottomappbar_fab_cradle_margin
 dimen mtrl_bottomappbar_fab_cradle_rounded_corner_radius
@@ -1117,6 +1139,12 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_phone
 drawable ic_ticket
 drawable ic_time
+drawable ms__arrow
+drawable ms__drawable
+drawable ms__drop_down_shadow
+drawable ms__menu_down
+drawable ms__selector
+drawable ms__shadow_background
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
@@ -1275,6 +1303,7 @@ id expand_activities_button
 id expanded_menu
 id fill
 id fill_horizontal
+id fill_parent
 id fill_vertical
 id filled
 id fitCenter
@@ -1336,6 +1365,7 @@ id list_item
 id logout
 id masked
 id match_detail_toolbar
+id match_parent
 id media_actions
 id message
 id middle
@@ -1389,6 +1419,7 @@ id rv_recycler_view_standings
 id rv_recycler_view_store
 id rv_recycler_view_store_detail
 id rv_recycler_view_team
+id rv_recycler_view_team_athlete
 id rv_recycler_view_ticket
 id rv_recycler_view_tiket_detail
 id save_image_matrix
@@ -1510,6 +1541,7 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_tinted_spinner
 id txt_FollowersAccount
 id txt_FollowingAccount
 id txt_IdAccount
@@ -1542,14 +1574,14 @@ id txt_namateamAway
 id txt_namateamHome
 id txt_namateamjadwal
 id txt_namateamnext
+id txt_nameawaylast
+id txt_namehomelast
 id txt_nostaff
 id txt_phoneAccount
 id txt_playklasemen
 id txt_point
 id txt_scoreterupdate
 id txt_selisihgol
-id txt_skorawaylast
-id txt_skorhomelast
 id txt_stock_variant
 id txt_tanggal
 id txt_teamklasemen
@@ -1686,6 +1718,7 @@ layout fragment_live
 layout fragment_store
 layout fragment_team
 layout fragment_terupdate
+layout ms__list_item
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -2365,6 +2398,7 @@ styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
 styleable MaterialButton android_insetLeft android_insetRight android_insetTop android_insetBottom backgroundTint backgroundTintMode cornerRadius icon iconGravity iconPadding iconSize iconTint iconTintMode rippleColor strokeColor strokeWidth
 styleable MaterialCardView strokeColor strokeWidth
 styleable MaterialComponentsTheme bottomSheetDialogTheme bottomSheetStyle chipGroupStyle chipStandaloneStyle chipStyle colorAccent colorBackgroundFloating colorPrimary colorPrimaryDark colorSecondary editTextStyle floatingActionButtonStyle materialButtonStyle materialCardViewStyle navigationViewStyle scrimBackground snackbarButtonStyle tabStyle textAppearanceBody1 textAppearanceBody2 textAppearanceButton textAppearanceCaption textAppearanceHeadline1 textAppearanceHeadline2 textAppearanceHeadline3 textAppearanceHeadline4 textAppearanceHeadline5 textAppearanceHeadline6 textAppearanceOverline textAppearanceSubtitle1 textAppearanceSubtitle2 textInputStyle
+styleable MaterialSpinner ms_arrow_tint ms_background_color ms_background_selector ms_dropdown_height ms_dropdown_max_height ms_hide_arrow ms_hint ms_hint_color ms_padding_bottom ms_padding_left ms_padding_right ms_padding_top ms_popup_padding_bottom ms_popup_padding_left ms_popup_padding_right ms_popup_padding_top ms_text_color
 styleable MenuGroup android_enabled android_id android_visible android_menuCategory android_orderInCategory android_checkableBehavior
 styleable MenuItem android_icon android_enabled android_id android_checked android_visible android_menuCategory android_orderInCategory android_title android_titleCondensed android_alphabeticShortcut android_numericShortcut android_checkable android_onClick actionLayout actionProviderClass actionViewClass alphabeticModifiers contentDescription iconTint iconTintMode numericModifiers showAsAction tooltipText
 styleable MenuView android_windowAnimationStyle android_itemTextAppearance android_horizontalDivider android_verticalDivider android_headerBackground android_itemBackground android_itemIconDisabledAlpha preserveIconSpacing subMenuArrow

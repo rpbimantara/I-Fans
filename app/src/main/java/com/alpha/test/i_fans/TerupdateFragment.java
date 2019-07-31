@@ -2,6 +2,7 @@ package com.alpha.test.i_fans;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -18,11 +19,15 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -45,6 +50,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 public class TerupdateFragment extends Fragment {
 
     ArrayList<Terupdate> ArrayListTerupdate;
+    ArrayList<Liga> ArrayListLiga;
     int RecyclerViewItemPosition;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
@@ -52,16 +58,19 @@ public class TerupdateFragment extends Fragment {
     private View rootView;
     RecyclerView.LayoutManager llm;
     AdapterTerupdate adapter;
+    AdapterLiga adapterLiga;
     SwipeRefreshLayout swiper;
-    TextView tglnow, stadionnow, tgllast, tglnext, teamHome, teamAway, teamNext, stadionNext, skornow, homelast, awaylast;
+    TextView tglnow, stadionnow, tgllast, tglnext, teamHome, teamAway, teamNext, stadionNext, skornow, homelast, awaylast,liga_terupdate;
     ImageView homeImage, awayImage, nextImage, nextStatus, homeImageLast, awayImageLast;
+    MaterialSpinner ligaSpinner;
     LinearLayout lnNow;
     RelativeLayout rlLast, rlNext;
     int id_jadwal_now = 0;
     int id_jadwal_last = 0;
     int id_jadwal_next = 0;
     OdooClient client;
-    Spinner ligaSpiner;
+    Context context;
+//    Spinner ligaSpiner;
 
     public TerupdateFragment() {
         // Required empty public constructor
@@ -85,18 +94,21 @@ public class TerupdateFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         if (rootView == null){
+            context = getContext();
             rootView = inflater.inflate(R.layout.fragment_terupdate, container, false);
             rv = rootView.findViewById(R.id.rv_recycler_view_hot_news);
+            ligaSpinner = rootView.findViewById(R.id.ligaterupdate_spinner);
+//            ligaSpinner.setItems("Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow");
             lnNow = rootView.findViewById(R.id.linearLayout_now);
             rlLast = rootView.findViewById(R.id.RL_last);
             rlNext = rootView.findViewById(R.id.RL_next);
 //            liganow = rootView.findViewById(R.id.textView_namaligaterupdate);
-            ligaSpiner = rootView.findViewById(R.id.ligaterupdate_spinner);
+//            liga_terupdate = rootView.findViewById(R.id.textView_namaligaterupdate);
             tglnow = rootView.findViewById(R.id.textView_tglharini);
             stadionnow = rootView.findViewById(R.id.textView_stadionharini);
             skornow = rootView.findViewById(R.id.txt_scoreterupdate);
-            homelast = rootView.findViewById(R.id.txt_skorhomelast);
-            awaylast = rootView.findViewById(R.id.txt_skorawaylast);
+            homelast = rootView.findViewById(R.id.txt_namehomelast);
+            awaylast = rootView.findViewById(R.id.txt_nameawaylast);
             homeImageLast = rootView.findViewById(R.id.imageView_homelast);
             awayImageLast = rootView.findViewById(R.id.imageView_awaylast);
             tgllast = rootView.findViewById(R.id.textView_lastliga);
@@ -114,7 +126,7 @@ public class TerupdateFragment extends Fragment {
                 @Override
                 public void onRefresh() {
                     new TerupdateTask().execute();
-                    new MatchTask().execute();
+                    getData();
                 }
             });
             sharedPrefManager = new SharedPrefManager(getActivity());
@@ -188,9 +200,17 @@ public class TerupdateFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-
+            ligaSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                    Liga liga = adapterLiga.getItem(position);
+                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga,liga.getId());
+                    getData();
+                }
+            });
+            new LigaTask().execute();
             new TerupdateTask().execute();
-            new MatchTask().execute();
+            getData();
         }
         return rootView;
     }
@@ -220,14 +240,67 @@ public class TerupdateFragment extends Fragment {
         return ((param == "null") || (param == "false") ? "0" : param);
     }
 
-    public class MatchTask extends AsyncTask<Void, Void, String> {
-        @Override
-        protected void onPostExecute(String aVoid) {
-            super.onPostExecute(aVoid);
-        }
+    public void getData(){
+        client = new OdooClient.Builder(getContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        // Success connection
 
+                        OArguments arguments = new OArguments();
+                        arguments.add(sharedPrefManager.getSpIdClub());
+                        arguments.add(sharedPrefManager.getSPIdLiga());
+
+                        client.call_kw("persebaya.jadwal", "jadwal_terkini", arguments, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                // response
+                                OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        homeImage.setImageBitmap(StringToBitMap(record.getString("image_home")));
+                                        awayImage.setImageBitmap(StringToBitMap(record.getString("image_away")));
+                                        teamHome.setText(record.getString("home"));
+                                        teamAway.setText(record.getString("away"));
+                                        id_jadwal_now = record.getInt("id");
+                                        tglnow.setText(tanggal(record.getString("date")));
+                                        stadionnow.setText(record.getString("stadion"));
+                                        skornow.setText(record.getString("ft_home") + " - "+ record.getString("ft_away"));
+//                                        liga_terupdate.setText(record.getString("liga"));
+
+                                        homeImageLast.setImageBitmap(StringToBitMap(record.getString("image_home_last")));
+                                        homelast.setText(record.getString("home_last"));
+                                        awayImageLast.setImageBitmap(StringToBitMap(record.getString("image_away_last")));
+                                        awaylast.setText(record.getString("away_last"));
+                                        id_jadwal_last = record.getInt("id_last");
+                                        tgllast.setText(tanggal(record.getString("date_last")));
+
+                                        id_jadwal_next = record.getInt("id_next");
+                                        stadionNext.setText(record.getString("stadion_next"));
+                                        tglnext.setText(tanggal(record.getString("date_next")));
+                                        if (record.getString("home_next").equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
+                                            nextImage.setImageBitmap(StringToBitMap(record.getString("image_away_next")));
+                                            teamNext.setText(record.getString("away_next"));
+                                            nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName()));
+                                        }else{
+                                            nextImage.setImageBitmap(StringToBitMap(record.getString("image_home_next")));
+                                            teamNext.setText(record.getString("home_next"));
+                                            nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName()));
+                                        }
+                                    }
+                            }
+                        });
+                    }
+                })
+                .build();
+    }
+
+    public class LigaTask extends AsyncTask<Void, Void, Void>{
         @Override
-        protected String doInBackground(Void... voids) {
+        protected Void doInBackground(Void... voids) {
+            ArrayListLiga = new ArrayList<>();
             client = new OdooClient.Builder(getContext())
                     .setHost(sharedPrefManager.getSP_Host_url())
                     .setSession(sharedPrefManager.getSpSessionId())
@@ -235,24 +308,34 @@ public class TerupdateFragment extends Fragment {
                     .setConnectListener(new OdooConnectListener() {
                         @Override
                         public void onConnected(OdooVersion version) {
-                            // Success connection
+                            ODomain domain = new ODomain();
+                            domain.add("status_liga", "=", "valid");
 
-                            OArguments arguments = new OArguments();
-                            arguments.addNULL();
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id", "nama", "create_date", "create_uid", "write_date", "write_uid");
 
-                            client.call_kw("persebaya.jadwal", "jadwal_terkini", arguments, new IOdooResponse() {
+                            int offset = 0;
+                            int limit = 0;
+
+                            String sorting = "create_date DESC";
+
+                            client.searchRead("persebaya.liga", domain, fields, offset, limit, sorting, new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
-                                    // response
                                     OdooRecord[] records = result.getRecords();
                                     for (OdooRecord record : records) {
-                                        Log.w("asdasdads",record.getString("id"));
+                                        ArrayListLiga.add(new Liga(
+                                                record.getInt("id"),
+                                                record.getString("nama")));
+
+                                        adapterLiga = new AdapterLiga(context,android.R.layout.simple_spinner_item,ArrayListLiga);
+                                        ligaSpinner.setAdapter(adapterLiga);
+                                        adapterLiga.notifyDataSetChanged();
                                     }
                                 }
                             });
                         }
-                    })
-                    .build();
+                    }).build();
             return null;
         }
     }

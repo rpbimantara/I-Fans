@@ -22,6 +22,8 @@ import oogbox.api.odoo.client.AuthError;
 import oogbox.api.odoo.client.OdooVersion;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.AuthenticateListener;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
@@ -88,7 +90,6 @@ public class LoginActivity extends AppCompatActivity {
                     OdooRecord[] records = result.getRecords();
 
                     for(OdooRecord record: records) {
-                        Log.v("Name:", String.valueOf(record.getInt("club_id")));
                         sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_USER, user.uid);
                         sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_CLUB, record.getInt("club_id"));
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_NAMA_CLUB, record.getString("club_id"));
@@ -101,6 +102,27 @@ public class LoginActivity extends AppCompatActivity {
 
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class)
                             .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                }
+            });
+
+            ODomain domain = new ODomain();
+            domain.add("status_liga", "=", "valid");
+
+            OdooFields fieldsliga = new OdooFields();
+            fieldsliga.addAll("id", "nama", "create_date", "create_uid", "write_date", "write_uid");
+
+            int offset = 0;
+            int limit = 1;
+
+            String sorting = "create_uid DESC";
+
+            client.searchRead("persebaya.liga", domain, fieldsliga, offset, limit, sorting, new IOdooResponse() {
+                @Override
+                public void onResult(OdooResult result) {
+                    OdooRecord[] records = result.getRecords();
+                    for (OdooRecord record : records) {
+                        sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga, record.getInt("id"));
+                    }
                 }
             });
         }

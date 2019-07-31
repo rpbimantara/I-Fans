@@ -7,6 +7,7 @@ public class SharedPrefManager {
     public static final String SP_Persebaya_APP = "spPersebayaApp";
     public static final String SP_ID_USER = "spIdUser";
     public static final String SP_ID_PARTNER = "spIdPartner";
+    public static final String SP_ID_Liga = "spIdLiga";
     public static final String SP_ID_CLUB = "spIdClub";
     public static final String SP_NAMA_CLUB = "spNamaClub";
     public static final String SP_NAMA_USER = "spNamaUser";
@@ -51,6 +52,10 @@ public class SharedPrefManager {
         return sp.getInt(SP_ID_PARTNER,0);
     }
 
+    public Integer getSPIdLiga() {
+        return sp.getInt(SP_ID_Liga,0);
+    }
+
     public Integer getSpIdClub() {
         return sp.getInt(SP_ID_CLUB,0);
     }
@@ -88,7 +93,7 @@ public class SharedPrefManager {
     }
 
     public String getSP_db() {
-        return sp.getString(SP_Host_url,"development");
+        return sp.getString(SP_db,"new_dev");
     }
 
     public String getSpSessionId() {
