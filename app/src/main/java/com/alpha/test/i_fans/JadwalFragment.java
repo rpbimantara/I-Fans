@@ -90,10 +90,10 @@ public class JadwalFragment extends Fragment {
 
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
 
-                        RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                        Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
-                        intent.putExtra("nama", ArrayListJadwal.get(RecyclerViewItemPosition).getNamateam());
-                        startActivity(intent);
+//                        RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+//                        Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
+//                        intent.putExtra("nama", ArrayListJadwal.get(RecyclerViewItemPosition).getNamateam());
+//                        startActivity(intent);
                     }
                     return false;
                 }

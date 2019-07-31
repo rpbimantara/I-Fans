@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -75,6 +76,7 @@ public class ClubSummaryFragment extends Fragment {
                             public void onResult(OdooResult result) {
                                 // response
                                 OdooRecord[] Records = result.getRecords();
+                                Log.e("asdasdasdas",result.toString());
                                 for (final OdooRecord record : Records) {
                                     txtNamaStadion.setText(record.getString("stadion"));
                                     imageclub.setImageBitmap(StringToBitMap(record.getString("foto_club")));
