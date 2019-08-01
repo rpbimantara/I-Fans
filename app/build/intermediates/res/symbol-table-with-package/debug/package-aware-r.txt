@@ -25,6 +25,10 @@ animator mtrl_fab_hide_motion_spec
 animator mtrl_fab_show_motion_spec
 animator mtrl_fab_transformation_sheet_collapse_spec
 animator mtrl_fab_transformation_sheet_expand_spec
+array com_google_android_gms_fonts_certs
+array com_google_android_gms_fonts_certs_dev
+array com_google_android_gms_fonts_certs_prod
+array preloaded_fonts
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme
@@ -1163,6 +1167,7 @@ drawable notify_panel_notification_icon_bg
 drawable state_list
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+font aladin
 id ALT
 id Account_edit_toolbar
 id CTRL
@@ -1358,6 +1363,9 @@ id ligaterupdate_spinner
 id light
 id line1
 id line3
+id line_up_name
+id line_up_number
+id line_up_position
 id linearLayout
 id linearLayout_klasemen
 id linearLayout_now
@@ -1428,6 +1436,8 @@ id rv_recycler_view_jadwal
 id rv_recycler_view_klasemen
 id rv_recycler_view_lelang
 id rv_recycler_view_list_berita
+id rv_recycler_view_match_line_up_home
+id rv_recycler_view_match_line_up_home_core
 id rv_recycler_view_match_moment
 id rv_recycler_view_result
 id rv_recycler_view_schedule
@@ -1493,6 +1503,7 @@ id swiperefresh_jadwal
 id swiperefresh_klasemen
 id swiperefresh_lelang
 id swiperefresh_list_berita
+id swiperefresh_match_line_up_home
 id swiperefresh_match_moment
 id swiperefresh_result
 id swiperefresh_schedule
@@ -1702,6 +1713,7 @@ layout card_item_hot_news
 layout card_item_jadwal
 layout card_item_klasemen
 layout card_item_lelang
+layout card_item_line_up
 layout card_item_moment
 layout card_item_store
 layout card_item_store_variant
@@ -1740,6 +1752,7 @@ layout fragment_lelang
 layout fragment_list_berita
 layout fragment_live
 layout fragment_match_line_up
+layout fragment_match_line_up_home
 layout fragment_match_moment
 layout fragment_match_statistic
 layout fragment_store

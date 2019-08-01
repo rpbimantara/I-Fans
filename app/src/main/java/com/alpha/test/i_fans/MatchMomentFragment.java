@@ -61,6 +61,12 @@ public class MatchMomentFragment extends Fragment {
             rootView = inflater.inflate(R.layout.fragment_match_moment, container, false);
             rvMoment = rootView.findViewById(R.id.rv_recycler_view_match_moment);
             swiper = rootView.findViewById(R.id.swiperefresh_match_moment);
+            swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                @Override
+                public void onRefresh() {
+                    new MatchMomentTask().execute();
+                }
+            });
             sharedPrefManager = new SharedPrefManager(getContext());
             adapter = new AdapterMatchMoment(ArrayListMatchMoment);
             rvMoment.setAdapter(adapter);
@@ -114,7 +120,6 @@ public class MatchMomentFragment extends Fragment {
                                         ));
                                     }
                                     adapter = new AdapterMatchMoment(ArrayListMatchMoment);
-                                    Log.e("asdasdadsasd",ArrayListMatchMoment.toString());
                                     rvMoment.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
                                     swiper.setRefreshing(false);

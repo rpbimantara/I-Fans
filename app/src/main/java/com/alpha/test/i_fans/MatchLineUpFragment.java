@@ -62,7 +62,7 @@ public class MatchLineUpFragment extends Fragment {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    MatchStatisticFragment tab1 = new MatchStatisticFragment();
+                    MatchLineUpHomeFragment tab1 = new MatchLineUpHomeFragment();
                     return tab1;
                 case 1:
                     MatchStatisticFragment tab2 = new MatchStatisticFragment();
