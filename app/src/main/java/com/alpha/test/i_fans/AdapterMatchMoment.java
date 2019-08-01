@@ -1,6 +1,8 @@
 package com.alpha.test.i_fans;
 
+import android.content.res.ColorStateList;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -34,17 +36,18 @@ public class AdapterMatchMoment extends RecyclerView.Adapter<AdapterMatchMoment.
     @NonNull
     @Override
     public MatchMomentViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_item_team,viewGroup,false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.card_item_moment,viewGroup,false);
         return new MatchMomentViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MatchMomentViewHolder holder, int i) {
-        holder.time.setText(dataList.get(i).getId());
-        holder.event.setText(dataList.get(i).getId());
-        holder.player.setText(dataList.get(i).getId());
-        holder.sub_player.setText(dataList.get(i).getId());
-        holder.club.setText(dataList.get(i).getId());
+    public void onBindViewHolder(@NonNull MatchMomentViewHolder holder, int position) {
+        holder.time.setText(dataList.get(position).getTime()+"'");
+        holder.time.setTextColor(ColorStateList.valueOf(Color.parseColor("#178C05")));
+        holder.event.setText(dataList.get(position).getEvent());
+        holder.player.setText(dataList.get(position).getPlayer_name());
+        holder.sub_player.setText(dataList.get(position).getSub_player_name());
+        holder.club.setText(dataList.get(position).getClub_name());
 
     }
 

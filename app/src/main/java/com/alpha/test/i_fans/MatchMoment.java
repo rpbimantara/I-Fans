@@ -2,10 +2,11 @@ package com.alpha.test.i_fans;
 
 public class MatchMoment {
 
-    private String id,club_name,event,player_name,sub_player_name;
+    private String id,time,club_name,event,player_name,sub_player_name;
 
-    public MatchMoment(String id, String club_name, String event, String player_name, String sub_player_name) {
+    public MatchMoment(String id, String time,String club_name, String event, String player_name, String sub_player_name) {
         this.id = id;
+        this.time = time;
         this.club_name = club_name;
         this.event = event;
         this.player_name = player_name;
@@ -18,6 +19,14 @@ public class MatchMoment {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getClub_name() {
@@ -50,5 +59,17 @@ public class MatchMoment {
 
     public void setSub_player_name(String sub_player_name) {
         this.sub_player_name = sub_player_name;
+    }
+
+    @Override
+    public String toString() {
+        return "MatchMoment{" +
+                "id='" + id + '\'' +
+                ", time='" + time + '\'' +
+                ", club_name='" + club_name + '\'' +
+                ", event='" + event + '\'' +
+                ", player_name='" + player_name + '\'' +
+                ", sub_player_name='" + sub_player_name + '\'' +
+                '}';
     }
 }

@@ -1507,6 +1507,7 @@ id tabs_berita
 id tabs_detail_club
 id tabs_home
 id tabs_match_detail
+id tabs_match_line_up
 id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
@@ -1624,6 +1625,7 @@ id viewpager_berita
 id viewpager_detail_club
 id viewpager_home
 id viewpager_match_detail
+id viewpager_match_line_up
 id visible
 id wide
 id withText

@@ -134,7 +134,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/colorPrimaryDark"
                 app:tabIndicatorColor="@color/colorWhite"
-                app:tabMode="scrollable"
+                app:tabMode="fixed"
                 app:tabGravity="fill"
                 app:tabSelectedTextColor="@color/colorWhite"
                 app:tabTextColor="@color/colorTrueState" />
@@ -147,17 +147,7 @@
             android:layout_below="@+id/appbar"
             app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     </android.support.design.widget.CoordinatorLayout>
-    <!--<android.support.v4.widget.SwipeRefreshLayout-->
-        <!--android:id="@+id/swiperefresh_match_detail"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:layout_width="match_parent">-->
 
-        <!--<android.support.v7.widget.RecyclerView-->
-            <!--android:id="@+id/rv_recycler_view_match_detail"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content">-->
 
-        <!--</android.support.v7.widget.RecyclerView>-->
-    <!--</android.support.v4.widget.SwipeRefreshLayout>-->
 
 </LinearLayout>

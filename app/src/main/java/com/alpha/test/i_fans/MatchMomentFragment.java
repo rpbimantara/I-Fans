@@ -103,10 +103,10 @@ public class MatchMomentFragment extends Fragment {
                                 @Override
                                 public void onResult(OdooResult result) {
                                     OdooRecord[] records = result.getRecords();
-                                    Log.e("asdasda",result.toString());
                                     for (OdooRecord record : records) {
                                         ArrayListMatchMoment.add(new MatchMoment(
                                                 String.valueOf(record.getInt("id")),
+                                                record.getString("time_moments"),
                                                 record.getString("club_id"),
                                                 record.getString("moments"),
                                                 record.getString("players_moments"),
@@ -114,6 +114,7 @@ public class MatchMomentFragment extends Fragment {
                                         ));
                                     }
                                     adapter = new AdapterMatchMoment(ArrayListMatchMoment);
+                                    Log.e("asdasdadsasd",ArrayListMatchMoment.toString());
                                     rvMoment.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
                                     swiper.setRefreshing(false);
