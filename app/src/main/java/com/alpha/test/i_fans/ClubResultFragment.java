@@ -107,6 +107,7 @@ public class ClubResultFragment extends Fragment {
                             OArguments arguments = new OArguments();
                             arguments.add(getActivity().getIntent().getIntExtra("id",0));
                             arguments.add(Arrays.asList("selesai"));
+                            arguments.add(sharedPrefManager.getSPIdLiga());
 
                             client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
                                 @Override

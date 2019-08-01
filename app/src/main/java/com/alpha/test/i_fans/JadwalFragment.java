@@ -154,6 +154,7 @@ public class JadwalFragment extends Fragment {
 
                             OArguments arguments = new OArguments();
                             arguments.add(sharedPrefManager.getSpIdClub());
+                            arguments.add(sharedPrefManager.getSPIdLiga());
 
                             client.call_kw("persebaya.jadwal", "list_jadwal", arguments, new IOdooResponse() {
                                 @Override
