@@ -65,7 +65,7 @@ public class MatchLineUpFragment extends Fragment {
                     MatchLineUpHomeFragment tab1 = new MatchLineUpHomeFragment();
                     return tab1;
                 case 1:
-                    MatchStatisticFragment tab2 = new MatchStatisticFragment();
+                    MatchLineUpAwayFragment tab2 = new MatchLineUpAwayFragment();
                     return tab2;
             }
             return null;

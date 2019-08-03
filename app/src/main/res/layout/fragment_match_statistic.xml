@@ -1,14 +1,493 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MatchStatisticFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh_match_statistic"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_width="match_parent">
 
-</FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Ball Possession"
+                    android:gravity="center"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0 %"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarBallHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarBallAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0 %"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Passing Accuracy"
+                    android:gravity="center"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0 %"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarPassingHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarPassingAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0 %"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Total Shots"
+                    android:gravity="center"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarTotalHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarTotalAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Shots On Target"
+                    android:gravity="center"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarTargetHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarTargetAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Corners Kick"
+                    android:gravity="center"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarCornerHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarCornerAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Fouls"
+                    android:gravity="center"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarFoulsHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarFoulsAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Offside"
+                    android:gravity="center"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarOffsideHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarOffsideAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Yellow Card"
+                    android:gravity="center"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarYellowHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarYellowAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout><TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/aladin"
+                android:text="Red Card"
+                android:gravity="center"
+                android:textColor="@color/colorTrueState"
+                android:textSize="20sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="30sp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginLeft="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp"/>
+
+                    <ProgressBar
+                        android:id="@+id/progressBarRedHome"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:scaleX="-1"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBarRedAway"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:progressBackgroundTint="@color/colorPrimary"
+                        android:layout_weight="1" />
+                    <TextView
+                        android:layout_width="50sp"
+                        android:layout_height="30sp"
+                        android:layout_marginRight="20sp"
+                        android:fontFamily="@font/aladin"
+                        android:text="0"
+                        android:gravity="center"
+                        android:textColor="@color/colorTrueState"
+                        android:textSize="20sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+</android.support.design.widget.CoordinatorLayout>

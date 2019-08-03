@@ -42,7 +42,7 @@ public class AdapterLiga extends ArrayAdapter<Liga> {
     @Override
     public View getView(int position, @Nullable @android.support.annotation.Nullable View convertView, @NonNull @android.support.annotation.NonNull ViewGroup parent) {
         TextView label = (TextView) super.getDropDownView(position, convertView, parent);
-        label.setTextColor(Color.BLACK);
+        label.setTextColor(Color.RED);
         label.setText(dataList.get(position).getNama());
         return label;
 

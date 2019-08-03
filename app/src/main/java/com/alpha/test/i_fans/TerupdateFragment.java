@@ -186,9 +186,13 @@ public class TerupdateFragment extends Fragment {
             rlNext.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent intent = new Intent(getActivity(), MatchDetailActivity.class);
-                    intent.putExtra("id_jadwal", id_jadwal_next);
-                    startActivity(intent);
+                    if (id_jadwal_next > 0) {
+                        Intent intent = new Intent(getActivity(), MatchDetailActivity.class);
+                        intent.putExtra("id_jadwal", id_jadwal_next);
+                        startActivity(intent);
+                    }else{
+                        Toast.makeText(context, "No Match Data Found!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
 
@@ -205,6 +209,7 @@ public class TerupdateFragment extends Fragment {
                 public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                     Liga liga = adapterLiga.getItem(position);
                     sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga,liga.getId());
+                    Log.e("Liga id : ", String.valueOf(sharedPrefManager.getSPIdLiga()));
                     getData();
                 }
             });
@@ -267,7 +272,7 @@ public class TerupdateFragment extends Fragment {
                                         id_jadwal_now = record.getInt("id");
                                         tglnow.setText(tanggal(record.getString("date")));
                                         stadionnow.setText(record.getString("stadion"));
-                                        skornow.setText(record.getString("ft_home") + " - "+ record.getString("ft_away"));
+                                        skornow.setText(record.getString("skornow") );
 //                                        liga_terupdate.setText(record.getString("liga"));
 
                                         homeImageLast.setImageBitmap(StringToBitMap(record.getString("image_home_last")));
@@ -277,22 +282,25 @@ public class TerupdateFragment extends Fragment {
                                         id_jadwal_last = record.getInt("id_last");
                                         tgllast.setText(tanggal(record.getString("date_last")));
 
-                                        id_jadwal_next = record.getInt("id_next");
-                                        stadionNext.setText(record.getString("stadion_next"));
-                                        tglnext.setText(tanggal(record.getString("date_next")));
-                                        if (record.getString("home_next").equalsIgnoreCase(sharedPrefManager.getSpNamaClub())){
-                                            nextImage.setImageBitmap(StringToBitMap(record.getString("image_away_next")));
-                                            teamNext.setText(record.getString("away_next"));
-                                            nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName()));
-                                        }else{
-                                            nextImage.setImageBitmap(StringToBitMap(record.getString("image_home_next")));
-                                            teamNext.setText(record.getString("home_next"));
-                                            nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName()));
+                                        if (record.getString("id_next") != null) {
+                                            id_jadwal_next = record.getInt("id_next");
+                                            stadionNext.setText(record.getString("stadion_next"));
+                                            tglnext.setText(tanggal(record.getString("date_next")));
+                                            if (record.getString("home_next").equalsIgnoreCase(sharedPrefManager.getSpNamaClub())) {
+                                                nextImage.setImageBitmap(StringToBitMap(record.getString("image_away_next")));
+                                                teamNext.setText(record.getString("away_next"));
+                                                nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_home", "drawable", getContext().getPackageName()));
+                                            } else {
+                                                nextImage.setImageBitmap(StringToBitMap(record.getString("image_home_next")));
+                                                teamNext.setText(record.getString("home_next"));
+                                                nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_away", "drawable", getContext().getPackageName()));
+                                            }
                                         }
                                     }
                             }
                         });
                     }
+
                 })
                 .build();
     }

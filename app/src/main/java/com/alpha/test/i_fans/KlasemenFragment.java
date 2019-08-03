@@ -137,7 +137,8 @@ public class KlasemenFragment extends Fragment {
                             // Success connection
 
                             OArguments arguments = new OArguments();
-                            arguments.addNULL();
+                            arguments.add(sharedPrefManager.getSpIdClub());
+                            arguments.add(sharedPrefManager.getSPIdLiga());
 
                             client.call_kw("persebaya.liga", "klasemen", arguments, new IOdooResponse() {
                                 @Override
