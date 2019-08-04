@@ -87,10 +87,6 @@ public class ClubResultFragment extends Fragment {
             swiper.setRefreshing(true);
         }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -137,6 +133,7 @@ public class ClubResultFragment extends Fragment {
                                     adapter = new AdapterJadwal(ArrayListJadwal);
                                     rv.setAdapter(adapter );
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

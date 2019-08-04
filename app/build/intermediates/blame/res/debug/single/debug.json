@@ -4,24 +4,24 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-xhdpi-v4\\abc_cab_background_top_mtrl_alpha.9.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_tabs_colored_ripple_color.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\294a26805c275ca2df3358c8b3006a32\\res\\color\\mtrl_tabs_colored_ripple_color.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-hdpi-v4\\abc_list_divider_mtrl_alpha.9.png"
-    },
-    {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_match_detail.xml.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_match_detail.xml"
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-hdpi-v4\\abc_ic_star_half_black_36dp.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_edit_text_material.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable\\abc_edit_text_material.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_match_detail.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_match_detail.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable_common_google_signin_btn_text_dark_focused.xml.flat",
@@ -32,12 +32,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\5297fe62dbcda839f193551d55ba432b\\res\\layout\\notification_template_part_time.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\294a26805c275ca2df3358c8b3006a32\\res\\layout\\design_text_input_password_icon.xml"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_abc_scrubber_control_off_mtrl_alpha.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-xxhdpi-v4\\abc_scrubber_control_off_mtrl_alpha.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_design_text_input_password_icon.xml.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\294a26805c275ca2df3358c8b3006a32\\res\\layout\\design_text_input_password_icon.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_text_select_handle_right_mtrl_light.png.flat",
@@ -68,20 +68,20 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-v23\\abc_control_background_material.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
-        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_16dp.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_team.xml.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_team.xml"
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
+        "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_16dp.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_list_selector_disabled_holo_light.9.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-hdpi-v4\\abc_list_selector_disabled_holo_light.9.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_team.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\card_item_team.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
@@ -116,12 +116,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\fe90ba063a559b622f2fa6ce5b926032\\res\\layout\\notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_berita_detail.xml.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_berita_detail.xml"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_tabs_icon_color_selector.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\294a26805c275ca2df3358c8b3006a32\\res\\color\\mtrl_tabs_icon_color_selector.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_berita_detail.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_berita_detail.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_list_divider_mtrl_alpha.9.png.flat",

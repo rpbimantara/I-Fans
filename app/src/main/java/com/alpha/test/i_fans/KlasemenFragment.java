@@ -68,8 +68,7 @@ public class KlasemenFragment extends Fragment {
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    loadData();
-//                    new KlasemenTask().execute();
+                    new KlasemenTask().execute();
                 }
             });
             sharedPrefManager = new SharedPrefManager(getActivity());
@@ -109,71 +108,11 @@ public class KlasemenFragment extends Fragment {
 
                 }
             });
-            loadData();
-//            new KlasemenTask().execute();
+            new KlasemenTask().execute();
         }
         return rootView;
     }
 
-
-    public void loadData(){
-        ArrayListKlasemen =  new ArrayList<>();
-        client = new OdooClient.Builder(getContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        // Success connection
-
-                        OArguments arguments = new OArguments();
-                        arguments.add(sharedPrefManager.getSPIdLiga());
-
-                        client.call_kw("persebaya.liga.klasemen", "klasemen", arguments, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                // response
-                                OdooRecord[] Records = result.getRecords();
-                                Integer color = getResources().getColor(R.color.colorWhite);
-
-                                ArrayListKlasemen.add(new Klasemen(
-                                        String.valueOf("No."),
-                                        String.valueOf("Logo"),
-                                        String.valueOf("Club"),
-                                        String.valueOf("P"),
-                                        String.valueOf("+/-"),
-                                        String.valueOf("Pts"),
-                                        color,0));
-                                int i = 1;
-                                for (final OdooRecord record : Records) {
-                                    if (record.getString("nama_club").equalsIgnoreCase("Persebaya")){
-                                        color = getResources().getColor(R.color.colorYellow);
-                                    }else{
-                                        color = getResources().getColor(R.color.colorWhite);
-                                    }
-                                    ArrayListKlasemen.add(new Klasemen(
-                                            String.valueOf(i),
-                                            record.getString("foto_club"),
-                                            record.getString("nama_club"),
-                                            String.valueOf(record.getInt("play")),
-                                            String.valueOf(record.getInt("selisih_gol")),
-                                            String.valueOf(record.getInt("point")),
-                                            color,
-                                            record.getInt("id_club")));
-                                    i++;
-                                    Log.e("Standing",String.valueOf(record.get("id_club")));
-                                }
-                                adapter = new AdapterKlasemen(ArrayListKlasemen);
-                                rv.setAdapter(adapter);
-                                adapter.notifyDataSetChanged();
-                            }
-                        });
-                    }
-                })
-                .build();
-    }
 
 
     public class KlasemenTask extends AsyncTask<Void,Void,Void>{
@@ -189,7 +128,61 @@ public class KlasemenFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... voids) {
+            ArrayListKlasemen =  new ArrayList<>();
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession(sharedPrefManager.getSpSessionId())
+                    .setSynchronizedRequests(false)
 
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
+
+                            OArguments arguments = new OArguments();
+                            arguments.add(sharedPrefManager.getSPIdLiga());
+
+                            client.call_kw("persebaya.liga.klasemen", "klasemen", arguments, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // response
+                                    OdooRecord[] Records = result.getRecords();
+                                    Integer color = getResources().getColor(R.color.colorWhite);
+
+                                    ArrayListKlasemen.add(new Klasemen(
+                                            String.valueOf("No."),
+                                            String.valueOf("Logo"),
+                                            String.valueOf("Club"),
+                                            String.valueOf("P"),
+                                            String.valueOf("+/-"),
+                                            String.valueOf("Pts"),
+                                            color,0));
+                                    int i = 1;
+                                    for (final OdooRecord record : Records) {
+                                        if (record.getString("nama_club").equalsIgnoreCase("Persebaya")){
+                                            color = getResources().getColor(R.color.colorYellow);
+                                        }else{
+                                            color = getResources().getColor(R.color.colorWhite);
+                                        }
+                                        ArrayListKlasemen.add(new Klasemen(
+                                                String.valueOf(i),
+                                                record.getString("foto_club"),
+                                                record.getString("nama_club"),
+                                                String.valueOf(record.getInt("play")),
+                                                String.valueOf(record.getInt("selisih_gol")),
+                                                String.valueOf(record.getInt("point")),
+                                                color,
+                                                record.getInt("id_club")));
+                                        i++;
+                                    }
+                                    adapter = new AdapterKlasemen(ArrayListKlasemen);
+                                    rv.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
+                                }
+                            });
+                        }
+                    })
+                    .build();
 
             return null;
         }

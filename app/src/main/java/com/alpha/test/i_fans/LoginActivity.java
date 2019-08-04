@@ -114,7 +114,7 @@ public class LoginActivity extends AppCompatActivity {
             int offset = 0;
             int limit = 1;
 
-            String sorting = "create_uid DESC";
+            String sorting = "id DESC";
 
             client.searchRead("persebaya.liga", domain, fieldsliga, offset, limit, sorting, new IOdooResponse() {
                 @Override

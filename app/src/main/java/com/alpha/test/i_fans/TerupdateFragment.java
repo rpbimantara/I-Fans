@@ -209,7 +209,6 @@ public class TerupdateFragment extends Fragment {
                 public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                     Liga liga = adapterLiga.getItem(position);
                     sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga,liga.getId());
-                    Log.e("Liga id : ", String.valueOf(sharedPrefManager.getSPIdLiga()));
                     getData();
                 }
             });
@@ -325,7 +324,7 @@ public class TerupdateFragment extends Fragment {
                             int offset = 0;
                             int limit = 0;
 
-                            String sorting = "create_date DESC";
+                            String sorting = "id DESC";
 
                             client.searchRead("persebaya.liga", domain, fields, offset, limit, sorting, new IOdooResponse() {
                                 @Override

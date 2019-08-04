@@ -88,11 +88,6 @@ public class ClubScheduleFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
             ArrayListJadwal = new ArrayList<>();
             client = new OdooClient.Builder(getContext())
@@ -107,6 +102,7 @@ public class ClubScheduleFragment extends Fragment {
                             OArguments arguments = new OArguments();
                             arguments.add(getActivity().getIntent().getIntExtra("id",0));
                             arguments.add(Arrays.asList("akan","tunda","valid","main"));
+                            arguments.add(sharedPrefManager.getSPIdLiga());
 
                             client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
                                 @Override
@@ -136,6 +132,7 @@ public class ClubScheduleFragment extends Fragment {
                                     adapter = new AdapterJadwal(ArrayListJadwal);
                                     rv.setAdapter(adapter );
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

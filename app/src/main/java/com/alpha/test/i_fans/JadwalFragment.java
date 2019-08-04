@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -137,7 +138,7 @@ public class JadwalFragment extends Fragment {
 
         @Override
         protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
+
         }
 
         @Override
@@ -155,7 +156,7 @@ public class JadwalFragment extends Fragment {
                             OArguments arguments = new OArguments();
                             arguments.add(sharedPrefManager.getSpIdClub());
                             arguments.add(sharedPrefManager.getSPIdLiga());
-
+                            Log.e("Jadwal liga",String.valueOf(sharedPrefManager.getSPIdLiga()));
                             client.call_kw("persebaya.jadwal", "list_jadwal", arguments, new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
@@ -184,6 +185,7 @@ public class JadwalFragment extends Fragment {
                                     adapter = new AdapterJadwal(ArrayListJadwal);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }
