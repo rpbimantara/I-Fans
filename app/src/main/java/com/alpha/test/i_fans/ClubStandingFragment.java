@@ -130,7 +130,7 @@ public class ClubStandingFragment extends Fragment {
                             OArguments arguments = new OArguments();
                             arguments.add(sharedPrefManager.getSPIdLiga());
 
-                            client.call_kw("persebaya.liga", "klasemen", arguments, new IOdooResponse() {
+                            client.call_kw("persebaya.liga.klasemen", "klasemen", arguments, new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
                                     // response
