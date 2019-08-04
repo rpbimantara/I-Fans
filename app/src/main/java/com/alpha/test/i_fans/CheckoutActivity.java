@@ -52,11 +52,6 @@ public class CheckoutActivity extends AppCompatActivity {
             swiper.setRefreshing(true);
         }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-            swiper.setRefreshing(false);
-        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -92,6 +87,7 @@ public class CheckoutActivity extends AppCompatActivity {
                                     adapter = new AdapterCheckout(ArrayListCheckout);
                                     rv.setAdapter(adapter );
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

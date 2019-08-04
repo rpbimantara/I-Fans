@@ -136,12 +136,6 @@ public class TeamFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
             ArrayListTeam = new ArrayList<>();
             ArrayListAthlete = new ArrayList<>();
@@ -220,6 +214,7 @@ public class TeamFragment extends Fragment {
                                     adapterAthlete = new AdapterTeam(ArrayListAthlete);
                                     rvAthlete.setAdapter(adapterAthlete);
                                     adapterAthlete.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

@@ -110,10 +110,6 @@ public class ClubStandingFragment extends Fragment {
             swiper.setRefreshing(true);
         }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -167,6 +163,7 @@ public class ClubStandingFragment extends Fragment {
                                     adapter = new AdapterKlasemen(ArrayListKlasemen);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

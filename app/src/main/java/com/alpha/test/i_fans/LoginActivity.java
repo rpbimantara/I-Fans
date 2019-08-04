@@ -125,6 +125,7 @@ public class LoginActivity extends AppCompatActivity {
                     }
                 }
             });
+            progressDialog.dismiss();
         }
         @Override
         public void onLoginFail(AuthError error) {
@@ -140,16 +141,6 @@ public class LoginActivity extends AppCompatActivity {
             progressDialog.setIndeterminate(true);
             progressDialog.setMessage("Authenticating...");
             progressDialog.show();
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            progressDialog.dismiss();
-        }
-
-        @Override
-        protected void onProgressUpdate(Void... values) {
-            super.onProgressUpdate(values);
         }
 
         @Override

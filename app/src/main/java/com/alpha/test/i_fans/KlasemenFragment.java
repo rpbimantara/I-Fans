@@ -122,11 +122,6 @@ public class KlasemenFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
             ArrayListKlasemen =  new ArrayList<>();
             client = new OdooClient.Builder(getContext())
@@ -178,6 +173,7 @@ public class KlasemenFragment extends Fragment {
                                     adapter = new AdapterKlasemen(ArrayListKlasemen);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

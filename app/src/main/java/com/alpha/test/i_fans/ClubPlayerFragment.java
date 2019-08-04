@@ -76,12 +76,6 @@ public class ClubPlayerFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
             ArrayListTeam = new ArrayList<>();
             client = new OdooClient.Builder(getContext())
@@ -118,6 +112,7 @@ public class ClubPlayerFragment extends Fragment {
                                     adapter = new AdapterTeam(ArrayListTeam);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

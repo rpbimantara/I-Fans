@@ -136,10 +136,6 @@ public class JadwalFragment extends Fragment {
             swiper.setRefreshing(true);
         }
 
-        @Override
-        protected void onPostExecute(Void aVoid) {
-
-        }
 
         @Override
         protected Void doInBackground(Void... voids) {

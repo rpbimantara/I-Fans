@@ -108,10 +108,6 @@ public class TicketDetailActivity extends AppCompatActivity {
            super.onPreExecute();
        }
 
-       @Override
-       protected void onPostExecute(Void aVoid) {
-           super.onPostExecute(aVoid);
-       }
 
        @Override
        protected Void doInBackground(Void... voids) {

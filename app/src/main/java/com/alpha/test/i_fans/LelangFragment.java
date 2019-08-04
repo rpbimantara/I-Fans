@@ -98,11 +98,6 @@ public class LelangFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
 
             ArrayListLelang = new ArrayList<>();

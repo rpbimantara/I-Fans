@@ -141,14 +141,6 @@ public class ListBeritaFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            adapter = new AdapterListBerita(ArrayListBerita);
-            rv.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-            swiper.setRefreshing(false);
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
             ArrayListBerita = new ArrayList<>();
             client = new OdooClient.Builder(getContext())
@@ -186,6 +178,7 @@ public class ListBeritaFragment extends Fragment {
                                     adapter = new AdapterListBerita(ArrayListBerita);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

@@ -128,10 +128,6 @@ public class StoreFragment extends Fragment {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-        }
-        @Override
         protected Void doInBackground(Void... voids) {
             ArrayListStore = new ArrayList<>();
             client = new OdooClient.Builder(getContext())
@@ -172,6 +168,7 @@ public class StoreFragment extends Fragment {
                                     adapter = new AdapterStore(ArrayListStore);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
 
                             });

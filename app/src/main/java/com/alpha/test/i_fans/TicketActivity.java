@@ -105,12 +105,6 @@ public class TicketActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-            super.onPostExecute(aVoid);
-        }
-
-        @Override
         protected Void doInBackground(Void... voids) {
             ArrayListTiketList = new ArrayList<>();
             client = new OdooClient.Builder(getBaseContext())
@@ -150,6 +144,7 @@ public class TicketActivity extends AppCompatActivity {
                                                 adapter = new AdapterTiketList(ArrayListTiketList);
                                                 rv.setAdapter(adapter );
                                                 adapter.notifyDataSetChanged();
+                                                swiper.setRefreshing(false);
                                             }
                                         });
 

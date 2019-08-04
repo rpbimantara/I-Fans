@@ -105,10 +105,6 @@ public class AccountStoreActivity extends AppCompatActivity {
         }
 
         @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-        }
-        @Override
         protected Void doInBackground(Void... voids) {
             ArrayListStore = new ArrayList<>();
             client = new OdooClient.Builder(getApplicationContext())
@@ -150,6 +146,7 @@ public class AccountStoreActivity extends AppCompatActivity {
                                     adapter = new AdapterStore(ArrayListStore);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
 
                             });
