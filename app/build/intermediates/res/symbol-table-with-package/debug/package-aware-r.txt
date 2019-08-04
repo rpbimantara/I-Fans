@@ -1175,11 +1175,15 @@ id CropOverlayView
 id CropProgressBar
 id FUNCTION
 id ImageView_image
+id LinearLayoutAuction
+id LinearLayoutStore
 id META
 id RL_last
 id RL_next
 id SHIFT
 id SYM
+id account_auction_toolbar
+id account_store_toolbar
 id action0
 id action_account
 id action_bar
@@ -1447,6 +1451,8 @@ id rectangle
 id right
 id right_icon
 id right_side
+id rv_recycler_view_account_auction
+id rv_recycler_view_account_store
 id rv_recycler_view_checkout
 id rv_recycler_view_club_player
 id rv_recycler_view_hot_news
@@ -1517,6 +1523,8 @@ id sub_players_moment
 id submenuarrow
 id submit_area
 id summary_imageView
+id swiperefresh_account_auction
+id swiperefresh_account_store
 id swiperefresh_checkout
 id swiperefresh_club_player
 id swiperefresh_jadwal
@@ -1713,7 +1721,9 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_account_auction
 layout activity_account_edit
+layout activity_account_store
 layout activity_berita_detail
 layout activity_checkout
 layout activity_club_detail

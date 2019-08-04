@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,7 @@ public class AccountFragment extends Fragment {
     SharedPrefManager sharedPrefManager;
     FloatingActionButton fabImage;
     private Bitmap currentImage;
+    LinearLayout lnStore,lnAuction;
     Integer IdPartner;
     OdooClient client;
 
@@ -76,6 +78,8 @@ public class AccountFragment extends Fragment {
         txtKomunitas = (TextView) view.findViewById(R.id.txt_komunitasAccount);
         txtKoin = (TextView) view.findViewById(R.id.txt_koinAccount);
         sharedPrefManager = new SharedPrefManager(getActivity());
+        lnStore = view.findViewById(R.id.LinearLayoutStore);
+        lnAuction = view.findViewById(R.id.LinearLayoutAuction);
         fabImage.setImageResource(R.drawable.ic_camera);
         fabImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +90,22 @@ public class AccountFragment extends Fragment {
             }
         });
         getData();
+
+        lnStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ticketIntent = new Intent(getActivity(), AccountStoreActivity.class);
+                startActivity(ticketIntent);
+            }
+        });
+
+        lnAuction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ticketIntent = new Intent(getActivity(), AccountAuctionActivity.class);
+                startActivity(ticketIntent);
+            }
+        });
         return view;
     }
 

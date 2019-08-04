@@ -113,23 +113,31 @@ public class LelangFragment extends Fragment {
                     .setConnectListener(new OdooConnectListener() {
                         @Override
                         public void onConnected(OdooVersion version) {
-                            OArguments arguments = new OArguments();
-                            arguments.addNULL();
+                            ODomain domain = new ODomain();
+                            domain.add("status_lelang", "=", "jalan");
 
-                            client.call_kw("persebaya.lelang", "list_lelang", arguments, new IOdooResponse() {
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id","foto_lelang","nama_barang", "ob","inc","binow","due_date","create_uid");
+
+                            int offset = 0;
+                            int limit = 80;
+
+                            String sorting = "id ASC";
+
+                            client.searchRead("persebaya.lelang", domain, fields, offset, limit, sorting,new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
                                     OdooRecord[] Records = result.getRecords();
                                     for (final OdooRecord record : Records) {
                                         ArrayListLelang.add(new lelang(
-                                                String.valueOf(record.getInt("idlelang")),
-                                                record.getString("namalelang"),
-                                                record.getString("lelangimage"),
-                                                record.getString("waktulelang"),
-                                                String.valueOf(Math.round(record.getFloat("bidlelang"))),
-                                                String.valueOf(Math.round(record.getFloat("binlelang"))),
-                                                String.valueOf(Math.round(record.getFloat("inclelang"))),
-                                                String.valueOf(record.getInt("pemiliklelang"))));
+                                                String.valueOf(record.getInt("id")),
+                                                record.getString("nama_barang"),
+                                                record.getString("foto_lelang"),
+                                                record.getString("due_date"),
+                                                String.valueOf(Math.round(record.getFloat("ob"))),
+                                                String.valueOf(Math.round(record.getFloat("binow"))),
+                                                String.valueOf(Math.round(record.getFloat("inc"))),
+                                                String.valueOf(record.getInt("create_uid"))));
                                     }
                                     adapter = new AdapterLelang(ArrayListLelang,getContext());
                                     rv.setAdapter(adapter);
@@ -143,6 +151,34 @@ public class LelangFragment extends Fragment {
                                     return super.onError(error);
                                 }
                             });
+
+//                            client.call_kw("persebaya.lelang", "list_lelang", arguments, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] Records = result.getRecords();
+//                                    for (final OdooRecord record : Records) {
+//                                        ArrayListLelang.add(new lelang(
+//                                                String.valueOf(record.getInt("idlelang")),
+//                                                record.getString("namalelang"),
+//                                                record.getString("lelangimage"),
+//                                                record.getString("waktulelang"),
+//                                                String.valueOf(Math.round(record.getFloat("bidlelang"))),
+//                                                String.valueOf(Math.round(record.getFloat("binlelang"))),
+//                                                String.valueOf(Math.round(record.getFloat("inclelang"))),
+//                                                String.valueOf(record.getInt("pemiliklelang"))));
+//                                    }
+//                                    adapter = new AdapterLelang(ArrayListLelang,getContext());
+//                                    rv.setAdapter(adapter);
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//
+//                                @Override
+//                                public boolean onError(OdooErrorException error) {
+//                                    Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_SHORT).show();
+//                                    return super.onError(error);
+//                                }
+//                            });
                         }
                     }).build();
             return null;

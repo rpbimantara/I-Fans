@@ -68,12 +68,12 @@
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-v23\\abc_control_background_material.xml"
     },
     {
-        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
-    },
-    {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_star_half_black_16dp.png.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\drawable-xxxhdpi-v4\\abc_ic_star_half_black_16dp.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_card_item_team.xml.flat",
@@ -142,6 +142,10 @@
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi_ic_home.png.flat",
         "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\drawable-xhdpi\\ic_home.png"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_account_auction.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_account_auction.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_store_add.xml.flat",
@@ -1486,6 +1490,10 @@
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\anim_abc_popup_enter.xml.flat",
         "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\anim\\abc_popup_enter.xml"
+    },
+    {
+        "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_account_store.xml.flat",
+        "source": "E:\\Android Project\\I-Fans\\app\\src\\main\\res\\layout\\activity_account_store.xml"
     },
     {
         "merged": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldrtl-xhdpi-v17_abc_ic_menu_copy_mtrl_am_alpha.png.flat",
