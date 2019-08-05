@@ -8,4 +8,6 @@
     <color name="colorYellow">#FFFF00</color>
     <color name="startblue">#3383ff</color>
     <color name="endblue">#33bbff</color>
+    <color name="duskYellow">#FFD700</color>
+    <color name="lightGrey">#D3D3D3</color>
 </resources>

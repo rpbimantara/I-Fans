@@ -703,6 +703,7 @@ color dim_foreground_disabled_material_dark
 color dim_foreground_disabled_material_light
 color dim_foreground_material_dark
 color dim_foreground_material_light
+color duskYellow
 color endblue
 color error_color_material_dark
 color error_color_material_light
@@ -711,6 +712,7 @@ color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color ic_launcher_background
+color lightGrey
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -906,6 +908,7 @@ dimen design_tab_text_size_2line
 dimen design_textinput_caption_translate_y
 dimen disabled_alpha_material_dark
 dimen disabled_alpha_material_light
+dimen fab_margin
 dimen fastscroll_default_thickness
 dimen fastscroll_margin
 dimen fastscroll_minimum_range
@@ -1292,6 +1295,7 @@ id detail_toolbar
 id dimensions
 id direct
 id disableHome
+id editText
 id editText_BIN
 id editText_Deskripsi
 id editText_INC
@@ -1345,6 +1349,7 @@ id image_TeamDetail
 id image_UserAccount
 id image_fab
 id image_fab_Add_Lelang
+id image_rating_line_up
 id image_staff
 id image_tiket_list
 id info
@@ -1417,6 +1422,7 @@ id parallax
 id parent
 id parentPanel
 id parent_matrix
+id penilaian
 id percent
 id pin
 id players_moment
@@ -1447,6 +1453,7 @@ id radioButton_female
 id radioButton_male
 id radioGrup_seat
 id ratingBar2
+id rating_line_up_toolbar
 id rectangle
 id right
 id right_icon
@@ -1521,6 +1528,7 @@ id store_imageView
 id stretch
 id sub_players_moment
 id submenuarrow
+id submit
 id submit_area
 id summary_imageView
 id swiperefresh_account_auction
@@ -1733,6 +1741,7 @@ layout activity_lelang_detail
 layout activity_login
 layout activity_main
 layout activity_match_detail
+layout activity_rating_line_up
 layout activity_sing_up
 layout activity_store_add
 layout activity_store_detail
@@ -1916,6 +1925,7 @@ string pick_image_intent_chooser_title
 string project_id
 string search_menu_title
 string status_bar_notification_info_overflow
+string title_activity_rating_line_up
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -1923,6 +1933,9 @@ style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style AppTheme
+style AppTheme_AppBarOverlay
+style AppTheme_NoActionBar
+style AppTheme_PopupOverlay
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog
@@ -2128,6 +2141,7 @@ style Platform_V21_AppCompat_Light
 style Platform_V25_AppCompat
 style Platform_V25_AppCompat_Light
 style Platform_Widget_AppCompat_Spinner
+style RatingBar
 style RtlOverlay_DialogWindowTitle_AppCompat
 style RtlOverlay_Widget_AppCompat_ActionBar_TitleItem
 style RtlOverlay_Widget_AppCompat_DialogTitle_Icon

@@ -16,10 +16,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AccountAuctionActivity"
-            android:parentActivityName=".MainActivity" ></activity>
-        <activity android:name=".AccountStoreActivity"
-            android:parentActivityName=".MainActivity"  />
+        <activity android:name=".RatingLineUpActivity"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".AccountAuctionActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AccountStoreActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".TeamDetailActivity"
             android:parentActivityName=".MainActivity" />

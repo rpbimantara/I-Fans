@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
 MERGED from [com.android.support:design:28.0.0] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\294a26805c275ca2df3358c8b3006a32\AndroidManifest.xml:17:1-24:12
 MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\39ae3d548e416439ac1e7347970b6127\AndroidManifest.xml:2:1-11:12
 MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\6eb683cf5f36922e930503c5cf421259\AndroidManifest.xml:2:1-18:12
@@ -59,20 +59,20 @@ MERGED from [com.android.support:interpolator:28.0.0] C:\Users\Why\.gradle\cache
 MERGED from [android.arch.lifecycle:livedata:1.1.1] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\b10f2c02627e968b2bff37cc2b2e6746\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\e762e39bb22cb115d049cd421abf77b2\AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\803742768279c90e4b2ae51ab89a8419\AndroidManifest.xml:17:1-22:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
-INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
+INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
 	package
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:3:5-36
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-85:12
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:1-88:12
 		INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:2:11-69
@@ -111,7 +111,7 @@ ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:8:5-81
 	android:name
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:8:22-78
 application
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:10:5-83:19
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:10:5-86:19
 MERGED from [com.android.support:design:28.0.0] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\294a26805c275ca2df3358c8b3006a32\AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\294a26805c275ca2df3358c8b3006a32\AndroidManifest.xml:22:5-20
 MERGED from [com.oogbox.api:odoo:1.0.4] C:\Users\Why\.gradle\caches\transforms-2\files-2.1\6eb683cf5f36922e930503c5cf421259\AndroidManifest.xml:15:5-16:19
@@ -176,138 +176,142 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] C:\Users\Why\.gradl
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:17:9-40
 	android:usesCleartextTraffic
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:18:9-44
-activity#com.alpha.test.i_fans.AccountAuctionActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:19:9-20:68
-	android:parentActivityName
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:20:13-55
+activity#com.alpha.test.i_fans.RatingLineUpActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:19:9-67
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:19:19-57
-activity#com.alpha.test.i_fans.AccountStoreActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:21:9-22:59
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:19:19-55
+activity#com.alpha.test.i_fans.AccountAuctionActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:20:9-22:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:22:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:21:19-55
-activity#com.alpha.test.i_fans.TeamDetailActivity
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:21:13-51
+activity#com.alpha.test.i_fans.AccountStoreActivity
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:23:9-25:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:25:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:24:13-47
-meta-data#com.google.firebase.API_KEY
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:27:9-29:184
-	android:value
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:29:13-181
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:28:13-55
-meta-data#preloaded_fonts
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:30:9-32:57
-	android:resource
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:32:13-54
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:31:13-43
-activity#com.alpha.test.i_fans.MainActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:34:9-43:20
-	android:label
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:36:13-45
-	android:theme
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:37:13-69
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:35:13-41
-intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:38:13-42:29
-action#android.intent.action.MAIN
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:39:17-69
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:39:25-66
-category#android.intent.category.LAUNCHER
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:41:17-77
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:41:27-74
-activity#com.alpha.test.i_fans.HomeActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:44:9-50
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:44:19-47
-activity#com.alpha.test.i_fans.LoginActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:45:9-51
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:45:19-48
-activity#com.alpha.test.i_fans.SingUpActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:46:9-52
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:46:19-49
-activity#com.alpha.test.i_fans.TicketActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:47:9-49:58
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:24:13-49
+activity#com.alpha.test.i_fans.TeamDetailActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:26:9-28:58
 	android:parentActivityName
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:49:13-55
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:28:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:48:13-43
-activity#com.alpha.test.i_fans.BeritaDetailActivity
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:27:13-47
+meta-data#com.google.firebase.API_KEY
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:30:9-32:184
+	android:value
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:32:13-181
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:31:13-55
+meta-data#preloaded_fonts
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:33:9-35:57
+	android:resource
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:35:13-54
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:34:13-43
+activity#com.alpha.test.i_fans.MainActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:37:9-46:20
+	android:label
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:39:13-45
+	android:theme
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:40:13-69
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:38:13-41
+intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:41:13-45:29
+action#android.intent.action.MAIN
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:42:17-69
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:42:25-66
+category#android.intent.category.LAUNCHER
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:44:17-77
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:44:27-74
+activity#com.alpha.test.i_fans.HomeActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:47:9-50
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:47:19-47
+activity#com.alpha.test.i_fans.LoginActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:48:9-51
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:48:19-48
+activity#com.alpha.test.i_fans.SingUpActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:49:9-52
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:49:19-49
+activity#com.alpha.test.i_fans.TicketActivity
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:50:9-52:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:52:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:51:13-49
-activity#com.alpha.test.i_fans.StoreDetailActivity
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:51:13-43
+activity#com.alpha.test.i_fans.BeritaDetailActivity
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:53:9-55:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:55:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:54:13-48
-activity#com.alpha.test.i_fans.LelangDetailActivity
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:54:13-49
+activity#com.alpha.test.i_fans.StoreDetailActivity
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:56:9-58:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:58:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:57:13-49
-activity#com.alpha.test.i_fans.ClubDetailActivity
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:57:13-48
+activity#com.alpha.test.i_fans.LelangDetailActivity
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:59:9-61:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:61:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:60:13-47
-activity#com.alpha.test.i_fans.AccountEditActivity
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:60:13-49
+activity#com.alpha.test.i_fans.ClubDetailActivity
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:62:9-64:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:64:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:63:13-48
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:63:13-47
+activity#com.alpha.test.i_fans.AccountEditActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:65:9-67:58
+	android:parentActivityName
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:67:13-55
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:66:13-48
 activity#com.alpha.test.i_fans.LelangAddActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:65:9-55
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:68:9-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:65:19-52
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:68:19-52
 activity#com.alpha.test.i_fans.StoreAddActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:66:9-54
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:69:9-54
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:66:19-51
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:69:19-51
 activity#com.alpha.test.i_fans.TicketDetailActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:67:9-69:58
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:70:9-72:58
 	android:parentActivityName
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:69:13-55
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:72:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:68:13-49
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:71:13-49
 service#com.alpha.test.i_fans.MyFirebaseMessagingService
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:71:9-75:19
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:74:9-78:19
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:71:18-60
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:74:18-60
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:72:13-74:29
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:75:13-77:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:73:17-78
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:76:17-78
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:73:25-75
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:76:25-75
 activity#com.alpha.test.i_fans.CheckoutActivity
-ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:77:9-79:58
-	android:parentActivityName
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:79:13-55
-	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:78:13-45
-activity#com.alpha.test.i_fans.MatchDetailActivity
 ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:80:9-82:58
 	android:parentActivityName
 		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:82:13-55
 	android:name
-		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:81:13-48
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:81:13-45
+activity#com.alpha.test.i_fans.MatchDetailActivity
+ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:83:9-85:58
+	android:parentActivityName
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:85:13-55
+	android:name
+		ADDED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml:84:13-48
 uses-sdk
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from E:\Android Project\I-Fans\app\src\main\AndroidManifest.xml

@@ -103,7 +103,7 @@ public class TeamFragment extends Fragment {
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
                         try {
                             RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                            Intent intent = new Intent(getActivity(), TeamDetailActivity.class);
+                            Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
                             startActivity(intent);
                         } catch (Exception err) {
                             System.out.println(err);
