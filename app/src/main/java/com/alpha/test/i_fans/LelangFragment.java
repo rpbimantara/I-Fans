@@ -52,6 +52,13 @@ public class LelangFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static LelangFragment newInstance() {
+        Bundle args = new Bundle();
+        LelangFragment fragment = new LelangFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -80,15 +87,25 @@ public class LelangFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isResumed()){
-            HomeActivity fabhome = (HomeActivity) getActivity();
-            fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent AddLelang = new Intent(getActivity(),LelangAddActivity.class);
-                    startActivity(AddLelang);
-                }
-            });
+            onResume();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!getUserVisibleHint())
+        {
+            return;
+        }
+        HomeActivity fabhome = (HomeActivity) getActivity();
+        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent AddLelang = new Intent(getActivity(),LelangAddActivity.class);
+                startActivity(AddLelang);
+            }
+        });
     }
 
     public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{

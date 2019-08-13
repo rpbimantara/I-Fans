@@ -61,6 +61,8 @@ public class HomeActivity extends AppCompatActivity {
                     case 3:
                         fabBtn.show();
                         break;
+                        default:
+                            fabBtn.hide();
                 }
             }
 

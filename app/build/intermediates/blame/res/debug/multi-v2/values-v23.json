@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v23\\values-v23.xml",
+            "outputFile": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\values-v23\\values-v23.xml",
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/1301310691187f685616220d5062b3d5/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,19,32,33,34,35,36",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4",
@@ -15,7 +15,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\7bff0bc1e4968ce306738c2a4cc75998\\res\\values-v23\\values-v23.xml",
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/ee8b42f911e456a5de83d4a62e79e354/res/values-v23/values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

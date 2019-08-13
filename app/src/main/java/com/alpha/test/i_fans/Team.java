@@ -2,14 +2,24 @@ package com.alpha.test.i_fans;
 
 public class Team {
 
+    private Integer id;
     private String nama,foto,statusPlayer,posisi,no_punggung;
 
-    public Team(String nama, String foto, String statusPlayer, String posisi,String no_punggung) {
+    public Team(Integer id,String nama, String foto, String statusPlayer, String posisi,String no_punggung) {
+        this.id = id;
         this.nama = nama;
         this.foto = foto;
         this.statusPlayer = statusPlayer;
         this.posisi = posisi;
         this.no_punggung = no_punggung;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getNama() {

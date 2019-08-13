@@ -1,44 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Android Project\\I-Fans\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-tl\\values-tl.xml",
+            "outputFile": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-tl/values-tl.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\17dfb14919e79445700b10b5ce9abf6a\\res\\values-tl\\values.xml",
-                    "from": {
-                        "startLines": "4",
-                        "startColumns": "0",
-                        "startOffsets": "205",
-                        "endColumns": "100",
-                        "endOffsets": "305"
-                    },
-                    "to": {
-                        "startLines": "47",
-                        "startColumns": "4",
-                        "startOffsets": "5717",
-                        "endColumns": "104",
-                        "endOffsets": "5817"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\5297fe62dbcda839f193551d55ba432b\\res\\values-tl\\values-tl.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
-                    },
-                    "to": {
-                        "startLines": "49",
-                        "startColumns": "4",
-                        "startOffsets": "5906",
-                        "endColumns": "100",
-                        "endOffsets": "6002"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\3de887c998f43a8ab6d4836e8f71e495\\res\\values-tl\\values-tl.xml",
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/1301310691187f685616220d5062b3d5/res/values-tl/values-tl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\b1b19b335bb3dd68294db0cefc910ce0\\res\\values-tl\\values.xml",
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/res/values-tl/values.xml",
                     "from": {
                         "startLines": "4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
                         "startColumns": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0",
@@ -72,7 +38,41 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Why\\.gradle\\caches\\transforms-2\\files-2.1\\80a17463006a6d1b5b0efc651b28dedf\\res\\values-tl\\values.xml",
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/a23dd54bd0a40f3e7d627a18c42f1cdc/res/values-tl/values-tl.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "49",
+                        "startColumns": "4",
+                        "startOffsets": "5906",
+                        "endColumns": "100",
+                        "endOffsets": "6002"
+                    }
+                },
+                {
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/res/values-tl/values.xml",
+                    "from": {
+                        "startLines": "4",
+                        "startColumns": "0",
+                        "startOffsets": "205",
+                        "endColumns": "100",
+                        "endOffsets": "305"
+                    },
+                    "to": {
+                        "startLines": "47",
+                        "startColumns": "4",
+                        "startOffsets": "5717",
+                        "endColumns": "104",
+                        "endOffsets": "5817"
+                    }
+                },
+                {
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/res/values-tl/values.xml",
                     "from": {
                         "startLines": "4",
                         "startColumns": "0",

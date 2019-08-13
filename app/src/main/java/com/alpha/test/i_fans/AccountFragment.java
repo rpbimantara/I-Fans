@@ -207,26 +207,36 @@ public class AccountFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isResumed()){
-            HomeActivity fabhome = (HomeActivity) getActivity();
-            fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent EditAccount = new Intent(getActivity(),AccountEditActivity.class);
-                    EditAccount.putExtra("name",txtName.getText());
-                    EditAccount.putExtra("nik",txtNIK.getText());
-                    EditAccount.putExtra("gender",txtJeniskelamin.getText());
-                    EditAccount.putExtra("address",txtAlamat.getText());
-                    EditAccount.putExtra("date",txtTTL.getText());
-                    EditAccount.putExtra("mail",txtemail.getText());
-                    EditAccount.putExtra("phone",txtTelephone.getText());
-                    EditAccount.putExtra("comunity",txtKomunitas.getText());
-                    EditAccount.putExtra("idPartner",IdPartner);
-                    startActivity(EditAccount);
-                }
-            });
+            onResume();
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!getUserVisibleHint())
+        {
+            return;
+        }
+        HomeActivity fabhome = (HomeActivity) getActivity();
+        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent EditAccount = new Intent(getActivity(),AccountEditActivity.class);
+                EditAccount.putExtra("name",txtName.getText());
+                EditAccount.putExtra("nik",txtNIK.getText());
+                EditAccount.putExtra("gender",txtJeniskelamin.getText());
+                EditAccount.putExtra("address",txtAlamat.getText());
+                EditAccount.putExtra("date",txtTTL.getText());
+                EditAccount.putExtra("mail",txtemail.getText());
+                EditAccount.putExtra("phone",txtTelephone.getText());
+                EditAccount.putExtra("comunity",txtKomunitas.getText());
+                EditAccount.putExtra("idPartner",IdPartner);
+                startActivity(EditAccount);
+            }
+        });
+
+    }
 
     public class SaveImageTask extends AsyncTask<Bitmap,Void,Void>{
         @Override

@@ -16,7 +16,6 @@ import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.youtube.player.YouTubePlayerView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +29,6 @@ import java.util.ArrayList;
  */
 public class LiveFragment extends Fragment {
 
-    YouTubePlayerView playerView;
     private View rootView;
 //    private static YouTube youtube;
     private final String API_KEY= "AIzaSyDxk3vNgkIDFu-Ai0FhbDvg2N7Mpfql3TY";

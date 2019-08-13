@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -34,14 +35,14 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
  */
 public class TeamFragment extends Fragment {
 
-    ArrayList<Team> ArrayListTeam;
+    ArrayList<Team> ArrayListTeamStaff;
     ArrayList<Team> ArrayListAthlete;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
     private View rootView;
-    RecyclerView rv,rvAthlete;
+    RecyclerView rvStaff,rvAthlete;
     ProgressDialog progressDialog;
-    AdapterTeam adapter;
+    AdapterTeamStaff adapterStaff;
     AdapterTeam adapterAthlete;
     SwipeRefreshLayout swiper;
     OdooClient client;
@@ -69,24 +70,24 @@ public class TeamFragment extends Fragment {
         // Inflate the layout for this fragment
         if (rootView == null){
             rootView = inflater.inflate(R.layout.fragment_team, container, false);
-            rv = rootView.findViewById(R.id.rv_recycler_view_team);
+            rvStaff = rootView.findViewById(R.id.rv_recycler_view_team);
             rvAthlete = rootView.findViewById(R.id.rv_recycler_view_team_athlete);
             swiper = rootView.findViewById(R.id.swiperefresh_team);
             sharedPrefManager = new SharedPrefManager(getActivity());
             progressDialog = new ProgressDialog(getActivity());
-            adapter = new AdapterTeam(ArrayListTeam);
+            adapterStaff = new AdapterTeamStaff(ArrayListTeamStaff);
             adapterAthlete = new AdapterTeam(ArrayListAthlete);
-            rv.setAdapter(adapter);
+            rvStaff.setAdapter(adapterStaff);
             rvAthlete.setAdapter(adapterAthlete);
-            rv.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
-            rvAthlete.setLayoutManager(new GridLayoutManager(getActivity(),2));
+            rvStaff.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
+            rvAthlete.setLayoutManager(new GridLayoutManager(getActivity(),3));
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
                     new TeamTask().execute();
                 }
             });
-            rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+            rvAthlete.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
                 GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
 
                     @Override
@@ -98,12 +99,14 @@ public class TeamFragment extends Fragment {
                 });
                 @Override
                 public boolean onInterceptTouchEvent(@NonNull RecyclerView r, @NonNull MotionEvent e) {
-                    View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+                    View ChildView = rvAthlete.findChildViewUnder(e.getX(), e.getY());
 
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
                         try {
-                            RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                            Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
+                            RecyclerViewItemPosition = rvAthlete.getChildAdapterPosition(ChildView);
+                            Intent intent = new Intent(getActivity(), TeamDetailActivity.class);
+                            intent.putExtra("id_atlete", ArrayListAthlete.get(RecyclerViewItemPosition).getId());
+//                            Toast.makeText(getContext(),ArrayListAthlete.get(RecyclerViewItemPosition).getNama(),Toast.LENGTH_LONG).show();
                             startActivity(intent);
                         } catch (Exception err) {
                             System.out.println(err);
@@ -137,7 +140,7 @@ public class TeamFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            ArrayListTeam = new ArrayList<>();
+            ArrayListTeamStaff = new ArrayList<>();
             ArrayListAthlete = new ArrayList<>();
             client = new OdooClient.Builder(getContext())
                     .setHost(sharedPrefManager.getSP_Host_url())
@@ -163,7 +166,8 @@ public class TeamFragment extends Fragment {
                                 public void onResult(OdooResult result) {
                                     OdooRecord[] records = result.getRecords();
                                     for (OdooRecord record : records) {
-                                        ArrayListTeam.add(new Team(
+                                        ArrayListTeamStaff.add(new Team(
+                                                record.getInt("id"),
                                                 record.getString("name"),
                                                 record.getString("image"),
                                                 record.getString("status_pemain"),
@@ -171,9 +175,9 @@ public class TeamFragment extends Fragment {
                                                 String.valueOf(record.getInt("no_punggung"))
                                         ));
                                     }
-                                    adapter = new AdapterTeam(ArrayListTeam);
-                                    rv.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
+                                    adapterStaff = new AdapterTeamStaff(ArrayListTeamStaff);
+                                    rvStaff.setAdapter(adapterStaff);
+                                    adapterStaff.notifyDataSetChanged();
                                 }
                             });
                         }
@@ -204,6 +208,7 @@ public class TeamFragment extends Fragment {
                                     OdooRecord[] records = result.getRecords();
                                     for (OdooRecord record : records) {
                                         ArrayListAthlete.add(new Team(
+                                                record.getInt("id"),
                                                 record.getString("name"),
                                                 record.getString("image"),
                                                 record.getString("status_pemain"),

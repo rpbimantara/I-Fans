@@ -102,6 +102,7 @@ public class ClubPlayerFragment extends Fragment {
                                     OdooRecord[] records = result.getRecords();
                                     for (OdooRecord record : records) {
                                         ArrayListTeam.add(new Team(
+                                                record.getInt("id"),
                                                 record.getString("name"),
                                                 record.getString("image"),
                                                 record.getString("status_pemain"),

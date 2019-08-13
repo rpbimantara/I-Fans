@@ -47,6 +47,12 @@ public class StoreFragment extends Fragment {
         // Required empty public constructor
     }
 
+    public static StoreFragment newInstance() {
+        Bundle args = new Bundle();
+        StoreFragment fragment = new StoreFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -110,15 +116,25 @@ public class StoreFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isResumed()){
-            HomeActivity fabhome = (HomeActivity) getActivity();
-            fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent AddStore = new Intent(getActivity(),StoreAddActivity.class);
-                    startActivity(AddStore);
-                }
-            });
+
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!getUserVisibleHint())
+        {
+            return;
+        }
+        HomeActivity fabhome = (HomeActivity) getActivity();
+        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent AddStore = new Intent(getActivity(),StoreAddActivity.class);
+                startActivity(AddStore);
+            }
+        });
     }
 
     public class StoreTask extends AsyncTask<Void,Void,Void>{

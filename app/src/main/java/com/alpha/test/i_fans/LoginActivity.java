@@ -130,6 +130,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         public void onLoginFail(AuthError error) {
             Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
         }
     };
 
