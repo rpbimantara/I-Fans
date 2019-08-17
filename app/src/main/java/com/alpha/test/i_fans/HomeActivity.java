@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
+import android.view.View;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -60,6 +61,13 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 3:
                         fabBtn.show();
+                        fabBtn.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                Intent EditAccount = new Intent(getApplicationContext(),AccountEditActivity.class);
+                                startActivity(EditAccount);
+                            }
+                        });
                         break;
                         default:
                             fabBtn.hide();

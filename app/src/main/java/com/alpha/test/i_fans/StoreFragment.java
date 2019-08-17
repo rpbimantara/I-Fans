@@ -116,7 +116,7 @@ public class StoreFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isResumed()){
-
+            onResume();
         }
     }
 

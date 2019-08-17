@@ -90,11 +90,10 @@ public class JadwalFragment extends Fragment {
                     View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
 
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
-
-//                        RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-//                        Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
-//                        intent.putExtra("nama", ArrayListJadwal.get(RecyclerViewItemPosition).getNamateam());
-//                        startActivity(intent);
+                        RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+                        Intent intent = new Intent(getActivity(), MatchDetailActivity.class);
+                        intent.putExtra("id_jadwal", Integer.valueOf(ArrayListJadwal.get(RecyclerViewItemPosition).getJadwal_id()));
+                        startActivity(intent);
                     }
                     return false;
                 }
@@ -152,7 +151,7 @@ public class JadwalFragment extends Fragment {
                             OArguments arguments = new OArguments();
                             arguments.add(sharedPrefManager.getSpIdClub());
                             arguments.add(sharedPrefManager.getSPIdLiga());
-                            Log.e("Jadwal liga",String.valueOf(sharedPrefManager.getSPIdLiga()));
+
                             client.call_kw("persebaya.jadwal", "list_jadwal", arguments, new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {

@@ -27,6 +27,16 @@ public class CheckoutActivity extends AppCompatActivity {
     AdapterCheckout adapter;
     OdooClient client;
 
+    private Listener mListener;
+
+    public void setListener(Listener listener) {
+        mListener = listener;
+    }
+
+    public interface Listener {
+        void returnData(int result);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

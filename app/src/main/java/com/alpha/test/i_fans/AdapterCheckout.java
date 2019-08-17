@@ -65,7 +65,7 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
             }
         });
         final Integer stock = Integer.valueOf(dataList.get(position).getStock());
-        System.out.println(String.valueOf(stock)+"SDASDSADDDDDDDDDDDDDDDDD");
+
         holder.btn_plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -83,6 +83,8 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
     public int getItemCount() {
         return (dataList != null) ? dataList.size() : 0;
     }
+
+
 
     public Bitmap StringToBitMap(String encodedString){
         try{

@@ -218,23 +218,23 @@ public class AccountFragment extends Fragment {
         {
             return;
         }
-        HomeActivity fabhome = (HomeActivity) getActivity();
-        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent EditAccount = new Intent(getActivity(),AccountEditActivity.class);
-                EditAccount.putExtra("name",txtName.getText());
-                EditAccount.putExtra("nik",txtNIK.getText());
-                EditAccount.putExtra("gender",txtJeniskelamin.getText());
-                EditAccount.putExtra("address",txtAlamat.getText());
-                EditAccount.putExtra("date",txtTTL.getText());
-                EditAccount.putExtra("mail",txtemail.getText());
-                EditAccount.putExtra("phone",txtTelephone.getText());
-                EditAccount.putExtra("comunity",txtKomunitas.getText());
-                EditAccount.putExtra("idPartner",IdPartner);
-                startActivity(EditAccount);
-            }
-        });
+//        HomeActivity fabhome = (HomeActivity) getActivity();
+//        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent EditAccount = new Intent(getActivity(),AccountEditActivity.class);
+//                EditAccount.putExtra("name",txtName.getText());
+//                EditAccount.putExtra("nik",txtNIK.getText());
+//                EditAccount.putExtra("gender",txtJeniskelamin.getText());
+//                EditAccount.putExtra("address",txtAlamat.getText());
+//                EditAccount.putExtra("date",txtTTL.getText());
+//                EditAccount.putExtra("mail",txtemail.getText());
+//                EditAccount.putExtra("phone",txtTelephone.getText());
+//                EditAccount.putExtra("comunity",txtKomunitas.getText());
+//                EditAccount.putExtra("idPartner",IdPartner);
+//                startActivity(EditAccount);
+//            }
+//        });
 
     }
 

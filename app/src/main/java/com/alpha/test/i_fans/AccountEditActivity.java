@@ -14,10 +14,13 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
@@ -63,13 +66,6 @@ public class AccountEditActivity extends AppCompatActivity {
             }
         });
         progressDialog = new ProgressDialog(this);
-
-        ETname.setText(getIntent().getExtras().get("name").toString());
-        ETnik.setText(getIntent().getExtras().get("nik").toString());
-        ETaddress.setText(getIntent().getExtras().get("address").toString());
-        ETmail.setText(getIntent().getExtras().get("mail").toString());
-        ETphone.setText(getIntent().getExtras().get("phone").toString());
-        ETcomunity.setText(getIntent().getExtras().get("comunity").toString());
         btnSave = findViewById(R.id.button_save_account);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,6 +76,41 @@ public class AccountEditActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        loadData();
+    }
+
+    public void loadData(){
+        progressDialog.setMessage("Saving Data........");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+        client = new OdooClient.Builder(getApplicationContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        List<Integer> ids = Arrays.asList(sharedPrefManager.getSpIdPartner());
+                        List<String> fields = Arrays.asList("id", "name", "nik", "tgl_lahir", "street", "email", "phone", "komunitas", "write_date", "write_uid");
+
+                        client.read("res.partner", ids, fields, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                OdooRecord[] records = result.getRecords();
+
+                                for(OdooRecord record: records) {
+                                    ETname.setText(record.getString("name"));
+                                    ETnik.setText(record.getString("nik"));
+                                    ETaddress.setText(record.getString("street"));
+                                    ETmail.setText(record.getString("email"));
+                                    ETphone.setText(record.getString("phone"));
+                                    ETcomunity.setText(record.getString("komunitas"));
+                                    progressDialog.dismiss();
+                                }
+                            }
+                        });
+                    }
+                }).build();
     }
 
     public  class SaveTask extends AsyncTask<Void,Void,Boolean>{
@@ -122,7 +153,6 @@ public class AccountEditActivity extends AppCompatActivity {
                                         progressDialog.dismiss();
                                         finish();
                                     }
-                                    Log.w("wadsasd",result.toString());
                                 }
                             });
                         }
