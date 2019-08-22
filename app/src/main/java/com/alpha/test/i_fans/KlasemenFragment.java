@@ -92,7 +92,7 @@ public class KlasemenFragment extends Fragment {
 
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                         Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
-                        intent.putExtra("id", ArrayListKlasemen.get(RecyclerViewItemPosition).getId_club());
+                        intent.putExtra("id", String.valueOf(ArrayListKlasemen.get(RecyclerViewItemPosition).getId_club()));
                         intent.putExtra("nama", ArrayListKlasemen.get(RecyclerViewItemPosition).getTxtTeamKlasemen());
                         startActivity(intent);
                     }
@@ -167,7 +167,7 @@ public class KlasemenFragment extends Fragment {
                                                 String.valueOf(record.getInt("selisih_gol")),
                                                 String.valueOf(record.getInt("point")),
                                                 color,
-                                                record.getInt("id_club")));
+                                                record.getInt("id")));
                                         i++;
                                     }
                                     adapter = new AdapterKlasemen(ArrayListKlasemen);

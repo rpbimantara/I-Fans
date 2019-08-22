@@ -4,6 +4,7 @@ package com.alpha.test.i_fans;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +62,7 @@ public class LiveFragment extends Fragment {
         // Inflate the layout for this fragment
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_live, container, false);
+            new LoadVideoTask().execute();
         }
 
 //        YouTubePlayerSupportFragment playerFragment = YouTubePlayerSupportFragment.newInstance();
@@ -199,6 +201,7 @@ public class LiveFragment extends Fragment {
                                     jsonObjectdefault.getString("url"),
                                     jsonVideoId.getString("videoId")));
                         }
+                        Log.e("tes video",videoDetailsArrayList.toString());
                     }catch (JSONException err){
                         err.printStackTrace();
                     }

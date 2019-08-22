@@ -1169,6 +1169,7 @@ drawable notify_panel_notification_icon_bg
 drawable state_list
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable warning_available
 font aladin
 id ALT
 id Account_edit_toolbar
@@ -1705,7 +1706,6 @@ id wide
 id withText
 id wrap
 id wrap_content
-id youtube_live
 integer abc_config_activityDefaultDur
 integer abc_config_activityShortDur
 integer app_bar_elevation_anim_duration
@@ -1857,6 +1857,7 @@ menu menu_bottom_bar
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
+mipmap ic_logo
 mipmap ic_splash
 mipmap ic_splash_background
 mipmap ic_splash_foreground

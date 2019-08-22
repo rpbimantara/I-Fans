@@ -101,9 +101,9 @@ public class ClubResultFragment extends Fragment {
                             // Success connection
 
                             OArguments arguments = new OArguments();
-                            arguments.add(getActivity().getIntent().getIntExtra("id",0));
-                            arguments.add(Arrays.asList("selesai"));
+                            arguments.add(getActivity().getIntent().getStringExtra("id"));
                             arguments.add(sharedPrefManager.getSPIdLiga());
+//                            arguments.add(Arrays.asList("selesai"));
 
                             client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
                                 @Override

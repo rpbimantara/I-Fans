@@ -4,61 +4,62 @@ ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManife
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-89:12
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-89:12
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-89:12
-MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/336c8f3f8a9dd43e89d4b5e0555e6b3a/AndroidManifest.xml:17:1-24:12
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/566d794632a3da0691cb3c279e22c00b/AndroidManifest.xml:2:1-11:12
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:2:1-18:12
-MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1301310691187f685616220d5062b3d5/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:cardview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ee8b42f911e456a5de83d4a62e79e354/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/d66aba66799b76e8886504fa45868c70/AndroidManifest.xml:2:1-11:12
-MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/AndroidManifest.xml:17:1-37:12
-MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/a0949684cec7e7a7bdbc306f4afc3466/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:17:1-34:12
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:17:1-55:12
-MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/3807a88a901682917424b3e0b70c847a/AndroidManifest.xml:17:1-25:12
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:17:1-40:12
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:17:1-59:12
-MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:2:1-17:12
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ed363a3969dc8e662c2c72e008d1a3c6/AndroidManifest.xml:2:1-10:12
-MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:17:1-29:12
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/04212b06154660c19f5282f66961c98c/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/177ae3f5ba567be1f28d8da9c60c284f/AndroidManifest.xml:17:1-25:12
-MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9058463d1021de7bb2f0f31d4703ae18/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/71c1302a6e77fa08bd790e4e59413f31/AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1ba023ceca670a17d7f3d2e37de5ba8b/AndroidManifest.xml:17:1-24:12
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/AndroidManifest.xml:17:1-28:12
-MERGED from [com.android.support:support-v4:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a07f106648dbee6504cd3c94c2128d9c/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5a4f5e160c7fadd015933a98f5d3311d/AndroidManifest.xml:17:1-22:12
-MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0864da93c02ad2eec37ac67557c4c019/AndroidManifest.xml:2:1-11:12
-MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/3171895bd7d491fc76ac1719553bda4f/AndroidManifest.xml:2:1-11:12
-MERGED from [com.jaredrummler:material-spinner:1.3.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/aecaa018f7d9ff2992ea071ed3ba288b/AndroidManifest.xml:2:1-9:12
-MERGED from [com.android.support:support-fragment:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/94c7d43bd0f99000695d0f77b69d0d29/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/251cc68cf1c3f43ec668ab1077aacc54/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-ui:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a6482533a3aae9aa57cc0a3b47496d4a/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-core-utils:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5938d0de99a5ac272b75c49bf817082d/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b228e64ee6a5f1380a84668a3c462e24/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:transition:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0a647c4dfcf03b826d567a3ca19b7d20/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-media-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5db777c90fba5fb462f55940a543bb32/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:loader:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9d671f3c5aa2579a15486662eee85a98/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:viewpager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/91bfc50db312bc6033caa2b5625d3c9e/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d26b6fdb116a6280da3433ac58bf1e83/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:drawerlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c2c08bd8f6c14cfb58678164df3fb064/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/576036d0af9cf13c2d6ee780e2c77cd4/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:customview:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/194124cf3a43a74a21b2508dfdad1618/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f7b151aa690c8a552eb31a1578e7b6e0/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c89eece1e96dcfb1bc916748a125e940/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a23dd54bd0a40f3e7d627a18c42f1cdc/AndroidManifest.xml:17:1-24:12
-MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/4b8a8b23c1befd81d39fb2e567e6c69b/AndroidManifest.xml:17:1-25:12
-MERGED from [com.android.support:cursoradapter:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/43ff67d5799dcbb579c679f1a50c449f/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:exifinterface:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a32137a940cfb33e2ad9f9cabae2eb64/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/791d8d022eebb3b57575f39ab9695084/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:documentfile:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/138ee99d74774a2f5fd92e5a305ae904/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5abf1a6135c727cf073773d070edaa0e/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:print:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f88c14a7fd1bcdfba166ff01cf0f5d4e/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/dbd180967045b37b8dc78717696930dc/AndroidManifest.xml:17:1-22:12
-MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f09aa53b37ca233564eb8e2fcd2ada06/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/8cf345ded4708793d5f765b14a4a6039/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/72d8ab40fdcc917973cc800344a94cd4/AndroidManifest.xml:17:1-22:12
-MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/05f6446b99243598f3c7d3b4d54d43bc/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:multidex:1.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/456a6e64e15198f6a3581000876f76af/multidex-1.0.3/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:2:1-18:12
+MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b320a443effd06c78f4f9e5ddfe89b1a/appcompat-v7-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6d1ac33fa7bf63a59abf96edc65f6fce/cardview-v7-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/f14a8d3cde177ec9b4d395ad01a54632/constraint-layout-1.1.3/AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:17:1-37:12
+MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/9226787a6b2df7d5a0ad2ac39114dd2b/firebase-core-16.0.7/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:17:1-34:12
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:17:1-55:12
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c9ea42704af778130c05fb4a2be50f3d/play-services-measurement-api-16.3.0/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:17:1-40:12
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:17:1-59:12
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:2:1-17:12
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/8f1fb37bded1b3eab4802018448533bc/firebase-iid-interop-16.0.1/AndroidManifest.xml:2:1-10:12
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/472c1fc7ae234eeab1e8661e1d3e35ec/play-services-tasks-16.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/6219475007926e618c0ccef59df67e75/firebase-measurement-connector-17.0.1/AndroidManifest.xml:17:1-25:12
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ccf07f2372e6ccfdbc50d7aecaafc250/play-services-measurement-base-16.3.0/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ede359b0bf032c8682299509587a4e7b/play-services-stats-16.0.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f95365a22a2dda7ebd34add34b1d03b/play-services-ads-identifier-16.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a94edf78a298bc4b357b6079e102cc4b/support-v4-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ad6141accb91052c9870b8d2e14fec9d/recyclerview-v7-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/57f82cc6fe41c4efde110e483d996840/circleimageview-2.2.0/AndroidManifest.xml:2:1-11:12
+MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f4350850032de95cd20ad2078ca0c26/volley-1.1.1/AndroidManifest.xml:2:1-11:12
+MERGED from [com.jaredrummler:material-spinner:1.3.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d57403dbf2bddc3046cd7d2756be1193/material-spinner-1.3.1/AndroidManifest.xml:2:1-9:12
+MERGED from [com.android.support:support-fragment:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/845e091032ca2061619bb35b5c2614bb/support-fragment-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f7239896cd8e1e382a3fd71565b8b288/animated-vector-drawable-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ef79124f0bd9c34f8348139d6c78a5b7/support-core-ui-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f94f911c48b784483863caa0d1b69c79/support-core-utils-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/43aa7bdd8895886c797a042cb22a6544/support-vector-drawable-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/e2a029a3290af16a4d419d2d501adeda/transition-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b7dc2e499cd571b6c5ba0eec437866f1/support-media-compat-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:loader:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c6caa57dfc132cbd041e0dae542be0a2/loader-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:viewpager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/dd5573a89bd75c3ee1c53810410ef2ba/viewpager-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/aba2432f202774b83983d220847ad226/coordinatorlayout-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:drawerlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/16c10e4d08e36217eb0763f1e03f94a9/drawerlayout-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b6019c7a0b9ddcb41301864a6ddfb18f/slidingpanelayout-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:customview:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/624064a09b6288a5178059d2123a43cf/customview-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8524300dfafb44db53d40d03fc218ceb/swiperefreshlayout-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8f12292d72be7916a05aca35e236c5a7/asynclayoutinflater-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/AndroidManifest.xml:17:1-24:12
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/eec9b276221d56f06908dc491920398d/versionedparcelable-28.0.0/AndroidManifest.xml:17:1-25:12
+MERGED from [com.android.support:cursoradapter:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/990158c927c012d1677031ad14165542/cursoradapter-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:exifinterface:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/aab823770076a76bae093992d83dcd14/exifinterface-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/fe6283a58839026a8ad542672ca589c6/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:documentfile:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1697d9bc7a544183551856c5571ddc50/documentfile-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/484db9973b2cf3f7eff1e10b8ff90ddc/localbroadcastmanager-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:print:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d43503f79af7698b41c1fdadbf3cc0ed/print-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/83a6efe989782ba0ff7ff34408c7f22f/viewmodel-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0e337cc19638747a72f0dd7361d3b1f9/interpolator-28.0.0/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/987e9b10c40dacf71c326fb133cfcf12/livedata-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/bcc6fd35cc65f90790bfddae72ea5b9b/livedata-core-1.1.1/AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/1754c37170a596c2565dcdf21351b275/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-89:12
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-89:12
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-89:12
@@ -78,28 +79,28 @@ INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidMan
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:11-69
 uses-permission#android.permission.INTERNET
 ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:5:5-67
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:12:5-67
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:12:5-67
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:23:5-67
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:6:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
 	android:name
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:6:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
@@ -112,54 +113,54 @@ ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManife
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:8:22-78
 application
 ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:10:5-87:19
-MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/336c8f3f8a9dd43e89d4b5e0555e6b3a/AndroidManifest.xml:22:5-20
-MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/336c8f3f8a9dd43e89d4b5e0555e6b3a/AndroidManifest.xml:22:5-20
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:15:5-16:19
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:15:5-16:19
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/d66aba66799b76e8886504fa45868c70/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/d66aba66799b76e8886504fa45868c70/AndroidManifest.xml:9:5-20
-MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/AndroidManifest.xml:22:5-35:19
-MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/AndroidManifest.xml:22:5-35:19
-MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/a0949684cec7e7a7bdbc306f4afc3466/AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/a0949684cec7e7a7bdbc306f4afc3466/AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:26:5-32:19
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:26:5-32:19
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:28:5-53:19
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:28:5-53:19
-MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/3807a88a901682917424b3e0b70c847a/AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/3807a88a901682917424b3e0b70c847a/AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:28:5-38:19
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:28:5-38:19
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:28:5-57:19
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:28:5-57:19
-MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:9:5-15:19
-MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:9:5-15:19
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ed363a3969dc8e662c2c72e008d1a3c6/AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ed363a3969dc8e662c2c72e008d1a3c6/AndroidManifest.xml:7:5-8:19
-MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:22:5-27:19
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/04212b06154660c19f5282f66961c98c/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/04212b06154660c19f5282f66961c98c/AndroidManifest.xml:7:5-20
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/177ae3f5ba567be1f28d8da9c60c284f/AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/177ae3f5ba567be1f28d8da9c60c284f/AndroidManifest.xml:22:5-23:19
-MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9058463d1021de7bb2f0f31d4703ae18/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9058463d1021de7bb2f0f31d4703ae18/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/71c1302a6e77fa08bd790e4e59413f31/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/71c1302a6e77fa08bd790e4e59413f31/AndroidManifest.xml:7:5-20
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1ba023ceca670a17d7f3d2e37de5ba8b/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1ba023ceca670a17d7f3d2e37de5ba8b/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/AndroidManifest.xml:22:5-26:19
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/AndroidManifest.xml:22:5-26:19
-MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0864da93c02ad2eec37ac67557c4c019/AndroidManifest.xml:9:5-20
-MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0864da93c02ad2eec37ac67557c4c019/AndroidManifest.xml:9:5-20
-MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/3171895bd7d491fc76ac1719553bda4f/AndroidManifest.xml:9:5-20
-MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/3171895bd7d491fc76ac1719553bda4f/AndroidManifest.xml:9:5-20
-MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a23dd54bd0a40f3e7d627a18c42f1cdc/AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a23dd54bd0a40f3e7d627a18c42f1cdc/AndroidManifest.xml:22:5-94
-MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/4b8a8b23c1befd81d39fb2e567e6c69b/AndroidManifest.xml:22:5-23:19
-MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/4b8a8b23c1befd81d39fb2e567e6c69b/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:15:5-16:19
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:15:5-16:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/f14a8d3cde177ec9b4d395ad01a54632/constraint-layout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/f14a8d3cde177ec9b4d395ad01a54632/constraint-layout-1.1.3/AndroidManifest.xml:9:5-20
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:22:5-35:19
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:22:5-35:19
+MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/9226787a6b2df7d5a0ad2ac39114dd2b/firebase-core-16.0.7/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/9226787a6b2df7d5a0ad2ac39114dd2b/firebase-core-16.0.7/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:26:5-32:19
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:26:5-32:19
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:28:5-53:19
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c9ea42704af778130c05fb4a2be50f3d/play-services-measurement-api-16.3.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c9ea42704af778130c05fb4a2be50f3d/play-services-measurement-api-16.3.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:28:5-38:19
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:28:5-57:19
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:28:5-57:19
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:9:5-15:19
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:9:5-15:19
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/8f1fb37bded1b3eab4802018448533bc/firebase-iid-interop-16.0.1/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/8f1fb37bded1b3eab4802018448533bc/firebase-iid-interop-16.0.1/AndroidManifest.xml:7:5-8:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/472c1fc7ae234eeab1e8661e1d3e35ec/play-services-tasks-16.0.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/472c1fc7ae234eeab1e8661e1d3e35ec/play-services-tasks-16.0.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/6219475007926e618c0ccef59df67e75/firebase-measurement-connector-17.0.1/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/6219475007926e618c0ccef59df67e75/firebase-measurement-connector-17.0.1/AndroidManifest.xml:22:5-23:19
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ccf07f2372e6ccfdbc50d7aecaafc250/play-services-measurement-base-16.3.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ccf07f2372e6ccfdbc50d7aecaafc250/play-services-measurement-base-16.3.0/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ede359b0bf032c8682299509587a4e7b/play-services-stats-16.0.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ede359b0bf032c8682299509587a4e7b/play-services-stats-16.0.1/AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f95365a22a2dda7ebd34add34b1d03b/play-services-ads-identifier-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f95365a22a2dda7ebd34add34b1d03b/play-services-ads-identifier-16.0.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:22:5-26:19
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/57f82cc6fe41c4efde110e483d996840/circleimageview-2.2.0/AndroidManifest.xml:9:5-20
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/57f82cc6fe41c4efde110e483d996840/circleimageview-2.2.0/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f4350850032de95cd20ad2078ca0c26/volley-1.1.1/AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f4350850032de95cd20ad2078ca0c26/volley-1.1.1/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/AndroidManifest.xml:22:5-94
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/eec9b276221d56f06908dc491920398d/versionedparcelable-28.0.0/AndroidManifest.xml:22:5-23:19
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/eec9b276221d56f06908dc491920398d/versionedparcelable-28.0.0/AndroidManifest.xml:22:5-23:19
 	android:appComponentFactory
-		ADDED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a23dd54bd0a40f3e7d627a18c42f1cdc/AndroidManifest.xml:22:18-91
+		ADDED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/AndroidManifest.xml:22:18-91
 	android:supportsRtl
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:16:9-35
 	android:label
@@ -318,116 +319,118 @@ uses-sdk
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
-MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/336c8f3f8a9dd43e89d4b5e0555e6b3a/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/336c8f3f8a9dd43e89d4b5e0555e6b3a/AndroidManifest.xml:20:5-44
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/566d794632a3da0691cb3c279e22c00b/AndroidManifest.xml:7:5-9:41
-MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/566d794632a3da0691cb3c279e22c00b/AndroidManifest.xml:7:5-9:41
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:7:5-9:41
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1301310691187f685616220d5062b3d5/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1301310691187f685616220d5062b3d5/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ee8b42f911e456a5de83d4a62e79e354/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cardview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ee8b42f911e456a5de83d4a62e79e354/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/d66aba66799b76e8886504fa45868c70/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/d66aba66799b76e8886504fa45868c70/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/a0949684cec7e7a7bdbc306f4afc3466/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/a0949684cec7e7a7bdbc306f4afc3466/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/3807a88a901682917424b3e0b70c847a/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/3807a88a901682917424b3e0b70c847a/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ed363a3969dc8e662c2c72e008d1a3c6/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ed363a3969dc8e662c2c72e008d1a3c6/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/04212b06154660c19f5282f66961c98c/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/04212b06154660c19f5282f66961c98c/AndroidManifest.xml:5:5-44
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/177ae3f5ba567be1f28d8da9c60c284f/AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/177ae3f5ba567be1f28d8da9c60c284f/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9058463d1021de7bb2f0f31d4703ae18/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9058463d1021de7bb2f0f31d4703ae18/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/71c1302a6e77fa08bd790e4e59413f31/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/71c1302a6e77fa08bd790e4e59413f31/AndroidManifest.xml:5:5-44
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1ba023ceca670a17d7f3d2e37de5ba8b/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1ba023ceca670a17d7f3d2e37de5ba8b/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a07f106648dbee6504cd3c94c2128d9c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-v4:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a07f106648dbee6504cd3c94c2128d9c/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5a4f5e160c7fadd015933a98f5d3311d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5a4f5e160c7fadd015933a98f5d3311d/AndroidManifest.xml:20:5-44
-MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0864da93c02ad2eec37ac67557c4c019/AndroidManifest.xml:5:5-7:41
-MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0864da93c02ad2eec37ac67557c4c019/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/3171895bd7d491fc76ac1719553bda4f/AndroidManifest.xml:7:5-43
-MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/3171895bd7d491fc76ac1719553bda4f/AndroidManifest.xml:7:5-43
-MERGED from [com.jaredrummler:material-spinner:1.3.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/aecaa018f7d9ff2992ea071ed3ba288b/AndroidManifest.xml:5:5-7:41
-MERGED from [com.jaredrummler:material-spinner:1.3.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/aecaa018f7d9ff2992ea071ed3ba288b/AndroidManifest.xml:5:5-7:41
-MERGED from [com.android.support:support-fragment:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/94c7d43bd0f99000695d0f77b69d0d29/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-fragment:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/94c7d43bd0f99000695d0f77b69d0d29/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/251cc68cf1c3f43ec668ab1077aacc54/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/251cc68cf1c3f43ec668ab1077aacc54/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a6482533a3aae9aa57cc0a3b47496d4a/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-ui:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a6482533a3aae9aa57cc0a3b47496d4a/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5938d0de99a5ac272b75c49bf817082d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-core-utils:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5938d0de99a5ac272b75c49bf817082d/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b228e64ee6a5f1380a84668a3c462e24/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b228e64ee6a5f1380a84668a3c462e24/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0a647c4dfcf03b826d567a3ca19b7d20/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:transition:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0a647c4dfcf03b826d567a3ca19b7d20/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5db777c90fba5fb462f55940a543bb32/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-media-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5db777c90fba5fb462f55940a543bb32/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:loader:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9d671f3c5aa2579a15486662eee85a98/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:loader:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9d671f3c5aa2579a15486662eee85a98/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:viewpager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/91bfc50db312bc6033caa2b5625d3c9e/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:viewpager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/91bfc50db312bc6033caa2b5625d3c9e/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d26b6fdb116a6280da3433ac58bf1e83/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d26b6fdb116a6280da3433ac58bf1e83/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:drawerlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c2c08bd8f6c14cfb58678164df3fb064/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:drawerlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c2c08bd8f6c14cfb58678164df3fb064/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/576036d0af9cf13c2d6ee780e2c77cd4/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/576036d0af9cf13c2d6ee780e2c77cd4/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customview:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/194124cf3a43a74a21b2508dfdad1618/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:customview:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/194124cf3a43a74a21b2508dfdad1618/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f7b151aa690c8a552eb31a1578e7b6e0/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f7b151aa690c8a552eb31a1578e7b6e0/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c89eece1e96dcfb1bc916748a125e940/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c89eece1e96dcfb1bc916748a125e940/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a23dd54bd0a40f3e7d627a18c42f1cdc/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a23dd54bd0a40f3e7d627a18c42f1cdc/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/4b8a8b23c1befd81d39fb2e567e6c69b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/4b8a8b23c1befd81d39fb2e567e6c69b/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cursoradapter:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/43ff67d5799dcbb579c679f1a50c449f/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:cursoradapter:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/43ff67d5799dcbb579c679f1a50c449f/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:exifinterface:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a32137a940cfb33e2ad9f9cabae2eb64/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:exifinterface:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a32137a940cfb33e2ad9f9cabae2eb64/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/791d8d022eebb3b57575f39ab9695084/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/791d8d022eebb3b57575f39ab9695084/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:documentfile:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/138ee99d74774a2f5fd92e5a305ae904/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:documentfile:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/138ee99d74774a2f5fd92e5a305ae904/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5abf1a6135c727cf073773d070edaa0e/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/5abf1a6135c727cf073773d070edaa0e/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:print:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f88c14a7fd1bcdfba166ff01cf0f5d4e/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:print:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f88c14a7fd1bcdfba166ff01cf0f5d4e/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/dbd180967045b37b8dc78717696930dc/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/dbd180967045b37b8dc78717696930dc/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f09aa53b37ca233564eb8e2fcd2ada06/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f09aa53b37ca233564eb8e2fcd2ada06/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/8cf345ded4708793d5f765b14a4a6039/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/8cf345ded4708793d5f765b14a4a6039/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/72d8ab40fdcc917973cc800344a94cd4/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/72d8ab40fdcc917973cc800344a94cd4/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/05f6446b99243598f3c7d3b4d54d43bc/AndroidManifest.xml:20:5-44
-MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/05f6446b99243598f3c7d3b4d54d43bc/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:multidex:1.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/456a6e64e15198f6a3581000876f76af/multidex-1.0.3/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:multidex:1.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/456a6e64e15198f6a3581000876f76af/multidex-1.0.3/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:7:5-9:41
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:7:5-9:41
+MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b320a443effd06c78f4f9e5ddfe89b1a/appcompat-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b320a443effd06c78f4f9e5ddfe89b1a/appcompat-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6d1ac33fa7bf63a59abf96edc65f6fce/cardview-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6d1ac33fa7bf63a59abf96edc65f6fce/cardview-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/f14a8d3cde177ec9b4d395ad01a54632/constraint-layout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/f14a8d3cde177ec9b4d395ad01a54632/constraint-layout-1.1.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/9226787a6b2df7d5a0ad2ac39114dd2b/firebase-core-16.0.7/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-core:16.0.7] /home/bimo/.gradle/caches/transforms-2/files-2.1/9226787a6b2df7d5a0ad2ac39114dd2b/firebase-core-16.0.7/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c9ea42704af778130c05fb4a2be50f3d/play-services-measurement-api-16.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-api:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c9ea42704af778130c05fb4a2be50f3d/play-services-measurement-api-16.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/8f1fb37bded1b3eab4802018448533bc/firebase-iid-interop-16.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-iid-interop:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/8f1fb37bded1b3eab4802018448533bc/firebase-iid-interop-16.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/472c1fc7ae234eeab1e8661e1d3e35ec/play-services-tasks-16.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/472c1fc7ae234eeab1e8661e1d3e35ec/play-services-tasks-16.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/6219475007926e618c0ccef59df67e75/firebase-measurement-connector-17.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.firebase:firebase-measurement-connector:17.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/6219475007926e618c0ccef59df67e75/firebase-measurement-connector-17.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ccf07f2372e6ccfdbc50d7aecaafc250/play-services-measurement-base-16.3.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-measurement-base:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ccf07f2372e6ccfdbc50d7aecaafc250/play-services-measurement-base-16.3.0/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ede359b0bf032c8682299509587a4e7b/play-services-stats-16.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-stats:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/ede359b0bf032c8682299509587a4e7b/play-services-stats-16.0.1/AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f95365a22a2dda7ebd34add34b1d03b/play-services-ads-identifier-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-ads-identifier:16.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f95365a22a2dda7ebd34add34b1d03b/play-services-ads-identifier-16.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a94edf78a298bc4b357b6079e102cc4b/support-v4-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a94edf78a298bc4b357b6079e102cc4b/support-v4-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ad6141accb91052c9870b8d2e14fec9d/recyclerview-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ad6141accb91052c9870b8d2e14fec9d/recyclerview-v7-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/57f82cc6fe41c4efde110e483d996840/circleimageview-2.2.0/AndroidManifest.xml:5:5-7:41
+MERGED from [de.hdodenhof:circleimageview:2.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/57f82cc6fe41c4efde110e483d996840/circleimageview-2.2.0/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f4350850032de95cd20ad2078ca0c26/volley-1.1.1/AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f4350850032de95cd20ad2078ca0c26/volley-1.1.1/AndroidManifest.xml:7:5-43
+MERGED from [com.jaredrummler:material-spinner:1.3.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d57403dbf2bddc3046cd7d2756be1193/material-spinner-1.3.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.jaredrummler:material-spinner:1.3.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d57403dbf2bddc3046cd7d2756be1193/material-spinner-1.3.1/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:support-fragment:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/845e091032ca2061619bb35b5c2614bb/support-fragment-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/845e091032ca2061619bb35b5c2614bb/support-fragment-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f7239896cd8e1e382a3fd71565b8b288/animated-vector-drawable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f7239896cd8e1e382a3fd71565b8b288/animated-vector-drawable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ef79124f0bd9c34f8348139d6c78a5b7/support-core-ui-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ef79124f0bd9c34f8348139d6c78a5b7/support-core-ui-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f94f911c48b784483863caa0d1b69c79/support-core-utils-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/f94f911c48b784483863caa0d1b69c79/support-core-utils-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/43aa7bdd8895886c797a042cb22a6544/support-vector-drawable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/43aa7bdd8895886c797a042cb22a6544/support-vector-drawable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/e2a029a3290af16a4d419d2d501adeda/transition-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/e2a029a3290af16a4d419d2d501adeda/transition-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b7dc2e499cd571b6c5ba0eec437866f1/support-media-compat-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b7dc2e499cd571b6c5ba0eec437866f1/support-media-compat-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c6caa57dfc132cbd041e0dae542be0a2/loader-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:loader:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c6caa57dfc132cbd041e0dae542be0a2/loader-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/dd5573a89bd75c3ee1c53810410ef2ba/viewpager-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:viewpager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/dd5573a89bd75c3ee1c53810410ef2ba/viewpager-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/aba2432f202774b83983d220847ad226/coordinatorlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:coordinatorlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/aba2432f202774b83983d220847ad226/coordinatorlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/16c10e4d08e36217eb0763f1e03f94a9/drawerlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:drawerlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/16c10e4d08e36217eb0763f1e03f94a9/drawerlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b6019c7a0b9ddcb41301864a6ddfb18f/slidingpanelayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:slidingpanelayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b6019c7a0b9ddcb41301864a6ddfb18f/slidingpanelayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/624064a09b6288a5178059d2123a43cf/customview-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:customview:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/624064a09b6288a5178059d2123a43cf/customview-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8524300dfafb44db53d40d03fc218ceb/swiperefreshlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:swiperefreshlayout:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8524300dfafb44db53d40d03fc218ceb/swiperefreshlayout-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8f12292d72be7916a05aca35e236c5a7/asynclayoutinflater-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:asynclayoutinflater:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8f12292d72be7916a05aca35e236c5a7/asynclayoutinflater-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/eec9b276221d56f06908dc491920398d/versionedparcelable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/eec9b276221d56f06908dc491920398d/versionedparcelable-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/990158c927c012d1677031ad14165542/cursoradapter-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cursoradapter:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/990158c927c012d1677031ad14165542/cursoradapter-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/aab823770076a76bae093992d83dcd14/exifinterface-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:exifinterface:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/aab823770076a76bae093992d83dcd14/exifinterface-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/fe6283a58839026a8ad542672ca589c6/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/fe6283a58839026a8ad542672ca589c6/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1697d9bc7a544183551856c5571ddc50/documentfile-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:documentfile:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/1697d9bc7a544183551856c5571ddc50/documentfile-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/484db9973b2cf3f7eff1e10b8ff90ddc/localbroadcastmanager-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:localbroadcastmanager:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/484db9973b2cf3f7eff1e10b8ff90ddc/localbroadcastmanager-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d43503f79af7698b41c1fdadbf3cc0ed/print-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:print:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d43503f79af7698b41c1fdadbf3cc0ed/print-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/83a6efe989782ba0ff7ff34408c7f22f/viewmodel-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/83a6efe989782ba0ff7ff34408c7f22f/viewmodel-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0e337cc19638747a72f0dd7361d3b1f9/interpolator-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/0e337cc19638747a72f0dd7361d3b1f9/interpolator-28.0.0/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/987e9b10c40dacf71c326fb133cfcf12/livedata-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/987e9b10c40dacf71c326fb133cfcf12/livedata-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/bcc6fd35cc65f90790bfddae72ea5b9b/livedata-core-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/bcc6fd35cc65f90790bfddae72ea5b9b/livedata-core-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/1754c37170a596c2565dcdf21351b275/runtime-1.1.1/AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/1754c37170a596c2565dcdf21351b275/runtime-1.1.1/AndroidManifest.xml:20:5-44
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 	android:targetSdkVersion
@@ -439,148 +442,148 @@ INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidMan
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.ACCESS_FINE_LOCATION
-ADDED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:13:5-79
+ADDED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:13:5-79
 	android:name
-		ADDED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/48caeee2c45ebcff0c67bcad3a5f12d3/AndroidManifest.xml:13:22-76
+		ADDED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:13:22-76
 service#com.google.firebase.messaging.FirebaseMessagingService
-ADDED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/AndroidManifest.xml:28:9-34:19
+ADDED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:28:9-34:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/AndroidManifest.xml:30:13-36
+		ADDED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:30:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/efdab3b2e6a089814c58addc0c8d0d49/AndroidManifest.xml:29:13-82
+		ADDED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:29:13-82
 uses-permission#android.permission.WAKE_LOCK
-ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:24:5-68
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:25:5-68
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:24:5-68
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:24:5-68
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:25:5-68
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:24:5-68
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:24:5-68
 	android:name
-		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:24:22-65
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:24:22-65
 service#com.google.firebase.components.ComponentDiscoveryService
-ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:27:9-31:19
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:29:9-35:19
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:29:9-35:19
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:27:9-31:19
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:29:9-35:19
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:29:9-35:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:31:13-37
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:31:13-37
 	android:name
-		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:27:18-89
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:27:18-89
 meta-data#com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar
-ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:28:13-30:85
+ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:28:13-30:85
 	android:value
-		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:30:17-82
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:30:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/fdd3edd361c96348d78f8c29ca3b31dd/AndroidManifest.xml:29:17-139
+		ADDED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:29:17-139
 uses-permission#com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE
-ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:26:5-110
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:26:5-110
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:26:5-110
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:26:5-110
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:26:5-110
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:26:5-110
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:26:22-107
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:26:22-107
 receiver#com.google.android.gms.measurement.AppMeasurementReceiver
-ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:29:9-33:20
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:29:9-33:20
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:31:13-35
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:31:13-35
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:32:13-37
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:32:13-37
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:30:13-85
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:30:13-85
 receiver#com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver
-ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:34:9-42:20
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:29:9-37:20
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/141a79bece8e308b4013007bdc10b498/AndroidManifest.xml:29:9-37:20
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:34:9-42:20
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:29:9-37:20
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:29:9-37:20
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:36:13-35
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:36:13-35
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:37:13-36
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:37:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:38:13-69
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:38:13-69
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:35:13-100
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:35:13-100
 intent-filter#action:name:com.android.vending.INSTALL_REFERRER
-ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:39:13-41:29
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:39:13-41:29
 action#com.android.vending.INSTALL_REFERRER
-ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:40:17-79
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:40:17-79
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:40:25-76
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:40:25-76
 service#com.google.android.gms.measurement.AppMeasurementService
-ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:44:9-47:40
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:44:9-47:40
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:46:13-35
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:46:13-35
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:47:13-37
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:47:13-37
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:45:13-84
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:45:13-84
 service#com.google.android.gms.measurement.AppMeasurementJobService
-ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:48:9-52:72
+ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:48:9-52:72
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:50:13-35
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:50:13-35
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:51:13-37
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:51:13-37
 	android:permission
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:52:13-69
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:52:13-69
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/a916f108be3f0005ea5f5f51bb2785a8/AndroidManifest.xml:49:13-87
+		ADDED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:49:13-87
 uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:26:5-82
+ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:26:5-82
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:26:22-79
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:26:22-79
 meta-data#com.google.firebase.components:com.google.firebase.iid.Registrar
-ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:32:13-34:85
+ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:32:13-34:85
 	android:value
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:34:17-82
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:34:17-82
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:33:17-96
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:33:17-96
 receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:37:9-44:20
+ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:37:9-44:20
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:39:13-36
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:39:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:40:13-73
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:40:13-73
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:38:13-78
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:38:13-78
 intent-filter#action:name:com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:41:13-43:29
+ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:41:13-43:29
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:42:17-81
+ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:42:17-81
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:42:25-78
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:42:25-78
 service#com.google.firebase.iid.FirebaseInstanceIdService
-ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:50:9-56:19
+ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:50:9-56:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:52:13-36
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:52:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:51:13-77
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:51:13-77
 intent-filter#action:name:com.google.firebase.INSTANCE_ID_EVENT
-ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:53:13-55:29
+ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:53:13-55:29
 	android:priority
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:53:28-51
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:53:28-51
 action#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:54:17-80
+ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:54:17-80
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/ce2bc3a9586c79ec2ba16ae8dbe612a5/AndroidManifest.xml:54:25-77
+		ADDED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:54:25-77
 provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:10:9-14:39
+ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:10:9-14:39
 	android:authorities
-		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:12:13-72
+		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:12:13-72
 	android:exported
-		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:13:13-37
+		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:13:13-37
 	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:14:13-36
+		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:14:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f2b732207866c83c955fad1a2dcba4c/AndroidManifest.xml:11:13-77
+		ADDED from [com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:11:13-77
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:23:9-26:75
+ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:25:13-37
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:25:13-37
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:26:13-72
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:26:13-72
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/d520eb428190727f1ca0b19257dfaeb3/AndroidManifest.xml:24:13-79
+		ADDED from [com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:24:13-79
 meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/AndroidManifest.xml:23:9-25:69
+ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/AndroidManifest.xml:25:13-66
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/59c2e235ff4feb69c32103c09d052258/AndroidManifest.xml:24:13-58
+		ADDED from [com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:24:13-58

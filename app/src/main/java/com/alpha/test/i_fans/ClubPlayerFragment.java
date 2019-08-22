@@ -86,7 +86,7 @@ public class ClubPlayerFragment extends Fragment {
                         @Override
                         public void onConnected(OdooVersion version) {
                             ODomain domain = new ODomain();
-                            domain.add("club_id", "=", getActivity().getIntent().getIntExtra("id",0));
+                            domain.add("club_id", "=", getActivity().getIntent().getStringExtra("id"));
 
                             OdooFields fields = new OdooFields();
                             fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");

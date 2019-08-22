@@ -1,15 +1,25 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context="com.alpha.test.i_fans.LiveFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <FrameLayout
-        android:id="@+id/youtube_live"
-        android:layout_width="match_parent"
-        android:layout_height="200dp">
+    <!--<FrameLayout-->
+    <!--android:id="@+id/youtube_live"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="200dp">-->
 
-    </FrameLayout>
+    <!--</FrameLayout>-->
+    <ImageView
+        android:layout_width="172dp"
+        android:layout_height="302dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:tint="@color/colorTrueState"
+        tools:src="@drawable/warning_available" />
 
 </RelativeLayout>

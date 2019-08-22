@@ -4,7 +4,17 @@
             "outputFile": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/1301310691187f685616220d5062b3d5/res/values-v16/values-v16.xml",
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/b320a443effd06c78f4f9e5ddfe89b1a/appcompat-v7-28.0.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -20,16 +30,6 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
-                    }
-                },
-                {
-                    "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/a23dd54bd0a40f3e7d627a18c42f1cdc/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
                     }
                 }
             ]

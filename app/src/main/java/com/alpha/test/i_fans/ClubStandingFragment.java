@@ -142,7 +142,7 @@ public class ClubStandingFragment extends Fragment {
                                             String.valueOf("Pts"),
                                             color,0));
                                     int i = 1;
-                                    Log.w("asdads",String.valueOf(Records.length));
+
                                     for (final OdooRecord record : Records) {
                                         if (record.getString("nama_club").equalsIgnoreCase(getActivity().getIntent().getStringExtra("nama"))){
                                             color = getResources().getColor(R.color.colorYellow);
@@ -157,7 +157,7 @@ public class ClubStandingFragment extends Fragment {
                                                 String.valueOf(record.getInt("selisih_gol")),
                                                 String.valueOf(record.getInt("point")),
                                                 color,
-                                                record.getInt("id_club")));
+                                                record.getInt("id")));
                                         i++;
                                     }
                                     adapter = new AdapterKlasemen(ArrayListKlasemen);

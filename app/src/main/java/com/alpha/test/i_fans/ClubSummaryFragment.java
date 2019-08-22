@@ -69,14 +69,15 @@ public class ClubSummaryFragment extends Fragment {
                     @Override
                     public void onConnected(OdooVersion version) {
                         OArguments arguments = new OArguments();
-                        arguments.add(getActivity().getIntent().getIntExtra("id",0));
+                        arguments.add(getActivity().getIntent().getStringExtra("id"));
 
                         client.call_kw("persebaya.club", "get_summary", arguments, new IOdooResponse() {
                             @Override
                             public void onResult(OdooResult result) {
                                 // response
                                 OdooRecord[] Records = result.getRecords();
-                                Log.e("asdasdasdas",result.toString());
+
+                                System.out.println(result.toString());
                                 for (final OdooRecord record : Records) {
                                     txtNamaStadion.setText(record.getString("stadion"));
                                     imageclub.setImageBitmap(StringToBitMap(record.getString("foto_club")));

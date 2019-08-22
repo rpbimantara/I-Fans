@@ -14,11 +14,11 @@
         android:paddingRight="24dp">
 
         <ImageView
-            android:layout_width="157dp"
-            android:layout_height="164dp"
+            android:layout_width="248dp"
+            android:layout_height="243dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:src="@mipmap/ic_launcher_foreground" />
+            android:src="@mipmap/ic_logo" />
 
         <!--  Name Label -->
         <android.support.design.widget.TextInputLayout

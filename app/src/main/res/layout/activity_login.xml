@@ -13,33 +13,34 @@
         android:paddingRight="24dp">
 
         <ImageView
-            android:layout_width="157dp"
-            android:layout_height="164dp"
+            android:layout_width="248dp"
+            android:layout_height="243dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="24dp"
-            android:src="@mipmap/ic_launcher_foreground" />
+            android:src="@mipmap/ic_logo" />
 
-        <!-- Email Label -->
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="SELAMAT DATANG"
-            android:textSize="24sp" />
+        <!--&lt;!&ndash; Email Label &ndash;&gt;-->
+        <!--<TextView-->
+            <!--android:id="@+id/textView"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:text="SELAMAT DATANG"-->
+            <!--android:textSize="24sp" />-->
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="SALAM SATOE NYALI, WANI!"
-            android:textSize="26sp" />
+        <!--<TextView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_weight="1"-->
+            <!--android:text="SALAM SATOE NYALI, WANI!"-->
+            <!--android:textSize="26sp" />-->
 
         <android.support.design.widget.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
+            android:backgroundTint="@color/colorPrimaryDark"
             android:hint="Username"
             >
             <EditText android:id="@+id/input_username"
