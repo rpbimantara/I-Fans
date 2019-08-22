@@ -1,11 +1,12 @@
 package com.alpha.test.i_fans;
 
 public class MatchLineUp {
-    private String id,jadwal_id,player,player_number,position,player_club,player_state;
+    private String id,jadwal_id,player_id,player,player_number,position,player_club,player_state;
 
-    public MatchLineUp(String id, String jadwal_id, String player, String player_number, String position, String player_club, String player_state ) {
+    public MatchLineUp(String id, String jadwal_id,String player_id, String player, String player_number, String position, String player_club, String player_state ) {
         this.id = id;
         this.jadwal_id = jadwal_id;
+        this.player_id = player_id;
         this.player = player;
         this.player_number = player_number;
         this.position = position;
@@ -69,6 +70,13 @@ public class MatchLineUp {
         this.player_state = player_state;
     }
 
+    public String getPlayer_id() {
+        return player_id;
+    }
+
+    public void setPlayer_id(String player_id) {
+        this.player_id = player_id;
+    }
 
     @Override
     public String toString() {

@@ -119,6 +119,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                                             ArrayListMatchLineUpHomeCore.add(new MatchLineUp(
                                                     String.valueOf(record.getInt("id")),
                                                     record.getString("jadwal_id"),
+                                                    String.valueOf(record.getInt("player_id")),
                                                     record.getString("player_id"),
                                                     String.valueOf(Math.round(record.getFloat("no_punggung"))),
                                                     record.getString("job_id"),
@@ -129,6 +130,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                                             ArrayListMatchLineUpHome.add(new MatchLineUp(
                                                     String.valueOf(record.getInt("id")),
                                                     record.getString("jadwal_id"),
+                                                    String.valueOf(record.getInt("player_id")),
                                                     record.getString("player_id"),
                                                     String.valueOf(Math.round(record.getFloat("no_punggung"))),
                                                     record.getString("job_id"),
