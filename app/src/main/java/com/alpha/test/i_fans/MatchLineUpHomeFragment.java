@@ -179,7 +179,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                             domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
 
                             OdooFields fields = new OdooFields();
-                            fields.addAll("id","jadwal_id","home", "player_id","department_id","job_id","no_punggung","club_id","status_pemain");
+                            fields.addAll("id","jadwal_id","home", "player_id","department_id","job_id","no_punggung","status_pemain");
 
                             int offset = 0;
                             int limit = 0;
@@ -199,7 +199,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                                                     record.getString("player_id"),
                                                     String.valueOf(Math.round(record.getFloat("no_punggung"))),
                                                     record.getString("job_id"),
-                                                    record.getString("club_id"),
+                                                    record.getString("home"),
                                                     record.getString("status_pemain")
                                             ));
                                         }else {
@@ -210,7 +210,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                                                     record.getString("player_id"),
                                                     String.valueOf(Math.round(record.getFloat("no_punggung"))),
                                                     record.getString("job_id"),
-                                                    record.getString("club_id"),
+                                                    record.getString("home"),
                                                     record.getString("status_pemain")
                                             ));
                                         }

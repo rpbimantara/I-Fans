@@ -102,7 +102,7 @@ public class ClubScheduleFragment extends Fragment {
                             OArguments arguments = new OArguments();
                             arguments.add(getActivity().getIntent().getStringExtra("id"));
                             arguments.add(sharedPrefManager.getSPIdLiga());
-//                            arguments.add(Arrays.asList("akan","tunda","valid","main"));
+                            arguments.add(Arrays.asList("akan","tunda","valid","main"));
                             client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
