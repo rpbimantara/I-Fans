@@ -125,12 +125,18 @@ public class ListBeritaFragment extends Fragment {
 
     public String tanggal(String tgl){
         try {
-            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
+            tgl = new SimpleDateFormat("dd MMM yyyy",Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
         }catch (Exception ex){
             System.out.println("Error Convert Tanggal: " + ex);
         }
 
         return tgl;
+    }
+
+    public  String waktu(String waktu){
+        int output = Integer.valueOf(waktu.substring(0,1));
+        waktu = String.valueOf(output) + waktu.substring(1,5);
+        return waktu;
     }
 
     public class BeritaTask extends AsyncTask<Void,Void,Void>{
@@ -168,12 +174,14 @@ public class ListBeritaFragment extends Fragment {
                                 public void onResult(OdooResult result) {
                                     OdooRecord[] records = result.getRecords();
                                     for (OdooRecord record : records) {
+                                        String tgl = tanggal(record.getString("create_date").substring(0,10));
+                                        String waktu = waktu(record.getString("create_date").substring(11,17)) + " "+ "WIB";
                                         ArrayListBerita.add(new ListBerita(
                                                 record.getInt("id"),
                                                 record.getString("image"),
                                                 record.getString("kategori_brita_id"),
                                                 record.getString("headline"),
-                                                record.getString("create_date")));
+                                                tgl.concat(" ").concat(waktu)));
                                     }
                                     adapter = new AdapterListBerita(ArrayListBerita);
                                     rv.setAdapter(adapter);

@@ -97,7 +97,7 @@ public class MatchLineUpAwayFragment extends Fragment {
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                         Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
-                        intent.putExtra("id_jadwal", ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id());
+                        intent.putExtra("id_jadwal", Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()));
                         intent.putExtra("id_player", ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id());
 //                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
                         startActivity(intent);
@@ -133,7 +133,7 @@ public class MatchLineUpAwayFragment extends Fragment {
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                         Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
-                        intent.putExtra("id_jadwal", ArrayListMatchLineUpAway.get(RecyclerViewItemPosition).getJadwal_id());
+                        intent.putExtra("id_jadwal", Integer.valueOf(ArrayListMatchLineUpAway.get(RecyclerViewItemPosition).getJadwal_id()));
                         intent.putExtra("id_player", ArrayListMatchLineUpAway.get(RecyclerViewItemPosition).getPlayer_id());
 //                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
                         startActivity(intent);

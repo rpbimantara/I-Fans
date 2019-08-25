@@ -97,7 +97,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                         Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
-                        intent.putExtra("id_jadwal", ArrayListMatchLineUpHomeCore.get(RecyclerViewItemPosition).getJadwal_id());
+                        intent.putExtra("id_jadwal", Integer.valueOf(ArrayListMatchLineUpHomeCore.get(RecyclerViewItemPosition).getJadwal_id()));
                         intent.putExtra("id_player", ArrayListMatchLineUpHomeCore.get(RecyclerViewItemPosition).getPlayer_id());
 //                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
                         startActivity(intent);
@@ -133,7 +133,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                         Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
-                        intent.putExtra("id_jadwal", ArrayListMatchLineUpHome.get(RecyclerViewItemPosition).getJadwal_id());
+                        intent.putExtra("id_jadwal", Integer.valueOf(ArrayListMatchLineUpHome.get(RecyclerViewItemPosition).getJadwal_id()));
                         intent.putExtra("id_player", ArrayListMatchLineUpHome.get(RecyclerViewItemPosition).getPlayer_id());
 //                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
                         startActivity(intent);
@@ -194,7 +194,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                                         if (record.getString("status_pemain").equalsIgnoreCase("core")){
                                             ArrayListMatchLineUpHomeCore.add(new MatchLineUp(
                                                     String.valueOf(record.getInt("id")),
-                                                    record.getString("jadwal_id"),
+                                                    String.valueOf(record.getInt("jadwal_id")),
                                                     String.valueOf(record.getInt("player_id")),
                                                     record.getString("player_id"),
                                                     String.valueOf(Math.round(record.getFloat("no_punggung"))),
@@ -205,7 +205,7 @@ public class MatchLineUpHomeFragment extends Fragment {
                                         }else {
                                             ArrayListMatchLineUpHome.add(new MatchLineUp(
                                                     String.valueOf(record.getInt("id")),
-                                                    record.getString("jadwal_id"),
+                                                    String.valueOf(record.getInt("jadwal_id")),
                                                     String.valueOf(record.getInt("player_id")),
                                                     record.getString("player_id"),
                                                     String.valueOf(Math.round(record.getFloat("no_punggung"))),

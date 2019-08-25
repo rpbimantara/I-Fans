@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,7 +80,7 @@ public class RatingLineUpActivity extends AppCompatActivity {
                         // Success connection
 
                         ODomain domain = new ODomain();
-                        domain.add("id", "=", getIntent().getStringExtra("id_player"));
+                        domain.add("id", "=", getIntent().getExtras().get("id_player"));
 
                         OdooFields fields = new OdooFields();
                         fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
@@ -135,8 +136,8 @@ public class RatingLineUpActivity extends AppCompatActivity {
                             // Success connection
 
                             OdooValues values = new OdooValues();
-                            values.put("jadwal_id", getIntent().getStringExtra("id_jadwal"));
-                            values.put("employee_id", getIntent().getStringExtra("id_player"));
+                            values.put("jadwal_id", getIntent().getExtras().get("id_jadwal"));
+                            values.put("employee_id", getIntent().getExtras().get("id_player"));
                             values.put("rating", voids[0]);
                             values.put("review", voids[1]);
 
@@ -148,7 +149,8 @@ public class RatingLineUpActivity extends AppCompatActivity {
 
                                 @Override
                                 public boolean onError(OdooErrorException error) {
-                                    Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_LONG).show();
+                                    Log.e("Rating error",error.toString());
+                                    Toast.makeText(getApplicationContext(),error.odooException,Toast.LENGTH_LONG).show();
                                     return true;
                                 }
                             });

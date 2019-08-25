@@ -26,6 +26,7 @@ public class AdapterTeamDetailReview extends RecyclerView.Adapter<AdapterTeamDet
 
         public TeamDetaiReviewViewHolder(View itemView) {
             super(itemView);
+            this.ratingBarReview = itemView.findViewById(R.id.rating_TeamDetail);
             this.txtReview = (TextView) itemView.findViewById(R.id.txt_review);
         }
     }
@@ -40,7 +41,7 @@ public class AdapterTeamDetailReview extends RecyclerView.Adapter<AdapterTeamDet
     @Override
     public void onBindViewHolder(@NonNull TeamDetaiReviewViewHolder holder, int i) {
         holder.txtReview.setText(dataList.get(i).getReview());
-        holder.ratingBarReview.setRating(dataList.get(i).getRating());
+        holder.ratingBarReview.setRating(Float.valueOf(dataList.get(i).getRating()));
     }
 
     @Override
