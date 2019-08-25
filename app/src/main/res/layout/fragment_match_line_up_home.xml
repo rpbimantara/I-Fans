@@ -11,41 +11,49 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-            <TextView
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="?attr/actionBarSize"
-                android:fontFamily="@font/aladin"
-                android:text="Starting Eleven"
-                android:textColor="@color/colorTrueState"
-                android:textSize="20sp" />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="?attr/actionBarSize"
+                    android:fontFamily="@font/aladin"
+                    android:text="Starting Eleven"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_recycler_view_match_line_up_home_core"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_recycler_view_match_line_up_home_core"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
+                </android.support.v7.widget.RecyclerView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/aladin"
-                android:text="Subtitutions"
-                android:textColor="@android:color/darker_gray"
-                android:textSize="20sp" />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/aladin"
+                    android:text="Subtitutions"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="20sp" />
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_recycler_view_match_line_up_home"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_recycler_view_match_line_up_home"
+                    android:nestedScrollingEnabled="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-            </android.support.v7.widget.RecyclerView>
-        </LinearLayout>
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
 
     </android.support.v4.widget.SwipeRefreshLayout>
 

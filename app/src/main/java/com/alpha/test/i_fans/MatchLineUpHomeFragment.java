@@ -1,6 +1,7 @@
 package com.alpha.test.i_fans;
 
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,7 +9,9 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -31,6 +34,7 @@ public class MatchLineUpHomeFragment extends Fragment {
 
     private View rootView;
     RecyclerView rvLineUpHomeCore,rvLineUpHome;
+    int RecyclerViewItemPosition ;
     SwipeRefreshLayout swiper;
     ArrayList<MatchLineUp> ArrayListMatchLineUpHomeCore;
     ArrayList<MatchLineUp> ArrayListMatchLineUpHome;
@@ -74,6 +78,78 @@ public class MatchLineUpHomeFragment extends Fragment {
             rvLineUpHome.setLayoutManager(new LinearLayoutManager(getActivity()));
             rvLineUpHomeCore.setAdapter(adapterCore);
             rvLineUpHomeCore.setLayoutManager(new LinearLayoutManager(getActivity()));
+            rvLineUpHomeCore.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+                GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
+
+                    @Override
+                    public boolean onSingleTapUp(MotionEvent motionEvent) {
+
+                        return true;
+                    }
+
+                });
+
+                @Override
+                public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                    View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+
+                    if (ChildView != null && gestureDetector.onTouchEvent(e)) {
+                        RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+                        Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
+                        intent.putExtra("id_jadwal", ArrayListMatchLineUpHomeCore.get(RecyclerViewItemPosition).getJadwal_id());
+                        intent.putExtra("id_player", ArrayListMatchLineUpHomeCore.get(RecyclerViewItemPosition).getPlayer_id());
+//                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
+                        startActivity(intent);
+                    }
+                    return false;
+                }
+
+                @Override
+                public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+                }
+
+                @Override
+                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+                }
+            });
+            rvLineUpHome.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+
+                GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
+
+                    @Override
+                    public boolean onSingleTapUp(MotionEvent motionEvent) {
+
+                        return true;
+                    }
+
+                });
+
+                @Override
+                public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
+                    View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+
+                    if (ChildView != null && gestureDetector.onTouchEvent(e)) {
+                        RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+                        Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
+                        intent.putExtra("id_jadwal", ArrayListMatchLineUpHome.get(RecyclerViewItemPosition).getJadwal_id());
+                        intent.putExtra("id_player", ArrayListMatchLineUpHome.get(RecyclerViewItemPosition).getPlayer_id());
+//                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
+                        startActivity(intent);
+                    }
+                    return false;
+                }
+
+                @Override
+                public void onTouchEvent(RecyclerView rv, MotionEvent e) {
+                }
+
+                @Override
+                public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
+
+                }
+            });
             new LineUpHomeTask().execute();
 
         }
