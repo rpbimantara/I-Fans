@@ -98,12 +98,9 @@ public class TerupdateFragment extends Fragment {
             rootView = inflater.inflate(R.layout.fragment_terupdate, container, false);
             rv = rootView.findViewById(R.id.rv_recycler_view_hot_news);
             ligaSpinner = rootView.findViewById(R.id.ligaterupdate_spinner);
-//            ligaSpinner.setItems("Ice Cream Sandwich", "Jelly Bean", "KitKat", "Lollipop", "Marshmallow");
             lnNow = rootView.findViewById(R.id.linearLayout_now);
             rlLast = rootView.findViewById(R.id.RL_last);
             rlNext = rootView.findViewById(R.id.RL_next);
-//            liganow = rootView.findViewById(R.id.textView_namaligaterupdate);
-//            liga_terupdate = rootView.findViewById(R.id.textView_namaligaterupdate);
             tglnow = rootView.findViewById(R.id.textView_tglharini);
             stadionnow = rootView.findViewById(R.id.textView_stadionharini);
             skornow = rootView.findViewById(R.id.txt_scoreterupdate);
@@ -272,7 +269,6 @@ public class TerupdateFragment extends Fragment {
                                         tglnow.setText(tanggal(record.getString("date")));
                                         stadionnow.setText(record.getString("stadion"));
                                         skornow.setText(record.getString("skornow") );
-//                                        liga_terupdate.setText(record.getString("liga"));
 
                                         homeImageLast.setImageBitmap(StringToBitMap(record.getString("image_home_last")));
                                         homelast.setText(record.getString("home_last"));

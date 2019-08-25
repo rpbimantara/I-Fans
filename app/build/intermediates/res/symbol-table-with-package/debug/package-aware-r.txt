@@ -1566,6 +1566,7 @@ id swiperefresh_schedule
 id swiperefresh_standings
 id swiperefresh_store
 id swiperefresh_team
+id swiperefresh_team_review
 id swiperefresh_terupdate
 id swiperefresh_ticket
 id tabMode
