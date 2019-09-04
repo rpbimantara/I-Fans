@@ -87,7 +87,7 @@ public class AccountAuctionActivity extends AppCompatActivity {
                             domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
 
                             OdooFields fields = new OdooFields();
-                            fields.addAll("id","foto_lelang","nama_barang", "ob","inc","binow","due_date","create_uid");
+                            fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
 
                             int offset = 0;
                             int limit = 80;
@@ -101,8 +101,8 @@ public class AccountAuctionActivity extends AppCompatActivity {
                                     for (final OdooRecord record : Records) {
                                         ArrayListLelang.add(new lelang(
                                                 String.valueOf(record.getInt("id")),
-                                                record.getString("nama_barang"),
-                                                record.getString("foto_lelang"),
+                                                record.getString("name"),
+                                                record.getString("image_medium"),
                                                 record.getString("due_date"),
                                                 String.valueOf(Math.round(record.getFloat("ob"))),
                                                 String.valueOf(Math.round(record.getFloat("binow"))),

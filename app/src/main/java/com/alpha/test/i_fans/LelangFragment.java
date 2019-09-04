@@ -164,34 +164,6 @@ public class LelangFragment extends Fragment {
                                     return super.onError(error);
                                 }
                             });
-
-//                            client.call_kw("persebaya.lelang", "list_lelang", arguments, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] Records = result.getRecords();
-//                                    for (final OdooRecord record : Records) {
-//                                        ArrayListLelang.add(new lelang(
-//                                                String.valueOf(record.getInt("idlelang")),
-//                                                record.getString("namalelang"),
-//                                                record.getString("lelangimage"),
-//                                                record.getString("waktulelang"),
-//                                                String.valueOf(Math.round(record.getFloat("bidlelang"))),
-//                                                String.valueOf(Math.round(record.getFloat("binlelang"))),
-//                                                String.valueOf(Math.round(record.getFloat("inclelang"))),
-//                                                String.valueOf(record.getInt("pemiliklelang"))));
-//                                    }
-//                                    adapter = new AdapterLelang(ArrayListLelang,getContext());
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//
-//                                @Override
-//                                public boolean onError(OdooErrorException error) {
-//                                    Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_SHORT).show();
-//                                    return super.onError(error);
-//                                }
-//                            });
                         }
                     }).build();
             return null;

@@ -1060,6 +1060,10 @@
         "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/res/drawable/notification_icon_background.xml"
     },
     {
+        "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/layout_card_item_coin.xml.flat",
+        "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/res/layout/card_item_coin.xml"
+    },
+    {
         "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/color_mtrl_chip_close_icon_tint.xml.flat",
         "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/res/color/mtrl_chip_close_icon_tint.xml"
     },
@@ -1346,6 +1350,10 @@
     {
         "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/drawable-hdpi-v4_googleg_disabled_color_18.png.flat",
         "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/res/drawable-hdpi-v4/googleg_disabled_color_18.png"
+    },
+    {
+        "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/layout_activity_account_coin.xml.flat",
+        "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/res/layout/activity_account_coin.xml"
     },
     {
         "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_phone.png.flat",

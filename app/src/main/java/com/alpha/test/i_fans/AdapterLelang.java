@@ -82,7 +82,7 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(),dataList.get(position).getBidlelang(),Toast.LENGTH_LONG).show();
-                addBidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID");
+//                addBidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID");
             }
         });
 
@@ -142,37 +142,37 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
         }
         return time;
     }
-
-    public void addBidder(final String idlelang, final String nilai, final String status){
-        client = new OdooClient.Builder(context)
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        OdooValues values = new OdooValues();
-                        values.put("lelang_id", idlelang);
-                        values.put("user_bid", sharedPrefManager.getSpIdUser());
-                        values.put("nilai", Integer.valueOf(nilai));
-                        values.put("keterang", status);
-
-                        client.create("persebaya.lelang.bid", values, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                int serverId = result.getInt("result");
-                            }
-
-                            @Override
-                            public boolean onError(OdooErrorException error) {
-                                Toast.makeText(context,String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
-                                return super.onError(error);
-                            }
-                        });
-                    }
-
-                }).build();
-    }
+//
+//    public void addBidder(final String idlelang, final String nilai, final String status){
+//        client = new OdooClient.Builder(context)
+//                .setHost(sharedPrefManager.getSP_Host_url())
+//                .setSession(sharedPrefManager.getSpSessionId())
+//                .setSynchronizedRequests(false)
+//                .setConnectListener(new OdooConnectListener() {
+//                    @Override
+//                    public void onConnected(OdooVersion version) {
+//                        OdooValues values = new OdooValues();
+//                        values.put("lelang_id", idlelang);
+//                        values.put("user_bid", sharedPrefManager.getSpIdUser());
+//                        values.put("nilai", Integer.valueOf(nilai));
+//                        values.put("keterang", status);
+//
+//                        client.create("persebaya.lelang.bid", values, new IOdooResponse() {
+//                            @Override
+//                            public void onResult(OdooResult result) {
+//                                int serverId = result.getInt("result");
+//                            }
+//
+//                            @Override
+//                            public boolean onError(OdooErrorException error) {
+//                                Toast.makeText(context,String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+//                                return super.onError(error);
+//                            }
+//                        });
+//                    }
+//
+//                }).build();
+//    }
 
     @NonNull
     @Override

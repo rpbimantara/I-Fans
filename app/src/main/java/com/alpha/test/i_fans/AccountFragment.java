@@ -49,7 +49,7 @@ public class AccountFragment extends Fragment {
     SharedPrefManager sharedPrefManager;
     FloatingActionButton fabImage;
     private Bitmap currentImage;
-    LinearLayout lnStore,lnAuction;
+    LinearLayout lnStore,lnAuction,lnCoin;
     SwipeRefreshLayout swiper;
     Integer IdPartner;
     OdooClient client;
@@ -86,6 +86,7 @@ public class AccountFragment extends Fragment {
         sharedPrefManager = new SharedPrefManager(getActivity());
         lnStore = view.findViewById(R.id.LinearLayoutStore);
         lnAuction = view.findViewById(R.id.LinearLayoutAuction);
+        lnCoin = view.findViewById(R.id.LinearLayoutCoin);
         fabImage.setImageResource(R.drawable.ic_camera);
         fabImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,19 +104,27 @@ public class AccountFragment extends Fragment {
             }
         });
 
+        lnCoin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent coinIntent = new Intent(getActivity(), AccountCoinActivity.class);
+                startActivity(coinIntent);
+            }
+        });
+
         lnStore.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ticketIntent = new Intent(getActivity(), AccountStoreActivity.class);
-                startActivity(ticketIntent);
+                Intent storeIntent = new Intent(getActivity(), AccountStoreActivity.class);
+                startActivity(storeIntent);
             }
         });
 
         lnAuction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ticketIntent = new Intent(getActivity(), AccountAuctionActivity.class);
-                startActivity(ticketIntent);
+                Intent auctionIntent = new Intent(getActivity(), AccountAuctionActivity.class);
+                startActivity(auctionIntent);
             }
         });
         return view;

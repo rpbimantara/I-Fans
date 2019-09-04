@@ -1179,12 +1179,14 @@ id CropProgressBar
 id FUNCTION
 id ImageView_image
 id LinearLayoutAuction
+id LinearLayoutCoin
 id LinearLayoutStore
 id META
 id RL_last
 id SHIFT
 id SYM
 id account_auction_toolbar
+id account_coin_toolbar
 id account_store_toolbar
 id action0
 id action_account
@@ -1473,6 +1475,7 @@ id right
 id right_icon
 id right_side
 id rv_recycler_view_account_auction
+id rv_recycler_view_account_coin
 id rv_recycler_view_account_store
 id rv_recycler_view_checkout
 id rv_recycler_view_club_player
@@ -1548,6 +1551,7 @@ id submit_rating
 id summary_imageView
 id swiperefresh_account
 id swiperefresh_account_auction
+id swiperefresh_account_coin
 id swiperefresh_account_store
 id swiperefresh_checkout
 id swiperefresh_club_player
@@ -1638,6 +1642,7 @@ id txt_alamatAccount
 id txt_category_tiket_list
 id txt_checkout_harga
 id txt_checkout_item
+id txt_date
 id txt_emailAccount
 id txt_hargaBarangStore
 id txt_harga_tiket
@@ -1662,6 +1667,7 @@ id txt_namastaff
 id txt_namateamAway
 id txt_namateamHome
 id txt_namateamjadwal
+id txt_name
 id txt_nameawaylast
 id txt_namehomelast
 id txt_no_rating_line_up
@@ -1670,6 +1676,7 @@ id txt_nostaff
 id txt_phoneAccount
 id txt_playklasemen
 id txt_point
+id txt_price
 id txt_review
 id txt_scoreterupdate
 id txt_selisihgol
@@ -1751,6 +1758,7 @@ layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_account_auction
+layout activity_account_coin
 layout activity_account_edit
 layout activity_account_store
 layout activity_berita_detail
@@ -1771,6 +1779,7 @@ layout activity_ticket
 layout activity_ticket_detail
 layout card_item_berita
 layout card_item_checkout
+layout card_item_coin
 layout card_item_hot_news
 layout card_item_jadwal
 layout card_item_klasemen

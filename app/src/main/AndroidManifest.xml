@@ -2,11 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alpha.test.i_fans">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -16,8 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".RatingLineUpActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".AccountCoinActivity"
+            android:parentActivityName=".MainActivity" ></activity>
+        <activity
+            android:name=".RatingLineUpActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".AccountAuctionActivity"
             android:parentActivityName=".MainActivity" />
@@ -27,13 +25,6 @@
         <activity
             android:name=".TeamDetailActivity"
             android:parentActivityName=".MainActivity" />
-
-        <meta-data
-            android:name="com.google.firebase.API_KEY"
-            android:value="AAAAWPlkJyo:APA91bEDEHnaZbu4AJsWMbb13-UO1h1cM3Ii2ddp15pfoXQL4P9rmi4h28vJxI3AgKwDVAf68yJ8siiqk1NGqCXkYgylHjpwV2N8GvoTtv6j2T2sjnBJVGQbvSq93HHaiLUNyxRdXsGt" />
-        <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
 
         <activity
             android:name=".MainActivity"
@@ -46,6 +37,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeActivity" />
+
         <activity android:name=".LoginActivity" />
         <activity android:name=".SingUpActivity" />
         <activity
@@ -71,19 +63,30 @@
         <activity
             android:name=".TicketDetailActivity"
             android:parentActivityName=".MainActivity" />
-
-        <service android:name=".MyFirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-
         <activity
             android:name=".CheckoutActivity"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MatchDetailActivity"
             android:parentActivityName=".MainActivity" />
+
+        <meta-data
+            android:name="com.google.firebase.API_KEY"
+            android:value="AAAAWPlkJyo:APA91bEDEHnaZbu4AJsWMbb13-UO1h1cM3Ii2ddp15pfoXQL4P9rmi4h28vJxI3AgKwDVAf68yJ8siiqk1NGqCXkYgylHjpwV2N8GvoTtv6j2T2sjnBJVGQbvSq93HHaiLUNyxRdXsGt" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
