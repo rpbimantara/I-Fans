@@ -50,7 +50,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 public class TerupdateFragment extends Fragment {
 
     ArrayList<Terupdate> ArrayListTerupdate;
-    ArrayList<Liga> ArrayListLiga;
+//    ArrayList<Liga> ArrayListLiga;
     int RecyclerViewItemPosition;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
@@ -58,16 +58,16 @@ public class TerupdateFragment extends Fragment {
     private View rootView;
     RecyclerView.LayoutManager llm;
     AdapterTerupdate adapter;
-    AdapterLiga adapterLiga;
+//    AdapterLiga adapterLiga;
     SwipeRefreshLayout swiper;
     TextView tglnow, stadionnow, tgllast, tglnext, teamHome, teamAway, teamNext, stadionNext, skornow, homelast, awaylast,liga_terupdate;
     ImageView homeImage, awayImage, nextImage, nextStatus, homeImageLast, awayImageLast;
-    MaterialSpinner ligaSpinner;
+//    MaterialSpinner ligaSpinner;
     LinearLayout lnNow;
     RelativeLayout rlLast, rlNext;
     int id_jadwal_now = 0;
     int id_jadwal_last = 0;
-    int id_jadwal_next = 0;
+//    int id_jadwal_next = 0;
     OdooClient client;
     Context context;
 //    Spinner ligaSpiner;
@@ -97,7 +97,7 @@ public class TerupdateFragment extends Fragment {
             context = getContext();
             rootView = inflater.inflate(R.layout.fragment_terupdate, container, false);
             rv = rootView.findViewById(R.id.rv_recycler_view_hot_news);
-            ligaSpinner = rootView.findViewById(R.id.ligaterupdate_spinner);
+//            ligaSpinner = rootView.findViewById(R.id.ligaterupdate_spinner);
             lnNow = rootView.findViewById(R.id.linearLayout_now);
             rlLast = rootView.findViewById(R.id.RL_last);
 //            rlNext = rootView.findViewById(R.id.RL_next);
@@ -201,15 +201,15 @@ public class TerupdateFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-            ligaSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-                    Liga liga = adapterLiga.getItem(position);
-                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga,liga.getId());
-                    getData();
-                }
-            });
-            new LigaTask().execute();
+//            ligaSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+//                @Override
+//                public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+//                    Liga liga = adapterLiga.getItem(position);
+//                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga,liga.getId());
+//                    getData();
+//                }
+//            });
+//            new LigaTask().execute();
             new TerupdateTask().execute();
             getData();
         }
@@ -300,48 +300,48 @@ public class TerupdateFragment extends Fragment {
                 .build();
     }
 
-    public class LigaTask extends AsyncTask<Void, Void, Void>{
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListLiga = new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            ODomain domain = new ODomain();
-                            domain.add("status_liga", "=", "valid");
-
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id", "nama", "create_date", "create_uid", "write_date", "write_uid");
-
-                            int offset = 0;
-                            int limit = 0;
-
-                            String sorting = "id DESC";
-
-                            client.searchRead("persebaya.liga", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        ArrayListLiga.add(new Liga(
-                                                record.getInt("id"),
-                                                record.getString("nama")));
-
-                                        adapterLiga = new AdapterLiga(context,android.R.layout.simple_spinner_item,ArrayListLiga);
-                                        ligaSpinner.setAdapter(adapterLiga);
-                                        adapterLiga.notifyDataSetChanged();
-                                    }
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
-    }
+//    public class LigaTask extends AsyncTask<Void, Void, Void>{
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListLiga = new ArrayList<>();
+//            client = new OdooClient.Builder(getContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            ODomain domain = new ODomain();
+//                            domain.add("status_liga", "=", "valid");
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id", "nama", "create_date", "create_uid", "write_date", "write_uid");
+//
+//                            int offset = 0;
+//                            int limit = 0;
+//
+//                            String sorting = "id DESC";
+//
+//                            client.searchRead("persebaya.liga", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        ArrayListLiga.add(new Liga(
+//                                                record.getInt("id"),
+//                                                record.getString("nama")));
+//
+//                                        adapterLiga = new AdapterLiga(context,android.R.layout.simple_spinner_item,ArrayListLiga);
+//                                        ligaSpinner.setAdapter(adapterLiga);
+//                                        adapterLiga.notifyDataSetChanged();
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 
     public class TerupdateTask extends AsyncTask<Void, Void, Void> {
         @Override

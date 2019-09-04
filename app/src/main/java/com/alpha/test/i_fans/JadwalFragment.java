@@ -15,6 +15,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jaredrummler.materialspinner.MaterialSpinner;
+
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -24,6 +26,8 @@ import oogbox.api.odoo.client.OdooVersion;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
@@ -33,6 +37,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 public class JadwalFragment extends Fragment {
 
     ArrayList<Jadwal> ArrayListJadwal;
+    ArrayList<Liga> ArrayListLiga;
     SharedPrefManager sharedPrefManager;
     int RecyclerViewItemPosition ;
     RecyclerView rv;
@@ -41,6 +46,8 @@ public class JadwalFragment extends Fragment {
     SwipeRefreshLayout swiper;
     AdapterJadwal adapter;
     OdooClient client;
+    MaterialSpinner ligaSpinner;
+    AdapterLiga adapterLiga;
 
 
     public JadwalFragment() {
@@ -60,12 +67,14 @@ public class JadwalFragment extends Fragment {
         // Inflate the layout for this fragment
         if (rootView == null) {
             rootView = inflater.inflate(R.layout.fragment_jadwal, container, false);
+            ligaSpinner = rootView.findViewById(R.id.ligaterupdate_spinner);
             rv = rootView.findViewById(R.id.rv_recycler_view_jadwal);
             swiper = rootView.findViewById(R.id.swiperefresh_jadwal);
             llm = new LinearLayoutManager(getActivity());
             adapter = new AdapterJadwal(ArrayListJadwal);
             rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
+            sharedPrefManager = new SharedPrefManager(getActivity());
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
@@ -107,8 +116,16 @@ public class JadwalFragment extends Fragment {
 
                 }
             });
-            sharedPrefManager = new SharedPrefManager(getActivity());
+            ligaSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
+                    Liga liga = adapterLiga.getItem(position);
+                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga,liga.getId());
+                    new JadwalTask().execute();
+                }
+            });
             new JadwalTask().execute();
+            new LigaTask().execute();
         }
         return rootView;
     }
@@ -189,5 +206,46 @@ public class JadwalFragment extends Fragment {
            return null;
         }
     }
+    public class LigaTask extends AsyncTask<Void, Void, Void>{
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ArrayListLiga = new ArrayList<>();
+            client = new OdooClient.Builder(getContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession(sharedPrefManager.getSpSessionId())
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            ODomain domain = new ODomain();
+                            domain.add("status_liga", "=", "valid");
 
+                            OdooFields fields = new OdooFields();
+                            fields.addAll("id", "nama", "create_date", "create_uid", "write_date", "write_uid");
+
+                            int offset = 0;
+                            int limit = 0;
+
+                            String sorting = "id DESC";
+
+                            client.searchRead("persebaya.liga", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        ArrayListLiga.add(new Liga(
+                                                record.getInt("id"),
+                                                record.getString("nama")));
+
+                                        adapterLiga = new AdapterLiga(getContext(),android.R.layout.simple_spinner_item,ArrayListLiga);
+                                        ligaSpinner.setAdapter(adapterLiga);
+                                        adapterLiga.notifyDataSetChanged();
+                                    }
+                                }
+                            });
+                        }
+                    }).build();
+            return null;
+        }
+    }
 }

@@ -30,7 +30,9 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity android:name="com.alpha.test.i_fans.AccountCoinActivity" />
+        <activity
+            android:name="com.alpha.test.i_fans.AccountCoinActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
         <activity
             android:name="com.alpha.test.i_fans.RatingLineUpActivity"
             android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
