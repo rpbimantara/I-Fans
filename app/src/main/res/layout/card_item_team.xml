@@ -49,8 +49,8 @@
                 android:layout_above="@+id/linearLayout_team"
                 android:layout_alignParentEnd="true"
                 android:layout_marginBottom="-20dp"
-                app:backgroundTint="@color/colorPrimaryDark"
-                android:tint="@color/colorWhite"
+                app:backgroundTint="@color/colorWhite"
+                android:tint="@color/colorPrimaryDark"
                 app:fabSize="mini"
                 app:useCompatPadding="true" />
 

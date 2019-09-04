@@ -1182,7 +1182,6 @@ id LinearLayoutAuction
 id LinearLayoutStore
 id META
 id RL_last
-id RL_next
 id SHIFT
 id SYM
 id account_auction_toolbar
@@ -1343,8 +1342,6 @@ id image
 id imageView2
 id imageView_awaylast
 id imageView_homelast
-id imageView_status_jadwal
-id imageView_teamnext
 id image_AddLelang
 id image_TeamDetail
 id image_UserAccount
@@ -1549,6 +1546,7 @@ id submenuarrow
 id submit_area
 id submit_rating
 id summary_imageView
+id swiperefresh_account
 id swiperefresh_account_auction
 id swiperefresh_account_store
 id swiperefresh_checkout
@@ -1606,7 +1604,6 @@ id textView_nama_barang
 id textView_nama_barang_lelang
 id textView_namastadion_summary
 id textView_namateam_summary
-id textView_nextliga
 id textView_stadionharini
 id textView_supporter
 id textView_tgl_detail_berita
@@ -1661,12 +1658,10 @@ id txt_nama_tiket_list
 id txt_namalelang
 id txt_namaliga
 id txt_namastadion
-id txt_namastadionnext
 id txt_namastaff
 id txt_namateamAway
 id txt_namateamHome
 id txt_namateamjadwal
-id txt_namateamnext
 id txt_nameawaylast
 id txt_namehomelast
 id txt_no_rating_line_up

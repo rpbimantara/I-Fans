@@ -100,7 +100,7 @@ public class TerupdateFragment extends Fragment {
             ligaSpinner = rootView.findViewById(R.id.ligaterupdate_spinner);
             lnNow = rootView.findViewById(R.id.linearLayout_now);
             rlLast = rootView.findViewById(R.id.RL_last);
-            rlNext = rootView.findViewById(R.id.RL_next);
+//            rlNext = rootView.findViewById(R.id.RL_next);
             tglnow = rootView.findViewById(R.id.textView_tglharini);
             stadionnow = rootView.findViewById(R.id.textView_stadionharini);
             skornow = rootView.findViewById(R.id.txt_scoreterupdate);
@@ -109,15 +109,15 @@ public class TerupdateFragment extends Fragment {
             homeImageLast = rootView.findViewById(R.id.imageView_homelast);
             awayImageLast = rootView.findViewById(R.id.imageView_awaylast);
             tgllast = rootView.findViewById(R.id.textView_lastliga);
-            tglnext = rootView.findViewById(R.id.textView_nextliga);
+//            tglnext = rootView.findViewById(R.id.textView_nextliga);
             homeImage = rootView.findViewById(R.id.home_image);
             teamHome = rootView.findViewById(R.id.txt_namateamHome);
             awayImage = rootView.findViewById(R.id.away_image);
             teamAway = rootView.findViewById(R.id.txt_namateamAway);
-            teamNext = rootView.findViewById(R.id.txt_namateamnext);
-            stadionNext = rootView.findViewById(R.id.txt_namastadionnext);
-            nextImage = rootView.findViewById(R.id.imageView_teamnext);
-            nextStatus = rootView.findViewById(R.id.imageView_status_jadwal);
+//            teamNext = rootView.findViewById(R.id.txt_namateamnext);
+//            stadionNext = rootView.findViewById(R.id.txt_namastadionnext);
+//            nextImage = rootView.findViewById(R.id.imageView_teamnext);
+//            nextStatus = rootView.findViewById(R.id.imageView_status_jadwal);
             swiper = rootView.findViewById(R.id.swiperefresh_terupdate);
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
@@ -180,18 +180,18 @@ public class TerupdateFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-            rlNext.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (id_jadwal_next > 0) {
-                        Intent intent = new Intent(getActivity(), MatchDetailActivity.class);
-                        intent.putExtra("id_jadwal", id_jadwal_next);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(context, "No Match Data Found!", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+//            rlNext.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View view) {
+//                    if (id_jadwal_next > 0) {
+//                        Intent intent = new Intent(getActivity(), MatchDetailActivity.class);
+//                        intent.putExtra("id_jadwal", id_jadwal_next);
+//                        startActivity(intent);
+//                    }else{
+//                        Toast.makeText(context, "No Match Data Found!", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
 
             rlLast.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -277,20 +277,20 @@ public class TerupdateFragment extends Fragment {
                                         id_jadwal_last = record.getInt("id_last");
                                         tgllast.setText(tanggal(record.getString("date_last")));
 
-                                        if (record.getString("id_next") != null) {
-                                            id_jadwal_next = record.getInt("id_next");
-                                            stadionNext.setText(record.getString("stadion_next"));
-                                            tglnext.setText(tanggal(record.getString("date_next")));
-                                            if (record.getString("home_next").equalsIgnoreCase(sharedPrefManager.getSpNamaClub())) {
-                                                nextImage.setImageBitmap(StringToBitMap(record.getString("image_away_next")));
-                                                teamNext.setText(record.getString("away_next"));
-                                                nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_home", "drawable", getContext().getPackageName()));
-                                            } else {
-                                                nextImage.setImageBitmap(StringToBitMap(record.getString("image_home_next")));
-                                                teamNext.setText(record.getString("home_next"));
-                                                nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_away", "drawable", getContext().getPackageName()));
-                                            }
-                                        }
+//                                        if (record.getString("id_next") != null) {
+//                                            id_jadwal_next = record.getInt("id_next");
+//                                            stadionNext.setText(record.getString("stadion_next"));
+//                                            tglnext.setText(tanggal(record.getString("date_next")));
+//                                            if (record.getString("home_next").equalsIgnoreCase(sharedPrefManager.getSpNamaClub())) {
+//                                                nextImage.setImageBitmap(StringToBitMap(record.getString("image_away_next")));
+//                                                teamNext.setText(record.getString("away_next"));
+//                                                nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_home", "drawable", getContext().getPackageName()));
+//                                            } else {
+//                                                nextImage.setImageBitmap(StringToBitMap(record.getString("image_home_next")));
+//                                                teamNext.setText(record.getString("home_next"));
+//                                                nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_away", "drawable", getContext().getPackageName()));
+//                                            }
+//                                        }
                                     }
                             }
                         });

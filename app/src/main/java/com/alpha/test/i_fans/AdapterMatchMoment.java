@@ -46,7 +46,11 @@ public class AdapterMatchMoment extends RecyclerView.Adapter<AdapterMatchMoment.
         holder.time.setTextColor(ColorStateList.valueOf(Color.parseColor("#178C05")));
         holder.event.setText(dataList.get(position).getEvent());
         holder.player.setText(dataList.get(position).getPlayer_name());
-        holder.sub_player.setText(dataList.get(position).getSub_player_name());
+        if (dataList.get(position).getSub_player_name().equalsIgnoreCase("False")){
+            holder.sub_player.setText("-");
+        }else{
+            holder.sub_player.setText(dataList.get(position).getSub_player_name());
+        }
         holder.club.setText(dataList.get(position).getClub_name());
 
     }

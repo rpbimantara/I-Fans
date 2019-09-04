@@ -151,7 +151,7 @@ public class TeamFragment extends Fragment {
                         public void onConnected(OdooVersion version) {
                             ODomain domain = new ODomain();
                             domain.add("club_id", "=", sharedPrefManager.getSpIdClub());
-                            domain.add("department_id", "=", 7);
+                            domain.add("department_id", "=", 9);
 
                             OdooFields fields = new OdooFields();
                             fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
@@ -192,7 +192,7 @@ public class TeamFragment extends Fragment {
                         public void onConnected(OdooVersion version) {
                             ODomain domain = new ODomain();
                             domain.add("club_id", "=", sharedPrefManager.getSpIdClub());
-                            domain.add("department_id", "=", 6);
+                            domain.add("department_id", "=", 8);
 
                             OdooFields fields = new OdooFields();
                             fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
@@ -200,7 +200,7 @@ public class TeamFragment extends Fragment {
                             int offset = 0;
                             int limit = 80;
 
-                            String sorting = "id DESC";
+                            String sorting = "job_id";
 
                             client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
                                 @Override

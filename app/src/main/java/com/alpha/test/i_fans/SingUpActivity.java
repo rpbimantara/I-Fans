@@ -83,7 +83,7 @@ public class SingUpActivity extends AppCompatActivity {
                 values.put("name", username.getText().toString());
                 values.put("login", username.getText().toString());
                 values.put("email", email.getText().toString());
-                values.put("club_id", 80);
+                values.put("club_id", 52);
                 values.put("password", password.getText().toString());
                 values.put("state", "active");
                 values.put("fcm_reg_ids", RegId);
@@ -137,7 +137,7 @@ public class SingUpActivity extends AppCompatActivity {
                         public void onConnected(OdooVersion version) {
                             progressDialog.setMessage("Creating......");
                             progressDialog.show();
-                            client.authenticate("adminsu","admin", sharedPrefManager.getSP_db(), loginCallback);
+                            client.authenticate("register","register", sharedPrefManager.getSP_db(), loginCallback);
                         }
                     }).build();
             return null;

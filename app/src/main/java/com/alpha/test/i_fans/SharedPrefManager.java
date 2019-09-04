@@ -93,7 +93,7 @@ public class SharedPrefManager {
     }
 
     public String getSP_db() {
-        return sp.getString(SP_db,"new_dev");
+        return sp.getString(SP_db,"development");
     }
 
     public String getSpSessionId() {

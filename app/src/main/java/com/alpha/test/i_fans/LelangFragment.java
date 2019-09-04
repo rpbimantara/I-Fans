@@ -127,24 +127,25 @@ public class LelangFragment extends Fragment {
                         public void onConnected(OdooVersion version) {
                             ODomain domain = new ODomain();
                             domain.add("status_lelang", "=", "jalan");
+                            domain.add("type", "=", "lelang");
 
                             OdooFields fields = new OdooFields();
-                            fields.addAll("id","foto_lelang","nama_barang", "ob","inc","binow","due_date","create_uid");
+                            fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
 
                             int offset = 0;
                             int limit = 80;
 
                             String sorting = "id ASC";
 
-                            client.searchRead("persebaya.lelang", domain, fields, offset, limit, sorting,new IOdooResponse() {
+                            client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
                                     OdooRecord[] Records = result.getRecords();
                                     for (final OdooRecord record : Records) {
                                         ArrayListLelang.add(new lelang(
                                                 String.valueOf(record.getInt("id")),
-                                                record.getString("nama_barang"),
-                                                record.getString("foto_lelang"),
+                                                record.getString("name"),
+                                                record.getString("image_medium"),
                                                 record.getString("due_date"),
                                                 String.valueOf(Math.round(record.getFloat("ob"))),
                                                 String.valueOf(Math.round(record.getFloat("binow"))),

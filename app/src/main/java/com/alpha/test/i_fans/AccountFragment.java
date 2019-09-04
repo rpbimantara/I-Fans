@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
@@ -46,6 +50,7 @@ public class AccountFragment extends Fragment {
     FloatingActionButton fabImage;
     private Bitmap currentImage;
     LinearLayout lnStore,lnAuction;
+    SwipeRefreshLayout swiper;
     Integer IdPartner;
     OdooClient client;
 
@@ -65,6 +70,7 @@ public class AccountFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
         Fragment currentFragment = getFragmentManager().findFragmentById(R.id.action_account);
+        swiper = view.findViewById(R.id.swiperefresh_account);
         fabImage  = view.findViewById(R.id.image_fab);
         imageUser = view.findViewById(R.id.image_UserAccount);
         txtName = (TextView) view.findViewById(R.id.txt_namaAccount);
@@ -90,6 +96,12 @@ public class AccountFragment extends Fragment {
             }
         });
         getData();
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                getData();
+            }
+        });
 
         lnStore.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -153,6 +165,11 @@ public class AccountFragment extends Fragment {
                             @Override
                             public void onResult(OdooResult result) {
                                 OdooRecord[] records = result.getRecords();
+                                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+                                DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+
+                                symbols.setGroupingSeparator('.');
+                                formatter.setDecimalFormatSymbols(symbols);
                                 for (OdooRecord record : records) {
                                     sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_PARTNER, record.getInt("id"));
                                     txtName.setText(nullChecker(record.getString("name")));
@@ -192,10 +209,11 @@ public class AccountFragment extends Fragment {
                                     }else{
                                         txtKomunitas.setText(record.getString("komunitas"));
                                     }
-                                    txtKoin.setText(String.valueOf(Math.round(record.getFloat("saldo"))));
+                                    txtKoin.setText(String.valueOf(formatter.format(record.getFloat("saldo"))));
                                     imageUser.setImageBitmap(StringToBitMap(record.getString("image")));
                                     IdPartner = Integer.valueOf(record.getInt("id"));
                                 }
+                                swiper.setRefreshing(false);
                             }
                         });
                     }
