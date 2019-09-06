@@ -2,6 +2,7 @@ package com.alpha.test.i_fans;
 
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
@@ -35,7 +37,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LelangFragment extends Fragment {
+public class LelangFragment extends Fragment implements InterfaceLelang {
 
     ArrayList<lelang> ArrayListLelang;
     int RecyclerViewItemPosition ;
@@ -47,6 +49,7 @@ public class LelangFragment extends Fragment {
     SwipeRefreshLayout swiper;
     AdapterLelang adapter;
     OdooClient client;
+    InterfaceLelang listener;
 
     public LelangFragment() {
         // Required empty public constructor
@@ -59,6 +62,37 @@ public class LelangFragment extends Fragment {
         return fragment;
     }
 
+    public void Addbidder(final String idlelang, final String nilai, final String status, final Context context, final SharedPrefManager sharedPrefManager){
+        client = new OdooClient.Builder(context)
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        OdooValues values = new OdooValues();
+                        values.put("product_id", idlelang);
+                        values.put("user_bid", sharedPrefManager.getSpIdUser());
+                        values.put("nilai", Integer.valueOf(nilai));
+                        values.put("keterang", status);
+
+                        client.create("persebaya.lelang.bid", values, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                int serverId = result.getInt("result");
+                            }
+
+                            @Override
+                            public boolean onError(OdooErrorException error) {
+                                Toast.makeText(context,String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                                return super.onError(error);
+                            }
+                        });
+                    }
+
+                }).build();
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,7 +101,7 @@ public class LelangFragment extends Fragment {
         rootView = inflater.inflate(R.layout.fragment_lelang, container, false);
         rv =  rootView.findViewById(R.id.rv_recycler_view_lelang);
         swiper = rootView.findViewById(R.id.swiperefresh_lelang);
-        adapter = new AdapterLelang(ArrayListLelang,getContext());
+        adapter = new AdapterLelang(ArrayListLelang,getContext(),LelangFragment.newInstance());
         rv.setAdapter(adapter);
         llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
@@ -152,7 +186,7 @@ public class LelangFragment extends Fragment {
                                                 String.valueOf(Math.round(record.getFloat("inc"))),
                                                 String.valueOf(record.getInt("create_uid"))));
                                     }
-                                    adapter = new AdapterLelang(ArrayListLelang,getContext());
+                                    adapter = new AdapterLelang(ArrayListLelang,getContext(),LelangFragment.newInstance());
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
                                     swiper.setRefreshing(false);

@@ -1,6 +1,7 @@
 package com.alpha.test.i_fans;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -23,7 +24,7 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
-public class AccountAuctionActivity extends AppCompatActivity {
+public class AccountAuctionActivity extends AppCompatActivity implements InterfaceLelang{
 
     ArrayList<lelang> ArrayListLelang;
     int RecyclerViewItemPosition ;
@@ -34,6 +35,9 @@ public class AccountAuctionActivity extends AppCompatActivity {
     SwipeRefreshLayout swiper;
     OdooClient client;
     Toolbar toolbar;
+    InterfaceLelang listener;
+
+    public void Addbidder(final String idlelang, final String nilai, final String status, Context context,SharedPrefManager sharedPrefManager){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,7 @@ public class AccountAuctionActivity extends AppCompatActivity {
         sharedPrefManager = new SharedPrefManager(this);
         rv =  findViewById(R.id.rv_recycler_view_account_auction);
         swiper = findViewById(R.id.swiperefresh_account_auction);
-        adapter = new AdapterLelang(ArrayListLelang,getApplicationContext());
+        adapter = new AdapterLelang(ArrayListLelang,getApplicationContext(),listener);
         rv.setAdapter(adapter );
         rv.setLayoutManager(new LinearLayoutManager(this));
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -109,7 +113,7 @@ public class AccountAuctionActivity extends AppCompatActivity {
                                                 String.valueOf(Math.round(record.getFloat("inc"))),
                                                 String.valueOf(record.getInt("create_uid"))));
                                     }
-                                    adapter = new AdapterLelang(ArrayListLelang,getApplicationContext());
+                                    adapter = new AdapterLelang(ArrayListLelang,getApplicationContext(),listener);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
                                     swiper.setRefreshing(false);
