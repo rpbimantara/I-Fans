@@ -47,6 +47,12 @@ public class CheckoutActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         rv =  findViewById(R.id.rv_recycler_view_checkout);
         swiper = findViewById(R.id.swiperefresh_checkout);
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new LoadCheckoutAsync().execute();
+            }
+        });
         llm = new LinearLayoutManager(this);
         adapter = new AdapterCheckout(ArrayListCheckout);
         sharedPrefManager = new SharedPrefManager(this);

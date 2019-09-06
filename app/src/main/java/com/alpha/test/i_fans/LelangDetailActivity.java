@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -16,8 +17,11 @@ import java.util.Locale;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
@@ -51,17 +55,25 @@ public class LelangDetailActivity extends AppCompatActivity {
                 .setConnectListener(new OdooConnectListener() {
                     @Override
                     public void onConnected(OdooVersion version) {
-                        List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id").toString()));
-                        List<String> fields = Arrays.asList("id", "foto_lelang", "nama_barang", "ob", "inc", "binow","due_date","deskripsi_barang", "create_date", "create_uid", "write_date", "write_uid");
 
-                        client.read("persebaya.lelang", ids, fields, new IOdooResponse() {
+                        ODomain domain = new ODomain();
+                        domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+
+                        OdooFields fields = new OdooFields();
+                        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
+
+                        int offset = 0;
+                        int limit = 80;
+
+                        String sorting = "id ASC";
+
+                        client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
                             @Override
                             public void onResult(OdooResult result) {
-                                OdooRecord[] records = result.getRecords();
-
-                                for(OdooRecord record: records) {
-                                    imageDetail.setImageBitmap(StringToBitMap(record.getString("foto_lelang")));
-                                    txtNamaBarang.setText(record.getString("nama_barang"));
+                                OdooRecord[] Records = result.getRecords();
+                                for (final OdooRecord record : Records) {
+                                    imageDetail.setImageBitmap(StringToBitMap(record.getString("image_medium")));
+                                    txtNamaBarang.setText(record.getString("name"));
                                     txtBid.setText("Open Bid : "
                                             + String.valueOf(Math.round(record.getFloat("ob")))
                                             + "\n"
@@ -71,9 +83,15 @@ public class LelangDetailActivity extends AppCompatActivity {
                                             + "INC : "
                                             + String.valueOf(Math.round(record.getFloat("inc")))
                                     );
-                                    txtDeskripsi.setText("Deskripsi : \n\n" + record.getString("deskripsi_barang"));
-                                    txtInfoDetail.setText(record.getString("create_uid")+" - "+tanggal(record.getString("create_date")));
+                                    txtDeskripsi.setText("Deskripsi : \n\n" + "-");
+                                    txtInfoDetail.setText(record.getString("create_uid")+" - "+tanggal(record.getString("due_date")));
                                 }
+                            }
+
+                            @Override
+                            public boolean onError(OdooErrorException error) {
+                                Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
+                                return super.onError(error);
                             }
                         });
                     }
