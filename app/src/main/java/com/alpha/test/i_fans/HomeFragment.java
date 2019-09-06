@@ -78,13 +78,13 @@ public class HomeFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Update";
+                    return "Overview";
                 case 1:
                     return "Live";
                 case 2:
                     return "Team";
                 default:
-                    return "Update";
+                    return "Overview";
             }
         }
     }

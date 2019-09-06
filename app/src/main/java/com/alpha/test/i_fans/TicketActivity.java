@@ -1,7 +1,10 @@
 package com.alpha.test.i_fans;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +13,9 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.GestureDetector;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -163,5 +169,24 @@ public class TicketActivity extends AppCompatActivity {
         }
 
         return tgl;
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_ticket, menu);
+        Drawable ticket = menu.findItem(R.id.ticket).getIcon();
+        DrawableCompat.setTint(ticket, ContextCompat.getColor(this,R.color.colorTrueState));
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.ticket:
+                Intent ticketIntent = new Intent(TicketActivity.this, TicketBarcodeActivity.class);
+                startActivity(ticketIntent);
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

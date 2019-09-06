@@ -88,13 +88,13 @@ public class BeritaFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch (position) {
                 case 0:
-                    return "Today";
+                    return "News";
                 case 1:
                     return "Schedule";
                 case 2:
                     return "Standings";
                 default:
-                    return "Today";
+                    return "News";
             }
         }
     }

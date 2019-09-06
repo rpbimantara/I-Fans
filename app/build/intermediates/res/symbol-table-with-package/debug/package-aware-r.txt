@@ -1351,6 +1351,7 @@ id image_fab
 id image_fab_Add_Lelang
 id image_rating_line_up
 id image_staff
+id image_tiket_barcode
 id image_tiket_list
 id info
 id input_email_up
@@ -1498,6 +1499,7 @@ id rv_recycler_view_team
 id rv_recycler_view_team_athlete
 id rv_recycler_view_team_review
 id rv_recycler_view_ticket
+id rv_recycler_view_ticket_barcode
 id rv_recycler_view_tiket_detail
 id save_image_matrix
 id save_non_transition_alpha
@@ -1571,6 +1573,7 @@ id swiperefresh_team
 id swiperefresh_team_review
 id swiperefresh_terupdate
 id swiperefresh_ticket
+id swiperefresh_ticket_barcode
 id tabMode
 id tabs_belanja
 id tabs_berita
@@ -1617,6 +1620,7 @@ id textinput_counter
 id textinput_error
 id textinput_helper_text
 id ticket
+id ticket_barcode_toolbar
 id ticket_imageView
 id ticket_toolbar
 id time
@@ -1656,9 +1660,11 @@ id txt_komunitasAccount
 id txt_lokasi_ticket
 id txt_namaAccount
 id txt_namaBarangStore
+id txt_nama_event_tiket
 id txt_nama_rating_line_up
 id txt_nama_team_detail
 id txt_nama_ticket
+id txt_nama_tiket
 id txt_nama_tiket_list
 id txt_namalelang
 id txt_namaliga
@@ -1682,9 +1688,11 @@ id txt_scoreterupdate
 id txt_selisihgol
 id txt_stock_variant
 id txt_tanggal
+id txt_tanggal_event
 id txt_teamklasemen
 id txt_tgl_ticket
 id txt_tglmain
+id txt_tipe_tiket
 id txt_ttlAccount
 id txt_urutklasemen
 id txt_variant
@@ -1776,6 +1784,7 @@ layout activity_store_add
 layout activity_store_detail
 layout activity_team_detail
 layout activity_ticket
+layout activity_ticket_barcode
 layout activity_ticket_detail
 layout card_item_berita
 layout card_item_checkout
@@ -1792,6 +1801,7 @@ layout card_item_store_variant
 layout card_item_team
 layout card_item_team_staff
 layout card_item_tiket
+layout card_item_tiket_barcode
 layout card_item_tiket_list
 layout crop_image_activity
 layout crop_image_view
@@ -1859,6 +1869,7 @@ layout support_simple_spinner_dropdown_item
 menu crop_image_menu
 menu menu_bar
 menu menu_bottom_bar
+menu menu_ticket
 mipmap ic_launcher
 mipmap ic_launcher_foreground
 mipmap ic_launcher_round
