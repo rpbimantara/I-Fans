@@ -60,7 +60,7 @@ public class TerupdateFragment extends Fragment {
     AdapterTerupdate adapter;
 //    AdapterLiga adapterLiga;
     SwipeRefreshLayout swiper;
-    TextView tglnow, stadionnow, tgllast, tglnext, teamHome, teamAway, teamNext, stadionNext, skornow, homelast, awaylast,liga_terupdate;
+    TextView tglnow, stadionnow, tgllast, tglnext, teamHome, teamAway, teamNext, stadionNext, skornow, homelast, awaylast,skorlast,liga_terupdate;
     ImageView homeImage, awayImage, nextImage, nextStatus, homeImageLast, awayImageLast;
 //    MaterialSpinner ligaSpinner;
     LinearLayout lnNow;
@@ -98,6 +98,7 @@ public class TerupdateFragment extends Fragment {
             rootView = inflater.inflate(R.layout.fragment_terupdate, container, false);
             rv = rootView.findViewById(R.id.rv_recycler_view_hot_news);
 //            ligaSpinner = rootView.findViewById(R.id.ligaterupdate_spinner);
+            liga_terupdate = rootView.findViewById(R.id.textView_ligaterupdate);
             lnNow = rootView.findViewById(R.id.linearLayout_now);
             rlLast = rootView.findViewById(R.id.RL_last);
 //            rlNext = rootView.findViewById(R.id.RL_next);
@@ -108,6 +109,7 @@ public class TerupdateFragment extends Fragment {
             awaylast = rootView.findViewById(R.id.txt_nameawaylast);
             homeImageLast = rootView.findViewById(R.id.imageView_homelast);
             awayImageLast = rootView.findViewById(R.id.imageView_awaylast);
+            skorlast = rootView.findViewById(R.id.txt_scorelast);
             tgllast = rootView.findViewById(R.id.textView_lastliga);
 //            tglnext = rootView.findViewById(R.id.textView_nextliga);
             homeImage = rootView.findViewById(R.id.home_image);
@@ -269,12 +271,14 @@ public class TerupdateFragment extends Fragment {
                                         tglnow.setText(tanggal(record.getString("date")));
                                         stadionnow.setText(record.getString("stadion"));
                                         skornow.setText(record.getString("skornow") );
+                                        liga_terupdate.setText(record.getString("liga"));
 
                                         homeImageLast.setImageBitmap(StringToBitMap(record.getString("image_home_last")));
                                         homelast.setText(record.getString("home_last"));
                                         awayImageLast.setImageBitmap(StringToBitMap(record.getString("image_away_last")));
                                         awaylast.setText(record.getString("away_last"));
                                         id_jadwal_last = record.getInt("id_last");
+                                        skorlast.setText(record.getString("ft_home_last") +" - " + record.getString("ft_away_last"));
                                         tgllast.setText(tanggal(record.getString("date_last")));
 
 //                                        if (record.getString("id_next") != null) {
