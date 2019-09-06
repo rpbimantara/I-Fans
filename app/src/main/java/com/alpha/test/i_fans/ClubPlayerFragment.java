@@ -2,13 +2,17 @@ package com.alpha.test.i_fans;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -56,7 +60,45 @@ public class ClubPlayerFragment extends Fragment {
             progressDialog = new ProgressDialog(getActivity());
             adapter = new AdapterTeam(ArrayListTeam);
             rv.setAdapter(adapter);
-            rv.setLayoutManager(new GridLayoutManager(getActivity(),2));
+            rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
+            rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
+                GestureDetector gestureDetector = new GestureDetector(getActivity(), new GestureDetector.SimpleOnGestureListener() {
+
+                    @Override
+                    public boolean onSingleTapUp(MotionEvent motionEvent) {
+
+                        return true;
+                    }
+
+                });
+                @Override
+                public boolean onInterceptTouchEvent(@NonNull RecyclerView r, @NonNull MotionEvent e) {
+                    View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
+
+                    if (ChildView != null && gestureDetector.onTouchEvent(e)) {
+                        try {
+                            RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
+                            Intent intent = new Intent(getActivity(), TeamDetailActivity.class);
+                            intent.putExtra("id_atlete", ArrayListTeam.get(RecyclerViewItemPosition).getId());
+                            startActivity(intent);
+                        } catch (Exception err) {
+                            System.out.println(err);
+                        }
+
+                    }
+                    return false;
+                }
+
+                @Override
+                public void onTouchEvent(@NonNull RecyclerView recyclerView, @NonNull MotionEvent motionEvent) {
+
+                }
+
+                @Override
+                public void onRequestDisallowInterceptTouchEvent(boolean b) {
+
+                }
+            });
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
@@ -86,7 +128,7 @@ public class ClubPlayerFragment extends Fragment {
                         @Override
                         public void onConnected(OdooVersion version) {
                             ODomain domain = new ODomain();
-                            domain.add("club_id", "=", getActivity().getIntent().getStringExtra("id"));
+                            domain.add("club_id", "=", Integer.valueOf(getActivity().getIntent().getStringExtra("id")));
 
                             OdooFields fields = new OdooFields();
                             fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");

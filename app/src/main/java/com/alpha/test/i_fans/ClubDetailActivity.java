@@ -54,19 +54,19 @@ public class ClubDetailActivity extends AppCompatActivity {
                 case 3:
                     ClubPlayerFragment tab4 = new ClubPlayerFragment();
                     return tab4;
+//                case 4:
+//                    ClubStatisticFragment tab5= new ClubStatisticFragment();
+//                    return tab5;
                 case 4:
-                    ClubStatisticFragment tab5= new ClubStatisticFragment();
+                    ClubStandingFragment tab5 = new ClubStandingFragment();
                     return tab5;
-                case 5:
-                    ClubStandingFragment tab6 = new ClubStandingFragment();
-                    return tab6;
             }
             return null;
         }
 
         @Override
         public int getCount() {
-            return 6;
+            return 5;
         }
 
         @Nullable
@@ -81,9 +81,9 @@ public class ClubDetailActivity extends AppCompatActivity {
                     return "Schedule";
                 case 3:
                     return "Player";
+//                case 4:
+//                    return "Statistics";
                 case 4:
-                    return "Statistics";
-                case 5:
                     return "Standings";
             }
             return null;

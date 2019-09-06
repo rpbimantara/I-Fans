@@ -77,7 +77,6 @@ public class ClubSummaryFragment extends Fragment {
                                 // response
                                 OdooRecord[] Records = result.getRecords();
 
-                                System.out.println(result.toString());
                                 for (final OdooRecord record : Records) {
                                     txtNamaStadion.setText(record.getString("stadion"));
                                     imageclub.setImageBitmap(StringToBitMap(record.getString("foto_club")));
