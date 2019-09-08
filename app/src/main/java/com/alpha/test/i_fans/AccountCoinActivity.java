@@ -97,7 +97,7 @@ public class AccountCoinActivity extends AppCompatActivity {
                                                 record.getString("id"),
                                                 record.getString("name"),
                                                 tgl.concat(" ").concat(waktu),
-                                                record.getString("price"),
+                                                String.valueOf(formatter.format(Float.valueOf(record.getString("price")))),
                                                 record.getString("type")
                                         ));
                                         adapter = new AdapterCoin(ArrayListCoin);
