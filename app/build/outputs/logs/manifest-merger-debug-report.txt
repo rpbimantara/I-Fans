@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
 MERGED from [com.android.support:multidex:1.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/456a6e64e15198f6a3581000876f76af/multidex-1.0.3/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:2:1-11:12
@@ -60,20 +60,20 @@ MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/
 MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/987e9b10c40dacf71c326fb133cfcf12/livedata-1.1.1/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/bcc6fd35cc65f90790bfddae72ea5b9b/livedata-core-1.1.1/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/1754c37170a596c2565dcdf21351b275/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
 	package
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:3:5-36
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-93:12
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-92:12
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:11-69
@@ -316,7 +316,7 @@ MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/
 	android:name
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:89:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:91:5-79
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:90:5-79
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
@@ -326,7 +326,7 @@ MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gra
 MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
 MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:91:22-76
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:90:22-76
 uses-sdk
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml

@@ -43,7 +43,7 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AccountFragment extends Fragment {
+public class AccountFragment extends Fragment implements InterfaceAccount {
     TextView txtName,txtid,txtKoin,txtFollower,txtFollowing,txtNIK,txtJeniskelamin,txtAlamat,txtTTL,txtemail,txtTelephone,txtKomunitas;
     ImageView imageUser;
     SharedPrefManager sharedPrefManager;
@@ -53,6 +53,8 @@ public class AccountFragment extends Fragment {
     SwipeRefreshLayout swiper;
     Integer IdPartner;
     OdooClient client;
+    HomeActivity activity;
+    Fragment currentFragment;
 
     public static AccountFragment newInstance(){
         AccountFragment fragment = new AccountFragment();
@@ -62,14 +64,17 @@ public class AccountFragment extends Fragment {
     public AccountFragment() {
         // Required empty public constructor
     }
-
+    public void getData(String name){
+        System.out.println(name);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_account, container, false);
-        Fragment currentFragment = getFragmentManager().findFragmentById(R.id.action_account);
+        currentFragment = getFragmentManager().findFragmentById(R.id.action_account);
+        activity = new HomeActivity();
         swiper = view.findViewById(R.id.swiperefresh_account);
         fabImage  = view.findViewById(R.id.image_fab);
         imageUser = view.findViewById(R.id.image_UserAccount);
@@ -234,36 +239,11 @@ public class AccountFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
         if (isVisibleToUser && isResumed()){
+
             onResume();
         }
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (!getUserVisibleHint())
-        {
-            return;
-        }
-//        HomeActivity fabhome = (HomeActivity) getActivity();
-//        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent EditAccount = new Intent(getActivity(),AccountEditActivity.class);
-//                EditAccount.putExtra("name",txtName.getText());
-//                EditAccount.putExtra("nik",txtNIK.getText());
-//                EditAccount.putExtra("gender",txtJeniskelamin.getText());
-//                EditAccount.putExtra("address",txtAlamat.getText());
-//                EditAccount.putExtra("date",txtTTL.getText());
-//                EditAccount.putExtra("mail",txtemail.getText());
-//                EditAccount.putExtra("phone",txtTelephone.getText());
-//                EditAccount.putExtra("comunity",txtKomunitas.getText());
-//                EditAccount.putExtra("idPartner",IdPartner);
-//                startActivity(EditAccount);
-//            }
-//        });
-
-    }
 
     public class SaveImageTask extends AsyncTask<Bitmap,Void,Void>{
         @Override

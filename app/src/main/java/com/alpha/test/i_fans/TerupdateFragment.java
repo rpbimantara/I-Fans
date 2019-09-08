@@ -132,6 +132,7 @@ public class TerupdateFragment extends Fragment {
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage("Loading data....");
             progressDialog.show();
+            progressDialog.setCancelable(false);
             llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
             rv.setAdapter(new AdapterTerupdate(ArrayListTerupdate));
             rv.setLayoutManager(llm);

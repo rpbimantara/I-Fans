@@ -1,4 +1,0 @@
-#Wed Aug 21 17:55:16 WIB 2019
-base.0=/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/transforms/dexMerger/debug/8
-path.0=classes.dex
-renamed.0=classes.dex

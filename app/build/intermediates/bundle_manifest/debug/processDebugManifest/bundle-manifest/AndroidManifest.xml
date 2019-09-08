@@ -27,7 +27,6 @@
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
         <activity
@@ -93,7 +92,7 @@
 
         <meta-data
             android:name="com.google.firebase.API_KEY"
-            android:value="AAAAWPlkJyo:APA91bEDEHnaZbu4AJsWMbb13-UO1h1cM3Ii2ddp15pfoXQL4P9rmi4h28vJxI3AgKwDVAf68yJ8siiqk1NGqCXkYgylHjpwV2N8GvoTtv6j2T2sjnBJVGQbvSq93HHaiLUNyxRdXsGt" />
+            android:value="AAAAWPlkJyo:APA91bHmPKB2KnBiyOXhnKoA8-hRO1VoNNQmoopwrst1TAoSVKIxoOioQzf_dH53QkZ5uk41L4yOP32Bev7bqTqvEHvyNGhj_rkfAvGhlHJJTY5FndNR9D0mV44DHNyQisrzGGob6kRO" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

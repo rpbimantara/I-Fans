@@ -49,7 +49,6 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
     SwipeRefreshLayout swiper;
     AdapterLelang adapter;
     OdooClient client;
-    InterfaceLelang listener;
 
     public LelangFragment() {
         // Required empty public constructor
@@ -126,12 +125,8 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        if (!getUserVisibleHint())
-        {
-            return;
-        }
+    public void onAttachFragment(Fragment childFragment) {
+        super.onAttachFragment(childFragment);
         HomeActivity fabhome = (HomeActivity) getActivity();
         fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +135,16 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                 startActivity(AddLelang);
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (!getUserVisibleHint())
+        {
+            return;
+        }
+
     }
 
     public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{

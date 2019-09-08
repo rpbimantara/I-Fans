@@ -22,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.view.View;
+import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -31,10 +32,18 @@ public class HomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private BottomNavigationView navigation;
     private Toolbar toolbar;
-    FloatingActionButton fabBtn;
+    public FloatingActionButton fabBtn;
     SharedPrefManager sharedPrefManager;
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private static final String TAG = HomeActivity.class.getSimpleName();
+    Context context;
+
+
+    public void buttonClicked(String fragment){
+//        Intent FABbutton =  new Intent(context,AccountEditActivity.class);
+//        startActivity(FABbutton);
+        System.out.println(fragment);
+    }
 
 
     @Override
@@ -43,6 +52,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        context = getApplicationContext();
         viewPager = findViewById(R.id.view_pager);
         HomeFragmentPageAdapter adapter = new HomeFragmentPageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
@@ -61,13 +71,6 @@ public class HomeActivity extends AppCompatActivity {
                         break;
                     case 3:
                         fabBtn.show();
-                        fabBtn.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                Intent EditAccount = new Intent(getApplicationContext(),AccountEditActivity.class);
-                                startActivity(EditAccount);
-                            }
-                        });
                         break;
                         default:
                             fabBtn.hide();
@@ -98,9 +101,9 @@ public class HomeActivity extends AppCompatActivity {
 
                 } else if (intent.getAction().equals(config.PUSH_NOTIFICATION)) {
                     // new push notification is received
-//                    String message = intent.getStringExtra("message");
+                    String message = intent.getStringExtra("message");
 
-//                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
                 }
             }
         };
@@ -165,9 +168,6 @@ public class HomeActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-    public FloatingActionButton getFabBtn() {
-        return fabBtn;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

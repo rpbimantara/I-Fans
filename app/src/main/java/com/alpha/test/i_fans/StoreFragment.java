@@ -119,14 +119,9 @@ public class StoreFragment extends Fragment {
             onResume();
         }
     }
-
     @Override
-    public void onResume() {
-        super.onResume();
-        if (!getUserVisibleHint())
-        {
-            return;
-        }
+    public void onAttachFragment(Fragment childFragment) {
+        super.onAttachFragment(childFragment);
         HomeActivity fabhome = (HomeActivity) getActivity();
         fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -136,6 +131,7 @@ public class StoreFragment extends Fragment {
             }
         });
     }
+
 
     public class StoreTask extends AsyncTask<Void,Void,Void>{
         @Override

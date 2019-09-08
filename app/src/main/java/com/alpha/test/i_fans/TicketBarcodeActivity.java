@@ -99,6 +99,7 @@ public class TicketBarcodeActivity extends AppCompatActivity {
                                     adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
                                     rv.setAdapter(adapter);
                                     adapter.notifyDataSetChanged();
+                                    swiper.setRefreshing(false);
                                 }
                             });
                         }

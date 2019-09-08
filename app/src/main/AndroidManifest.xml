@@ -73,7 +73,7 @@
 
         <meta-data
             android:name="com.google.firebase.API_KEY"
-            android:value="AAAAWPlkJyo:APA91bEDEHnaZbu4AJsWMbb13-UO1h1cM3Ii2ddp15pfoXQL4P9rmi4h28vJxI3AgKwDVAf68yJ8siiqk1NGqCXkYgylHjpwV2N8GvoTtv6j2T2sjnBJVGQbvSq93HHaiLUNyxRdXsGt" />
+            android:value="AAAAWPlkJyo:APA91bHmPKB2KnBiyOXhnKoA8-hRO1VoNNQmoopwrst1TAoSVKIxoOioQzf_dH53QkZ5uk41L4yOP32Bev7bqTqvEHvyNGhj_rkfAvGhlHJJTY5FndNR9D0mV44DHNyQisrzGGob6kRO" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -87,7 +87,6 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

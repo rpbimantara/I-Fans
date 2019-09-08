@@ -57,7 +57,7 @@ public class AdapterStoreVariant extends RecyclerView.Adapter<AdapterStoreVarian
            holder.txtStock.setTextColor(Color.RED);
            holder.txtVariant.setTextColor(Color.RED);
            holder.cbVariant.setEnabled(false);
-           holder.cbVariant.setButtonTintList(ColorStateList.valueOf(Color.RED));
+//           holder.cbVariant.setButtonTintList(ColorStateList.valueOf(Color.RED));
        }else{
            holder.txtStock.setText("Stock : "+dataList.get(position).getQty());
            holder.cbVariant.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
