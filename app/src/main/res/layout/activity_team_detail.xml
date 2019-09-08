@@ -24,14 +24,13 @@
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     </android.support.design.widget.AppBarLayout>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="vertical">
+        android:layout_height="250dp"
+        android:layout_marginTop="20dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/image_TeamDetail"
+            android:id="@+id/image_TeamDetail_job"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_alignParentTop="true"
@@ -41,12 +40,21 @@
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="43dp" />
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/image_TeamDetail"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            app:civ_border_color="#FF000000"
+            app:civ_border_width="2dp" />
+
         <LinearLayout
             android:id="@+id/linearLayout_team"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/image_TeamDetail">
 
             <TextView
                 android:id="@+id/txt_no_team_detail"
@@ -77,9 +85,10 @@
             android:theme="@style/RatingBar"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="30dp"
-            android:layout_gravity="center"/>
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/linearLayout_team"/>
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"

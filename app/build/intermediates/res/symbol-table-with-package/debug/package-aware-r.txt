@@ -1350,6 +1350,7 @@ id imageView_awaylast
 id imageView_homelast
 id image_AddLelang
 id image_TeamDetail
+id image_TeamDetail_job
 id image_UserAccount
 id image_fab
 id image_fab_Add_Lelang
