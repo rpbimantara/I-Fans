@@ -36,8 +36,7 @@ android:layout_marginTop="?attr/actionBarSize">
     <ImageView
         android:id="@+id/lelang_detail_imageView"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:src="@android:color/holo_green_dark" />
+        android:layout_height="250dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -93,7 +92,6 @@ android:layout_marginTop="?attr/actionBarSize">
             android:layout_margin="10dp"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:text="20 OKTOBER 2018"
             android:textColor="@color/colorTrueState"
             android:textSize="14sp"
             android:textStyle="bold" />

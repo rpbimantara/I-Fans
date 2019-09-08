@@ -40,6 +40,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
+                        android:src="@drawable/ic_nik"
                         android:tint="@color/colorPrimaryDark"/>
 
                     <EditText
@@ -66,6 +67,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
+                        android:src="@drawable/ic_nik"
                         android:tint="@color/colorPrimaryDark"/>
 
                     <EditText

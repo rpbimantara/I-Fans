@@ -172,7 +172,7 @@ public class StoreDetailActivity extends AppCompatActivity {
     public void AddToCart (Integer order_id){
         String jsonString = sharedPrefManager.getSpReturnFromRv();
         String[] listItem = gson.fromJson(jsonString, String[].class);
-            if (listItem.length <1){
+            if (listItem == null){
                 Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
             }else {
                 for (int j=0; j<listItem.length;j++){

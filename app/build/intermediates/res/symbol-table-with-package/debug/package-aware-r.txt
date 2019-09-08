@@ -1142,6 +1142,7 @@ drawable ic_medis
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
+drawable ic_nik
 drawable ic_phone
 drawable ic_ticket
 drawable ic_time

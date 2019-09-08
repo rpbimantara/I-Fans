@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class AdapterCoin extends RecyclerView.Adapter<AdapterCoin.CoinViewHolder> {
     ArrayList<AccountCoin> dataList;
@@ -24,9 +26,9 @@ public class AdapterCoin extends RecyclerView.Adapter<AdapterCoin.CoinViewHolder
 
         public CoinViewHolder(View itemView) {
             super(itemView);
-            this.txtName = (TextView) itemView.findViewById(R.id.txt_namateamjadwal);
-            this.txtDate = (TextView) itemView.findViewById(R.id.txt_namaliga);
-            this.txtPrice = (TextView) itemView.findViewById(R.id.txt_tglmain);
+            this.txtName = (TextView) itemView.findViewById(R.id.txt_name);
+            this.txtDate = (TextView) itemView.findViewById(R.id.txt_date);
+            this.txtPrice = (TextView) itemView.findViewById(R.id.txt_price);
         }
     }
 
@@ -41,12 +43,12 @@ public class AdapterCoin extends RecyclerView.Adapter<AdapterCoin.CoinViewHolder
     public void onBindViewHolder(@NonNull CoinViewHolder holder, int position) {
         holder.txtName.setText(dataList.get(position).getName());
         holder.txtDate.setText(dataList.get(position).getDate());
-        if (dataList.get(position).getType().equalsIgnoreCase("purchase")){
-            holder.txtPrice.setText("+"+dataList.get(position).getPrice());
-            holder.txtPrice.setTextColor(Color.GREEN);
-        }else {
+        if (dataList.get(position).getType().equalsIgnoreCase("customer")){
             holder.txtPrice.setText("-"+dataList.get(position).getPrice());
             holder.txtPrice.setTextColor(Color.RED);
+        }else {
+            holder.txtPrice.setText("+"+dataList.get(position).getPrice());
+            holder.txtPrice.setTextColor(Color.GREEN);
         }
     }
 
@@ -54,5 +56,6 @@ public class AdapterCoin extends RecyclerView.Adapter<AdapterCoin.CoinViewHolder
     public int getItemCount() {
         return (dataList != null) ? dataList.size() : 0;
     }
+
 }
 

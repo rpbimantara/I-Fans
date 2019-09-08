@@ -8,7 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
@@ -79,14 +81,21 @@ public class AccountCoinActivity extends AppCompatActivity {
                                 public void onResult(OdooResult result) {
                                     // response
                                     OdooRecord[] records = result.getRecords();
+                                    System.out.println(result.toString());
                                     for (OdooRecord record : records) {
+                                        String tgl = tanggal(record.getString("date").substring(0,10));
+                                        String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
                                         ArrayListCoin.add(new AccountCoin(
                                                 record.getString("id"),
                                                 record.getString("name"),
-                                                record.getString("date"),
+                                                tgl.concat(" ").concat(waktu),
                                                 record.getString("price"),
                                                 record.getString("type")
                                         ));
+                                        adapter = new AdapterCoin(ArrayListCoin);
+                                        rv.setAdapter(adapter);
+                                        adapter.notifyDataSetChanged();
+                                        swiper.setRefreshing(false);
 
                                     }
                                 }
@@ -97,5 +106,22 @@ public class AccountCoinActivity extends AppCompatActivity {
                     .build();
             return null;
         }
+    }
+
+
+    public String tanggal(String tgl){
+        try {
+            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
+        }catch (Exception ex){
+            System.out.println("Error Convert Tanggal: " + ex);
+        }
+
+        return tgl;
+    }
+
+    public  String waktu(String waktu){
+        int output = Integer.valueOf(waktu.substring(0,1));
+        waktu = String.valueOf(output) + waktu.substring(1,5);
+        return waktu;
     }
 }

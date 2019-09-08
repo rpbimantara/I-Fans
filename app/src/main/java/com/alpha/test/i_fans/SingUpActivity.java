@@ -98,13 +98,13 @@ public class SingUpActivity extends AppCompatActivity {
                         finish();
                     }
 
-                    @Override
-                    public boolean onError(OdooErrorException error) {
-                        Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
-                        System.out.println(error.toString());
-                        progressDialog.dismiss();
-                        return super.onError(error);
-                    }
+//                    @Override
+//                    public boolean onError(OdooErrorException error) {
+//                        Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
+//                        System.out.println(error.toString());
+//                        progressDialog.dismiss();
+//                        return super.onError(error);
+//                    }
                 });
             }
         }

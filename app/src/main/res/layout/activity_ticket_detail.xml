@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".TicketDetailActivity">
 
     <android.support.design.widget.AppBarLayout
@@ -37,7 +38,7 @@
                 android:id="@+id/ticket_imageView"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:src="@android:color/holo_green_dark" />
+                />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -160,11 +161,22 @@
 
             </android.support.v7.widget.RecyclerView>
 
+<!--            <Button-->
+<!--                android:id="@+id/button_review_order"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Review Order" />-->
             <Button
+                android:fontFamily="monospace"
+                android:textStyle="bold"
                 android:id="@+id/button_review_order"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Review Order" />
+                android:layout_height="60dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:textSize="18sp"
+                android:background="#F5DEB3"
+                android:text="Order" />
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
