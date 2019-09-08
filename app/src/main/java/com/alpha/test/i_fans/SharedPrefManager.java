@@ -14,6 +14,8 @@ public class SharedPrefManager {
     public static final String SP_PASSWORD_USER = "spPasswordUser";
     public static final String SP_REG_ID = "spRegId";
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
+    public static final String SP_FAB = "spFAB";
+    public static final String SP_FAB_Belanja = "spFABBelanja";
     public static final String SP_IMAGE_NEWS = "spImageNews";
     public static final String SP_RETURN_FROM_RV = "StringFromRV";
     public static final String SP_Host_url = "StringURL";
@@ -86,6 +88,13 @@ public class SharedPrefManager {
 
     public String getSpReturnFromRv() {
         return sp.getString(SP_RETURN_FROM_RV,"");
+    }
+
+    public String getSpFab() {
+        return sp.getString(SP_FAB,"");
+    }
+    public String getSpFabBelanja() {
+        return sp.getString(SP_FAB_Belanja,"Store");
     }
 
     public String getSP_Host_url() {

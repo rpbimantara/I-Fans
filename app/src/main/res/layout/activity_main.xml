@@ -26,6 +26,6 @@
         android:layout_width="325dp"
         android:layout_height="338dp"
         android:layout_gravity="center"
-        app:srcCompat="@mipmap/ic_logo" />
+        app:srcCompat="@drawable/ndas_mangap"/>
 
 </android.support.design.widget.CoordinatorLayout>

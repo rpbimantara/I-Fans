@@ -20,6 +20,7 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class BelanjaFragment extends Fragment {
+    SharedPrefManager sharedPrefManager;
 
     public static BelanjaFragment newInstance(){
         BelanjaFragment fragment = new BelanjaFragment();
@@ -40,8 +41,37 @@ public class BelanjaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment\
         View view = inflater.inflate(R.layout.fragment_belanja,container, false);
+        sharedPrefManager = new SharedPrefManager(getContext());
         // Setting ViewPager for each Tabs
         ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewpager_belanja);
+        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+                if (i == 0) {
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB_Belanja, "Store");
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,"Store");
+                }else{
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB_Belanja, "Lelang");
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,"Lelang");
+                }
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                if (i == 0) {
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB_Belanja, "Store");
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,"Store");
+                }else{
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB_Belanja, "Lelang");
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,"Lelang");
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
         setupViewPager(viewPager);
         // Set Tabs inside Toolbar
         TabLayout tabs = (TabLayout) view.findViewById(R.id.tabs_belanja);

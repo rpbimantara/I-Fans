@@ -238,8 +238,7 @@ public class AccountFragment extends Fragment implements InterfaceAccount {
     @Override
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && isResumed()){
-
+        if (isVisibleToUser){
             onResume();
         }
     }

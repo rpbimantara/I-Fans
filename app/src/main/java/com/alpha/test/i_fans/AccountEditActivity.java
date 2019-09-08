@@ -80,7 +80,7 @@ public class AccountEditActivity extends AppCompatActivity {
     }
 
     public void loadData(){
-        progressDialog.setMessage("Saving Data........");
+        progressDialog.setMessage("Load Data........");
         progressDialog.show();
         progressDialog.setCancelable(false);
         client = new OdooClient.Builder(getApplicationContext())
@@ -100,11 +100,33 @@ public class AccountEditActivity extends AppCompatActivity {
 
                                 for(OdooRecord record: records) {
                                     ETname.setText(record.getString("name"));
-                                    ETnik.setText(record.getString("nik"));
-                                    ETaddress.setText(record.getString("street"));
-                                    ETmail.setText(record.getString("email"));
-                                    ETphone.setText(record.getString("phone"));
-                                    ETcomunity.setText(record.getString("komunitas"));
+                                    if(record.getString("nik").equalsIgnoreCase("false")){
+                                        ETnik.requestFocus();
+                                    }else{
+                                        ETnik.setText(record.getString("nik"));
+                                    }
+
+                                    if(record.getString("street").equalsIgnoreCase("false")){
+                                        ETaddress.setText("Address");
+                                    }else{
+                                        ETaddress.setText(record.getString("street"));
+                                    }
+
+                                    if(record.getString("email").equalsIgnoreCase("false")){
+                                        ETmail.setText("E-mail");
+                                    }else{
+                                        ETmail.setText(record.getString("email"));
+                                    }
+                                    if(record.getString("phone").equalsIgnoreCase("false")){
+                                        ETphone.setText("Phone");
+                                    }else{
+                                        ETphone.setText(record.getString("phone"));
+                                    }
+                                    if(record.getString("komunitas").equalsIgnoreCase("false")){
+                                        ETcomunity.setText("Community");
+                                    }else{
+                                        ETcomunity.setText(record.getString("komunitas"));
+                                    }
                                     progressDialog.dismiss();
                                 }
                             }

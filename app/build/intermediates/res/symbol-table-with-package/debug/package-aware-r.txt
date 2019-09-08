@@ -1090,6 +1090,7 @@ drawable abc_vector_test
 drawable avd_hide_password
 drawable avd_show_password
 drawable circular_progress_bar
+drawable coming_soon
 drawable common_full_open_on_phone
 drawable common_google_signin_btn_icon_dark
 drawable common_google_signin_btn_icon_dark_focused
@@ -1122,6 +1123,7 @@ drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable gradientbackground
 drawable ic_account
+drawable ic_add
 drawable ic_add_shop
 drawable ic_address
 drawable ic_away
@@ -1161,6 +1163,7 @@ drawable ms__shadow_background
 drawable mtrl_snackbar_background
 drawable mtrl_tabs_default_indicator
 drawable navigation_empty_icon
+drawable ndas_mangap
 drawable notification_action_background
 drawable notification_bg
 drawable notification_bg_low
@@ -1176,7 +1179,6 @@ drawable notify_panel_notification_icon_bg
 drawable state_list
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
-drawable warning_available
 font aladin
 id ALT
 id Account_edit_toolbar

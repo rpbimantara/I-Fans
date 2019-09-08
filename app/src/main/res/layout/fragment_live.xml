@@ -19,7 +19,7 @@
         android:layout_gravity="center"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:tint="@color/colorTrueState"
-        tools:src="@drawable/warning_available" />
+        app:srcCompat="@drawable/coming_soon"/>
+
 
 </RelativeLayout>

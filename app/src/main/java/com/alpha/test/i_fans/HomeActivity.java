@@ -39,13 +39,6 @@ public class HomeActivity extends AppCompatActivity {
     Context context;
 
 
-    public void buttonClicked(String fragment){
-//        Intent FABbutton =  new Intent(context,AccountEditActivity.class);
-//        startActivity(FABbutton);
-        System.out.println(fragment);
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,9 +61,11 @@ public class HomeActivity extends AppCompatActivity {
                 switch (position) {
                     case 2:
                         fabBtn.show();
+                        fabBtn.setImageResource(R.drawable.ic_add);
                         break;
                     case 3:
                         fabBtn.show();
+                        fabBtn.setImageResource(R.drawable.ic_edit);
                         break;
                         default:
                             fabBtn.hide();
@@ -87,6 +82,20 @@ public class HomeActivity extends AppCompatActivity {
 //        disableShiftMode(navigation);
         fabBtn = (FloatingActionButton) findViewById(R.id.shared_fab);
         fabBtn.hide();
+        fabBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent fabIntent = new Intent();
+                if (sharedPrefManager.getSpFab().equalsIgnoreCase("Account")){
+                    fabIntent = new Intent(HomeActivity.this,AccountEditActivity.class);
+                }else if(sharedPrefManager.getSpFab().equalsIgnoreCase("Store")){
+                    fabIntent = new Intent(HomeActivity.this,StoreAddActivity.class);
+                }else{
+                    fabIntent = new Intent(HomeActivity.this,LelangAddActivity.class);
+                }
+                startActivity(fabIntent);
+            }
+        });
         sharedPrefManager =  new SharedPrefManager(this);
 //        initTitle();
         mRegistrationBroadcastReceiver = new BroadcastReceiver() {
@@ -146,9 +155,12 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.action_belanja:
                     viewPager.setCurrentItem(2);
+                    String Belanja = sharedPrefManager.getSpFabBelanja();
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,Belanja);
                     return true;
                 case R.id.action_account:
                     viewPager.setCurrentItem(3);
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,"Account");
                     return true;
             }
             return false;
