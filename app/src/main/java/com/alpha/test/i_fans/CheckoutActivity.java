@@ -82,13 +82,14 @@ public class CheckoutActivity extends AppCompatActivity {
                             // Success connection
 
                             OArguments arguments = new OArguments();
-                            arguments.add(sharedPrefManager.getSpIdPartner());
+                            arguments.add(Integer.valueOf(sharedPrefManager.getSpIdPartner()));
 
                             client.call_kw("sale.order.line", "get_checkout_list", arguments, new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
                                     // response
                                     OdooRecord[] Records = result.getRecords();
+                                    System.out.println(result.toString());
 
                                     for (final OdooRecord record : Records) {
                                         ArrayListCheckout.add(new Checkout(

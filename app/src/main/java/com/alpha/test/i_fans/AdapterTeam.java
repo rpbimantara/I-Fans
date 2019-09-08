@@ -53,6 +53,18 @@ public class AdapterTeam extends RecyclerView.Adapter<AdapterTeam.TeamViewHolder
         }else {
             holder.txtNoPunggung.setText(dataList.get(position).getNo_punggung());
         }
+        if(dataList.get(position).getPosisi().equalsIgnoreCase("GoalKeeper")){
+            holder.fab_icon.setImageResource(R.drawable.ic_keeper);
+        }
+        if(dataList.get(position).getPosisi().equalsIgnoreCase("Forward")){
+            holder.fab_icon.setImageResource(R.drawable.ic_forward);
+        }
+        if(dataList.get(position).getPosisi().equalsIgnoreCase("Midfielder")){
+            holder.fab_icon.setImageResource(R.drawable.ic_midfielder);
+        }
+        if(dataList.get(position).getPosisi().equalsIgnoreCase("Defender")){
+            holder.fab_icon.setImageResource(R.drawable.ic_defender);
+        }
         holder.image.setImageBitmap(StringToBitMap(dataList.get(position).getFoto()));
     }
 

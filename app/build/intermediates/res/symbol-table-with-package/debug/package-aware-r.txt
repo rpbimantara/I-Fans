@@ -762,6 +762,7 @@ color primary_text_default_material_dark
 color primary_text_default_material_light
 color primary_text_disabled_material_dark
 color primary_text_disabled_material_light
+color red
 color ripple_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
@@ -1130,15 +1131,20 @@ drawable ic_birth
 drawable ic_camera
 drawable ic_checkout
 drawable ic_coin
+drawable ic_defender
+drawable ic_delete
 drawable ic_edit
 drawable ic_email
+drawable ic_forward
 drawable ic_gender
 drawable ic_home
+drawable ic_keeper
 drawable ic_komunitas
 drawable ic_location
 drawable ic_logout
 drawable ic_match
 drawable ic_medis
+drawable ic_midfielder
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
@@ -1245,8 +1251,6 @@ id button_bin
 id button_buy_now_store
 id button_checkout_store
 id button_delete_checkout
-id button_minus
-id button_plus
 id button_review_order
 id button_save_account
 id button_save_lelang
@@ -1310,7 +1314,6 @@ id editText_name
 id editText_nik
 id editText_openBid
 id editText_phone
-id editText_qty
 id edit_date
 id edit_query
 id end

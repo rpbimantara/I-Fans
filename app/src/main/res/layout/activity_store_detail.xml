@@ -132,9 +132,8 @@
                     android:layout_width="50dp"
                     android:layout_marginRight="10dp"
                     android:layout_height="wrap_content"
-                    android:background="#F5DEB3"
-                    android:drawableLeft="@drawable/ic_add_shop"
-                    android:drawableTint="@color/colorWhite" />
+                    android:background="@drawable/ic_add_shop"
+                    android:backgroundTint="#F5DEB3"/>
 
                 <Button
                     android:id="@+id/button_buy_now_store"

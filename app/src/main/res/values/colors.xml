@@ -10,4 +10,5 @@
     <color name="endblue">#33bbff</color>
     <color name="duskYellow">#FFD700</color>
     <color name="lightGrey">#D3D3D3</color>
+    <color name="red">#FF0000</color>
 </resources>

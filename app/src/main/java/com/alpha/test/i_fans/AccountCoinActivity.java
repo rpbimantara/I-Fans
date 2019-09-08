@@ -8,6 +8,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
@@ -83,6 +86,11 @@ public class AccountCoinActivity extends AppCompatActivity {
                                     OdooRecord[] records = result.getRecords();
                                     System.out.println(result.toString());
                                     for (OdooRecord record : records) {
+                                        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+                                        DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+
+                                        symbols.setGroupingSeparator('.');
+                                        formatter.setDecimalFormatSymbols(symbols);
                                         String tgl = tanggal(record.getString("date").substring(0,10));
                                         String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
                                         ArrayListCoin.add(new AccountCoin(

@@ -46,6 +46,7 @@ public class SingUpActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(getApplicationContext(),LoginActivity.class);
                 startActivity(i);
+                finish();
             }
         });
         btn_singup = findViewById(R.id.btn_signup);

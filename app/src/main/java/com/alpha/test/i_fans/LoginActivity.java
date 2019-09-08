@@ -52,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent singup = new Intent(getApplicationContext(),SingUpActivity.class);
                 startActivity(singup);
+                finish();
             }
         });
         btnLogin = findViewById(R.id.btn_login);
@@ -64,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 uname = txtUsername.getText().toString();
                 pass = txtPassword.getText().toString();
                 if (uname.isEmpty() && pass.isEmpty()){
-                    Toast.makeText(LoginActivity.this,"Masukan username/password anda dengan benar!",Toast.LENGTH_LONG).show();
+                    Toast.makeText(LoginActivity.this,"Wrong Username / Password!",Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();
                 }else{
                     new LoginTask().execute();
@@ -126,6 +127,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             });
             progressDialog.dismiss();
+            finish();
         }
         @Override
         public void onLoginFail(AuthError error) {
@@ -159,6 +161,7 @@ public class LoginActivity extends AppCompatActivity {
                     .build();
             return null;
         }
+
     }
 
 }
