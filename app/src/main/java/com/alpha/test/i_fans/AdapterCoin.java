@@ -43,7 +43,7 @@ public class AdapterCoin extends RecyclerView.Adapter<AdapterCoin.CoinViewHolder
     public void onBindViewHolder(@NonNull CoinViewHolder holder, int position) {
         holder.txtName.setText(dataList.get(position).getName());
         holder.txtDate.setText(dataList.get(position).getDate());
-        if (dataList.get(position).getType().equalsIgnoreCase("customer")){
+        if (dataList.get(position).getType().equalsIgnoreCase("customer") || dataList.get(position).getType().equalsIgnoreCase("tax")){
             holder.txtPrice.setText("-"+dataList.get(position).getPrice());
             holder.txtPrice.setTextColor(Color.RED);
         }else {

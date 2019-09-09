@@ -1,9 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorWhite"
     tools:context=".StoreAddActivity">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-</android.support.constraint.ConstraintLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- TODO: Update blank fragment layout -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="218dp">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/image_AddStore"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="41dp"
+                    app:civ_border_color="#FF000000"
+                    app:civ_border_width="2dp" />
+
+                <android.support.design.widget.FloatingActionButton
+                    android:id="@+id/image_fab_Add_Store"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="105dp"
+                    app:fabSize="mini"
+                    app:useCompatPadding="true" />
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editText_namabarangStore"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="text"
+                        android:hint="Name Item"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editText_price_store"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number"
+                        android:hint="Price"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editText_stock"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:inputType="number"
+                        android:hint="Stock"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="15dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <EditText
+                        android:id="@+id/editText_Deskripsi_store"
+                        android:paddingLeft="20dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:gravity="bottom"
+                        android:inputType="textMultiLine"
+                        android:overScrollMode="always"
+                        android:scrollbarStyle="insideInset"
+                        android:hint="Description"
+                        android:lines="8"
+                        android:minLines="6"
+                        android:maxLines="10"
+                        android:textColorHint="@color/colorTrueState"
+                        android:textSize="15dp"
+                        android:textColor="@color/colorTrueState"
+                        android:backgroundTint="@color/colorPrimaryDark"/>
+                </LinearLayout>
+            </LinearLayout>
+            <Button
+                android:id="@+id/button_save_store"
+                android:textColor="#fff"
+                android:layout_marginTop="35dp"
+                android:background="@color/colorPrimaryDark"
+                android:layout_gravity="center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+</android.support.design.widget.CoordinatorLayout>
