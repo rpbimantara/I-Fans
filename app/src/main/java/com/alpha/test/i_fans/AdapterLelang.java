@@ -1,12 +1,14 @@
 package com.alpha.test.i_fans;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
 import android.view.LayoutInflater;
@@ -91,7 +93,24 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
         holder.btnBinLelang.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager);
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Do You Want to  Buy It Now?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager);
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 

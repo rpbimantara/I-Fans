@@ -2,6 +2,7 @@ package com.alpha.test.i_fans;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
@@ -14,6 +15,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -155,11 +157,13 @@ public class HomeActivity extends AppCompatActivity {
                     return true;
                 case R.id.action_belanja:
                     viewPager.setCurrentItem(2);
+                    fabBtn.setImageResource(R.drawable.ic_add);
                     String Belanja = sharedPrefManager.getSpFabBelanja();
                     sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,Belanja);
                     return true;
                 case R.id.action_account:
                     viewPager.setCurrentItem(3);
+                    fabBtn.setImageResource(R.drawable.ic_edit);
                     sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,"Account");
                     return true;
             }
@@ -194,10 +198,27 @@ public class HomeActivity extends AppCompatActivity {
                 break;
             case R.id.logout :
                 //Kode disini akan di eksekusi saat tombol search di klik
-                sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
-                startActivity(new Intent(HomeActivity.this, LoginActivity.class)
-                        .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Do You Want to  Logout?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        sharedPrefManager.saveSPBoolean(SharedPrefManager.SP_SUDAH_LOGIN, false);
+                        startActivity(new Intent(HomeActivity.this, LoginActivity.class)
+                                .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                        finish();
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
                 break;
         }
         return super.onOptionsItemSelected(item);
