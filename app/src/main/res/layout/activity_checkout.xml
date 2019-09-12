@@ -29,12 +29,58 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_recycler_view_checkout"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
-        </android.support.v7.widget.RecyclerView>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_recycler_view_checkout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+            </android.support.v7.widget.RecyclerView>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/lightGrey"
+                android:orientation="horizontal">
+                <Button
+                    android:id="@+id/button_paid"
+                    android:layout_below="@+id/total_checkout"
+                    android:background="#F5DEB3"
+                    android:textSize="18dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Order" />
+
+                <TextView
+                    android:id="@+id/total_checkout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:textColor="@color/colorTrueState"
+                    android:text="Total"
+                    android:textSize="20sp"
+                    android:textStyle="bold|italic" />
+
+                <TextView
+                    android:id="@+id/total_amount_checkout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/total_checkout"
+                    android:textColor="@color/colorTrueState"
+                    android:textSize="20sp"
+                    android:text="Total Right"
+                    android:textStyle="bold|italic" />
+
+            </RelativeLayout>
+
+        </RelativeLayout>
 
     </android.support.v4.widget.SwipeRefreshLayout>
 </android.support.design.widget.CoordinatorLayout>

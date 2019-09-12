@@ -43,7 +43,7 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class AccountFragment extends Fragment implements InterfaceAccount {
+public class AccountFragment extends Fragment {
     TextView txtName,txtid,txtKoin,txtFollower,txtFollowing,txtNIK,txtJeniskelamin,txtAlamat,txtTTL,txtemail,txtTelephone,txtKomunitas;
     ImageView imageUser;
     SharedPrefManager sharedPrefManager;
@@ -64,10 +64,6 @@ public class AccountFragment extends Fragment implements InterfaceAccount {
     public AccountFragment() {
         // Required empty public constructor
     }
-    public void getData(String name){
-        System.out.println(name);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

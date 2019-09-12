@@ -167,7 +167,9 @@ public class StoreFragment extends Fragment {
                                     OdooRecord[] records = result.getRecords();
                                     for (OdooRecord record : records) {
                                         String code = " ";
-                                        if (!record.getString("default_code").equalsIgnoreCase("false") || !record.getString("default_code").equalsIgnoreCase(" ")){
+                                        if (record.getString("default_code").equalsIgnoreCase("false") || record.getString("default_code").equalsIgnoreCase("")){
+                                            code = "";
+                                        }else{
                                             code = "["+record.getString("default_code") +"] ";
                                         }
 

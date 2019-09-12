@@ -30,7 +30,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
-    EditText txtUsername,txtPassword;
+    EditText etUsername,etPassword;
 
     private TextView _singupLink;
     OdooClient client;
@@ -56,14 +56,14 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
         btnLogin = findViewById(R.id.btn_login);
-        txtUsername = findViewById(R.id.input_username);
-        txtPassword = findViewById(R.id.input_password);
+        etUsername = findViewById(R.id.input_username);
+        etPassword = findViewById(R.id.input_password);
         progressDialog = new ProgressDialog(LoginActivity.this);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                uname = txtUsername.getText().toString();
-                pass = txtPassword.getText().toString();
+                uname = etUsername.getText().toString();
+                pass = etPassword.getText().toString();
                 if (uname.isEmpty() && pass.isEmpty()){
                     Toast.makeText(LoginActivity.this,"Wrong Username / Password!",Toast.LENGTH_LONG).show();
                     progressDialog.dismiss();

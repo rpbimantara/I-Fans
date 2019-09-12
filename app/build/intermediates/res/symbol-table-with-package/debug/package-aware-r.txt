@@ -1253,6 +1253,9 @@ id button_bin
 id button_buy_now_store
 id button_checkout_store
 id button_delete_checkout
+id button_minus
+id button_paid
+id button_plus
 id button_review_order
 id button_save_account
 id button_save_lelang
@@ -1320,6 +1323,7 @@ id editText_nik
 id editText_openBid
 id editText_phone
 id editText_price_store
+id editText_qty
 id editText_stock
 id edit_date
 id edit_query
@@ -1368,6 +1372,7 @@ id image_staff
 id image_tiket_barcode
 id image_tiket_list
 id info
+id input_confirm_password_up
 id input_email_up
 id input_name_up
 id input_password
@@ -1646,6 +1651,8 @@ id title_template
 id toolbar
 id top
 id topPanel
+id total_amount_checkout
+id total_checkout
 id touch_outside
 id transition_current_scene
 id transition_layout_save

@@ -14,12 +14,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.CheckoutViewHolder>{
     private ArrayList<Checkout> dataList;
+    private InterfaceCheckout listener;
 
-    public AdapterCheckout(ArrayList<Checkout> dataList) {
+    public AdapterCheckout(ArrayList<Checkout> dataList,InterfaceCheckout listener) {
         this.dataList = dataList;
+        this.listener = listener;
     }
 
     public class CheckoutViewHolder extends RecyclerView.ViewHolder{
@@ -31,10 +34,10 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
             super(itemView);
             txt_name = itemView.findViewById(R.id.txt_checkout_item);
             txt_harga = itemView.findViewById(R.id.txt_checkout_harga);
-//            et_qty = itemView.findViewById(R.id.editText_qty);
+            et_qty = itemView.findViewById(R.id.editText_qty);
             img_item = itemView.findViewById(R.id.checkout_image);
-//            btn_min = itemView.findViewById(R.id.button_minus);
-//            btn_plus = itemView.findViewById(R.id.button_plus);
+            btn_min = itemView.findViewById(R.id.button_minus);
+            btn_plus = itemView.findViewById(R.id.button_plus);
             btn_delete = itemView.findViewById(R.id.button_delete_checkout);
         }
     }
@@ -43,6 +46,7 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
     @Override
     public CheckoutViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_checkout,parent,false);
+        listener.AddCheckout(dataList);
         return new  CheckoutViewHolder(view);
     }
 
@@ -50,33 +54,33 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
     public void onBindViewHolder(@NonNull final CheckoutViewHolder holder, final int position) {
         holder.txt_name.setText(dataList.get(position).getNama());
         holder.txt_harga.setText(dataList.get(position).getHarga());
-//        holder.et_qty.setText(dataList.get(position).getQty());
+        holder.et_qty.setText(dataList.get(position).getQty());
         holder.img_item.setImageBitmap(StringToBitMap(dataList.get(position).getImage()));
         final Integer qty_awal = Integer.valueOf(dataList.get(position).getQty());
-//        holder.btn_min.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+        holder.btn_min.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 //                if (qty_awal < 2){
 //                    holder.btn_min.setEnabled(false);
 //                }else {
 //                    String qty = String.valueOf(qty_awal - 1);
 //                    holder.et_qty.setText(qty);
 //                }
-//            }
-//        });
-//        final Integer stock = Integer.valueOf(dataList.get(position).getStock());
-//
-//        holder.btn_plus.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
+            }
+        });
+        final Integer stock = Integer.valueOf(dataList.get(position).getStock());
+
+        holder.btn_plus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 //                if (qty_awal > stock){
 //                    holder.btn_plus.setEnabled(false);
 //                }else {
 //                    String qty = String.valueOf(qty_awal + 1);
 //                    holder.et_qty.setText(qty);
 //                }
-//            }
-//        });
+            }
+        });
     }
 
     @Override

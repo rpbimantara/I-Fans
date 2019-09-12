@@ -27,7 +27,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 public class SingUpActivity extends AppCompatActivity {
 
     private TextView _login;
-    EditText username,email,password;
+    EditText username,email,password,confirmPassword;
     private Button  btn_singup;
     ProgressDialog progressDialog;
     Boolean cek = true;
@@ -59,6 +59,7 @@ public class SingUpActivity extends AppCompatActivity {
         username = findViewById(R.id.input_name_up);
         email = findViewById(R.id.input_email_up);
         password = findViewById(R.id.input_password_up);
+        confirmPassword = findViewById(R.id.input_confirm_password_up);
     }
 
     AuthenticateListener loginCallback = new AuthenticateListener() {
@@ -72,11 +73,15 @@ public class SingUpActivity extends AppCompatActivity {
             }else if(username.getText().equals("")){
                 username.setError("Username cannot Null");
                 progressDialog.dismiss();
-            }else if(!cekemail.matches(emailPattern) && cekemail.length()<3){
-                email.setError("Invalid E-Mail");
-                progressDialog.dismiss();
             }else if (password.getText().length()<8){
                 password.setError("Minimum 8 Char");
+                progressDialog.dismiss();
+            }else if(!password.getText().toString().equals(confirmPassword.getText().toString())){
+                password.setError("Password not match with Confirm Password");
+                confirmPassword.setError("Password not match with Confirm Password");
+                progressDialog.dismiss();
+            }else if(!cekemail.matches(emailPattern) && cekemail.length()<3){
+                email.setError("Invalid E-Mail");
                 progressDialog.dismiss();
             }else {
                 final String RegId = FirebaseInstanceId.getInstance().getToken();
@@ -96,16 +101,16 @@ public class SingUpActivity extends AppCompatActivity {
                         Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
                         System.out.println(result.toString());
                         progressDialog.dismiss();
-                        finish();
+                        return;
                     }
 
-//                    @Override
-//                    public boolean onError(OdooErrorException error) {
-//                        Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
-//                        System.out.println(error.toString());
-//                        progressDialog.dismiss();
-//                        return super.onError(error);
-//                    }
+                    @Override
+                    public boolean onError(OdooErrorException error) {
+                        Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
+                        System.out.println(error.toString());
+                        progressDialog.dismiss();
+                        return super.onError(error);
+                    }
                 });
             }
         }

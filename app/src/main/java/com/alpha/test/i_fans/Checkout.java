@@ -59,4 +59,14 @@ public class Checkout {
     public void setStock(String stock) {
         this.stock = stock;
     }
+
+    @Override
+    public String toString() {
+        return "Checkout{" +
+                "id='" + id + '\'' +
+                ", nama='" + nama + '\'' +
+                ", harga='" + harga + '\'' +
+                ", qty='" + qty + '\'' +
+                '}';
+    }
 }
