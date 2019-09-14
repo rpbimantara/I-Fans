@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
@@ -73,7 +74,7 @@ public class TicketBarcodeActivity extends AppCompatActivity {
                         public void onConnected(OdooVersion version) {
                             ODomain domain = new ODomain();
                             domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-                            domain.add("state", "=", "open");
+                            domain.add("state", "in", Arrays.asList("open","draft"));
 
                             OdooFields fields = new OdooFields();
                             fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");

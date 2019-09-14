@@ -8,6 +8,7 @@ MERGED from [com.android.support:multidex:1.0.3] /home/bimo/.gradle/caches/trans
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:2:1-11:12
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:2:1-18:12
+MERGED from [me.himanshusoni.quantityview:quantity-view:1.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/87794b5124c8933c6ad44949b9f28677/quantity-view-1.2.0/AndroidManifest.xml:2:1-16:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b320a443effd06c78f4f9e5ddfe89b1a/appcompat-v7-28.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:cardview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6d1ac33fa7bf63a59abf96edc65f6fce/cardview-v7-28.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/f14a8d3cde177ec9b4d395ad01a54632/constraint-layout-1.1.3/AndroidManifest.xml:2:1-11:12
@@ -83,6 +84,8 @@ MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transf
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:15:5-16:19
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:15:5-16:19
+MERGED from [me.himanshusoni.quantityview:quantity-view:1.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/87794b5124c8933c6ad44949b9f28677/quantity-view-1.2.0/AndroidManifest.xml:11:5-14:19
+MERGED from [me.himanshusoni.quantityview:quantity-view:1.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/87794b5124c8933c6ad44949b9f28677/quantity-view-1.2.0/AndroidManifest.xml:11:5-14:19
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/f14a8d3cde177ec9b4d395ad01a54632/constraint-layout-1.1.3/AndroidManifest.xml:9:5-20
 MERGED from [com.android.support.constraint:constraint-layout:1.1.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/f14a8d3cde177ec9b4d395ad01a54632/constraint-layout-1.1.3/AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:22:5-35:19
@@ -339,6 +342,8 @@ MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gra
 MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:7:5-9:41
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:7:5-9:41
+MERGED from [me.himanshusoni.quantityview:quantity-view:1.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/87794b5124c8933c6ad44949b9f28677/quantity-view-1.2.0/AndroidManifest.xml:7:5-9:41
+MERGED from [me.himanshusoni.quantityview:quantity-view:1.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/87794b5124c8933c6ad44949b9f28677/quantity-view-1.2.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b320a443effd06c78f4f9e5ddfe89b1a/appcompat-v7-28.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b320a443effd06c78f4f9e5ddfe89b1a/appcompat-v7-28.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:cardview-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6d1ac33fa7bf63a59abf96edc65f6fce/cardview-v7-28.0.0/AndroidManifest.xml:20:5-44

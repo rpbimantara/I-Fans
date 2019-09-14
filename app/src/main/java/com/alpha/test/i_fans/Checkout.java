@@ -1,15 +1,16 @@
 package com.alpha.test.i_fans;
 
 public class Checkout {
-    String id,nama,harga,qty,image,stock;
+    String id,nama,harga,qty,image,stock,type;
 
-    public Checkout(String id, String nama, String harga, String qty, String image,String stock) {
+    public Checkout(String id, String nama, String harga, String qty, String image,String stock,String type) {
         this.id = id;
         this.nama = nama;
         this.harga = harga;
         this.qty = qty;
         this.image = image;
         this.stock =  stock;
+        this.type = type;
     }
 
     public String getId() {
@@ -58,6 +59,14 @@ public class Checkout {
 
     public void setStock(String stock) {
         this.stock = stock;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     @Override

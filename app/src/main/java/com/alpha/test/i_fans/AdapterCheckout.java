@@ -16,28 +16,33 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import me.himanshusoni.quantityview.QuantityView;
+
 public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.CheckoutViewHolder>{
     private ArrayList<Checkout> dataList;
     private InterfaceCheckout listener;
 
-    public AdapterCheckout(ArrayList<Checkout> dataList,InterfaceCheckout listener) {
+    public AdapterCheckout(ArrayList<Checkout> dataList, InterfaceCheckout listener) {
         this.dataList = dataList;
         this.listener = listener;
     }
+
 
     public class CheckoutViewHolder extends RecyclerView.ViewHolder{
         public TextView txt_name,txt_harga;
         public EditText et_qty;
         public Button btn_min,btn_plus,btn_delete;
+        public QuantityView quantityView;
         public ImageView img_item;
         public CheckoutViewHolder(View itemView) {
             super(itemView);
             txt_name = itemView.findViewById(R.id.txt_checkout_item);
             txt_harga = itemView.findViewById(R.id.txt_checkout_harga);
-            et_qty = itemView.findViewById(R.id.editText_qty);
+            quantityView = itemView.findViewById(R.id.quantityView_default);
+//            et_qty = itemView.findViewById(R.id.editText_qty);
             img_item = itemView.findViewById(R.id.checkout_image);
-            btn_min = itemView.findViewById(R.id.button_minus);
-            btn_plus = itemView.findViewById(R.id.button_plus);
+//            btn_min = itemView.findViewById(R.id.button_minus);
+//            btn_plus = itemView.findViewById(R.id.button_plus);
             btn_delete = itemView.findViewById(R.id.button_delete_checkout);
         }
     }
@@ -54,33 +59,52 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
     public void onBindViewHolder(@NonNull final CheckoutViewHolder holder, final int position) {
         holder.txt_name.setText(dataList.get(position).getNama());
         holder.txt_harga.setText(dataList.get(position).getHarga());
-        holder.et_qty.setText(dataList.get(position).getQty());
         holder.img_item.setImageBitmap(StringToBitMap(dataList.get(position).getImage()));
-        final Integer qty_awal = Integer.valueOf(dataList.get(position).getQty());
-        holder.btn_min.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                if (qty_awal < 2){
+        if (dataList.get(position).type.equalsIgnoreCase("lelang")){
+            holder.quantityView.setVisibility(View.INVISIBLE);
+//           holder.btn_plus.setVisibility(View.INVISIBLE);
+//           holder.btn_min.setVisibility(View.INVISIBLE);
+//           holder.et_qty.setVisibility(View.INVISIBLE);
+        }else{
+            holder.quantityView.setVisibility(View.VISIBLE);
+            if (dataList.get(position).getType().equalsIgnoreCase("service")){
+                holder.quantityView.setMaxQuantity(4);
+            }else{
+                holder.quantityView.setMaxQuantity(Integer.valueOf(dataList.get(position).getStock()));
+            }
+            holder.quantityView.setQuantity(Integer.valueOf(dataList.get(position).getQty()));
+//            holder.et_qty.setText(dataList.get(position).getQty());
+//            holder.btn_plus.setVisibility(View.VISIBLE);
+//            holder.btn_min.setVisibility(View.VISIBLE);
+
+        }
+//        final Integer qty_awal = Integer.valueOf(dataList.get(position).getQty());
+//        holder.btn_min.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                if (qty_awal == 1){
 //                    holder.btn_min.setEnabled(false);
 //                }else {
+//                    holder.btn_min.setEnabled(true);
 //                    String qty = String.valueOf(qty_awal - 1);
 //                    holder.et_qty.setText(qty);
 //                }
-            }
-        });
-        final Integer stock = Integer.valueOf(dataList.get(position).getStock());
-
-        holder.btn_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+//            }
+//        });
+//        final Integer stock = Integer.valueOf(dataList.get(position).getStock());
+//
+//        holder.btn_plus.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
 //                if (qty_awal > stock){
 //                    holder.btn_plus.setEnabled(false);
 //                }else {
+//                    holder.btn_plus.setEnabled(true);
 //                    String qty = String.valueOf(qty_awal + 1);
 //                    holder.et_qty.setText(qty);
 //                }
-            }
-        });
+//            }
+//        });
     }
 
     @Override

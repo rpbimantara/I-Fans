@@ -174,7 +174,7 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                             int offset = 0;
                             int limit = 80;
 
-                            String sorting = "id ASC";
+                            String sorting = "due_date ASC";
 
                             client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
                                 @Override

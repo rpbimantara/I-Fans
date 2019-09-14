@@ -11,7 +11,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +28,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 public class CheckoutActivity extends AppCompatActivity implements InterfaceCheckout{
     ArrayList<Checkout> ArrayListCheckout;
+    ArrayList<Checkout> ArrayListPaid;
     SharedPrefManager sharedPrefManager;
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
@@ -35,8 +38,8 @@ public class CheckoutActivity extends AppCompatActivity implements InterfaceChec
     Button btnPaid;
 
     @Override
-    public void AddCheckout(ArrayList<Checkout> checkouts) {
-        System.out.println(checkouts.toString());
+    public void AddCheckout(ArrayList<Checkout> checkout) {
+        System.out.println(checkout);
     }
 
     @Override
@@ -57,9 +60,9 @@ public class CheckoutActivity extends AppCompatActivity implements InterfaceChec
             }
         });
         llm = new LinearLayoutManager(this);
-        adapter = new AdapterCheckout(ArrayListCheckout,this);
+        adapter = new AdapterCheckout(ArrayListCheckout, this);
         sharedPrefManager = new SharedPrefManager(this);
-        rv.setAdapter(adapter );
+        rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         btnPaid.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,7 +126,8 @@ public class CheckoutActivity extends AppCompatActivity implements InterfaceChec
                                                 String.valueOf(Math.round(record.getFloat("harga"))),
                                                 String.valueOf(record.getInt("qty")),
                                                 record.getString("image"),
-                                                String.valueOf(record.getInt("stock"))
+                                                String.valueOf(record.getInt("stock")),
+                                                record.getString("type")
                                                         ));
                                     }
                                     adapter = new AdapterCheckout(ArrayListCheckout,new CheckoutActivity());
