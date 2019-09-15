@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -25,17 +26,19 @@ import java.util.Locale;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
-public class TicketDetailActivity extends AppCompatActivity {
-    TextView txtNamatiket,txtTanggaltiket,txtWaktutiket;
+public class TicketDetailActivity extends AppCompatActivity implements AdapterTicket.TicketListener {
+    TextView txtNamatiket,txtTanggaltiket,txtWaktutiket,txtTotalAmount;
     Button btn_order;
-    ArrayList<Tiket> ArrayListTiket;
+    ArrayList<Tiket> ArrayListTiket = new ArrayList<>();
     ProgressDialog progressDialog;
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
@@ -43,6 +46,18 @@ public class TicketDetailActivity extends AppCompatActivity {
     SharedPrefManager sharedPrefManager;
     ImageView imageTiket;
     OdooClient client;
+    int total = 0;
+
+    @Override
+    public void onChangeButtonTicket(Tiket tiket,int jumlah) {
+        tiket.setJumlahTiket(String.valueOf(jumlah));
+        int temp = 0;
+        for (Tiket tkt : ArrayListTiket) {
+                temp += (Integer.valueOf(tkt.getHargaTiket()) * Integer.valueOf(tkt.getJumlahTiket()));
+        }
+        txtTotalAmount.setText(String.valueOf(temp));
+        total = temp;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,36 +70,42 @@ public class TicketDetailActivity extends AppCompatActivity {
         txtNamatiket = (TextView) findViewById(R.id.txt_nama_ticket);
         txtTanggaltiket = (TextView) findViewById(R.id.txt_tgl_ticket);
         txtWaktutiket = (TextView) findViewById(R.id.txt_waktu_ticket);
+        txtTotalAmount = findViewById(R.id.total_amount_checkout);
         imageTiket = (ImageView) findViewById(R.id.ticket_imageView);
         btn_order = findViewById(R.id.button_review_order);
         progressDialog = new ProgressDialog(this);
         rv = findViewById(R.id.rv_recycler_view_tiket_detail);
         llm = new LinearLayoutManager(this);
-        adapter = new AdapterTicket(ArrayListTiket);
+        adapter = new AdapterTicket(ArrayListTiket,this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         sharedPrefManager = new SharedPrefManager(this);
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Are You Sure to Buy This Ticket?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                adapter.notifyDataSetChanged();
+                if (total > 0 ) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(TicketDetailActivity.this);
+                    builder.setTitle(R.string.app_name);
+                    builder.setMessage("Are You Sure to Buy This Ticket?");
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            BuyTicket();
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }else{
+                    Toast.makeText(getBaseContext(),"Choose at least one ticket!",Toast.LENGTH_SHORT).show();
+                }
             }
         });
         new TicketTask().execute();
@@ -121,6 +142,65 @@ public class TicketDetailActivity extends AppCompatActivity {
                 }).build();
     }
 
+    public void BuyTicket(){
+        client = new OdooClient.Builder(getBaseContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        OdooValues values = new OdooValues();
+                        values.put("partner_id", sharedPrefManager.getSpIdPartner());
+                        values.put("payment_term_id", 1);
+                        values.put("user_id", 1);
+
+                        client.create("sale.order", values, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                int serverId = result.getInt("result");
+                                if (serverId > 0) {
+                                    System.out.println("ASDSADasdasdasdasdasdasdasdadasdasdasdasd");
+                                    for (Tiket tkt : ArrayListTiket) {
+                                        if (Integer.valueOf(tkt.getJumlahTiket()) > 0) {
+                                            CreateSaleOrderLine(serverId, Integer.valueOf(tkt.getProduct_id()), Integer.valueOf(tkt.getId()), Integer.valueOf(tkt.getJumlahTiket()));
+                                        }
+                                    }
+                                }
+                            }
+                        });
+                    }
+                }).build();
+    }
+
+    public void CreateSaleOrderLine(final Integer sale_id, final Integer product_id, final Integer ticket_id, final Integer jumlah_ticket){
+        client = new OdooClient.Builder(getApplicationContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        OdooValues values = new OdooValues();
+                        values.put("order_id", sale_id);
+                        values.put("product_id", product_id);
+                        values.put("event_id", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                        values.put("event_ticket_id", ticket_id);
+                        values.put("product_uom_qty", jumlah_ticket);
+
+                        client.create("sale.order.line", values, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                int serverId = result.getInt("result");
+                                if (serverId > 0){
+                                    Toast.makeText(getBaseContext(),"Ticket successfully purchased!",Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }).build();
+    }
+
    public class TicketTask extends AsyncTask<Void,Void,Void>{
        @Override
        protected void onPreExecute() {
@@ -130,7 +210,6 @@ public class TicketDetailActivity extends AppCompatActivity {
 
        @Override
        protected Void doInBackground(Void... voids) {
-           ArrayListTiket = new ArrayList<>();
            client = new OdooClient.Builder(getApplicationContext())
                    .setHost(sharedPrefManager.getSP_Host_url())
                    .setSession(sharedPrefManager.getSpSessionId())
@@ -142,7 +221,7 @@ public class TicketDetailActivity extends AppCompatActivity {
                            domain.add("event_id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
 
                            OdooFields fields = new OdooFields();
-                           fields.addAll("id","name","price","seats_available");
+                           fields.addAll("id","name","price","seats_available","product_id");
 
                            int offset = 0;
                            int limit = 80;
@@ -159,9 +238,10 @@ public class TicketDetailActivity extends AppCompatActivity {
                                                record.getString("name"),
                                                String.valueOf(Math.round(record.getFloat("price"))),
                                                "0",
-                                               String.valueOf(Math.round(record.getFloat("seats_available")))));
+                                               String.valueOf(Math.round(record.getFloat("seats_available"))),
+                                               String.valueOf(record.getInt("product_id"))));
                                    }
-                                   adapter = new AdapterTicket(ArrayListTiket);
+                                   adapter = new AdapterTicket(ArrayListTiket,TicketDetailActivity.this);
                                    rv.setAdapter(adapter);
                                    adapter.notifyDataSetChanged();
                                }

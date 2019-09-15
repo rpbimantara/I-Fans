@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -138,6 +138,7 @@
                     android:textStyle="bold" />
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linearLayout_pik"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -166,18 +167,58 @@
 <!--                android:layout_width="match_parent"-->
 <!--                android:layout_height="wrap_content"-->
 <!--                android:text="Review Order" />-->
-            <Button
-                android:fontFamily="monospace"
-                android:textStyle="bold"
-                android:id="@+id/button_review_order"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="50dp"
-                android:layout_marginRight="50dp"
-                android:textSize="18sp"
-                android:background="#F5DEB3"
-                android:text="Order" />
+<!--            <Button-->
+<!--                android:fontFamily="monospace"-->
+<!--                android:textStyle="bold"-->
+<!--                android:id="@+id/button_review_order"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="60dp"-->
+<!--                android:layout_marginLeft="50dp"-->
+<!--                android:layout_marginRight="50dp"-->
+<!--                android:textSize="18sp"-->
+<!--                android:background="#F5DEB3"-->
+<!--                android:text="Order" />-->
+
         </LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>
-</android.support.design.widget.CoordinatorLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/lightGrey"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/button_review_order"
+            android:layout_below="@+id/total_checkout"
+            android:background="#F5DEB3"
+            android:textSize="18dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order" />
+
+        <TextView
+            android:id="@+id/total_checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:textColor="@color/colorTrueState"
+            android:text="Total"
+            android:textSize="20sp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/total_amount_checkout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignTop="@+id/total_checkout"
+            android:textColor="@color/colorTrueState"
+            android:textSize="20sp"
+            android:text="0"
+            android:textStyle="bold|italic" />
+
+    </RelativeLayout>
+</RelativeLayout>

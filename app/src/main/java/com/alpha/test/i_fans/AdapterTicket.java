@@ -13,9 +13,15 @@ import java.util.ArrayList;
 
 public class AdapterTicket extends RecyclerView.Adapter<AdapterTicket.TicketViewHolder> {
     private ArrayList<Tiket> dataList;
+    private TicketListener mListener;
 
-    public AdapterTicket( ArrayList<Tiket> dataList) {
+    public interface TicketListener { // create an interface
+        void onChangeButtonTicket(Tiket tiket,int jumlah); // create callback function
+    }
+
+    public AdapterTicket( ArrayList<Tiket> dataList,TicketListener mListener) {
         this.dataList = dataList;
+        this.mListener = mListener;
     }
 
     public class TicketViewHolder extends RecyclerView.ViewHolder{
@@ -26,7 +32,7 @@ public class AdapterTicket extends RecyclerView.Adapter<AdapterTicket.TicketView
             super(itemView);
             kategoriTiket = itemView.findViewById(R.id.txt_kategori_tiket);
             hargaTiket = itemView.findViewById(R.id.txt_harga_tiket);
-//            rb0seat = itemView.findViewById(R.id.radioButton_0seat);
+            rb0seat = itemView.findViewById(R.id.radioButton_0seat);
             rb1seat = itemView.findViewById(R.id.radioButton_1seat);
             rb2seat = itemView.findViewById(R.id.radioButton_2seat);
             rgseat = itemView.findViewById(R.id.radioGrup_seat);
@@ -40,19 +46,19 @@ public class AdapterTicket extends RecyclerView.Adapter<AdapterTicket.TicketView
         holder.rgseat.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                int jumlahtiket=0;
                 switch (i){
-//                    case R.id.radioButton_0seat:
-//                        jumlahtiket = 0;
-//                        break;
+                    case R.id.radioButton_0seat:
+                        mListener.onChangeButtonTicket(dataList.get(position),0);
+                        break;
                     case R.id.radioButton_1seat:
-                        jumlahtiket = 1;
+//                        dataList.get(position).setJumlahTiket("1");
+                        mListener.onChangeButtonTicket(dataList.get(position),1);
                         break;
                     case R.id.radioButton_2seat:
-                        jumlahtiket = 2;
+//                        dataList.get(position).setJumlahTiket("2");
+                        mListener.onChangeButtonTicket(dataList.get(position),2);
                         break;
                 }
-                System.out.println(dataList.get(position).getId().toString() +" : "+holder.kategoriTiket.getText().toString() +" - "+ jumlahtiket);
             }
         });
     }

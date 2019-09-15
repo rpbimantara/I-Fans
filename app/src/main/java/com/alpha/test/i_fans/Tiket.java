@@ -2,14 +2,15 @@ package com.alpha.test.i_fans;
 
 public class Tiket {
 
-    private String id,kategoriTiket,hargaTiket,jumlahTiket,sisaTiket;
+    private String id,kategoriTiket,hargaTiket,jumlahTiket,sisaTiket,product_id;
 
-    public Tiket(String id,String kategoriTiket, String hargaTiket, String jumlahTiket,String sisaTiket) {
+    public Tiket(String id,String kategoriTiket, String hargaTiket, String jumlahTiket,String sisaTiket,String product_id) {
         this.id = id;
         this.kategoriTiket = kategoriTiket;
         this.hargaTiket = hargaTiket;
         this.jumlahTiket = jumlahTiket;
         this.sisaTiket = sisaTiket;
+        this.product_id = product_id;
     }
 
     public String getId() {
@@ -33,7 +34,7 @@ public class Tiket {
     }
 
     public void setHargaTiket(String hargaTiket) {
-        hargaTiket = hargaTiket;
+        this.hargaTiket = hargaTiket;
     }
 
     public String getJumlahTiket() {
@@ -41,7 +42,7 @@ public class Tiket {
     }
 
     public void setJumlahTiket(String jumlahTiket) {
-        jumlahTiket = jumlahTiket;
+        this.jumlahTiket = jumlahTiket;
     }
 
     public String getSisaTiket() {
@@ -50,5 +51,25 @@ public class Tiket {
 
     public void setSisaTiket(String sisaTiket) {
         this.sisaTiket = sisaTiket;
+    }
+
+    public String getProduct_id() {
+        return product_id;
+    }
+
+    public void setProduct_id(String product_id) {
+        this.product_id = product_id;
+    }
+
+    @Override
+    public String toString() {
+        return "Tiket{" +
+                "id='" + id + '\'' +
+                ", kategoriTiket='" + kategoriTiket + '\'' +
+                ", hargaTiket='" + hargaTiket + '\'' +
+                ", jumlahTiket='" + jumlahTiket + '\'' +
+                ", sisaTiket='" + sisaTiket + '\'' +
+                ", product_id='" + product_id + '\'' +
+                '}';
     }
 }

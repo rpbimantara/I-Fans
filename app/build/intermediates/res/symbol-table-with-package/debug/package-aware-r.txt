@@ -1410,6 +1410,7 @@ id line_up_position
 id linearLayout
 id linearLayout_klasemen
 id linearLayout_now
+id linearLayout_pik
 id linearLayout_team
 id link_login
 id link_signup
@@ -1496,6 +1497,7 @@ id progress_horizontal
 id quantityView_default
 id qv_et_change_qty
 id radio
+id radioButton_0seat
 id radioButton_1seat
 id radioButton_2seat
 id radioButton_female
