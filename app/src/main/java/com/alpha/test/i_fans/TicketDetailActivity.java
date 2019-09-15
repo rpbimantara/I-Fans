@@ -70,7 +70,7 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
         txtNamatiket = (TextView) findViewById(R.id.txt_nama_ticket);
         txtTanggaltiket = (TextView) findViewById(R.id.txt_tgl_ticket);
         txtWaktutiket = (TextView) findViewById(R.id.txt_waktu_ticket);
-        txtTotalAmount = findViewById(R.id.total_amount_checkout);
+        txtTotalAmount = findViewById(R.id.total_amount_ticket);
         imageTiket = (ImageView) findViewById(R.id.ticket_imageView);
         btn_order = findViewById(R.id.button_review_order);
         progressDialog = new ProgressDialog(this);

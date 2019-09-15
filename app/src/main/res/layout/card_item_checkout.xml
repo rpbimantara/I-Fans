@@ -99,7 +99,8 @@
                 app:qv_removeButtonBackground="#F5DEB3"
                 app:qv_removeButtonText="-"
                 app:qv_removeButtonTextColor="@color/colorWhite"
-                app:qv_quantityTextColor="@color/colorPrimaryDark"/>
+                app:qv_quantityTextColor="@color/colorPrimaryDark"
+                app:qv_quantityDialog="false"/>
 
             <Button
                 android:id="@+id/button_delete_checkout"

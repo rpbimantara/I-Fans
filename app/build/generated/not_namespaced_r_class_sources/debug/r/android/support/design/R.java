@@ -1141,18 +1141,18 @@ public final class R {
         public static final int title_template = 0x7f0a01d4;
         public static final int top = 0x7f0a01d6;
         public static final int topPanel = 0x7f0a01d7;
-        public static final int touch_outside = 0x7f0a01da;
-        public static final int transition_current_scene = 0x7f0a01db;
-        public static final int transition_layout_save = 0x7f0a01dc;
-        public static final int transition_position = 0x7f0a01dd;
-        public static final int transition_scene_layoutid_cache = 0x7f0a01de;
-        public static final int transition_transform = 0x7f0a01df;
-        public static final int uniform = 0x7f0a021f;
-        public static final int unlabeled = 0x7f0a0220;
-        public static final int up = 0x7f0a0221;
-        public static final int view_offset_helper = 0x7f0a0223;
-        public static final int visible = 0x7f0a022c;
-        public static final int wrap_content = 0x7f0a0230;
+        public static final int touch_outside = 0x7f0a01db;
+        public static final int transition_current_scene = 0x7f0a01dc;
+        public static final int transition_layout_save = 0x7f0a01dd;
+        public static final int transition_position = 0x7f0a01de;
+        public static final int transition_scene_layoutid_cache = 0x7f0a01df;
+        public static final int transition_transform = 0x7f0a01e0;
+        public static final int uniform = 0x7f0a0220;
+        public static final int unlabeled = 0x7f0a0221;
+        public static final int up = 0x7f0a0222;
+        public static final int view_offset_helper = 0x7f0a0224;
+        public static final int visible = 0x7f0a022d;
+        public static final int wrap_content = 0x7f0a0231;
     }
     public static final class integer {
         private integer() {}

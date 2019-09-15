@@ -111,11 +111,11 @@ public final class R {
         public static final int text2 = 0x7f0a01ac;
         public static final int time = 0x7f0a01d0;
         public static final int title = 0x7f0a01d2;
-        public static final int transition_current_scene = 0x7f0a01db;
-        public static final int transition_layout_save = 0x7f0a01dc;
-        public static final int transition_position = 0x7f0a01dd;
-        public static final int transition_scene_layoutid_cache = 0x7f0a01de;
-        public static final int transition_transform = 0x7f0a01df;
+        public static final int transition_current_scene = 0x7f0a01dc;
+        public static final int transition_layout_save = 0x7f0a01dd;
+        public static final int transition_position = 0x7f0a01de;
+        public static final int transition_scene_layoutid_cache = 0x7f0a01df;
+        public static final int transition_transform = 0x7f0a01e0;
     }
     public static final class integer {
         private integer() {}

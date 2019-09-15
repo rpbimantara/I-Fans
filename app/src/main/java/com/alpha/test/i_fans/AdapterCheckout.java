@@ -20,18 +20,22 @@ import me.himanshusoni.quantityview.QuantityView;
 
 public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.CheckoutViewHolder>{
     private ArrayList<Checkout> dataList;
-    private InterfaceCheckout listener;
+    private CheckoutListener mListener;
 
-    public AdapterCheckout(ArrayList<Checkout> dataList, InterfaceCheckout listener) {
+    public interface CheckoutListener { // create an interface
+        void CheckoutCallback(Checkout checkout, Integer jumlah,String mode); // create callback function
+        void CheckoutDeleted(Checkout checkout); // create callback function
+    }
+
+    public AdapterCheckout(ArrayList<Checkout> dataList, CheckoutListener mListener) {
         this.dataList = dataList;
-        this.listener = listener;
+        this.mListener = mListener;
     }
 
 
     public class CheckoutViewHolder extends RecyclerView.ViewHolder{
         public TextView txt_name,txt_harga;
-        public EditText et_qty;
-        public Button btn_min,btn_plus,btn_delete;
+        public Button btn_delete;
         public QuantityView quantityView;
         public ImageView img_item;
         public CheckoutViewHolder(View itemView) {
@@ -39,10 +43,7 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
             txt_name = itemView.findViewById(R.id.txt_checkout_item);
             txt_harga = itemView.findViewById(R.id.txt_checkout_harga);
             quantityView = itemView.findViewById(R.id.quantityView_default);
-//            et_qty = itemView.findViewById(R.id.editText_qty);
             img_item = itemView.findViewById(R.id.checkout_image);
-//            btn_min = itemView.findViewById(R.id.button_minus);
-//            btn_plus = itemView.findViewById(R.id.button_plus);
             btn_delete = itemView.findViewById(R.id.button_delete_checkout);
         }
     }
@@ -51,7 +52,6 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
     @Override
     public CheckoutViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_checkout,parent,false);
-        listener.AddCheckout(dataList);
         return new  CheckoutViewHolder(view);
     }
 
@@ -60,11 +60,9 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
         holder.txt_name.setText(dataList.get(position).getNama());
         holder.txt_harga.setText(dataList.get(position).getHarga());
         holder.img_item.setImageBitmap(StringToBitMap(dataList.get(position).getImage()));
+        mListener.CheckoutCallback(dataList.get(position),Integer.valueOf(dataList.get(position).getQty()),"load");
         if (dataList.get(position).type.equalsIgnoreCase("lelang")){
             holder.quantityView.setVisibility(View.INVISIBLE);
-//           holder.btn_plus.setVisibility(View.INVISIBLE);
-//           holder.btn_min.setVisibility(View.INVISIBLE);
-//           holder.et_qty.setVisibility(View.INVISIBLE);
         }else{
             holder.quantityView.setVisibility(View.VISIBLE);
             if (dataList.get(position).getType().equalsIgnoreCase("service")){
@@ -73,11 +71,25 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
                 holder.quantityView.setMaxQuantity(Integer.valueOf(dataList.get(position).getStock()));
             }
             holder.quantityView.setQuantity(Integer.valueOf(dataList.get(position).getQty()));
-//            holder.et_qty.setText(dataList.get(position).getQty());
-//            holder.btn_plus.setVisibility(View.VISIBLE);
-//            holder.btn_min.setVisibility(View.VISIBLE);
 
         }
+        holder.btn_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.CheckoutDeleted(dataList.get(position));
+            }
+        });
+        holder.quantityView.setOnQuantityChangeListener(new QuantityView.OnQuantityChangeListener() {
+            @Override
+            public void onQuantityChanged(int oldQuantity, int newQuantity, boolean programmatically) {
+                mListener.CheckoutCallback(dataList.get(position),holder.quantityView.getQuantity(),"onchange");
+            }
+
+            @Override
+            public void onLimitReached() {
+
+            }
+        });
 //        final Integer qty_awal = Integer.valueOf(dataList.get(position).getQty());
 //        holder.btn_min.setOnClickListener(new View.OnClickListener() {
 //            @Override

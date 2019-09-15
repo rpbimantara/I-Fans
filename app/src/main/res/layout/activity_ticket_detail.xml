@@ -209,7 +209,7 @@
             android:textStyle="bold|italic" />
 
         <TextView
-            android:id="@+id/total_amount_checkout"
+            android:id="@+id/total_amount_ticket"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"

@@ -1668,6 +1668,7 @@ id toolbar
 id top
 id topPanel
 id total_amount_checkout
+id total_amount_ticket
 id total_checkout
 id touch_outside
 id transition_current_scene
