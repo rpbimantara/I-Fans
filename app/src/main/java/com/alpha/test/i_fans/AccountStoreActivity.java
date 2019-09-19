@@ -133,10 +133,11 @@ public class AccountStoreActivity extends AppCompatActivity {
                                     OdooRecord[] records = result.getRecords();
                                     for (OdooRecord record : records) {
                                         String code = " ";
-                                        if (!record.getString("default_code").equalsIgnoreCase("false") || !record.getString("default_code").equalsIgnoreCase(" ")){
+                                        if (record.getString("default_code").equalsIgnoreCase("false") || record.getString("default_code").equalsIgnoreCase("")){
+                                            code = "";
+                                        }else{
                                             code = "["+record.getString("default_code") +"] ";
                                         }
-
                                         ArrayListStore.add(new Store(
                                                 String.valueOf(record.getInt("id")),
                                                 record.getString("image_medium"),

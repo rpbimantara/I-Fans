@@ -3,6 +3,7 @@ package com.alpha.test.i_fans;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
@@ -18,11 +19,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Arrays;
+import java.util.Locale;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
 import oogbox.api.odoo.client.helper.OdooErrorException;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
@@ -36,6 +46,12 @@ public class StoreAddActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     Button savebtn;
     OdooClient client;
+    String imageCurrent = "";
+    String description = "No Item Descriptions ";
+    String name = "No Item Descriptions ";
+    String price = "No Item Descriptions ";
+    String stock = "No Item Descriptions ";
+    String state = "create";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +67,11 @@ public class StoreAddActivity extends AppCompatActivity {
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new SaveStoreTask().execute();
+                if (state.equalsIgnoreCase("create")){
+                    new SaveStoreTask().execute();
+                }else{
+
+                }
             }
         });
         etName = findViewById(R.id.editText_namabarangStore);
@@ -66,6 +86,59 @@ public class StoreAddActivity extends AppCompatActivity {
                 startActivityForResult(photoPickerIntent, 1);
             }
         });
+        if (!getIntent().getExtras().get("id").toString().equalsIgnoreCase("false")){
+            state = "edit";
+            LoadItem();
+        }
+    }
+
+    public void LoadItem(){
+        client = new OdooClient.Builder(getApplicationContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        ODomain domain = new ODomain();
+                        domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+
+                        OdooFields fields = new OdooFields();
+                        fields.addAll("id","image_medium","name", "type","default_code","cated_ig","description_sale","list_price");
+
+                        int offset = 0;
+                        int limit = 80;
+
+                        String sorting = "id ASC";
+
+                        client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                OdooRecord[] records = result.getRecords();
+                                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+                                DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+
+                                symbols.setGroupingSeparator('.');
+                                formatter.setDecimalFormatSymbols(symbols);
+                                for (OdooRecord record : records) {
+                                    imageCurrent = record.getString("image_medium");
+                                    name = record.getString("name");
+                                    price = String.valueOf(formatter.format(record.getFloat("list_price")));
+//                                    stock = record.getString("name");
+                                    if (!record.getString("description_sale").equalsIgnoreCase("false"))
+                                    {
+                                        description = record.getString("description_sale");
+                                    }
+                                }
+                                imageUser.setImageBitmap(StringToBitMap(imageCurrent));
+                                etName.setText(name);
+                                etPrice.setText(price);
+//                                etStock.setText(stock);
+                                etdeskripsi.setText(description);
+                            }
+                        });
+                    }
+                }).build();
     }
 
     @Override
@@ -85,6 +158,17 @@ public class StoreAddActivity extends AppCompatActivity {
         }
     }
 
+    public Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }catch(Exception e){
+            e.getMessage();
+            return null;
+        }
+    }
+
     public String getBase64ImageString(Bitmap photo) {
         String imgString;
         if(photo != null) {
@@ -100,6 +184,8 @@ public class StoreAddActivity extends AppCompatActivity {
 
         return imgString;
     }
+
+
 
     public class SaveStoreTask extends AsyncTask<Void,Void,Void>{
         @Override

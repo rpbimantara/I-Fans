@@ -1,6 +1,7 @@
 package com.alpha.test.i_fans;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
@@ -15,6 +16,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,7 @@ import com.google.gson.Gson;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Locale;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
@@ -37,9 +40,10 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 public class StoreDetailActivity extends AppCompatActivity {
-    TextView txtNamaBarang,txtHargaBarang,txtDeskripsi;
+    TextView txtNamaBarang,txtHargaBarang,txtDeskripsi,txtOwner;
+    LinearLayout lnOrder,lnEdit;
     SharedPrefManager sharedPrefManager;
-    Button btn_checkout,btn_buy_now;
+    Button btn_checkout,btn_buy_now,btn_edit_store;
     ImageView imageStore;
     ArrayList<Variant> ArrayListVariant;
     RecyclerView rv;
@@ -51,6 +55,7 @@ public class StoreDetailActivity extends AppCompatActivity {
     String imageCurrent = "";
     String variant = "Standard";
     String description = "No Item Descriptions ";
+    String ownertgl = "";
 
 
     @Override
@@ -65,8 +70,12 @@ public class StoreDetailActivity extends AppCompatActivity {
         txtNamaBarang = findViewById(R.id.textView_nama_barang);
         txtHargaBarang = findViewById(R.id.textView_harga_barang);
         txtDeskripsi = findViewById(R.id.textView_deskripsi);
+        txtOwner = findViewById(R.id.textView_tgl_detail_store);
         btn_checkout = findViewById(R.id.button_checkout_store);
         btn_buy_now = findViewById(R.id.button_buy_now_store);
+        btn_edit_store = findViewById(R.id.button_edit_store);
+        lnOrder = findViewById(R.id.linearLayout_order_store);
+        lnEdit = findViewById(R.id.linearLayout_edit_store);
         rv = findViewById(R.id.rv_recycler_view_store_detail);
         llm = new LinearLayoutManager(this);
         adapter = new AdapterStoreVariant(ArrayListVariant);
@@ -89,6 +98,15 @@ public class StoreDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+            }
+        });
+        btn_edit_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+               Intent fabIntent = new Intent(StoreDetailActivity.this,StoreAddActivity.class);
+               fabIntent.putExtra("id",Integer.valueOf(getIntent().getExtras().get("id").toString()));
+               startActivity(fabIntent);
             }
         });
     }
@@ -232,8 +250,14 @@ public class StoreDetailActivity extends AppCompatActivity {
                                             variant,
                                             String.valueOf(Math.round(record.getFloat("qty_available"))))
                                     );
+                                    ownertgl = record.getString("ownername") + " - "+ tanggal(record.getString("date"));
+                                    if (record.getInt("owner") == sharedPrefManager.getSpIdUser()){
+                                        lnOrder.setVisibility(View.INVISIBLE);
+                                    }else{
+                                        lnEdit.setVisibility(View.INVISIBLE);
+                                    }
                                 }
-
+                                txtOwner.setText(ownertgl);
                                 imageStore.setImageBitmap(StringToBitMap(imageCurrent));
                                 txtDeskripsi.setText(description);
                                 adapter = new AdapterStoreVariant(ArrayListVariant);
@@ -243,6 +267,16 @@ public class StoreDetailActivity extends AppCompatActivity {
                         });
                     }
                 }).build();
+    }
+
+    public String tanggal(String tgl){
+        try {
+            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
+        }catch (Exception ex){
+            System.out.println("Error Convert Tanggal: " + ex);
+        }
+
+        return tgl;
     }
 
     public Bitmap StringToBitMap(String encodedString){

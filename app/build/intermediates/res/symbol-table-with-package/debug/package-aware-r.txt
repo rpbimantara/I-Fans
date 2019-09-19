@@ -1148,6 +1148,7 @@ drawable ic_checkout
 drawable ic_coin
 drawable ic_defender
 drawable ic_delete
+drawable ic_donate
 drawable ic_edit
 drawable ic_email
 drawable ic_forward
@@ -1268,6 +1269,7 @@ id button_bin
 id button_buy_now_store
 id button_checkout_store
 id button_delete_checkout
+id button_edit_store
 id button_paid
 id button_review_order
 id button_save_account
@@ -1321,6 +1323,7 @@ id detail_toolbar
 id dimensions
 id direct
 id disableHome
+id donasi
 id editText_BIN
 id editText_Deskripsi
 id editText_Deskripsi_store
@@ -1408,8 +1411,10 @@ id line_up_name
 id line_up_number
 id line_up_position
 id linearLayout
+id linearLayout_edit_store
 id linearLayout_klasemen
 id linearLayout_now
+id linearLayout_order_store
 id linearLayout_pik
 id linearLayout_team
 id link_login
@@ -1445,6 +1450,7 @@ id normal
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id notifikasi
 id off
 id on
 id onTouch
@@ -1650,6 +1656,7 @@ id textView_namateam_summary
 id textView_stadionharini
 id textView_supporter
 id textView_tgl_detail_berita
+id textView_tgl_detail_store
 id textView_tglharini
 id text_input_password_toggle
 id textinput_counter

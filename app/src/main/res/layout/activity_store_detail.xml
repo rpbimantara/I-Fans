@@ -113,16 +113,16 @@
 
                 </android.support.v7.widget.RecyclerView>
                 <TextView
-                    android:id="@+id/textView_tgl_detail_berita"
+                    android:id="@+id/textView_tgl_detail_store"
                     android:layout_width="match_parent"
                     android:layout_margin="10dp"
                     android:layout_height="wrap_content"
                     android:gravity="center_vertical"
-                    android:text="20 OKTOBER 2018"
                     android:textColor="@color/colorTrueState"
                     android:textSize="12sp"/>
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/linearLayout_order_store"
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -143,6 +143,20 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Order" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearLayout_edit_store"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/button_edit_store"
+                    android:background="#F5DEB3"
+                    android:textSize="18dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Edit Item" />
             </LinearLayout>
         </LinearLayout>
 

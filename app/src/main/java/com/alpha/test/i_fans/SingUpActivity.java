@@ -80,7 +80,7 @@ public class SingUpActivity extends AppCompatActivity {
                 password.setError("Password not match with Confirm Password");
                 confirmPassword.setError("Password not match with Confirm Password");
                 progressDialog.dismiss();
-            }else if(!cekemail.matches(emailPattern) && cekemail.length()<3){
+            }else if(!cekemail.matches(emailPattern)){
                 email.setError("Invalid E-Mail");
                 progressDialog.dismiss();
             }else {
@@ -101,7 +101,7 @@ public class SingUpActivity extends AppCompatActivity {
                         Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
                         System.out.println(result.toString());
                         progressDialog.dismiss();
-                        return;
+
                     }
 
                     @Override

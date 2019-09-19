@@ -45,7 +45,7 @@
                         android:id="@+id/image_fab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@+id/txt_namaAccount"
+                        android:layout_alignEnd="@+id/image_UserAccount"
                         android:layout_centerVertical="true"
                         app:fabSize="mini"
                         app:useCompatPadding="true" />

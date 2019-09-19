@@ -13,9 +13,21 @@
         android:iconTint="@color/colorTrueState"
         app:showAsAction="always"/>
 
+    <item android:title="Donate"
+        android:id="@+id/donasi"
+        android:icon="@drawable/ic_donate"
+        android:iconTint="@color/colorTrueState"
+        app:showAsAction="always"/>
+
+    <item android:title="Notification"
+        android:id="@+id/notifikasi"
+        android:icon="@drawable/ic_add"
+        android:iconTint="@color/colorTrueState"
+        app:showAsAction="withText"/>
+
     <item android:title="Logout"
         android:id="@+id/logout"
         android:icon="@drawable/ic_logout"
         android:iconTint="@color/colorTrueState"
-        app:showAsAction="always"/>
+        app:showAsAction="withText"/>
 </menu>

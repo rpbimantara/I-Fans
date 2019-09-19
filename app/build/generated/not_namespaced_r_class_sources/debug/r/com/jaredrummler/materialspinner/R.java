@@ -42,20 +42,20 @@ public final class R {
     public static final class drawable {
         private drawable() {}
 
-        public static final int ms__arrow = 0x7f08009d;
-        public static final int ms__drawable = 0x7f08009e;
-        public static final int ms__drop_down_shadow = 0x7f08009f;
-        public static final int ms__menu_down = 0x7f0800a0;
-        public static final int ms__selector = 0x7f0800a1;
-        public static final int ms__shadow_background = 0x7f0800a2;
+        public static final int ms__arrow = 0x7f08009e;
+        public static final int ms__drawable = 0x7f08009f;
+        public static final int ms__drop_down_shadow = 0x7f0800a0;
+        public static final int ms__menu_down = 0x7f0800a1;
+        public static final int ms__selector = 0x7f0800a2;
+        public static final int ms__shadow_background = 0x7f0800a3;
     }
     public static final class id {
         private id() {}
 
-        public static final int fill_parent = 0x7f0a0099;
-        public static final int match_parent = 0x7f0a00e9;
-        public static final int tv_tinted_spinner = 0x7f0a01e1;
-        public static final int wrap_content = 0x7f0a0231;
+        public static final int fill_parent = 0x7f0a009b;
+        public static final int match_parent = 0x7f0a00ed;
+        public static final int tv_tinted_spinner = 0x7f0a01e7;
+        public static final int wrap_content = 0x7f0a0237;
     }
     public static final class layout {
         private layout() {}

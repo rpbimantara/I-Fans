@@ -92,8 +92,10 @@ public class HomeActivity extends AppCompatActivity {
                     fabIntent = new Intent(HomeActivity.this,AccountEditActivity.class);
                 }else if(sharedPrefManager.getSpFab().equalsIgnoreCase("Store")){
                     fabIntent = new Intent(HomeActivity.this,StoreAddActivity.class);
+                    fabIntent.putExtra("id","false");
                 }else{
                     fabIntent = new Intent(HomeActivity.this,LelangAddActivity.class);
+                    fabIntent.putExtra("id","false");
                 }
                 startActivity(fabIntent);
             }
