@@ -1,11 +1,14 @@
 package com.alpha.test.i_fans;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,6 +30,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 public class LelangDetailActivity extends AppCompatActivity {
     TextView txtNamaBarang,txtBid,txtDeskripsi,txtInfoDetail;
+    Button btnEdit;
     ImageView imageDetail;
     OdooClient client;
     SharedPrefManager sharedPrefManager;
@@ -42,10 +46,20 @@ public class LelangDetailActivity extends AppCompatActivity {
         sharedPrefManager = new SharedPrefManager(this);
         imageDetail = findViewById(R.id.lelang_detail_imageView);
         txtNamaBarang = findViewById(R.id.textView_nama_barang_lelang);
+        btnEdit = findViewById(R.id.button_edit_lelang);
         txtBid = findViewById(R.id.textView_bid_detail_lelang);
         txtDeskripsi = findViewById(R.id.textView_deskripsi_lelang);
         txtInfoDetail = findViewById(R.id.textView_info_detail_lelang);
         LoadData();
+        btnEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent fabIntent = new Intent(LelangDetailActivity.this,LelangAddActivity.class);
+                fabIntent.putExtra("id",Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                startActivity(fabIntent);
+            }
+        });
+
     }
     public void LoadData(){
         client = new OdooClient.Builder(getApplicationContext())
@@ -83,6 +97,11 @@ public class LelangDetailActivity extends AppCompatActivity {
                                             + "INC : "
                                             + String.valueOf(Math.round(record.getFloat("inc")))
                                     );
+                                    if (record.getInt("create_uid") == sharedPrefManager.getSpIdUser()){
+                                        btnEdit.setVisibility(View.INVISIBLE);
+                                    }else{
+                                        btnEdit.setVisibility(View.INVISIBLE);
+                                    }
                                     txtDeskripsi.setText("Deskripsi : \n\n" + "-");
                                     txtInfoDetail.setText(record.getString("create_uid")+" - "+tanggal(record.getString("due_date")));
                                 }

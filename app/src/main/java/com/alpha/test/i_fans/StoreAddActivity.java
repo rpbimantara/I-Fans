@@ -206,7 +206,7 @@ public class StoreAddActivity extends AppCompatActivity {
                             values.put("type", "product");
                             values.put("list_price", etPrice.getText().toString());
 //                            values.put("stock", etStock.getText().toString());
-                            values.put("descripguatetion_sale", etdeskripsi.getText().toString());
+                            values.put("description_sale", etdeskripsi.getText().toString());
                             values.put("create_uid", sharedPrefManager.getSpIdUser());
 
                             client.create("product.template", values, new IOdooResponse() {

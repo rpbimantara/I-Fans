@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
@@ -22,12 +23,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
 import oogbox.api.odoo.client.helper.OdooErrorException;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
@@ -42,6 +51,14 @@ public class LelangAddActivity extends AppCompatActivity {
     ProgressDialog progressDialog;
     Button savebtn;
     OdooClient client;
+    String imageCurrent = "";
+    String txtName = "";
+    String txtOb = "";
+    String txtInc ="";
+    String txtBin = "";
+    String Duedate ="";
+    String txtdeskripsi = "";
+    String state = "create";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +74,11 @@ public class LelangAddActivity extends AppCompatActivity {
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               new SaveLelangTask().execute();
+                if (state.equalsIgnoreCase("create")){
+                    new SaveLelangTask().execute();
+                }else{
+
+                }
             }
         });
         etName = findViewById(R.id.editText_namabarangLelang);
@@ -93,6 +114,11 @@ public class LelangAddActivity extends AppCompatActivity {
                 startActivityForResult(photoPickerIntent, 1);
             }
         });
+        if (!getIntent().getExtras().get("id").toString().equalsIgnoreCase("false")){
+            state = "edit";
+            etOb.setEnabled(false);
+            LoadItem();
+        }
     }
 
     @Override
@@ -125,16 +151,18 @@ public class LelangAddActivity extends AppCompatActivity {
                             progressDialog.setMessage("Saving.....");
                             progressDialog.show();
                             OdooValues values = new OdooValues();
-                            values.put("foto_lelang", getBase64ImageString(currentImage));
-                            values.put("nama_barang", etName.getText().toString());
+                            values.put("image_medium", getBase64ImageString(currentImage));
+                            values.put("name", etName.getText().toString());
                             values.put("ob", etOb.getText().toString());
                             values.put("inc", etInc.getText().toString());
                             values.put("binow", etBin.getText().toString());
-                            values.put("deskripsi_barang", etdeskripsi.getText().toString());
+                            values.put("purchase_ok", false);
+                            values.put("type", "lelang");
+                            values.put("description_sale", etdeskripsi.getText().toString());
                             values.put("due_date", txtDuedate.getText().toString());
                             values.put("create_uid", sharedPrefManager.getSpIdUser());
 
-                            client.create("persebaya.lelang", values, new IOdooResponse() {
+                            client.create("product.template", values, new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
                                     // Success response
@@ -152,6 +180,82 @@ public class LelangAddActivity extends AppCompatActivity {
                             });
                         }
                     }).build();
+            return null;
+        }
+    }
+
+    public void EditLelang(){
+
+    }
+
+    public void LoadItem(){
+        client = new OdooClient.Builder(getApplicationContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        ODomain domain = new ODomain();
+                        domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+
+                        OdooFields fields = new OdooFields();
+                        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
+
+                        int offset = 0;
+                        int limit = 80;
+
+                        String sorting = "id ASC";
+
+                        client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                OdooRecord[] records = result.getRecords();
+                                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+                                DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+
+                                symbols.setGroupingSeparator('.');
+                                formatter.setDecimalFormatSymbols(symbols);
+                                for (OdooRecord record : records) {
+                                    txtName = record.getString("name");
+                                    imageCurrent = record.getString("image_medium");
+                                    txtOb = String.valueOf(Math.round(record.getFloat("ob")));
+                                    txtInc = String.valueOf(Math.round(record.getFloat("inc")));
+                                    txtBin = String.valueOf(Math.round(record.getFloat("binow")));
+                                    Duedate = tanggal(record.getString("due_date"));
+                                    txtdeskripsi = record.getString("create_uid");
+                                }
+                                imageUser.setImageBitmap(StringToBitMap(imageCurrent));
+                                etName.setText(txtName);
+                                etOb.setText(txtOb);
+                                etInc.setText(txtInc);
+                                etBin.setText(txtBin);
+                                txtDuedate.setText(Duedate);
+                                etdeskripsi.setText(txtdeskripsi);
+                            }
+                        });
+                    }
+                }).build();
+    }
+
+
+    public String tanggal(String tgl){
+        try {
+            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
+        }catch (Exception ex){
+            System.out.println("Error Convert Tanggal: " + ex);
+        }
+
+        return tgl;
+    }
+
+    public Bitmap StringToBitMap(String encodedString){
+        try{
+            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
+            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
+            return bitmap;
+        }catch(Exception e){
+            e.getMessage();
             return null;
         }
     }
