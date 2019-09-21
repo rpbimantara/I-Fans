@@ -15,8 +15,10 @@ import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 
-public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.JadwalViewHolder> {
+public class AdapterJadwal extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ArrayList<Jadwal> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterJadwal(ArrayList<Jadwal> dataList) {
         this.dataList = dataList;
@@ -39,26 +41,44 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.JadwalView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull JadwalViewHolder holder, int position) {
-        holder.txtNamaTeam.setText(dataList.get(position).getNamateam());
-        holder.txtNamaLiga.setText(dataList.get(position).getNamaliga());
-        holder.txtTglMain.setText(dataList.get(position).getTglmain());
-        holder.txtNamaStadion.setText(dataList.get(position).getNamastadion());
-        holder.txtWaktuMain.setText(dataList.get(position).getWaktumain());
-        holder.imageClub.setImageBitmap(StringToBitMap(dataList.get(position).getFototeam()));
-        holder.imageStatus.setImageResource(dataList.get(position).getStatusimage());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            JadwalViewHolder Tholder = ((JadwalViewHolder) viewHolder);
+            Tholder.txtNamaTeam.setText(dataList.get(position).getNamateam());
+            Tholder.txtNamaLiga.setText(dataList.get(position).getNamaliga());
+            Tholder.txtTglMain.setText(dataList.get(position).getTglmain());
+            Tholder.txtNamaStadion.setText(dataList.get(position).getNamastadion());
+            Tholder.txtWaktuMain.setText(dataList.get(position).getWaktumain());
+            Tholder.imageClub.setImageBitmap(StringToBitMap(dataList.get(position).getFototeam()));
+            Tholder.imageStatus.setImageResource(dataList.get(position).getStatusimage());
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
+        }
     }
 
     @NonNull
     @Override
-    public JadwalViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_jadwal,parent,false);
-        return new JadwalViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new JadwalViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_jadwal, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","This club doesn't have schedule yet!");
+        }
     }
 
     @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+    @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
 
 }

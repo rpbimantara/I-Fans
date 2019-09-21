@@ -35,14 +35,15 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 import static com.alpha.test.i_fans.CommonUtils.changeTime;
 
-public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangViewHolder> {
+public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<lelang> dataList;
     private Context context;
     CountDownTimer countDownTimer;
     SharedPrefManager sharedPrefManager;
     OdooClient client;
-
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
     private InterfaceLelang listener;
 
     public AdapterLelang(ArrayList<lelang> dataList,Context context, InterfaceLelang listener) {
@@ -68,134 +69,153 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
     }
 
     @Override
-    public void onBindViewHolder(@NonNull final LelangViewHolder holder, final int position) {
-        if (dataList.get(position).getPemiliklelang().equalsIgnoreCase(String.valueOf(sharedPrefManager.getSpIdUser()))){
-            holder.btnBidLelang.setEnabled(false);
-            holder.btnBinLelang.setEnabled(false);
-        }
-        holder.txtNamaLelang.setText(dataList.get(position).getNamalelang());
-        holder.btnBidLelang.setText(dataList.get(position).getBidlelang());
-        holder.btnBinLelang.setText(dataList.get(position).getBinlelang());
-        holder.imageLelang.setImageBitmap(StringToBitMap(dataList.get(position).getLelangimage()));
-        holder.imageLelang.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Intent intent = new Intent(context,LelangDetailActivity.class);
-                intent.putExtra("id",dataList.get(position).getIdlelang());
-                context.startActivity(intent);
-                return false;
-            }
-        });
-        holder.btnBidLelang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Are You Sure to Bid This Item?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID",context,sharedPrefManager);
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
-
-        holder.btnBinLelang.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Do You Want to  Buy It Now?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager);
-                        dialogInterface.dismiss();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        dialogInterface.dismiss();
-                    }
-                });
-                AlertDialog alertDialog = builder.create();
-                alertDialog.show();
-            }
-        });
-
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
-        long milliseconds=0;
-        Date endDate;
-        try {
-            endDate = formatter.parse(dataList.get(position).getWaktulelang());
-            milliseconds = endDate.getTime();
-
-        } catch (ParseException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-        final long[] startTime = {System.currentTimeMillis()};
-        countDownTimer = new CountDownTimer(milliseconds,1000){
-            @Override
-            public void onTick(long millisUntilFinished) {
-                startTime[0] = startTime[0] -1;
-                Long serverUptimeSeconds =
-                        (millisUntilFinished - startTime[0]) / 1000;
-
-                String daysLeft = String.format("%d", serverUptimeSeconds / 86400);
-                String hoursLeft = changeTime(String.format("%d", (serverUptimeSeconds % 86400) / 3600));
-                String minutesLeft = changeTime(String.format("%d", ((serverUptimeSeconds % 86400) % 3600) / 60));
-                String secondsLeft = changeTime(String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60));
-
-                if (Integer.valueOf(daysLeft) > 0){
-                    holder.txtWaktuLelang.setText(daysLeft + " Days " + hoursLeft + " : " + minutesLeft + " : " + secondsLeft);
-                }else{
-                    holder.txtWaktuLelang.setText(hoursLeft + " : " + minutesLeft + " : " + secondsLeft);
-                }
-
-                if (serverUptimeSeconds < 900){
-                    holder.txtWaktuLelang.setTextColor(Color.RED);
-                }
-
-                if (serverUptimeSeconds < 0 ){
-                    onFinish();
-                }
-            }
-
-            @Override
-            public void onFinish() {
-                holder.txtWaktuLelang.setText("Expired");
-                holder.txtWaktuLelang.setTextColor(Color.GREEN);
+    public void onBindViewHolder(@NonNull final RecyclerView.ViewHolder viewHolder, final int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            final LelangViewHolder holder = ((LelangViewHolder) viewHolder);
+            if (dataList.get(position).getPemiliklelang().equalsIgnoreCase(String.valueOf(sharedPrefManager.getSpIdUser()))){
                 holder.btnBidLelang.setEnabled(false);
                 holder.btnBinLelang.setEnabled(false);
             }
-        }.start();
+            holder.txtNamaLelang.setText(dataList.get(position).getNamalelang());
+            holder.btnBidLelang.setText(dataList.get(position).getBidlelang());
+            holder.btnBinLelang.setText(dataList.get(position).getBinlelang());
+            holder.imageLelang.setImageBitmap(StringToBitMap(dataList.get(position).getLelangimage()));
+            holder.imageLelang.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    Intent intent = new Intent(context,LelangDetailActivity.class);
+                    intent.putExtra("id",dataList.get(position).getIdlelang());
+                    context.startActivity(intent);
+                    return false;
+                }
+            });
+            holder.btnBidLelang.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle(R.string.app_name);
+                    builder.setMessage("Are You Sure to Bid This Item?");
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID",context,sharedPrefManager);
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+            });
+
+            holder.btnBinLelang.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle(R.string.app_name);
+                    builder.setMessage("Do You Want to  Buy It Now?");
+                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager);
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+            });
+
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+            long milliseconds=0;
+            Date endDate;
+            try {
+                endDate = formatter.parse(dataList.get(position).getWaktulelang());
+                milliseconds = endDate.getTime();
+
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            final long[] startTime = {System.currentTimeMillis()};
+            countDownTimer = new CountDownTimer(milliseconds,1000){
+                @Override
+                public void onTick(long millisUntilFinished) {
+                    startTime[0] = startTime[0] -1;
+                    Long serverUptimeSeconds =
+                            (millisUntilFinished - startTime[0]) / 1000;
+
+                    String daysLeft = String.format("%d", serverUptimeSeconds / 86400);
+                    String hoursLeft = changeTime(String.format("%d", (serverUptimeSeconds % 86400) / 3600));
+                    String minutesLeft = changeTime(String.format("%d", ((serverUptimeSeconds % 86400) % 3600) / 60));
+                    String secondsLeft = changeTime(String.format("%d", ((serverUptimeSeconds % 86400) % 3600) % 60));
+
+                    if (Integer.valueOf(daysLeft) > 0){
+                        holder.txtWaktuLelang.setText(daysLeft + " Days " + hoursLeft + " : " + minutesLeft + " : " + secondsLeft);
+                    }else{
+                        holder.txtWaktuLelang.setText(hoursLeft + " : " + minutesLeft + " : " + secondsLeft);
+                    }
+
+                    if (serverUptimeSeconds < 900){
+                        holder.txtWaktuLelang.setTextColor(Color.RED);
+                    }
+
+                    if (serverUptimeSeconds < 0 ){
+                        onFinish();
+                    }
+                }
+
+                @Override
+                public void onFinish() {
+                    holder.txtWaktuLelang.setText("Expired");
+                    holder.txtWaktuLelang.setTextColor(Color.GREEN);
+                    holder.btnBidLelang.setEnabled(false);
+                    holder.btnBinLelang.setEnabled(false);
+                }
+            }.start();
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
+        }
+
     }
 
 
 
     @NonNull
     @Override
-    public LelangViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_lelang,parent,false);
-        return new LelangViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new LelangViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_lelang, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","Auction list is empty!");
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
-
 }

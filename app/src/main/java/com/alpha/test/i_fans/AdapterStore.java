@@ -16,9 +16,11 @@ import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 
-public class AdapterStore extends RecyclerView.Adapter<AdapterStore.StoreViewHolder> {
+public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<Store> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterStore(ArrayList<Store> dataList) {
         this.dataList = dataList;
@@ -37,24 +39,41 @@ public class AdapterStore extends RecyclerView.Adapter<AdapterStore.StoreViewHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterStore.StoreViewHolder holder, int position) {
-        holder.txtNamaBarang.setText(dataList.get(position).getNamabarang());
-        holder.txtHargaBarang.setText(dataList.get(position).getHargabarang());
-        holder.imageStore.setImageBitmap(StringToBitMap(dataList.get(position).getImageStore()));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            StoreViewHolder holder = ((StoreViewHolder) viewHolder);
+            holder.txtNamaBarang.setText(dataList.get(position).getNamabarang());
+            holder.txtHargaBarang.setText(dataList.get(position).getHargabarang());
+            holder.imageStore.setImageBitmap(StringToBitMap(dataList.get(position).getImageStore()));
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
+        }
     }
 
 
     @NonNull
     @Override
-    public AdapterStore.StoreViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_store,parent,false);
-        return new StoreViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new StoreViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_store, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","Store list is empty!!");
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
-
-
 }

@@ -15,8 +15,10 @@ import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 
-public class AdapterTicketBarcode extends RecyclerView.Adapter<AdapterTicketBarcode.TiketBarcodeViewHolder> {
+public class AdapterTicketBarcode extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<TicketBarcode> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
     public AdapterTicketBarcode(ArrayList<TicketBarcode> dataList) {
         this.dataList = dataList;
     }
@@ -37,27 +39,45 @@ public class AdapterTicketBarcode extends RecyclerView.Adapter<AdapterTicketBarc
 
 
     @Override
-    public void onBindViewHolder(@NonNull TiketBarcodeViewHolder holder, int position) {
-        holder.event_name.setText(dataList.get(position).event_name);
-        holder.date.setText(dataList.get(position).date_open);
-        holder.ticket_type.setText(dataList.get(position).ticket_type);
-        holder.txtname.setText(dataList.get(position).name);
-        if (!dataList.get(position).barcode.equalsIgnoreCase("false")) {
-            holder.image.setImageBitmap(StringToBitMap(dataList.get(position).barcode));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            TiketBarcodeViewHolder holder = ((TiketBarcodeViewHolder) viewHolder);
+            holder.event_name.setText(dataList.get(position).event_name);
+            holder.date.setText(dataList.get(position).date_open);
+            holder.ticket_type.setText(dataList.get(position).ticket_type);
+            holder.txtname.setText(dataList.get(position).name);
+            if (!dataList.get(position).barcode.equalsIgnoreCase("false")) {
+                holder.image.setImageBitmap(StringToBitMap(dataList.get(position).barcode));
+            }
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
         }
     }
 
     @NonNull
     @Override
-    public TiketBarcodeViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_tiket_barcode,parent,false);
-        return new TiketBarcodeViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new TiketBarcodeViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_tiket_barcode, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","Your ticket is empty!");
+        }
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
-
-
 }

@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -76,54 +77,59 @@ public class ClubScheduleFragment extends Fragment {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            ArrayListJadwal = new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            // Success connection
+            try {
+                ArrayListJadwal = new ArrayList<>();
+                client = new OdooClient.Builder(getContext())
+                        .setHost(sharedPrefManager.getSP_Host_url())
+                        .setSession(sharedPrefManager.getSpSessionId())
+                        .setSynchronizedRequests(false)
+                        .setConnectListener(new OdooConnectListener() {
+                            @Override
+                            public void onConnected(OdooVersion version) {
+                                // Success connection
 
-                            OArguments arguments = new OArguments();
-                            arguments.add(getActivity().getIntent().getStringExtra("id"));
-                            arguments.add(sharedPrefManager.getSPIdLiga());
-                            arguments.add(Arrays.asList("akan","tunda","valid","main"));
-                            client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    // response
-                                    OdooRecord[] Records = result.getRecords();
-                                    for (final OdooRecord record : Records) {
-                                        String tgl = tanggal(record.getString("date").substring(0,10));
-                                        String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
-                                        Integer status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
-                                        if (record.getBoolean("is_home") == false){
-                                            status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
-                                        }else {
-                                            status = getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName());
+                                OArguments arguments = new OArguments();
+                                arguments.add(getActivity().getIntent().getStringExtra("id"));
+                                arguments.add(sharedPrefManager.getSPIdLiga());
+                                arguments.add(Arrays.asList("akan","tunda","valid","main"));
+                                client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
+                                    @Override
+                                    public void onResult(OdooResult result) {
+                                        // response
+                                        OdooRecord[] Records = result.getRecords();
+                                        for (final OdooRecord record : Records) {
+                                            String tgl = tanggal(record.getString("date").substring(0,10));
+                                            String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
+                                            Integer status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
+                                            if (record.getBoolean("is_home") == false){
+                                                status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
+                                            }else {
+                                                status = getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName());
+                                            }
+                                            ArrayListJadwal.add(new Jadwal(
+                                                    record.getString("nama_club"),
+                                                    record.getString("foto_club"),
+                                                    status,
+                                                    record.getString("liga_id"),
+                                                    tgl,
+                                                    record.getString("stadion")
+                                                    , waktu,
+                                                    String.valueOf(record.getInt("id")),
+                                                    record.getString("status_jadwal")));
                                         }
-                                        ArrayListJadwal.add(new Jadwal(
-                                                record.getString("nama_club"),
-                                                record.getString("foto_club"),
-                                                status,
-                                                record.getString("liga_id"),
-                                                tgl,
-                                                record.getString("stadion")
-                                                , waktu,
-                                                String.valueOf(record.getInt("id")),
-                                                record.getString("status_jadwal")));
+                                        adapter = new AdapterJadwal(ArrayListJadwal);
+                                        rv.setAdapter(adapter );
+                                        adapter.notifyDataSetChanged();
+                                        swiper.setRefreshing(false);
                                     }
-                                    adapter = new AdapterJadwal(ArrayListJadwal);
-                                    rv.setAdapter(adapter );
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-                            });
-                        }
-                    })
-                    .build();
+                                });
+                            }
+                        })
+                        .build();
+
+            }catch (Error error){
+                Toast.makeText(getContext(),error.toString(),Toast.LENGTH_SHORT).show();
+            }
             return null;
         }
     }

@@ -15,8 +15,10 @@ import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 
-public class AdapterTerupdate extends RecyclerView.Adapter<AdapterTerupdate.TerupdateViewHolder>{
+public class AdapterTerupdate extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     ArrayList<Terupdate> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterTerupdate(ArrayList<Terupdate> dataList) {
         this.dataList = dataList;
@@ -35,21 +37,38 @@ public class AdapterTerupdate extends RecyclerView.Adapter<AdapterTerupdate.Teru
 
     @NonNull
     @Override
-    public TerupdateViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_hot_news,parent,false);
-//        view.setMinimumWidth(parent.getMeasuredWidth());
-        return new TerupdateViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new TerupdateViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_hot_news, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false), "OOPS!", "Hot News List is empty!!");
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TerupdateViewHolder holder, int position) {
-        holder.imageterupdate.setImageBitmap(StringToBitMap(dataList.get(position).getImageTerupdate()));
-        holder.txtHeadlineTerupdate.setText(dataList.get(position).getHeadline());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            TerupdateViewHolder holder = ((TerupdateViewHolder) viewHolder);
+            holder.imageterupdate.setImageBitmap(StringToBitMap(dataList.get(position).getImageTerupdate()));
+            holder.txtHeadlineTerupdate.setText(dataList.get(position).getHeadline());
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
-
 }

@@ -15,8 +15,10 @@ import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 
-public class AdapterTiketList extends RecyclerView.Adapter<AdapterTiketList.TiketListViewHolder> {
+public class AdapterTiketList extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<TiketList> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterTiketList(ArrayList<TiketList> dataList) {
         this.dataList = dataList;
@@ -35,24 +37,42 @@ public class AdapterTiketList extends RecyclerView.Adapter<AdapterTiketList.Tike
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TiketListViewHolder holder, int position) {
-        holder.event_type_id.setText(dataList.get(position).event_type_id);
-        holder.txtname.setText(dataList.get(position).name);
-        if (!dataList.get(position).image.equalsIgnoreCase("false")) {
-            holder.image.setImageBitmap(StringToBitMap(dataList.get(position).image));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            TiketListViewHolder holder = ((TiketListViewHolder) viewHolder);
+            holder.event_type_id.setText(dataList.get(position).event_type_id);
+            holder.txtname.setText(dataList.get(position).name);
+            if (!dataList.get(position).image.equalsIgnoreCase("false")) {
+                holder.image.setImageBitmap(StringToBitMap(dataList.get(position).image));
+            }
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
         }
     }
 
     @NonNull
     @Override
-    public TiketListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_tiket_list,parent,false);
-        return new TiketListViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new TiketListViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_tiket_list, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","This player doesn't have Rating and Review yet!");
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
-
 }

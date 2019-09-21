@@ -10,8 +10,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AdapterNotifikasi extends RecyclerView.Adapter<AdapterNotifikasi.NotifikasiViewHolder>{
+public class AdapterNotifikasi extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<Notifikasi> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterNotifikasi(ArrayList<Notifikasi> dataList) {
         this.dataList = dataList;
@@ -29,19 +31,39 @@ public class AdapterNotifikasi extends RecyclerView.Adapter<AdapterNotifikasi.No
 
     @NonNull
     @Override
-    public NotifikasiViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_notifikasi,parent,false);
-        return new AdapterNotifikasi.NotifikasiViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new NotifikasiViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_notifikasi, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","Your Notification is empty!");
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NotifikasiViewHolder holder, int i) {
-        holder.txtNameNotifikasi.setText(dataList.get(i).getName());
-        holder.txtDate.setText(dataList.get(i).getDate());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            NotifikasiViewHolder holder = ((NotifikasiViewHolder) viewHolder);
+            holder.txtNameNotifikasi.setText(dataList.get(position).getName());
+            holder.txtDate.setText(dataList.get(position).getDate());
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
+
 }

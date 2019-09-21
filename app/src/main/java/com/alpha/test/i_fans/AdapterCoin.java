@@ -14,8 +14,10 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class AdapterCoin extends RecyclerView.Adapter<AdapterCoin.CoinViewHolder> {
+public class AdapterCoin extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ArrayList<AccountCoin> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterCoin(ArrayList<AccountCoin> dataList) {
         this.dataList = dataList;
@@ -34,28 +36,51 @@ public class AdapterCoin extends RecyclerView.Adapter<AdapterCoin.CoinViewHolder
 
     @NonNull
     @Override
-    public CoinViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_coin,parent,false);
-        return new CoinViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new CoinViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_coin, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","Your coin history is empty!");
+        }
+//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_coin,parent,false);
+//        return new CoinViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CoinViewHolder holder, int position) {
-        holder.txtName.setText(dataList.get(position).getName());
-        holder.txtDate.setText(dataList.get(position).getDate());
-        if (dataList.get(position).getType().equalsIgnoreCase("customer") || dataList.get(position).getType().equalsIgnoreCase("tax")){
-            holder.txtPrice.setText("-"+dataList.get(position).getPrice());
-            holder.txtPrice.setTextColor(Color.RED);
-        }else {
-            holder.txtPrice.setText("+"+dataList.get(position).getPrice());
-            holder.txtPrice.setTextColor(Color.GREEN);
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            CoinViewHolder Tholder = ((CoinViewHolder) viewHolder);
+            Tholder.txtName.setText(dataList.get(position).getName());
+            Tholder.txtDate.setText(dataList.get(position).getDate());
+            if (dataList.get(position).getType().equalsIgnoreCase("customer") || dataList.get(position).getType().equalsIgnoreCase("tax")){
+                Tholder.txtPrice.setText("-"+dataList.get(position).getPrice());
+                Tholder.txtPrice.setTextColor(Color.RED);
+            }else {
+                Tholder.txtPrice.setText("+"+dataList.get(position).getPrice());
+                Tholder.txtPrice.setTextColor(Color.GREEN);
+            }
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
         }
     }
 
+
     @Override
-    public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+
+    @Override
+    public int getItemCount() {
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
+    }
 }
 

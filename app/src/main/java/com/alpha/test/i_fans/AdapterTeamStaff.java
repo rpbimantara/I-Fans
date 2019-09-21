@@ -16,8 +16,10 @@ import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 
-public class AdapterTeamStaff extends RecyclerView.Adapter<AdapterTeamStaff.TeamStaffViewHolder>{
+public class AdapterTeamStaff extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<Team> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterTeamStaff(ArrayList<Team> dataList) {
         this.dataList = dataList;
@@ -36,20 +38,38 @@ public class AdapterTeamStaff extends RecyclerView.Adapter<AdapterTeamStaff.Team
 
     @NonNull
     @Override
-    public AdapterTeamStaff.TeamStaffViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_team_staff,parent,false);
-        return new AdapterTeamStaff.TeamStaffViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new TeamStaffViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_team_staff, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","Staff list is empty!");
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull AdapterTeamStaff.TeamStaffViewHolder holder, int position) {
-        holder.txtname.setText(dataList.get(position).getNama());
-        holder.image.setImageBitmap(StringToBitMap(dataList.get(position).getFoto()));
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            TeamStaffViewHolder holder = ((TeamStaffViewHolder) viewHolder);
+            holder.txtname.setText(dataList.get(position).getNama());
+            holder.image.setImageBitmap(StringToBitMap(dataList.get(position).getFoto()));
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
+        }
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
-
 }

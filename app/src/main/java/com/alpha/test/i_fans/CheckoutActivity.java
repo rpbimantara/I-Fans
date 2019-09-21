@@ -61,7 +61,6 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
 
     @Override
     public void CheckoutDeleted(final Checkout checkout) {
-        new LoadCheckoutAsync().execute();
         AlertDialog.Builder builder = new AlertDialog.Builder(CheckoutActivity.this);
         builder.setTitle(R.string.app_name);
         builder.setMessage("Do You Want Delete This Product Now?");
@@ -144,7 +143,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                 alertDialog.show();
             }
         });
-
+        new LoadCheckoutAsync().execute();
     }
 
     public  void PayCheckout(){

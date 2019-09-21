@@ -16,9 +16,11 @@ import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 
-public class AdapterTeam extends RecyclerView.Adapter<AdapterTeam.TeamViewHolder> {
+public class AdapterTeam extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private ArrayList<Team> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterTeam(ArrayList<Team> dataList) {
         this.dataList = dataList;
@@ -42,37 +44,57 @@ public class AdapterTeam extends RecyclerView.Adapter<AdapterTeam.TeamViewHolder
 
     @NonNull
     @Override
-    public TeamViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_team,parent,false);
-        return new TeamViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new TeamViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_team, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","Players list is empty!!");
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TeamViewHolder holder, int position) {
-        holder.txtname.setText(dataList.get(position).getNama());
-        if (dataList.get(position).getNo_punggung() == "0"){
-            holder.txtNoPunggung.setText("");
-        }else {
-            holder.txtNoPunggung.setText(dataList.get(position).getNo_punggung());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            TeamViewHolder holder = ((TeamViewHolder) viewHolder);
+            holder.txtname.setText(dataList.get(position).getNama());
+            if (dataList.get(position).getNo_punggung() == "0"){
+                holder.txtNoPunggung.setText("");
+            }else {
+                holder.txtNoPunggung.setText(dataList.get(position).getNo_punggung());
+            }
+            if(dataList.get(position).getPosisi().equalsIgnoreCase("GoalKeeper")){
+                holder.fab_icon.setImageResource(R.drawable.ic_keeper);
+            }
+            if(dataList.get(position).getPosisi().equalsIgnoreCase("Forward")){
+                holder.fab_icon.setImageResource(R.drawable.ic_forward);
+            }
+            if(dataList.get(position).getPosisi().equalsIgnoreCase("Midfielder")){
+                holder.fab_icon.setImageResource(R.drawable.ic_midfielder);
+            }
+            if(dataList.get(position).getPosisi().equalsIgnoreCase("Defender")){
+                holder.fab_icon.setImageResource(R.drawable.ic_defender);
+            }
+            holder.image.setImageBitmap(StringToBitMap(dataList.get(position).getFoto()));
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
         }
-        if(dataList.get(position).getPosisi().equalsIgnoreCase("GoalKeeper")){
-            holder.fab_icon.setImageResource(R.drawable.ic_keeper);
-        }
-        if(dataList.get(position).getPosisi().equalsIgnoreCase("Forward")){
-            holder.fab_icon.setImageResource(R.drawable.ic_forward);
-        }
-        if(dataList.get(position).getPosisi().equalsIgnoreCase("Midfielder")){
-            holder.fab_icon.setImageResource(R.drawable.ic_midfielder);
-        }
-        if(dataList.get(position).getPosisi().equalsIgnoreCase("Defender")){
-            holder.fab_icon.setImageResource(R.drawable.ic_defender);
-        }
-        holder.image.setImageBitmap(StringToBitMap(dataList.get(position).getFoto()));
+
+    }
+
+
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
     }
 
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
-
 }

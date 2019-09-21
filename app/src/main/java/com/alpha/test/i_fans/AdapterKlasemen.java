@@ -16,9 +16,10 @@ import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 
-public class AdapterKlasemen extends RecyclerView.Adapter<AdapterKlasemen.KlasemenViewHolder>{
-
+public class AdapterKlasemen extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     ArrayList<Klasemen> dataList;
+    static final int VIEW_TYPE_EMPTY = 0;
+    static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterKlasemen(ArrayList<Klasemen> dataList) {
         this.dataList = dataList;
@@ -43,26 +44,43 @@ public class AdapterKlasemen extends RecyclerView.Adapter<AdapterKlasemen.Klasem
 
     @NonNull
     @Override
-    public KlasemenViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_klasemen,parent,false);
-        return new KlasemenViewHolder(view);
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        switch (viewType) {
+            case VIEW_TYPE_NORMAL:
+                return new KlasemenViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.card_item_klasemen, parent, false));
+            default:
+                return new CommonUtils.Emptyholder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_empty_view, parent, false),"OOPS!","Standings are not ready now!");
+        }
     }
 
     @Override
-    public void onBindViewHolder(@NonNull KlasemenViewHolder holder, int position) {
-        holder.txtNoUrut.setText(dataList.get(position).getTxtNoUrut());
-        holder.txtTeamKlasemen.setText(dataList.get(position).getTxtTeamKlasemen());
-        holder.txtPlayKlasemen.setText(dataList.get(position).getTxtPlayKlasemen());
-        holder.txtSelisihGol.setText(dataList.get(position).getTxtSelisihGol());
-        holder.txtPoint.setText(dataList.get(position).getTxtPoint());
-        holder.imageClub.setImageBitmap(StringToBitMap(dataList.get(position).getTxtFotoClub()));
-        holder.layout.setBackgroundColor(dataList.get(position).getTxtLayoutColor());
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
+        if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
+            KlasemenViewHolder holder = ((KlasemenViewHolder) viewHolder);
+            holder.txtNoUrut.setText(dataList.get(position).getTxtNoUrut());
+            holder.txtTeamKlasemen.setText(dataList.get(position).getTxtTeamKlasemen());
+            holder.txtPlayKlasemen.setText(dataList.get(position).getTxtPlayKlasemen());
+            holder.txtSelisihGol.setText(dataList.get(position).getTxtSelisihGol());
+            holder.txtPoint.setText(dataList.get(position).getTxtPoint());
+            holder.imageClub.setImageBitmap(StringToBitMap(dataList.get(position).getTxtFotoClub()));
+            holder.layout.setBackgroundColor(dataList.get(position).getTxtLayoutColor());
+        }else{
+            ((CommonUtils.Emptyholder) viewHolder).onBind(position);
+        }
 
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
     @Override
     public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
-
 }
