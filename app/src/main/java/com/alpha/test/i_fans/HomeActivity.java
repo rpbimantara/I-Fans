@@ -198,6 +198,14 @@ public class HomeActivity extends AppCompatActivity {
                 Intent CheckoutIntent = new Intent(HomeActivity.this,CheckoutActivity.class);
                 startActivity(CheckoutIntent);
                 break;
+            case R.id.donasi :
+                Intent DonationIntent = new Intent(HomeActivity.this,DonationActivity.class);
+                startActivity(DonationIntent);
+                break;
+            case R.id.notifikasi :
+                Intent NotifikasiIntent = new Intent(HomeActivity.this,NotifikasiActivity.class);
+                startActivity(NotifikasiIntent);
+                break;
             case R.id.logout :
                 //Kode disini akan di eksekusi saat tombol search di klik
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);

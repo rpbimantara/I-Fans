@@ -24,6 +24,9 @@ import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.tanggal;
+import static com.alpha.test.i_fans.CommonUtils.waktu;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -63,22 +66,6 @@ public class ClubScheduleFragment extends Fragment {
         sharedPrefManager = new SharedPrefManager(getActivity());
         new ScheduleTask().execute();
         return rootView;
-    }
-
-    public String tanggal(String tgl){
-        try {
-            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
-        }catch (Exception ex){
-            System.out.println("Error Convert Tanggal: " + ex);
-        }
-
-        return tgl;
-    }
-
-    public  String waktu(String waktu){
-        int output = Integer.valueOf(waktu.substring(0,1));
-        waktu = String.valueOf(output) + waktu.substring(1,5);
-        return waktu;
     }
 
     public class ScheduleTask extends AsyncTask<Void, Void,Void> {

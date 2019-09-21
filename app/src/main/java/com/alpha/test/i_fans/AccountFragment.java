@@ -38,6 +38,10 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static android.app.Activity.RESULT_OK;
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.getBase64ImageString;
+import static com.alpha.test.i_fans.CommonUtils.nullChecker;
+import static com.alpha.test.i_fans.CommonUtils.tanggal;
 
 
 /**
@@ -264,46 +268,5 @@ public class AccountFragment extends Fragment {
                     }).build();
             return null;
         }
-    }
-
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
-
-    public String getBase64ImageString(Bitmap photo) {
-        String imgString;
-        if(photo != null) {
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG, 100, outputStream);
-            byte[] profileImage = outputStream.toByteArray();
-
-            imgString = Base64.encodeToString(profileImage,
-                    Base64.NO_WRAP);
-        }else{
-            imgString = "";
-        }
-
-        return imgString;
-    }
-
-    public String nullChecker(String param){
-        return ((param == "null") || (param == "false") ? "N/A" : param);
-    }
-
-    public String tanggal(String tgl){
-        try {
-            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
-        }catch (Exception ex){
-            System.out.println("Error Convert Tanggal: " + ex);
-        }
-
-        return tgl;
     }
 }

@@ -28,6 +28,8 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+
 public class MatchDetailActivity extends AppCompatActivity {
 
     TextView txtTeamHome,txtTeamAway,txtStadion,txtTglhariini,txtScore,txtLiga;
@@ -99,18 +101,6 @@ public class MatchDetailActivity extends AppCompatActivity {
             return null;
         }
     }
-
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
-
 
     private static class MatchDetailPageAdapter extends FragmentPagerAdapter {
 

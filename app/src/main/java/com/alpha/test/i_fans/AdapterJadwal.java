@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+
 public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.JadwalViewHolder> {
     ArrayList<Jadwal> dataList;
 
@@ -59,14 +61,4 @@ public class AdapterJadwal extends RecyclerView.Adapter<AdapterJadwal.JadwalView
         return (dataList != null) ? dataList.size() : 0;
     }
 
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
 }

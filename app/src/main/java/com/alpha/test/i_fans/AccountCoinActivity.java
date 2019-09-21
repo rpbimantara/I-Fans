@@ -23,6 +23,10 @@ import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.formater;
+import static com.alpha.test.i_fans.CommonUtils.tanggal;
+import static com.alpha.test.i_fans.CommonUtils.waktu;
+
 public class AccountCoinActivity extends AppCompatActivity {
 
     ArrayList<AccountCoin> ArrayListCoin;
@@ -86,18 +90,14 @@ public class AccountCoinActivity extends AppCompatActivity {
                                     OdooRecord[] records = result.getRecords();
                                     System.out.println(result.toString());
                                     for (OdooRecord record : records) {
-                                        DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
-                                        DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
 
-                                        symbols.setGroupingSeparator('.');
-                                        formatter.setDecimalFormatSymbols(symbols);
                                         String tgl = tanggal(record.getString("date").substring(0,10));
                                         String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
                                         ArrayListCoin.add(new AccountCoin(
                                                 record.getString("id"),
                                                 record.getString("name"),
                                                 tgl.concat(" ").concat(waktu),
-                                                String.valueOf(formatter.format(Float.valueOf(record.getString("price")))),
+                                                formater(Float.valueOf(record.getString("price"))),
                                                 record.getString("type")
                                         ));
                                         adapter = new AdapterCoin(ArrayListCoin);
@@ -116,20 +116,4 @@ public class AccountCoinActivity extends AppCompatActivity {
         }
     }
 
-
-    public String tanggal(String tgl){
-        try {
-            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
-        }catch (Exception ex){
-            System.out.println("Error Convert Tanggal: " + ex);
-        }
-
-        return tgl;
-    }
-
-    public  String waktu(String waktu){
-        int output = Integer.valueOf(waktu.substring(0,1));
-        waktu = String.valueOf(output) + waktu.substring(1,5);
-        return waktu;
-    }
 }

@@ -18,6 +18,8 @@ import java.util.HashMap;
 
 import me.himanshusoni.quantityview.QuantityView;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+
 public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.CheckoutViewHolder>{
     private ArrayList<Checkout> dataList;
     private CheckoutListener mListener;
@@ -124,16 +126,4 @@ public class AdapterCheckout extends RecyclerView.Adapter<AdapterCheckout.Checko
         return (dataList != null) ? dataList.size() : 0;
     }
 
-
-
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
 }

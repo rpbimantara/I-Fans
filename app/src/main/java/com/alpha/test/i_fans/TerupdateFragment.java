@@ -43,6 +43,9 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.tanggal;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -217,31 +220,6 @@ public class TerupdateFragment extends Fragment {
             getData();
         }
         return rootView;
-    }
-
-    public String tanggal(String tgl) {
-        try {
-            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
-        } catch (Exception ex) {
-            System.out.println("Error Convert Tanggal: " + ex);
-        }
-
-        return tgl;
-    }
-
-    public Bitmap StringToBitMap(String encodedString) {
-        try {
-            byte[] encodeByte = Base64.decode(encodedString, Base64.DEFAULT);
-            Bitmap bitmap = BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        } catch (Exception e) {
-            e.getMessage();
-            return null;
-        }
-    }
-
-    public String nullChecker(String param) {
-        return ((param == "null") || (param == "false") ? "0" : param);
     }
 
     public void getData(){

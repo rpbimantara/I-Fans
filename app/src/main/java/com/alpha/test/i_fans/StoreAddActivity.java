@@ -37,6 +37,9 @@ import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.getBase64ImageString;
+
 public class StoreAddActivity extends AppCompatActivity {
     EditText etName,etPrice,etStock,etdeskripsi;
     ImageView imageUser;
@@ -157,35 +160,6 @@ public class StoreAddActivity extends AppCompatActivity {
 
         }
     }
-
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
-
-    public String getBase64ImageString(Bitmap photo) {
-        String imgString;
-        if(photo != null) {
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG, 10, outputStream);
-            byte[] profileImage = outputStream.toByteArray();
-
-            imgString = Base64.encodeToString(profileImage,
-                    Base64.NO_WRAP);
-        }else{
-            imgString = "";
-        }
-
-        return imgString;
-    }
-
-
 
     public class SaveStoreTask extends AsyncTask<Void,Void,Void>{
         @Override

@@ -14,6 +14,8 @@ import android.widget.TextView;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+
 public class AdapterStore extends RecyclerView.Adapter<AdapterStore.StoreViewHolder> {
 
     private ArrayList<Store> dataList;
@@ -54,15 +56,5 @@ public class AdapterStore extends RecyclerView.Adapter<AdapterStore.StoreViewHol
         return (dataList != null) ? dataList.size() : 0;
     }
 
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
+
 }

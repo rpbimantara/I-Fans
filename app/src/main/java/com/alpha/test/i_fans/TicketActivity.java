@@ -161,15 +161,6 @@ public class TicketActivity extends AppCompatActivity {
         }
     }
 
-    public String tanggal(String tgl){
-        try {
-            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
-        }catch (Exception ex){
-            System.out.println("Error Convert Tanggal: " + ex);
-        }
-
-        return tgl;
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();

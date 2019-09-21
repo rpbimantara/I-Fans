@@ -32,6 +32,9 @@ import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.changeTime;
+
 public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangViewHolder> {
 
     private ArrayList<lelang> dataList;
@@ -181,12 +184,6 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
         }.start();
     }
 
-    public String changeTime(String time){
-        if(Integer.valueOf(time) > -1 && Integer.valueOf(time) < 9){
-         time = "0"+time;
-        }
-        return time;
-    }
 
 
     @NonNull
@@ -201,14 +198,4 @@ public class AdapterLelang extends RecyclerView.Adapter<AdapterLelang.LelangView
         return (dataList != null) ? dataList.size() : 0;
     }
 
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
 }

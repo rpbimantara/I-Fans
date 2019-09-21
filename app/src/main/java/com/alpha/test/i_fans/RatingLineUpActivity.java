@@ -34,6 +34,8 @@ import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+
 public class RatingLineUpActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
@@ -124,17 +126,6 @@ public class RatingLineUpActivity extends AppCompatActivity {
                     }
                 })
                 .build();
-    }
-
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
     }
 
     public class SaveRatingTask extends AsyncTask<Object,Void,Void>{

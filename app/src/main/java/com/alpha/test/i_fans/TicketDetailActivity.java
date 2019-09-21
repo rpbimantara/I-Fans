@@ -35,6 +35,10 @@ import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.tanggal;
+import static com.alpha.test.i_fans.CommonUtils.waktu;
+
 public class TicketDetailActivity extends AppCompatActivity implements AdapterTicket.TicketListener {
     TextView txtNamatiket,txtTanggaltiket,txtWaktutiket,txtTotalAmount;
     Button btn_order;
@@ -252,30 +256,4 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
        }
    }
 
-    public String tanggal(String tgl){
-        try {
-            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
-        }catch (Exception ex){
-            System.out.println("Error Convert Tanggal: " + ex);
-        }
-
-        return tgl;
-    }
-
-    public  String waktu(String waktu){
-        int output = Integer.valueOf(waktu.substring(0,1))+7;
-        waktu = String.valueOf(output) + waktu.substring(1,4);
-        return waktu;
-    }
-
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
 }

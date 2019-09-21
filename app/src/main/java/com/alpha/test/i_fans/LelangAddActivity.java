@@ -41,6 +41,10 @@ import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.getBase64ImageString;
+import static com.alpha.test.i_fans.CommonUtils.tanggal;
+
 public class LelangAddActivity extends AppCompatActivity {
     EditText etName,etOb,etInc,etBin,etdeskripsi;
     TextView txtDuedate;
@@ -238,41 +242,4 @@ public class LelangAddActivity extends AppCompatActivity {
                 }).build();
     }
 
-
-    public String tanggal(String tgl){
-        try {
-            tgl = new SimpleDateFormat("dd MMM yyyy", Locale.US).format(new SimpleDateFormat("yyyy-MM-dd").parse(tgl));
-        }catch (Exception ex){
-            System.out.println("Error Convert Tanggal: " + ex);
-        }
-
-        return tgl;
-    }
-
-    public Bitmap StringToBitMap(String encodedString){
-        try{
-            byte [] encodeByte= Base64.decode(encodedString,Base64.DEFAULT);
-            Bitmap bitmap= BitmapFactory.decodeByteArray(encodeByte, 0, encodeByte.length);
-            return bitmap;
-        }catch(Exception e){
-            e.getMessage();
-            return null;
-        }
-    }
-
-    public String getBase64ImageString(Bitmap photo) {
-        String imgString;
-        if(photo != null) {
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            photo.compress(Bitmap.CompressFormat.JPEG, 10, outputStream);
-            byte[] profileImage = outputStream.toByteArray();
-
-            imgString = Base64.encodeToString(profileImage,
-                    Base64.NO_WRAP);
-        }else{
-            imgString = "";
-        }
-
-        return imgString;
-    }
 }
