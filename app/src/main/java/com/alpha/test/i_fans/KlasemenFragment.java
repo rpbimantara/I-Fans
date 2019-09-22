@@ -62,7 +62,6 @@ public class KlasemenFragment extends Fragment {
             rv = rootView.findViewById(R.id.rv_recycler_view_klasemen);
             swiper = rootView.findViewById(R.id.swiperefresh_klasemen);
             llm = new LinearLayoutManager(getActivity());
-            adapter = new AdapterKlasemen(ArrayListKlasemen);
             rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

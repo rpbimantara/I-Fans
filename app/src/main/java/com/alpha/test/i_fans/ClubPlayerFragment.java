@@ -58,7 +58,6 @@ public class ClubPlayerFragment extends Fragment {
             swiper = rootView.findViewById(R.id.swiperefresh_club_player);
             sharedPrefManager = new SharedPrefManager(getActivity());
             progressDialog = new ProgressDialog(getActivity());
-            adapter = new AdapterTeam(ArrayListTeam);
             rv.setAdapter(adapter);
             rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
             rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {

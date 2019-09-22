@@ -81,7 +81,6 @@ public class StoreDetailActivity extends AppCompatActivity {
         lnEdit = findViewById(R.id.linearLayout_edit_store);
         rv = findViewById(R.id.rv_recycler_view_store_detail);
         llm = new LinearLayoutManager(this);
-        adapter = new AdapterStoreVariant(ArrayListVariant);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         sharedPrefManager = new SharedPrefManager(this);

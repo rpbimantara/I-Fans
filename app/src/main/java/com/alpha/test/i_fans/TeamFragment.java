@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -46,6 +47,7 @@ public class TeamFragment extends Fragment {
     AdapterTeam adapterAthlete;
     SwipeRefreshLayout swiper;
     OdooClient client;
+    TextView txtStaff,txtClub;
 
     public TeamFragment() {
         // Required empty public constructor
@@ -75,8 +77,10 @@ public class TeamFragment extends Fragment {
             swiper = rootView.findViewById(R.id.swiperefresh_team);
             sharedPrefManager = new SharedPrefManager(getActivity());
             progressDialog = new ProgressDialog(getActivity());
-            adapterStaff = new AdapterTeamStaff(ArrayListTeamStaff);
-            adapterAthlete = new AdapterTeam(ArrayListAthlete);
+            txtClub = rootView.findViewById(R.id.txt_player_club);
+            txtStaff = rootView.findViewById(R.id.txt_staff_club);
+            txtClub.setVisibility(View.INVISIBLE);
+            txtStaff.setVisibility(View.INVISIBLE);
             rvStaff.setAdapter(adapterStaff);
             rvAthlete.setAdapter(adapterAthlete);
             rvStaff.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.HORIZONTAL,false));
@@ -177,6 +181,9 @@ public class TeamFragment extends Fragment {
                                     }
                                     adapterStaff = new AdapterTeamStaff(ArrayListTeamStaff);
                                     rvStaff.setAdapter(adapterStaff);
+                                    if (ArrayListTeamStaff.size()> 0){
+                                        txtStaff.setVisibility(View.VISIBLE);
+                                    }
                                     adapterStaff.notifyDataSetChanged();
                                 }
                             });
@@ -219,6 +226,9 @@ public class TeamFragment extends Fragment {
                                     adapterAthlete = new AdapterTeam(ArrayListAthlete);
                                     rvAthlete.setAdapter(adapterAthlete);
                                     adapterAthlete.notifyDataSetChanged();
+                                    if (ArrayListAthlete.size()> 0){
+                                        txtClub.setVisibility(View.VISIBLE);
+                                    }
                                     swiper.setRefreshing(false);
                                 }
                             });

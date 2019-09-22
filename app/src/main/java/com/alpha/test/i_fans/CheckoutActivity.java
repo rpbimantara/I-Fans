@@ -116,7 +116,6 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
             }
         });
         llm = new LinearLayoutManager(this);
-        adapter = new AdapterCheckout(ArrayListCheckout, this);
         sharedPrefManager = new SharedPrefManager(this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);

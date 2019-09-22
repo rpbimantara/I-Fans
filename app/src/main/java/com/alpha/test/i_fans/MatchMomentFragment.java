@@ -68,7 +68,6 @@ public class MatchMomentFragment extends Fragment {
                 }
             });
             sharedPrefManager = new SharedPrefManager(getContext());
-            adapter = new AdapterMatchMoment(ArrayListMatchMoment);
             rvMoment.setAdapter(adapter);
             rvMoment.setLayoutManager(new LinearLayoutManager(getActivity()));
             new MatchMomentTask().execute();

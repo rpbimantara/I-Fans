@@ -137,7 +137,7 @@ public class TerupdateFragment extends Fragment {
             progressDialog.show();
             progressDialog.setCancelable(false);
             llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-            rv.setAdapter(new AdapterTerupdate(ArrayListTerupdate));
+            rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
             rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 

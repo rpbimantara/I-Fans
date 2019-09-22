@@ -50,7 +50,6 @@ public class AccountCoinActivity extends AppCompatActivity {
         sharedPrefManager = new SharedPrefManager(this);
         rv =  findViewById(R.id.rv_recycler_view_account_coin);
         swiper = findViewById(R.id.swiperefresh_account_coin);
-        adapter = new AdapterCoin(ArrayListCoin);
         rv.setAdapter(adapter );
         rv.setLayoutManager(new LinearLayoutManager(this));
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

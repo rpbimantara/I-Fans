@@ -54,7 +54,6 @@ public class AccountStoreActivity extends AppCompatActivity {
                 new AccountStoreTask().execute();
             }
         });
-        adapter = new AdapterStore(ArrayListStore);
         rv.setAdapter(adapter );
         rv.setLayoutManager(new GridLayoutManager(this,3));
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {

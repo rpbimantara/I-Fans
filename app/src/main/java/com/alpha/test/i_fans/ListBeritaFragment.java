@@ -73,7 +73,6 @@ public class ListBeritaFragment extends Fragment {
             rv = rootView.findViewById(R.id.rv_recycler_view_list_berita);
             swiper = rootView.findViewById(R.id.swiperefresh_list_berita);
             llm = new LinearLayoutManager(getActivity());
-            adapter = new AdapterListBerita(ArrayListBerita);
             rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

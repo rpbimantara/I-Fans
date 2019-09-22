@@ -100,7 +100,6 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         rootView = inflater.inflate(R.layout.fragment_lelang, container, false);
         rv =  rootView.findViewById(R.id.rv_recycler_view_lelang);
         swiper = rootView.findViewById(R.id.swiperefresh_lelang);
-        adapter = new AdapterLelang(ArrayListLelang,getContext(),LelangFragment.newInstance());
         rv.setAdapter(adapter);
         llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);

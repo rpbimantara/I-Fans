@@ -58,7 +58,6 @@ public class TeamDetailReviewFragment extends Fragment {
         swiper = rootView.findViewById(R.id.swiperefresh_team_review);
         sharedPrefManager = new SharedPrefManager(getActivity());
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
-        adapter = new AdapterTeamDetailReview(ArrayListReview);
         rv.setAdapter(adapter);
         new ReviewTask().execute();
         return rootView;

@@ -72,8 +72,6 @@ public class MatchLineUpAwayFragment extends Fragment {
                 }
             });
             sharedPrefManager = new  SharedPrefManager(getContext());
-            adapter = new AdapterLineUpHome(ArrayListMatchLineUpAway);
-            adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpAwayCore);
             rvLineUpAway.setAdapter(adapter);
             rvLineUpAway.setLayoutManager(new LinearLayoutManager(getActivity()));
             rvLineUpAwayCore.setAdapter(adapterCore);

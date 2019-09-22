@@ -2706,6 +2706,7 @@ id txt_no_rating_line_up
 id txt_no_team_detail
 id txt_nostaff
 id txt_phoneAccount
+id txt_player_club
 id txt_playklasemen
 id txt_point
 id txt_price
@@ -2713,6 +2714,7 @@ id txt_review
 id txt_scorelast
 id txt_scoreterupdate
 id txt_selisihgol
+id txt_staff_club
 id txt_stock_variant
 id txt_tanggal
 id txt_tanggal_event

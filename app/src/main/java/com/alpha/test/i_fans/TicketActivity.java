@@ -54,7 +54,6 @@ public class TicketActivity extends AppCompatActivity {
         rv =  findViewById(R.id.rv_recycler_view_ticket);
         swiper = findViewById(R.id.swiperefresh_ticket);
         llm = new LinearLayoutManager(this);
-        adapter = new AdapterTiketList(ArrayListTiketList);
         rv.setAdapter(adapter );
         rv.setLayoutManager(llm);
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

@@ -74,7 +74,6 @@ public class JadwalFragment extends Fragment {
             rv = rootView.findViewById(R.id.rv_recycler_view_jadwal);
             swiper = rootView.findViewById(R.id.swiperefresh_jadwal);
             llm = new LinearLayoutManager(getActivity());
-            adapter = new AdapterJadwal(ArrayListJadwal);
             rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
             sharedPrefManager = new SharedPrefManager(getActivity());

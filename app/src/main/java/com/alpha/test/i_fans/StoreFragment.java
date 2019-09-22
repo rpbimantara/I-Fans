@@ -63,7 +63,6 @@ public class StoreFragment extends Fragment {
         swiper = rootView.findViewById(R.id.swiperefresh_store);
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        adapter = new AdapterStore(ArrayListStore);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

@@ -55,7 +55,6 @@ public class ClubResultFragment extends Fragment {
         rv = rootView.findViewById(R.id.rv_recycler_view_result);
         swiper = rootView.findViewById(R.id.swiperefresh_result);
         llm = new LinearLayoutManager(getActivity());
-        adapter = new AdapterJadwal(ArrayListJadwal);
         rv.setAdapter(adapter );
         rv.setLayoutManager(llm); swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

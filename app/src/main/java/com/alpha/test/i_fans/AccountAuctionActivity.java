@@ -50,7 +50,6 @@ public class AccountAuctionActivity extends AppCompatActivity implements Interfa
         sharedPrefManager = new SharedPrefManager(this);
         rv =  findViewById(R.id.rv_recycler_view_account_auction);
         swiper = findViewById(R.id.swiperefresh_account_auction);
-        adapter = new AdapterLelang(ArrayListLelang,getApplicationContext(),listener);
         rv.setAdapter(adapter );
         rv.setLayoutManager(new LinearLayoutManager(this));
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

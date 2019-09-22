@@ -45,7 +45,7 @@ public class NotifikasiActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         rv =  findViewById(R.id.rv_recycler_view_notifikasi);
         swiper = findViewById(R.id.swiperefresh_notifikasi);
-        adapter = new AdapterNotifikasi(ArrayListNotifikasi);
+//        adapter = new AdapterNotifikasi(ArrayListNotifikasi);
         llm = new LinearLayoutManager(this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);

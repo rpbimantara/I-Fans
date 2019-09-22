@@ -43,7 +43,6 @@ public class TicketBarcodeActivity extends AppCompatActivity {
         swiper = findViewById(R.id.swiperefresh_ticket_barcode);
         sharedPrefManager = new SharedPrefManager(this);
         llm = new LinearLayoutManager(this);
-        adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
         rv.setAdapter(adapter );
         rv.setLayoutManager(llm);
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {

@@ -80,7 +80,6 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
         progressDialog = new ProgressDialog(this);
         rv = findViewById(R.id.rv_recycler_view_tiket_detail);
         llm = new LinearLayoutManager(this);
-        adapter = new AdapterTicket(ArrayListTiket,this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         sharedPrefManager = new SharedPrefManager(this);
@@ -133,8 +132,8 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                                 OdooRecord[] records = result.getRecords();
 
                                 for(OdooRecord record: records) {
-                                    String tanggal = tanggal(record.getString("date_begin"));
-                                    String time =  waktu(record.getString("date_begin").substring(12,16)) +" WIB ";
+                                    String tanggal = tanggal(record.getString("date_begin").substring(0,10));
+                                    String time =  waktu(record.getString("date_begin").substring(11,17)) +" WIB ";
                                     txtNamatiket.setText(record.getString("name"));
                                     txtTanggaltiket.setText(tanggal);
                                     txtWaktutiket.setText(time);
@@ -164,7 +163,6 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                             public void onResult(OdooResult result) {
                                 int serverId = result.getInt("result");
                                 if (serverId > 0) {
-                                    System.out.println("ASDSADasdasdasdasdasdasdasdadasdasdasdasd");
                                     for (Tiket tkt : ArrayListTiket) {
                                         if (Integer.valueOf(tkt.getJumlahTiket()) > 0) {
                                             CreateSaleOrderLine(serverId, Integer.valueOf(tkt.getProduct_id()), Integer.valueOf(tkt.getId()), Integer.valueOf(tkt.getJumlahTiket()));
