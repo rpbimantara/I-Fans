@@ -2238,6 +2238,7 @@ id button_bin
 id button_buy_now_store
 id button_checkout_store
 id button_delete_checkout
+id button_donate
 id button_edit_lelang
 id button_edit_store
 id button_paid
@@ -2286,6 +2287,7 @@ id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
 id detail_detail_club_toolbar
+id detail_donasi_toolbar
 id detail_lelang_toolbar
 id detail_store_toolbar
 id detail_tickt_toolbar
@@ -2294,6 +2296,8 @@ id dimensions
 id direct
 id disableHome
 id donasi
+id donasi_detail_imageView
+id donasi_image
 id donasi_toolbar
 id editText_BIN
 id editText_Deskripsi
@@ -2445,6 +2449,7 @@ id progressBarBlock
 id progressBarClearances
 id progressBarCornerAway
 id progressBarCornerHome
+id progressBarDonation
 id progressBarFouls
 id progressBarFoulsAway
 id progressBarFoulsHome
@@ -2612,10 +2617,12 @@ id textSpacerNoTitle
 id textStart
 id textView
 id textView_alias
+id textView_author_donasi
 id textView_bid_detail_lelang
 id textView_ceo
 id textView_city
 id textView_deskripsi
+id textView_deskripsi_donation_detail
 id textView_deskripsi_lelang
 id textView_est
 id textView_harga_barang
@@ -2628,13 +2635,17 @@ id textView_lastliga
 id textView_ligaterupdate
 id textView_nama_barang
 id textView_nama_barang_lelang
+id textView_nama_donasi_detail
 id textView_namastadion_summary
 id textView_namateam_summary
 id textView_stadionharini
 id textView_supporter
+id textView_terkumpul_donasi
 id textView_tgl_detail_berita
 id textView_tgl_detail_store
 id textView_tglharini
+id textView_total_donasi
+id textView_total_donatur
 id text_input_password_toggle
 id textinput_counter
 id textinput_error
@@ -2672,6 +2683,8 @@ id txt_category_tiket_list
 id txt_checkout_harga
 id txt_checkout_item
 id txt_date
+id txt_donasi_sisa_hari
+id txt_donasi_terkumpul
 id txt_emailAccount
 id txt_hargaBarangStore
 id txt_harga_tiket
@@ -2686,11 +2699,13 @@ id txt_lokasi_ticket
 id txt_namaAccount
 id txt_namaBarangStore
 id txt_nama_event_tiket
+id txt_nama_pembuat_donasi
 id txt_nama_rating_line_up
 id txt_nama_team_detail
 id txt_nama_ticket
 id txt_nama_tiket
 id txt_nama_tiket_list
+id txt_namadonasi
 id txt_namalelang
 id txt_namaliga
 id txt_namastadion
@@ -2803,6 +2818,7 @@ layout activity_berita_detail
 layout activity_checkout
 layout activity_club_detail
 layout activity_donation
+layout activity_donation_detail
 layout activity_home
 layout activity_lelang_add
 layout activity_lelang_detail
@@ -2821,6 +2837,7 @@ layout activity_ticket_detail
 layout card_item_berita
 layout card_item_checkout
 layout card_item_coin
+layout card_item_donasi
 layout card_item_hot_news
 layout card_item_jadwal
 layout card_item_klasemen

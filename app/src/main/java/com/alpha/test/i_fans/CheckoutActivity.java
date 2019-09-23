@@ -55,7 +55,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
         for (Checkout c : ArrayListCheckout) {
             temp += (Integer.valueOf(c.getHarga()) * Integer.valueOf(c.getQty()));
         }
-        txtTotalAmount.setText(String.valueOf(temp));
+        txtTotalAmount.setText(CommonUtils.formater(Float.parseFloat(String.valueOf(temp))));
         total = temp;
     }
 

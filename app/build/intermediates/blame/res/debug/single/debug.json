@@ -2600,6 +2600,10 @@
         "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/generated/res/pngs/debug/drawable-hdpi/ic_airport_shuttle_black_24dp.png"
     },
     {
+        "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/layout_card_item_donasi.xml.flat",
+        "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/res/layout/card_item_donasi.xml"
+    },
+    {
         "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_computer_black_24dp.png.flat",
         "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/generated/res/pngs/debug/drawable-ldpi/ic_computer_black_24dp.png"
     },
@@ -25878,6 +25882,10 @@
     {
         "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/drawable-xhdpi_ic_subtitles_black_24dp.png.flat",
         "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/generated/res/pngs/debug/drawable-xhdpi/ic_subtitles_black_24dp.png"
+    },
+    {
+        "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/layout_activity_donation_detail.xml.flat",
+        "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/res/layout/activity_donation_detail.xml"
     },
     {
         "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/drawable-hdpi_ic_navigate_before_black_24dp.png.flat",

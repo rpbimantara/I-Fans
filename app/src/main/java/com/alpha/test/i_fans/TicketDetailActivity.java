@@ -243,6 +243,7 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                                                String.valueOf(Math.round(record.getFloat("seats_available"))),
                                                String.valueOf(record.getInt("product_id"))));
                                    }
+                                   System.out.println(ArrayListTiket.size());
                                    adapter = new AdapterTicket(ArrayListTiket,TicketDetailActivity.this);
                                    rv.setAdapter(adapter);
                                    adapter.notifyDataSetChanged();

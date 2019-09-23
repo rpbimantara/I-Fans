@@ -29,6 +29,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.formater;
 import static com.alpha.test.i_fans.CommonUtils.tanggal;
 
 public class LelangDetailActivity extends AppCompatActivity {
@@ -92,13 +93,13 @@ public class LelangDetailActivity extends AppCompatActivity {
                                     imageDetail.setImageBitmap(StringToBitMap(record.getString("image_medium")));
                                     txtNamaBarang.setText(record.getString("name"));
                                     txtBid.setText("Open Bid : "
-                                            + String.valueOf(Math.round(record.getFloat("ob")))
+                                            + formater(record.getFloat("ob"))
                                             + "\n"
                                             + "BIN : "
-                                            + String.valueOf(Math.round(record.getFloat("binow")))
+                                            + formater(record.getFloat("binow"))
                                             + "\n"
                                             + "INC : "
-                                            + String.valueOf(Math.round(record.getFloat("inc")))
+                                            + formater(record.getFloat("inc"))
                                     );
                                     if (record.getInt("create_uid") == sharedPrefManager.getSpIdUser()){
                                         btnEdit.setVisibility(View.INVISIBLE);

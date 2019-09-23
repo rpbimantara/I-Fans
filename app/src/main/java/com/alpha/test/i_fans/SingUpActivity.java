@@ -34,6 +34,7 @@ public class SingUpActivity extends AppCompatActivity {
     OdooClient client;
     SharedPrefManager sharedPrefManager;
 
+    public Integer x = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,69 +63,78 @@ public class SingUpActivity extends AppCompatActivity {
         confirmPassword = findViewById(R.id.input_confirm_password_up);
     }
 
-    AuthenticateListener loginCallback = new AuthenticateListener() {
-        @Override
-        public void onLoginSuccess(OdooUser user) {
-            String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-            String cekemail = email.getText().toString().trim();
-            if(username.getText().length()<3){
-                username.setError("Minimun 3 Char");
-                progressDialog.dismiss();
-            }else if(username.getText().equals("")){
-                username.setError("Username cannot Null");
-                progressDialog.dismiss();
-            }else if (password.getText().length()<8){
-                password.setError("Minimum 8 Char");
-                progressDialog.dismiss();
-            }else if(!password.getText().toString().equals(confirmPassword.getText().toString())){
-                password.setError("Password not match with Confirm Password");
-                confirmPassword.setError("Password not match with Confirm Password");
-                progressDialog.dismiss();
-            }else if(!cekemail.matches(emailPattern)){
-                email.setError("Invalid E-Mail");
-                progressDialog.dismiss();
-            }else {
-                final String RegId = FirebaseInstanceId.getInstance().getToken();
-                OdooValues values = new OdooValues();
-                values.put("name", username.getText().toString());
-                values.put("login", username.getText().toString());
-                values.put("email", email.getText().toString());
-                values.put("club_id", 52);
-                values.put("password", password.getText().toString());
-                values.put("state", "active");
-                values.put("fcm_reg_ids", RegId);
 
-                client.create("res.users", values, new IOdooResponse() {
-                    @Override
-                    public void onResult(OdooResult result) {
-                        // Success response
-                        Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
-                        System.out.println(result.toString());
-                        progressDialog.dismiss();
+//    AuthenticateListener loginCallback = new AuthenticateListener() {
+//        @Override
+//        public void onLoginSuccess(OdooUser user) {
+//            x=1;
+//            String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+//            String cekemail = email.getText().toString().trim();
+//            if(username.getText().length()<3){
+//                username.setError("Minimun 3 Char");
+//                progressDialog.dismiss();
+//            }else if(username.getText().equals("")){
+//                username.setError("Username cannot Null");
+//                progressDialog.dismiss();
+//            }else if (password.getText().length()<8){
+//                password.setError("Minimum 8 Char");
+//                progressDialog.dismiss();
+//            }else if(!password.getText().toString().equals(confirmPassword.getText().toString())){
+//                password.setError("Password not match with Confirm Password");
+//                confirmPassword.setError("Password not match with Confirm Password");
+//                progressDialog.dismiss();
+//            }else if(!cekemail.matches(emailPattern)){
+//                email.setError("Invalid E-Mail");
+//                progressDialog.dismiss();
+//            }else {
+//                final String RegId = FirebaseInstanceId.getInstance().getToken();
+//                OdooValues values = new OdooValues();
+//                values.put("name", username.getText().toString());
+//                values.put("login", username.getText().toString());
+//                values.put("email", email.getText().toString());
+//                values.put("club_id", 52);
+//                values.put("password", password.getText().toString());
+//                values.put("state", "active");
+//                values.put("fcm_reg_ids", RegId);
+//                System.out.println(values.toString());
+//
+//                    client.create("res.users", values, new IOdooResponse() {
+//
+//                        @Override
+//                        public void onResult(OdooResult result) {
+//                            // Success response
+//                            Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
+//                            System.out.println(result.toString());
+//                            progressDialog.dismiss();
+//
+//                        }
+//                        @Override
+//                        public boolean onError(OdooErrorException error) {
+//
+//                            Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
+//                            System.out.println(error.toString());
+//                            progressDialog.dismiss();
+//                            return super.onError(error);
+//                        }
+//                    });
+//
+//
+//            }
+//        }
+//
+//        @Override
+//        public void onLoginFail(AuthError error) {
+//            Toast.makeText(SingUpActivity.this,String.valueOf(error.toString()),Toast.LENGTH_LONG).show();
+//            progressDialog.dismiss();
+//        }
+//    };
 
-                    }
-
-                    @Override
-                    public boolean onError(OdooErrorException error) {
-                        Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
-                        System.out.println(error.toString());
-                        progressDialog.dismiss();
-                        return super.onError(error);
-                    }
-                });
-            }
-        }
-
-        @Override
-        public void onLoginFail(AuthError error) {
-            Toast.makeText(SingUpActivity.this,String.valueOf(error.toString()),Toast.LENGTH_LONG).show();
-            progressDialog.dismiss();
-        }
-    };
 
     public class SingupTask extends AsyncTask<Void,Void,Boolean>{
         @Override
         protected void onPreExecute() {
+            progressDialog.setMessage("Creating......");
+            progressDialog.show();
             super.onPreExecute();
         }
 
@@ -135,19 +145,73 @@ public class SingUpActivity extends AppCompatActivity {
 
         @Override
         protected Boolean doInBackground(Void... voids) {
-            client = new OdooClient.Builder(getBaseContext())
+            client = new OdooClient.Builder(getApplicationContext())
                     .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession(sharedPrefManager.getSpSessionId())
                     .setSynchronizedRequests(false)
                     .setConnectListener(new OdooConnectListener() {
                         @Override
                         public void onConnected(OdooVersion version) {
-                            progressDialog.setMessage("Creating......");
-                            progressDialog.show();
-                            client.authenticate("register","register", sharedPrefManager.getSP_db(), loginCallback);
+
+                            String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                            String cekemail = email.getText().toString().trim();
+                            if(username.getText().length()<3){
+                                username.setError("Minimun 3 Char");
+                                progressDialog.dismiss();
+                            }else if(username.getText().equals("")){
+                                username.setError("Username cannot Null");
+                                progressDialog.dismiss();
+                            }else if (password.getText().length()<8){
+                                password.setError("Minimum 8 Char");
+                                progressDialog.dismiss();
+                            }else if(!password.getText().toString().equals(confirmPassword.getText().toString())){
+                                password.setError("Password not match with Confirm Password");
+                                confirmPassword.setError("Password not match with Confirm Password");
+                                progressDialog.dismiss();
+                            }else if(!cekemail.matches(emailPattern)){
+                                email.setError("Invalid E-Mail");
+                                progressDialog.dismiss();
+                            }else {
+                                final String RegId = FirebaseInstanceId.getInstance().getToken();
+                                OdooValues values = new OdooValues();
+                                values.put("name", username.getText().toString());
+                                values.put("login", username.getText().toString());
+                                values.put("email", email.getText().toString());
+                                values.put("club_id", 52);
+                                values.put("password", password.getText().toString());
+                                values.put("state", "active");
+                                values.put("fcm_reg_ids", RegId);
+                                System.out.println(values.toString());
+
+                                client.create("res.users", values, new IOdooResponse() {
+
+                                    @Override
+                                    public void onResult(OdooResult result) {
+                                        // Success response
+                                        Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
+                                        System.out.println(result.toString());
+                                        progressDialog.dismiss();
+
+                                    }
+                                    @Override
+                                    public boolean onError(OdooErrorException error) {
+
+                                        Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
+                                        System.out.println(error.toString());
+                                        progressDialog.dismiss();
+                                        return super.onError(error);
+                                    }
+                                });
+
+
+                            }
                         }
                     }).build();
             return null;
+
         }
+
+
     }
 
 }

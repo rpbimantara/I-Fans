@@ -154,7 +154,6 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
 
         @Override
         protected Void doInBackground(Void... voids) {
-
             ArrayListLelang = new ArrayList<>();
             client = new OdooClient.Builder(getContext())
                     .setHost(sharedPrefManager.getSP_Host_url())

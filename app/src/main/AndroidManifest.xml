@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NotifikasiActivity"
-            android:parentActivityName=".MainActivity" ></activity>
+        <activity android:name=".DonationDetailActivity"></activity>
+        <activity
+            android:name=".NotifikasiActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".DonationActivity"
             android:parentActivityName=".MainActivity" />
@@ -90,10 +92,10 @@
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

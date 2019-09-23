@@ -15,6 +15,7 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.formater;
 
 public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -43,7 +44,7 @@ public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
         if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
             StoreViewHolder holder = ((StoreViewHolder) viewHolder);
             holder.txtNamaBarang.setText(dataList.get(position).getNamabarang());
-            holder.txtHargaBarang.setText(dataList.get(position).getHargabarang());
+            holder.txtHargaBarang.setText(formater(Float.parseFloat(dataList.get(position).getHargabarang())) );
             holder.imageStore.setImageBitmap(StringToBitMap(dataList.get(position).getImageStore()));
         }else{
             ((CommonUtils.Emptyholder) viewHolder).onBind(position);

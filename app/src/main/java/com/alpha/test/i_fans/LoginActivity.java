@@ -50,9 +50,7 @@ public class LoginActivity extends AppCompatActivity {
         _singupLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent singup = new Intent(getApplicationContext(),SingUpActivity.class);
-                startActivity(singup);
-                finish();
+                new SignUpTask().execute();
             }
         });
         btnLogin = findViewById(R.id.btn_login);
@@ -156,6 +154,61 @@ public class LoginActivity extends AppCompatActivity {
                         public void onConnected(OdooVersion version) {
                             // Success connection
                             client.authenticate(uname,pass, sharedPrefManager.getSP_db(), loginCallback);
+                        }
+                    })
+                    .build();
+            return null;
+        }
+
+    }
+
+    AuthenticateListener registerCallback = new AuthenticateListener() {
+        @Override
+        public void onLoginSuccess(final OdooUser user) {
+            List<Integer> ids = Arrays.asList(user.uid);
+            List<String> fields = Arrays.asList("club_id","fcm_reg_ids");
+            client.read("res.users", ids, fields, new IOdooResponse() {
+                @Override
+                public void onResult(OdooResult result) {
+                    OdooRecord[] records = result.getRecords();
+
+                    for(OdooRecord record: records) {
+                        sharedPrefManager.saveSPString(SharedPrefManager.SP_SESSION_ID, user.sessionId);
+                    }
+                    Intent singup = new Intent(getApplicationContext(),SingUpActivity.class);
+                    startActivity(singup);
+                    progressDialog.dismiss();
+                    finish();
+                }
+            });
+
+        }
+        @Override
+        public void onLoginFail(AuthError error) {
+            Toast.makeText(LoginActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+            progressDialog.dismiss();
+        }
+    };
+
+    public class SignUpTask extends AsyncTask<Void,Void,Void>{
+
+        @Override
+        protected void onPreExecute() {
+            progressDialog.setIndeterminate(true);
+            progressDialog.setMessage("Authenticating...");
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            client = new OdooClient.Builder(getApplicationContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            // Success connection
+                            client.authenticate("admin","admin", sharedPrefManager.getSP_db(), registerCallback);
                         }
                     })
                     .build();

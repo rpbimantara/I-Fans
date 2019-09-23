@@ -55,22 +55,21 @@ public class HomeActivity extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
             }
 
             @Override
             public void onPageSelected(int position) {
                 switch (position) {
                     case 2:
-                        fabBtn.show();
                         fabBtn.setImageResource(R.drawable.ic_add);
+                        fabBtn.show();
                         break;
                     case 3:
-                        fabBtn.show();
                         fabBtn.setImageResource(R.drawable.ic_edit);
+                        fabBtn.show();
                         break;
-                        default:
-                            fabBtn.hide();
+                    default:
+                        fabBtn.hide();
                 }
             }
 
@@ -158,14 +157,14 @@ public class HomeActivity extends AppCompatActivity {
                     viewPager.setCurrentItem(1);
                     return true;
                 case R.id.action_belanja:
-                    viewPager.setCurrentItem(2);
                     fabBtn.setImageResource(R.drawable.ic_add);
+                    viewPager.setCurrentItem(2);
                     String Belanja = sharedPrefManager.getSpFabBelanja();
                     sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,Belanja);
                     return true;
                 case R.id.action_account:
-                    viewPager.setCurrentItem(3);
                     fabBtn.setImageResource(R.drawable.ic_edit);
+                    viewPager.setCurrentItem(3);
                     sharedPrefManager.saveSPString(sharedPrefManager.SP_FAB,"Account");
                     return true;
             }

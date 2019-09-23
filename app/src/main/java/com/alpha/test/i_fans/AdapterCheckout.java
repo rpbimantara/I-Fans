@@ -19,6 +19,7 @@ import java.util.HashMap;
 import me.himanshusoni.quantityview.QuantityView;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.formater;
 
 public class AdapterCheckout extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private ArrayList<Checkout> dataList;
@@ -68,7 +69,7 @@ public class AdapterCheckout extends RecyclerView.Adapter<RecyclerView.ViewHolde
         if (getItemViewType(i) == VIEW_TYPE_NORMAL) {
             final CheckoutViewHolder Tholder = ((CheckoutViewHolder) viewHolder);
             Tholder.txt_name.setText(dataList.get(i).getNama());
-            Tholder.txt_harga.setText(dataList.get(i).getHarga());
+            Tholder.txt_harga.setText(formater(Float.parseFloat(dataList.get(i).getHarga())));
             Tholder.img_item.setImageBitmap(StringToBitMap(dataList.get(i).getImage()));
             mListener.CheckoutCallback(dataList.get(i),Integer.valueOf(dataList.get(i).getQty()),"load");
             if (dataList.get(i).type.equalsIgnoreCase("lelang")){

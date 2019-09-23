@@ -83,12 +83,14 @@ public class StoreDetailActivity extends AppCompatActivity {
         llm = new LinearLayoutManager(this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
+        lnOrder.setVisibility(View.INVISIBLE);
+        lnEdit.setVisibility(View.INVISIBLE);
         sharedPrefManager = new SharedPrefManager(this);
         gson = new Gson();
         imageStore = findViewById(R.id.store_imageView);
         txtNamaBarang.setText(getIntent().getExtras().get("nama").toString());
         txtHargaBarang.setText(getIntent().getExtras().get("harga").toString());
-        StoreDetail();
+        new VariantTask().execute();
         btn_checkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -221,54 +223,60 @@ public class StoreDetailActivity extends AppCompatActivity {
             }
     }
 
-    public void StoreDetail(){
-        ArrayListVariant = new ArrayList<>();
-        client = new OdooClient.Builder(getApplicationContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        OArguments arguments = new OArguments();
-                        arguments.add(Integer.valueOf(getIntent().getExtras().get("id").toString()));
-                        client.call_kw("product.product", "get_detail_store", arguments, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                OdooRecord[] records = result.getRecords();
-                                for (OdooRecord record : records) {
-                                    imageCurrent = record.getString("image");
 
-                                    if (!record.getString("variant").equalsIgnoreCase("")){
-                                        variant =  record.getString("variant");
-                                    }
+    public class VariantTask extends AsyncTask<Void,Void,Void>{
+        @Override
+        protected Void doInBackground(Void... voids) {
+            ArrayListVariant = new ArrayList<>();
+            client = new OdooClient.Builder(getApplicationContext())
+                    .setHost(sharedPrefManager.getSP_Host_url())
+                    .setSession(sharedPrefManager.getSpSessionId())
+                    .setSynchronizedRequests(false)
+                    .setConnectListener(new OdooConnectListener() {
+                        @Override
+                        public void onConnected(OdooVersion version) {
+                            OArguments arguments = new OArguments();
+                            arguments.add(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                            client.call_kw("product.product", "get_detail_store", arguments, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        imageCurrent = record.getString("image");
 
-                                    if (!record.getString("desc").equalsIgnoreCase("false"))
-                                    {
-                                        description = record.getString("desc");
+                                        if (!record.getString("variant").equalsIgnoreCase("")){
+                                            variant =  record.getString("variant");
+                                        }
+
+                                        if (!record.getString("desc").equalsIgnoreCase("false"))
+                                        {
+                                            description = record.getString("desc");
+                                        }
+                                        ArrayListVariant.add(new Variant(
+                                                String.valueOf(record.getInt("id")),
+                                                variant,
+                                                String.valueOf(Math.round(record.getFloat("qty_available"))))
+                                        );
+                                        ownertgl = record.getString("ownername") + " - "+ tanggal(record.getString("date"));
+                                        if (record.getInt("owner") == sharedPrefManager.getSpIdUser()){
+                                            lnEdit.setVisibility(View.VISIBLE);
+                                        }else{
+                                            lnOrder.setVisibility(View.VISIBLE);
+                                        }
                                     }
-                                    ArrayListVariant.add(new Variant(
-                                            String.valueOf(record.getInt("id")),
-                                            variant,
-                                            String.valueOf(Math.round(record.getFloat("qty_available"))))
-                                    );
-                                    ownertgl = record.getString("ownername") + " - "+ tanggal(record.getString("date"));
-                                    if (record.getInt("owner") == sharedPrefManager.getSpIdUser()){
-                                        lnOrder.setVisibility(View.INVISIBLE);
-                                    }else{
-                                        lnEdit.setVisibility(View.INVISIBLE);
-                                    }
+                                    txtOwner.setText(ownertgl);
+                                    imageStore.setImageBitmap(StringToBitMap(imageCurrent));
+                                    txtDeskripsi.setText(description);
+                                    adapter = new AdapterStoreVariant(ArrayListVariant);
+                                    rv.setAdapter(adapter);
+                                    adapter.notifyDataSetChanged();
                                 }
-                                txtOwner.setText(ownertgl);
-                                imageStore.setImageBitmap(StringToBitMap(imageCurrent));
-                                txtDeskripsi.setText(description);
-                                adapter = new AdapterStoreVariant(ArrayListVariant);
-                                rv.setAdapter(adapter);
-                                adapter.notifyDataSetChanged();
-                            }
-                        });
-                    }
-                }).build();
+                            });
+                        }
+                    }).build();
+            return null;
+        }
     }
+
 
 }

@@ -34,6 +34,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 import static com.alpha.test.i_fans.CommonUtils.changeTime;
+import static com.alpha.test.i_fans.CommonUtils.formater;
 
 public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -77,8 +78,8 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 holder.btnBinLelang.setEnabled(false);
             }
             holder.txtNamaLelang.setText(dataList.get(position).getNamalelang());
-            holder.btnBidLelang.setText(dataList.get(position).getBidlelang());
-            holder.btnBinLelang.setText(dataList.get(position).getBinlelang());
+            holder.btnBidLelang.setText(formater(Float.parseFloat(dataList.get(position).getBidlelang())));
+            holder.btnBinLelang.setText(formater(Float.parseFloat(dataList.get(position).getBinlelang())));
             holder.imageLelang.setImageBitmap(StringToBitMap(dataList.get(position).getLelangimage()));
             holder.imageLelang.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override

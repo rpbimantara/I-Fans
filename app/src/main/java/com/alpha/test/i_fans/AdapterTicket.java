@@ -80,8 +80,17 @@ public class AdapterTicket extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
     @Override
-    public int getItemCount() {
-        return (dataList != null) ? dataList.size() : 0;
+    public int getItemViewType(int position) {
+        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
     }
 
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemCount() {
+        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
+    }
 }
