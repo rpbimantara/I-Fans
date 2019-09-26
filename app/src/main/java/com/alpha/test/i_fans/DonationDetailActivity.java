@@ -1,13 +1,20 @@
 package com.alpha.test.i_fans;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
+import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,13 +22,16 @@ import java.util.List;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 import static com.alpha.test.i_fans.CommonUtils.formater;
+import static com.alpha.test.i_fans.CommonUtils.getSaldo;
 import static com.alpha.test.i_fans.CommonUtils.tanggal;
 
 public class DonationDetailActivity extends AppCompatActivity {
@@ -31,6 +41,7 @@ public class DonationDetailActivity extends AppCompatActivity {
     SharedPrefManager sharedPrefManager;
     ImageView imageDonation;
     OdooClient client;
+    EditText EtDonation;
     int total = 0;
 
     @Override
@@ -51,6 +62,34 @@ public class DonationDetailActivity extends AppCompatActivity {
         txtTotalDonatur = findViewById(R.id.textView_total_donatur);
         txtDescription = findViewById(R.id.textView_deskripsi_donation_detail);
         txtAuthor = findViewById(R.id.textView_author_donasi);
+        EtDonation = new EditText(this);
+        EtDonation.setInputType(InputType.TYPE_CLASS_NUMBER);
+        AlertDialog.Builder builder = new AlertDialog.Builder(DonationDetailActivity.this);
+        builder.setTitle(R.string.app_name);
+        builder.setMessage("Input Your Donation Value!");
+        builder.setView(EtDonation);
+        builder.setPositiveButton("Donate", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                System.out.println(getSaldo(DonationDetailActivity.this));
+                AddDonation(Integer.valueOf(EtDonation.getText().toString()));
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        btn_order.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alertDialog.show();
+                EtDonation.getText().clear();
+            }
+        });
         LoadData();
     }
 
@@ -84,6 +123,38 @@ public class DonationDetailActivity extends AppCompatActivity {
                             }
                         });
                     }
+                }).build();
+    }
+
+    public void AddDonation(final Integer Donation){
+        client = new OdooClient.Builder(getBaseContext())
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        OdooValues values = new OdooValues();
+                        values.put("product_id", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                        values.put("user_bid", sharedPrefManager.getSpIdUser());
+                        values.put("nilai", Donation);
+                        values.put("keterang", "Donation");
+
+                        client.create("persebaya.donasi", values, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                int serverId = result.getInt("result");
+                                System.out.println(serverId);
+                            }
+
+                            @Override
+                            public boolean onError(OdooErrorException error) {
+                                Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                                return super.onError(error);
+                            }
+                        });
+                    }
+
                 }).build();
     }
 }

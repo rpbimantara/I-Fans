@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.alpha.test.i_fans"
     android:targetSandboxVersion="2"
-    android:versionCode="8"
-    android:versionName="1.0.8" >
+    android:versionCode="9"
+    android:versionName="1.0.9aku lah" >
 
     <uses-sdk
         android:minSdkVersion="17"
@@ -31,7 +31,9 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
-        <activity android:name="com.alpha.test.i_fans.DonationDetailActivity" />
+        <activity
+            android:name="com.alpha.test.i_fans.DonationDetailActivity"
+            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
         <activity
             android:name="com.alpha.test.i_fans.NotifikasiActivity"
             android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
@@ -102,6 +104,10 @@
         <meta-data
             android:name="com.google.firebase.API_KEY"
             android:value="AAAAWPlkJyo:APA91bHmPKB2KnBiyOXhnKoA8-hRO1VoNNQmoopwrst1TAoSVKIxoOioQzf_dH53QkZ5uk41L4yOP32Bev7bqTqvEHvyNGhj_rkfAvGhlHJJTY5FndNR9D0mV44DHNyQisrzGGob6kRO" />
+        <!-- <meta-data -->
+        <!-- android:name="com.google.firebase.API_KEY" -->
+        <!-- android:value="AIzaSyBs7_jSfy2oazQ4_j0TKcZ9FiKBj6Fx6AA" /> -->
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -1,5 +1,6 @@
 package com.alpha.test.i_fans;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
@@ -14,7 +15,20 @@ import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.OdooVersion;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.ODomain;
+import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooConnectListener;
+
 public class CommonUtils {
+    static SharedPrefManager sharedPrefManager;
+    static OdooClient client;
+
+
     public static class Emptyholder extends RecyclerView.ViewHolder{
         public TextView txtTitle,txtSubtitle;
         String title,subtitle;
@@ -95,5 +109,46 @@ public class CommonUtils {
             time = "0"+time;
         }
         return time;
+    }
+
+    public static Integer getSaldo(Context context){
+        sharedPrefManager = new SharedPrefManager(context);
+        client = new OdooClient.Builder(context)
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setSynchronizedRequests(false)
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        // Success connection
+
+                        ODomain domain = new ODomain();
+                        domain.add("user_ids", "=", sharedPrefManager.getSpIdUser());
+
+                        OdooFields fields = new OdooFields();
+                        fields.addAll("id","name","jeniskelamin","image", "nik","street","tgl_lahir","saldo","email","phone","komunitas");
+
+                        int offset = 0;
+                        int limit = 80;
+
+                        String sorting = "id DESC";
+
+                        client.searchRead("res.partner", domain, fields, offset, limit, sorting, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                OdooRecord[] records = result.getRecords();
+
+                                for (OdooRecord record : records) {
+                                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_PARTNER, record.getInt("id"));
+                                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_COIN_USER, record.getInt("saldo"));
+                                    System.out.println("SDASDSADKNSAKDNK!H@*&$IGIU@!IU@!G#@!");
+
+                                }
+                            }
+                        });
+                    }
+                })
+                .build();
+        return sharedPrefManager.getSpCoinUser();
     }
 }

@@ -186,6 +186,7 @@ public class AccountFragment extends Fragment {
                                 formatter.setDecimalFormatSymbols(symbols);
                                 for (OdooRecord record : records) {
                                     sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_PARTNER, record.getInt("id"));
+                                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_COIN_USER, record.getInt("saldo"));
                                     txtName.setText(nullChecker(record.getString("name")));
                                     txtid.setText(nullChecker(String.valueOf(Math.round(record.getFloat("id")))));
                                     if(record.getString("nik")== "false"){

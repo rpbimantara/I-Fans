@@ -20,6 +20,7 @@ public class SharedPrefManager {
     public static final String SP_RETURN_FROM_RV = "StringFromRV";
     public static final String SP_Host_url = "StringURL";
     public static final String SP_db = "StringDB";
+    public static final String SP_COIN_USER = "Coin";
     public static final String SP_SESSION_ID = "SESSION_ID";
 
 
@@ -60,6 +61,10 @@ public class SharedPrefManager {
 
     public Integer getSpIdClub() {
         return sp.getInt(SP_ID_CLUB,0);
+    }
+
+    public Integer getSpCoinUser() {
+        return sp.getInt(SP_COIN_USER,0);
     }
 
     public String getSpNamaClub() {
