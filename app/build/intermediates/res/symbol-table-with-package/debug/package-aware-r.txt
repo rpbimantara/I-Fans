@@ -2208,6 +2208,7 @@ id actions
 id activity_chooser_view_content
 id add
 id add_due_date
+id add_due_date_donation
 id adjust_height
 id adjust_width
 id alertTitle
@@ -2244,6 +2245,7 @@ id button_edit_store
 id button_paid
 id button_review_order
 id button_save_account
+id button_save_donation
 id button_save_lelang
 id button_save_store
 id cancel_action
@@ -2301,12 +2303,14 @@ id donasi_image
 id donasi_toolbar
 id editText_BIN
 id editText_Deskripsi
+id editText_Deskripsi_donation
 id editText_Deskripsi_store
 id editText_INC
 id editText_alamat
 id editText_comment
 id editText_email
 id editText_komunitas
+id editText_nama_donation
 id editText_namabarangLelang
 id editText_namabarangStore
 id editText_name
@@ -2315,6 +2319,7 @@ id editText_openBid
 id editText_phone
 id editText_price_store
 id editText_stock
+id editText_target_donation
 id edit_date
 id edit_query
 id end
@@ -2324,6 +2329,7 @@ id enterAlwaysCollapsed
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fab_donasi
 id fill
 id fill_horizontal
 id fill_parent
@@ -2351,12 +2357,14 @@ id imageView_awaylast
 id imageView_homelast
 id image_AddLelang
 id image_AddStore
+id image_Add_donation
 id image_TeamDetail
 id image_TeamDetail_job
 id image_UserAccount
 id image_fab
 id image_fab_Add_Lelang
 id image_fab_Add_Store
+id image_fab_Add_donation
 id image_rating_line_up
 id image_staff
 id image_tiket_barcode
@@ -2818,6 +2826,7 @@ layout activity_berita_detail
 layout activity_checkout
 layout activity_club_detail
 layout activity_donation
+layout activity_donation_add
 layout activity_donation_detail
 layout activity_home
 layout activity_lelang_add

@@ -2,6 +2,7 @@ package com.alpha.test.i_fans;
 
 import android.content.Intent;
 import android.os.AsyncTask;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ public class DonationActivity extends AppCompatActivity {
 
     ArrayList<Donation> ArrayListDonation;
     SharedPrefManager sharedPrefManager;
+    FloatingActionButton fab;
     int RecyclerViewItemPosition ;
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
@@ -46,6 +48,7 @@ public class DonationActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         rv =  findViewById(R.id.rv_recycler_view_donasi);
         swiper = findViewById(R.id.swiperefresh_donasi);
+        fab = findViewById(R.id.fab_donasi);
         llm = new LinearLayoutManager(this);
         sharedPrefManager = new SharedPrefManager(this);
         rv.setAdapter(adapter);
@@ -88,6 +91,14 @@ public class DonationActivity extends AppCompatActivity {
             @Override
             public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
 
+            }
+        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DonationActivity.this,DonationAddActivity.class);
+                intent.putExtra("id","false");
+                startActivity(intent);
             }
         });
         new DonationTask().execute();

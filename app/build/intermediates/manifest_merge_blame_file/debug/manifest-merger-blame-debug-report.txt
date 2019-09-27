@@ -10,18 +10,18 @@
 9        android:targetSdkVersion="28" />
 9-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 10
-11    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-11-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:5-79
-11-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:22-76
-12    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-12-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:5-76
-12-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:22-73
-13    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-13-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:5-81
-13-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:22-78
-14    <uses-permission android:name="android.permission.INTERNET" />
-14-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:5-67
-14-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:22-64
+11    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+11-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:5-76
+11-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:22-73
+12    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+12-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:5-81
+12-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:22-78
+13    <uses-permission android:name="android.permission.INTERNET" />
+13-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:5-67
+13-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:22-64
+14    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+14-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:5-79
+14-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:22-76
 15    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 15-->[com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:13:5-79
 15-->[com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:13:22-76
@@ -58,319 +58,320 @@
 31-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:12:9-40
 32        android:usesCleartextTraffic="true" >
 32-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:13:9-44
-33        <activity
-33-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:9-15:67
-34            android:name="com.alpha.test.i_fans.DonationDetailActivity"
-34-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:19-57
-35            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-35-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:15:13-55
-36        <activity
-36-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:16:9-18:58
-37            android:name="com.alpha.test.i_fans.NotifikasiActivity"
-37-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:17:13-47
-38            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-38-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:18:13-55
-39        <activity
-39-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:19:9-21:58
-40            android:name="com.alpha.test.i_fans.DonationActivity"
-40-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:20:13-45
-41            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-41-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:21:13-55
-42        <activity
-42-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:22:9-24:58
-43            android:name="com.alpha.test.i_fans.TicketBarcodeActivity"
-43-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:23:13-50
-44            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-44-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:24:13-55
-45        <activity
-45-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:25:9-27:58
-46            android:name="com.alpha.test.i_fans.AccountCoinActivity"
-46-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:26:13-48
-47            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-47-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:27:13-55
-48        <activity
-48-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:28:9-30:58
-49            android:name="com.alpha.test.i_fans.RatingLineUpActivity"
-49-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:29:13-49
-50            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-50-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:30:13-55
-51        <activity
-51-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:31:9-33:58
-52            android:name="com.alpha.test.i_fans.AccountAuctionActivity"
-52-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:32:13-51
-53            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-53-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:33:13-55
-54        <activity
-54-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:34:9-36:58
-55            android:name="com.alpha.test.i_fans.AccountStoreActivity"
-55-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:35:13-49
-56            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-56-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:36:13-55
-57        <activity
-57-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:37:9-39:58
-58            android:name="com.alpha.test.i_fans.TeamDetailActivity"
-58-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:38:13-47
-59            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-59-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:39:13-55
-60        <activity
-60-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:40:9-49:20
-61            android:name="com.alpha.test.i_fans.MainActivity"
-61-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:41:13-41
-62            android:label="@string/app_name"
-62-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:42:13-45
-63            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
-63-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:43:13-69
-64            <intent-filter>
-64-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:44:13-48:29
-65                <action android:name="android.intent.action.MAIN" />
-65-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:45:17-69
-65-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:45:25-66
-66
-67                <category android:name="android.intent.category.LAUNCHER" />
-67-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:47:17-77
-67-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:47:27-74
-68            </intent-filter>
-69        </activity>
-70        <activity android:name="com.alpha.test.i_fans.HomeActivity" />
-70-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:50:9-50
-70-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:50:19-47
-71        <activity android:name="com.alpha.test.i_fans.LoginActivity" />
-71-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:51:9-51
-71-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:51:19-48
-72        <activity android:name="com.alpha.test.i_fans.SingUpActivity" />
-72-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:52:9-52
-72-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:52:19-49
-73        <activity
-73-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:53:9-55:58
-74            android:name="com.alpha.test.i_fans.TicketActivity"
-74-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:54:13-43
-75            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-75-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:55:13-55
-76        <activity
-76-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:56:9-58:58
-77            android:name="com.alpha.test.i_fans.BeritaDetailActivity"
-77-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:57:13-49
-78            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-78-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:58:13-55
-79        <activity
-79-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:59:9-61:58
-80            android:name="com.alpha.test.i_fans.StoreDetailActivity"
-80-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:60:13-48
-81            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-81-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:61:13-55
-82        <activity
-82-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:62:9-64:58
-83            android:name="com.alpha.test.i_fans.LelangDetailActivity"
-83-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:63:13-49
-84            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-84-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:64:13-55
-85        <activity
-85-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:65:9-67:58
-86            android:name="com.alpha.test.i_fans.ClubDetailActivity"
-86-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:66:13-47
-87            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-87-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:67:13-55
-88        <activity
-88-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:68:9-70:58
-89            android:name="com.alpha.test.i_fans.AccountEditActivity"
-89-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:69:13-48
-90            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-90-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:70:13-55
-91        <activity android:name="com.alpha.test.i_fans.LelangAddActivity" />
-91-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:71:9-55
-91-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:71:19-52
-92        <activity android:name="com.alpha.test.i_fans.StoreAddActivity" />
-92-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:72:9-54
-92-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:72:19-51
-93        <activity
-93-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:73:9-75:58
-94            android:name="com.alpha.test.i_fans.TicketDetailActivity"
-94-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:74:13-49
-95            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-95-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:75:13-55
-96        <activity
-96-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:76:9-78:58
-97            android:name="com.alpha.test.i_fans.CheckoutActivity"
-97-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:77:13-45
-98            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-98-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:78:13-55
-99        <activity
-99-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:79:9-81:58
-100            android:name="com.alpha.test.i_fans.MatchDetailActivity"
-100-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:80:13-48
-101            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
-101-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:81:13-55
-102
-103        <meta-data
-103-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:83:9-85:184
-104            android:name="com.google.firebase.API_KEY"
-104-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:84:13-55
-105            android:value="AAAAWPlkJyo:APA91bHmPKB2KnBiyOXhnKoA8-hRO1VoNNQmoopwrst1TAoSVKIxoOioQzf_dH53QkZ5uk41L4yOP32Bev7bqTqvEHvyNGhj_rkfAvGhlHJJTY5FndNR9D0mV44DHNyQisrzGGob6kRO" />
-105-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:85:13-181
-106        <!-- <meta-data -->
+33        <activity android:name="com.alpha.test.i_fans.DonationAddActivity" />
+33-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:9-66
+33-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:19-54
+34        <activity
+34-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:15:9-17:58
+35            android:name="com.alpha.test.i_fans.DonationDetailActivity"
+35-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:16:13-51
+36            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+36-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:17:13-55
+37        <activity
+37-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:18:9-20:58
+38            android:name="com.alpha.test.i_fans.NotifikasiActivity"
+38-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:19:13-47
+39            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+39-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:20:13-55
+40        <activity
+40-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:21:9-23:58
+41            android:name="com.alpha.test.i_fans.DonationActivity"
+41-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:22:13-45
+42            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+42-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:23:13-55
+43        <activity
+43-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:24:9-26:58
+44            android:name="com.alpha.test.i_fans.TicketBarcodeActivity"
+44-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:25:13-50
+45            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+45-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:26:13-55
+46        <activity
+46-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:27:9-29:58
+47            android:name="com.alpha.test.i_fans.AccountCoinActivity"
+47-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:28:13-48
+48            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+48-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:29:13-55
+49        <activity
+49-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:30:9-32:58
+50            android:name="com.alpha.test.i_fans.RatingLineUpActivity"
+50-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:31:13-49
+51            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+51-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:32:13-55
+52        <activity
+52-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:33:9-35:58
+53            android:name="com.alpha.test.i_fans.AccountAuctionActivity"
+53-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:34:13-51
+54            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+54-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:35:13-55
+55        <activity
+55-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:36:9-38:58
+56            android:name="com.alpha.test.i_fans.AccountStoreActivity"
+56-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:37:13-49
+57            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+57-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:38:13-55
+58        <activity
+58-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:39:9-41:58
+59            android:name="com.alpha.test.i_fans.TeamDetailActivity"
+59-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:40:13-47
+60            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+60-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:41:13-55
+61        <activity
+61-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:42:9-51:20
+62            android:name="com.alpha.test.i_fans.MainActivity"
+62-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:43:13-41
+63            android:label="@string/app_name"
+63-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:44:13-45
+64            android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+64-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:45:13-69
+65            <intent-filter>
+65-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:46:13-50:29
+66                <action android:name="android.intent.action.MAIN" />
+66-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:47:17-69
+66-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:47:25-66
+67
+68                <category android:name="android.intent.category.LAUNCHER" />
+68-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:49:17-77
+68-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:49:27-74
+69            </intent-filter>
+70        </activity>
+71        <activity android:name="com.alpha.test.i_fans.HomeActivity" />
+71-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:52:9-50
+71-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:52:19-47
+72        <activity android:name="com.alpha.test.i_fans.LoginActivity" />
+72-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:53:9-51
+72-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:53:19-48
+73        <activity android:name="com.alpha.test.i_fans.SingUpActivity" />
+73-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:54:9-52
+73-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:54:19-49
+74        <activity
+74-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:55:9-57:58
+75            android:name="com.alpha.test.i_fans.TicketActivity"
+75-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:56:13-43
+76            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+76-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:57:13-55
+77        <activity
+77-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:58:9-60:58
+78            android:name="com.alpha.test.i_fans.BeritaDetailActivity"
+78-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:59:13-49
+79            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+79-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:60:13-55
+80        <activity
+80-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:61:9-63:58
+81            android:name="com.alpha.test.i_fans.StoreDetailActivity"
+81-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:62:13-48
+82            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+82-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:63:13-55
+83        <activity
+83-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:64:9-66:58
+84            android:name="com.alpha.test.i_fans.LelangDetailActivity"
+84-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:65:13-49
+85            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+85-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:66:13-55
+86        <activity
+86-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:67:9-69:58
+87            android:name="com.alpha.test.i_fans.ClubDetailActivity"
+87-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:68:13-47
+88            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+88-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:69:13-55
+89        <activity
+89-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:70:9-72:58
+90            android:name="com.alpha.test.i_fans.AccountEditActivity"
+90-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:71:13-48
+91            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+91-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:72:13-55
+92        <activity android:name="com.alpha.test.i_fans.LelangAddActivity" />
+92-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:73:9-55
+92-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:73:19-52
+93        <activity android:name="com.alpha.test.i_fans.StoreAddActivity" />
+93-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:74:9-54
+93-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:74:19-51
+94        <activity
+94-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:75:9-77:58
+95            android:name="com.alpha.test.i_fans.TicketDetailActivity"
+95-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:76:13-49
+96            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+96-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:77:13-55
+97        <activity
+97-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:78:9-80:58
+98            android:name="com.alpha.test.i_fans.CheckoutActivity"
+98-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:79:13-45
+99            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+99-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:80:13-55
+100        <activity
+100-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:81:9-83:58
+101            android:name="com.alpha.test.i_fans.MatchDetailActivity"
+101-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:82:13-48
+102            android:parentActivityName="com.alpha.test.i_fans.MainActivity" />
+102-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:83:13-55
+103
+104        <meta-data
+104-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:85:9-87:184
+105            android:name="com.google.firebase.API_KEY"
+105-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:86:13-55
+106            android:value="AAAAWPlkJyo:APA91bHmPKB2KnBiyOXhnKoA8-hRO1VoNNQmoopwrst1TAoSVKIxoOioQzf_dH53QkZ5uk41L4yOP32Bev7bqTqvEHvyNGhj_rkfAvGhlHJJTY5FndNR9D0mV44DHNyQisrzGGob6kRO" /> <!-- <meta-data -->
+106-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:87:13-181
 107        <!-- android:name="com.google.firebase.API_KEY" -->
 108        <!-- android:value="AIzaSyBs7_jSfy2oazQ4_j0TKcZ9FiKBj6Fx6AA" /> -->
-109
-110        <meta-data
-110-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:90:9-92:57
-111            android:name="preloaded_fonts"
-111-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:91:13-43
-112            android:resource="@array/preloaded_fonts" />
-112-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:92:13-54
-113
-114        <service android:name="com.alpha.test.i_fans.MyFirebaseMessagingService" >
-114-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:94:9-98:19
-114-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:94:18-60
-115            <intent-filter>
-115-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:95:13-97:29
-116                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-116-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:17-78
-116-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:25-75
-117            </intent-filter>
-118        </service>
-119        <!--
-120             FirebaseMessagingService performs security checks at runtime,
-121             no need for explicit permissions despite exported="true"
-122        -->
-123        <service
-123-->[com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:28:9-34:19
-124            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-124-->[com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:29:13-82
-125            android:exported="true" >
-125-->[com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:30:13-36
-126            <intent-filter android:priority="-500" >
-126-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:95:13-97:29
-127                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-127-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:17-78
-127-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:25-75
-128            </intent-filter>
-129        </service>
-130        <service
-130-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:27:9-31:19
-131            android:name="com.google.firebase.components.ComponentDiscoveryService"
-131-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:27:18-89
-132            android:exported="false" >
-132-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:31:13-37
-133            <meta-data
-133-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:28:13-30:85
-134                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-134-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:29:17-139
-135                android:value="com.google.firebase.components.ComponentRegistrar" />
-135-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:30:17-82
-136            <meta-data
-136-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:32:13-34:85
-137                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
-137-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:33:17-96
-138                android:value="com.google.firebase.components.ComponentRegistrar" />
-138-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:34:17-82
-139        </service>
-140
-141        <receiver
-141-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:29:9-33:20
-142            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-142-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:30:13-85
-143            android:enabled="true"
-143-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:31:13-35
-144            android:exported="false" >
-144-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:32:13-37
-145        </receiver>
-146        <receiver
-146-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:34:9-42:20
-147            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
-147-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:35:13-100
-148            android:enabled="true"
-148-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:36:13-35
-149            android:exported="true"
-149-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:37:13-36
-150            android:permission="android.permission.INSTALL_PACKAGES" >
-150-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:38:13-69
-151            <intent-filter>
-151-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:39:13-41:29
-152                <action android:name="com.android.vending.INSTALL_REFERRER" />
-152-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:40:17-79
-152-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:40:25-76
-153            </intent-filter>
-154        </receiver>
-155
-156        <service
-156-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:44:9-47:40
-157            android:name="com.google.android.gms.measurement.AppMeasurementService"
-157-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:45:13-84
-158            android:enabled="true"
-158-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:46:13-35
-159            android:exported="false" />
-159-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:47:13-37
-160        <service
-160-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:48:9-52:72
-161            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-161-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:49:13-87
-162            android:enabled="true"
-162-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:50:13-35
-163            android:exported="false"
-163-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:51:13-37
-164            android:permission="android.permission.BIND_JOB_SERVICE" />
-164-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:52:13-69
-165
-166        <receiver
-166-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:37:9-44:20
-167            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-167-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:38:13-78
-168            android:exported="true"
-168-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:39:13-36
-169            android:permission="com.google.android.c2dm.permission.SEND" >
-169-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:40:13-73
-170            <intent-filter>
-170-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:41:13-43:29
-171                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-171-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:42:17-81
-171-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:42:25-78
-172            </intent-filter>
-173        </receiver>
-174        <!--
-175             FirebaseInstanceIdService performs security checks at runtime,
-176             no need for explicit permissions despite exported="true"
-177        -->
-178        <service
-178-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:50:9-56:19
-179            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
-179-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:51:13-77
-180            android:exported="true" >
-180-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:52:13-36
-181            <intent-filter android:priority="-500" >
-181-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:53:13-55:29
-181-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:53:28-51
-182                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-182-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:54:17-80
-182-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:54:25-77
-183            </intent-filter>
-184        </service>
-185
-186        <provider
-186-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:10:9-14:39
-187            android:name="com.google.firebase.provider.FirebaseInitProvider"
-187-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:11:13-77
-188            android:authorities="com.alpha.test.i_fans.firebaseinitprovider"
-188-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:12:13-72
-189            android:exported="false"
-189-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:13:13-37
-190            android:initOrder="100" />
-190-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:14:13-36
-191
-192        <activity
-192-->[com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
-193            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-193-->[com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:24:13-79
-194            android:exported="false"
-194-->[com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:25:13-37
-195            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-195-->[com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:26:13-72
-196
-197        <meta-data
-197-->[com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
-198            android:name="com.google.android.gms.version"
-198-->[com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
-199            android:value="@integer/google_play_services_version" />
-199-->[com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
-200    </application>
-201
-202</manifest>
+109        <meta-data
+109-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:90:9-92:57
+110            android:name="preloaded_fonts"
+110-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:91:13-43
+111            android:resource="@array/preloaded_fonts" />
+111-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:92:13-54
+112
+113        <service android:name="com.alpha.test.i_fans.MyFirebaseMessagingService" >
+113-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:94:9-98:19
+113-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:94:18-60
+114            <intent-filter>
+114-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:95:13-97:29
+115                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+115-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:17-78
+115-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:25-75
+116            </intent-filter>
+117        </service>
+118        <!--
+119             FirebaseMessagingService performs security checks at runtime,
+120             no need for explicit permissions despite exported="true"
+121        -->
+122        <service
+122-->[com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:28:9-34:19
+123            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+123-->[com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:29:13-82
+124            android:exported="true" >
+124-->[com.google.firebase:firebase-messaging:17.4.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/d0940a5aec79753aaf041a7d2c65e7ed/firebase-messaging-17.4.0/AndroidManifest.xml:30:13-36
+125            <intent-filter android:priority="-500" >
+125-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:95:13-97:29
+126                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+126-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:17-78
+126-->/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:25-75
+127            </intent-filter>
+128        </service>
+129        <service
+129-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:27:9-31:19
+130            android:name="com.google.firebase.components.ComponentDiscoveryService"
+130-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:27:18-89
+131            android:exported="false" >
+131-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:31:13-37
+132            <meta-data
+132-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:28:13-30:85
+133                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+133-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:29:17-139
+134                android:value="com.google.firebase.components.ComponentRegistrar" />
+134-->[com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:30:17-82
+135            <meta-data
+135-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:32:13-34:85
+136                android:name="com.google.firebase.components:com.google.firebase.iid.Registrar"
+136-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:33:17-96
+137                android:value="com.google.firebase.components.ComponentRegistrar" />
+137-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:34:17-82
+138        </service>
+139
+140        <receiver
+140-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:29:9-33:20
+141            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+141-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:30:13-85
+142            android:enabled="true"
+142-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:31:13-35
+143            android:exported="false" >
+143-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:32:13-37
+144        </receiver>
+145        <receiver
+145-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:34:9-42:20
+146            android:name="com.google.android.gms.measurement.AppMeasurementInstallReferrerReceiver"
+146-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:35:13-100
+147            android:enabled="true"
+147-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:36:13-35
+148            android:exported="true"
+148-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:37:13-36
+149            android:permission="android.permission.INSTALL_PACKAGES" >
+149-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:38:13-69
+150            <intent-filter>
+150-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:39:13-41:29
+151                <action android:name="com.android.vending.INSTALL_REFERRER" />
+151-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:40:17-79
+151-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:40:25-76
+152            </intent-filter>
+153        </receiver>
+154
+155        <service
+155-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:44:9-47:40
+156            android:name="com.google.android.gms.measurement.AppMeasurementService"
+156-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:45:13-84
+157            android:enabled="true"
+157-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:46:13-35
+158            android:exported="false" />
+158-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:47:13-37
+159        <service
+159-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:48:9-52:72
+160            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+160-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:49:13-87
+161            android:enabled="true"
+161-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:50:13-35
+162            android:exported="false"
+162-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:51:13-37
+163            android:permission="android.permission.BIND_JOB_SERVICE" />
+163-->[com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:52:13-69
+164
+165        <receiver
+165-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:37:9-44:20
+166            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+166-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:38:13-78
+167            android:exported="true"
+167-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:39:13-36
+168            android:permission="com.google.android.c2dm.permission.SEND" >
+168-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:40:13-73
+169            <intent-filter>
+169-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:41:13-43:29
+170                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+170-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:42:17-81
+170-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:42:25-78
+171            </intent-filter>
+172        </receiver>
+173        <!--
+174             FirebaseInstanceIdService performs security checks at runtime,
+175             no need for explicit permissions despite exported="true"
+176        -->
+177        <service
+177-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:50:9-56:19
+178            android:name="com.google.firebase.iid.FirebaseInstanceIdService"
+178-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:51:13-77
+179            android:exported="true" >
+179-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:52:13-36
+180            <intent-filter android:priority="-500" >
+180-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:53:13-55:29
+180-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:53:28-51
+181                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+181-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:54:17-80
+181-->[com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:54:25-77
+182            </intent-filter>
+183        </service>
+184
+185        <provider
+185-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:10:9-14:39
+186            android:name="com.google.firebase.provider.FirebaseInitProvider"
+186-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:11:13-77
+187            android:authorities="com.alpha.test.i_fans.firebaseinitprovider"
+187-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:12:13-72
+188            android:exported="false"
+188-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:13:13-37
+189            android:initOrder="100" />
+189-->[com.google.firebase:firebase-common:16.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/a48782d3fd02d5ce5e143923d5cc08c6/firebase-common-16.0.3/AndroidManifest.xml:14:13-36
+190
+191        <activity
+191-->[com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:23:9-26:75
+192            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+192-->[com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:24:13-79
+193            android:exported="false"
+193-->[com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:25:13-37
+194            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+194-->[com.google.android.gms:play-services-base:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/b9ffff42fac733baed479ce77a508552/play-services-base-16.0.1/AndroidManifest.xml:26:13-72
+195
+196        <meta-data
+196-->[com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:23:9-25:69
+197            android:name="com.google.android.gms.version"
+197-->[com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:24:13-58
+198            android:value="@integer/google_play_services_version" />
+198-->[com.google.android.gms:play-services-basement:16.0.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/AndroidManifest.xml:25:13-66
+199    </application>
+200
+201</manifest>

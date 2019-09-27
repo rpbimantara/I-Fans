@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DonationDetailActivity"
-            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".DonationAddActivity"></activity>
+        <activity
+            android:name=".DonationDetailActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".NotifikasiActivity"
             android:parentActivityName=".MainActivity" />
@@ -82,11 +84,9 @@
 
         <meta-data
             android:name="com.google.firebase.API_KEY"
-            android:value="AAAAWPlkJyo:APA91bHmPKB2KnBiyOXhnKoA8-hRO1VoNNQmoopwrst1TAoSVKIxoOioQzf_dH53QkZ5uk41L4yOP32Bev7bqTqvEHvyNGhj_rkfAvGhlHJJTY5FndNR9D0mV44DHNyQisrzGGob6kRO" />
-<!--        <meta-data-->
-<!--            android:name="com.google.firebase.API_KEY"-->
-<!--            android:value="AIzaSyBs7_jSfy2oazQ4_j0TKcZ9FiKBj6Fx6AA" />-->
-
+            android:value="AAAAWPlkJyo:APA91bHmPKB2KnBiyOXhnKoA8-hRO1VoNNQmoopwrst1TAoSVKIxoOioQzf_dH53QkZ5uk41L4yOP32Bev7bqTqvEHvyNGhj_rkfAvGhlHJJTY5FndNR9D0mV44DHNyQisrzGGob6kRO" /> <!-- <meta-data -->
+        <!-- android:name="com.google.firebase.API_KEY" -->
+        <!-- android:value="AIzaSyBs7_jSfy2oazQ4_j0TKcZ9FiKBj6Fx6AA" /> -->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -97,10 +97,10 @@
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

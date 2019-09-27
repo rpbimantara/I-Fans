@@ -3344,6 +3344,10 @@
         "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/res/drawable-hdpi-v4/notification_bg_normal_pressed.9.png"
     },
     {
+        "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/layout_activity_donation_add.xml.flat",
+        "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/res/layout/activity_donation_add.xml"
+    },
+    {
         "merged": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/res/merged/debug/drawable-xxxhdpi_ic_signal_wifi_1_bar_lock_black_24dp.png.flat",
         "source": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/generated/res/pngs/debug/drawable-xxxhdpi/ic_signal_wifi_1_bar_lock_black_24dp.png"
     },

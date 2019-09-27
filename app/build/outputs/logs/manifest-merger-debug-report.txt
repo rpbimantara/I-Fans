@@ -146,158 +146,162 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:12:9-40
 	android:usesCleartextTraffic
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:13:9-44
+activity#com.alpha.test.i_fans.DonationAddActivity
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:9-66
+	android:name
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:19-54
 activity#com.alpha.test.i_fans.DonationDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:9-15:67
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:15:9-17:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:15:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:17:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:19-57
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:16:13-51
 activity#com.alpha.test.i_fans.NotifikasiActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:16:9-18:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:18:9-20:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:18:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:20:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:17:13-47
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:19:13-47
 activity#com.alpha.test.i_fans.DonationActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:19:9-21:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:21:9-23:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:21:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:23:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:20:13-45
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:22:13-45
 activity#com.alpha.test.i_fans.TicketBarcodeActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:22:9-24:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:24:9-26:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:24:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:26:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:23:13-50
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:25:13-50
 activity#com.alpha.test.i_fans.AccountCoinActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:25:9-27:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:27:9-29:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:27:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:29:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:26:13-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:28:13-48
 activity#com.alpha.test.i_fans.RatingLineUpActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:28:9-30:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:30:9-32:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:30:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:32:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:29:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:31:13-49
 activity#com.alpha.test.i_fans.AccountAuctionActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:31:9-33:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:33:9-35:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:33:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:35:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:32:13-51
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:34:13-51
 activity#com.alpha.test.i_fans.AccountStoreActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:34:9-36:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:36:9-38:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:36:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:38:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:35:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:37:13-49
 activity#com.alpha.test.i_fans.TeamDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:37:9-39:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:39:9-41:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:39:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:41:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:38:13-47
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:40:13-47
 activity#com.alpha.test.i_fans.MainActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:40:9-49:20
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:42:9-51:20
 	android:label
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:42:13-45
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:44:13-45
 	android:theme
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:43:13-69
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:45:13-69
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:41:13-41
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:43:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:44:13-48:29
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:46:13-50:29
 action#android.intent.action.MAIN
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:45:17-69
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:47:17-69
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:45:25-66
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:47:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:47:17-77
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:49:17-77
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:47:27-74
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:49:27-74
 activity#com.alpha.test.i_fans.HomeActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:50:9-50
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:52:9-50
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:50:19-47
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:52:19-47
 activity#com.alpha.test.i_fans.LoginActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:51:9-51
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:53:9-51
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:51:19-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:53:19-48
 activity#com.alpha.test.i_fans.SingUpActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:52:9-52
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:54:9-52
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:52:19-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:54:19-49
 activity#com.alpha.test.i_fans.TicketActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:53:9-55:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:55:9-57:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:55:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:57:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:54:13-43
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:56:13-43
 activity#com.alpha.test.i_fans.BeritaDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:56:9-58:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:58:9-60:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:58:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:60:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:57:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:59:13-49
 activity#com.alpha.test.i_fans.StoreDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:59:9-61:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:61:9-63:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:61:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:63:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:60:13-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:62:13-48
 activity#com.alpha.test.i_fans.LelangDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:62:9-64:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:64:9-66:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:64:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:66:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:63:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:65:13-49
 activity#com.alpha.test.i_fans.ClubDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:65:9-67:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:67:9-69:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:67:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:69:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:66:13-47
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:68:13-47
 activity#com.alpha.test.i_fans.AccountEditActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:68:9-70:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:70:9-72:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:70:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:72:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:69:13-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:71:13-48
 activity#com.alpha.test.i_fans.LelangAddActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:71:9-55
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:73:9-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:71:19-52
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:73:19-52
 activity#com.alpha.test.i_fans.StoreAddActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:72:9-54
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:74:9-54
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:72:19-51
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:74:19-51
 activity#com.alpha.test.i_fans.TicketDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:73:9-75:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:75:9-77:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:75:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:77:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:74:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:76:13-49
 activity#com.alpha.test.i_fans.CheckoutActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:76:9-78:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:78:9-80:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:78:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:80:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:77:13-45
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:79:13-45
 activity#com.alpha.test.i_fans.MatchDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:79:9-81:58
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:81:9-83:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:81:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:83:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:80:13-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:82:13-48
 meta-data#com.google.firebase.API_KEY
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:83:9-85:184
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:85:9-87:184
 	android:value
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:85:13-181
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:87:13-181
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:84:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:86:13-55
 meta-data#preloaded_fonts
 ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:90:9-92:57
 	android:resource
@@ -314,28 +318,16 @@ action#com.google.firebase.MESSAGING_EVENT
 ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:17-78
 	android:name
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:25-75
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
-	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:22-76
 uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:5-76
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:5-76
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:22-73
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:22-73
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:5-81
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:5-81
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:22-78
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:22-78
 uses-permission#android.permission.INTERNET
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:5-67
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:5-67
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:22:5-67
@@ -347,7 +339,19 @@ MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gra
 MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:22-64
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:22-76
 uses-sdk
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml

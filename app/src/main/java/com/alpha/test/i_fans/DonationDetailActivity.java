@@ -2,6 +2,7 @@ package com.alpha.test.i_fans;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -102,7 +103,7 @@ public class DonationDetailActivity extends AppCompatActivity {
                     @Override
                     public void onConnected(OdooVersion version) {
                         List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id").toString()));
-                        List<String> fields = Arrays.asList("id","image_medium","name","list_price","target_donasi", "description_purchase","due_date","create_uid","donasi_ids");
+                        List<String> fields = Arrays.asList("id","image_medium","name","list_price","target_donasi", "description_sale","due_date","create_uid","donasi_ids");
 
                         client.read("product.template", ids, fields, new IOdooResponse() {
                             @Override
@@ -117,7 +118,7 @@ public class DonationDetailActivity extends AppCompatActivity {
                                     txtTotal.setText(formater(record.getFloat("target_donasi")));
                                     txtNama.setText(record.getString("name"));
                                     txtTotalDonatur.setText(String.valueOf(donasi_ids));
-                                    txtDescription.setText(record.getString("description_purchase"));
+                                    txtDescription.setText(record.getString("description_sale"));
                                     txtAuthor.setText(record.getString("create_uid")+" - "+tanggal(record.getString("due_date")));
                                 }
                             }
