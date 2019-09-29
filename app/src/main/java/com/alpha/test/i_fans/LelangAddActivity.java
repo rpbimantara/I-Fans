@@ -43,6 +43,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 import static com.alpha.test.i_fans.CommonUtils.getBase64ImageString;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 import static com.alpha.test.i_fans.CommonUtils.tanggal;
 
 public class LelangAddActivity extends AppCompatActivity {
@@ -75,11 +76,13 @@ public class LelangAddActivity extends AppCompatActivity {
         fabImageLelang = findViewById(R.id.image_fab_Add_Lelang);
         fabImageLelang.setImageResource(R.drawable.ic_camera);
         savebtn = findViewById(R.id.button_save_lelang);
+        client = getOdooConnection(getBaseContext());
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (state.equalsIgnoreCase("create")){
-                    new SaveLelangTask().execute();
+                    createLelang();
+//                    new SaveLelangTask().execute();
                 }else{
 
                 }
@@ -125,6 +128,40 @@ public class LelangAddActivity extends AppCompatActivity {
         }
     }
 
+
+    public void createLelang(){
+        progressDialog.setMessage("Create.....");
+        progressDialog.show();
+        OdooValues values = new OdooValues();
+        values.put("image_medium", getBase64ImageString(currentImage));
+        values.put("name", etName.getText().toString());
+        values.put("ob", etOb.getText().toString());
+        values.put("inc", etInc.getText().toString());
+        values.put("binow", etBin.getText().toString());
+        values.put("purchase_ok", false);
+        values.put("type", "lelang");
+        values.put("description_sale", etdeskripsi.getText().toString());
+        values.put("due_date", txtDuedate.getText().toString());
+        values.put("create_uid", sharedPrefManager.getSpIdUser());
+
+        client.create("product.template", values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // Success response
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(),"Auction Created!",Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+                return super.onError(error);
+            }
+        });
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -142,104 +179,95 @@ public class LelangAddActivity extends AppCompatActivity {
         }
     }
 
-    public class SaveLelangTask extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected Void doInBackground(Void... voids) {
-            client = new OdooClient.Builder(getBaseContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSynchronizedRequests(false)
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            progressDialog.setMessage("Saving.....");
-                            progressDialog.show();
-                            OdooValues values = new OdooValues();
-                            values.put("image_medium", getBase64ImageString(currentImage));
-                            values.put("name", etName.getText().toString());
-                            values.put("ob", etOb.getText().toString());
-                            values.put("inc", etInc.getText().toString());
-                            values.put("binow", etBin.getText().toString());
-                            values.put("purchase_ok", false);
-                            values.put("type", "lelang");
-                            values.put("description_sale", etdeskripsi.getText().toString());
-                            values.put("due_date", txtDuedate.getText().toString());
-                            values.put("create_uid", sharedPrefManager.getSpIdUser());
-
-                            client.create("product.template", values, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    // Success response
-                                    progressDialog.dismiss();
-                                    Toast.makeText(getBaseContext(),"Auction Created!",Toast.LENGTH_LONG).show();
-                                    finish();
-                                }
-
-                                @Override
-                                public boolean onError(OdooErrorException error) {
-                                    Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
-                                    progressDialog.dismiss();
-                                    return super.onError(error);
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
-    }
+//    public class SaveLelangTask extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            client = new OdooClient.Builder(getBaseContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSynchronizedRequests(false)
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            progressDialog.setMessage("Saving.....");
+//                            progressDialog.show();
+//                            OdooValues values = new OdooValues();
+//                            values.put("image_medium", getBase64ImageString(currentImage));
+//                            values.put("name", etName.getText().toString());
+//                            values.put("ob", etOb.getText().toString());
+//                            values.put("inc", etInc.getText().toString());
+//                            values.put("binow", etBin.getText().toString());
+//                            values.put("purchase_ok", false);
+//                            values.put("type", "lelang");
+//                            values.put("description_sale", etdeskripsi.getText().toString());
+//                            values.put("due_date", txtDuedate.getText().toString());
+//                            values.put("create_uid", sharedPrefManager.getSpIdUser());
+//
+//                            client.create("product.template", values, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    // Success response
+//                                    progressDialog.dismiss();
+//                                    Toast.makeText(getBaseContext(),"Auction Created!",Toast.LENGTH_LONG).show();
+//                                    finish();
+//                                }
+//
+//                                @Override
+//                                public boolean onError(OdooErrorException error) {
+//                                    Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+//                                    progressDialog.dismiss();
+//                                    return super.onError(error);
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 
     public void EditLelang(){
 
     }
 
     public void LoadItem(){
-        client = new OdooClient.Builder(getApplicationContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        ODomain domain = new ODomain();
-                        domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+        ODomain domain = new ODomain();
+        domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
 
-                        OdooFields fields = new OdooFields();
-                        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
 
-                        int offset = 0;
-                        int limit = 80;
+        int offset = 0;
+        int limit = 80;
 
-                        String sorting = "id ASC";
+        String sorting = "id ASC";
 
-                        client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                OdooRecord[] records = result.getRecords();
-                                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
-                                DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+        client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+                DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
 
-                                symbols.setGroupingSeparator('.');
-                                formatter.setDecimalFormatSymbols(symbols);
-                                for (OdooRecord record : records) {
-                                    txtName = record.getString("name");
-                                    imageCurrent = record.getString("image_medium");
-                                    txtOb = String.valueOf(Math.round(record.getFloat("ob")));
-                                    txtInc = String.valueOf(Math.round(record.getFloat("inc")));
-                                    txtBin = String.valueOf(Math.round(record.getFloat("binow")));
-                                    Duedate = tanggal(record.getString("due_date"));
-                                    txtdeskripsi = record.getString("create_uid");
-                                }
-                                imageUser.setImageBitmap(StringToBitMap(imageCurrent));
-                                etName.setText(txtName);
-                                etOb.setText(txtOb);
-                                etInc.setText(txtInc);
-                                etBin.setText(txtBin);
-                                txtDuedate.setText(Duedate);
-                                etdeskripsi.setText(txtdeskripsi);
-                            }
-                        });
-                    }
-                }).build();
+                symbols.setGroupingSeparator('.');
+                formatter.setDecimalFormatSymbols(symbols);
+                for (OdooRecord record : records) {
+                    txtName = record.getString("name");
+                    imageCurrent = record.getString("image_medium");
+                    txtOb = String.valueOf(Math.round(record.getFloat("ob")));
+                    txtInc = String.valueOf(Math.round(record.getFloat("inc")));
+                    txtBin = String.valueOf(Math.round(record.getFloat("binow")));
+                    Duedate = tanggal(record.getString("due_date"));
+                    txtdeskripsi = record.getString("create_uid");
+                }
+                imageUser.setImageBitmap(StringToBitMap(imageCurrent));
+                etName.setText(txtName);
+                etOb.setText(txtOb);
+                etInc.setText(txtInc);
+                etBin.setText(txtBin);
+                txtDuedate.setText(Duedate);
+                etdeskripsi.setText(txtdeskripsi);
+            }
+        });
     }
 
 }

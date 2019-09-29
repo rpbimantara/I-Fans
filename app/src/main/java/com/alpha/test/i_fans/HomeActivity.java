@@ -61,10 +61,12 @@ public class HomeActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 2:
+                        fabBtn.hide();
                         fabBtn.setImageResource(R.drawable.ic_add);
                         fabBtn.show();
                         break;
                     case 3:
+                        fabBtn.hide();
                         fabBtn.setImageResource(R.drawable.ic_edit);
                         fabBtn.show();
                         break;

@@ -11,6 +11,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -35,6 +36,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 
 public class RatingLineUpActivity extends AppCompatActivity {
 
@@ -72,7 +74,10 @@ public class RatingLineUpActivity extends AppCompatActivity {
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        new SaveRatingTask().execute(ratingBar.getRating(),etComment.getText());
+                        if(!TextUtils.isEmpty(etComment.getText())){
+                            savebtn(ratingBar.getRating(),etComment.getText().toString());
+                        }
+//                        new SaveRatingTask().execute(ratingBar.getRating(),etComment.getText());
                         dialogInterface.dismiss();
                     }
                 });
@@ -86,88 +91,99 @@ public class RatingLineUpActivity extends AppCompatActivity {
                 alertDialog.show();
             }
         });
+        client = getOdooConnection(getBaseContext());
         loadData();
 
     }
 
     public void loadData(){
-        client = new OdooClient.Builder(getApplicationContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        // Success connection
+        ODomain domain = new ODomain();
+        domain.add("id", "=", getIntent().getExtras().get("id_player"));
 
-                        ODomain domain = new ODomain();
-                        domain.add("id", "=", getIntent().getExtras().get("id_player"));
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
 
-                        OdooFields fields = new OdooFields();
-                        fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
+        int offset = 0;
+        int limit = 80;
 
-                        int offset = 0;
-                        int limit = 80;
+        String sorting = "id DESC";
 
-                        String sorting = "id DESC";
+        client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    imagePlayer.setImageBitmap(StringToBitMap(record.getString("image")));
+                    txtNoPlayer.setText(String.valueOf(record.getInt("no_punggung")));
+                    txtNamaPlayer.setText(record.getString("name"));
 
-                        client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                OdooRecord[] records = result.getRecords();
-                                for (OdooRecord record : records) {
-                                    imagePlayer.setImageBitmap(StringToBitMap(record.getString("image")));
-                                    txtNoPlayer.setText(String.valueOf(record.getInt("no_punggung")));
-                                    txtNamaPlayer.setText(record.getString("name"));
-
-                                }
-                            }
-                        });
-                    }
-                })
-                .build();
+                }
+            }
+        });
     }
 
-    public class SaveRatingTask extends AsyncTask<Object,Void,Void>{
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
+    public void savebtn(Float rating,String review){
+        OdooValues values = new OdooValues();
+        values.put("jadwal_id", getIntent().getExtras().get("id_jadwal"));
+        values.put("employee_id", getIntent().getExtras().get("id_player"));
+        values.put("rating", rating);
+        values.put("review", review);
 
-        @Override
-        protected Void doInBackground(final Object... voids) {
-            client = new OdooClient.Builder(getApplicationContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            // Success connection
+        client.create("persebaya.rating", values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                Toast.makeText(getApplicationContext(),"Rating Saved!",Toast.LENGTH_LONG).show();
+            }
 
-                            OdooValues values = new OdooValues();
-                            values.put("jadwal_id", getIntent().getExtras().get("id_jadwal"));
-                            values.put("employee_id", getIntent().getExtras().get("id_player"));
-                            values.put("rating", voids[0]);
-                            values.put("review", voids[1]);
-
-                            client.create("persebaya.rating", values, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    Toast.makeText(getApplicationContext(),"Rating Saved!",Toast.LENGTH_LONG).show();
-                                }
-
-                                @Override
-                                public boolean onError(OdooErrorException error) {
-                                    Log.e("Rating error",error.toString());
-                                    Toast.makeText(getApplicationContext(),error.odooException,Toast.LENGTH_LONG).show();
-                                    return true;
-                                }
-                            });
-                        }
-                    })
-                    .build();
-            return null;
-        }
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Log.e("Rating error",error.toString());
+                Toast.makeText(getApplicationContext(),error.odooException,Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
     }
+
+//    public class SaveRatingTask extends AsyncTask<Object,Void,Void>{
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected Void doInBackground(final Object... voids) {
+//            client = new OdooClient.Builder(getApplicationContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            // Success connection
+//
+//                            OdooValues values = new OdooValues();
+//                            values.put("jadwal_id", getIntent().getExtras().get("id_jadwal"));
+//                            values.put("employee_id", getIntent().getExtras().get("id_player"));
+//                            values.put("rating", voids[0]);
+//                            values.put("review", voids[1]);
+//
+//                            client.create("persebaya.rating", values, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    Toast.makeText(getApplicationContext(),"Rating Saved!",Toast.LENGTH_LONG).show();
+//                                }
+//
+//                                @Override
+//                                public boolean onError(OdooErrorException error) {
+//                                    Log.e("Rating error",error.toString());
+//                                    Toast.makeText(getApplicationContext(),error.odooException,Toast.LENGTH_LONG).show();
+//                                    return true;
+//                                }
+//                            });
+//                        }
+//                    })
+//                    .build();
+//            return null;
+//        }
+//    }
 }

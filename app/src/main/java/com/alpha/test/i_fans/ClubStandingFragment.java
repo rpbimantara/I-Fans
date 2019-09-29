@@ -26,6 +26,8 @@ import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,10 +60,12 @@ public class ClubStandingFragment extends Fragment {
         llm = new LinearLayoutManager(getActivity());
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
+        client = getOdooConnection(getContext());
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new StandingTask().execute();
+                loadStandings();
+//                new StandingTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
@@ -99,76 +103,125 @@ public class ClubStandingFragment extends Fragment {
 
             }
         });
-        new StandingTask().execute();
+        loadStandings();
+//        new StandingTask().execute();
         return rootView;
     }
 
-    public class StandingTask extends AsyncTask<Void,Void,Void> {
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-        }
+    public void loadStandings(){
+        swiper.setRefreshing(true);
+        ArrayListKlasemen =  new ArrayList<>();
+        OArguments arguments = new OArguments();
+        arguments.add(sharedPrefManager.getSPIdLiga());
 
+        client.call_kw("persebaya.liga.klasemen", "klasemen", arguments, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // response
+                OdooRecord[] Records = result.getRecords();
+                Integer color = getResources().getColor(R.color.colorWhite);
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListKlasemen =  new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            // Success connection
+                ArrayListKlasemen.add(new Klasemen(
+                        String.valueOf("No."),
+                        String.valueOf("Logo"),
+                        String.valueOf("Club"),
+                        String.valueOf("P"),
+                        String.valueOf("+/-"),
+                        String.valueOf("Pts"),
+                        color,0));
+                int i = 1;
 
-                            OArguments arguments = new OArguments();
-                            arguments.add(sharedPrefManager.getSPIdLiga());
-
-                            client.call_kw("persebaya.liga.klasemen", "klasemen", arguments, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    // response
-                                    OdooRecord[] Records = result.getRecords();
-                                    Integer color = getResources().getColor(R.color.colorWhite);
-
-                                    ArrayListKlasemen.add(new Klasemen(
-                                            String.valueOf("No."),
-                                            String.valueOf("Logo"),
-                                            String.valueOf("Club"),
-                                            String.valueOf("P"),
-                                            String.valueOf("+/-"),
-                                            String.valueOf("Pts"),
-                                            color,0));
-                                    int i = 1;
-
-                                    for (final OdooRecord record : Records) {
-                                        if (record.getString("nama_club").equalsIgnoreCase(getActivity().getIntent().getStringExtra("nama"))){
-                                            color = getResources().getColor(R.color.colorYellow);
-                                        }else{
-                                            color = getResources().getColor(R.color.colorWhite);
-                                        }
-                                        ArrayListKlasemen.add(new Klasemen(
-                                                String.valueOf(i),
-                                                record.getString("foto_club"),
-                                                record.getString("nama_club"),
-                                                String.valueOf(record.getInt("play")),
-                                                String.valueOf(record.getInt("selisih_gol")),
-                                                String.valueOf(record.getInt("point")),
-                                                color,
-                                                record.getInt("id")));
-                                        i++;
-                                    }
-                                    adapter = new AdapterKlasemen(ArrayListKlasemen);
-                                    rv.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-                            });
-                        }
-                    })
-                    .build();
-            return null;
-        }
+                for (final OdooRecord record : Records) {
+                    if (record.getString("nama_club").equalsIgnoreCase(getActivity().getIntent().getStringExtra("nama"))){
+                        color = getResources().getColor(R.color.colorYellow);
+                    }else{
+                        color = getResources().getColor(R.color.colorWhite);
+                    }
+                    ArrayListKlasemen.add(new Klasemen(
+                            String.valueOf(i),
+                            record.getString("foto_club"),
+                            record.getString("nama_club"),
+                            String.valueOf(record.getInt("play")),
+                            String.valueOf(record.getInt("selisih_gol")),
+                            String.valueOf(record.getInt("point")),
+                            color,
+                            record.getInt("id")));
+                    i++;
+                }
+                adapter = new AdapterKlasemen(ArrayListKlasemen);
+                rv.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+        });
     }
+
+//    public class StandingTask extends AsyncTask<Void,Void,Void> {
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//        }
+//
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListKlasemen =  new ArrayList<>();
+//            client = new OdooClient.Builder(getContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            // Success connection
+//
+//                            OArguments arguments = new OArguments();
+//                            arguments.add(sharedPrefManager.getSPIdLiga());
+//
+//                            client.call_kw("persebaya.liga.klasemen", "klasemen", arguments, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    // response
+//                                    OdooRecord[] Records = result.getRecords();
+//                                    Integer color = getResources().getColor(R.color.colorWhite);
+//
+//                                    ArrayListKlasemen.add(new Klasemen(
+//                                            String.valueOf("No."),
+//                                            String.valueOf("Logo"),
+//                                            String.valueOf("Club"),
+//                                            String.valueOf("P"),
+//                                            String.valueOf("+/-"),
+//                                            String.valueOf("Pts"),
+//                                            color,0));
+//                                    int i = 1;
+//
+//                                    for (final OdooRecord record : Records) {
+//                                        if (record.getString("nama_club").equalsIgnoreCase(getActivity().getIntent().getStringExtra("nama"))){
+//                                            color = getResources().getColor(R.color.colorYellow);
+//                                        }else{
+//                                            color = getResources().getColor(R.color.colorWhite);
+//                                        }
+//                                        ArrayListKlasemen.add(new Klasemen(
+//                                                String.valueOf(i),
+//                                                record.getString("foto_club"),
+//                                                record.getString("nama_club"),
+//                                                String.valueOf(record.getInt("play")),
+//                                                String.valueOf(record.getInt("selisih_gol")),
+//                                                String.valueOf(record.getInt("point")),
+//                                                color,
+//                                                record.getInt("id")));
+//                                        i++;
+//                                    }
+//                                    adapter = new AdapterKlasemen(ArrayListKlasemen);
+//                                    rv.setAdapter(adapter);
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//                            });
+//                        }
+//                    })
+//                    .build();
+//            return null;
+//        }
+//    }
 }

@@ -23,6 +23,8 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,71 +66,110 @@ public class MatchMomentFragment extends Fragment {
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    new MatchMomentTask().execute();
+                    loadMoment();
+//                    new MatchMomentTask().execute();
                 }
             });
             sharedPrefManager = new SharedPrefManager(getContext());
             rvMoment.setAdapter(adapter);
             rvMoment.setLayoutManager(new LinearLayoutManager(getActivity()));
-            new MatchMomentTask().execute();
+            client = getOdooConnection(getContext());
+            loadMoment();
+//            new MatchMomentTask().execute();
         }
         return rootView;
     }
 
+    public void loadMoment(){
+        swiper.setRefreshing(true);
+        ArrayListMatchMoment = new ArrayList<>();
+        ODomain domain = new ODomain();
+        domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
 
-    public class MatchMomentTask extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-            super.onPreExecute();
-        }
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","jadwal_id","time_moments", "moments","club_id","players_moments","supp_players_moments");
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListMatchMoment = new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            ODomain domain = new ODomain();
-                            domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
+        int offset = 0;
+        int limit = 0;
 
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id","jadwal_id","time_moments", "moments","club_id","players_moments","supp_players_moments");
+        String sorting = "id DESC";
 
-                            int offset = 0;
-                            int limit = 0;
-
-                            String sorting = "id DESC";
-
-                            client.searchRead("persebaya.moments", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        ArrayListMatchMoment.add(new MatchMoment(
-                                                String.valueOf(record.getInt("id")),
-                                                record.getString("time_moments"),
-                                                record.getString("club_id"),
-                                                record.getString("moments"),
-                                                record.getString("players_moments"),
-                                                record.getString("supp_players_moments")
-                                        ));
-                                    }
-                                    adapter = new AdapterMatchMoment(ArrayListMatchMoment);
-                                    rvMoment.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
+        client.searchRead("persebaya.moments", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    ArrayListMatchMoment.add(new MatchMoment(
+                            String.valueOf(record.getInt("id")),
+                            record.getString("time_moments"),
+                            record.getString("club_id"),
+                            record.getString("moments"),
+                            record.getString("players_moments"),
+                            record.getString("supp_players_moments")
+                    ));
+                }
+                adapter = new AdapterMatchMoment(ArrayListMatchMoment);
+                rvMoment.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+        });
     }
+
+
+//    public class MatchMomentTask extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListMatchMoment = new ArrayList<>();
+//            client = new OdooClient.Builder(getContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            ODomain domain = new ODomain();
+//                            domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id","jadwal_id","time_moments", "moments","club_id","players_moments","supp_players_moments");
+//
+//                            int offset = 0;
+//                            int limit = 0;
+//
+//                            String sorting = "id DESC";
+//
+//                            client.searchRead("persebaya.moments", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        ArrayListMatchMoment.add(new MatchMoment(
+//                                                String.valueOf(record.getInt("id")),
+//                                                record.getString("time_moments"),
+//                                                record.getString("club_id"),
+//                                                record.getString("moments"),
+//                                                record.getString("players_moments"),
+//                                                record.getString("supp_players_moments")
+//                                        ));
+//                                    }
+//                                    adapter = new AdapterMatchMoment(ArrayListMatchMoment);
+//                                    rvMoment.setAdapter(adapter);
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 
 }
 

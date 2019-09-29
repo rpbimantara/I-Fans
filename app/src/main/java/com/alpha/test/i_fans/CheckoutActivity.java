@@ -32,6 +32,8 @@ import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 public class CheckoutActivity extends AppCompatActivity implements AdapterCheckout.CheckoutListener {
     TextView txtTotalAmount;
     ArrayList<Checkout> ArrayListCheckout;
@@ -67,22 +69,12 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                client = new OdooClient.Builder(CheckoutActivity.this)
-                        .setHost(sharedPrefManager.getSP_Host_url())
-                        .setSession(sharedPrefManager.getSpSessionId())
-                        .setSynchronizedRequests(false)
-                        .setConnectListener(new OdooConnectListener() {
-                            @Override
-                            public void onConnected(OdooVersion version) {
-                                client.unlink("sale.order.line", new Integer[]{Integer.valueOf(checkout.getId())}, new IOdooResponse() {
-                                    @Override
-                                    public void onResult(OdooResult result) {
-                                        Toast.makeText(CheckoutActivity.this,checkout.getNama()+" has been deleted!",Toast.LENGTH_SHORT).show();
-                                    }
-                                });
-                            }
-
-                        }).build();
+                client.unlink("sale.order.line", new Integer[]{Integer.valueOf(checkout.getId())}, new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        Toast.makeText(CheckoutActivity.this,checkout.getNama()+" has been deleted!",Toast.LENGTH_SHORT).show();
+                    }
+                });
                 dialogInterface.dismiss();
             }
         });
@@ -112,7 +104,8 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new LoadCheckoutAsync().execute();
+                loadCheckout();
+//                new LoadCheckoutAsync().execute();
             }
         });
         llm = new LinearLayoutManager(this);
@@ -142,86 +135,119 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                 alertDialog.show();
             }
         });
-        new LoadCheckoutAsync().execute();
+        client = getOdooConnection(getBaseContext());
+        loadCheckout();
+//        new LoadCheckoutAsync().execute();
     }
 
     public  void PayCheckout(){
-        client = new OdooClient.Builder(CheckoutActivity.this)
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        ODomain domain = new ODomain();
-                        domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-                        domain.add("state", "=", "draft");
+        ODomain domain = new ODomain();
+        domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
+        domain.add("state", "=", "draft");
 
-                        OdooFields fields = new OdooFields();
-                        fields.addAll("id", "name");
+        OdooFields fields = new OdooFields();
+        fields.addAll("id", "name");
 
-                        int offset = 0;
-                        int limit = 80;
+        int offset = 0;
+        int limit = 80;
 
-                        String sorting = "id DESC";
-                        client.searchRead("sale.order", domain, fields, offset, limit, sorting, new IOdooResponse() {
+        String sorting = "id DESC";
+        client.searchRead("sale.order", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                final OdooRecord[] records = result.getRecords();
+                if (result.getInt("length") > 0){
+                    for (final OdooRecord record : records){
+                        OArguments arguments = new OArguments();
+                        arguments.add(record.getInt("id"));
+
+                        client.call_kw("sale.order", "action_confirm", arguments, new IOdooResponse() {
                             @Override
                             public void onResult(OdooResult result) {
-                                final OdooRecord[] records = result.getRecords();
-                                if (result.getInt("length") > 0){
-                                    for (final OdooRecord record : records){
-                                        OArguments arguments = new OArguments();
-                                        arguments.add(record.getInt("id"));
+                                if (result.getString("result").equalsIgnoreCase("true")){
+                                    OArguments arguments1 = new OArguments();
+                                    arguments1.add(record.getInt("id"));
 
-                                        client.call_kw("sale.order", "action_confirm", arguments, new IOdooResponse() {
-                                            @Override
-                                            public void onResult(OdooResult result) {
-                                                if (result.getString("result").equalsIgnoreCase("true")){
-                                                    OArguments arguments1 = new OArguments();
-                                                    arguments1.add(record.getInt("id"));
-
-                                                    client.call_kw("sale.order", "action_invoice_create", arguments1, new IOdooResponse() {
-                                                        @Override
-                                                        public void onResult(OdooResult result) {
-                                                            System.out.println(">>>>>>>>>>"+ result.toString() +"<<<<<<<<<<<<<<<<<<");
-                                                        }
-                                                    });
-                                                }
-                                            }
-                                        });
-                                    }
-                                }else{
-                                    Toast.makeText(CheckoutActivity.this,"Already Paid!",Toast.LENGTH_SHORT).show();
+                                    client.call_kw("sale.order", "action_invoice_create", arguments1, new IOdooResponse() {
+                                        @Override
+                                        public void onResult(OdooResult result) {
+                                            System.out.println(">>>>>>>>>>"+ result.toString() +"<<<<<<<<<<<<<<<<<<");
+                                        }
+                                    });
                                 }
                             }
                         });
                     }
-
-                }).build();
+                }else{
+                    Toast.makeText(CheckoutActivity.this,"Already Paid!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+//        client = new OdooClient.Builder(CheckoutActivity.this)
+//                .setHost(sharedPrefManager.getSP_Host_url())
+//                .setSession(sharedPrefManager.getSpSessionId())
+//                .setSynchronizedRequests(false)
+//                .setConnectListener(new OdooConnectListener() {
+//                    @Override
+//                    public void onConnected(OdooVersion version) {
+//                        ODomain domain = new ODomain();
+//                        domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
+//                        domain.add("state", "=", "draft");
+//
+//                        OdooFields fields = new OdooFields();
+//                        fields.addAll("id", "name");
+//
+//                        int offset = 0;
+//                        int limit = 80;
+//
+//                        String sorting = "id DESC";
+//                        client.searchRead("sale.order", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                            @Override
+//                            public void onResult(OdooResult result) {
+//                                final OdooRecord[] records = result.getRecords();
+//                                if (result.getInt("length") > 0){
+//                                    for (final OdooRecord record : records){
+//                                        OArguments arguments = new OArguments();
+//                                        arguments.add(record.getInt("id"));
+//
+//                                        client.call_kw("sale.order", "action_confirm", arguments, new IOdooResponse() {
+//                                            @Override
+//                                            public void onResult(OdooResult result) {
+//                                                if (result.getString("result").equalsIgnoreCase("true")){
+//                                                    OArguments arguments1 = new OArguments();
+//                                                    arguments1.add(record.getInt("id"));
+//
+//                                                    client.call_kw("sale.order", "action_invoice_create", arguments1, new IOdooResponse() {
+//                                                        @Override
+//                                                        public void onResult(OdooResult result) {
+//                                                            System.out.println(">>>>>>>>>>"+ result.toString() +"<<<<<<<<<<<<<<<<<<");
+//                                                        }
+//                                                    });
+//                                                }
+//                                            }
+//                                        });
+//                                    }
+//                                }else{
+//                                    Toast.makeText(CheckoutActivity.this,"Already Paid!",Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
+//                    }
+//
+//                }).build();
     }
 
     public void updateQty(final Integer id, final Integer qty){
-        client = new OdooClient.Builder(CheckoutActivity.this)
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        OdooValues values = new OdooValues();
-                        values.put("product_uom_qty", qty);
+        OdooValues values = new OdooValues();
+        values.put("product_uom_qty", qty);
 
-                        client.write("sale.order.line", new Integer[]{id}, values, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                // Success response
-                                System.out.println(result.toString());
-                            }
-                        });
-
-                    }
-
-                }).build();
+        client.write("sale.order.line", new Integer[]{id}, values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // Success response
+                System.out.println(result.toString());
+            }
+        });
     }
 
 //    public  void CreateInvoice(){
@@ -279,57 +305,88 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
 //                }).build();
 //    }
 
-    public class LoadCheckoutAsync extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-        }
+    public  void loadCheckout(){
+        swiper.setRefreshing(true);
+        ArrayListCheckout = new ArrayList<>();
+        OArguments arguments = new OArguments();
+        arguments.add(Integer.valueOf(sharedPrefManager.getSpIdPartner()));
 
+        client.call_kw("sale.order.line", "get_checkout_list", arguments, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // response
+                OdooRecord[] Records = result.getRecords();
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListCheckout = new ArrayList<>();
-            client = new OdooClient.Builder(getBaseContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            // Success connection
-
-                            OArguments arguments = new OArguments();
-                            arguments.add(Integer.valueOf(sharedPrefManager.getSpIdPartner()));
-
-                            client.call_kw("sale.order.line", "get_checkout_list", arguments, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    // response
-                                    OdooRecord[] Records = result.getRecords();
-
-                                    for (final OdooRecord record : Records) {
-                                        ArrayListCheckout.add(new Checkout(
-                                                String.valueOf(record.getInt("id")),
-                                                record.getString("nama"),
-                                                String.valueOf(Math.round(record.getFloat("harga"))),
-                                                String.valueOf(record.getInt("qty")),
-                                                record.getString("image"),
-                                                String.valueOf(record.getInt("stock")),
-                                                record.getString("type")
-                                                        ));
-                                    }
-                                    adapter = new AdapterCheckout(ArrayListCheckout,CheckoutActivity.this);
-                                    rv.setAdapter(adapter );
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-                            });
-                        }
-                    })
-                    .build();
-            return null;
-        }
+                for (final OdooRecord record : Records) {
+                    ArrayListCheckout.add(new Checkout(
+                            String.valueOf(record.getInt("id")),
+                            record.getString("nama"),
+                            String.valueOf(Math.round(record.getFloat("harga"))),
+                            String.valueOf(record.getInt("qty")),
+                            record.getString("image"),
+                            String.valueOf(record.getInt("stock")),
+                            record.getString("type")
+                    ));
+                }
+                adapter = new AdapterCheckout(ArrayListCheckout,CheckoutActivity.this);
+                rv.setAdapter(adapter );
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+        });
     }
+
+//    public class LoadCheckoutAsync extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//        }
+//
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListCheckout = new ArrayList<>();
+//            client = new OdooClient.Builder(getBaseContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            // Success connection
+//
+//                            OArguments arguments = new OArguments();
+//                            arguments.add(Integer.valueOf(sharedPrefManager.getSpIdPartner()));
+//
+//                            client.call_kw("sale.order.line", "get_checkout_list", arguments, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    // response
+//                                    OdooRecord[] Records = result.getRecords();
+//
+//                                    for (final OdooRecord record : Records) {
+//                                        ArrayListCheckout.add(new Checkout(
+//                                                String.valueOf(record.getInt("id")),
+//                                                record.getString("nama"),
+//                                                String.valueOf(Math.round(record.getFloat("harga"))),
+//                                                String.valueOf(record.getInt("qty")),
+//                                                record.getString("image"),
+//                                                String.valueOf(record.getInt("stock")),
+//                                                record.getString("type")
+//                                                        ));
+//                                    }
+//                                    adapter = new AdapterCheckout(ArrayListCheckout,CheckoutActivity.this);
+//                                    rv.setAdapter(adapter );
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//                            });
+//                        }
+//                    })
+//                    .build();
+//            return null;
+//        }
+//    }
 
 
 }

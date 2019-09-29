@@ -50,7 +50,10 @@ public class LoginActivity extends AppCompatActivity {
         _singupLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new SignUpTask().execute();
+//                new SignUpTask().execute();
+                Intent singup = new Intent(getApplicationContext(),SingUpActivity.class);
+                startActivity(singup);
+                progressDialog.dismiss();
             }
         });
         btnLogin = findViewById(R.id.btn_login);

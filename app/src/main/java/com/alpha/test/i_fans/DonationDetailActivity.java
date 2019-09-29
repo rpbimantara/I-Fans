@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -32,7 +33,8 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 import static com.alpha.test.i_fans.CommonUtils.formater;
-import static com.alpha.test.i_fans.CommonUtils.getSaldo;
+//import static com.alpha.test.i_fans.CommonUtils.getSaldo;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 import static com.alpha.test.i_fans.CommonUtils.tanggal;
 
 public class DonationDetailActivity extends AppCompatActivity {
@@ -72,8 +74,17 @@ public class DonationDetailActivity extends AppCompatActivity {
         builder.setPositiveButton("Donate", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                System.out.println(getSaldo(DonationDetailActivity.this));
-                AddDonation(Integer.valueOf(EtDonation.getText().toString()));
+                CommonUtils.getSaldo(getBaseContext(), new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        OdooRecord[] records = result.getRecords();
+
+                        for (OdooRecord record : records) {
+                            Log.d(getBaseContext().getClass().getSimpleName(),String.valueOf(record.getInt("saldo")));
+                        }
+                    }
+                });
+//                AddDonation(Integer.valueOf(EtDonation.getText().toString()));
                 dialogInterface.dismiss();
             }
         });
@@ -91,71 +102,54 @@ public class DonationDetailActivity extends AppCompatActivity {
                 EtDonation.getText().clear();
             }
         });
+
+        client = getOdooConnection(getBaseContext());
         LoadData();
     }
 
     public void LoadData(){
-        client = new OdooClient.Builder(getApplicationContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id").toString()));
-                        List<String> fields = Arrays.asList("id","image_medium","name","list_price","target_donasi", "description_sale","due_date","create_uid","donasi_ids");
+        List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+        List<String> fields = Arrays.asList("id","image_medium","name","list_price","target_donasi", "description_sale","due_date","create_uid","donasi_ids");
 
-                        client.read("product.template", ids, fields, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                OdooRecord[] records = result.getRecords();
-                                int donasi_ids = result.getArray("donasi_ids").size();
+        client.read("product.template", ids, fields, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                int donasi_ids = result.getArray("donasi_ids").size();
 
-                                for(OdooRecord record: records) {
+                for(OdooRecord record: records) {
 
-                                    imageDonation.setImageBitmap(StringToBitMap(record.getString("image_medium")));
-                                    txtTerkumpul.setText(formater(record.getFloat("list_price")));
-                                    txtTotal.setText(formater(record.getFloat("target_donasi")));
-                                    txtNama.setText(record.getString("name"));
-                                    txtTotalDonatur.setText(String.valueOf(donasi_ids));
-                                    txtDescription.setText(record.getString("description_sale"));
-                                    txtAuthor.setText(record.getString("create_uid")+" - "+tanggal(record.getString("due_date")));
-                                }
-                            }
-                        });
-                    }
-                }).build();
+                    imageDonation.setImageBitmap(StringToBitMap(record.getString("image_medium")));
+                    txtTerkumpul.setText(formater(record.getFloat("list_price")));
+                    txtTotal.setText(formater(record.getFloat("target_donasi")));
+                    txtNama.setText(record.getString("name"));
+                    txtTotalDonatur.setText(String.valueOf(donasi_ids));
+                    txtDescription.setText(record.getString("description_sale"));
+                    txtAuthor.setText(record.getString("create_uid")+" - "+tanggal(record.getString("due_date")));
+                }
+            }
+        });
     }
 
     public void AddDonation(final Integer Donation){
-        client = new OdooClient.Builder(getBaseContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        OdooValues values = new OdooValues();
-                        values.put("product_id", Integer.valueOf(getIntent().getExtras().get("id").toString()));
-                        values.put("user_bid", sharedPrefManager.getSpIdUser());
-                        values.put("nilai", Donation);
-                        values.put("keterang", "Donation");
+        OdooValues values = new OdooValues();
+        values.put("product_id", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+        values.put("user_bid", sharedPrefManager.getSpIdUser());
+        values.put("nilai", Donation);
+        values.put("keterang", "Donation");
 
-                        client.create("persebaya.donasi", values, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                int serverId = result.getInt("result");
-                                System.out.println(serverId);
-                            }
+        client.create("persebaya.donasi", values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                int serverId = result.getInt("result");
+                System.out.println(serverId);
+            }
 
-                            @Override
-                            public boolean onError(OdooErrorException error) {
-                                Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
-                                return super.onError(error);
-                            }
-                        });
-                    }
-
-                }).build();
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                return super.onError(error);
+            }
+        });
     }
 }

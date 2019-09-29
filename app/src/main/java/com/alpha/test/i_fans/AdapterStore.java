@@ -8,6 +8,8 @@ import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -17,14 +19,46 @@ import java.util.ArrayList;
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 import static com.alpha.test.i_fans.CommonUtils.formater;
 
-public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> implements Filterable {
 
     private ArrayList<Store> dataList;
+    private ArrayList<Store> dataListFilter;
     static final int VIEW_TYPE_EMPTY = 0;
     static final int VIEW_TYPE_NORMAL = 1;
 
     public AdapterStore(ArrayList<Store> dataList) {
+        this.dataListFilter = dataList;
         this.dataList = dataList;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    dataListFilter = dataList;
+                } else {
+                    ArrayList<Store> filteredTemp = new ArrayList<>();
+                    for (Store row : dataList) {
+                        if (row.getNamabarang().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredTemp.add(row);
+                        }
+                    }
+                    dataListFilter = filteredTemp;
+                }
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = dataListFilter;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                dataListFilter = (ArrayList<Store>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class StoreViewHolder extends RecyclerView.ViewHolder{
@@ -43,9 +77,9 @@ public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int position) {
         if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
             StoreViewHolder holder = ((StoreViewHolder) viewHolder);
-            holder.txtNamaBarang.setText(dataList.get(position).getNamabarang());
-            holder.txtHargaBarang.setText(formater(Float.parseFloat(dataList.get(position).getHargabarang())) );
-            holder.imageStore.setImageBitmap(StringToBitMap(dataList.get(position).getImageStore()));
+            holder.txtNamaBarang.setText(dataListFilter.get(position).getNamabarang());
+            holder.txtHargaBarang.setText(formater(Float.parseFloat(dataListFilter.get(position).getHargabarang())) );
+            holder.imageStore.setImageBitmap(StringToBitMap(dataListFilter.get(position).getImageStore()));
         }else{
             ((CommonUtils.Emptyholder) viewHolder).onBind(position);
         }
@@ -65,7 +99,7 @@ public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemViewType(int position) {
-        return (this.dataList != null && this.dataList.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
+        return (this.dataListFilter != null && this.dataListFilter.size() > 0) ? VIEW_TYPE_NORMAL : VIEW_TYPE_EMPTY;
     }
 
     @Override
@@ -75,6 +109,6 @@ public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
+        return (this.dataListFilter != null && this.dataListFilter.size() > 0) ? dataListFilter.size() : 1;
     }
 }

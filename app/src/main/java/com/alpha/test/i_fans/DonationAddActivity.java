@@ -30,6 +30,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.getBase64ImageString;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 
 public class DonationAddActivity extends AppCompatActivity {
 
@@ -60,11 +61,13 @@ public class DonationAddActivity extends AppCompatActivity {
         fabImageDonation = findViewById(R.id.image_fab_Add_donation);
         fabImageDonation.setImageResource(R.drawable.ic_camera);
         savebtn = findViewById(R.id.button_save_donation);
+        client = getOdooConnection(getBaseContext());
         savebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (state.equalsIgnoreCase("create")){
-                    new SaveDonationTask().execute();
+                    createbtn();
+//                    new SaveDonationTask().execute();
                 }else{
 
                 }
@@ -126,47 +129,79 @@ public class DonationAddActivity extends AppCompatActivity {
     }
 
 
-    public class SaveDonationTask extends AsyncTask<Void,Void,Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            client = new OdooClient.Builder(getBaseContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSynchronizedRequests(false)
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            progressDialog.setMessage("Saving.....");
-                            progressDialog.show();
-                            OdooValues values = new OdooValues();
-                            values.put("image_medium", getBase64ImageString(currentImage));
-                            values.put("name", etName.getText().toString());
-                            values.put("target_donasi", etTarget.getText().toString());
-                            values.put("purchase_ok", false);
-                            values.put("type", "donasi");
-                            values.put("description_sale", etdeskripsi.getText().toString());
-                            values.put("due_date", txtDuedate.getText().toString());
-                            values.put("create_uid", sharedPrefManager.getSpIdUser());
+    public void createbtn(){
+        progressDialog.setMessage("Create.....");
+        progressDialog.show();
+        OdooValues values = new OdooValues();
+        values.put("image_medium", getBase64ImageString(currentImage));
+        values.put("name", etName.getText().toString());
+        values.put("target_donasi", etTarget.getText().toString());
+        values.put("purchase_ok", false);
+        values.put("type", "donasi");
+        values.put("description_sale", etdeskripsi.getText().toString());
+        values.put("due_date", txtDuedate.getText().toString());
+        values.put("create_uid", sharedPrefManager.getSpIdUser());
 
-                            client.create("product.template", values, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    // Success response
-                                    progressDialog.dismiss();
-                                    Toast.makeText(getBaseContext(),"Auction Created!",Toast.LENGTH_LONG).show();
-                                    finish();
-                                }
+        client.create("product.template", values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // Success response
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(),"Donation Created!",Toast.LENGTH_LONG).show();
+                finish();
+            }
 
-                                @Override
-                                public boolean onError(OdooErrorException error) {
-                                    Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
-                                    progressDialog.dismiss();
-                                    return super.onError(error);
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+                return super.onError(error);
+            }
+        });
     }
+
+
+//    public class SaveDonationTask extends AsyncTask<Void,Void,Void> {
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            client = new OdooClient.Builder(getBaseContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSynchronizedRequests(false)
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            progressDialog.setMessage("Saving.....");
+//                            progressDialog.show();
+//                            OdooValues values = new OdooValues();
+//                            values.put("image_medium", getBase64ImageString(currentImage));
+//                            values.put("name", etName.getText().toString());
+//                            values.put("target_donasi", etTarget.getText().toString());
+//                            values.put("purchase_ok", false);
+//                            values.put("type", "donasi");
+//                            values.put("description_sale", etdeskripsi.getText().toString());
+//                            values.put("due_date", txtDuedate.getText().toString());
+//                            values.put("create_uid", sharedPrefManager.getSpIdUser());
+//
+//                            client.create("product.template", values, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    // Success response
+//                                    progressDialog.dismiss();
+//                                    Toast.makeText(getBaseContext(),"Auction Created!",Toast.LENGTH_LONG).show();
+//                                    finish();
+//                                }
+//
+//                                @Override
+//                                public boolean onError(OdooErrorException error) {
+//                                    Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+//                                    progressDialog.dismiss();
+//                                    return super.onError(error);
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 }

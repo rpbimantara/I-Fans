@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 import static com.alpha.test.i_fans.CommonUtils.tanggal;
 import static com.alpha.test.i_fans.CommonUtils.waktu;
 
@@ -56,77 +58,126 @@ public class ClubResultFragment extends Fragment {
         swiper = rootView.findViewById(R.id.swiperefresh_result);
         llm = new LinearLayoutManager(getActivity());
         rv.setAdapter(adapter );
+        client = getOdooConnection(getContext());
         rv.setLayoutManager(llm); swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new ResultTask().execute();
+                loadResult();
+//                new ResultTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
-        new ResultTask().execute();
+        loadResult();
+//        new ResultTask().execute();
         return rootView;
     }
 
-    public class ResultTask extends AsyncTask<Void, Void,Void> {
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-        }
+    public void loadResult(){
+        swiper.setRefreshing(true);
+        try {
 
-
-        @Override
-        protected Void doInBackground(Void... voids) {
             ArrayListJadwal = new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            // Success connection
+            OArguments arguments = new OArguments();
+            arguments.add(getActivity().getIntent().getStringExtra("id"));
+            arguments.add(sharedPrefManager.getSPIdLiga());
+            arguments.add(Arrays.asList("selesai"));
 
-                            OArguments arguments = new OArguments();
-                            arguments.add(getActivity().getIntent().getStringExtra("id"));
-                            arguments.add(sharedPrefManager.getSPIdLiga());
-                            arguments.add(Arrays.asList("selesai"));
-
-                            client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    // response
-                                    OdooRecord[] Records = result.getRecords();
-                                    for (final OdooRecord record : Records) {
-                                        String tgl = tanggal(record.getString("date").substring(0,10));
-                                        String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
-                                        Integer status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
-                                        if (record.getBoolean("is_home") == false){
-                                            status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
-                                        }else {
-                                            status = getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName());
-                                        }
-                                        ArrayListJadwal.add(new Jadwal(
-                                                record.getString("nama_club"),
-                                                record.getString("foto_club"),
-                                                status,
-                                                record.getString("liga_id"),
-                                                tgl,
-                                                record.getString("stadion")
-                                                , waktu,
-                                                String.valueOf(record.getInt("id")),
-                                                record.getString("status_jadwal")));
-                                    }
-                                    adapter = new AdapterJadwal(ArrayListJadwal);
-                                    rv.setAdapter(adapter );
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-                            });
+            client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
+                @Override
+                public void onResult(OdooResult result) {
+                    // response
+                    OdooRecord[] Records = result.getRecords();
+                    for (final OdooRecord record : Records) {
+                        String tgl = tanggal(record.getString("date").substring(0, 10));
+                        String waktu = waktu(record.getString("date").substring(11, 17)) + " " + "WIB";
+                        Integer status = getContext().getResources().getIdentifier("ic_away", "drawable", getContext().getPackageName());
+                        if (record.getBoolean("is_home") == false) {
+                            status = getContext().getResources().getIdentifier("ic_away", "drawable", getContext().getPackageName());
+                        } else {
+                            status = getContext().getResources().getIdentifier("ic_home", "drawable", getContext().getPackageName());
                         }
-                    })
-                    .build();
-            return null;
+                        ArrayListJadwal.add(new Jadwal(
+                                record.getString("nama_club"),
+                                record.getString("foto_club"),
+                                status,
+                                record.getString("liga_id"),
+                                tgl,
+                                record.getString("stadion")
+                                , waktu,
+                                String.valueOf(record.getInt("id")),
+                                record.getString("status_jadwal")));
+                    }
+                    adapter = new AdapterJadwal(ArrayListJadwal);
+                    rv.setAdapter(adapter);
+                    adapter.notifyDataSetChanged();
+                    swiper.setRefreshing(false);
+                }
+            });
+        }catch (Error error){
+            Toast.makeText(getContext(),error.toString(),Toast.LENGTH_SHORT).show();
         }
     }
+
+//    public class ResultTask extends AsyncTask<Void, Void,Void> {
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//        }
+//
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListJadwal = new ArrayList<>();
+//            client = new OdooClient.Builder(getContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            // Success connection
+//
+//                            OArguments arguments = new OArguments();
+//                            arguments.add(getActivity().getIntent().getStringExtra("id"));
+//                            arguments.add(sharedPrefManager.getSPIdLiga());
+//                            arguments.add(Arrays.asList("selesai"));
+//
+//                            client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    // response
+//                                    OdooRecord[] Records = result.getRecords();
+//                                    for (final OdooRecord record : Records) {
+//                                        String tgl = tanggal(record.getString("date").substring(0,10));
+//                                        String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
+//                                        Integer status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
+//                                        if (record.getBoolean("is_home") == false){
+//                                            status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
+//                                        }else {
+//                                            status = getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName());
+//                                        }
+//                                        ArrayListJadwal.add(new Jadwal(
+//                                                record.getString("nama_club"),
+//                                                record.getString("foto_club"),
+//                                                status,
+//                                                record.getString("liga_id"),
+//                                                tgl,
+//                                                record.getString("stadion")
+//                                                , waktu,
+//                                                String.valueOf(record.getInt("id")),
+//                                                record.getString("status_jadwal")));
+//                                    }
+//                                    adapter = new AdapterJadwal(ArrayListJadwal);
+//                                    rv.setAdapter(adapter );
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//                            });
+//                        }
+//                    })
+//                    .build();
+//            return null;
+//        }
+//    }
 
 }

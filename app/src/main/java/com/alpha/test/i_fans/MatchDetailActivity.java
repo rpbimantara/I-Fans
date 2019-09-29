@@ -29,6 +29,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 
 public class MatchDetailActivity extends AppCompatActivity {
 
@@ -64,43 +65,67 @@ public class MatchDetailActivity extends AppCompatActivity {
         txtScore = findViewById(R.id.match_detail_txt_scoreterupdate);
         imageHome = findViewById(R.id.match_detail_home_image);
         imageAway = findViewById(R.id.match_detail_away_image);
-        new MatchTask().execute();
+        client  = getOdooConnection(getBaseContext());
+        loadMatch();
+//        new MatchTask().execute();
     }
 
-    public class MatchTask extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected Void doInBackground(Void... voids) {
-            client = new OdooClient.Builder(getBaseContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            OArguments arguments = new OArguments();
-                            arguments.add(Integer.valueOf(getIntent().getExtras().get("id_jadwal").toString()));
+    public void loadMatch(){
+        OArguments arguments = new OArguments();
+        arguments.add(Integer.valueOf(getIntent().getExtras().get("id_jadwal").toString()));
 
-                            client.call_kw("persebaya.jadwal", "match_detail", arguments, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        imageHome.setImageBitmap(StringToBitMap(record.getString("imageHome")));
-                                        txtTeamHome.setText(record.getString("home"));
-                                        imageAway.setImageBitmap(StringToBitMap(record.getString("imageAway")));
-                                        txtTeamAway.setText(record.getString("away"));
-                                        txtStadion.setText(record.getString("stadion"));
-                                        txtTglhariini.setText(record.getString("date"));
-                                        txtLiga.setText(record.getString("liga"));
-                                        txtScore.setText(record.getString("score"));
-                                    }
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
+        client.call_kw("persebaya.jadwal", "match_detail", arguments, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    imageHome.setImageBitmap(StringToBitMap(record.getString("imageHome")));
+                    txtTeamHome.setText(record.getString("home"));
+                    imageAway.setImageBitmap(StringToBitMap(record.getString("imageAway")));
+                    txtTeamAway.setText(record.getString("away"));
+                    txtStadion.setText(record.getString("stadion"));
+                    txtTglhariini.setText(record.getString("date"));
+                    txtLiga.setText(record.getString("liga"));
+                    txtScore.setText(record.getString("score"));
+                }
+            }
+        });
     }
+
+//    public class MatchTask extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            client = new OdooClient.Builder(getBaseContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            OArguments arguments = new OArguments();
+//                            arguments.add(Integer.valueOf(getIntent().getExtras().get("id_jadwal").toString()));
+//
+//                            client.call_kw("persebaya.jadwal", "match_detail", arguments, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        imageHome.setImageBitmap(StringToBitMap(record.getString("imageHome")));
+//                                        txtTeamHome.setText(record.getString("home"));
+//                                        imageAway.setImageBitmap(StringToBitMap(record.getString("imageAway")));
+//                                        txtTeamAway.setText(record.getString("away"));
+//                                        txtStadion.setText(record.getString("stadion"));
+//                                        txtTglhariini.setText(record.getString("date"));
+//                                        txtLiga.setText(record.getString("liga"));
+//                                        txtScore.setText(record.getString("score"));
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 
     private static class MatchDetailPageAdapter extends FragmentPagerAdapter {
 

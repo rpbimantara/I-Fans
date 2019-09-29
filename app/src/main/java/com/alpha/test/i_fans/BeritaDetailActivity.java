@@ -22,6 +22,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 import static com.alpha.test.i_fans.CommonUtils.tanggal;
 
 public class BeritaDetailActivity extends AppCompatActivity {
@@ -45,37 +46,29 @@ public class BeritaDetailActivity extends AppCompatActivity {
         txtKonten = findViewById(R.id.textView_konten_detail_berita);
         txtTanggal = findViewById(R.id.textView_tgl_detail_berita);
         image = findViewById(R.id.berita_detail_imageView);
+        client = getOdooConnection(getBaseContext());
         LoadBerita();
     }
 
     public  void LoadBerita(){
-        client = new OdooClient.Builder(getApplicationContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id").toString()));
-                        List<String> fields = Arrays.asList("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
+        List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+        List<String> fields = Arrays.asList("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
 
-                        client.read("persebaya.berita", ids, fields, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                OdooRecord[] records = result.getRecords();
+        client.read("persebaya.berita", ids, fields, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
 
-                                for(OdooRecord record: records) {
-                                    toolbar.setTitle(record.getString("kategori_brita_id"));
-                                    txtTitle.setText(record.getString("title"));
-                                    txtHeadline.setText(record.getString("headline"));
-                                    txtKonten.setText(record.getString("content"));
-                                    txtTanggal.setText( record.getString("create_uid")+ " - " +tanggal(record.getString("create_date")));
-                                    image.setImageBitmap(StringToBitMap(record.getString("image")));
-                                }
-                            }
-                        });
-                    }
-                }).build();
+                for(OdooRecord record: records) {
+                    toolbar.setTitle(record.getString("kategori_brita_id"));
+                    txtTitle.setText(record.getString("title"));
+                    txtHeadline.setText(record.getString("headline"));
+                    txtKonten.setText(record.getString("content"));
+                    txtTanggal.setText( record.getString("create_uid")+ " - " +tanggal(record.getString("create_date")));
+                    image.setImageBitmap(StringToBitMap(record.getString("image")));
+                }
+            }
+        });
     }
 
 }

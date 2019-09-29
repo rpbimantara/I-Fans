@@ -1,12 +1,13 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
 MERGED from [com.android.support:multidex:1.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/456a6e64e15198f6a3581000876f76af/multidex-1.0.3/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:2:1-11:12
+MERGED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:2:1-19:12
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:2:1-18:12
 MERGED from [me.himanshusoni.quantityview:quantity-view:1.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/87794b5124c8933c6ad44949b9f28677/quantity-view-1.2.0/AndroidManifest.xml:2:1-16:12
 MERGED from [com.android.support:appcompat-v7:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/b320a443effd06c78f4f9e5ddfe89b1a/appcompat-v7-28.0.0/AndroidManifest.xml:17:1-22:12
@@ -61,20 +62,20 @@ MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/
 MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/987e9b10c40dacf71c326fb133cfcf12/livedata-1.1.1/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/bcc6fd35cc65f90790bfddae72ea5b9b/livedata-core-1.1.1/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/1754c37170a596c2565dcdf21351b275/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
 	package
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:3:5-36
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-106:12
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:1-107:12
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:2:11-69
@@ -82,6 +83,8 @@ application
 ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:5:5-99:19
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:22:5-20
+MERGED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:11:5-17:19
+MERGED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:11:5-17:19
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:15:5-16:19
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:15:5-16:19
 MERGED from [me.himanshusoni.quantityview:quantity-view:1.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/87794b5124c8933c6ad44949b9f28677/quantity-view-1.2.0/AndroidManifest.xml:11:5-14:19
@@ -147,7 +150,7 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/
 	android:usesCleartextTraffic
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:13:9-44
 activity#com.alpha.test.i_fans.DonationAddActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:9-66
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:9-57
 	android:name
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:14:19-54
 activity#com.alpha.test.i_fans.DonationDetailActivity
@@ -318,16 +321,12 @@ action#com.google.firebase.MESSAGING_EVENT
 ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:17-78
 	android:name
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:96:25-75
-uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:5-76
-	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:22-73
 uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:5-81
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:5-81
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:22-78
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:100:22-78
 uses-permission#android.permission.INTERNET
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:5-67
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:5-67
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:22:5-67
@@ -339,9 +338,13 @@ MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gra
 MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
 MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:22-64
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:101:22-64
+uses-permission#android.permission.GET_ACCOUNTS
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:5-71
+	android:name
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:102:22-68
 uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:5-79
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:103:5-79
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
 MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
@@ -351,7 +354,11 @@ MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gra
 MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
 MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:104:22-76
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:103:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:105:5-76
+	android:name
+		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml:105:22-73
 uses-sdk
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
@@ -362,6 +369,8 @@ MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transf
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:7:5-9:41
+MERGED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:7:5-9:41
+MERGED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:7:5-9:41
 MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:7:5-9:41
 MERGED from [me.himanshusoni.quantityview:quantity-view:1.2.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/87794b5124c8933c6ad44949b9f28677/quantity-view-1.2.0/AndroidManifest.xml:7:5-9:41
@@ -480,6 +489,16 @@ INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidMan
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 		ADDED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
 		INJECTED from /home/bimo/Documents/ProjectRumahan/I-Fans/app/src/main/AndroidManifest.xml
+activity#pub.devrel.easypermissions.AppSettingsDialogHolderActivity
+ADDED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:12:9-16:66
+	android:label
+		ADDED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:15:13-29
+	android:exported
+		ADDED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:14:13-37
+	android:theme
+		ADDED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:16:13-63
+	android:name
+		ADDED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:13:13-86
 uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:13:5-79
 	android:name

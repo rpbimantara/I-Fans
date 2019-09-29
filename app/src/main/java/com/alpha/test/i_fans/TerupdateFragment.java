@@ -44,6 +44,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 import static com.alpha.test.i_fans.CommonUtils.tanggal;
 
 
@@ -127,11 +128,13 @@ public class TerupdateFragment extends Fragment {
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    new TerupdateTask().execute();
+//                    new TerupdateTask().execute();
+                    loadBeritaTerupdate();
                     getData();
                 }
             });
             sharedPrefManager = new SharedPrefManager(getActivity());
+            client = getOdooConnection(getContext());
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage("Loading data....");
             progressDialog.show();
@@ -216,49 +219,41 @@ public class TerupdateFragment extends Fragment {
 //                }
 //            });
 //            new LigaTask().execute();
-            new TerupdateTask().execute();
+//            new TerupdateTask().execute();
+            loadBeritaTerupdate();
             getData();
         }
         return rootView;
     }
 
     public void getData(){
-        client = new OdooClient.Builder(getContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        // Success connection
+        OArguments arguments = new OArguments();
+        arguments.add(sharedPrefManager.getSpIdClub());
+        arguments.add(sharedPrefManager.getSPIdLiga());
 
-                        OArguments arguments = new OArguments();
-                        arguments.add(sharedPrefManager.getSpIdClub());
-                        arguments.add(sharedPrefManager.getSPIdLiga());
+        client.call_kw("persebaya.jadwal", "jadwal_terkini", arguments, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // response
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    homeImage.setImageBitmap(StringToBitMap(record.getString("image_home")));
+                    awayImage.setImageBitmap(StringToBitMap(record.getString("image_away")));
+                    teamHome.setText(record.getString("home"));
+                    teamAway.setText(record.getString("away"));
+                    id_jadwal_now = record.getInt("id");
+                    tglnow.setText(tanggal(record.getString("date")));
+                    stadionnow.setText(record.getString("stadion"));
+                    skornow.setText(record.getString("skornow") );
+                    liga_terupdate.setText(record.getString("liga"));
 
-                        client.call_kw("persebaya.jadwal", "jadwal_terkini", arguments, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                // response
-                                OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        homeImage.setImageBitmap(StringToBitMap(record.getString("image_home")));
-                                        awayImage.setImageBitmap(StringToBitMap(record.getString("image_away")));
-                                        teamHome.setText(record.getString("home"));
-                                        teamAway.setText(record.getString("away"));
-                                        id_jadwal_now = record.getInt("id");
-                                        tglnow.setText(tanggal(record.getString("date")));
-                                        stadionnow.setText(record.getString("stadion"));
-                                        skornow.setText(record.getString("skornow") );
-                                        liga_terupdate.setText(record.getString("liga"));
-
-                                        homeImageLast.setImageBitmap(StringToBitMap(record.getString("image_home_last")));
-                                        homelast.setText(record.getString("home_last"));
-                                        awayImageLast.setImageBitmap(StringToBitMap(record.getString("image_away_last")));
-                                        awaylast.setText(record.getString("away_last"));
-                                        id_jadwal_last = record.getInt("id_last");
-                                        skorlast.setText(record.getString("ft_home_last") +" - " + record.getString("ft_away_last"));
-                                        tgllast.setText(tanggal(record.getString("date_last")));
+                    homeImageLast.setImageBitmap(StringToBitMap(record.getString("image_home_last")));
+                    homelast.setText(record.getString("home_last"));
+                    awayImageLast.setImageBitmap(StringToBitMap(record.getString("image_away_last")));
+                    awaylast.setText(record.getString("away_last"));
+                    id_jadwal_last = record.getInt("id_last");
+                    skorlast.setText(record.getString("ft_home_last") +" - " + record.getString("ft_away_last"));
+                    tgllast.setText(tanggal(record.getString("date_last")));
 
 //                                        if (record.getString("id_next") != null) {
 //                                            id_jadwal_next = record.getInt("id_next");
@@ -274,13 +269,9 @@ public class TerupdateFragment extends Fragment {
 //                                                nextStatus.setImageResource(getContext().getResources().getIdentifier("ic_away", "drawable", getContext().getPackageName()));
 //                                            }
 //                                        }
-                                    }
-                            }
-                        });
-                    }
-
-                })
-                .build();
+                }
+            }
+        });
     }
 
 //    public class LigaTask extends AsyncTask<Void, Void, Void>{
@@ -326,59 +317,93 @@ public class TerupdateFragment extends Fragment {
 //        }
 //    }
 
-    public class TerupdateTask extends AsyncTask<Void, Void, Void> {
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            swiper.setRefreshing(false);
-            super.onPostExecute(aVoid);
-        }
+    public void loadBeritaTerupdate(){
+        swiper.setRefreshing(false);
+        ArrayListTerupdate = new ArrayList<>();
+        ODomain domain = new ODomain();
+        domain.add("create_uid", "=", 1);
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListTerupdate = new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            // Success connection
+        OdooFields fields = new OdooFields();
+        fields.addAll("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
 
-                            ODomain domain = new ODomain();
-                            domain.add("create_uid", "=", 1);
+        int offset = 0;
+        int limit = 5;
 
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
+        String sorting = "create_date DESC";
 
-                            int offset = 0;
-                            int limit = 5;
-
-                            String sorting = "create_date DESC";
-
-                            client.searchRead("persebaya.berita", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        ArrayListTerupdate.add(new Terupdate(
-                                                record.getInt("id"),
-                                                record.getString("image"),
-                                                record.getString("kategori_brita_id"),
-                                                record.getString("headline")));
-                                    }
-                                    adapter = new AdapterTerupdate(ArrayListTerupdate);
-                                    rv.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
-                                    progressDialog.dismiss();
-                                }
-                            });
-                        }
-                    })
-                    .build();
-
-            return null;
-        }
+        client.searchRead("persebaya.berita", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    ArrayListTerupdate.add(new Terupdate(
+                            record.getInt("id"),
+                            record.getString("image"),
+                            record.getString("kategori_brita_id"),
+                            record.getString("headline")));
+                }
+                adapter = new AdapterTerupdate(ArrayListTerupdate);
+                rv.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                progressDialog.dismiss();
+            }
+        });
     }
+
+//    public class TerupdateTask extends AsyncTask<Void, Void, Void> {
+//        @Override
+//        protected void onPostExecute(Void aVoid) {
+//            swiper.setRefreshing(false);
+//            super.onPostExecute(aVoid);
+//
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListTerupdate = new ArrayList<>();
+//            client = new OdooClient.Builder(getContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            // Success connection
+//
+//                            ODomain domain = new ODomain();
+//                            domain.add("create_uid", "=", 1);
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
+//
+//                            int offset = 0;
+//                            int limit = 5;
+//
+//                            String sorting = "create_date DESC";
+//
+//                            client.searchRead("persebaya.berita", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        ArrayListTerupdate.add(new Terupdate(
+//                                                record.getInt("id"),
+//                                                record.getString("image"),
+//                                                record.getString("kategori_brita_id"),
+//                                                record.getString("headline")));
+//                                    }
+//                                    adapter = new AdapterTerupdate(ArrayListTerupdate);
+//                                    rv.setAdapter(adapter);
+//                                    adapter.notifyDataSetChanged();
+//                                    progressDialog.dismiss();
+//                                }
+//                            });
+//                        }
+//                    })
+//                    .build();
+//
+//            return null;
+//        }
+//    }
 
 }

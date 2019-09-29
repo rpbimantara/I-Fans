@@ -2306,6 +2306,7 @@ id editText_Deskripsi
 id editText_Deskripsi_donation
 id editText_Deskripsi_store
 id editText_INC
+id editText_Search
 id editText_alamat
 id editText_comment
 id editText_email
@@ -3032,9 +3033,11 @@ string pick_image_intent_chooser_title
 string project_id
 string qv_add
 string qv_remove
+string rationale_ask_again
 string search_menu_title
 string status_bar_notification_info_overflow
 string title_activity_rating_line_up
+string title_settings_dialog
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -3236,6 +3239,8 @@ style Base_Widget_MaterialComponents_TextInputLayout
 style CardView
 style CardView_Dark
 style CardView_Light
+style EasyPermissions
+style EasyPermissions_Transparent
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents

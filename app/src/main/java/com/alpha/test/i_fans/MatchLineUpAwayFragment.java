@@ -28,6 +28,8 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -68,7 +70,8 @@ public class MatchLineUpAwayFragment extends Fragment {
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    new LineUpAwayTask().execute();
+                    loadLineUpAway();
+//                    new LineUpAwayTask().execute();
                 }
             });
             sharedPrefManager = new  SharedPrefManager(getContext());
@@ -148,130 +151,178 @@ public class MatchLineUpAwayFragment extends Fragment {
 
                 }
             });
-            new LineUpAwayTask().execute();
+            client = getOdooConnection(getContext());
+            loadLineUpAway();
+//            new LineUpAwayTask().execute();
 
         }
         return rootView;
     }
 
-    public class LineUpAwayTask extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-            super.onPreExecute();
-        }
+    public void loadLineUpAway(){
+        swiper.setRefreshing(true);
+        ArrayListMatchLineUpAway = new ArrayList<>();
+        ArrayListMatchLineUpAwayCore = new ArrayList<>();
+        ODomain domain = new ODomain();
+        domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListMatchLineUpAway = new ArrayList<>();
-            ArrayListMatchLineUpAwayCore = new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            ODomain domain = new ODomain();
-                            domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","jadwal_id","away", "player_id","department_id","job_id","no_punggung","status_pemain");
 
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id","jadwal_id","away", "player_id","department_id","job_id","no_punggung","status_pemain");
+        int offset = 0;
+        int limit = 0;
 
-                            int offset = 0;
-                            int limit = 0;
+        String sorting = "id DESC";
 
-                            String sorting = "id DESC";
-
-                            client.searchRead("persebaya.line.up.away", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        if (record.getString("status_pemain").equalsIgnoreCase("core")){
-                                            ArrayListMatchLineUpAwayCore.add(new MatchLineUp(
-                                                    String.valueOf(record.getInt("id")),
-                                                    String.valueOf(record.getInt("jadwal_id")),
-                                                    String.valueOf(record.getInt("player_id")),
-                                                    record.getString("player_id"),
-                                                    String.valueOf(Math.round(record.getFloat("no_punggung"))),
-                                                    record.getString("job_id"),
-                                                    record.getString("away"),
-                                                    record.getString("status_pemain")
-                                            ));
-                                        }else {
-                                            ArrayListMatchLineUpAway.add(new MatchLineUp(
-                                                    String.valueOf(record.getInt("id")),
-                                                    String.valueOf(record.getInt("jadwal_id")),
-                                                    String.valueOf(record.getInt("player_id")),
-                                                    record.getString("player_id"),
-                                                    String.valueOf(Math.round(record.getFloat("no_punggung"))),
-                                                    record.getString("job_id"),
-                                                    record.getString("away"),
-                                                    record.getString("status_pemain")
-                                            ));
-                                        }
-                                    }
-                                    adapter = new AdapterLineUpHome(ArrayListMatchLineUpAway);
-                                    adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpAwayCore);
-                                    rvLineUpAway.setAdapter(adapter);
-                                    rvLineUpAwayCore.setAdapter(adapterCore);
-                                    adapter.notifyDataSetChanged();
-                                    adapterCore.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-
-        }
+        client.searchRead("persebaya.line.up.away", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    if (record.getString("status_pemain").equalsIgnoreCase("core")){
+                        ArrayListMatchLineUpAwayCore.add(new MatchLineUp(
+                                String.valueOf(record.getInt("id")),
+                                String.valueOf(record.getInt("jadwal_id")),
+                                String.valueOf(record.getInt("player_id")),
+                                record.getString("player_id"),
+                                String.valueOf(Math.round(record.getFloat("no_punggung"))),
+                                record.getString("job_id"),
+                                record.getString("away"),
+                                record.getString("status_pemain")
+                        ));
+                    }else {
+                        ArrayListMatchLineUpAway.add(new MatchLineUp(
+                                String.valueOf(record.getInt("id")),
+                                String.valueOf(record.getInt("jadwal_id")),
+                                String.valueOf(record.getInt("player_id")),
+                                record.getString("player_id"),
+                                String.valueOf(Math.round(record.getFloat("no_punggung"))),
+                                record.getString("job_id"),
+                                record.getString("away"),
+                                record.getString("status_pemain")
+                        ));
+                    }
+                }
+                adapter = new AdapterLineUpHome(ArrayListMatchLineUpAway);
+                adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpAwayCore);
+                rvLineUpAway.setAdapter(adapter);
+                rvLineUpAwayCore.setAdapter(adapterCore);
+                adapter.notifyDataSetChanged();
+                adapterCore.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+        });
     }
 
+//    public class LineUpAwayTask extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListMatchLineUpAway = new ArrayList<>();
+//            ArrayListMatchLineUpAwayCore = new ArrayList<>();
+//            client = new OdooClient.Builder(getContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            ODomain domain = new ODomain();
+//                            domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id","jadwal_id","away", "player_id","department_id","job_id","no_punggung","status_pemain");
+//
+//                            int offset = 0;
+//                            int limit = 0;
+//
+//                            String sorting = "id DESC";
+//
+//                            client.searchRead("persebaya.line.up.away", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        if (record.getString("status_pemain").equalsIgnoreCase("core")){
+//                                            ArrayListMatchLineUpAwayCore.add(new MatchLineUp(
+//                                                    String.valueOf(record.getInt("id")),
+//                                                    String.valueOf(record.getInt("jadwal_id")),
+//                                                    String.valueOf(record.getInt("player_id")),
+//                                                    record.getString("player_id"),
+//                                                    String.valueOf(Math.round(record.getFloat("no_punggung"))),
+//                                                    record.getString("job_id"),
+//                                                    record.getString("away"),
+//                                                    record.getString("status_pemain")
+//                                            ));
+//                                        }else {
+//                                            ArrayListMatchLineUpAway.add(new MatchLineUp(
+//                                                    String.valueOf(record.getInt("id")),
+//                                                    String.valueOf(record.getInt("jadwal_id")),
+//                                                    String.valueOf(record.getInt("player_id")),
+//                                                    record.getString("player_id"),
+//                                                    String.valueOf(Math.round(record.getFloat("no_punggung"))),
+//                                                    record.getString("job_id"),
+//                                                    record.getString("away"),
+//                                                    record.getString("status_pemain")
+//                                            ));
+//                                        }
+//                                    }
+//                                    adapter = new AdapterLineUpHome(ArrayListMatchLineUpAway);
+//                                    adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpAwayCore);
+//                                    rvLineUpAway.setAdapter(adapter);
+//                                    rvLineUpAwayCore.setAdapter(adapterCore);
+//                                    adapter.notifyDataSetChanged();
+//                                    adapterCore.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//
+//        }
+//    }
+
     public void cekRating(final Integer id_jadwal, final Integer id_player){
-        client = new OdooClient.Builder(getContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        ODomain domain = new ODomain();
-                        domain.add("employee_id", "=", id_player);
-                        domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
+        ODomain domain = new ODomain();
+        domain.add("employee_id", "=", id_player);
+        domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
 
-                        OdooFields fields = new OdooFields();
-                        fields.addAll("id");
+        OdooFields fields = new OdooFields();
+        fields.addAll("id");
 
-                        int offset = 0;
-                        int limit = 80;
+        int offset = 0;
+        int limit = 80;
 
-                        String sorting = "id DESC";
+        String sorting = "id DESC";
 
-                        client.searchRead("persebaya.rating", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                OdooRecord[] records = result.getRecords();
-                                for (OdooRecord record : records) {
-                                    if (record.getInt("id") > 0 ){
-                                        Toast.makeText(getContext(),"Rating has been created!",Toast.LENGTH_LONG).show();
-                                    }else{
+        client.searchRead("persebaya.rating", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    if (record.getInt("id") > 0 ){
+                        Toast.makeText(getContext(),"Rating has been created!",Toast.LENGTH_LONG).show();
+                    }else{
 //                                        intent = new Intent(getActivity(), RatingLineUpActivity.class);
 //                                        intent.putExtra("id_jadwal", id_jadwal);
 //                                        intent.putExtra("id_player", id_player);
-                                    }
-                                }
-
-                            }
-
-                            @Override
-                            public boolean onError(OdooErrorException error) {
-                                Toast.makeText(getContext(),error.toString(),Toast.LENGTH_LONG).show();
-                                return true;
-                            }
-                        });
                     }
-                }).build();
+                }
+
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(getContext(),error.toString(),Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
     }
 
 

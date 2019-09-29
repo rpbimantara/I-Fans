@@ -27,6 +27,8 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -98,69 +100,108 @@ public class ClubPlayerFragment extends Fragment {
 
                 }
             });
+            client = getOdooConnection(getContext());
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
-                    new ClubPlayerTask().execute();
+                    loadClubPlayer();
+//                    new ClubPlayerTask().execute();
                 }
             });
-            new ClubPlayerTask().execute();
+            loadClubPlayer();
+//            new ClubPlayerTask().execute();
         }
         return rootView;
     }
 
-    public class ClubPlayerTask extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-            super.onPreExecute();
-        }
+    void loadClubPlayer(){
+        swiper.setRefreshing(true);
+        ArrayListTeam = new ArrayList<>();
+        ODomain domain = new ODomain();
+        domain.add("club_id", "=", Integer.valueOf(getActivity().getIntent().getStringExtra("id")));
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListTeam = new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            ODomain domain = new ODomain();
-                            domain.add("club_id", "=", Integer.valueOf(getActivity().getIntent().getStringExtra("id")));
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
 
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
+        int offset = 0;
+        int limit = 80;
 
-                            int offset = 0;
-                            int limit = 80;
+        String sorting = "id DESC";
 
-                            String sorting = "id DESC";
-
-                            client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        ArrayListTeam.add(new Team(
-                                                record.getInt("id"),
-                                                record.getString("name"),
-                                                record.getString("image"),
-                                                record.getString("status_pemain"),
-                                                record.getString("job_id"),
-                                                String.valueOf(record.getInt("no_punggung"))
-                                        ));
-                                    }
-                                    adapter = new AdapterTeam(ArrayListTeam);
-                                    rv.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
+        client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    ArrayListTeam.add(new Team(
+                            record.getInt("id"),
+                            record.getString("name"),
+                            record.getString("image"),
+                            record.getString("status_pemain"),
+                            record.getString("job_id"),
+                            String.valueOf(record.getInt("no_punggung"))
+                    ));
+                }
+                adapter = new AdapterTeam(ArrayListTeam);
+                rv.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+        });
     }
+
+//    public class ClubPlayerTask extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListTeam = new ArrayList<>();
+//            client = new OdooClient.Builder(getContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            ODomain domain = new ODomain();
+//                            domain.add("club_id", "=", Integer.valueOf(getActivity().getIntent().getStringExtra("id")));
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
+//
+//                            int offset = 0;
+//                            int limit = 80;
+//
+//                            String sorting = "id DESC";
+//
+//                            client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        ArrayListTeam.add(new Team(
+//                                                record.getInt("id"),
+//                                                record.getString("name"),
+//                                                record.getString("image"),
+//                                                record.getString("status_pemain"),
+//                                                record.getString("job_id"),
+//                                                String.valueOf(record.getInt("no_punggung"))
+//                                        ));
+//                                    }
+//                                    adapter = new AdapterTeam(ArrayListTeam);
+//                                    rv.setAdapter(adapter);
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 
 }

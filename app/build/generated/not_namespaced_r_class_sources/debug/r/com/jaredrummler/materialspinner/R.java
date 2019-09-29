@@ -52,10 +52,10 @@ public final class R {
     public static final class id {
         private id() {}
 
-        public static final int fill_parent = 0x7f0a00a7;
-        public static final int match_parent = 0x7f0a00fc;
-        public static final int tv_tinted_spinner = 0x7f0a0204;
-        public static final int wrap_content = 0x7f0a025c;
+        public static final int fill_parent = 0x7f0a00a8;
+        public static final int match_parent = 0x7f0a00fd;
+        public static final int tv_tinted_spinner = 0x7f0a0205;
+        public static final int wrap_content = 0x7f0a025d;
     }
     public static final class layout {
         private layout() {}

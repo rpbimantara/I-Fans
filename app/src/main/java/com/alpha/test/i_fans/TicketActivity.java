@@ -32,6 +32,8 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 public class TicketActivity extends AppCompatActivity {
 
     ArrayList<TiketList> ArrayListTiketList;
@@ -56,10 +58,12 @@ public class TicketActivity extends AppCompatActivity {
         llm = new LinearLayoutManager(this);
         rv.setAdapter(adapter );
         rv.setLayoutManager(llm);
+        client = getOdooConnection(getBaseContext());
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new TicketTask().execute();
+                loadTicket();
+//                new TicketTask().execute();
             }
         });
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -98,67 +102,105 @@ public class TicketActivity extends AppCompatActivity {
             }
         });
         sharedPrefManager = new SharedPrefManager(this);
-        new TicketTask().execute();
+//        new TicketTask().execute();
+        loadTicket();
+    }
+
+    public void loadTicket(){
+        swiper.setRefreshing(true);
+        ArrayListTiketList = new ArrayList<>();
+        ODomain domain = new ODomain();
+        domain.add("state", "=", "confirm");
+
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","image","name", "date_begin","organizer_id","event_type_id");
+
+        int offset = 0;
+        int limit = 80;
+
+        String sorting = "id ASC";
+
+        client.searchRead("event.event", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for(OdooRecord record: records) {
+                    ArrayListTiketList.add(new TiketList(
+                            String.valueOf(record.getInt("id")),
+                            record.getString("image"),
+                            record.getString("name"),
+                            record.getString("date_begin"),
+                            record.getString("organizer_id"),
+                            record.getString("event_type_id")
+                    ));
+                }
+                Log.v("adsasdasd",String.valueOf(ArrayListTiketList.size()));
+                adapter = new AdapterTiketList(ArrayListTiketList);
+                rv.setAdapter(adapter );
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+        });
     }
 
 
-    public class TicketTask extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-            super.onPreExecute();
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListTiketList = new ArrayList<>();
-            client = new OdooClient.Builder(getBaseContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            // Success connection
-                            ODomain domain = new ODomain();
-                            domain.add("state", "=", "confirm");
-
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id","image","name", "date_begin","organizer_id","event_type_id");
-
-                            int offset = 0;
-                            int limit = 80;
-
-                            String sorting = "id ASC";
-
-                            client.searchRead("event.event", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                                            @Override
-                                            public void onResult(OdooResult result) {
-                                                OdooRecord[] records = result.getRecords();
-                                                for(OdooRecord record: records) {
-                                                     ArrayListTiketList.add(new TiketList(
-                                                            String.valueOf(record.getInt("id")),
-                                                            record.getString("image"),
-                                                             record.getString("name"),
-                                                             record.getString("date_begin"),
-                                                             record.getString("organizer_id"),
-                                                             record.getString("event_type_id")
-                                                    ));
-                                                }
-                                                Log.v("adsasdasd",String.valueOf(ArrayListTiketList.size()));
-                                                adapter = new AdapterTiketList(ArrayListTiketList);
-                                                rv.setAdapter(adapter );
-                                                adapter.notifyDataSetChanged();
-                                                swiper.setRefreshing(false);
-                                            }
-                                        });
-
-                        }
-                    })
-                    .build();
-            return null;
-        }
-    }
+//    public class TicketTask extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListTiketList = new ArrayList<>();
+//            client = new OdooClient.Builder(getBaseContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            // Success connection
+//                            ODomain domain = new ODomain();
+//                            domain.add("state", "=", "confirm");
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id","image","name", "date_begin","organizer_id","event_type_id");
+//
+//                            int offset = 0;
+//                            int limit = 80;
+//
+//                            String sorting = "id ASC";
+//
+//                            client.searchRead("event.event", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                                            @Override
+//                                            public void onResult(OdooResult result) {
+//                                                OdooRecord[] records = result.getRecords();
+//                                                for(OdooRecord record: records) {
+//                                                     ArrayListTiketList.add(new TiketList(
+//                                                            String.valueOf(record.getInt("id")),
+//                                                            record.getString("image"),
+//                                                             record.getString("name"),
+//                                                             record.getString("date_begin"),
+//                                                             record.getString("organizer_id"),
+//                                                             record.getString("event_type_id")
+//                                                    ));
+//                                                }
+//                                                Log.v("adsasdasd",String.valueOf(ArrayListTiketList.size()));
+//                                                adapter = new AdapterTiketList(ArrayListTiketList);
+//                                                rv.setAdapter(adapter );
+//                                                adapter.notifyDataSetChanged();
+//                                                swiper.setRefreshing(false);
+//                                            }
+//                                        });
+//
+//                        }
+//                    })
+//                    .build();
+//            return null;
+//        }
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

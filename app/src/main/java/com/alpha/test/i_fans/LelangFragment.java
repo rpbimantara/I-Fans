@@ -33,6 +33,8 @@ import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -111,40 +113,87 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
-        new LelangAsyncTask().execute();
+        client = getOdooConnection(getContext());
+        loadLelang();
+//        new LelangAsyncTask().execute();
         return rootView;
     }
 
-    @Override
-    public void setUserVisibleHint(boolean isVisibleToUser) {
-        super.setUserVisibleHint(isVisibleToUser);
-        if (isVisibleToUser && isResumed()){
-            onResume();
-        }
-    }
+    public void loadLelang(){
+        swiper.setRefreshing(true);
+        ArrayListLelang = new ArrayList<>();
+        ODomain domain = new ODomain();
+        domain.add("status_lelang", "=", "jalan");
+        domain.add("type", "=", "lelang");
 
-    @Override
-    public void onAttachFragment(Fragment childFragment) {
-        super.onAttachFragment(childFragment);
-        HomeActivity fabhome = (HomeActivity) getActivity();
-        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
+
+        int offset = 0;
+        int limit = 80;
+
+        String sorting = "due_date ASC";
+
+        client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
             @Override
-            public void onClick(View view) {
-                Intent AddLelang = new Intent(getActivity(),LelangAddActivity.class);
-                startActivity(AddLelang);
+            public void onResult(OdooResult result) {
+                OdooRecord[] Records = result.getRecords();
+                for (final OdooRecord record : Records) {
+                    ArrayListLelang.add(new lelang(
+                            String.valueOf(record.getInt("id")),
+                            record.getString("name"),
+                            record.getString("image_medium"),
+                            record.getString("due_date"),
+                            String.valueOf(Math.round(record.getFloat("ob"))),
+                            String.valueOf(Math.round(record.getFloat("binow"))),
+                            String.valueOf(Math.round(record.getFloat("inc"))),
+                            String.valueOf(record.getInt("create_uid"))));
+                }
+                adapter = new AdapterLelang(ArrayListLelang,getContext(),LelangFragment.newInstance());
+                rv.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_SHORT).show();
+                return super.onError(error);
             }
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (!getUserVisibleHint())
-        {
-            return;
-        }
 
-    }
+//    @Override
+//    public void setUserVisibleHint(boolean isVisibleToUser) {
+//        super.setUserVisibleHint(isVisibleToUser);
+//        if (isVisibleToUser && isResumed()){
+//            onResume();
+//        }
+//    }
+//
+//    @Override
+//    public void onAttachFragment(Fragment childFragment) {
+//        super.onAttachFragment(childFragment);
+//        HomeActivity fabhome = (HomeActivity) getActivity();
+//        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent AddLelang = new Intent(getActivity(),LelangAddActivity.class);
+//                startActivity(AddLelang);
+//            }
+//        });
+//    }
+//
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        if (!getUserVisibleHint())
+//        {
+//            return;
+//        }
+//
+//    }
 
     public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{
         @Override

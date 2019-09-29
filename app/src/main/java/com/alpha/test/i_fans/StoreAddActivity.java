@@ -39,6 +39,7 @@ import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
 import static com.alpha.test.i_fans.CommonUtils.getBase64ImageString;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 
 public class StoreAddActivity extends AppCompatActivity {
     EditText etName,etPrice,etStock,etdeskripsi;
@@ -71,7 +72,8 @@ public class StoreAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (state.equalsIgnoreCase("create")){
-                    new SaveStoreTask().execute();
+                    createbtn();
+//                    new SaveStoreTask().execute();
                 }else{
 
                 }
@@ -89,6 +91,7 @@ public class StoreAddActivity extends AppCompatActivity {
                 startActivityForResult(photoPickerIntent, 1);
             }
         });
+        client = getOdooConnection(getBaseContext());
         if (!getIntent().getExtras().get("id").toString().equalsIgnoreCase("false")){
             state = "edit";
             LoadItem();
@@ -96,52 +99,43 @@ public class StoreAddActivity extends AppCompatActivity {
     }
 
     public void LoadItem(){
-        client = new OdooClient.Builder(getApplicationContext())
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        ODomain domain = new ODomain();
-                        domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+        ODomain domain = new ODomain();
+        domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
 
-                        OdooFields fields = new OdooFields();
-                        fields.addAll("id","image_medium","name", "type","default_code","cated_ig","description_sale","list_price");
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","image_medium","name", "type","default_code","cated_ig","description_sale","list_price");
 
-                        int offset = 0;
-                        int limit = 80;
+        int offset = 0;
+        int limit = 80;
 
-                        String sorting = "id ASC";
+        String sorting = "id ASC";
 
-                        client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                OdooRecord[] records = result.getRecords();
-                                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
-                                DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
+        client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                DecimalFormat formatter = (DecimalFormat) NumberFormat.getInstance(Locale.US);
+                DecimalFormatSymbols symbols = formatter.getDecimalFormatSymbols();
 
-                                symbols.setGroupingSeparator('.');
-                                formatter.setDecimalFormatSymbols(symbols);
-                                for (OdooRecord record : records) {
-                                    imageCurrent = record.getString("image_medium");
-                                    name = record.getString("name");
-                                    price = String.valueOf(formatter.format(record.getFloat("list_price")));
+                symbols.setGroupingSeparator('.');
+                formatter.setDecimalFormatSymbols(symbols);
+                for (OdooRecord record : records) {
+                    imageCurrent = record.getString("image_medium");
+                    name = record.getString("name");
+                    price = String.valueOf(formatter.format(record.getFloat("list_price")));
 //                                    stock = record.getString("name");
-                                    if (!record.getString("description_sale").equalsIgnoreCase("false"))
-                                    {
-                                        description = record.getString("description_sale");
-                                    }
-                                }
-                                imageUser.setImageBitmap(StringToBitMap(imageCurrent));
-                                etName.setText(name);
-                                etPrice.setText(price);
-//                                etStock.setText(stock);
-                                etdeskripsi.setText(description);
-                            }
-                        });
+                    if (!record.getString("description_sale").equalsIgnoreCase("false"))
+                    {
+                        description = record.getString("description_sale");
                     }
-                }).build();
+                }
+                imageUser.setImageBitmap(StringToBitMap(imageCurrent));
+                etName.setText(name);
+                etPrice.setText(price);
+//                                etStock.setText(stock);
+                etdeskripsi.setText(description);
+            }
+        });
     }
 
     @Override
@@ -161,47 +155,78 @@ public class StoreAddActivity extends AppCompatActivity {
         }
     }
 
-    public class SaveStoreTask extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected Void doInBackground(Void... voids) {
-            client = new OdooClient.Builder(getBaseContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSynchronizedRequests(false)
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            progressDialog.setMessage("Saving.....");
-                            progressDialog.show();
-                            OdooValues values = new OdooValues();
-                            values.put("image_medium", getBase64ImageString(currentImage));
-                            values.put("name", etName.getText().toString());
-                            values.put("purchase_ok", false);
-                            values.put("type", "product");
-                            values.put("list_price", etPrice.getText().toString());
+    public void createbtn(){
+        progressDialog.setMessage("Create.....");
+        progressDialog.show();
+        OdooValues values = new OdooValues();
+        values.put("image_medium", getBase64ImageString(currentImage));
+        values.put("name", etName.getText().toString());
+        values.put("purchase_ok", false);
+        values.put("type", "product");
+        values.put("list_price", etPrice.getText().toString());
 //                            values.put("stock", etStock.getText().toString());
-                            values.put("description_sale", etdeskripsi.getText().toString());
-                            values.put("create_uid", sharedPrefManager.getSpIdUser());
+        values.put("description_sale", etdeskripsi.getText().toString());
+        values.put("create_uid", sharedPrefManager.getSpIdUser());
 
-                            client.create("product.template", values, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    // Success response
-                                    progressDialog.dismiss();
-                                    Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
-                                    finish();
-                                }
+        client.create("product.template", values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // Success response
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
+                finish();
+            }
 
-                                @Override
-                                public boolean onError(OdooErrorException error) {
-                                    Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
-                                    progressDialog.dismiss();
-                                    return super.onError(error);
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+                return super.onError(error);
+            }
+        });
     }
+
+//    public class SaveStoreTask extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            client = new OdooClient.Builder(getBaseContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSynchronizedRequests(false)
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            progressDialog.setMessage("Saving.....");
+//                            progressDialog.show();
+//                            OdooValues values = new OdooValues();
+//                            values.put("image_medium", getBase64ImageString(currentImage));
+//                            values.put("name", etName.getText().toString());
+//                            values.put("purchase_ok", false);
+//                            values.put("type", "product");
+//                            values.put("list_price", etPrice.getText().toString());
+////                            values.put("stock", etStock.getText().toString());
+//                            values.put("description_sale", etdeskripsi.getText().toString());
+//                            values.put("create_uid", sharedPrefManager.getSpIdUser());
+//
+//                            client.create("product.template", values, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    // Success response
+//                                    progressDialog.dismiss();
+//                                    Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
+//                                    finish();
+//                                }
+//
+//                                @Override
+//                                public boolean onError(OdooErrorException error) {
+//                                    Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+//                                    progressDialog.dismiss();
+//                                    return super.onError(error);
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 }

@@ -20,6 +20,8 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 public class TicketBarcodeActivity extends AppCompatActivity {
 
     ArrayList<TicketBarcode> ArrayListTiketBarcode;
@@ -45,66 +47,105 @@ public class TicketBarcodeActivity extends AppCompatActivity {
         llm = new LinearLayoutManager(this);
         rv.setAdapter(adapter );
         rv.setLayoutManager(llm);
+        client = getOdooConnection(getBaseContext());
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new TicketBarcodeTask().execute();
+                loadBarcode();
+//                new TicketBarcodeTask().execute();
             }
         });
-        new TicketBarcodeTask().execute();
+        loadBarcode();
+//        new TicketBarcodeTask().execute();
     }
 
-    public class TicketBarcodeTask extends AsyncTask<Void,Void,Void> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
+    public void loadBarcode(){
+        swiper.setRefreshing(true);
+        ArrayListTiketBarcode = new ArrayList<>();
+        ODomain domain = new ODomain();
+        domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
+        domain.add("state", "in", Arrays.asList("open","draft"));
 
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");
 
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListTiketBarcode = new ArrayList<>();
-            client = new OdooClient.Builder(getApplicationContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            ODomain domain = new ODomain();
-                            domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-                            domain.add("state", "in", Arrays.asList("open","draft"));
+        int offset = 0;
+        int limit = 80;
 
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");
+        String sorting = "id ASC";
 
-                            int offset = 0;
-                            int limit = 80;
-
-                            String sorting = "id ASC";
-
-                            client.searchRead("event.registration", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        ArrayListTiketBarcode.add(new TicketBarcode(
-                                                String.valueOf(record.getInt("id")),
-                                                record.getString("name"),
-                                                record.getString("date_open"),
-                                                record.getString("event_id"),
-                                                record.getString("event_ticket_id"),
-                                                record.getString("barcode_image")));
-                                    }
-                                    adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
-                                    rv.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
+        client.searchRead("event.registration", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    ArrayListTiketBarcode.add(new TicketBarcode(
+                            String.valueOf(record.getInt("id")),
+                            record.getString("name"),
+                            record.getString("date_open"),
+                            record.getString("event_id"),
+                            record.getString("event_ticket_id"),
+                            record.getString("barcode_image")));
+                }
+                adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
+                rv.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+        });
     }
+
+//    public class TicketBarcodeTask extends AsyncTask<Void,Void,Void> {
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListTiketBarcode = new ArrayList<>();
+//            client = new OdooClient.Builder(getApplicationContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            ODomain domain = new ODomain();
+//                            domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
+//                            domain.add("state", "in", Arrays.asList("open","draft"));
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");
+//
+//                            int offset = 0;
+//                            int limit = 80;
+//
+//                            String sorting = "id ASC";
+//
+//                            client.searchRead("event.registration", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        ArrayListTiketBarcode.add(new TicketBarcode(
+//                                                String.valueOf(record.getInt("id")),
+//                                                record.getString("name"),
+//                                                record.getString("date_open"),
+//                                                record.getString("event_id"),
+//                                                record.getString("event_ticket_id"),
+//                                                record.getString("barcode_image")));
+//                                    }
+//                                    adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
+//                                    rv.setAdapter(adapter);
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 }

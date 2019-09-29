@@ -29,6 +29,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
 import static com.alpha.test.i_fans.CommonUtils.StringToBitMap;
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
 
 public class TeamDetailActivity extends AppCompatActivity {
 
@@ -59,43 +60,66 @@ public class TeamDetailActivity extends AppCompatActivity {
         ratingAtlete = findViewById(R.id.rating_TeamDetail);
         txtNo = findViewById(R.id.txt_no_team_detail);
         txtNama = findViewById(R.id.txt_nama_team_detail);
-        new TeamDetailTask().execute();
+        client = getOdooConnection(getBaseContext());
+        loadTeam();
+//        new TeamDetailTask().execute();
+    }
+    public void loadTeam(){
+        List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id_atlete").toString()));
+        List<String> fields = Arrays.asList("id","image","rating","name", "job_id","status_pemain","no_punggung");
+
+        client.read("hr.employee", ids, fields, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    String rating = record.getString("rating");
+                    if (rating.equalsIgnoreCase("false")){
+                        rating = "0";
+                    }
+                    imageAtlete.setImageBitmap(StringToBitMap(record.getString("image")));
+                    ratingAtlete.setRating(Float.valueOf(rating));
+                    txtNo.setText(String.valueOf(record.getInt("no_punggung")));
+                    txtNama.setText(record.getString("name"));
+                }
+            }
+        });
     }
 
-    public class TeamDetailTask extends AsyncTask<Void,Void,Void> {
-        @Override
-        protected Void doInBackground(Void... voids) {
-            client = new OdooClient.Builder(getBaseContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id_atlete").toString()));
-                            List<String> fields = Arrays.asList("id","image","rating","name", "job_id","status_pemain","no_punggung");
-
-                            client.read("hr.employee", ids, fields, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        String rating = record.getString("rating");
-                                        if (rating.equalsIgnoreCase("false")){
-                                            rating = "0";
-                                        }
-                                        imageAtlete.setImageBitmap(StringToBitMap(record.getString("image")));
-                                        ratingAtlete.setRating(Float.valueOf(rating));
-                                        txtNo.setText(String.valueOf(record.getInt("no_punggung")));
-                                        txtNama.setText(record.getString("name"));
-                                    }
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
-    }
+//    public class TeamDetailTask extends AsyncTask<Void,Void,Void> {
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            client = new OdooClient.Builder(getBaseContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            List<Integer> ids = Arrays.asList(Integer.valueOf(getIntent().getExtras().get("id_atlete").toString()));
+//                            List<String> fields = Arrays.asList("id","image","rating","name", "job_id","status_pemain","no_punggung");
+//
+//                            client.read("hr.employee", ids, fields, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        String rating = record.getString("rating");
+//                                        if (rating.equalsIgnoreCase("false")){
+//                                            rating = "0";
+//                                        }
+//                                        imageAtlete.setImageBitmap(StringToBitMap(record.getString("image")));
+//                                        ratingAtlete.setRating(Float.valueOf(rating));
+//                                        txtNo.setText(String.valueOf(record.getInt("no_punggung")));
+//                                        txtNama.setText(record.getString("name"));
+//                                    }
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 
     private static class TeamDetailPageAdapter extends FragmentPagerAdapter {
 

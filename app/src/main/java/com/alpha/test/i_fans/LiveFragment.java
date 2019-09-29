@@ -32,7 +32,7 @@ public class LiveFragment extends Fragment {
 
     private View rootView;
 //    private static YouTube youtube;
-    private final String API_KEY= "AIzaSyDxk3vNgkIDFu-Ai0FhbDvg2N7Mpfql3TY";
+    private final String API_KEY= "AIzaSyCRDCKj8uNp8kXhd9_OlXl8K0YaV6C9W7U";
     private final String VIDEO_CODE= "W7m1n9jL7ns";
     String URL = "https://www.googleapis.com/youtube/v3/search?part=snippet&" +
             "channelId=UCBcdDjzrNIeIZvATS-l9Wjg&maxResults=50&key=" +
@@ -85,7 +85,7 @@ public class LiveFragment extends Fragment {
 //
 //            }
 //        });
-//        new LoadVideoTask().execute();
+        new LoadVideoTask().execute();
 //        callYoutube();
         return rootView;
     }

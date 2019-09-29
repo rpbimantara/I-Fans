@@ -25,6 +25,8 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.i_fans.CommonUtils.getOdooConnection;
+
 public class AccountStoreActivity extends AppCompatActivity {
 
     ArrayList<Store> ArrayListStore;
@@ -51,10 +53,11 @@ public class AccountStoreActivity extends AppCompatActivity {
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new AccountStoreTask().execute();
+                loadStore();
+//                new AccountStoreTask().execute();
             }
         });
-        rv.setAdapter(adapter );
+        rv.setAdapter(adapter);
         rv.setLayoutManager(new GridLayoutManager(this,3));
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
 
@@ -92,68 +95,112 @@ public class AccountStoreActivity extends AppCompatActivity {
 
             }
         });
-        new AccountStoreTask().execute();
+        client = getOdooConnection(getBaseContext());
+        loadStore();
+//        new AccountStoreTask().execute();
+    }
+
+    public void loadStore(){
+        swiper.setRefreshing(true);
+        ArrayListStore = new ArrayList<>();
+        ODomain domain = new ODomain();
+        domain.add("active", "=", true);
+        domain.add("type", "=", "product");
+        domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
+
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","image_medium","name", "type","default_code","cated_ig","list_price");
+
+        int offset = 0;
+        int limit = 80;
+
+        String sorting = "id ASC";
+
+        client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    String code = " ";
+                    if (record.getString("default_code").equalsIgnoreCase("false") || record.getString("default_code").equalsIgnoreCase("")){
+                        code = "";
+                    }else{
+                        code = "["+record.getString("default_code") +"] ";
+                    }
+                    ArrayListStore.add(new Store(
+                            String.valueOf(record.getInt("id")),
+                            record.getString("image_medium"),
+                            code +record.getString("name"),
+                            String.valueOf(Math.round(record.getFloat("list_price")))));
+                }
+                adapter = new AdapterStore(ArrayListStore);
+                rv.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
+            }
+
+        });
     }
 
 
-    public class AccountStoreTask extends AsyncTask<Void,Void,Void>{
-
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListStore = new ArrayList<>();
-            client = new OdooClient.Builder(getApplicationContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            ODomain domain = new ODomain();
-                            domain.add("active", "=", true);
-                            domain.add("type", "=", "product");
-                            domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
-
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id","image_medium","name", "type","default_code","cated_ig","list_price");
-
-                            int offset = 0;
-                            int limit = 80;
-
-                            String sorting = "id ASC";
-
-                            client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        String code = " ";
-                                        if (record.getString("default_code").equalsIgnoreCase("false") || record.getString("default_code").equalsIgnoreCase("")){
-                                            code = "";
-                                        }else{
-                                            code = "["+record.getString("default_code") +"] ";
-                                        }
-                                        ArrayListStore.add(new Store(
-                                                String.valueOf(record.getInt("id")),
-                                                record.getString("image_medium"),
-                                                code +record.getString("name"),
-                                                String.valueOf(Math.round(record.getFloat("list_price")))));
-                                    }
-                                    adapter = new AdapterStore(ArrayListStore);
-                                    rv.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-
-                            });
-                        }
-                    }).build();
-            return null;
-        }
-
-    }
+//    public class AccountStoreTask extends AsyncTask<Void,Void,Void>{
+//
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListStore = new ArrayList<>();
+//            client = new OdooClient.Builder(getApplicationContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            ODomain domain = new ODomain();
+//                            domain.add("active", "=", true);
+//                            domain.add("type", "=", "product");
+//                            domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id","image_medium","name", "type","default_code","cated_ig","list_price");
+//
+//                            int offset = 0;
+//                            int limit = 80;
+//
+//                            String sorting = "id ASC";
+//
+//                            client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] records = result.getRecords();
+//                                    for (OdooRecord record : records) {
+//                                        String code = " ";
+//                                        if (record.getString("default_code").equalsIgnoreCase("false") || record.getString("default_code").equalsIgnoreCase("")){
+//                                            code = "";
+//                                        }else{
+//                                            code = "["+record.getString("default_code") +"] ";
+//                                        }
+//                                        ArrayListStore.add(new Store(
+//                                                String.valueOf(record.getInt("id")),
+//                                                record.getString("image_medium"),
+//                                                code +record.getString("name"),
+//                                                String.valueOf(Math.round(record.getFloat("list_price")))));
+//                                    }
+//                                    adapter = new AdapterStore(ArrayListStore);
+//                                    rv.setAdapter(adapter);
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//
+//    }
 }
