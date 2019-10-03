@@ -19,13 +19,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import java.util.Arrays;
+import java.util.List;
+
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.OdooUser;
 import oogbox.api.odoo.client.AuthError;
 import oogbox.api.odoo.client.OdooVersion;
 import oogbox.api.odoo.client.helper.OdooErrorException;
+import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.OdooParams;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.AuthenticateListener;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
@@ -146,38 +151,45 @@ public class SingUpActivity extends AppCompatActivity {
             progressDialog.dismiss();
             return;
         }
+//        is_connect();
         FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-            @Override
-            public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                final String RegId = task.getResult().getToken();
-                OdooValues values = new OdooValues();
-                values.put("name", username.getText().toString());
-                values.put("login", username.getText().toString());
-                values.put("email", email.getText().toString());
-                values.put("club_id", 52);
-                values.put("password", password.getText().toString());
-                values.put("state", "active");
-                values.put("fcm_reg_ids", RegId);
-                System.out.println(values.toString());
-                client.create("res.users", values, new IOdooResponse() {
+                @Override
+                public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                    final String RegId = task.getResult().getToken();
+                    OArguments arguments = new OArguments();
+                    arguments.add(username.getText().toString());
+                    arguments.add(email.getText().toString());
+                    arguments.add(password.getText().toString());
+                    arguments.add(RegId);
+                    OdooValues values = new OdooValues();
+                    values.put("name", username.getText().toString());
+                    values.put("login", username.getText().toString());
+                    values.put("email", email.getText().toString());
+                    values.put("club_id", 52);
+                    values.put("password", password.getText().toString());
+                    values.put("state", "active");
+                    values.put("fcm_reg_ids", RegId);
+                    client.create("res.partner",values , new IOdooResponse() {
 
-                    @Override
-                    public void onResult(OdooResult result) {
-                        // Success response
-                        Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
-                    }
+                        @Override
+                        public void onResult(OdooResult result) {
+                            // Success response
+                            Log.d(TAG, result.toString());
+                            Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                        }
 
-                    @Override
-                    public boolean onError(OdooErrorException error) {
-                        Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
-                        return super.onError(error);
-                    }
-                });
-            }
+                        @Override
+                        public boolean onError(OdooErrorException error) {
+                            Log.d(TAG, error.toString());
+                            Toast.makeText(SingUpActivity.this, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
+                            return super.onError(error);
+                        }
+                    });
+                }
 
-        });
+            });
     }
 
     public Boolean is_Valid() {
@@ -217,5 +229,36 @@ public class SingUpActivity extends AppCompatActivity {
         }
         return is_Success;
     }
+
+
+//    public void is_connect(){
+//        client.authenticate("register","register", sharedPrefManager.getSP_db(), registerCallback);
+//    }
+//
+//    AuthenticateListener registerCallback = new AuthenticateListener() {
+//        @Override
+//        public void onLoginSuccess(final OdooUser user) {
+//            List<Integer> ids = Arrays.asList(user.uid);
+//            List<String> fields = Arrays.asList("club_id","fcm_reg_ids");
+//            client.read("res.users", ids, fields, new IOdooResponse() {
+//                @Override
+//                public void onResult(OdooResult result) {
+//                    OdooRecord[] records = result.getRecords();
+//
+//                    for(OdooRecord record: records) {
+//                        sharedPrefManager.saveSPString(SharedPrefManager.SP_SESSION_ID, user.sessionId);
+//                    }
+//                    progressDialog.dismiss();
+//                    finish();
+//                }
+//            });
+//
+//        }
+//        @Override
+//        public void onLoginFail(AuthError error) {
+//            Toast.makeText(SingUpActivity.this,error.toString(),Toast.LENGTH_LONG).show();
+//            progressDialog.dismiss();
+//        }
+//    };
 
 }

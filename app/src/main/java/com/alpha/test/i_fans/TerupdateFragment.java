@@ -1,8 +1,10 @@
 package com.alpha.test.i_fans;
 
 
+import android.accounts.Account;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,8 +12,10 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Base64;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -31,6 +35,8 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import oogbox.api.odoo.OdooClient;
@@ -222,8 +228,46 @@ public class TerupdateFragment extends Fragment {
 //            new TerupdateTask().execute();
             loadBeritaTerupdate();
             getData();
+            validate();
         }
         return rootView;
+    }
+
+    public void validate(){
+        List<Integer> ids = Arrays.asList(sharedPrefManager.getSpIdPartner());
+        List<String> fields = Arrays.asList("id", "name","state");
+
+        client.read("res.partner", ids, fields, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+
+                for(OdooRecord record: records) {
+                    sharedPrefManager.saveSPString(sharedPrefManager.SP_USER_STATE,record.getString("state"));
+                    if (record.getString("state").equalsIgnoreCase("draft")){
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle(R.string.app_name);
+                        builder.setMessage("Update your profile to verified account");
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent fabIntent = new Intent(getContext(),AccountEditActivity.class);
+                                startActivity(fabIntent);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+                    }
+                }
+            }
+        });
     }
 
     public void getData(){

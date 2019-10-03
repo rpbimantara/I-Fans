@@ -32,6 +32,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_BallHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -59,6 +60,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_BallAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -81,6 +83,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_PassingHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -108,6 +111,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_PassingAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -130,6 +134,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_TotalHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -157,6 +162,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_TotalAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -179,6 +185,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_TargetHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -206,6 +213,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_TargetAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -228,6 +236,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_CornerHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -255,6 +264,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_CornerAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -277,6 +287,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_FoulsHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -304,6 +315,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_FoulsAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -326,6 +338,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_OffsidesHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -353,6 +366,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_OffsidesAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -375,6 +389,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_YellowHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -402,6 +417,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_YellowAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -423,6 +439,7 @@
                     android:layout_height="30sp"
                     android:orientation="horizontal">
                     <TextView
+                        android:id="@+id/txt_RedHome"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginLeft="20sp"
@@ -450,6 +467,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_RedAway"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"

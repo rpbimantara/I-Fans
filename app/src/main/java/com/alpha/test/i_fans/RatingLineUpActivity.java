@@ -88,7 +88,11 @@ public class RatingLineUpActivity extends AppCompatActivity {
                     }
                 });
                 AlertDialog alertDialog = builder.create();
-                alertDialog.show();
+                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
+                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                }else {
+                    alertDialog.show();
+                }
             }
         });
         client = getOdooConnection(getBaseContext());

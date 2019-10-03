@@ -48,6 +48,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_GoalKick"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -79,6 +80,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Goal"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -110,6 +112,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Poesseion"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -140,6 +143,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Aerial"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -179,6 +183,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Passes"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -210,6 +215,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_KeyPasses"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -241,6 +247,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Assist"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -280,6 +287,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Tackles"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -311,6 +319,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Saves"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -342,6 +351,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Fouls"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -374,6 +384,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Yellow"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -405,6 +416,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Red"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -436,6 +448,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Offsides"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -467,6 +480,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Clearances"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -498,6 +512,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Block"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"
@@ -529,6 +544,7 @@
                         android:progressBackgroundTint="@color/colorPrimary"
                         android:layout_weight="1" />
                     <TextView
+                        android:id="@+id/txt_Interception"
                         android:layout_width="50sp"
                         android:layout_height="30sp"
                         android:layout_marginRight="20sp"

@@ -98,7 +98,11 @@ public class DonationDetailActivity extends AppCompatActivity {
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                alertDialog.show();
+                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
+                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                }else {
+                    alertDialog.show();
+                }
                 EtDonation.getText().clear();
             }
         });

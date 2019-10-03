@@ -49,7 +49,7 @@ public class HomeFragment extends Fragment {
     }
 
     public class Adapter extends FragmentPagerAdapter {
-        private int NUM_ITEMS = 3;
+        private int NUM_ITEMS = 2;
 
         public Adapter(FragmentManager fragmentManager) {
             super(fragmentManager);
@@ -66,11 +66,11 @@ public class HomeFragment extends Fragment {
                 case 0:
                     return TerupdateFragment.newInstance();
                 case 1:
-                    return LiveFragment.newInstance();
-                case 2:
+//                    return LiveFragment.newInstance();
+//                case 2:
                     return TeamFragment.newInstance();
                 default:
-                    return TeamFragment.newInstance();
+                    return TerupdateFragment.newInstance();
             }
         }
 
@@ -80,8 +80,8 @@ public class HomeFragment extends Fragment {
                 case 0:
                     return "Overview";
                 case 1:
-                    return "Live";
-                case 2:
+//                    return "Live";
+//                case 2:
                     return "Team";
                 default:
                     return "Overview";

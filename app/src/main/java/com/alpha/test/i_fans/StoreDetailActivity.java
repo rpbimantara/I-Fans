@@ -98,14 +98,23 @@ public class StoreDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                new AddToCartTask().execute();
-                AddToCartHeader();
+
+                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
+                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                }else {
+                    AddToCartHeader();
+                }
             }
         });
 
         btn_buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
+                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                }else {
 
+                }
             }
         });
         btn_edit_store.setOnClickListener(new View.OnClickListener() {

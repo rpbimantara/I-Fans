@@ -22,6 +22,7 @@ public class SharedPrefManager {
     public static final String SP_db = "StringDB";
     public static final String SP_COIN_USER = "Coin";
     public static final String SP_SESSION_ID = "SESSION_ID";
+    public static final String SP_USER_STATE = "spState";
 
 
     SharedPreferences sp;
@@ -94,6 +95,8 @@ public class SharedPrefManager {
     public String getSpReturnFromRv() {
         return sp.getString(SP_RETURN_FROM_RV,"");
     }
+
+    public String getSpUserState(){return sp.getString(SP_USER_STATE,"");}
 
     public String getSpFab() {
         return sp.getString(SP_FAB,"");

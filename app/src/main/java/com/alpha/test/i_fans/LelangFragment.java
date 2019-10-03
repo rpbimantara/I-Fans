@@ -64,34 +64,56 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
     }
 
     public void Addbidder(final String idlelang, final String nilai, final String status, final Context context, final SharedPrefManager sharedPrefManager){
-        client = new OdooClient.Builder(context)
-                .setHost(sharedPrefManager.getSP_Host_url())
-                .setSession(sharedPrefManager.getSpSessionId())
-                .setSynchronizedRequests(false)
-                .setConnectListener(new OdooConnectListener() {
-                    @Override
-                    public void onConnected(OdooVersion version) {
-                        OdooValues values = new OdooValues();
-                        values.put("product_id", idlelang);
-                        values.put("user_bid", sharedPrefManager.getSpIdUser());
-                        values.put("nilai", Integer.valueOf(nilai));
-                        values.put("keterang", status);
+        if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
+            Toast.makeText(context, "Update your profile first!", Toast.LENGTH_SHORT).show();
+        }else {
+            OdooValues values = new OdooValues();
+            values.put("product_id", idlelang);
+            values.put("user_bid", sharedPrefManager.getSpIdUser());
+            values.put("nilai", Integer.valueOf(nilai));
+            values.put("keterang", status);
 
-                        client.create("persebaya.lelang.bid", values, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                int serverId = result.getInt("result");
-                            }
+            client.create("persebaya.lelang.bid", values, new IOdooResponse() {
+                @Override
+                public void onResult(OdooResult result) {
+                    int serverId = result.getInt("result");
+                }
 
-                            @Override
-                            public boolean onError(OdooErrorException error) {
-                                Toast.makeText(context,String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
-                                return super.onError(error);
-                            }
-                        });
-                    }
-
-                }).build();
+                @Override
+                public boolean onError(OdooErrorException error) {
+                    Toast.makeText(context, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
+                    return super.onError(error);
+                }
+            });
+        }
+//        client = new OdooClient.Builder(context)
+//                .setHost(sharedPrefManager.getSP_Host_url())
+//                .setSession(sharedPrefManager.getSpSessionId())
+//                .setSynchronizedRequests(false)
+//                .setConnectListener(new OdooConnectListener() {
+//                    @Override
+//                    public void onConnected(OdooVersion version) {
+//                        OdooValues values = new OdooValues();
+//                        values.put("product_id", idlelang);
+//                        values.put("user_bid", sharedPrefManager.getSpIdUser());
+//                        values.put("nilai", Integer.valueOf(nilai));
+//                        values.put("keterang", status);
+//
+//                        client.create("persebaya.lelang.bid", values, new IOdooResponse() {
+//                            @Override
+//                            public void onResult(OdooResult result) {
+//                                int serverId = result.getInt("result");
+//                            }
+//
+//                            @Override
+//                            public boolean onError(OdooErrorException error) {
+//                                Toast.makeText(context,String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+//                                return super.onError(error);
+//                            }
+//                        });
+//                    }
+//
+//                }).build();
     }
 
 
@@ -108,7 +130,8 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new LelangAsyncTask().execute();
+//                new LelangAsyncTask().execute();
+                loadLelang();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
@@ -195,66 +218,66 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
 //
 //    }
 
-    public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{
-        @Override
-        protected void onPreExecute() {
-            swiper.setRefreshing(true);
-        }
-
-        @Override
-        protected Void doInBackground(Void... voids) {
-            ArrayListLelang = new ArrayList<>();
-            client = new OdooClient.Builder(getContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSession(sharedPrefManager.getSpSessionId())
-                    .setSynchronizedRequests(false)
-                    .setConnectListener(new OdooConnectListener() {
-                        @Override
-                        public void onConnected(OdooVersion version) {
-                            ODomain domain = new ODomain();
-                            domain.add("status_lelang", "=", "jalan");
-                            domain.add("type", "=", "lelang");
-
-                            OdooFields fields = new OdooFields();
-                            fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
-
-                            int offset = 0;
-                            int limit = 80;
-
-                            String sorting = "due_date ASC";
-
-                            client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] Records = result.getRecords();
-                                    for (final OdooRecord record : Records) {
-                                        ArrayListLelang.add(new lelang(
-                                                String.valueOf(record.getInt("id")),
-                                                record.getString("name"),
-                                                record.getString("image_medium"),
-                                                record.getString("due_date"),
-                                                String.valueOf(Math.round(record.getFloat("ob"))),
-                                                String.valueOf(Math.round(record.getFloat("binow"))),
-                                                String.valueOf(Math.round(record.getFloat("inc"))),
-                                                String.valueOf(record.getInt("create_uid"))));
-                                    }
-                                    adapter = new AdapterLelang(ArrayListLelang,getContext(),LelangFragment.newInstance());
-                                    rv.setAdapter(adapter);
-                                    adapter.notifyDataSetChanged();
-                                    swiper.setRefreshing(false);
-                                }
-
-                                @Override
-                                public boolean onError(OdooErrorException error) {
-                                    Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_SHORT).show();
-                                    return super.onError(error);
-                                }
-                            });
-                        }
-                    }).build();
-            return null;
-        }
-    }
+//    public class LelangAsyncTask extends AsyncTask<Void,Void,Void>{
+//        @Override
+//        protected void onPreExecute() {
+//            swiper.setRefreshing(true);
+//        }
+//
+//        @Override
+//        protected Void doInBackground(Void... voids) {
+//            ArrayListLelang = new ArrayList<>();
+//            client = new OdooClient.Builder(getContext())
+//                    .setHost(sharedPrefManager.getSP_Host_url())
+//                    .setSession(sharedPrefManager.getSpSessionId())
+//                    .setSynchronizedRequests(false)
+//                    .setConnectListener(new OdooConnectListener() {
+//                        @Override
+//                        public void onConnected(OdooVersion version) {
+//                            ODomain domain = new ODomain();
+//                            domain.add("status_lelang", "=", "jalan");
+//                            domain.add("type", "=", "lelang");
+//
+//                            OdooFields fields = new OdooFields();
+//                            fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
+//
+//                            int offset = 0;
+//                            int limit = 80;
+//
+//                            String sorting = "due_date ASC";
+//
+//                            client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+//                                    OdooRecord[] Records = result.getRecords();
+//                                    for (final OdooRecord record : Records) {
+//                                        ArrayListLelang.add(new lelang(
+//                                                String.valueOf(record.getInt("id")),
+//                                                record.getString("name"),
+//                                                record.getString("image_medium"),
+//                                                record.getString("due_date"),
+//                                                String.valueOf(Math.round(record.getFloat("ob"))),
+//                                                String.valueOf(Math.round(record.getFloat("binow"))),
+//                                                String.valueOf(Math.round(record.getFloat("inc"))),
+//                                                String.valueOf(record.getInt("create_uid"))));
+//                                    }
+//                                    adapter = new AdapterLelang(ArrayListLelang,getContext(),LelangFragment.newInstance());
+//                                    rv.setAdapter(adapter);
+//                                    adapter.notifyDataSetChanged();
+//                                    swiper.setRefreshing(false);
+//                                }
+//
+//                                @Override
+//                                public boolean onError(OdooErrorException error) {
+//                                    Toast.makeText(getActivity(),error.toString(),Toast.LENGTH_SHORT).show();
+//                                    return super.onError(error);
+//                                }
+//                            });
+//                        }
+//                    }).build();
+//            return null;
+//        }
+//    }
 
 }
 

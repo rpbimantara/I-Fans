@@ -61,9 +61,12 @@ public class AccountCoinActivity extends AppCompatActivity {
                 loadCoin();
             }
         });
+        loadCoin();
     }
 
     public void loadCoin(){
+        swiper.setRefreshing(true);
+        ArrayListCoin = new ArrayList<>();
         OArguments arguments = new OArguments();
         arguments.add(sharedPrefManager.getSpIdPartner());
         arguments.add(sharedPrefManager.getSpIdUser());

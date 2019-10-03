@@ -88,27 +88,31 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
             @Override
             public void onClick(View view) {
                 adapter.notifyDataSetChanged();
-                if (total > 0 ) {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(TicketDetailActivity.this);
-                    builder.setTitle(R.string.app_name);
-                    builder.setMessage("Are You Sure to Buy This Ticket?");
-                    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            BuyTicket();
-                            dialogInterface.dismiss();
-                        }
-                    });
-                    builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            dialogInterface.dismiss();
-                        }
-                    });
-                    AlertDialog alertDialog = builder.create();
-                    alertDialog.show();
-                }else{
-                    Toast.makeText(getBaseContext(),"Choose at least one ticket!",Toast.LENGTH_SHORT).show();
+                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
+                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                }else {
+                    if (total > 0) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(TicketDetailActivity.this);
+                        builder.setTitle(R.string.app_name);
+                        builder.setMessage("Are You Sure to Buy This Ticket?");
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                BuyTicket();
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+                    } else {
+                        Toast.makeText(getBaseContext(), "Choose at least one ticket!", Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });
