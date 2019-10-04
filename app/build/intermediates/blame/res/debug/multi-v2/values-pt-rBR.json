@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rBR/values-pt-rBR.xml",
+            "outputFile": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-pt-rBR/values-pt-rBR.xml",
             "map": [
                 {
                     "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/res/values-pt-rBR/values-pt-rBR.xml",

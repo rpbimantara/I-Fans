@@ -45,6 +45,80 @@
     },
     {
       "client_info": {
+        "mobilesdk_app_id": "1:382141212458:android:cca40085a7ac1bc9d7e053",
+        "android_client_info": {
+          "package_name": "com.alpha.test.persebaya_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382141212458-1qtium6t9dsgnhnk56n3onqoaritds96.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alpha.test.persebaya_app",
+            "certificate_hash": "6711ce1f373eb5adb4622748190be95056ec1ae8"
+          }
+        },
+        {
+          "client_id": "382141212458-4bejdcqkio0kc6gjb3m8rg17n5n2p992.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQG_DjLCNLErbFtEo_16yZkOFg2ZojokU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382141212458-4bejdcqkio0kc6gjb3m8rg17n5n2p992.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:382141212458:android:a30ccab438db4034d7e053",
+        "android_client_info": {
+          "package_name": "com.alpha.test.persebayaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "382141212458-jk40qp8rld6t4o52hh1623scknder46v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.alpha.test.persebayaapp",
+            "certificate_hash": "6711ce1f373eb5adb4622748190be95056ec1ae8"
+          }
+        },
+        {
+          "client_id": "382141212458-4bejdcqkio0kc6gjb3m8rg17n5n2p992.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBQG_DjLCNLErbFtEo_16yZkOFg2ZojokU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "382141212458-4bejdcqkio0kc6gjb3m8rg17n5n2p992.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:382141212458:android:afe6d51db72efe32",
         "android_client_info": {
           "package_name": "com.example.nerita_hendra.i_fans"

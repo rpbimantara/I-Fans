@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
-    tools:context="com.alpha.test.i_fans.HomeActivity">
+    tools:context="com.alpha.test.persebayaapp.HomeActivity">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBar"
@@ -25,7 +25,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <com.alpha.test.i_fans.CustomViewPager
+    <com.alpha.test.persebayaapp.CustomViewPager
         android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

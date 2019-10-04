@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorWhite"
-    tools:context="com.alpha.test.i_fans.StoreFragment">
+    tools:context="com.alpha.test.persebayaapp.StoreFragment">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"

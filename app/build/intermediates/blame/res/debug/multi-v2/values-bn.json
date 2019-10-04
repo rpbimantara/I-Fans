@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/home/bimo/Documents/ProjectRumahan/I-Fans/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bn/values-bn.xml",
+            "outputFile": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-bn/values-bn.xml",
             "map": [
                 {
                     "source": "/home/bimo/.gradle/caches/transforms-2/files-2.1/420e505f8c61bae48fe711a15e44fd53/play-services-basement-16.0.1/res/values-bn/values.xml",

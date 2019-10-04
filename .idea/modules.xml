@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/I-Fans.iml" filepath="$PROJECT_DIR$/I-Fans.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Persebaya-App.iml" filepath="$PROJECT_DIR$/Persebaya-App.iml" />
       <module fileurl="file://$PROJECT_DIR$/SubProject/SubProject.iml" filepath="$PROJECT_DIR$/SubProject/SubProject.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/SubProject/odoo-mobile-api-1.0.0/odoo-mobile-api-1.0.0.iml" filepath="$PROJECT_DIR$/SubProject/odoo-mobile-api-1.0.0/odoo-mobile-api-1.0.0.iml" />

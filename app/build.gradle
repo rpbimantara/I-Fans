@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "com.alpha.test.i_fans"
+        applicationId "com.alpha.test.persebayaapp"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 9
-        versionName "1.0.9aku lah"
+        versionName "1.0.9"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
     }
