@@ -1,6 +1,7 @@
 package com.alpha.test.persebayaapp;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.formater;
 //import static com.alpha.test.i_fans.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
 public class DonationDetailActivity extends AppCompatActivity {
@@ -92,11 +94,19 @@ public class DonationDetailActivity extends AppCompatActivity {
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
-                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
-                }else {
-                    alertDialog.show();
-                }
+                getSaldo(getBaseContext(), new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        OdooRecord[] Records = result.getRecords();
+                        for (final OdooRecord record : Records) {
+                            if (record.getString("state").equalsIgnoreCase("draft")){
+                                Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                alertDialog.show();
+                            }
+                        }
+                    }
+                });
                 EtDonation.getText().clear();
             }
         });

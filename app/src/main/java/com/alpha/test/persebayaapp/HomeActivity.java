@@ -28,6 +28,12 @@ import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 
+import oogbox.api.odoo.client.helper.data.OdooRecord;
+import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.listeners.IOdooResponse;
+
+import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -92,23 +98,28 @@ public class HomeActivity extends AppCompatActivity {
                 if (sharedPrefManager.getSpFab().equalsIgnoreCase("Account")){
                     fabIntent = new Intent(HomeActivity.this,AccountEditActivity.class);
                     startActivity(fabIntent);
-                }else if(sharedPrefManager.getSpFab().equalsIgnoreCase("Store")){
-                    fabIntent = new Intent(HomeActivity.this,StoreAddActivity.class);
-                    fabIntent.putExtra("id","false");
-                    if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
-                        Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
-                    }else {
-                        startActivity(fabIntent);
-                    }
-                }else{
-                    fabIntent = new Intent(HomeActivity.this,LelangAddActivity.class);
-                    fabIntent.putExtra("id","false");
-                    if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
-                        Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
-                    }else {
-                        startActivity(fabIntent);
-                    }
                 }
+                getSaldo(context, new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        OdooRecord[] Records = result.getRecords();
+                        Intent fabIntent = new Intent();
+                        if(sharedPrefManager.getSpFab().equalsIgnoreCase("Store")){
+                            fabIntent = new Intent(HomeActivity.this,StoreAddActivity.class);
+                            fabIntent.putExtra("id","false");
+                        }else{
+                            fabIntent = new Intent(HomeActivity.this,LelangAddActivity.class);
+                            fabIntent.putExtra("id","false");
+                        }
+                        for (final OdooRecord record : Records) {
+                            if (record.getString("state").equalsIgnoreCase("draft")){
+                                Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                            }else {
+                                startActivity(fabIntent);
+                            }
+                        }
+                    }
+                });
             }
         });
         sharedPrefManager =  new SharedPrefManager(this);

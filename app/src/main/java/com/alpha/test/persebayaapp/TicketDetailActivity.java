@@ -28,6 +28,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 import static com.alpha.test.persebayaapp.CommonUtils.waktu;
 
@@ -78,33 +79,41 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                adapter.notifyDataSetChanged();
-                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
-                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
-                }else {
-                    if (total > 0) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(TicketDetailActivity.this);
-                        builder.setTitle(R.string.app_name);
-                        builder.setMessage("Are You Sure to Buy This Ticket?");
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                BuyTicket();
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        AlertDialog alertDialog = builder.create();
-                        alertDialog.show();
-                    } else {
-                        Toast.makeText(getBaseContext(), "Choose at least one ticket!", Toast.LENGTH_SHORT).show();
+                AlertDialog.Builder builder = new AlertDialog.Builder(TicketDetailActivity.this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Are You Sure to Buy This Ticket?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        BuyTicket();
+                        dialogInterface.dismiss();
                     }
-                }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                final AlertDialog alertDialog = builder.create();
+                getSaldo(getBaseContext(), new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        OdooRecord[] Records = result.getRecords();
+                        for (final OdooRecord record : Records) {
+                            if (record.getString("state").equalsIgnoreCase("draft")){
+                                Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                if(total>0){
+                                    alertDialog.show();
+                                }
+                                else{
+                                    Toast.makeText(getBaseContext(), "Choose at least one ticket!", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        }
+                    }
+                });
             }
         });
         client = getOdooConnection(getBaseContext());

@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +36,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
 
@@ -218,35 +220,30 @@ public class TerupdateFragment extends Fragment {
     }
 
     public void validate(){
-        List<Integer> ids = Arrays.asList(sharedPrefManager.getSpIdPartner());
-        List<String> fields = Arrays.asList("id", "name","state");
-
-        client.read("res.partner", ids, fields, new IOdooResponse() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle(R.string.app_name);
+        builder.setMessage("Update your profile to verified account");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Intent fabIntent = new Intent(getContext(),AccountEditActivity.class);
+                startActivity(fabIntent);
+                dialogInterface.dismiss();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dialogInterface.dismiss();
+            }
+        });
+        final AlertDialog alertDialog = builder.create();
+        getSaldo(context, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
-                OdooRecord[] records = result.getRecords();
-
-                for(OdooRecord record: records) {
-                    sharedPrefManager.saveSPString(sharedPrefManager.SP_USER_STATE,record.getString("state"));
-                    if (record.getString("state").equalsIgnoreCase("draft")){
-                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle(R.string.app_name);
-                        builder.setMessage("Update your profile to verified account");
-                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Intent fabIntent = new Intent(getContext(),AccountEditActivity.class);
-                                startActivity(fabIntent);
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                dialogInterface.dismiss();
-                            }
-                        });
-                        AlertDialog alertDialog = builder.create();
+                OdooRecord[] Records = result.getRecords();
+                for (final OdooRecord record : Records) {
+                    if (record.getString("state").equalsIgnoreCase("draft")) {
                         alertDialog.show();
                     }
                 }

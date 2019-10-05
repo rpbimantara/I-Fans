@@ -34,6 +34,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
 public class StoreDetailActivity extends AppCompatActivity {
@@ -91,23 +92,38 @@ public class StoreDetailActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                new AddToCartTask().execute();
-
-                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
-                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
-                }else {
-                    AddToCartHeader();
-                }
+                getSaldo(context, new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        OdooRecord[] Records = result.getRecords();
+                        for (final OdooRecord record : Records) {
+                            if (record.getString("state").equalsIgnoreCase("draft")){
+                                Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                            }else {
+                                AddToCartHeader();
+                            }
+                        }
+                    }
+                });
             }
         });
 
         btn_buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
-                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
-                }else {
+                getSaldo(context, new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        OdooRecord[] Records = result.getRecords();
+                        for (final OdooRecord record : Records) {
+                            if (record.getString("state").equalsIgnoreCase("draft")){
+                                Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                            }else {
 
-                }
+                            }
+                        }
+                    }
+                });
             }
         });
         btn_edit_store.setOnClickListener(new View.OnClickListener() {

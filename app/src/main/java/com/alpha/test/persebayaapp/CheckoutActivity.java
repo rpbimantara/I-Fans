@@ -171,7 +171,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                         });
                     }
                 }else{
-                    Toast.makeText(CheckoutActivity.this,"Already Paid!",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(CheckoutActivity.this,"No item to Paid!",Toast.LENGTH_SHORT).show();
                 }
             }
         });

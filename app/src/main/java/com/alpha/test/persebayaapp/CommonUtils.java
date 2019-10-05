@@ -139,7 +139,7 @@ public class CommonUtils {
         domain.add("user_ids", "=", sharedPrefManager.getSpIdUser());
 
         OdooFields fields = new OdooFields();
-        fields.addAll("id", "name", "jeniskelamin", "image", "nik", "street", "tgl_lahir", "saldo", "email", "phone", "komunitas");
+        fields.addAll("id", "name", "jeniskelamin", "image", "nik", "street", "tgl_lahir", "saldo", "email", "phone", "komunitas","state");
 
         int offset = 0;
         int limit = 80;

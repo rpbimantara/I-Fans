@@ -27,6 +27,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 
 public class RatingLineUpActivity extends AppCompatActivity {
 
@@ -77,12 +78,20 @@ public class RatingLineUpActivity extends AppCompatActivity {
                         dialogInterface.dismiss();
                     }
                 });
-                AlertDialog alertDialog = builder.create();
-                if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
-                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
-                }else {
-                    alertDialog.show();
-                }
+                final AlertDialog alertDialog = builder.create();
+                getSaldo(getBaseContext(), new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        OdooRecord[] Records = result.getRecords();
+                        for (final OdooRecord record : Records) {
+                            if (record.getString("state").equalsIgnoreCase("draft")){
+                                Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                            }else {
+                                alertDialog.show();
+                            }
+                        }
+                    }
+                });
             }
         });
         client = getOdooConnection(getBaseContext());

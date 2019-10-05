@@ -25,6 +25,7 @@ import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 
 
 /**
@@ -55,28 +56,39 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
     }
 
     public void Addbidder(final String idlelang, final String nilai, final String status, final Context context, final SharedPrefManager sharedPrefManager){
-        if (sharedPrefManager.getSpUserState().equalsIgnoreCase("draft")){
-            Toast.makeText(context, "Update your profile first!", Toast.LENGTH_SHORT).show();
-        }else {
-            OdooValues values = new OdooValues();
-            values.put("product_id", idlelang);
-            values.put("user_bid", sharedPrefManager.getSpIdUser());
-            values.put("nilai", Integer.valueOf(nilai));
-            values.put("keterang", status);
+        getSaldo(context, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] Records = result.getRecords();
+                for (final OdooRecord record : Records) {
+                    if (record.getString("state").equalsIgnoreCase("draft")){
+                        Toast.makeText(context, "Update your profile first!", Toast.LENGTH_SHORT).show();
+                    }else  if(record.getFloat("saldo") < Float.parseFloat(nilai)){
+                        Toast.makeText(context, "Top up your coin to finish this transaction!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        OdooValues values = new OdooValues();
+                        values.put("product_id", idlelang);
+                        values.put("user_bid", sharedPrefManager.getSpIdUser());
+                        values.put("nilai", Integer.valueOf(nilai));
+                        values.put("keterang", status);
 
-            client.create("persebaya.lelang.bid", values, new IOdooResponse() {
-                @Override
-                public void onResult(OdooResult result) {
-                    int serverId = result.getInt("result");
-                }
+                        client.create("persebaya.lelang.bid", values, new IOdooResponse() {
+                            @Override
+                            public void onResult(OdooResult result) {
+                                int serverId = result.getInt("result");
+                                Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
+                            }
 
-                @Override
-                public boolean onError(OdooErrorException error) {
-                    Toast.makeText(context, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
-                    return super.onError(error);
+                            @Override
+                            public boolean onError(OdooErrorException error) {
+                                Toast.makeText(context, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
+                                return super.onError(error);
+                            }
+                        });
+                    }
                 }
-            });
-        }
+            }
+        });
 //        client = new OdooClient.Builder(context)
 //                .setHost(sharedPrefManager.getSP_Host_url())
 //                .setSession(sharedPrefManager.getSpSessionId())

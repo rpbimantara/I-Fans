@@ -24,6 +24,7 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 
 public class DonationActivity extends AppCompatActivity {
 
@@ -97,9 +98,21 @@ public class DonationActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(DonationActivity.this,DonationAddActivity.class);
-                intent.putExtra("id","false");
-                startActivity(intent);
+                getSaldo(getBaseContext(), new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        OdooRecord[] Records = result.getRecords();
+                        for (final OdooRecord record : Records) {
+                            if (record.getString("state").equalsIgnoreCase("draft")){
+                                Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Intent intent = new Intent(DonationActivity.this,DonationAddActivity.class);
+                                intent.putExtra("id","false");
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                });
             }
         });
         loadDonation();
