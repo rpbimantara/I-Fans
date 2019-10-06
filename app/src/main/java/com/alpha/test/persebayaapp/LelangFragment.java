@@ -55,7 +55,7 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         return fragment;
     }
 
-    public void Addbidder(final String idlelang, final String nilai, final String status, final Context context, final SharedPrefManager sharedPrefManager){
+    public void Addbidder(final String idlelang, final String nilai, final String status, final Context context, final SharedPrefManager sharedPrefManager, final  OdooClient client){
         getSaldo(context, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
@@ -71,7 +71,6 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                         values.put("user_bid", sharedPrefManager.getSpIdUser());
                         values.put("nilai", Integer.valueOf(nilai));
                         values.put("keterang", status);
-
                         client.create("persebaya.lelang.bid", values, new IOdooResponse() {
                             @Override
                             public void onResult(OdooResult result) {
@@ -119,6 +118,26 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
 //                }).build();
     }
 
+//    public void create_lelang(String idlelang,String nilai, String status,SharedPrefManager sharedPrefManager){
+//        OdooValues values = new OdooValues();
+//        values.put("product_id", idlelang);
+//        values.put("user_bid", sharedPrefManager.getSpIdUser());
+//        values.put("nilai", Integer.valueOf(nilai));
+//        values.put("keterang", status);
+//        client.create("persebaya.lelang.bid", values, new IOdooResponse() {
+//            @Override
+//            public void onResult(OdooResult result) {
+//                int serverId = result.getInt("result");
+//                Toast.makeText(getContext(), "Bid Added!", Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public boolean onError(OdooErrorException error) {
+//                Toast.makeText(getContext(), String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
+//                return super.onError(error);
+//            }
+//        });
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -137,7 +156,7 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                 loadLelang();
             }
         });
-        sharedPrefManager = new SharedPrefManager(getActivity());
+        sharedPrefManager = new SharedPrefManager(getContext());
         progressDialog = new ProgressDialog(getActivity());
         client = getOdooConnection(getContext());
         loadLelang();

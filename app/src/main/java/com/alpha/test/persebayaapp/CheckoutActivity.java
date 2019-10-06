@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
@@ -152,23 +154,22 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                     for (final OdooRecord record : records){
                         OArguments arguments = new OArguments();
                         arguments.add(record.getInt("id"));
-
-                        client.call_kw("sale.order", "action_confirm", arguments, new IOdooResponse() {
-                            @Override
-                            public void onResult(OdooResult result) {
-                                if (result.getString("result").equalsIgnoreCase("true")){
-                                    OArguments arguments1 = new OArguments();
-                                    arguments1.add(record.getInt("id"));
-
-                                    client.call_kw("sale.order", "action_invoice_create", arguments1, new IOdooResponse() {
-                                        @Override
-                                        public void onResult(OdooResult result) {
-                                            System.out.println(">>>>>>>>>>"+ result.toString() +"<<<<<<<<<<<<<<<<<<");
+                            client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    OdooRecord[] records = result.getRecords();
+                                    for (OdooRecord record : records) {
+                                        if (record.getInt("id") > 0){
+                                            Toast.makeText(getBaseContext(),"Successfully purchased!",Toast.LENGTH_SHORT).show();
                                         }
-                                    });
+                                    }
                                 }
-                            }
-                        });
+
+                                @Override
+                                public boolean onError(OdooErrorException error) {
+                                    return super.onError(error);
+                                }
+                            });
                     }
                 }else{
                     Toast.makeText(CheckoutActivity.this,"No item to Paid!",Toast.LENGTH_SHORT).show();

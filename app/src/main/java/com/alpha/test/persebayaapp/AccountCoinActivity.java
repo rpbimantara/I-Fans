@@ -68,7 +68,7 @@ public class AccountCoinActivity extends AppCompatActivity {
             public void onResult(OdooResult result) {
                 // response
                 OdooRecord[] records = result.getRecords();
-                System.out.println(result.toString());
+                System.out.println(records.length);
                 for (OdooRecord record : records) {
 
                     String tgl = tanggal(record.getString("date").substring(0,10));
@@ -80,12 +80,11 @@ public class AccountCoinActivity extends AppCompatActivity {
                             formater(Float.valueOf(record.getString("price"))),
                             record.getString("type")
                     ));
-                    adapter = new AdapterCoin(ArrayListCoin);
-                    rv.setAdapter(adapter);
-                    adapter.notifyDataSetChanged();
-                    swiper.setRefreshing(false);
-
                 }
+                adapter = new AdapterCoin(ArrayListCoin);
+                rv.setAdapter(adapter);
+                adapter.notifyDataSetChanged();
+                swiper.setRefreshing(false);
             }
         });
     }

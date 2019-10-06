@@ -2,25 +2,36 @@ package com.alpha.test.persebayaapp;
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
@@ -33,6 +44,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 import static com.alpha.test.persebayaapp.CommonUtils.waktu;
 
 public class TicketDetailActivity extends AppCompatActivity implements AdapterTicket.TicketListener {
+    public final String TAG = this.getClass().getSimpleName();
     TextView txtNamatiket,txtTanggaltiket,txtWaktutiket,txtTotalAmount;
     Button btn_order;
     ArrayList<Tiket> ArrayListTiket = new ArrayList<>();
@@ -105,7 +117,11 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                                 Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
                             }else{
                                 if(total>0){
-                                    alertDialog.show();
+                                    if (record.getInt("saldo") < total ){
+                                        Toast.makeText(getBaseContext(), "Top up now to finish this transaction!", Toast.LENGTH_SHORT).show();
+                                    }else {
+                                        alertDialog.show();
+                                    }
                                 }
                                 else{
                                     Toast.makeText(getBaseContext(), "Choose at least one ticket!", Toast.LENGTH_SHORT).show();
@@ -143,45 +159,114 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
         });
     }
 
-    public void BuyTicket(){
-        OdooValues values = new OdooValues();
-        values.put("partner_id", sharedPrefManager.getSpIdPartner());
-        values.put("payment_term_id", 1);
-        values.put("user_id", 1);
+//    public void CheckoutTicket(){
+//        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//        final String Currentdatetime = sdf.format(new Date());
+//
+//        OdooValues values = new OdooValues();
+//        values.put("partner_id", sharedPrefManager.getSpIdPartner());
+//        values.put("date_order", Currentdatetime);
+//        values.put("payment_term_id", 1);
+//        values.put("user_id", 1);
+//        OArguments arguments = new OArguments();
+//        arguments.add(values);
+//
+//        client.call_kw("sale.order","create_so" ,arguments, new IOdooResponse() {
+//            @Override
+//            public void onResult(final OdooResult result) {
+//                final String serverId = result.getString("result");
+//                Log.d(TAG,"SO Line Product Id : " +serverId);
+//                new Handler(Looper.getMainLooper()).post(new Runnable() {
+//                    @Override
+//                    public void run() {
+//                        for (Tiket tkt : ArrayListTiket) {
+//                            if (Integer.valueOf(tkt.getJumlahTiket()) > 0) {
+//                                CreateSaleOrderLine(serverId, Integer.valueOf(tkt.getProduct_id()), Integer.valueOf(tkt.getId()), Integer.valueOf(tkt.getJumlahTiket()));
+//                                Log.d(TAG,"SO Line Product Id : " + String.valueOf(tkt.getProduct_id()));
+//                            }
+//                        }
+//                    }
+//                });
+//            }
+//        });
+//    }
 
-        client.create("sale.order", values, new IOdooResponse() {
+    public void BuyTicket(){
+        List listSource = new ArrayList();
+        OArguments arguments = new OArguments();
+        arguments.add(sharedPrefManager.getSpIdPartner());
+        for (Tiket tkt : ArrayListTiket) {
+            if (Integer.valueOf(tkt.getJumlahTiket()) > 0) {
+                JSONObject values = new JSONObject();
+                try {
+                    values.put("product_id", Integer.valueOf(tkt.getProduct_id()));
+                    values.put("event_id", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                    values.put("event_ticket_id", Integer.valueOf(tkt.getId()));
+                    values.put("product_uom_qty", Integer.valueOf(tkt.getJumlahTiket()));
+                    listSource.add(values);
+                }catch (JSONException e){
+                    Log.e(TAG,e.toString());
+                }
+           }
+        }
+        arguments.addItems(listSource);
+        client.call_kw("sale.order","create_so" ,arguments, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
-                int serverId = result.getInt("result");
+                int serverId = 0;
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    serverId = serverId+record.getInt("id");
+                }
                 if (serverId > 0) {
-                    for (Tiket tkt : ArrayListTiket) {
-                        if (Integer.valueOf(tkt.getJumlahTiket()) > 0) {
-                            CreateSaleOrderLine(serverId, Integer.valueOf(tkt.getProduct_id()), Integer.valueOf(tkt.getId()), Integer.valueOf(tkt.getJumlahTiket()));
-                        }
+                    Confirm_so(serverId);
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..");
+                }
+            }
+        });
+    }
+
+    public void Confirm_so(Integer order_id){
+        OArguments arguments = new OArguments();
+        arguments.add(order_id);
+        client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    if (record.getInt("id") > 0){
+                        Toast.makeText(getBaseContext(),"Ticket successfully purchased!",Toast.LENGTH_SHORT).show();
                     }
                 }
+                Log.d(TAG,"SO Id : " + result.toString());
             }
-        });
-    }
 
-    public void CreateSaleOrderLine(final Integer sale_id, final Integer product_id, final Integer ticket_id, final Integer jumlah_ticket){
-        OdooValues values = new OdooValues();
-        values.put("order_id", sale_id);
-        values.put("product_id", product_id);
-        values.put("event_id", Integer.valueOf(getIntent().getExtras().get("id").toString()));
-        values.put("event_ticket_id", ticket_id);
-        values.put("product_uom_qty", jumlah_ticket);
-
-        client.create("sale.order.line", values, new IOdooResponse() {
             @Override
-            public void onResult(OdooResult result) {
-                int serverId = result.getInt("result");
-                if (serverId > 0){
-                    Toast.makeText(getBaseContext(),"Ticket successfully purchased!",Toast.LENGTH_SHORT).show();
-                }
+            public boolean onError(OdooErrorException error) {
+                Log.e(TAG,"SO Id : " + error.toString());
+                return super.onError(error);
             }
         });
     }
+
+//    public void CreateSaleOrderLine(final Integer sale_id, final Integer product_id, final Integer ticket_id, final Integer jumlah_ticket){
+//        OdooValues values = new OdooValues();
+//        values.put("order_id", sale_id);
+//        values.put("product_id", product_id);
+//        values.put("event_id", Integer.valueOf(getIntent().getExtras().get("id").toString()));
+//        values.put("event_ticket_id", ticket_id);
+//        values.put("product_uom_qty", jumlah_ticket);
+//        client.create("sale.order.line", values, new IOdooResponse() {
+//            @Override
+//            public void onResult(OdooResult result) {
+//                int serverId = result.getInt("result");
+//                if (serverId > 0){
+//                    Toast.makeText(getBaseContext(),"Ticket successfully purchased!",Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//    }
+
     public void loadClassTicket(){
         ODomain domain = new ODomain();
         domain.add("event_id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));

@@ -1,14 +1,17 @@
 package com.alpha.test.persebayaapp;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,6 +24,7 @@ import com.google.gson.Gson;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.helper.OdooErrorException;
@@ -38,6 +42,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
 public class StoreDetailActivity extends AppCompatActivity {
+    public final String TAG = this.getClass().getSimpleName();
     TextView txtNamaBarang,txtHargaBarang,txtDeskripsi,txtOwner;
     LinearLayout lnOrder,lnEdit;
     SharedPrefManager sharedPrefManager;
@@ -111,6 +116,23 @@ public class StoreDetailActivity extends AppCompatActivity {
         btn_buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(StoreDetailActivity.this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Are You Sure to Buy This Ticket?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        BuyTicket();
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                final AlertDialog alertDialog = builder.create();
                 getSaldo(context, new IOdooResponse() {
                     @Override
                     public void onResult(OdooResult result) {
@@ -119,7 +141,11 @@ public class StoreDetailActivity extends AppCompatActivity {
                             if (record.getString("state").equalsIgnoreCase("draft")){
                                 Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
                             }else {
-
+//                                if (record.getInt("saldo") < total ){
+                                    Toast.makeText(getBaseContext(), "Top up now to finish this transaction!", Toast.LENGTH_SHORT).show();
+//                                }else {
+//                                    alertDialog.show();
+//                                }
                             }
                         }
                     }
@@ -129,7 +155,6 @@ public class StoreDetailActivity extends AppCompatActivity {
         btn_edit_store.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                Intent fabIntent = new Intent(StoreDetailActivity.this,StoreAddActivity.class);
                fabIntent.putExtra("id",Integer.valueOf(getIntent().getExtras().get("id").toString()));
                startActivity(fabIntent);
@@ -146,7 +171,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         fields.addAll("id", "name");
 
         int offset = 0;
-        int limit = 80;
+        int limit = 1;
 
         String sorting = "id DESC";
 
@@ -164,23 +189,20 @@ public class StoreDetailActivity extends AppCompatActivity {
                         }
                     });
                 }else {
-                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-                    final String Currentdatetime = sdf.format(new Date());
-
-                    OdooValues values = new OdooValues();
-                    values.put("partner_id", sharedPrefManager.getSpIdPartner());
-                    values.put("date_order", Currentdatetime);
-                    values.put("state", "draft");
-
-                    client.create("sale.order", values, new IOdooResponse() {
+//                    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+//                    final String Currentdatetime = sdf.format(new Date());
+                    OArguments arguments = new OArguments();
+                    arguments.add(sharedPrefManager.getSpIdPartner());
+                    List listSource = new ArrayList();
+                    arguments.addItems(listSource);
+                    client.call_kw("sale.order","create_so",arguments, new IOdooResponse() {
                         @Override
                         public void onResult(final OdooResult result) {
-                            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    AddToCart(result.getInt("result"));
-                                }
-                            });
+                            Log.d(TAG,result.toString());
+                            OdooRecord[] records = result.getRecords();
+                            for (OdooRecord record : records) {
+                                AddToCart(record.getInt("id"));
+                            }
                         }
 
                         @Override

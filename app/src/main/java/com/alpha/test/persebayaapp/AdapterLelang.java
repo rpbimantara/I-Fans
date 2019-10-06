@@ -25,6 +25,7 @@ import oogbox.api.odoo.OdooClient;
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.changeTime;
 import static com.alpha.test.persebayaapp.CommonUtils.formater;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 
 public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -55,6 +56,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             this.btnBidLelang = (Button) itemView.findViewById(R.id.button_bid);
             this.btnBinLelang = (Button) itemView.findViewById(R.id.button_bin);
             this.imageLelang = (ImageView) itemView.findViewById(R.id.lelang_image);
+            client = getOdooConnection(context);
             sharedPrefManager = new SharedPrefManager(context);
         }
     }
@@ -89,7 +91,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID",context,sharedPrefManager);
+                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID",context,sharedPrefManager,client);
                             dialogInterface.dismiss();
                         }
                     });
@@ -113,7 +115,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager);
+                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager,client);
                             dialogInterface.dismiss();
                         }
                     });

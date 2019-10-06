@@ -156,14 +156,6 @@ public class SingUpActivity extends AppCompatActivity {
                     arguments.add(email.getText().toString());
                     arguments.add(password.getText().toString());
                     arguments.add(RegId);
-//                    OdooValues values = new OdooValues();
-//                    values.put("name", username.getText().toString());
-//                    values.put("login", username.getText().toString());
-//                    values.put("email", email.getText().toString());
-//                    values.put("club_id", 52);
-//                    values.put("password", password.getText().toString());
-//                    values.put("state", "active");
-//                    values.put("fcm_reg_ids", RegId);
                     client.call_kw("res.users","create_user", arguments, new IOdooResponse() {
 
                         @Override
@@ -176,7 +168,7 @@ public class SingUpActivity extends AppCompatActivity {
 
                         @Override
                         public boolean onError(OdooErrorException error) {
-                            Log.d(TAG, error.odooException);
+                            Log.d(TAG, error.getLocalizedMessage());
                             Toast.makeText(SingUpActivity.this, String.valueOf(error.getLocalizedMessage()), Toast.LENGTH_LONG).show();
                             progressDialog.dismiss();
                             return super.onError(error);
