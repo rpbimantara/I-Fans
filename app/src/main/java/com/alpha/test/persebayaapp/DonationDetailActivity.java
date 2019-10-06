@@ -1,5 +1,6 @@
 package com.alpha.test.persebayaapp;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v7.app.AlertDialog;
@@ -39,6 +40,7 @@ public class DonationDetailActivity extends AppCompatActivity {
     Button btn_order;
     SharedPrefManager sharedPrefManager;
     ImageView imageDonation;
+    ProgressDialog progressDialog;
     OdooClient client;
     EditText EtDonation;
     int total = 0;
@@ -55,6 +57,7 @@ public class DonationDetailActivity extends AppCompatActivity {
         imageDonation = findViewById(R.id.donasi_detail_imageView);
         btn_order = findViewById(R.id.button_donate);
         progressBar = findViewById(R.id.progressBarDonation);
+        progressDialog = new ProgressDialog(this);
         txtTerkumpul = findViewById(R.id.textView_terkumpul_donasi);
         txtTotal = findViewById(R.id.textView_total_donasi);
         txtNama = findViewById(R.id.textView_nama_donasi_detail);
@@ -74,13 +77,17 @@ public class DonationDetailActivity extends AppCompatActivity {
                     @Override
                     public void onResult(OdooResult result) {
                         OdooRecord[] records = result.getRecords();
-
                         for (OdooRecord record : records) {
-                            Log.d(getBaseContext().getClass().getSimpleName(),String.valueOf(record.getInt("saldo")));
+                            if (record.getInt("saldo") < Integer.valueOf(EtDonation.getText().toString())){
+                                Toast.makeText(getBaseContext(), "Top up your coin to finish this transaction!", Toast.LENGTH_SHORT).show();
+                            }else{
+                                progressDialog.setMessage("Loading.....");
+                                progressDialog.show();
+                                AddDonation(Integer.valueOf(EtDonation.getText().toString()));
+                            }
                         }
                     }
                 });
-//                AddDonation(Integer.valueOf(EtDonation.getText().toString()));
                 dialogInterface.dismiss();
             }
         });
@@ -150,7 +157,9 @@ public class DonationDetailActivity extends AppCompatActivity {
             @Override
             public void onResult(OdooResult result) {
                 int serverId = result.getInt("result");
-                System.out.println(serverId);
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(),"Thank your for your donation.",Toast.LENGTH_LONG).show();
+
             }
 
             @Override
