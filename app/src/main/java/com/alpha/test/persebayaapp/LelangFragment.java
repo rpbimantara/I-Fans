@@ -55,15 +55,17 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         return fragment;
     }
 
-    public void Addbidder(final String idlelang, final String nilai, final String status, final Context context, final SharedPrefManager sharedPrefManager, final  OdooClient client){
+    public void Addbidder(final String idlelang, final String nilai, final String status, final Context context, final SharedPrefManager sharedPrefManager, final  OdooClient client, final ProgressDialog progressDialog){
         getSaldo(context, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
                 OdooRecord[] Records = result.getRecords();
                 for (final OdooRecord record : Records) {
                     if (record.getString("state").equalsIgnoreCase("draft")){
+                        progressDialog.dismiss();
                         Toast.makeText(context, "Update your profile first!", Toast.LENGTH_SHORT).show();
                     }else  if(record.getFloat("saldo") < Float.parseFloat(nilai)){
+                        progressDialog.dismiss();
                         Toast.makeText(context, "Top up your coin to finish this transaction!", Toast.LENGTH_SHORT).show();
                     }else {
                         OdooValues values = new OdooValues();
@@ -75,11 +77,13 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                             @Override
                             public void onResult(OdooResult result) {
                                 int serverId = result.getInt("result");
+                                progressDialog.dismiss();
                                 Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
                             }
 
                             @Override
                             public boolean onError(OdooErrorException error) {
+                                progressDialog.dismiss();
                                 Toast.makeText(context, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
                                 return super.onError(error);
                             }

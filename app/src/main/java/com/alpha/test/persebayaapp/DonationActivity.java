@@ -123,7 +123,7 @@ public class DonationActivity extends AppCompatActivity {
         swiper.setRefreshing(true);
         ArrayListDonation = new ArrayList<>();
         ODomain domain = new ODomain();
-//                            domain.add("status_donasi", "=", "jalan");
+        domain.add("status_donasi", "=", "jalan");
         domain.add("type", "=", "donasi");
 
         OdooFields fields = new OdooFields();

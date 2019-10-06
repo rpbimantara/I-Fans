@@ -1,5 +1,6 @@
 package com.alpha.test.persebayaapp;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AlertDialog;
@@ -35,6 +36,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
     SharedPrefManager sharedPrefManager;
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
+    ProgressDialog progressDialog;
     SwipeRefreshLayout swiper;
     AdapterCheckout adapter;
     OdooClient client;
@@ -104,6 +106,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
         });
         llm = new LinearLayoutManager(this);
         sharedPrefManager = new SharedPrefManager(this);
+        progressDialog = new ProgressDialog(this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         btnPaid.setOnClickListener(new View.OnClickListener() {
@@ -116,6 +119,9 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         PayCheckout();
+                        progressDialog.setMessage("Loading....");
+                        progressDialog.show();
+                        progressDialog.setCancelable(false);
                         dialogInterface.dismiss();
                     }
                 });
@@ -160,6 +166,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                                     OdooRecord[] records = result.getRecords();
                                     for (OdooRecord record : records) {
                                         if (record.getInt("id") > 0){
+                                            progressDialog.dismiss();
                                             Toast.makeText(getBaseContext(),"Successfully purchased!",Toast.LENGTH_SHORT).show();
                                         }
                                     }
@@ -167,6 +174,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
 
                                 @Override
                                 public boolean onError(OdooErrorException error) {
+                                    progressDialog.dismiss();
                                     return super.onError(error);
                                 }
                             });

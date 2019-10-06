@@ -1,5 +1,6 @@
 package com.alpha.test.persebayaapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -34,6 +35,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     CountDownTimer countDownTimer;
     SharedPrefManager sharedPrefManager;
     OdooClient client;
+    ProgressDialog progressDialog;
     static final int VIEW_TYPE_EMPTY = 0;
     static final int VIEW_TYPE_NORMAL = 1;
     private InterfaceLelang listener;
@@ -56,6 +58,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             this.btnBidLelang = (Button) itemView.findViewById(R.id.button_bid);
             this.btnBinLelang = (Button) itemView.findViewById(R.id.button_bin);
             this.imageLelang = (ImageView) itemView.findViewById(R.id.lelang_image);
+            progressDialog = new ProgressDialog(context);
             client = getOdooConnection(context);
             sharedPrefManager = new SharedPrefManager(context);
         }
@@ -91,7 +94,10 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID",context,sharedPrefManager,client);
+                            progressDialog.setMessage("Loading.....");
+                            progressDialog.show();
+                            progressDialog.setCancelable(false);
+                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID",context,sharedPrefManager,client,progressDialog);
                             dialogInterface.dismiss();
                         }
                     });
@@ -115,7 +121,10 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                     builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager,client);
+                            progressDialog.setMessage("Loading.....");
+                            progressDialog.show();
+                            progressDialog.setCancelable(false);
+                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager,client,progressDialog);
                             dialogInterface.dismiss();
                         }
                     });

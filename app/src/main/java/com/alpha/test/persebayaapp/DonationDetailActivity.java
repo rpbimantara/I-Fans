@@ -83,6 +83,7 @@ public class DonationDetailActivity extends AppCompatActivity {
                             }else{
                                 progressDialog.setMessage("Loading.....");
                                 progressDialog.show();
+                                progressDialog.setCancelable(false);
                                 AddDonation(Integer.valueOf(EtDonation.getText().toString()));
                             }
                         }
@@ -165,6 +166,7 @@ public class DonationDetailActivity extends AppCompatActivity {
             @Override
             public boolean onError(OdooErrorException error) {
                 Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
                 return super.onError(error);
             }
         });

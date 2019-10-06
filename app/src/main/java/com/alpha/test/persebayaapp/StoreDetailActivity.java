@@ -1,5 +1,6 @@
 package com.alpha.test.persebayaapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -52,6 +53,7 @@ public class StoreDetailActivity extends AppCompatActivity {
     RecyclerView rv;
     RecyclerView.LayoutManager llm;
     AdapterStoreVariant adapter;
+    ProgressDialog progressDialog;
     Context context;
     Gson gson;
     OdooClient client;
@@ -80,6 +82,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         lnOrder = findViewById(R.id.linearLayout_order_store);
         lnEdit = findViewById(R.id.linearLayout_edit_store);
         rv = findViewById(R.id.rv_recycler_view_store_detail);
+        progressDialog = new ProgressDialog(this);
         llm = new LinearLayoutManager(this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
@@ -105,6 +108,9 @@ public class StoreDetailActivity extends AppCompatActivity {
                             if (record.getString("state").equalsIgnoreCase("draft")){
                                 Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
                             }else {
+                                progressDialog.setMessage("Loading......");
+                                progressDialog.show();
+                                progressDialog.setCancelable(false);
                                 AddToCartHeader();
                             }
                         }
@@ -301,7 +307,8 @@ public class StoreDetailActivity extends AppCompatActivity {
     public void AddToCart (Integer order_id){
         String jsonString = sharedPrefManager.getSpReturnFromRv();
         String[] listItem = gson.fromJson(jsonString, String[].class);
-            if (listItem == null){
+            if (listItem.length < 1){
+                progressDialog.dismiss();
                 Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
             }else {
                 for (int j=0; j<listItem.length;j++){
@@ -315,6 +322,7 @@ public class StoreDetailActivity extends AppCompatActivity {
                             new Handler(Looper.getMainLooper()).post(new Runnable() {
                                 @Override
                                 public void run() {
+                                    progressDialog.dismiss();
                                     Toast.makeText(context, "Added To Cart!", Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -323,6 +331,7 @@ public class StoreDetailActivity extends AppCompatActivity {
                         @Override
                         public boolean onError(OdooErrorException error) {
                             Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+                            progressDialog.dismiss();
                             return super.onError(error);
                         }
                     });

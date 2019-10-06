@@ -91,6 +91,9 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
         btn_order.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                progressDialog.setCancelable(false);
                 AlertDialog.Builder builder = new AlertDialog.Builder(TicketDetailActivity.this);
                 builder.setTitle(R.string.app_name);
                 builder.setMessage("Are You Sure to Buy This Ticket?");
@@ -114,16 +117,19 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                         OdooRecord[] Records = result.getRecords();
                         for (final OdooRecord record : Records) {
                             if (record.getString("state").equalsIgnoreCase("draft")){
+                                progressDialog.dismiss();
                                 Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
                             }else{
                                 if(total>0){
                                     if (record.getInt("saldo") < total ){
+                                        progressDialog.dismiss();
                                         Toast.makeText(getBaseContext(), "Top up now to finish this transaction!", Toast.LENGTH_SHORT).show();
                                     }else {
                                         alertDialog.show();
                                     }
                                 }
                                 else{
+                                    progressDialog.dismiss();
                                     Toast.makeText(getBaseContext(), "Choose at least one ticket!", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -220,7 +226,6 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                 }
                 if (serverId > 0) {
                     Confirm_so(serverId);
-                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>..");
                 }
             }
         });
@@ -239,11 +244,13 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                     }
                 }
                 Log.d(TAG,"SO Id : " + result.toString());
+                progressDialog.dismiss();
             }
 
             @Override
             public boolean onError(OdooErrorException error) {
                 Log.e(TAG,"SO Id : " + error.toString());
+                progressDialog.dismiss();
                 return super.onError(error);
             }
         });

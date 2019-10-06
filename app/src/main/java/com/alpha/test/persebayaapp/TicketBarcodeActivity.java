@@ -44,7 +44,7 @@ public class TicketBarcodeActivity extends AppCompatActivity {
         llm = new LinearLayoutManager(this);
         rv.setAdapter(adapter );
         rv.setLayoutManager(llm);
-        client = getOdooConnection(getBaseContext());
+        client = getOdooConnection(this);
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -60,8 +60,8 @@ public class TicketBarcodeActivity extends AppCompatActivity {
         swiper.setRefreshing(true);
         ArrayListTiketBarcode = new ArrayList<>();
         ODomain domain = new ODomain();
-        domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-        domain.add("state", "in", Arrays.asList("open","draft"));
+//        domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
+        domain.add("state", "=", "open");
 
         OdooFields fields = new OdooFields();
         fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");
@@ -75,6 +75,7 @@ public class TicketBarcodeActivity extends AppCompatActivity {
             @Override
             public void onResult(OdooResult result) {
                 OdooRecord[] records = result.getRecords();
+                System.out.println(result.toString());
                 for (OdooRecord record : records) {
                     ArrayListTiketBarcode.add(new TicketBarcode(
                             String.valueOf(record.getInt("id")),
