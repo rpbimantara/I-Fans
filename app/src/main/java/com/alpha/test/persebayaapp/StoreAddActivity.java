@@ -155,7 +155,7 @@ public class StoreAddActivity extends AppCompatActivity {
         values.put("purchase_ok", false);
         values.put("type", "product");
         values.put("list_price", etPrice.getText().toString());
-//                            values.put("stock", etStock.getText().toString());
+        values.put("qty_available", etStock.getText().toString());
         values.put("description_sale", etdeskripsi.getText().toString());
         values.put("create_uid", sharedPrefManager.getSpIdUser());
 

@@ -63,6 +63,9 @@ public class SingUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                new SaveUser().execute();
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                progressDialog.setCancelable(false);
                 create_user();
             }
         });
@@ -140,43 +143,11 @@ public class SingUpActivity extends AppCompatActivity {
 //    };
 
     public void create_user() {
-        progressDialog.setMessage("Creating......");
-        progressDialog.show();
         if (!is_Valid()) {
             progressDialog.dismiss();
             return;
         }else {
             is_connect();
-            FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
-                @Override
-                public void onComplete(@NonNull Task<InstanceIdResult> task) {
-                    final String RegId = task.getResult().getToken();
-                    OArguments arguments = new OArguments();
-                    arguments.add(username.getText().toString());
-                    arguments.add(email.getText().toString());
-                    arguments.add(password.getText().toString());
-                    arguments.add(RegId);
-                    client.call_kw("res.users","create_user", arguments, new IOdooResponse() {
-
-                        @Override
-                        public void onResult(OdooResult result) {
-                            // Success response
-                            Log.d(TAG, result.toString());
-                            Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
-                        }
-
-                        @Override
-                        public boolean onError(OdooErrorException error) {
-                            Log.d(TAG, error.getLocalizedMessage());
-                            Toast.makeText(SingUpActivity.this, String.valueOf(error.getLocalizedMessage()), Toast.LENGTH_LONG).show();
-                            progressDialog.dismiss();
-                            return super.onError(error);
-                        }
-                    });
-                }
-
-            });
         }
     }
 
@@ -187,35 +158,37 @@ public class SingUpActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(email.getText())) {
             String cekemail = email.getText().toString().trim();
             if (cekemail.matches(emailPattern)) {
-                is_Success = true;
+                if (!TextUtils.isEmpty(username.getText())) {
+                    if (username.getText().length() < 3) {
+                        username.setError("Minimum 3 Char");
+                    } else {
+                        if (!TextUtils.isEmpty(password.getText())) {
+                            if (password.getText().length() < 8) {
+                                password.setError("Minimum 8 Char");
+                            } else {
+                                if (!TextUtils.isEmpty(password.getText())) {
+                                    if (password.getText().length() < 8) {
+                                        password.setError("Minimum 8 Char");
+                                    } else {
+                                        if (!TextUtils.isEmpty(confirmPassword.getText())) {
+                                            if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
+                                                confirmPassword.setError("Password not match with Confirm Password");
+                                            } else {
+                                                is_Success = true;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
             } else {
                 email.setError("Invalid E-Mail");
             }
         }
-        if (!TextUtils.isEmpty(username.getText())) {
-            if (username.getText().length() < 3) {
-                username.setError("Minimum 3 Char");
-            } else {
-                is_Success = true;
-            }
-        }
 
-        if (!TextUtils.isEmpty(password.getText())) {
-            if (password.getText().length() < 8) {
-                password.setError("Minimum 8 Char");
-            } else {
-                is_Success = true;
-            }
-        }
-
-        if (!TextUtils.isEmpty(confirmPassword.getText())) {
-            if (!password.getText().toString().equals(confirmPassword.getText().toString())) {
-                confirmPassword.setError("Password not match with Confirm Password");
-            } else {
-                is_Success = true;
-            }
-        }
-        return true;
+        return is_Success;
     }
 
 
@@ -235,9 +208,8 @@ public class SingUpActivity extends AppCompatActivity {
 
                     for(OdooRecord record: records) {
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_SESSION_ID, user.sessionId);
+                        register();
                     }
-                    progressDialog.dismiss();
-                    finish();
                 }
             });
 
@@ -249,4 +221,37 @@ public class SingUpActivity extends AppCompatActivity {
         }
     };
 
+    public void register(){
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+            @Override
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                final String RegId = task.getResult().getToken();
+                OArguments arguments = new OArguments();
+                arguments.add(username.getText().toString());
+                arguments.add(email.getText().toString());
+                arguments.add(password.getText().toString());
+                arguments.add(RegId);
+                client.call_kw("res.users","create_user", arguments, new IOdooResponse() {
+
+                    @Override
+                    public void onResult(OdooResult result) {
+                        // Success response
+                        progressDialog.dismiss();
+                        Toast.makeText(SingUpActivity.this, "Account Created!", Toast.LENGTH_LONG).show();
+                        finish();
+
+                    }
+
+                    @Override
+                    public boolean onError(OdooErrorException error) {
+                        Log.d(TAG, error.getLocalizedMessage());
+                        Toast.makeText(SingUpActivity.this, String.valueOf(error.getLocalizedMessage()), Toast.LENGTH_LONG).show();
+                        progressDialog.dismiss();
+                        return super.onError(error);
+                    }
+                });
+            }
+
+        });
+    }
 }
