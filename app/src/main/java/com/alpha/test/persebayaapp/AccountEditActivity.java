@@ -11,12 +11,14 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
@@ -139,7 +141,7 @@ public class AccountEditActivity extends AppCompatActivity {
         values.put("phone", ETphone.getText().toString());
         values.put("komunitas", ETcomunity.getText().toString());
 
-        client.write("res.partner", new Integer[]{Integer.valueOf(getIntent().getExtras().get("idPartner").toString())}, values, new IOdooResponse() {
+        client.write("res.partner", new Integer[]{Integer.valueOf(sharedPrefManager.getSpIdPartner())}, values, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
                 // Success response
@@ -147,6 +149,14 @@ public class AccountEditActivity extends AppCompatActivity {
                     progressDialog.dismiss();
                     finish();
                 }
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(getBaseContext(), String.valueOf(error.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                finish();
+                return super.onError(error);
             }
         });
     }
