@@ -2722,6 +2722,7 @@ id txt_Yellow
 id txt_YellowAway
 id txt_YellowHome
 id txt_alamatAccount
+id txt_body_notifikasi
 id txt_category_tiket_list
 id txt_checkout_harga
 id txt_checkout_item

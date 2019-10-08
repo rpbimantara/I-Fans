@@ -2,11 +2,12 @@ package com.alpha.test.persebayaapp;
 
 public class Notifikasi {
     Integer id;
-    String name, date;
+    String name,body, date;
 
-    public Notifikasi(Integer id, String name, String date) {
+    public Notifikasi(Integer id, String name,String body, String date) {
         this.id = id;
         this.name = name;
+        this.body = body;
         this.date = date;
     }
 
@@ -20,6 +21,14 @@ public class Notifikasi {
 
     public String getName() {
         return name;
+    }
+
+    public String getBody() {
+        return body;
+    }
+
+    public void setBody(String body) {
+        this.body = body;
     }
 
     public void setName(String name) {

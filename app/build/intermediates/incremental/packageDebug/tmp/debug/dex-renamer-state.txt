@@ -1,4 +1,4 @@
-#Mon Oct 07 11:57:14 WIB 2019
+#Tue Oct 08 11:41:19 WIB 2019
 path.2=classes2.dex
 path.1=classes.dex
 path.0=classes.dex

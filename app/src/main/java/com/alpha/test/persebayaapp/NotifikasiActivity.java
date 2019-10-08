@@ -82,6 +82,7 @@ public class NotifikasiActivity extends AppCompatActivity {
                     ArrayListNotifikasi.add(new Notifikasi(
                             record.getInt("id"),
                             record.getString("subject"),
+                            record.getString("body"),
                             tgl.concat(" ").concat(waktu)));
                 }
                 adapter = new AdapterNotifikasi(ArrayListNotifikasi);

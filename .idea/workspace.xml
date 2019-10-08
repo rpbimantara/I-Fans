@@ -35,16 +35,49 @@
     </loaded-modules>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0e74b40-b5e1-4151-85a7-3456ff4e2bd9" name="Default" comment="fix signup and qty available">
+    <list default="true" id="c0e74b40-b5e1-4151-85a7-3456ff4e2bd9" name="Default" comment="fix barcode list">
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/multi-v2/debug.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/blame/res/debug/single/debug.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/out/classes.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/mergeDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/android/support/constraint/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/android/support/constraint/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/android/support/design/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/android/support/design/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/android/support/v7/appcompat/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/android/support/v7/appcompat/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/google/android/gms/base/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/google/android/gms/base/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/jaredrummler/materialspinner/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/jaredrummler/materialspinner/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/theartofdev/edmodo/cropper/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/theartofdev/edmodo/cropper/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/oogbox/api/odoo/R$id.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/oogbox/api/odoo/R$id.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/processDebugResources/out/resources-debug.ap_" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/res/symbol-table-with-package/debug/package-aware-r.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/constraint/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/constraint/R$id.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/design/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/design/R$id.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v7/appcompat/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/android/support/v7/appcompat/R$id.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/base/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/google/android/gms/base/R$id.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/jaredrummler/materialspinner/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/jaredrummler/materialspinner/R$id.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/theartofdev/edmodo/cropper/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/com/theartofdev/edmodo/cropper/R$id.dex" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/oogbox/api/odoo/R$id.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/transforms/dexBuilder/debug/0/oogbox/api/odoo/R$id.dex" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/outputs/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountEditActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountEditActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoinActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoinActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterCoin.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterCoin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterNotifikasi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterNotifikasi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CommonUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CommonUtils.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/MyFirebaseMessagingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/MyFirebaseMessagingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/Notifikasi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/Notifikasi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/NotifikasiActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/NotifikasiActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreDetailActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TerupdateFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TerupdateFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketBarcodeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketBarcodeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/card_item_notifikasi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/card_item_notifikasi.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -90,45 +123,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/SingUpActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="506">
-              <caret line="247" column="103" selection-start-line="247" selection-start-column="60" selection-end-line="247" selection-end-column="103" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountEditActivity.java">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterNotifikasi.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="153" column="21" lean-forward="true" selection-start-line="153" selection-start-column="21" selection-end-line="153" selection-end-column="21" />
-              <folding>
-                <element signature="e#2898#3044#0" expanded="true" />
-                <element signature="e#3043#3044#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CommonUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="118" column="63" selection-start-line="118" selection-start-column="62" selection-end-line="118" selection-end-column="63" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/DonationDetailActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-285">
-              <caret line="110" column="32" lean-forward="true" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="122" />
+            <state relative-caret-position="257">
+              <caret line="47" column="79" selection-start-line="47" selection-start-column="79" selection-end-line="47" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -146,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>onChangeButtonTicket</find>
       <find>system</find>
       <find>List&lt;Integer&gt; ids =</find>
       <find>TeamDetaiReviewViewHolder</find>
@@ -176,6 +174,7 @@
       <find>client.create</find>
       <find>AddToCartHeader</find>
       <find>sharedPrefManager</find>
+      <find>Push Noti</find>
     </findStrings>
   </component>
   <component name="GenerateSignedApkSettings">
@@ -191,13 +190,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/StoreAddActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/DonationAddActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/LelangAddActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/LelangDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/ListBeritaFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/NotifikasiActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/TeamDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/TeamDetailReviewFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/StoreFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/i_fans/JadwalFragment.java" />
@@ -225,23 +217,30 @@
         <option value="$PROJECT_DIR$/app/build.gradle" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/HomeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/RatingLineUpActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TerupdateFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CommonUtils.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterStore.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountAuctionActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoinActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CheckoutActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/DonationDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/InterfaceLelang.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterLelang.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/LelangFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/DonationActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketDetailActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketBarcodeActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreAddActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/SingUpActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountEditActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketBarcodeActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CommonUtils.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountAuctionActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TerupdateFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/MyFirebaseMessagingService.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreDetailActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterCoin.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoinActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoin.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/NotifikasiActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/Notifikasi.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/card_item_notifikasi.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterNotifikasi.java" />
       </list>
     </option>
   </component>
@@ -257,6 +256,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="AndroidView">
         <subPane>
           <expand>
@@ -277,12 +277,24 @@
             </path>
             <path>
               <item name="Persebaya-App" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+            </path>
+            <path>
+              <item name="Persebaya-App" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+            </path>
+            <path>
+              <item name="Persebaya-App" type="1abcf292:AndroidViewProjectNode" />
               <item name="Gradle Scripts" type="ae0cef3a:AndroidBuildScriptsGroupNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane">
         <subPane>
           <expand>
@@ -294,8 +306,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -589,20 +599,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537027465373</updated>
-    </task>
-    <task id="LOCAL-00047" summary="jadwal masih error gak sesuai id liga">
-      <created>1564841084446</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1564841084446</updated>
-    </task>
-    <task id="LOCAL-00048" summary="jadwal masih error gak sesuai id liga">
-      <created>1564933440241</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1564933440241</updated>
     </task>
     <task id="LOCAL-00049" summary="jadwal masih error gak sesuai id liga, store dan auction di account sudah">
       <created>1564939758923</created>
@@ -933,7 +929,21 @@
       <option name="project" value="LOCAL" />
       <updated>1570391618792</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="fix edit account">
+      <created>1570419826051</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1570419826051</updated>
+    </task>
+    <task id="LOCAL-00097" summary="fix barcode list">
+      <created>1570424689886</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1570424689886</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TodoView">
@@ -949,7 +959,7 @@
     <frame x="67" y="25" width="1533" height="875" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.2387357" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49918166" visible="true" weight="0.2387357" />
       <window_info id="Structure" order="1" weight="0.24949563" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
@@ -1043,8 +1053,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="update coin dan account + background" />
-    <MESSAGE value="update backpass sign up, login and update rating" />
     <MESSAGE value="update coin" />
     <MESSAGE value="update font family" />
     <MESSAGE value="update store add" />
@@ -1068,7 +1076,9 @@
     <MESSAGE value="Add Donation include invoice" />
     <MESSAGE value="Add progressbarr" />
     <MESSAGE value="fix signup and qty available" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix signup and qty available" />
+    <MESSAGE value="fix edit account" />
+    <MESSAGE value="fix barcode list" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix barcode list" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -1092,76 +1102,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_team_detail_statistic.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="336" column="29" selection-start-line="336" selection-start-column="29" selection-end-line="336" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/MatchStatisticFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1845">
-          <caret line="138" column="85" selection-start-line="138" selection-start-column="85" selection-end-line="138" selection-end-column="85" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/DonationAddActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1515">
-          <caret line="131" column="28" selection-start-line="131" selection-start-column="28" selection-end-line="131" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/MatchMomentFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="35" column="30" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/jars/classes.jar!/oogbox/api/odoo/client/helper/utils/OdooValues.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_match_statistic.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="634">
-          <caret line="43" column="20" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TeamDetailReviewFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="100" column="11" selection-start-line="70" selection-start-column="8" selection-end-line="100" selection-end-column="11" />
-          <folding>
-            <element signature="e#2838#3567#0" expanded="true" />
-            <element signature="e#3566#3567#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/LoginActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-374">
-          <caret line="131" column="9" lean-forward="true" selection-start-line="131" selection-start-column="9" selection-end-line="131" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_account_coin.xml">
-      <provider editor-type-id="android-designer2" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" column="50" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TeamDetailStatisticFragment.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="661">
@@ -1170,13 +1110,6 @@
             <element signature="e#4345#7197#0" expanded="true" />
             <element signature="e#7196#7197#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterCoin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-389">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1192,13 +1125,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -1274,21 +1200,6 @@
             <element signature="e#3664#4314#0" expanded="true" />
             <element signature="e#4313#4314#0" expanded="true" />
             <element signature="e#4339#4340#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TerupdateFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="240" column="47" lean-forward="true" selection-start-line="240" selection-start-column="47" selection-end-line="240" selection-end-column="47" />
-          <folding>
-            <element signature="e#9488#9505#0" expanded="true" />
-            <element signature="e#9620#9951#0" expanded="true" />
-            <element signature="e#9950#9951#0" expanded="true" />
-            <element signature="e#9994#10196#0" expanded="true" />
-            <element signature="e#10195#10196#0" expanded="true" />
-            <element signature="e#10792#10793#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1374,20 +1285,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountAuctionActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="24" column="61" selection-start-line="24" selection-start-column="61" selection-end-line="24" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoinActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="95" column="7" lean-forward="true" selection-start-line="95" selection-start-column="7" selection-end-line="95" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CheckoutActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-795">
@@ -1430,34 +1327,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1003">
-          <caret line="252" column="41" selection-start-line="252" selection-start-column="41" selection-end-line="252" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="686">
-          <caret line="175" selection-start-line="175" selection-end-line="175" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketBarcodeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="61" column="39" lean-forward="true" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2970">
-          <caret line="307" column="46" lean-forward="true" selection-start-line="307" selection-start-column="46" selection-end-line="307" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreAddActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
@@ -1465,17 +1334,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CommonUtils.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountEditActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="118" column="63" selection-start-line="118" selection-start-column="62" selection-end-line="118" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/DonationDetailActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="110" column="32" lean-forward="true" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="122" />
+        <state relative-caret-position="287">
+          <caret line="149" column="27" lean-forward="true" selection-start-line="149" selection-start-column="27" selection-end-line="149" selection-end-column="27" />
+          <folding>
+            <element signature="e#2898#3044#0" expanded="true" />
+            <element signature="e#3043#3044#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1489,14 +1355,169 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountEditActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/DonationDetailActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="153" column="21" lean-forward="true" selection-start-line="153" selection-start-column="21" selection-end-line="153" selection-end-column="21" />
+        <state relative-caret-position="-285">
+          <caret line="110" column="32" lean-forward="true" selection-start-line="110" selection-start-column="32" selection-end-line="110" selection-end-column="122" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketBarcode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/NotificationUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1542">
+          <caret line="67" column="43" lean-forward="true" selection-start-line="67" selection-start-column="43" selection-end-line="67" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TerupdateFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="292">
+          <caret line="134" column="45" selection-start-line="134" selection-start-column="45" selection-end-line="134" selection-end-column="45" />
           <folding>
-            <element signature="e#2898#3044#0" expanded="true" />
-            <element signature="e#3043#3044#0" expanded="true" />
+            <element signature="e#5605#5798#0" expanded="true" />
+            <element signature="e#5797#5798#0" expanded="true" />
+            <element signature="e#10283#10685#0" expanded="true" />
+            <element signature="e#10684#10685#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/MyFirebaseMessagingService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="82" column="10" lean-forward="true" selection-start-line="82" selection-start-column="10" selection-end-line="82" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountAuctionActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="426">
+          <caret line="63" lean-forward="true" selection-start-line="63" selection-end-line="63" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="900">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketBarcodeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1037">
+          <caret line="131" column="55" lean-forward="true" selection-start-line="131" selection-start-column="55" selection-end-line="131" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/StoreDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="244" column="36" selection-start-line="244" selection-start-column="36" selection-end-line="244" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/TicketDetailActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="551">
+          <caret line="256" column="5" selection-start-line="233" selection-start-column="4" selection-end-line="256" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoinActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="90" column="11" lean-forward="true" selection-start-line="90" selection-start-column="11" selection-end-line="90" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_notifikasi.xml">
+      <provider selected="true" editor-type-id="android-designer2" />
+      <provider editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterCoin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="83" column="25" selection-start-line="83" selection-start-column="25" selection-end-line="83" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AccountCoin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="601">
+          <caret line="58" lean-forward="true" selection-start-line="58" selection-end-line="58" />
+          <folding>
+            <element signature="e#387#388#0" expanded="true" />
+            <element signature="e#412#413#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#476#477#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#606#607#0" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#664#665#0" expanded="true" />
+            <element signature="e#704#705#0" expanded="true" />
+            <element signature="e#736#737#0" expanded="true" />
+            <element signature="e#768#769#0" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+            <element signature="e#838#839#0" expanded="true" />
+            <element signature="e#872#873#0" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#970#971#0" expanded="true" />
+            <element signature="e#1002#1003#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/NotifikasiActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="83" column="56" lean-forward="true" selection-start-line="83" selection-start-column="56" selection-end-line="83" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/card_item_notifikasi.xml">
+      <provider editor-type-id="android-designer2" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="47" lean-forward="true" selection-start-line="18" selection-start-column="47" selection-end-line="18" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/Notifikasi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/CommonUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="146">
+          <caret line="96" lean-forward="true" selection-start-line="96" selection-end-line="96" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/alpha/test/persebayaapp/AdapterNotifikasi.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="257">
+          <caret line="47" column="79" selection-start-line="47" selection-start-column="79" selection-end-line="47" selection-end-column="79" />
         </state>
       </provider>
     </entry>

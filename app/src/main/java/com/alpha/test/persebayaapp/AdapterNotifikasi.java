@@ -2,6 +2,7 @@ package com.alpha.test.persebayaapp;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,12 +20,13 @@ public class AdapterNotifikasi extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
     public class NotifikasiViewHolder extends RecyclerView.ViewHolder{
-        public TextView txtNameNotifikasi,txtDate;
+        public TextView txtNameNotifikasi,txtDate,txtBody;
 
         public NotifikasiViewHolder(View itemView) {
             super(itemView);
             this.txtNameNotifikasi = (TextView) itemView.findViewById(R.id.txt_name_notifikasi);
             this.txtDate = (TextView) itemView.findViewById(R.id.txt_tanggal_notifikasi);
+            this.txtBody = itemView.findViewById(R.id.txt_body_notifikasi);
         }
     }
 
@@ -44,6 +46,7 @@ public class AdapterNotifikasi extends RecyclerView.Adapter<RecyclerView.ViewHol
         if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
             NotifikasiViewHolder holder = ((NotifikasiViewHolder) viewHolder);
             holder.txtNameNotifikasi.setText(dataList.get(position).getName());
+            holder.txtBody.setText(Html.fromHtml(dataList.get(position).getBody()));
             holder.txtDate.setText(dataList.get(position).getDate());
         }else{
             ((CommonUtils.Emptyholder) viewHolder).onBind(position);

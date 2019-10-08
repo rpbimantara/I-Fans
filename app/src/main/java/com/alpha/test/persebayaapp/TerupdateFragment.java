@@ -27,15 +27,18 @@ import java.util.Arrays;
 import java.util.List;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
@@ -126,7 +129,12 @@ public class TerupdateFragment extends Fragment {
                 }
             });
             sharedPrefManager = new SharedPrefManager(getActivity());
-            client = getOdooConnection(getContext());
+            client = getOdooConnection1(getContext(), new OdooErrorListener() {
+                @Override
+                public void onError(OdooErrorException error) {
+                    progressDialog.dismiss();
+                }
+            });
             progressDialog = new ProgressDialog(getActivity());
             progressDialog.setMessage("Loading data....");
             progressDialog.show();

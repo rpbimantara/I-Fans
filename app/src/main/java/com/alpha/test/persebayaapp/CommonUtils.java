@@ -147,4 +147,42 @@ public class CommonUtils {
         String sorting = "id DESC";
         client.searchRead("res.partner", domain, fields, offset, limit, sorting, response);
     }
+
+    public static OdooClient getOdooConnection1(final Context context, OdooErrorListener odooErrorListener) {
+        SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
+        return new OdooClient.Builder(context)
+                .setHost(sharedPrefManager.getSP_Host_url())
+                .setSession(sharedPrefManager.getSpSessionId())
+                .setConnectListener(new OdooConnectListener() {
+                    @Override
+                    public void onConnected(OdooVersion version) {
+                        Log.d(context.getClass().getSimpleName(),version.toString());
+                    }
+                })
+                .setErrorListener(odooErrorListener)
+//                .setErrorListener(new OdooErrorListener() {
+//                    @Override
+//                    public void onError(OdooErrorException error) {
+//                        Log.e(context.getClass().getSimpleName(),error.toString());
+//                    }
+//                })
+                .build();
+    }
+
+
+    public static void getSaldo1(Context context, IOdooResponse response,OdooErrorListener odooErrorListener) {
+        final SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
+        OdooClient client = getOdooConnection1(context,odooErrorListener);
+        ODomain domain = new ODomain();
+        domain.add("user_ids", "=", sharedPrefManager.getSpIdUser());
+
+        OdooFields fields = new OdooFields();
+        fields.addAll("id", "name", "jeniskelamin", "image", "nik", "street", "tgl_lahir", "saldo", "email", "phone", "komunitas","state");
+
+        int offset = 0;
+        int limit = 80;
+
+        String sorting = "id DESC";
+        client.searchRead("res.partner", domain, fields, offset, limit, sorting, response);
+    }
 }

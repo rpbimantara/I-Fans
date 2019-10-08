@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
@@ -82,6 +83,7 @@ public class AccountCoinActivity extends AppCompatActivity {
                     ));
                 }
                 adapter = new AdapterCoin(ArrayListCoin);
+                Collections.sort(ArrayListCoin);
                 rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);

@@ -60,17 +60,17 @@ public class TicketBarcodeActivity extends AppCompatActivity {
     public void loadBarcode(){
         swiper.setRefreshing(true);
         ArrayListTiketBarcode = new ArrayList<>();
-        ODomain domain = new ODomain();
+//        ODomain domain = new ODomain();
 //        domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-        domain.add("state", "=", "open");
-
-        OdooFields fields = new OdooFields();
-        fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");
-
-        int offset = 0;
-        int limit = 80;
-
-        String sorting = "id ASC";
+//        domain.add("state", "=", "open");
+//
+//        OdooFields fields = new OdooFields();
+//        fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");
+//
+//        int offset = 0;
+//        int limit = 80;
+//
+//        String sorting = "id ASC";
 
         OArguments arguments = new OArguments();
         arguments.add(sharedPrefManager.getSpIdPartner());

@@ -1,6 +1,6 @@
 package com.alpha.test.persebayaapp;
 
-public class AccountCoin {
+public class AccountCoin implements Comparable<AccountCoin> {
     String id,name,date,price,type;
 
     public AccountCoin(String id, String name, String date, String price, String type) {
@@ -49,5 +49,10 @@ public class AccountCoin {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public int compareTo(AccountCoin accountCoin) {
+        return this.getDate().compareTo(accountCoin.getDate());
     }
 }
