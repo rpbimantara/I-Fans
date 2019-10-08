@@ -90,10 +90,12 @@ public class KlasemenFragment extends Fragment {
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
 
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                        Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
-                        intent.putExtra("id", String.valueOf(ArrayListKlasemen.get(RecyclerViewItemPosition).getId_club()));
-                        intent.putExtra("nama", ArrayListKlasemen.get(RecyclerViewItemPosition).getTxtTeamKlasemen());
-                        startActivity(intent);
+                        if (RecyclerViewItemPosition > 0) {
+                            Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
+                            intent.putExtra("id", String.valueOf(ArrayListKlasemen.get(RecyclerViewItemPosition).getId_club()));
+                            intent.putExtra("nama", ArrayListKlasemen.get(RecyclerViewItemPosition).getTxtTeamKlasemen());
+                            startActivity(intent);
+                        }
                     }
                     return false;
                 }

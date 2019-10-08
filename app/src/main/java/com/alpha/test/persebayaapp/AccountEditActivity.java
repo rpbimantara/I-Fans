@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -71,7 +72,35 @@ public class AccountEditActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveBtn();
+                if(!TextUtils.isEmpty(ETname.getText())){
+                    if(!TextUtils.isEmpty(ETnik.getText())){
+                        if(!TextUtils.isEmpty(ETaddress.getText())){
+                            if(!TextUtils.isEmpty(txtbirthday.getText())){
+                                if(!TextUtils.isEmpty(txtbirthday.getText())){
+                                    if(!TextUtils.isEmpty(ETmail.getText())){
+                                        if(!TextUtils.isEmpty(ETphone.getText())){
+                                            saveBtn();
+                                        }else{
+                                            ETphone.setError("Fill Phone!");
+                                        }
+                                    }else{
+                                        ETmail.setError("Fill Email!");
+                                    }
+                                }else{
+                                    txtbirthday.setError("Fill Birthday!");
+                                }
+                            }else{
+                                txtbirthday.setError("Fill Valid Birthday!");
+                            }
+                        }else{
+                            ETaddress.setError("Fill Address!");
+                        }
+                    }else{
+                        ETnik.setError("Fill Public Number!");
+                    }
+                }else{
+                    ETname.setError("Fill name!");
+                }
             }
         });
         setSupportActionBar(toolbar);
@@ -101,23 +130,23 @@ public class AccountEditActivity extends AppCompatActivity {
                     }
 
                     if(record.getString("street").equalsIgnoreCase("false")){
-                        ETaddress.setText("Address");
+//                        ETaddress.setText("Address");
                     }else{
                         ETaddress.setText(record.getString("street"));
                     }
 
                     if(record.getString("email").equalsIgnoreCase("false")){
-                        ETmail.setText("E-mail");
+//                        ETmail.setText("E-mail");
                     }else{
                         ETmail.setText(record.getString("email"));
                     }
                     if(record.getString("phone").equalsIgnoreCase("false")){
-                        ETphone.setText("Phone");
+//                        ETphone.setText("Phone");
                     }else{
                         ETphone.setText(record.getString("phone"));
                     }
                     if(record.getString("komunitas").equalsIgnoreCase("false")){
-                        ETcomunity.setText("Community");
+//                        ETcomunity.setText("Community");
                     }else{
                         ETcomunity.setText(record.getString("komunitas"));
                     }
@@ -132,6 +161,7 @@ public class AccountEditActivity extends AppCompatActivity {
         progressDialog.setMessage("Saving Data........");
         progressDialog.show();
         progressDialog.setCancelable(false);
+
         OdooValues values = new OdooValues();
         values.put("name", ETname.getText().toString());
         values.put("nik", ETnik.getText().toString());

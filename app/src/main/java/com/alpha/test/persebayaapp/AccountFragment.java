@@ -42,7 +42,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
  * A simple {@link Fragment} subclass.
  */
 public class AccountFragment extends Fragment {
-    TextView txtName,txtid,txtKoin,txtFollower,txtFollowing,txtNIK,txtJeniskelamin,txtAlamat,txtTTL,txtemail,txtTelephone,txtKomunitas;
+    TextView txtName,txtid,txtKoin,txtStore,txtAuction,txtNIK,txtJeniskelamin,txtAlamat,txtTTL,txtemail,txtTelephone,txtKomunitas;
     ImageView imageUser;
     SharedPrefManager sharedPrefManager;
     FloatingActionButton fabImage;
@@ -82,6 +82,8 @@ public class AccountFragment extends Fragment {
         txtTelephone = (TextView) view.findViewById(R.id.txt_phoneAccount);
         txtKomunitas = (TextView) view.findViewById(R.id.txt_komunitasAccount);
         txtKoin = (TextView) view.findViewById(R.id.txt_koinAccount);
+        txtStore = view.findViewById(R.id.txt_StoreAccount);
+        txtAuction = view.findViewById(R.id.txt_AuctionAccount);
         sharedPrefManager = new SharedPrefManager(getActivity());
         lnStore = view.findViewById(R.id.LinearLayoutStore);
         lnAuction = view.findViewById(R.id.LinearLayoutAuction);
@@ -97,10 +99,12 @@ public class AccountFragment extends Fragment {
         });
         client = getOdooConnection(getContext());
         getData();
+        getStoreLelang();
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 getData();
+                getStoreLelang();
             }
         });
 
@@ -148,6 +152,38 @@ public class AccountFragment extends Fragment {
             }
 
         }
+    }
+
+    public void getStoreLelang(){
+        ODomain domain = new ODomain();
+        domain.add("active", "=", true);
+        domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
+
+        OdooFields fields = new OdooFields();
+        fields.addAll("id", "type");
+
+        int offset = 0;
+        int limit = 0;
+
+        String sorting = "id ASC";
+        client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                Integer store = 0;
+                Integer lelang = 0;
+                for (OdooRecord record : records) {
+                    if (record.getString("type").equalsIgnoreCase("product")){
+                        store = store +1;
+                    }
+                    if (record.getString("type").equalsIgnoreCase("lelang")){
+                        lelang = lelang +1;
+                    }
+                }
+                txtStore.setText(String.valueOf(store));
+                txtAuction.setText(String.valueOf(lelang));
+            }
+        });
     }
 
     public void getData(){

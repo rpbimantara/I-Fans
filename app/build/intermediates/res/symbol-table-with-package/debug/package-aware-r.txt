@@ -2688,14 +2688,13 @@ id tvEmptyTitle
 id tv_tinted_spinner
 id txt_Aerial
 id txt_Assist
+id txt_AuctionAccount
 id txt_BallAway
 id txt_BallHome
 id txt_Block
 id txt_Clearances
 id txt_CornerAway
 id txt_CornerHome
-id txt_FollowersAccount
-id txt_FollowingAccount
 id txt_Fouls
 id txt_FoulsAway
 id txt_FoulsHome
@@ -2716,6 +2715,7 @@ id txt_Red
 id txt_RedAway
 id txt_RedHome
 id txt_Saves
+id txt_StoreAccount
 id txt_Tackles
 id txt_TargetAway
 id txt_TargetHome

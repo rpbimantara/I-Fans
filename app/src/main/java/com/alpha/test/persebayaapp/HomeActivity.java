@@ -98,28 +98,29 @@ public class HomeActivity extends AppCompatActivity {
                 if (sharedPrefManager.getSpFab().equalsIgnoreCase("Account")){
                     fabIntent = new Intent(HomeActivity.this,AccountEditActivity.class);
                     startActivity(fabIntent);
-                }
-                getSaldo(context, new IOdooResponse() {
-                    @Override
-                    public void onResult(OdooResult result) {
-                        OdooRecord[] Records = result.getRecords();
-                        Intent fabIntent = new Intent();
-                        if(sharedPrefManager.getSpFab().equalsIgnoreCase("Store")){
-                            fabIntent = new Intent(HomeActivity.this,StoreAddActivity.class);
-                            fabIntent.putExtra("id","false");
-                        }else{
-                            fabIntent = new Intent(HomeActivity.this,LelangAddActivity.class);
-                            fabIntent.putExtra("id","false");
-                        }
-                        for (final OdooRecord record : Records) {
-                            if (record.getString("state").equalsIgnoreCase("draft")){
-                                Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
-                            }else {
-                                startActivity(fabIntent);
+                }else {
+                    getSaldo(context, new IOdooResponse() {
+                        @Override
+                        public void onResult(OdooResult result) {
+                            OdooRecord[] Records = result.getRecords();
+                            Intent fabIntent = new Intent();
+                            if (sharedPrefManager.getSpFab().equalsIgnoreCase("Store")) {
+                                fabIntent = new Intent(HomeActivity.this, StoreAddActivity.class);
+                                fabIntent.putExtra("id", "false");
+                            } else {
+                                fabIntent = new Intent(HomeActivity.this, LelangAddActivity.class);
+                                fabIntent.putExtra("id", "false");
+                            }
+                            for (final OdooRecord record : Records) {
+                                if (record.getString("state").equalsIgnoreCase("draft")) {
+                                    Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    startActivity(fabIntent);
+                                }
                             }
                         }
-                    }
-                });
+                    });
+                }
             }
         });
         sharedPrefManager =  new SharedPrefManager(this);
@@ -138,7 +139,7 @@ public class HomeActivity extends AppCompatActivity {
                     // new push notification is received
                     String message = intent.getStringExtra("message");
 
-                    Toast.makeText(getApplicationContext(), "Push notification: " + message, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
                 }
             }
         };

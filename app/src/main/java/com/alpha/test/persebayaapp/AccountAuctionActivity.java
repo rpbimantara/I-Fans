@@ -66,7 +66,8 @@ public class AccountAuctionActivity extends AppCompatActivity{
         swiper.setRefreshing(true);
         ArrayListLelang = new ArrayList<>();
         ODomain domain = new ODomain();
-        domain.add("status_lelang", "=", "jalan");
+        domain.add("active", "=", true);
+        domain.add("type", "=", "lelang");
         domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
 
         OdooFields fields = new OdooFields();
@@ -77,7 +78,7 @@ public class AccountAuctionActivity extends AppCompatActivity{
 
         String sorting = "id ASC";
 
-        client.searchRead("persebaya.lelang", domain, fields, offset, limit, sorting,new IOdooResponse() {
+        client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
                 OdooRecord[] Records = result.getRecords();

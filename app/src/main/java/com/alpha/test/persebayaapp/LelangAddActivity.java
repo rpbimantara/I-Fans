@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -74,7 +75,35 @@ public class LelangAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (state.equalsIgnoreCase("create")){
-                    createLelang();
+                    if (!TextUtils.isEmpty(getBase64ImageString(currentImage))){
+                        if (!TextUtils.isEmpty(etName.getText())){
+                            if (!TextUtils.isEmpty(etOb.getText()) && Integer.valueOf(etOb.getText().toString())>0){
+                                if (!TextUtils.isEmpty(etInc.getText()) && Integer.valueOf(etOb.getText().toString())>0){
+                                    if (!TextUtils.isEmpty(etBin.getText()) && Integer.valueOf(etOb.getText().toString())>0){
+                                        if (!TextUtils.isEmpty(txtDuedate.getText())){
+                                            if (!TextUtils.isEmpty(etdeskripsi.getText())){
+                                                createLelang();
+                                            }else{
+                                                etdeskripsi.setError("Fill Description.");
+                                            }
+                                        }else{
+                                            txtDuedate.setError("Fill Name.");
+                                        }
+                                    }else{
+                                        etBin.setError("Fill  Valid BIN Now.");
+                                    }
+                                }else{
+                                    etInc.setError("Fill  Valid Increment.");
+                                }
+                            }else{
+                                etOb.setError("Fill  Valid Open Bid.");
+                            }
+                        }else{
+                            etName.setError("Fill Name.");
+                        }
+                    }else{
+                        Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
+                    }
 //                    new SaveLelangTask().execute();
                 }else{
 

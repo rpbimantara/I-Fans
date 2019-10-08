@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -64,7 +65,27 @@ public class StoreAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (state.equalsIgnoreCase("create")){
-                    createbtn();
+                    if (!TextUtils.isEmpty(getBase64ImageString(currentImage))){
+                        if (!TextUtils.isEmpty(etName.getText())){
+                            if (!TextUtils.isEmpty(etPrice.getText()) && Integer.valueOf(etPrice.getText().toString())>0){
+                                if (!TextUtils.isEmpty(etStock.getText()) && Integer.valueOf(etStock.getText().toString())>0){
+                                    if (!TextUtils.isEmpty(etdeskripsi.getText())){
+                                        createbtn();
+                                    }else{
+                                        etdeskripsi.setError("Fill Description.");
+                                    }
+                                }else{
+                                    etStock.setError("Fill  Valid Stock.");
+                                }
+                            }else{
+                                etPrice.setError("Fill  Valid Price.");
+                            }
+                        }else{
+                            etName.setError("Fill Name.");
+                        }
+                    }else{
+                        Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
+                    }
 //                    new SaveStoreTask().execute();
                 }else{
 
@@ -95,7 +116,7 @@ public class StoreAddActivity extends AppCompatActivity {
         domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
 
         OdooFields fields = new OdooFields();
-        fields.addAll("id","image_medium","name", "type","default_code","cated_ig","description_sale","list_price");
+        fields.addAll("id","image_medium","name", "type","default_code","cated_ig","description_sale","list_price","qty_available");
 
         int offset = 0;
         int limit = 80;
@@ -115,7 +136,7 @@ public class StoreAddActivity extends AppCompatActivity {
                     imageCurrent = record.getString("image_medium");
                     name = record.getString("name");
                     price = String.valueOf(formatter.format(record.getFloat("list_price")));
-//                                    stock = record.getString("name");
+                    stock = String.valueOf(formatter.format(record.getFloat("qty_available")));
                     if (!record.getString("description_sale").equalsIgnoreCase("false"))
                     {
                         description = record.getString("description_sale");
@@ -124,7 +145,7 @@ public class StoreAddActivity extends AppCompatActivity {
                 imageUser.setImageBitmap(StringToBitMap(imageCurrent));
                 etName.setText(name);
                 etPrice.setText(price);
-//                                etStock.setText(stock);
+                etStock.setText(stock);
                 etdeskripsi.setText(description);
             }
         });

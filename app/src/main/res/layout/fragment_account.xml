@@ -148,7 +148,7 @@
                                 android:textColor="@color/colorTrueState"/>
 
                             <TextView
-                                android:id="@+id/txt_FollowersAccount"
+                                android:id="@+id/txt_StoreAccount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
@@ -176,7 +176,7 @@
                                 android:textColor="@color/colorTrueState"/>
 
                             <TextView
-                                android:id="@+id/txt_FollowingAccount"
+                                android:id="@+id/txt_AuctionAccount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
