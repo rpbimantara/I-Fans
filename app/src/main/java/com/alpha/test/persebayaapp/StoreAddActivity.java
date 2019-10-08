@@ -23,6 +23,7 @@ import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
@@ -155,7 +156,6 @@ public class StoreAddActivity extends AppCompatActivity {
         values.put("purchase_ok", false);
         values.put("type", "product");
         values.put("list_price", etPrice.getText().toString());
-        values.put("qty_available", etStock.getText().toString());
         values.put("description_sale", etdeskripsi.getText().toString());
         values.put("create_uid", sharedPrefManager.getSpIdUser());
 
@@ -163,9 +163,23 @@ public class StoreAddActivity extends AppCompatActivity {
             @Override
             public void onResult(OdooResult result) {
                 // Success response
-                progressDialog.dismiss();
-                Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
-                finish();
+                OArguments arguments = new OArguments();
+                arguments.add(result.getInt("result"));
+                arguments.add(etStock.getText().toString());
+                client.call_kw("product.template", "update_qty", arguments, new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+
+                    @Override
+                    public boolean onError(OdooErrorException error) {
+                        Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                        return super.onError(error);
+                    }
+                });
             }
 
             @Override

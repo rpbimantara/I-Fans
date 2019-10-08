@@ -11,36 +11,37 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.alpha.test.persebayaapp.DonationAddActivity" />
+        <activity android:name=".LupaPasswordActivity"></activity>
+        <activity android:name=".DonationAddActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.DonationDetailActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".DonationDetailActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.NotifikasiActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".NotifikasiActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.DonationActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".DonationActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.TicketBarcodeActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".TicketBarcodeActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.AccountCoinActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".AccountCoinActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.RatingLineUpActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".RatingLineUpActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.AccountAuctionActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".AccountAuctionActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.AccountStoreActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".AccountStoreActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.TeamDetailActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".TeamDetailActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.MainActivity"
+            android:name=".MainActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
@@ -49,38 +50,38 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.alpha.test.persebayaapp.HomeActivity" />
-        <activity android:name="com.alpha.test.persebayaapp.LoginActivity" />
-        <activity android:name="com.alpha.test.persebayaapp.SingUpActivity" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SingUpActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.TicketActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".TicketActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.BeritaDetailActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".BeritaDetailActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.StoreDetailActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".StoreDetailActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.LelangDetailActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".LelangDetailActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.ClubDetailActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".ClubDetailActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.AccountEditActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
-        <activity android:name="com.alpha.test.persebayaapp.LelangAddActivity" />
-        <activity android:name="com.alpha.test.persebayaapp.StoreAddActivity" />
+            android:name=".AccountEditActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".LelangAddActivity" />
+        <activity android:name=".StoreAddActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.TicketDetailActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".TicketDetailActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.CheckoutActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".CheckoutActivity"
+            android:parentActivityName=".MainActivity" />
         <activity
-            android:name="com.alpha.test.persebayaapp.MatchDetailActivity"
-            android:parentActivityName="com.alpha.test.persebayaapp.MainActivity" />
+            android:name=".MatchDetailActivity"
+            android:parentActivityName=".MainActivity" />
 
         <meta-data
             android:name="com.google.firebase.API_KEY"
@@ -91,16 +92,17 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <service android:name="com.alpha.test.persebayaapp.MyFirebaseMessagingService">
+        <service android:name=".MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

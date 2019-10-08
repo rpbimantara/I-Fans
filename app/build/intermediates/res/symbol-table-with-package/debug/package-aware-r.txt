@@ -2232,6 +2232,7 @@ id berita_detail_imageView
 id blocking
 id bottom
 id btn_login
+id btn_send_lupa_password
 id btn_signup
 id buttonPanel
 id button_bid
@@ -2377,6 +2378,7 @@ id input_name_up
 id input_password
 id input_password_up
 id input_username
+id input_username_lupapassword
 id invisible
 id italic
 id item_touch_helper_previous_elevation
@@ -2403,6 +2405,7 @@ id linearLayout_order_store
 id linearLayout_pik
 id linearLayout_team
 id link_login
+id link_lupaPassword
 id link_signup
 id listMode
 id list_item
@@ -2868,6 +2871,7 @@ layout activity_home
 layout activity_lelang_add
 layout activity_lelang_detail
 layout activity_login
+layout activity_lupa_password
 layout activity_main
 layout activity_match_detail
 layout activity_notifikasi

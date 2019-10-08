@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText etUsername,etPassword;
 
-    private TextView _singupLink;
+    private TextView _singupLink,_lupaPassword;
     OdooClient client;
     String uname = "";
     String pass = "";
@@ -46,13 +46,21 @@ public class LoginActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
         sharedPrefManager =  new SharedPrefManager(this);
         _singupLink = (TextView) findViewById(R.id.link_signup);
+        _lupaPassword = findViewById(R.id.link_lupaPassword);
         _singupLink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                new SignUpTask().execute();
                 Intent singup = new Intent(getApplicationContext(),SingUpActivity.class);
                 startActivity(singup);
-                progressDialog.dismiss();
+//                progressDialog.dismiss();
+            }
+        });
+        _lupaPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent lupa = new Intent(getApplicationContext(),LupaPasswordActivity.class);
+                startActivity(lupa);
             }
         });
         btnLogin = findViewById(R.id.btn_login);
