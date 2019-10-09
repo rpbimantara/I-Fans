@@ -58,6 +58,7 @@ public class AccountAuctionActivity extends AppCompatActivity{
                 loadAuction();
             }
         });
+        loadAuction();
         progressDialog = new ProgressDialog(this);
     }
 
@@ -82,6 +83,7 @@ public class AccountAuctionActivity extends AppCompatActivity{
             @Override
             public void onResult(OdooResult result) {
                 OdooRecord[] Records = result.getRecords();
+                System.out.println(result.toString());
                 for (final OdooRecord record : Records) {
                     ArrayListLelang.add(new lelang(
                             String.valueOf(record.getInt("id")),

@@ -1,9 +1,12 @@
 package com.alpha.test.persebayaapp;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +19,7 @@ import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
@@ -25,7 +29,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
 public class LelangDetailActivity extends AppCompatActivity {
     TextView txtNamaBarang,txtBid,txtDeskripsi,txtInfoDetail;
-    Button btnEdit;
+    Button btnEdit,btnDelete;
     ImageView imageDetail;
     OdooClient client;
     SharedPrefManager sharedPrefManager;
@@ -42,6 +46,7 @@ public class LelangDetailActivity extends AppCompatActivity {
         imageDetail = findViewById(R.id.lelang_detail_imageView);
         txtNamaBarang = findViewById(R.id.textView_nama_barang_lelang);
         btnEdit = findViewById(R.id.button_edit_lelang);
+        btnDelete = findViewById(R.id.button_delete_lelang);
         txtBid = findViewById(R.id.textView_bid_detail_lelang);
         txtDeskripsi = findViewById(R.id.textView_deskripsi_lelang);
         txtInfoDetail = findViewById(R.id.textView_info_detail_lelang);
@@ -53,6 +58,39 @@ public class LelangDetailActivity extends AppCompatActivity {
                 Intent fabIntent = new Intent(LelangDetailActivity.this,LelangAddActivity.class);
                 fabIntent.putExtra("id",Integer.valueOf(getIntent().getExtras().get("id").toString()));
                 startActivity(fabIntent);
+            }
+        });
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(LelangDetailActivity.this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Are You Sure to Delete This Item?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (!TextUtils.isEmpty(getIntent().getExtras().get("id").toString())) {
+                            OdooValues values = new OdooValues();
+                            values.put("is_deleted", true);
+                            client.write("product.template", new Integer[]{Integer.valueOf(getIntent().getExtras().get("id").toString())}, values, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // Success response
+                                    Toast.makeText(getApplicationContext(),"Admin will review your action.",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 
@@ -86,8 +124,10 @@ public class LelangDetailActivity extends AppCompatActivity {
                             + formater(record.getFloat("inc"))
                     );
                     if (record.getInt("create_uid") == sharedPrefManager.getSpIdUser()){
-                        btnEdit.setVisibility(View.INVISIBLE);
+                        btnDelete.setVisibility(View.VISIBLE);
+                        btnEdit.setVisibility(View.VISIBLE);
                     }else{
+                        btnDelete.setVisibility(View.INVISIBLE);
                         btnEdit.setVisibility(View.INVISIBLE);
                     }
                     txtDeskripsi.setText("Deskripsi : \n\n" + "-");

@@ -54,6 +54,9 @@ public class LupaPasswordActivity extends AppCompatActivity {
         btnLupaPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                progressDialog.setCancelable(false);
                 is_connect();
 
             }
@@ -82,11 +85,13 @@ public class LupaPasswordActivity extends AppCompatActivity {
                             client.call_kw("res.users", "reset_password_users", arguments, new IOdooResponse() {
                                 @Override
                                 public void onResult(OdooResult result) {
+                                    progressDialog.dismiss();
                                     Toast.makeText(getBaseContext(),"Check your email to change password!",Toast.LENGTH_SHORT).show();
                                 }
 
                                 @Override
                                 public boolean onError(OdooErrorException error) {
+                                    progressDialog.dismiss();
                                     Toast.makeText(getBaseContext(), String.valueOf(error.getLocalizedMessage()),Toast.LENGTH_SHORT).show();
                                     return super.onError(error);
                                 }

@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -47,7 +48,7 @@ public class StoreDetailActivity extends AppCompatActivity {
     TextView txtNamaBarang,txtHargaBarang,txtDeskripsi,txtOwner;
     LinearLayout lnOrder,lnEdit;
     SharedPrefManager sharedPrefManager;
-    Button btn_checkout,btn_buy_now,btn_edit_store;
+    Button btn_checkout,btn_buy_now,btn_edit_store,btn_delete_store;
     ImageView imageStore;
     ArrayList<Variant> ArrayListVariant;
     RecyclerView rv;
@@ -79,6 +80,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         btn_checkout = findViewById(R.id.button_checkout_store);
         btn_buy_now = findViewById(R.id.button_buy_now_store);
         btn_edit_store = findViewById(R.id.button_edit_store);
+        btn_delete_store = findViewById(R.id.button_delete_store);
         lnOrder = findViewById(R.id.linearLayout_order_store);
         lnEdit = findViewById(R.id.linearLayout_edit_store);
         rv = findViewById(R.id.rv_recycler_view_store_detail);
@@ -124,7 +126,7 @@ public class StoreDetailActivity extends AppCompatActivity {
             public void onClick(View view) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(StoreDetailActivity.this);
                 builder.setTitle(R.string.app_name);
-                builder.setMessage("Are You Sure to Buy This Ticket?");
+                builder.setMessage("Are You Sure to Buy This Item?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -167,6 +169,39 @@ public class StoreDetailActivity extends AppCompatActivity {
                Intent fabIntent = new Intent(StoreDetailActivity.this,StoreAddActivity.class);
                fabIntent.putExtra("id",Integer.valueOf(getIntent().getExtras().get("id").toString()));
                startActivity(fabIntent);
+            }
+        });
+        btn_delete_store.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(StoreDetailActivity.this);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Are You Sure to Delete This Item?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        if (!TextUtils.isEmpty(getIntent().getExtras().get("id").toString())) {
+                            OdooValues values = new OdooValues();
+                            values.put("is_deleted", true);
+                            client.write("product.template", new Integer[]{Integer.valueOf(getIntent().getExtras().get("id").toString())}, values, new IOdooResponse() {
+                                @Override
+                                public void onResult(OdooResult result) {
+                                    // Success response
+                                    Toast.makeText(getApplicationContext(),"Admin will review your action.",Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                        dialogInterface.dismiss();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
     }

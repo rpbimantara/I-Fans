@@ -1,6 +1,7 @@
 package com.alpha.test.persebayaapp;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -40,7 +41,7 @@ public class RatingLineUpActivity extends AppCompatActivity {
     Button btnSave;
     EditText etComment;
     RatingBar ratingBar;
-
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +50,7 @@ public class RatingLineUpActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        context = this;
         imagePlayer = findViewById(R.id.image_rating_line_up);
         txtNamaPlayer = findViewById(R.id.txt_nama_rating_line_up);
         txtNoPlayer = findViewById(R.id.txt_no_rating_line_up);
@@ -59,7 +61,7 @@ public class RatingLineUpActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(getApplicationContext());
+                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
                 builder.setTitle(R.string.app_name);
                 builder.setMessage("Do You Want to Give Rating Now?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -136,6 +138,7 @@ public class RatingLineUpActivity extends AppCompatActivity {
             @Override
             public void onResult(OdooResult result) {
                 Toast.makeText(getApplicationContext(),"Rating Saved!",Toast.LENGTH_LONG).show();
+                finish();
             }
 
             @Override

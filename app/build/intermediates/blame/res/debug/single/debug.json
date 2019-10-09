@@ -10180,12 +10180,12 @@
         "source": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/generated/res/pngs/debug/drawable-ldpi/ic_perm_scan_wifi_black_24dp.png"
     },
     {
-        "merged": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_event_available.png.flat",
-        "source": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_event_available.png"
-    },
-    {
         "merged": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/res/merged/debug/layout_activity_lupa_password.xml.flat",
         "source": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/res/layout/activity_lupa_password.xml"
+    },
+    {
+        "merged": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/res/merged/debug/drawable-xxhdpi_ic_event_available.png.flat",
+        "source": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/generated/res/pngs/debug/drawable-xxhdpi/ic_event_available.png"
     },
     {
         "merged": "/home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/res/merged/debug/drawable-ldpi_ic_money_off_black_24dp.png.flat",

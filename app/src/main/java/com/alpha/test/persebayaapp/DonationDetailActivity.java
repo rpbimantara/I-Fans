@@ -138,6 +138,7 @@ public class DonationDetailActivity extends AppCompatActivity {
                     imageDonation.setImageBitmap(StringToBitMap(record.getString("image_medium")));
                     txtTerkumpul.setText(formater(record.getFloat("list_price")));
                     txtTotal.setText(formater(record.getFloat("target_donasi")));
+                    progressBar.setProgress(Math.round((record.getFloat("list_price") / record.getFloat("target_donasi")) * 100));
                     txtNama.setText(record.getString("name"));
                     txtTotalDonatur.setText(String.valueOf(donasi_ids));
                     txtDescription.setText(record.getString("description_sale"));

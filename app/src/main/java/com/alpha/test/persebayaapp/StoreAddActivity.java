@@ -47,7 +47,9 @@ public class StoreAddActivity extends AppCompatActivity {
     String description = "No Item Descriptions ";
     String name = "No Item Descriptions ";
     String price = "No Item Descriptions ";
+    String price_float = "No Item Descriptions ";
     String stock = "No Item Descriptions ";
+    String stok_float = "";
     String state = "create";
 
     @Override
@@ -61,37 +63,6 @@ public class StoreAddActivity extends AppCompatActivity {
         fabImageStore = findViewById(R.id.image_fab_Add_Store);
         fabImageStore.setImageResource(R.drawable.ic_camera);
         savebtn = findViewById(R.id.button_save_store);
-        savebtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (state.equalsIgnoreCase("create")){
-                    if (!TextUtils.isEmpty(getBase64ImageString(currentImage))){
-                        if (!TextUtils.isEmpty(etName.getText())){
-                            if (!TextUtils.isEmpty(etPrice.getText()) && Integer.valueOf(etPrice.getText().toString())>0){
-                                if (!TextUtils.isEmpty(etStock.getText()) && Integer.valueOf(etStock.getText().toString())>0){
-                                    if (!TextUtils.isEmpty(etdeskripsi.getText())){
-                                        createbtn();
-                                    }else{
-                                        etdeskripsi.setError("Fill Description.");
-                                    }
-                                }else{
-                                    etStock.setError("Fill  Valid Stock.");
-                                }
-                            }else{
-                                etPrice.setError("Fill  Valid Price.");
-                            }
-                        }else{
-                            etName.setError("Fill Name.");
-                        }
-                    }else{
-                        Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
-                    }
-//                    new SaveStoreTask().execute();
-                }else{
-
-                }
-            }
-        });
         etName = findViewById(R.id.editText_namabarangStore);
         etPrice = findViewById(R.id.editText_price_store);
         etStock = findViewById(R.id.editText_stock);
@@ -109,6 +80,38 @@ public class StoreAddActivity extends AppCompatActivity {
             state = "edit";
             LoadItem();
         }
+        savebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                if (!TextUtils.isEmpty(getBase64ImageString(currentImage))){
+                    if (!TextUtils.isEmpty(etName.getText())){
+                        if (!TextUtils.isEmpty(etPrice.getText()) && Integer.valueOf(etPrice.getText().toString())>0){
+                            if (!TextUtils.isEmpty(etStock.getText()) && Integer.valueOf(etStock.getText().toString())>0){
+                                if (!TextUtils.isEmpty(etdeskripsi.getText())){
+                                    if (state.equalsIgnoreCase("create")){
+                                        createbtn();
+                                    }else{
+                                        savebtn();
+                                    }
+                                }else{
+                                    etdeskripsi.setError("Fill Description.");
+                                }
+                            }else{
+                                etStock.setError("Fill  Valid Stock.");
+                            }
+                        }else{
+                            etPrice.setError("Fill  Valid Price.");
+                        }
+                    }else{
+                        etName.setError("Fill Name.");
+                    }
+//                }else{
+//                    Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
+//                }
+//                    new SaveStoreTask().execute();
+
+            }
+        });
     }
 
     public void LoadItem(){
@@ -135,7 +138,9 @@ public class StoreAddActivity extends AppCompatActivity {
                 for (OdooRecord record : records) {
                     imageCurrent = record.getString("image_medium");
                     name = record.getString("name");
-                    price = String.valueOf(formatter.format(record.getFloat("list_price")));
+                    price = String.valueOf(record.getInt("list_price"));
+                    price_float = String.valueOf(record.getInt("list_price"));
+                            stok_float = String.valueOf(record.getInt("qty_available"));
                     stock = String.valueOf(formatter.format(record.getFloat("qty_available")));
                     if (!record.getString("description_sale").equalsIgnoreCase("false"))
                     {
@@ -168,6 +173,53 @@ public class StoreAddActivity extends AppCompatActivity {
         }
     }
 
+    public void savebtn(){
+        progressDialog.setMessage("Saving.....");
+        progressDialog.show();
+        OdooValues values = new OdooValues();
+        values.put("image_medium", getBase64ImageString(currentImage));
+        values.put("name", etName.getText().toString());
+        values.put("list_price", etPrice.getText().toString());
+        values.put("description_sale", etdeskripsi.getText().toString());
+        client.write("product.template", new Integer[]{Integer.valueOf(getIntent().getExtras().get("id").toString())}, values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // Success response
+                OArguments arguments = new OArguments();
+                arguments.add(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                Integer qty = 0;
+                if (Integer.valueOf(etStock.getText().toString()) > Integer.valueOf(stok_float)){
+                    qty = Integer.valueOf(etStock.getText().toString()) - Integer.valueOf(stok_float);
+                }else{
+
+                }
+                arguments.add(Integer.valueOf(etStock.getText().toString()));
+                client.call_kw("product.template", "update_qty", arguments, new IOdooResponse() {
+                    @Override
+                    public void onResult(OdooResult result) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getBaseContext(),"Changes Saved!",Toast.LENGTH_LONG).show();
+                        finish();
+                    }
+
+                    @Override
+                    public boolean onError(OdooErrorException error) {
+                        progressDialog.dismiss();
+                        Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                        return super.onError(error);
+                    }
+                });
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                return super.onError(error);
+            }
+        });
+    }
+
     public void createbtn(){
         progressDialog.setMessage("Create.....");
         progressDialog.show();
@@ -197,6 +249,7 @@ public class StoreAddActivity extends AppCompatActivity {
 
                     @Override
                     public boolean onError(OdooErrorException error) {
+                        progressDialog.dismiss();
                         Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
                         return super.onError(error);
                     }

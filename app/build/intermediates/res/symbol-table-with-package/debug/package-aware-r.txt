@@ -2240,6 +2240,8 @@ id button_bin
 id button_buy_now_store
 id button_checkout_store
 id button_delete_checkout
+id button_delete_lelang
+id button_delete_store
 id button_donate
 id button_edit_lelang
 id button_edit_store
