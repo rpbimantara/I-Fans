@@ -24,6 +24,7 @@ import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 
@@ -159,14 +160,55 @@ public class DonationDetailActivity extends AppCompatActivity {
             @Override
             public void onResult(OdooResult result) {
                 int serverId = result.getInt("result");
-                progressDialog.dismiss();
-                Toast.makeText(getBaseContext(),"Thank your for your donation.",Toast.LENGTH_LONG).show();
+                if (serverId >0){
+                    OArguments arguments = new OArguments();
+                    arguments.add(sharedPrefManager.getSpIdPartner());
+                    arguments.add(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+                    arguments.add(Donation);
+                    client.call_kw("sale.order", "create_so_donasi", arguments, new IOdooResponse() {
+                        @Override
+                        public void onResult(OdooResult result) {
+                            int serverId = 0;
+                            OdooRecord[] records = result.getRecords();
+                            for (OdooRecord record : records) {
+                                serverId = serverId+record.getInt("id");
+                            }
+                            if (serverId > 0) {
+                                Confirm_so(serverId);
+                            }
+                        }
+
+                        @Override
+                        public boolean onError(OdooErrorException error) {
+                            progressDialog.dismiss();
+                            return super.onError(error);
+                        }
+                    });
+                }
 
             }
 
             @Override
             public boolean onError(OdooErrorException error) {
                 Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+                return super.onError(error);
+            }
+        });
+    }
+
+    public void Confirm_so(Integer order_id){
+        OArguments arguments = new OArguments();
+        arguments.add(order_id);
+        client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                Toast.makeText(getBaseContext(),"Thank your for your donation.",Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
                 progressDialog.dismiss();
                 return super.onError(error);
             }

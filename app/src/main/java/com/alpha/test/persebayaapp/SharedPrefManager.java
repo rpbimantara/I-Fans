@@ -106,6 +106,7 @@ public class SharedPrefManager {
     }
 
     public String getSP_Host_url() {
+//        return sp.getString(SP_Host_url,"http://192.168.0.35:8069");
         return sp.getString(SP_Host_url,"http://103.133.56.224:8069");
     }
 

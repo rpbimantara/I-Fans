@@ -223,37 +223,39 @@ public class StoreAddActivity extends AppCompatActivity {
     public void createbtn(){
         progressDialog.setMessage("Create.....");
         progressDialog.show();
-        OdooValues values = new OdooValues();
-        values.put("image_medium", getBase64ImageString(currentImage));
-        values.put("name", etName.getText().toString());
-        values.put("purchase_ok", false);
-        values.put("type", "product");
-        values.put("list_price", etPrice.getText().toString());
-        values.put("description_sale", etdeskripsi.getText().toString());
-        values.put("create_uid", sharedPrefManager.getSpIdUser());
+        OArguments arguments = new OArguments();
+        arguments.add(getBase64ImageString(currentImage));
+        arguments.add(etName.getText().toString());
+        arguments.add(etPrice.getText().toString());
+        arguments.add(etStock.getText().toString());
+        arguments.add(etdeskripsi.getText().toString());
+        arguments.add(sharedPrefManager.getSpIdUser());
 
-        client.create("product.template", values, new IOdooResponse() {
+        client.call_kw("product.template", "create_product",arguments, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
                 // Success response
-                OArguments arguments = new OArguments();
-                arguments.add(result.getInt("result"));
-                arguments.add(etStock.getText().toString());
-                client.call_kw("product.template", "update_qty", arguments, new IOdooResponse() {
-                    @Override
-                    public void onResult(OdooResult result) {
-                        progressDialog.dismiss();
-                        Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
-                        finish();
-                    }
-
-                    @Override
-                    public boolean onError(OdooErrorException error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
-                        return super.onError(error);
-                    }
-                });
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
+                finish();
+//                OArguments arguments = new OArguments();
+//                arguments.add(result.getInt("result"));
+//                arguments.add(etStock.getText().toString());
+//                client.call_kw("product.template", "update_qty", arguments, new IOdooResponse() {
+//                    @Override
+//                    public void onResult(OdooResult result) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
+//                        finish();
+//                    }
+//
+//                    @Override
+//                    public boolean onError(OdooErrorException error) {
+//                        progressDialog.dismiss();
+//                        Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+//                        return super.onError(error);
+//                    }
+//                });
             }
 
             @Override

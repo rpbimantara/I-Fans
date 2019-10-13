@@ -20,13 +20,16 @@ import android.widget.EditText;
 import java.util.ArrayList;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 
 
 /**
@@ -68,7 +71,12 @@ public class StoreFragment extends Fragment {
         progressDialog = new ProgressDialog(getActivity());
         rv.setAdapter(adapter);
         rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
-        client = getOdooConnection(getContext());
+        client = getOdooConnection1(getContext(), new OdooErrorListener() {
+            @Override
+            public void onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+            }
+        });
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

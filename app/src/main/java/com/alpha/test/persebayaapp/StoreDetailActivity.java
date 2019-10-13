@@ -37,9 +37,11 @@ import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
@@ -92,7 +94,12 @@ public class StoreDetailActivity extends AppCompatActivity {
         lnEdit.setVisibility(View.INVISIBLE);
         sharedPrefManager = new SharedPrefManager(this);
         gson = new Gson();
-        client = getOdooConnection(getBaseContext());
+        client = getOdooConnection1(getBaseContext(), new OdooErrorListener() {
+            @Override
+            public void onError(OdooErrorException error) {
+                progressDialog.dismiss();
+            }
+        });
         imageStore = findViewById(R.id.store_imageView);
         txtNamaBarang.setText(getIntent().getExtras().get("nama").toString());
         txtHargaBarang.setText(getIntent().getExtras().get("harga").toString());

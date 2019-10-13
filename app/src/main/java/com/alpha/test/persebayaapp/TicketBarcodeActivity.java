@@ -11,14 +11,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
-import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 
 public class TicketBarcodeActivity extends AppCompatActivity {
 
@@ -45,7 +47,12 @@ public class TicketBarcodeActivity extends AppCompatActivity {
         llm = new LinearLayoutManager(this);
         rv.setAdapter(adapter );
         rv.setLayoutManager(llm);
-        client = getOdooConnection(this);
+        client = getOdooConnection1(this, new OdooErrorListener() {
+            @Override
+            public void onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+            }
+        });
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

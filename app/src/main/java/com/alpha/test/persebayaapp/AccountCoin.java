@@ -1,5 +1,9 @@
 package com.alpha.test.persebayaapp;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 public class AccountCoin implements Comparable<AccountCoin> {
     String id,name,date,price,type;
 
@@ -53,6 +57,11 @@ public class AccountCoin implements Comparable<AccountCoin> {
 
     @Override
     public int compareTo(AccountCoin accountCoin) {
-        return this.getDate().compareTo(accountCoin.getDate());
+        DateFormat f = new SimpleDateFormat("dd MMM yyyy hh:mm");
+        try {
+            return f.parse(accountCoin.getDate().substring(0,17)).compareTo(f.parse(this.getDate().substring(0,17)));
+        } catch (ParseException e) {
+            throw new IllegalArgumentException(e);
+        }
     }
 }

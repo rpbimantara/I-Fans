@@ -36,9 +36,11 @@ import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 import static com.alpha.test.persebayaapp.CommonUtils.waktu;
@@ -138,7 +140,13 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                 });
             }
         });
-        client = getOdooConnection(getBaseContext());
+        client = getOdooConnection1(getBaseContext(), new OdooErrorListener() {
+            @Override
+            public void onError(OdooErrorException error) {
+                Log.e(TAG,"SO Id : " + error.toString());
+                progressDialog.dismiss();
+            }
+        });
         loadClassTicket();
 //        new TicketTask().execute();
         TicketDetail();
@@ -222,11 +230,20 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                 int serverId = 0;
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
+                    Log.d(TAG,"Create SO : " + result.toString());
                     serverId = serverId+record.getInt("id");
                 }
+                progressDialog.dismiss();
                 if (serverId > 0) {
                     Confirm_so(serverId);
                 }
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Log.e(TAG,"Create SO : " + error.toString());
+                progressDialog.dismiss();
+                return super.onError(error);
             }
         });
     }
@@ -238,18 +255,14 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
             @Override
             public void onResult(OdooResult result) {
                 OdooRecord[] records = result.getRecords();
-                for (OdooRecord record : records) {
-                    if (record.getInt("id") > 0){
-                        Toast.makeText(getBaseContext(),"Ticket successfully purchased!",Toast.LENGTH_SHORT).show();
-                    }
-                }
-                Log.d(TAG,"SO Id : " + result.toString());
+                Toast.makeText(getBaseContext(),"Ticket successfully purchased!",Toast.LENGTH_SHORT).show();
+                Log.d(TAG,"Confirm SO : " + result.toString());
                 progressDialog.dismiss();
             }
 
             @Override
             public boolean onError(OdooErrorException error) {
-                Log.e(TAG,"SO Id : " + error.toString());
+                Log.e(TAG,"Confirm SO : " + error.toString());
                 progressDialog.dismiss();
                 return super.onError(error);
             }

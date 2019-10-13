@@ -19,12 +19,15 @@ import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
+import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 
 
@@ -77,8 +80,35 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                             @Override
                             public void onResult(OdooResult result) {
                                 int serverId = result.getInt("result");
-                                progressDialog.dismiss();
-                                Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
+                                if (serverId >0){
+                                    OArguments arguments = new OArguments();
+                                    arguments.add(sharedPrefManager.getSpIdPartner());
+                                    arguments.add(Integer.valueOf(idlelang));
+                                    arguments.add(Integer.valueOf(nilai));
+                                    arguments.add(status);
+                                    client.call_kw("sale.order", "create_so_lelang", arguments, new IOdooResponse() {
+                                        @Override
+                                        public void onResult(OdooResult result) {
+                                            int serverId = 0;
+                                            OdooRecord[] records = result.getRecords();
+                                            for (OdooRecord record : records) {
+                                                serverId = serverId+record.getInt("id");
+                                            }
+                                            if (serverId > 0) {
+                                                Confirm_so(serverId,status,client,context,progressDialog);
+                                            }else {
+                                                Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
+                                                progressDialog.dismiss();
+                                            }
+                                        }
+
+                                        @Override
+                                        public boolean onError(OdooErrorException error) {
+                                            progressDialog.dismiss();
+                                            return super.onError(error);
+                                        }
+                                    });
+                                }
                             }
 
                             @Override
@@ -92,34 +122,28 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                 }
             }
         });
-//        client = new OdooClient.Builder(context)
-//                .setHost(sharedPrefManager.getSP_Host_url())
-//                .setSession(sharedPrefManager.getSpSessionId())
-//                .setSynchronizedRequests(false)
-//                .setConnectListener(new OdooConnectListener() {
-//                    @Override
-//                    public void onConnected(OdooVersion version) {
-//                        OdooValues values = new OdooValues();
-//                        values.put("product_id", idlelang);
-//                        values.put("user_bid", sharedPrefManager.getSpIdUser());
-//                        values.put("nilai", Integer.valueOf(nilai));
-//                        values.put("keterang", status);
-//
-//                        client.create("persebaya.lelang.bid", values, new IOdooResponse() {
-//                            @Override
-//                            public void onResult(OdooResult result) {
-//                                int serverId = result.getInt("result");
-//                            }
-//
-//                            @Override
-//                            public boolean onError(OdooErrorException error) {
-//                                Toast.makeText(context,String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
-//                                return super.onError(error);
-//                            }
-//                        });
-//                    }
-//
-//                }).build();
+    }
+
+    public void Confirm_so(Integer order_id, final String status, OdooClient client, final Context context, final ProgressDialog progressDialog){
+        OArguments arguments = new OArguments();
+        arguments.add(order_id);
+        client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                if (status.equalsIgnoreCase("BID")) {
+                    Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
+                }else{
+                    Toast.makeText(context, "Product Purchased!", Toast.LENGTH_LONG).show();
+                }
+                progressDialog.dismiss();
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                progressDialog.dismiss();
+                return super.onError(error);
+            }
+        });
     }
 
 //    public void create_lelang(String idlelang,String nilai, String status,SharedPrefManager sharedPrefManager){
@@ -162,7 +186,12 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         });
         sharedPrefManager = new SharedPrefManager(getContext());
         progressDialog = new ProgressDialog(getActivity());
-        client = getOdooConnection(getContext());
+        client = getOdooConnection1(getContext(), new OdooErrorListener() {
+            @Override
+            public void onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+            }
+        });
         loadLelang();
 //        new LelangAsyncTask().execute();
         return rootView;

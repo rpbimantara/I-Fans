@@ -1,4 +1,4 @@
-# Referenced at /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml:21
+# Referenced at /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml:30
 -keep class android.support.multidex.MultiDexApplication { <init>(); }
-# Referenced at /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml:21
+# Referenced at /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml:30
 -keep class android.support.v4.app.CoreComponentFactory { <init>(); }

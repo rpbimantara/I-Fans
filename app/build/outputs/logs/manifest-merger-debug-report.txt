@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
 MERGED from [com.android.support:multidex:1.0.3] /home/bimo/.gradle/caches/transforms-2/files-2.1/456a6e64e15198f6a3581000876f76af/multidex-1.0.3/AndroidManifest.xml:17:1-22:12
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [com.theartofdev.edmodo:android-image-cropper:2.7.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/8e2db7fcd5779d4068e59dca3b405950/android-image-cropper-2.7.0/AndroidManifest.xml:2:1-11:12
@@ -62,25 +62,65 @@ MERGED from [com.android.support:interpolator:28.0.0] /home/bimo/.gradle/caches/
 MERGED from [android.arch.lifecycle:livedata:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/987e9b10c40dacf71c326fb133cfcf12/livedata-1.1.1/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.lifecycle:livedata-core:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/bcc6fd35cc65f90790bfddae72ea5b9b/livedata-core-1.1.1/AndroidManifest.xml:17:1-22:12
 MERGED from [android.arch.core:runtime:1.1.1] /home/bimo/.gradle/caches/transforms-2/files-2.1/1754c37170a596c2565dcdf21351b275/runtime-1.1.1/AndroidManifest.xml:17:1-22:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
-INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
+INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
 	package
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:3:5-42
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:4:5-42
 		INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml
 		INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml
 	android:versionName
 		INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
 		INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml
+	xmlns:dist
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:3:5-61
 	android:versionCode
 		INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-108:12
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:1-114:12
 		INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml
 	xmlns:android
 		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:6:5-67
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
+MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:6:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:8:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
+	android:name
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:8:22-76
+uses-permission#android.permission.ACCESS_WIFI_STATE
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:9:5-76
+	android:name
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:9:22-73
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:10:5-81
+	android:name
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:10:22-78
+dist:module
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:11:5-40
+	dist:instant
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:11:18-37
 application
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:5:5-100:19
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:12:5-107:19
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:design:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/6c2164896ca319583b40d5b80aa35763/design-28.0.0/AndroidManifest.xml:22:5-20
 MERGED from [pub.devrel:easypermissions:0.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/7f54bb58ab1097ff9d645a5d62007aff/easypermissions-0.3.0/AndroidManifest.xml:11:5-17:19
@@ -134,235 +174,197 @@ MERGED from [com.android.support:versionedparcelable:28.0.0] /home/bimo/.gradle/
 	android:appComponentFactory
 		ADDED from [com.android.support:support-compat:28.0.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/895559d2bf708e950c8f9daa6bb1fb41/support-compat-28.0.0/AndroidManifest.xml:22:18-91
 	android:supportsRtl
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:11:9-35
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:18:9-35
 	android:label
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:8:9-41
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:15:9-41
 	android:roundIcon
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:10:9-54
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:17:9-54
 	android:largeHeap
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:9:9-33
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:16:9-33
 	android:icon
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:7:9-43
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:14:9-43
 	android:allowBackup
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:6:9-35
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:13:9-35
 	android:theme
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:12:9-40
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:19:9-40
 	android:usesCleartextTraffic
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:13:9-44
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:20:9-44
 activity#com.alpha.test.persebayaapp.LupaPasswordActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:14:9-67
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:21:9-67
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:14:19-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:21:19-55
 activity#com.alpha.test.persebayaapp.DonationAddActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:15:9-57
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:22:9-57
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:15:19-54
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:22:19-54
 activity#com.alpha.test.persebayaapp.DonationDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:16:9-18:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:23:9-25:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:18:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:25:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:17:13-51
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:24:13-51
 activity#com.alpha.test.persebayaapp.NotifikasiActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:19:9-21:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:26:9-28:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:21:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:28:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:20:13-47
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:27:13-47
 activity#com.alpha.test.persebayaapp.DonationActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:22:9-24:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:29:9-31:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:24:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:31:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:23:13-45
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:30:13-45
 activity#com.alpha.test.persebayaapp.TicketBarcodeActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:25:9-27:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:32:9-34:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:27:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:34:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:26:13-50
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:33:13-50
 activity#com.alpha.test.persebayaapp.AccountCoinActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:28:9-30:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:35:9-37:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:30:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:37:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:29:13-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:36:13-48
 activity#com.alpha.test.persebayaapp.RatingLineUpActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:31:9-33:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:38:9-40:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:33:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:40:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:32:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:39:13-49
 activity#com.alpha.test.persebayaapp.AccountAuctionActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:34:9-36:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:41:9-43:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:36:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:43:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:35:13-51
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:42:13-51
 activity#com.alpha.test.persebayaapp.AccountStoreActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:37:9-39:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:44:9-46:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:39:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:46:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:38:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:45:13-49
 activity#com.alpha.test.persebayaapp.TeamDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:40:9-42:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:47:9-49:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:42:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:49:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:41:13-47
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:48:13-47
 activity#com.alpha.test.persebayaapp.MainActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:43:9-52:20
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:50:9-59:20
 	android:label
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:45:13-45
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:52:13-45
 	android:theme
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:46:13-69
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:53:13-69
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:44:13-41
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:51:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:47:13-51:29
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:54:13-58:29
 action#android.intent.action.MAIN
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:48:17-69
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:55:17-69
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:48:25-66
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:55:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:50:17-77
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:57:17-77
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:50:27-74
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:57:27-74
 activity#com.alpha.test.persebayaapp.HomeActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:53:9-50
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:60:9-50
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:53:19-47
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:60:19-47
 activity#com.alpha.test.persebayaapp.LoginActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:54:9-51
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:61:9-51
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:54:19-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:61:19-48
 activity#com.alpha.test.persebayaapp.SingUpActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:55:9-52
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:62:9-52
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:55:19-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:62:19-49
 activity#com.alpha.test.persebayaapp.TicketActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:56:9-58:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:63:9-65:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:58:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:65:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:57:13-43
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:64:13-43
 activity#com.alpha.test.persebayaapp.BeritaDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:59:9-61:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:66:9-68:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:61:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:68:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:60:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:67:13-49
 activity#com.alpha.test.persebayaapp.StoreDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:62:9-64:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:69:9-71:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:64:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:71:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:63:13-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:70:13-48
 activity#com.alpha.test.persebayaapp.LelangDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:65:9-67:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:72:9-74:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:67:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:74:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:66:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:73:13-49
 activity#com.alpha.test.persebayaapp.ClubDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:68:9-70:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:75:9-77:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:70:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:77:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:69:13-47
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:76:13-47
 activity#com.alpha.test.persebayaapp.AccountEditActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:71:9-73:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:78:9-80:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:73:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:80:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:72:13-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:79:13-48
 activity#com.alpha.test.persebayaapp.LelangAddActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:74:9-55
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:81:9-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:74:19-52
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:81:19-52
 activity#com.alpha.test.persebayaapp.StoreAddActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:75:9-54
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:82:9-54
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:75:19-51
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:82:19-51
 activity#com.alpha.test.persebayaapp.TicketDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:76:9-78:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:83:9-85:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:78:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:85:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:77:13-49
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:84:13-49
 activity#com.alpha.test.persebayaapp.CheckoutActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:79:9-81:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:86:9-88:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:81:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:88:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:80:13-45
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:87:13-45
 activity#com.alpha.test.persebayaapp.MatchDetailActivity
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:82:9-84:58
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:89:9-91:58
 	android:parentActivityName
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:84:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:91:13-55
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:83:13-48
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:90:13-48
 meta-data#com.google.firebase.API_KEY
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:86:9-88:184
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:93:9-95:184
 	android:value
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:88:13-181
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:95:13-181
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:87:13-55
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:94:13-55
 meta-data#preloaded_fonts
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:91:9-93:57
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:98:9-100:57
 	android:resource
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:93:13-54
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:100:13-54
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:92:13-43
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:99:13-43
 service#com.alpha.test.persebayaapp.MyFirebaseMessagingService
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:95:9-99:19
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:102:9-106:19
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:95:18-60
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:102:18-60
 intent-filter#action:name:com.google.firebase.MESSAGING_EVENT
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:96:13-98:29
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:103:13-105:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:97:17-78
+ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:104:17-78
 	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:97:25-75
-uses-permission#android.permission.INTERNET
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:101:5-67
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
-MERGED from [com.oogbox.api:odoo:1.0.4] /home/bimo/.gradle/caches/transforms-2/files-2.1/2e8a465029aeaac100f151e4fbfe5190/odoo-1.0.4/AndroidManifest.xml:12:5-67
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:23:5-67
-	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:101:22-64
-uses-permission#android.permission.GET_ACCOUNTS
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:102:5-71
-	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:102:22-68
-uses-permission#android.permission.ACCESS_NETWORK_STATE
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:103:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-measurement-connector-impl:17.0.5] /home/bimo/.gradle/caches/transforms-2/files-2.1/68ca5b100168c7c7f8a2abd6c9a22441/firebase-measurement-connector-impl-17.0.5/AndroidManifest.xml:23:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/582822dc5404538564e47213fa2dc50c/firebase-analytics-16.3.0/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:16.3.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/c55716594271375518e75a6fbcaaf310/firebase-analytics-impl-16.3.0/AndroidManifest.xml:24:5-79
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:17.1.0] /home/bimo/.gradle/caches/transforms-2/files-2.1/9029d8db4b6e638137a49f6f48bf3498/firebase-iid-17.1.0/AndroidManifest.xml:22:5-79
-	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:103:22-76
-uses-permission#android.permission.ACCESS_WIFI_STATE
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:104:5-76
-	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:104:22-73
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:106:5-81
-	android:name
-		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:106:22-78
+		ADDED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml:104:25-75
 uses-sdk
 INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /home/bimo/Documents/ProjectRumahan/Persebaya-App/app/src/main/AndroidManifest.xml

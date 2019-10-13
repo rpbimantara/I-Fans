@@ -63,9 +63,9 @@ public class SingUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                new SaveUser().execute();
-                progressDialog.setMessage("Loading...");
-                progressDialog.show();
-                progressDialog.setCancelable(false);
+//                progressDialog.setMessage("Loading...");
+//                progressDialog.show();
+//                progressDialog.setCancelable(false);
                 create_user();
             }
         });
@@ -144,7 +144,7 @@ public class SingUpActivity extends AppCompatActivity {
 
     public void create_user() {
         if (!is_Valid()) {
-            progressDialog.dismiss();
+//            progressDialog.dismiss();
             return;
         }else {
             is_connect();
