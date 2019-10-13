@@ -442,12 +442,12 @@ public class StoreDetailActivity extends AppCompatActivity {
         client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
-                OdooRecord[] records = result.getRecords();
-                for (OdooRecord record : records) {
-                    if (record.getInt("id") > 0){
+//                OdooRecord[] records = result.getRecords();
+//                for (OdooRecord record : records) {
+//                    if (record.getInt("id") > 0){
                         Toast.makeText(getBaseContext(),"Item purchased!",Toast.LENGTH_SHORT).show();
-                    }
-                }
+//                    }
+//                }
                 Log.d(TAG,"SO Id : " + result.toString());
                 progressDialog.dismiss();
             }

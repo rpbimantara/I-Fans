@@ -14,8 +14,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import oogbox.api.odoo.OdooClient;
@@ -25,7 +29,9 @@ import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 
+import static com.alpha.test.persebayaapp.CommonUtils.getBase64ImageString;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
 public class AccountEditActivity extends AppCompatActivity {
     EditText ETname,ETnik,ETaddress,ETmail,ETphone,ETcomunity;
@@ -51,16 +57,18 @@ public class AccountEditActivity extends AppCompatActivity {
         txtbirthday.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Calendar cal = Calendar.getInstance();
+                final Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog dialog = new DatePickerDialog(AccountEditActivity.this, AlertDialog.THEME_HOLO_LIGHT,new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        String date = month + "/" + dayOfMonth + "/" + year;
-                        txtbirthday.setText(date);
+                        SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy");
+                        cal.set(Calendar.YEAR, year);
+                        cal.set(Calendar.MONTH, month);
+                        cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        txtbirthday.setText(f.format(cal.getTime()));
                     }
                 },year,month,day);
                 dialog.show();
@@ -72,34 +80,8 @@ public class AccountEditActivity extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!TextUtils.isEmpty(ETname.getText())){
-                    if(!TextUtils.isEmpty(ETnik.getText())){
-                        if(!TextUtils.isEmpty(ETaddress.getText())){
-                            if(!TextUtils.isEmpty(txtbirthday.getText())){
-                                if(!TextUtils.isEmpty(txtbirthday.getText())){
-                                    if(!TextUtils.isEmpty(ETmail.getText())){
-                                        if(!TextUtils.isEmpty(ETphone.getText())){
-                                            saveBtn();
-                                        }else{
-                                            ETphone.setError("Fill Phone!");
-                                        }
-                                    }else{
-                                        ETmail.setError("Fill Email!");
-                                    }
-                                }else{
-                                    txtbirthday.setError("Fill Birthday!");
-                                }
-                            }else{
-                                txtbirthday.setError("Fill Valid Birthday!");
-                            }
-                        }else{
-                            ETaddress.setError("Fill Address!");
-                        }
-                    }else{
-                        ETnik.setError("Fill Public Number!");
-                    }
-                }else{
-                    ETname.setError("Fill name!");
+                if(is_Valid() == true){
+                    saveBtn();
                 }
             }
         });
@@ -128,6 +110,11 @@ public class AccountEditActivity extends AppCompatActivity {
                     }else{
                         ETnik.setText(record.getString("nik"));
                     }
+                    if(record.getString("tgl_lahir").equalsIgnoreCase("tgl_lahir")){
+//                        ETaddress.setText("Address");
+                    }else{
+                        txtbirthday.setText(tanggal(record.getString("tgl_lahir")));
+                    }
 
                     if(record.getString("street").equalsIgnoreCase("false")){
 //                        ETaddress.setText("Address");
@@ -155,7 +142,57 @@ public class AccountEditActivity extends AppCompatActivity {
             }
         });
     }
+    public Boolean is_Valid() {
+        Boolean is_Success = true;
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        if(TextUtils.isEmpty(ETname.getText())){
+            is_Success = false;
+            ETname.setError("Fill Name.");
+        }
 
+        if(TextUtils.isEmpty(ETnik.getText())){
+            if (ETnik.getText().length()<16){
+                is_Success = false;
+                ETnik.setError("Invalid NIK.");
+            }
+        }
+
+        if(TextUtils.isEmpty(ETaddress.getText())){
+            is_Success = false;
+            ETaddress.setError("Fill Address.");
+        }
+        if(TextUtils.isEmpty(ETmail.getText())){
+            is_Success = false;
+            ETmail.setError("Fill E-Mail.");
+        }else{
+            String cekemail = ETmail.getText().toString().trim();
+            if (!cekemail.matches(emailPattern)){
+                is_Success = false;
+                ETmail.setError("Invalid E-Mail.");
+            }
+        }
+        if(TextUtils.isEmpty(ETphone.getText())){
+            is_Success = false;
+            ETphone.setError("Fill Phone.");
+        }
+
+        if(!txtbirthday.getText().toString().equalsIgnoreCase("")){
+            DateFormat f = new SimpleDateFormat("dd MMM yyyy");
+            Date date = new Date();
+            try {
+                if (f.parse(txtbirthday.getText().toString()).after(f.parse(f.format(date)))){
+                    is_Success = false;
+                    Toast.makeText(getBaseContext(),"Must fill with different day after today!",Toast.LENGTH_SHORT).show();
+                }
+            } catch (ParseException e) {
+                throw new IllegalArgumentException(e);
+            }
+        }else{
+            is_Success = false;
+            Toast.makeText(getBaseContext(),"Fill Birthday.",Toast.LENGTH_SHORT).show();
+        }
+        return is_Success;
+    }
 
     public void saveBtn(){
         progressDialog.setMessage("Saving Data........");

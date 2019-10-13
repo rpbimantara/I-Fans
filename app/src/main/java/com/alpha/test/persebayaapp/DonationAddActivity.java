@@ -19,7 +19,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.helper.OdooErrorException;
@@ -64,30 +68,13 @@ public class DonationAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (state.equalsIgnoreCase("create")){
-                    if (!TextUtils.isEmpty(getBase64ImageString(currentImage))){
-                        if (!TextUtils.isEmpty(etName.getText())){
-                            if (!TextUtils.isEmpty(etTarget.getText())){
-                                if (!TextUtils.isEmpty(txtDuedate.getText())){
-                                    if (!TextUtils.isEmpty(etdeskripsi.getText())){
-                                        createbtn();
-                                    }else{
-                                        etdeskripsi.setError("Fill Description.");
-                                    }
-                                }else{
-                                    txtDuedate.setError("Fill Name.");
-                                }
-                            }else{
-                                etTarget.setError("Fill Target.");
-                            }
-                        }else{
-                            etName.setError("Fill Name.");
-                        }
-                    }else{
-                        Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
+                    if(is_Valid() == true){
+                        createbtn();
                     }
-//                    new SaveDonationTask().execute();
                 }else{
-
+//                    if(is_Valid() == true){
+//                        savebtn();
+//                    }
                 }
             }
         });
@@ -98,16 +85,18 @@ public class DonationAddActivity extends AppCompatActivity {
         txtDuedate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
+                final Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog dialog = new DatePickerDialog(DonationAddActivity.this, AlertDialog.THEME_HOLO_LIGHT,new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        String date = month + "/" + dayOfMonth + "/" + year;
-                        txtDuedate.setText(date);
+                        SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy");
+                        cal.set(Calendar.YEAR, year);
+                        cal.set(Calendar.MONTH, month);
+                        cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        txtDuedate.setText(f.format(cal.getTime()));
                     }
                 },year,month,day);
                 dialog.show();
@@ -178,6 +167,47 @@ public class DonationAddActivity extends AppCompatActivity {
         });
     }
 
+    public Boolean is_Valid() {
+        Boolean is_Success = true;
+        if(!TextUtils.isEmpty(getBase64ImageString(currentImage))){
+            Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
+        }
+        if(TextUtils.isEmpty(etName.getText())){
+            is_Success = false;
+            etName.setError("Fill Name.");
+        }
+
+        if(TextUtils.isEmpty(etdeskripsi.getText())){
+            is_Success = false;
+            etdeskripsi.setError("Fill Description.");
+        }
+
+        if(!TextUtils.isEmpty(etTarget.getText())){
+            if(Integer.valueOf(etTarget.getText().toString())<=0){
+                is_Success = false;
+                etTarget.setError("Must greather than 0");
+            }
+        }else{
+            is_Success = false;
+            etTarget.setError("Fill Target Donation.");
+        }
+        if(!txtDuedate.getText().toString().equalsIgnoreCase("")){
+            DateFormat f = new SimpleDateFormat("dd MMM yyyy");
+            Date date = new Date();
+            try {
+                if (!f.parse(txtDuedate.getText().toString()).after(f.parse(f.format(date)))){
+                    is_Success = false;
+                    Toast.makeText(getBaseContext(),"Must fill with different day after today!",Toast.LENGTH_SHORT).show();
+                }
+            } catch (ParseException e) {
+                throw new IllegalArgumentException(e);
+            }
+        }else{
+            is_Success = false;
+            Toast.makeText(getBaseContext(),"Fill Due Date.",Toast.LENGTH_SHORT).show();
+        }
+        return is_Success;
+    }
 
 //    public class SaveDonationTask extends AsyncTask<Void,Void,Void> {
 //        @Override

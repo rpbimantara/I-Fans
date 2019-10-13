@@ -27,11 +27,13 @@ import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
 import static com.alpha.test.persebayaapp.CommonUtils.formater;
 //import static com.alpha.test.i_fans.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 
@@ -120,7 +122,13 @@ public class DonationDetailActivity extends AppCompatActivity {
             }
         });
 
-        client = getOdooConnection(getBaseContext());
+        client = getOdooConnection1(getBaseContext(), new OdooErrorListener() {
+            @Override
+            public void onError(OdooErrorException error) {
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(),"Thank your for your donation.",Toast.LENGTH_LONG).show();
+            }
+        });
         LoadData();
     }
 
@@ -161,29 +169,31 @@ public class DonationDetailActivity extends AppCompatActivity {
             public void onResult(OdooResult result) {
                 int serverId = result.getInt("result");
                 if (serverId >0){
-                    OArguments arguments = new OArguments();
-                    arguments.add(sharedPrefManager.getSpIdPartner());
-                    arguments.add(Integer.valueOf(getIntent().getExtras().get("id").toString()));
-                    arguments.add(Donation);
-                    client.call_kw("sale.order", "create_so_donasi", arguments, new IOdooResponse() {
-                        @Override
-                        public void onResult(OdooResult result) {
-                            int serverId = 0;
-                            OdooRecord[] records = result.getRecords();
-                            for (OdooRecord record : records) {
-                                serverId = serverId+record.getInt("id");
-                            }
-                            if (serverId > 0) {
-                                Confirm_so(serverId);
-                            }
-                        }
-
-                        @Override
-                        public boolean onError(OdooErrorException error) {
-                            progressDialog.dismiss();
-                            return super.onError(error);
-                        }
-                    });
+//                    Confirm_so(serverId);
+//                    OArguments arguments = new OArguments();
+//                    arguments.add(sharedPrefManager.getSpIdPartner());
+//                    arguments.add(Integer.valueOf(getIntent().getExtras().get("id").toString()));
+//                    arguments.add(Donation);
+//                    client.call_kw("sale.order", "create_so_donasi", arguments, new IOdooResponse() {
+////                    client.call_kw("sale.order", "create_so_donasi", arguments, new IOdooResponse() {
+//                        @Override
+//                        public void onResult(OdooResult result) {
+//                            int serverId = 0;
+//                            OdooRecord[] records = result.getRecords();
+//                            for (OdooRecord record : records) {
+//                                serverId = serverId+record.getInt("id");
+//                            }
+//                            if (serverId > 0) {
+//                                Confirm_so(serverId);
+//                            }
+//                        }
+//
+//                        @Override
+//                        public boolean onError(OdooErrorException error) {
+//                            progressDialog.dismiss();
+//                            return super.onError(error);
+//                        }
+//                    });
                 }
 
             }

@@ -20,10 +20,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import oogbox.api.odoo.OdooClient;
@@ -75,38 +79,13 @@ public class LelangAddActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (state.equalsIgnoreCase("create")){
-                    if (!TextUtils.isEmpty(getBase64ImageString(currentImage))){
-                        if (!TextUtils.isEmpty(etName.getText())){
-                            if (!TextUtils.isEmpty(etOb.getText()) && Integer.valueOf(etOb.getText().toString())>0){
-                                if (!TextUtils.isEmpty(etInc.getText()) && Integer.valueOf(etOb.getText().toString())>0){
-                                    if (!TextUtils.isEmpty(etBin.getText()) && Integer.valueOf(etOb.getText().toString())>0){
-                                        if (!TextUtils.isEmpty(txtDuedate.getText())){
-                                            if (!TextUtils.isEmpty(etdeskripsi.getText())){
-                                                createLelang();
-                                            }else{
-                                                etdeskripsi.setError("Fill Description.");
-                                            }
-                                        }else{
-                                            txtDuedate.setError("Fill Name.");
-                                        }
-                                    }else{
-                                        etBin.setError("Fill  Valid BIN Now.");
-                                    }
-                                }else{
-                                    etInc.setError("Fill  Valid Increment.");
-                                }
-                            }else{
-                                etOb.setError("Fill  Valid Open Bid.");
-                            }
-                        }else{
-                            etName.setError("Fill Name.");
-                        }
-                    }else{
-                        Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
+                    if(is_Valid() == true){
+                        createLelang();
                     }
-//                    new SaveLelangTask().execute();
                 }else{
-
+                    if(is_Valid() == true){
+                        saveLelang();
+                    }
                 }
             }
         });
@@ -119,16 +98,18 @@ public class LelangAddActivity extends AppCompatActivity {
         txtDuedate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Calendar cal = Calendar.getInstance();
+                final Calendar cal = Calendar.getInstance();
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog dialog = new DatePickerDialog(LelangAddActivity.this, AlertDialog.THEME_HOLO_LIGHT,new DatePickerDialog.OnDateSetListener() {
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                        month = month + 1;
-                        String date = month + "/" + dayOfMonth + "/" + year;
-                        txtDuedate.setText(date);
+                        SimpleDateFormat f = new SimpleDateFormat("dd MMM yyyy");
+                        cal.set(Calendar.YEAR, year);
+                        cal.set(Calendar.MONTH, month);
+                        cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                        txtDuedate.setText(f.format(cal.getTime()));
                     }
                 },year,month,day);
                 dialog.show();
@@ -146,10 +127,70 @@ public class LelangAddActivity extends AppCompatActivity {
         if (!getIntent().getExtras().get("id").toString().equalsIgnoreCase("false")){
             state = "edit";
             etOb.setEnabled(false);
+            txtDuedate.setClickable(false);
             LoadItem();
         }
     }
 
+    public Boolean is_Valid() {
+        Boolean is_Success = true;
+        if(!TextUtils.isEmpty(getBase64ImageString(currentImage))){
+            Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
+        }
+        if(TextUtils.isEmpty(etName.getText())){
+            is_Success = false;
+            etName.setError("Fill Name.");
+        }
+        if(!TextUtils.isEmpty(etOb.getText())){
+            if(Integer.valueOf(etOb.getText().toString())<=0){
+                is_Success = false;
+                etOb.setError("Must greather than 0");
+            }
+        }else{
+            is_Success = false;
+            etOb.setError("Fill Open Bid.");
+        }
+
+        if(!TextUtils.isEmpty(etInc.getText())){
+            if(Integer.valueOf(etInc.getText().toString())<=0){
+                is_Success = false;
+                etInc.setError("Must greather than 0");
+            }
+        }else{
+            is_Success = false;
+            etInc.setError("Fill Increment.");
+        }
+
+        if(!TextUtils.isEmpty(etBin.getText())){
+            if(Integer.valueOf(etBin.getText().toString())<=0){
+                is_Success = false;
+                etBin.setError("Must greather than 0");
+            }
+        }else{
+            is_Success = false;
+            etBin.setError("Fill BIN.");
+        }
+        if(TextUtils.isEmpty(etdeskripsi.getText())){
+            is_Success = false;
+            etdeskripsi.setError("Fill Description.");
+        }
+        if(!txtDuedate.getText().toString().equalsIgnoreCase("")){
+            DateFormat f = new SimpleDateFormat("dd MMM yyyy");
+            Date date = new Date();
+            try {
+                if (!f.parse(txtDuedate.getText().toString()).after(f.parse(f.format(date)))){
+                    is_Success = false;
+                    Toast.makeText(getBaseContext(),"Must fill with different day after today!",Toast.LENGTH_SHORT).show();
+                }
+            } catch (ParseException e) {
+                throw new IllegalArgumentException(e);
+            }
+        }else{
+            is_Success = false;
+            Toast.makeText(getBaseContext(),"Fill Due Date.",Toast.LENGTH_SHORT).show();
+        }
+        return is_Success;
+    }
 
     public void createLelang(){
         progressDialog.setMessage("Create.....");
@@ -171,7 +212,36 @@ public class LelangAddActivity extends AppCompatActivity {
             public void onResult(OdooResult result) {
                 // Success response
                 progressDialog.dismiss();
-                Toast.makeText(getBaseContext(),"Auction Created!",Toast.LENGTH_LONG).show();
+                Toast.makeText(getBaseContext(),"Auction Created, Admin will review your Auction!",Toast.LENGTH_LONG).show();
+                finish();
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(getBaseContext(),String.valueOf(error.getMessage()),Toast.LENGTH_LONG).show();
+                progressDialog.dismiss();
+                return super.onError(error);
+            }
+        });
+    }
+
+    public void saveLelang(){
+        progressDialog.setMessage("Saving.....");
+        progressDialog.show();
+        OdooValues values = new OdooValues();
+        values.put("image_medium", getBase64ImageString(currentImage));
+        values.put("name", etName.getText().toString());
+        values.put("inc", etInc.getText().toString());
+        values.put("binow", etBin.getText().toString());
+        values.put("description_sale", etdeskripsi.getText().toString());
+        values.put("due_date", txtDuedate.getText().toString());
+
+        client.write("product.template", new Integer[]{Integer.valueOf(getIntent().getExtras().get("id").toString())},values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // Success response
+                progressDialog.dismiss();
+                Toast.makeText(getBaseContext(),"Saving Changes!",Toast.LENGTH_LONG).show();
                 finish();
             }
 
@@ -256,7 +326,7 @@ public class LelangAddActivity extends AppCompatActivity {
         domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
 
         OdooFields fields = new OdooFields();
-        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
+        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid","description_sale");
 
         int offset = 0;
         int limit = 80;
@@ -279,9 +349,10 @@ public class LelangAddActivity extends AppCompatActivity {
                     txtInc = String.valueOf(Math.round(record.getFloat("inc")));
                     txtBin = String.valueOf(Math.round(record.getFloat("binow")));
                     Duedate = tanggal(record.getString("due_date"));
-                    txtdeskripsi = record.getString("create_uid");
+                    txtdeskripsi = record.getString("description_sale");
                 }
                 imageUser.setImageBitmap(StringToBitMap(imageCurrent));
+                currentImage = StringToBitMap(imageCurrent);
                 etName.setText(txtName);
                 etOb.setText(txtOb);
                 etInc.setText(txtInc);

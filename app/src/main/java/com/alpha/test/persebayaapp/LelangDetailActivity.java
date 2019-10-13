@@ -100,7 +100,7 @@ public class LelangDetailActivity extends AppCompatActivity {
         domain.add("id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
 
         OdooFields fields = new OdooFields();
-        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
+        fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid","description_sale");
 
         int offset = 0;
         int limit = 80;
@@ -130,7 +130,7 @@ public class LelangDetailActivity extends AppCompatActivity {
                         btnDelete.setVisibility(View.INVISIBLE);
                         btnEdit.setVisibility(View.INVISIBLE);
                     }
-                    txtDeskripsi.setText("Deskripsi : \n\n" + "-");
+                    txtDeskripsi.setText("Deskripsi : \n\n" + record.getString("description_sale"));
                     txtInfoDetail.setText(record.getString("create_uid")+" - "+tanggal(record.getString("due_date")));
                 }
             }

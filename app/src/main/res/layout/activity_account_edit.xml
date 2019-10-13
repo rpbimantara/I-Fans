@@ -53,6 +53,7 @@
                         android:hint="Name"
                         android:textColorHint="@color/colorTrueState"
                         android:textSize="15dp"
+                        android:maxLength="16"
                         android:textColor="@color/colorTrueState"
                         android:backgroundTint="@color/colorPrimaryDark"/>
 
@@ -218,6 +219,7 @@
                         android:hint="Phone"
                         android:textColorHint="@color/colorTrueState"
                         android:textSize="15dp"
+                        android:maxLength="12"
                         android:textColor="@color/colorTrueState"
                         android:backgroundTint="@color/colorPrimaryDark"/>
 
