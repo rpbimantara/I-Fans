@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static com.alpha.test.persebayaapp.CommonUtils.formater;
+
 public class AdapterTicket extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private ArrayList<Tiket> dataList;
     private TicketListener mListener;
@@ -46,7 +48,7 @@ public class AdapterTicket extends RecyclerView.Adapter<RecyclerView.ViewHolder>
         if (getItemViewType(position) == VIEW_TYPE_NORMAL) {
             TicketViewHolder holder = ((TicketViewHolder) viewHolder);
             holder.kategoriTiket.setText(dataList.get(position).getKategoriTiket());
-            holder.hargaTiket.setText(dataList.get(position).getHargaTiket());
+            holder.hargaTiket.setText(formater(Float.parseFloat(dataList.get(position).getHargaTiket())));
             holder.rgseat.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(RadioGroup radioGroup, int i) {

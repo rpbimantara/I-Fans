@@ -16,13 +16,16 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 
 
 /**
@@ -147,7 +150,12 @@ public class MatchLineUpHomeFragment extends Fragment {
 
                 }
             });
-            client = getOdooConnection(getContext());
+            client = getOdooConnection1(getContext(), new OdooErrorListener() {
+                @Override
+                public void onError(OdooErrorException error) {
+                    swiper.setRefreshing(false);
+                }
+            });
             loadLineUpHome();
 //            new LineUpHomeTask().execute();
 
@@ -206,6 +214,11 @@ public class MatchLineUpHomeFragment extends Fragment {
                 adapter.notifyDataSetChanged();
                 adapterCore.notifyDataSetChanged();
                 swiper.setRefreshing(false);
+            }
+            @Override
+            public boolean onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+                return super.onError(error);
             }
         });
     }

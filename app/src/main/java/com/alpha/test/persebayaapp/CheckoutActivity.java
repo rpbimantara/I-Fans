@@ -121,7 +121,6 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                         PayCheckout();
                         progressDialog.setMessage("Loading....");
                         progressDialog.show();
-                        progressDialog.setCancelable(false);
                         dialogInterface.dismiss();
                     }
                 });
@@ -158,26 +157,27 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                 final OdooRecord[] records = result.getRecords();
                 if (result.getInt("length") > 0){
                     for (final OdooRecord record : records){
-                        OArguments arguments = new OArguments();
-                        arguments.add(record.getInt("id"));
-                            client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
-                                @Override
-                                public void onResult(OdooResult result) {
-                                    OdooRecord[] records = result.getRecords();
-                                    for (OdooRecord record : records) {
-                                        if (record.getInt("id") > 0){
-                                            progressDialog.dismiss();
-                                            Toast.makeText(getBaseContext(),"Successfully purchased!",Toast.LENGTH_SHORT).show();
-                                        }
-                                    }
-                                }
-
-                                @Override
-                                public boolean onError(OdooErrorException error) {
-                                    progressDialog.dismiss();
-                                    return super.onError(error);
-                                }
-                            });
+//                        OArguments arguments = new OArguments();
+//                        arguments.add(record.getInt("id"));
+                        Confirm_so(record.getInt("id"));
+//                            client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
+//                                @Override
+//                                public void onResult(OdooResult result) {
+////                                    OdooRecord[] records = result.getRecords();
+////                                    for (OdooRecord record : records) {
+////                                        if (record.getInt("id") > 0){
+//                                            progressDialog.dismiss();
+//                                            Toast.makeText(getBaseContext(),"Successfully purchased!",Toast.LENGTH_SHORT).show();
+////                                        }
+////                                    }
+//                                }
+//
+//                                @Override
+//                                public boolean onError(OdooErrorException error) {
+//                                    progressDialog.dismiss();
+//                                    return super.onError(error);
+//                                }
+//                            });
                     }
                 }else{
                     Toast.makeText(CheckoutActivity.this,"No item to Paid!",Toast.LENGTH_SHORT).show();
@@ -250,7 +250,30 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
             }
         });
     }
+    public void Confirm_so(Integer order_id){
+        OArguments arguments = new OArguments();
+        arguments.add(order_id);
+        client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+//                OdooRecord[] records = result.getRecords();
+//                for (OdooRecord record : records) {
+//                    if (record.getInt("id") > 0){
+                Toast.makeText(getBaseContext(),"Item purchased!",Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//                Log.d(TAG,"SO Id : " + result.toString());
+                progressDialog.dismiss();
+            }
 
+            @Override
+            public boolean onError(OdooErrorException error) {
+//                Log.e(TAG,"SO Id : " + error.toString());
+                progressDialog.dismiss();
+                return super.onError(error);
+            }
+        });
+    }
 //    public  void CreateInvoice(){
 //        client = new OdooClient.Builder(CheckoutActivity.this)
 //                .setHost(sharedPrefManager.getSP_Host_url())

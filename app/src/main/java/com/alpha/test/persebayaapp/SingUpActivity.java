@@ -153,7 +153,7 @@ public class SingUpActivity extends AppCompatActivity {
 
     public Boolean is_Valid() {
         Boolean is_Success = false;
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]+\\.+[a-z]+";
 
         if (!TextUtils.isEmpty(email.getText())) {
             String cekemail = email.getText().toString().trim();

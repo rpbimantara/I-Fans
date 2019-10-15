@@ -46,7 +46,7 @@ public class LupaPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lupa_password);
         sharedPrefManager =  new SharedPrefManager(this);
         progressDialog = new ProgressDialog(this);
-//        _loginLink = findViewById(R.id.link_login);
+        _loginLink = findViewById(R.id.link_login);
         client = CommonUtils.getOdooConnection1(getBaseContext(), new OdooErrorListener() {
             @Override
             public void onError(OdooErrorException error) {
@@ -54,36 +54,36 @@ public class LupaPasswordActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         });
-        webView = findViewById(R.id.webview_1);
-        webView.setWebViewClient(new WebViewClient() {
+//        webView = findViewById(R.id.webview_1);
+//        webView.setWebViewClient(new WebViewClient() {
+//            @Override
+//            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+//                view.loadUrl(url);
+//                return false;
+//            }
+//        });
+//        webView.getSettings().setJavaScriptEnabled(true);
+//        webView.loadUrl("http://103.133.56.224:8069");
+        btnLupaPassword = findViewById(R.id.btn_send_lupa_password);
+        etUsername = findViewById(R.id.input_username_lupapassword);
+        _loginLink.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return false;
+            public void onClick(View view) {
+                Intent login = new Intent(getBaseContext(),LoginActivity.class);
+                startActivity(login);
+                finish();
             }
         });
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl("http://103.133.56.224:8069");
-//        btnLupaPassword = findViewById(R.id.btn_send_lupa_password);
-//        etUsername = findViewById(R.id.input_username_lupapassword);
-//        _loginLink.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent login = new Intent(getBaseContext(),LoginActivity.class);
-//                startActivity(login);
-//                finish();
-//            }
-//        });
-//        btnLupaPassword.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                progressDialog.setMessage("Loading...");
-//                progressDialog.show();
-//                progressDialog.setCancelable(false);
-//                is_connect();
-//
-//            }
-//        });
+        btnLupaPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                progressDialog.setCancelable(false);
+                is_connect();
+
+            }
+        });
     }
 
     public void is_connect(){

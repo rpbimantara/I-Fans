@@ -3,6 +3,7 @@ package com.alpha.test.persebayaapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 
 
 /**
@@ -30,6 +34,7 @@ public class MatchStatisticFragment extends Fragment {
             txt_CorrnerHome, txt_CorrnerAway,txt_FoulsHome,txt_FoulsAway,txt_OffsidesHome,txt_OffsidesAway,txt_YellowHome,txt_YellowAway,
             txt_RedHome,txt_RedAway;
     View rootView;
+    SwipeRefreshLayout swiper;
     OdooClient client;
 
     public MatchStatisticFragment() {
@@ -42,6 +47,7 @@ public class MatchStatisticFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_match_statistic, container, false);
+        swiper = rootView.findViewById(R.id.swiperefresh_match_statistic);
         pbBallHome = rootView.findViewById(R.id.progressBarBallHome);
         pbBallAway = rootView.findViewById(R.id.progressBarBallAway);
         pbPassingHome = rootView.findViewById(R.id.progressBarPassingHome);
@@ -79,7 +85,18 @@ public class MatchStatisticFragment extends Fragment {
         txt_YellowAway = rootView.findViewById(R.id.txt_YellowAway);
         txt_RedHome = rootView.findViewById(R.id.txt_RedHome);
         txt_RedAway = rootView.findViewById(R.id.txt_RedAway);
-        client = getOdooConnection(getContext());
+        client = getOdooConnection1(getContext(), new OdooErrorListener() {
+            @Override
+            public void onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+            }
+        });
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadMatchStatistic();
+            }
+        });
         loadMatchStatistic();
         return rootView;
     }
@@ -104,9 +121,9 @@ public class MatchStatisticFragment extends Fragment {
                 System.out.println(records.toString());
                 for (OdooRecord record : records) {
                     pbBallHome.setProgress(record.getInt("penguasaan_home"));
-                    txt_BallHome.setText(String.valueOf(record.getInt("penguasaan_home")));
+                    txt_BallHome.setText(String.valueOf(record.getInt("penguasaan_home"))+" %");
                     pbBallAway.setProgress(record.getInt("penguasaan_away"));
-                    txt_BallAway.setText(String.valueOf(record.getInt("penguasaan_away")));
+                    txt_BallAway.setText(String.valueOf(record.getInt("penguasaan_away"))+"%");
 
                     pbTotalHome.setProgress(record.getInt("tembakan_home"));
                     txt_TotalHome.setText(String.valueOf(record.getInt("tembakan_home")));
@@ -138,6 +155,7 @@ public class MatchStatisticFragment extends Fragment {
                     pbRedAway.setProgress(record.getInt("merah_away"));
                     txt_RedAway.setText(String.valueOf(record.getInt("penguasaan_away")));
                 }
+                swiper.setRefreshing(false);
             }
 
         });

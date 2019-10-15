@@ -3,6 +3,7 @@ package com.alpha.test.persebayaapp;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,13 +11,16 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 
 
 /**
@@ -28,6 +32,7 @@ public class TeamDetailStatisticFragment extends Fragment {
     TextView txtGoalkick,txtGoal,txtPosession,txtAerial,txtPasses,txtKeyPasses,txtAssist,txtTackles,txtSaves,txtFouls,txtYellow,txtRed,txtOffside,txtClearance,txtBlock,txtInterception;
     View rootView;
     OdooClient client;
+    SwipeRefreshLayout swiper;
 
     public TeamDetailStatisticFragment() {
         // Required empty public constructor
@@ -39,6 +44,7 @@ public class TeamDetailStatisticFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         rootView =  inflater.inflate(R.layout.fragment_team_detail_statistic, container, false);
+        swiper = rootView.findViewById(R.id.swiperefresh_team_detail_statistic);
         pbGoalkick = rootView.findViewById(R.id.progressBarGoalKick);
         pbGoal = rootView.findViewById(R.id.progressBarGoal);
         pbPosession = rootView.findViewById(R.id.progressBarPossessionLoss);
@@ -72,8 +78,18 @@ public class TeamDetailStatisticFragment extends Fragment {
         txtClearance = rootView.findViewById(R.id.txt_Clearances);
         txtBlock = rootView.findViewById(R.id.txt_Block);
         txtInterception = rootView.findViewById(R.id.txt_Interception);
-
-        client = getOdooConnection(getContext());
+        swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                loadTeamStatistic();
+            }
+        });
+        client = getOdooConnection1(getContext(), new OdooErrorListener() {
+            @Override
+            public void onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+            }
+        });
         loadTeamStatistic();
     return rootView;
     }
@@ -145,6 +161,13 @@ public class TeamDetailStatisticFragment extends Fragment {
                     txtInterception.setText(String.valueOf(record.getInt("sukses_rebut")));
 
                 }
+
+                swiper.setRefreshing(false);
+            }
+            @Override
+            public boolean onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+                return super.onError(error);
             }
 
         });

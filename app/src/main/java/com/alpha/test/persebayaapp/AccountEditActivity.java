@@ -110,7 +110,7 @@ public class AccountEditActivity extends AppCompatActivity {
                     }else{
                         ETnik.setText(record.getString("nik"));
                     }
-                    if(record.getString("tgl_lahir").equalsIgnoreCase("tgl_lahir")){
+                    if(record.getString("tgl_lahir").equalsIgnoreCase("false")){
 //                        ETaddress.setText("Address");
                     }else{
                         txtbirthday.setText(tanggal(record.getString("tgl_lahir")));
@@ -176,7 +176,7 @@ public class AccountEditActivity extends AppCompatActivity {
             ETphone.setError("Fill Phone.");
         }
 
-        if(!txtbirthday.getText().toString().equalsIgnoreCase("")){
+        if(!txtbirthday.getText().toString().equalsIgnoreCase("false")){
             DateFormat f = new SimpleDateFormat("dd MMM yyyy");
             Date date = new Date();
             try {

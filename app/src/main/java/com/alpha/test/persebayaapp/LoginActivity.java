@@ -27,6 +27,9 @@ import oogbox.api.odoo.client.listeners.AuthenticateListener;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooConnectListener;
 
+import static com.alpha.test.persebayaapp.CommonUtils.getDatabase;
+import static com.alpha.test.persebayaapp.CommonUtils.getURL;
+
 public class LoginActivity extends AppCompatActivity {
     Button btnLogin;
     EditText etUsername,etPassword;
@@ -51,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                new SignUpTask().execute();
-                Intent singup = new Intent(getApplicationContext(),SingUpActivity.class);
+                Intent singup = new Intent(getBaseContext(),SingUpActivity.class);
                 startActivity(singup);
 //                progressDialog.dismiss();
             }
@@ -59,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         _lupaPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent lupa = new Intent(getApplicationContext(),LupaPasswordActivity.class);
+                Intent lupa = new Intent(getBaseContext(),LupaPasswordActivity.class);
                 startActivity(lupa);
             }
         });
@@ -157,13 +160,12 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... voids) {
             client = new OdooClient.Builder(getApplicationContext())
-                    .setHost(sharedPrefManager.getSP_Host_url())
-                    .setSynchronizedRequests(false)
+                    .setHost(getURL())
                     .setConnectListener(new OdooConnectListener() {
                         @Override
                         public void onConnected(OdooVersion version) {
                             // Success connection
-                            client.authenticate(uname,pass, sharedPrefManager.getSP_db(), loginCallback);
+                            client.authenticate(uname,pass, getDatabase(), loginCallback);
                         }
                     })
                     .build();

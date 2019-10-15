@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
@@ -90,12 +91,12 @@ public class KlasemenFragment extends Fragment {
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
 
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                        if (RecyclerViewItemPosition > 0) {
+//                        if (RecyclerViewItemPosition > 0) {
                             Intent intent = new Intent(getActivity(), ClubDetailActivity.class);
                             intent.putExtra("id", String.valueOf(ArrayListKlasemen.get(RecyclerViewItemPosition).getId_club()));
                             intent.putExtra("nama", ArrayListKlasemen.get(RecyclerViewItemPosition).getTxtTeamKlasemen());
                             startActivity(intent);
-                        }
+//                        }
                     }
                     return false;
                 }
@@ -128,14 +129,14 @@ public class KlasemenFragment extends Fragment {
                 OdooRecord[] Records = result.getRecords();
                 Integer color = getResources().getColor(R.color.colorWhite);
 
-                ArrayListKlasemen.add(new Klasemen(
-                        String.valueOf("No."),
-                        String.valueOf("Logo"),
-                        String.valueOf("Club"),
-                        String.valueOf("P"),
-                        String.valueOf("+/-"),
-                        String.valueOf("Pts"),
-                        color,0));
+//                ArrayListKlasemen.add(new Klasemen(
+//                        String.valueOf("No."),
+//                        String.valueOf("Logo"),
+//                        String.valueOf("Club"),
+//                        String.valueOf("P"),
+//                        String.valueOf("+/-"),
+//                        String.valueOf("Pts"),
+//                        color,0));
                 int i = 1;
                 for (final OdooRecord record : Records) {
                     if (record.getString("nama_club").equalsIgnoreCase("Persebaya")){
@@ -148,13 +149,14 @@ public class KlasemenFragment extends Fragment {
                             record.getString("foto_club"),
                             record.getString("nama_club"),
                             String.valueOf(record.getInt("play")),
-                            String.valueOf(record.getInt("selisih_gol")),
+                            String.valueOf(record.getString("selisih_gol")),
                             String.valueOf(record.getInt("point")),
                             color,
                             record.getInt("id")));
                     i++;
                 }
                 adapter = new AdapterKlasemen(ArrayListKlasemen);
+                Collections.sort(ArrayListKlasemen);
                 rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);

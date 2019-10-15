@@ -1,6 +1,6 @@
 package com.alpha.test.persebayaapp;
 
-public class Klasemen {
+public class Klasemen implements Comparable<Klasemen> {
     private String txtNoUrut, txtFotoClub,txtTeamKlasemen, txtPlayKlasemen,txtWin,txtDraw,txtLose, txtSelisihGol,txtPoint;
     private Integer txtLayoutColor,id_club;
 
@@ -101,5 +101,10 @@ public class Klasemen {
 
     public void setId_club(Integer id_club) {
         this.id_club = id_club;
+    }
+
+    @Override
+    public int compareTo(Klasemen klasemen) {
+        return Integer.valueOf(klasemen.getTxtPoint()).compareTo(Integer.valueOf(this.getTxtPoint()));
     }
 }

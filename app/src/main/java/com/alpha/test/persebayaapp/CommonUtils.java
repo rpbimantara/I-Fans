@@ -104,6 +104,13 @@ public class CommonUtils {
         return formatter.format(currency);
     }
 
+    public static String getURL(){
+        return "http://103.133.56.224:8069";
+    }
+
+    public static String getDatabase(){
+        return "development";
+    }
 
     public static String changeTime(String time) {
         if (Integer.valueOf(time) > -1 && Integer.valueOf(time) < 9) {

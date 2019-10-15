@@ -13,13 +13,16 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 
 
 /**
@@ -69,7 +72,12 @@ public class MatchMomentFragment extends Fragment {
             sharedPrefManager = new SharedPrefManager(getContext());
             rvMoment.setAdapter(adapter);
             rvMoment.setLayoutManager(new LinearLayoutManager(getActivity()));
-            client = getOdooConnection(getContext());
+            client = getOdooConnection1(getContext(), new OdooErrorListener() {
+                @Override
+                public void onError(OdooErrorException error) {
+                    swiper.setRefreshing(false);
+                }
+            });
             loadMoment();
 //            new MatchMomentTask().execute();
         }
@@ -108,6 +116,11 @@ public class MatchMomentFragment extends Fragment {
                 rvMoment.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
+            }
+            @Override
+            public boolean onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+                return super.onError(error);
             }
         });
     }

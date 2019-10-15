@@ -80,17 +80,5 @@ public class AdapterCoin extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         return (this.dataList != null && this.dataList.size() > 0) ? dataList.size() : 1;
     }
 
-
-    public class sortDate implements Comparator<AccountCoin> {// may be it would be Model
-//        @Override
-//        public int compare(YourObject obj1, YourObject obj2) {
-//            return obj1.getDate().compareTo(obj2.getDate());// compare two objects
-//        }
-
-        @Override
-        public int compare(AccountCoin obj1, AccountCoin obj2) {
-            return obj1.getDate().compareTo(obj2.getDate());
-        }
-    }
 }
 

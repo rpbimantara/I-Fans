@@ -39,6 +39,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
+import static com.alpha.test.persebayaapp.CommonUtils.formater;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
@@ -66,7 +67,7 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
         for (Tiket tkt : ArrayListTiket) {
                 temp += (Integer.valueOf(tkt.getHargaTiket()) * Integer.valueOf(tkt.getJumlahTiket()));
         }
-        txtTotalAmount.setText(String.valueOf(temp));
+        txtTotalAmount.setText(formater(Float.parseFloat(String.valueOf(temp))));
         total = temp;
     }
 

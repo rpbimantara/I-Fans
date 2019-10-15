@@ -8,11 +8,76 @@
     android:background="@color/colorWhite"
     tools:context="com.alpha.test.persebayaapp.KlasemenFragment">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_recycler_view_klasemen"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    card_view:cardCornerRadius="8dp"
+                    card_view:cardUseCompatPadding="true">
 
-        </android.support.v7.widget.RecyclerView>
+                        <LinearLayout
+                            android:id="@+id/linearLayout_klasemen"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:background="@color/colorWhite"
+                            android:padding="5dp">
+
+                                <TextView
+                                    android:id="@+id/txt_urutklasemen"
+                                    android:textColor="@color/colorPrimaryDark"
+                                    android:gravity="center"
+                                    android:layout_width="30dp"
+                                    android:text="No"
+                                    android:layout_height="match_parent" />
+
+                                <TextView
+                                    android:id="@+id/txt_teamklasemen"
+                                    android:textColor="@color/colorTrueState"
+                                    android:gravity="center"
+                                    android:text="Club Name"
+                                    android:layout_width="160dp"
+                                    android:layout_height="match_parent" />
+
+                                <TextView
+                                    android:id="@+id/txt_playklasemen"
+                                    android:textColor="@color/colorTrueState"
+                                    android:gravity="center"
+                                    android:text="Play"
+                                    android:layout_width="50dp"
+                                    android:layout_height="match_parent" />
+                                <TextView
+                                    android:id="@+id/txt_selisihgol"
+                                    android:textColor="@color/colorTrueState"
+                                    android:gravity="center"
+                                    android:text="Goal Difference"
+                                    android:layout_width="100dp"
+                                    android:layout_height="match_parent" />
+                                <TextView
+                                    android:id="@+id/txt_point"
+                                    android:textColor="@color/colorTrueState"
+                                    android:layout_gravity="right"
+                                    android:text="Pts"
+                                    android:gravity="center"
+                                    android:layout_width="50dp"
+                                    android:layout_height="match_parent" />
+
+                        </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_recycler_view_klasemen"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
 
 </android.support.v4.widget.SwipeRefreshLayout>

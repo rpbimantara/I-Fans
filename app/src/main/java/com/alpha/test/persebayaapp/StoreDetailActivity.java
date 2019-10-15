@@ -40,6 +40,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.StringToBitMap;
+import static com.alpha.test.persebayaapp.CommonUtils.formater;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
@@ -102,7 +103,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         });
         imageStore = findViewById(R.id.store_imageView);
         txtNamaBarang.setText(getIntent().getExtras().get("nama").toString());
-        txtHargaBarang.setText(getIntent().getExtras().get("harga").toString());
+        txtHargaBarang.setText(formater(Float.parseFloat(getIntent().getExtras().get("harga").toString())));
         loadVariant();
 //        new VariantTask().execute();
         btn_checkout.setOnClickListener(new View.OnClickListener() {

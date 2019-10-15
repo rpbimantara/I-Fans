@@ -23,8 +23,10 @@ import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 
 
 /**
@@ -147,7 +149,12 @@ public class MatchLineUpAwayFragment extends Fragment {
 
                 }
             });
-            client = getOdooConnection(getContext());
+            client = getOdooConnection1(getContext(), new OdooErrorListener() {
+                @Override
+                public void onError(OdooErrorException error) {
+                    swiper.setRefreshing(false);
+                }
+            });
             loadLineUpAway();
 //            new LineUpAwayTask().execute();
 
@@ -206,6 +213,11 @@ public class MatchLineUpAwayFragment extends Fragment {
                 adapter.notifyDataSetChanged();
                 adapterCore.notifyDataSetChanged();
                 swiper.setRefreshing(false);
+            }
+            @Override
+            public boolean onError(OdooErrorException error) {
+                swiper.setRefreshing(false);
+                return super.onError(error);
             }
         });
     }

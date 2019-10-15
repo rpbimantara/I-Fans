@@ -18,14 +18,17 @@ import com.jaredrummler.materialspinner.MaterialSpinner;
 import java.util.ArrayList;
 
 import oogbox.api.odoo.OdooClient;
+import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.helper.utils.ODomain;
 import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
+import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
+import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
 import static com.alpha.test.persebayaapp.CommonUtils.waktu;
 
@@ -72,7 +75,12 @@ public class JadwalFragment extends Fragment {
             rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
             sharedPrefManager = new SharedPrefManager(getActivity());
-            client = getOdooConnection(getContext());
+            client = getOdooConnection1(getContext(), new OdooErrorListener() {
+                @Override
+                public void onError(OdooErrorException error) {
+                    swiper.setRefreshing(false);
+                }
+            });
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
