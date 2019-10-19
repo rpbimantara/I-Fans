@@ -134,7 +134,6 @@ public class CommonUtils {
         }catch (ParseException e){
             System.out.println(e);
         }
-        System.out.println(time);
         return time;
     }
 

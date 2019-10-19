@@ -88,6 +88,7 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
         progressDialog = new ProgressDialog(this);
         rv = findViewById(R.id.rv_recycler_view_tiket_detail);
         llm = new LinearLayoutManager(this);
+        adapter = new AdapterTicket(ArrayListTiket,TicketDetailActivity.this);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         sharedPrefManager = new SharedPrefManager(this);
@@ -149,7 +150,6 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
             }
         });
         loadClassTicket();
-//        new TicketTask().execute();
         TicketDetail();
     }
 
@@ -163,7 +163,7 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                 OdooRecord[] records = result.getRecords();
 
                 for(OdooRecord record: records) {
-                    String date = CommonUtils.convertTime(record.getString("date"));
+                    String date = CommonUtils.convertTime(record.getString("date_begin"));
                     String tgl = tanggal(date.substring(0,10));
                     String waktu = waktu(date.substring(11,17)) + " "+ "WIB";
                     txtNamatiket.setText(record.getString("name"));
@@ -174,38 +174,6 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
             }
         });
     }
-
-//    public void CheckoutTicket(){
-//        SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-//        final String Currentdatetime = sdf.format(new Date());
-//
-//        OdooValues values = new OdooValues();
-//        values.put("partner_id", sharedPrefManager.getSpIdPartner());
-//        values.put("date_order", Currentdatetime);
-//        values.put("payment_term_id", 1);
-//        values.put("user_id", 1);
-//        OArguments arguments = new OArguments();
-//        arguments.add(values);
-//
-//        client.call_kw("sale.order","create_so" ,arguments, new IOdooResponse() {
-//            @Override
-//            public void onResult(final OdooResult result) {
-//                final String serverId = result.getString("result");
-//                Log.d(TAG,"SO Line Product Id : " +serverId);
-//                new Handler(Looper.getMainLooper()).post(new Runnable() {
-//                    @Override
-//                    public void run() {
-//                        for (Tiket tkt : ArrayListTiket) {
-//                            if (Integer.valueOf(tkt.getJumlahTiket()) > 0) {
-//                                CreateSaleOrderLine(serverId, Integer.valueOf(tkt.getProduct_id()), Integer.valueOf(tkt.getId()), Integer.valueOf(tkt.getJumlahTiket()));
-//                                Log.d(TAG,"SO Line Product Id : " + String.valueOf(tkt.getProduct_id()));
-//                            }
-//                        }
-//                    }
-//                });
-//            }
-//        });
-//    }
 
     public void BuyTicket(){
         List listSource = new ArrayList();
@@ -271,24 +239,6 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
         });
     }
 
-//    public void CreateSaleOrderLine(final Integer sale_id, final Integer product_id, final Integer ticket_id, final Integer jumlah_ticket){
-//        OdooValues values = new OdooValues();
-//        values.put("order_id", sale_id);
-//        values.put("product_id", product_id);
-//        values.put("event_id", Integer.valueOf(getIntent().getExtras().get("id").toString()));
-//        values.put("event_ticket_id", ticket_id);
-//        values.put("product_uom_qty", jumlah_ticket);
-//        client.create("sale.order.line", values, new IOdooResponse() {
-//            @Override
-//            public void onResult(OdooResult result) {
-//                int serverId = result.getInt("result");
-//                if (serverId > 0){
-//                    Toast.makeText(getBaseContext(),"Ticket successfully purchased!",Toast.LENGTH_SHORT).show();
-//                }
-//            }
-//        });
-//    }
-
     public void loadClassTicket(){
         ODomain domain = new ODomain();
         domain.add("event_id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
@@ -314,63 +264,9 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                             String.valueOf(Math.round(record.getFloat("seats_available"))),
                             String.valueOf(record.getInt("product_id"))));
                 }
-                System.out.println(ArrayListTiket.size());
-                adapter = new AdapterTicket(ArrayListTiket,TicketDetailActivity.this);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }
         });
     }
-//   public class TicketTask extends AsyncTask<Void,Void,Void>{
-//       @Override
-//       protected void onPreExecute() {
-//           super.onPreExecute();
-//       }
-//
-//
-//       @Override
-//       protected Void doInBackground(Void... voids) {
-//           client = new OdooClient.Builder(getApplicationContext())
-//                   .setHost(sharedPrefManager.getSP_Host_url())
-//                   .setSession(sharedPrefManager.getSpSessionId())
-//                   .setSynchronizedRequests(false)
-//                   .setConnectListener(new OdooConnectListener() {
-//                       @Override
-//                       public void onConnected(OdooVersion version) {
-//                           ODomain domain = new ODomain();
-//                           domain.add("event_id", "=", Integer.valueOf(getIntent().getExtras().get("id").toString()));
-//
-//                           OdooFields fields = new OdooFields();
-//                           fields.addAll("id","name","price","seats_available","product_id");
-//
-//                           int offset = 0;
-//                           int limit = 80;
-//
-//                           String sorting = "id ASC";
-//
-//                           client.searchRead("event.event.ticket", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                               @Override
-//                               public void onResult(OdooResult result) {
-//                                   OdooRecord[] records = result.getRecords();
-//                                   for (OdooRecord record : records) {
-//                                       ArrayListTiket.add(new Tiket(
-//                                               String.valueOf(record.getInt("id")),
-//                                               record.getString("name"),
-//                                               String.valueOf(Math.round(record.getFloat("price"))),
-//                                               "0",
-//                                               String.valueOf(Math.round(record.getFloat("seats_available"))),
-//                                               String.valueOf(record.getInt("product_id"))));
-//                                   }
-//                                   System.out.println(ArrayListTiket.size());
-//                                   adapter = new AdapterTicket(ArrayListTiket,TicketDetailActivity.this);
-//                                   rv.setAdapter(adapter);
-//                                   adapter.notifyDataSetChanged();
-//                               }
-//                           });
-//                       }
-//                   }).build();
-//           return null;
-//       }
-//   }
 
 }

@@ -149,47 +149,4 @@ public class RatingLineUpActivity extends AppCompatActivity {
             }
         });
     }
-
-//    public class SaveRatingTask extends AsyncTask<Object,Void,Void>{
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected Void doInBackground(final Object... voids) {
-//            client = new OdooClient.Builder(getApplicationContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            // Success connection
-//
-//                            OdooValues values = new OdooValues();
-//                            values.put("jadwal_id", getIntent().getExtras().get("id_jadwal"));
-//                            values.put("employee_id", getIntent().getExtras().get("id_player"));
-//                            values.put("rating", voids[0]);
-//                            values.put("review", voids[1]);
-//
-//                            client.create("persebaya.rating", values, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    Toast.makeText(getApplicationContext(),"Rating Saved!",Toast.LENGTH_LONG).show();
-//                                }
-//
-//                                @Override
-//                                public boolean onError(OdooErrorException error) {
-//                                    Log.e("Rating error",error.toString());
-//                                    Toast.makeText(getApplicationContext(),error.odooException,Toast.LENGTH_LONG).show();
-//                                    return true;
-//                                }
-//                            });
-//                        }
-//                    })
-//                    .build();
-//            return null;
-//        }
-//    }
 }

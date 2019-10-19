@@ -79,37 +79,6 @@ public class ClubSummaryFragment extends Fragment {
                 }
             }
         });
-//        client = new OdooClient.Builder(getContext())
-//                .setHost(sharedPrefManager.getSP_Host_url())
-//                .setSession(sharedPrefManager.getSpSessionId())
-//                .setSynchronizedRequests(false)
-//                .setConnectListener(new OdooConnectListener() {
-//                    @Override
-//                    public void onConnected(OdooVersion version) {
-//                        OArguments arguments = new OArguments();
-//                        arguments.add(getActivity().getIntent().getStringExtra("id"));
-//
-//                        client.call_kw("persebaya.club", "get_summary", arguments, new IOdooResponse() {
-//                            @Override
-//                            public void onResult(OdooResult result) {
-//                                // response
-//                                OdooRecord[] Records = result.getRecords();
-//
-//                                for (final OdooRecord record : Records) {
-//                                    txtNamaStadion.setText(record.getString("stadion"));
-//                                    imageclub.setImageBitmap(StringToBitMap(record.getString("foto_club")));
-//                                    imageStadion.setImageBitmap(StringToBitMap(record.getString("foto_stadion")));
-//                                    txtCoach.setText(record.getString("coach"));
-//                                    txtEST.setText(tanggal(record.getString("est")));
-//                                    txtCity.setText(record.getString("city"));
-//                                    txtCEO.setText(record.getString("ceo"));
-//                                    txtSupporter.setText(record.getString("support"));
-//                                    txtAlias.setText(record.getString("alias"));
-//                                }
-//                            }
-//                        });
-//                    }
-//                }).build();
     }
 
 }

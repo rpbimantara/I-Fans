@@ -57,7 +57,6 @@ public class MatchDetailActivity extends AppCompatActivity {
         imageAway = findViewById(R.id.match_detail_away_image);
         client  = getOdooConnection(getBaseContext());
         loadMatch();
-//        new MatchTask().execute();
     }
 
     public void loadMatch(){
@@ -81,41 +80,6 @@ public class MatchDetailActivity extends AppCompatActivity {
             }
         });
     }
-
-//    public class MatchTask extends AsyncTask<Void,Void,Void>{
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            client = new OdooClient.Builder(getBaseContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            OArguments arguments = new OArguments();
-//                            arguments.add(Integer.valueOf(getIntent().getExtras().get("id_jadwal").toString()));
-//
-//                            client.call_kw("persebaya.jadwal", "match_detail", arguments, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        imageHome.setImageBitmap(StringToBitMap(record.getString("imageHome")));
-//                                        txtTeamHome.setText(record.getString("home"));
-//                                        imageAway.setImageBitmap(StringToBitMap(record.getString("imageAway")));
-//                                        txtTeamAway.setText(record.getString("away"));
-//                                        txtStadion.setText(record.getString("stadion"));
-//                                        txtTglhariini.setText(record.getString("date"));
-//                                        txtLiga.setText(record.getString("liga"));
-//                                        txtScore.setText(record.getString("score"));
-//                                    }
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 
     private static class MatchDetailPageAdapter extends FragmentPagerAdapter {
 

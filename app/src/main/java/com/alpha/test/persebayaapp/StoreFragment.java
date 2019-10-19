@@ -37,7 +37,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
  */
 public class StoreFragment extends Fragment implements HomeActivity.ReloadCallback {
 
-    ArrayList<Store> ArrayListStore;
+    ArrayList<Store> ArrayListStore = new ArrayList<>();
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
     View rootView;
@@ -71,6 +71,7 @@ public class StoreFragment extends Fragment implements HomeActivity.ReloadCallba
         editText_Search = rootView.findViewById(R.id.editText_Search);
         sharedPrefManager = new SharedPrefManager(getActivity());
         progressDialog = new ProgressDialog(getActivity());
+        adapter = new AdapterStore(ArrayListStore);
         rv.setAdapter(adapter);
         rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
         client = getOdooConnection1(getContext(), new OdooErrorListener() {
@@ -83,7 +84,6 @@ public class StoreFragment extends Fragment implements HomeActivity.ReloadCallba
             @Override
             public void onRefresh() {
                 loadStore();
-//                new StoreTask().execute();
             }
         });
         editText_Search.addTextChangedListener(new TextWatcher() {
@@ -138,33 +138,11 @@ public class StoreFragment extends Fragment implements HomeActivity.ReloadCallba
             }
         });
         loadStore();
-//        new StoreTask().execute();
         return rootView;
     }
 
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        if (isVisibleToUser && isResumed()){
-//            onResume();
-//        }
-//    }
-//    @Override
-//    public void onAttachFragment(Fragment childFragment) {
-//        super.onAttachFragment(childFragment);
-//        HomeActivity fabhome = (HomeActivity) getActivity();
-//        fabhome.fabBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent AddStore = new Intent(getActivity(),StoreAddActivity.class);
-//                startActivity(AddStore);
-//            }
-//        });
-//    }
-
-    public void loadStore(){ //oke wait
+    public void loadStore(){
         swiper.setRefreshing(true);
-        ArrayListStore = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("active", "=", true);
         domain.add("type", "=", "product");
@@ -181,6 +159,7 @@ public class StoreFragment extends Fragment implements HomeActivity.ReloadCallba
             @Override
             public void onResult(OdooResult result) {
                 OdooRecord[] records = result.getRecords();
+                ArrayListStore.clear();
                 for (OdooRecord record : records) {
                     String code = " ";
                     if (record.getString("default_code").equalsIgnoreCase("false") || record.getString("default_code").equalsIgnoreCase("")){
@@ -195,8 +174,6 @@ public class StoreFragment extends Fragment implements HomeActivity.ReloadCallba
                             code +record.getString("name"),
                             String.valueOf(Math.round(record.getFloat("list_price")))));
                 }
-                adapter = new AdapterStore(ArrayListStore);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
@@ -214,63 +191,4 @@ public class StoreFragment extends Fragment implements HomeActivity.ReloadCallba
         super.onActivityCreated(savedInstanceState);
         ((HomeActivity)getActivity()).setReloadCallback(this);
     }
-//    public class StoreTask extends AsyncTask<Void,Void,Void>{
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListStore = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("active", "=", true);
-//                            domain.add("type", "=", "product");
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id","image_medium","name", "type","default_code","cated_ig","list_price");
-//
-//                            int offset = 0;
-//                            int limit = 80;
-//
-//                            String sorting = "id ASC";
-//
-//                            client.searchRead("product.template", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        String code = " ";
-//                                        if (record.getString("default_code").equalsIgnoreCase("false") || record.getString("default_code").equalsIgnoreCase("")){
-//                                            code = "";
-//                                        }else{
-//                                            code = "["+record.getString("default_code") +"] ";
-//                                        }
-//
-//                                        ArrayListStore.add(new Store(
-//                                               String.valueOf(record.getInt("id")),
-//                                                record.getString("image_medium"),
-//                                                code +record.getString("name"),
-//                                                String.valueOf(Math.round(record.getFloat("list_price")))));
-//                                    }
-//                                    adapter = new AdapterStore(ArrayListStore);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
-
 }

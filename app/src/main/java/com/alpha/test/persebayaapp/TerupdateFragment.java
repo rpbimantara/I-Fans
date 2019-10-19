@@ -48,8 +48,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
  */
 public class TerupdateFragment extends Fragment {
 
-    ArrayList<Terupdate> ArrayListTerupdate;
-//    ArrayList<Liga> ArrayListLiga;
+    ArrayList<Terupdate> ArrayListTerupdate = new ArrayList<>();
     int RecyclerViewItemPosition;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
@@ -57,19 +56,15 @@ public class TerupdateFragment extends Fragment {
     private View rootView;
     RecyclerView.LayoutManager llm;
     AdapterTerupdate adapter;
-//    AdapterLiga adapterLiga;
     SwipeRefreshLayout swiper;
     TextView tglnow, stadionnow, tgllast, tglnext, teamHome, teamAway, teamNext, stadionNext, skornow, homelast, awaylast,skorlast,liga_terupdate;
     ImageView homeImage, awayImage, nextImage, nextStatus, homeImageLast, awayImageLast;
-//    MaterialSpinner ligaSpinner;
     LinearLayout lnNow;
     RelativeLayout rlLast, rlNext;
     int id_jadwal_now = 0;
     int id_jadwal_last = 0;
-//    int id_jadwal_next = 0;
     OdooClient client;
     Context context;
-//    Spinner ligaSpiner;
 
     public TerupdateFragment() {
         // Required empty public constructor
@@ -140,6 +135,7 @@ public class TerupdateFragment extends Fragment {
             progressDialog.show();
             progressDialog.setCancelable(false);
             llm = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+            adapter = new AdapterTerupdate(ArrayListTerupdate);
             rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
             rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -210,16 +206,6 @@ public class TerupdateFragment extends Fragment {
                     startActivity(intent);
                 }
             });
-//            ligaSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
-//                @Override
-//                public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
-//                    Liga liga = adapterLiga.getItem(position);
-//                    sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga,liga.getId());
-//                    getData();
-//                }
-//            });
-//            new LigaTask().execute();
-//            new TerupdateTask().execute();
             loadBeritaTerupdate();
             getData();
             validate();
@@ -307,52 +293,8 @@ public class TerupdateFragment extends Fragment {
         });
     }
 
-//    public class LigaTask extends AsyncTask<Void, Void, Void>{
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListLiga = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("status_liga", "=", "valid");
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id", "nama", "create_date", "create_uid", "write_date", "write_uid");
-//
-//                            int offset = 0;
-//                            int limit = 0;
-//
-//                            String sorting = "id DESC";
-//
-//                            client.searchRead("persebaya.liga", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        ArrayListLiga.add(new Liga(
-//                                                record.getInt("id"),
-//                                                record.getString("nama")));
-//
-//                                        adapterLiga = new AdapterLiga(context,android.R.layout.simple_spinner_item,ArrayListLiga);
-//                                        ligaSpinner.setAdapter(adapterLiga);
-//                                        adapterLiga.notifyDataSetChanged();
-//                                    }
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
-
     public void loadBeritaTerupdate(){
         swiper.setRefreshing(false);
-        ArrayListTerupdate = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("create_uid", "=", 1);
 
@@ -367,6 +309,7 @@ public class TerupdateFragment extends Fragment {
         client.searchRead("persebaya.berita", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListTerupdate.clear();
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
                     ArrayListTerupdate.add(new Terupdate(
@@ -375,68 +318,9 @@ public class TerupdateFragment extends Fragment {
                             record.getString("kategori_brita_id"),
                             record.getString("headline")));
                 }
-                adapter = new AdapterTerupdate(ArrayListTerupdate);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 progressDialog.dismiss();
             }
         });
     }
-
-//    public class TerupdateTask extends AsyncTask<Void, Void, Void> {
-//        @Override
-//        protected void onPostExecute(Void aVoid) {
-//            swiper.setRefreshing(false);
-//            super.onPostExecute(aVoid);
-//
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListTerupdate = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            // Success connection
-//
-//                            ODomain domain = new ODomain();
-//                            domain.add("create_uid", "=", 1);
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
-//
-//                            int offset = 0;
-//                            int limit = 5;
-//
-//                            String sorting = "create_date DESC";
-//
-//                            client.searchRead("persebaya.berita", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        ArrayListTerupdate.add(new Terupdate(
-//                                                record.getInt("id"),
-//                                                record.getString("image"),
-//                                                record.getString("kategori_brita_id"),
-//                                                record.getString("headline")));
-//                                    }
-//                                    adapter = new AdapterTerupdate(ArrayListTerupdate);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    progressDialog.dismiss();
-//                                }
-//                            });
-//                        }
-//                    })
-//                    .build();
-//
-//            return null;
-//        }
-//    }
-
 }

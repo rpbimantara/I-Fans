@@ -37,8 +37,8 @@ import static com.alpha.test.persebayaapp.CommonUtils.waktu;
  */
 public class JadwalFragment extends Fragment {
 
-    ArrayList<Jadwal> ArrayListJadwal;
-    ArrayList<Liga> ArrayListLiga;
+    ArrayList<Jadwal> ArrayListJadwal = new ArrayList<>();
+    ArrayList<Liga> ArrayListLiga = new ArrayList<>();
     SharedPrefManager sharedPrefManager;
     int RecyclerViewItemPosition ;
     RecyclerView rv;
@@ -72,6 +72,7 @@ public class JadwalFragment extends Fragment {
             rv = rootView.findViewById(R.id.rv_recycler_view_jadwal);
             swiper = rootView.findViewById(R.id.swiperefresh_jadwal);
             llm = new LinearLayoutManager(getActivity());
+            adapter = new AdapterJadwal(ArrayListJadwal);
             rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
             sharedPrefManager = new SharedPrefManager(getActivity());
@@ -86,7 +87,6 @@ public class JadwalFragment extends Fragment {
                 public void onRefresh() {
                     loadJadwal();
                     loadLiga();
-//                    new JadwalTask().execute();
                 }
             });
             rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -123,26 +123,25 @@ public class JadwalFragment extends Fragment {
 
                 }
             });
+            adapterLiga = new AdapterLiga(getContext(),android.R.layout.simple_spinner_item,ArrayListLiga);
+            ligaSpinner.setAdapter(adapterLiga);
             ligaSpinner.setOnItemSelectedListener(new MaterialSpinner.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(MaterialSpinner view, int position, long id, Object item) {
                     Liga liga = adapterLiga.getItem(position);
                     sharedPrefManager.saveSPInt(SharedPrefManager.SP_ID_Liga,liga.getId());
                     loadJadwal();
-//                    new JadwalTask().execute();
                 }
             });
             loadJadwal();
             loadLiga();
-//            new JadwalTask().execute();
-//            new LigaTask().execute();
         }
         return rootView;
     }
 
     public void loadJadwal(){
         swiper.setRefreshing(true);
-        ArrayListJadwal = new ArrayList<>();
+
         OArguments arguments = new OArguments();
         arguments.add(sharedPrefManager.getSpIdClub());
         arguments.add(sharedPrefManager.getSPIdLiga());
@@ -151,6 +150,7 @@ public class JadwalFragment extends Fragment {
             @Override
             public void onResult(OdooResult result) {
                 // response
+                ArrayListJadwal.clear();
                 OdooRecord[] Records = result.getRecords();
                 for (final OdooRecord record : Records) {
                     String date = CommonUtils.convertTime(record.getString("date"));
@@ -173,8 +173,6 @@ public class JadwalFragment extends Fragment {
                             String.valueOf(record.getInt("id")),
                             record.getString("status_jadwal")));
                 }
-                adapter = new AdapterJadwal(ArrayListJadwal);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
@@ -182,7 +180,6 @@ public class JadwalFragment extends Fragment {
     }
 
     public void loadLiga(){
-        ArrayListLiga = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("status_liga", "=", "valid");
 
@@ -197,120 +194,15 @@ public class JadwalFragment extends Fragment {
         client.searchRead("persebaya.liga", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListLiga.clear();
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
                     ArrayListLiga.add(new Liga(
                             record.getInt("id"),
                             record.getString("nama")));
-
-                    adapterLiga = new AdapterLiga(getContext(),android.R.layout.simple_spinner_item,ArrayListLiga);
-                    ligaSpinner.setAdapter(adapterLiga);
-                    adapterLiga.notifyDataSetChanged();
                 }
+                adapterLiga.notifyDataSetChanged();
             }
         });
     }
-
-//    public class JadwalTask extends AsyncTask<Void, Void,Void>{
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//        }
-//
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListJadwal = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            // Success connection
-//
-//                            OArguments arguments = new OArguments();
-//                            arguments.add(sharedPrefManager.getSpIdClub());
-//                            arguments.add(sharedPrefManager.getSPIdLiga());
-//
-//                            client.call_kw("persebaya.jadwal", "list_jadwal", arguments, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    // response
-//                                    OdooRecord[] Records = result.getRecords();
-//                                    for (final OdooRecord record : Records) {
-//                                        String tgl = tanggal(record.getString("date").substring(0,10));
-//                                        String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
-//                                        Integer status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
-//                                        if (record.getBoolean("is_home") == false){
-//                                            status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
-//                                        }else {
-//                                            status = getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName());
-//                                        }
-//                                        ArrayListJadwal.add(new Jadwal(
-//                                        record.getString("nama_club"),
-//                                        record.getString("foto_club"),
-//                                        status,
-//                                        record.getString("liga_id"),
-//                                        tgl,
-//                                        record.getString("stadion")
-//                                        , waktu,
-//                                        String.valueOf(record.getInt("id")),
-//                                        record.getString("status_jadwal")));
-//                                    }
-//                                    adapter = new AdapterJadwal(ArrayListJadwal);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//                            });
-//                        }
-//                    })
-//                    .build();
-//           return null;
-//        }
-//    }
-//    public class LigaTask extends AsyncTask<Void, Void, Void>{
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListLiga = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("status_liga", "=", "valid");
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id", "nama", "create_date", "create_uid", "write_date", "write_uid");
-//
-//                            int offset = 0;
-//                            int limit = 0;
-//
-//                            String sorting = "id DESC";
-//
-//                            client.searchRead("persebaya.liga", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        ArrayListLiga.add(new Liga(
-//                                                record.getInt("id"),
-//                                                record.getString("nama")));
-//
-//                                        adapterLiga = new AdapterLiga(getContext(),android.R.layout.simple_spinner_item,ArrayListLiga);
-//                                        ligaSpinner.setAdapter(adapterLiga);
-//                                        adapterLiga.notifyDataSetChanged();
-//                                    }
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 }

@@ -34,7 +34,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.waktu;
  */
 public class ListBeritaFragment extends Fragment {
 
-    ArrayList<ListBerita> ArrayListBerita;
+    ArrayList<ListBerita> ArrayListBerita = new ArrayList<>();
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
@@ -69,13 +69,13 @@ public class ListBeritaFragment extends Fragment {
             rv = rootView.findViewById(R.id.rv_recycler_view_list_berita);
             swiper = rootView.findViewById(R.id.swiperefresh_list_berita);
             llm = new LinearLayoutManager(getActivity());
+            adapter = new AdapterListBerita(ArrayListBerita);
             rv.setAdapter(adapter);
             rv.setLayoutManager(llm);
             swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                 @Override
                 public void onRefresh() {
                     loadBerita();
-//                    new BeritaTask().execute();
                 }
             });
             sharedPrefManager = new SharedPrefManager(getActivity());
@@ -118,14 +118,12 @@ public class ListBeritaFragment extends Fragment {
             });
             client = getOdooConnection(getContext());
             loadBerita();
-//            new BeritaTask().execute();
         }
         return rootView;
     }
 
     public void loadBerita(){
         swiper.setRefreshing(true);
-        ArrayListBerita = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("create_uid", "=", 1);
 
@@ -140,6 +138,7 @@ public class ListBeritaFragment extends Fragment {
         client.searchRead("persebaya.berita", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListBerita.clear();
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
                     String date = CommonUtils.convertTime(record.getString("create_date"));
@@ -152,70 +151,9 @@ public class ListBeritaFragment extends Fragment {
                             record.getString("headline"),
                             tgl.concat(" ").concat(waktu)));
                 }
-                adapter = new AdapterListBerita(ArrayListBerita);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
         });
     }
-
-
-//    public class BeritaTask extends AsyncTask<Void,Void,Void>{
-//
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListBerita = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            // Success connection
-//
-//                            ODomain domain = new ODomain();
-//                            domain.add("create_uid", "=", 1);
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id", "image", "title", "headline", "content", "kategori_brita_id", "create_date", "create_uid", "write_date", "write_uid");
-//
-//                            int offset = 0;
-//                            int limit = 5;
-//
-//                            String sorting = "create_date DESC";
-//
-//                            client.searchRead("persebaya.berita", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        String tgl = tanggal(record.getString("create_date").substring(0,10));
-//                                        String waktu = waktu(record.getString("create_date").substring(11,17)) + " "+ "WIB";
-//                                        ArrayListBerita.add(new ListBerita(
-//                                                record.getInt("id"),
-//                                                record.getString("image"),
-//                                                record.getString("kategori_brita_id"),
-//                                                record.getString("headline"),
-//                                                tgl.concat(" ").concat(waktu)));
-//                                    }
-//                                    adapter = new AdapterListBerita(ArrayListBerita);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//                            });
-//                        }
-//                    })
-//                    .build();
-//            return null;
-//        }
-//    }
-
 }

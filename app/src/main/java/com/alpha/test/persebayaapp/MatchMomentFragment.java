@@ -33,7 +33,7 @@ public class MatchMomentFragment extends Fragment {
     private View rootView;
     RecyclerView rvMoment;
     SwipeRefreshLayout swiper;
-    ArrayList<MatchMoment> ArrayListMatchMoment;
+    ArrayList<MatchMoment> ArrayListMatchMoment= new ArrayList<>();
     OdooClient client;
     SharedPrefManager sharedPrefManager;
     AdapterMatchMoment adapter;
@@ -66,10 +66,10 @@ public class MatchMomentFragment extends Fragment {
                 @Override
                 public void onRefresh() {
                     loadMoment();
-//                    new MatchMomentTask().execute();
                 }
             });
             sharedPrefManager = new SharedPrefManager(getContext());
+            adapter = new AdapterMatchMoment(ArrayListMatchMoment);
             rvMoment.setAdapter(adapter);
             rvMoment.setLayoutManager(new LinearLayoutManager(getActivity()));
             client = getOdooConnection1(getContext(), new OdooErrorListener() {
@@ -79,14 +79,12 @@ public class MatchMomentFragment extends Fragment {
                 }
             });
             loadMoment();
-//            new MatchMomentTask().execute();
         }
         return rootView;
     }
 
     public void loadMoment(){
         swiper.setRefreshing(true);
-        ArrayListMatchMoment = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
 
@@ -101,6 +99,7 @@ public class MatchMomentFragment extends Fragment {
         client.searchRead("persebaya.moments", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListMatchMoment.clear();
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
                     ArrayListMatchMoment.add(new MatchMoment(
@@ -112,8 +111,6 @@ public class MatchMomentFragment extends Fragment {
                             record.getString("supp_players_moments")
                     ));
                 }
-                adapter = new AdapterMatchMoment(ArrayListMatchMoment);
-                rvMoment.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
@@ -125,60 +122,6 @@ public class MatchMomentFragment extends Fragment {
         });
     }
 
-
-//    public class MatchMomentTask extends AsyncTask<Void,Void,Void>{
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListMatchMoment = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id","jadwal_id","time_moments", "moments","club_id","players_moments","supp_players_moments");
-//
-//                            int offset = 0;
-//                            int limit = 0;
-//
-//                            String sorting = "id DESC";
-//
-//                            client.searchRead("persebaya.moments", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        ArrayListMatchMoment.add(new MatchMoment(
-//                                                String.valueOf(record.getInt("id")),
-//                                                record.getString("time_moments"),
-//                                                record.getString("club_id"),
-//                                                record.getString("moments"),
-//                                                record.getString("players_moments"),
-//                                                record.getString("supp_players_moments")
-//                                        ));
-//                                    }
-//                                    adapter = new AdapterMatchMoment(ArrayListMatchMoment);
-//                                    rvMoment.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 
 }
 

@@ -32,7 +32,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
  */
 public class ClubPlayerFragment extends Fragment {
 
-    ArrayList<Team> ArrayListTeam;
+    ArrayList<Team> ArrayListTeam = new ArrayList<>();;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
     private View rootView;
@@ -57,6 +57,7 @@ public class ClubPlayerFragment extends Fragment {
             swiper = rootView.findViewById(R.id.swiperefresh_club_player);
             sharedPrefManager = new SharedPrefManager(getActivity());
             progressDialog = new ProgressDialog(getActivity());
+            adapter = new AdapterTeam(ArrayListTeam);
             rv.setAdapter(adapter);
             rv.setLayoutManager(new GridLayoutManager(getActivity(),3));
             rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -102,18 +103,15 @@ public class ClubPlayerFragment extends Fragment {
                 @Override
                 public void onRefresh() {
                     loadClubPlayer();
-//                    new ClubPlayerTask().execute();
                 }
             });
             loadClubPlayer();
-//            new ClubPlayerTask().execute();
         }
         return rootView;
     }
 
     void loadClubPlayer(){
         swiper.setRefreshing(true);
-        ArrayListTeam = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("club_id", "=", Integer.valueOf(getActivity().getIntent().getStringExtra("id")));
 
@@ -128,6 +126,7 @@ public class ClubPlayerFragment extends Fragment {
         client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListTeam.clear();
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
                     ArrayListTeam.add(new Team(
@@ -139,66 +138,10 @@ public class ClubPlayerFragment extends Fragment {
                             String.valueOf(record.getInt("no_punggung"))
                     ));
                 }
-                adapter = new AdapterTeam(ArrayListTeam);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
         });
     }
-
-//    public class ClubPlayerTask extends AsyncTask<Void,Void,Void>{
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListTeam = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("club_id", "=", Integer.valueOf(getActivity().getIntent().getStringExtra("id")));
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id","image","name", "job_id","status_pemain","no_punggung");
-//
-//                            int offset = 0;
-//                            int limit = 80;
-//
-//                            String sorting = "id DESC";
-//
-//                            client.searchRead("hr.employee", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        ArrayListTeam.add(new Team(
-//                                                record.getInt("id"),
-//                                                record.getString("name"),
-//                                                record.getString("image"),
-//                                                record.getString("status_pemain"),
-//                                                record.getString("job_id"),
-//                                                String.valueOf(record.getInt("no_punggung"))
-//                                        ));
-//                                    }
-//                                    adapter = new AdapterTeam(ArrayListTeam);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 
 }

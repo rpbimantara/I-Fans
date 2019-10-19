@@ -30,7 +30,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.waktu;
  */
 public class ClubResultFragment extends Fragment {
 
-    ArrayList<Jadwal> ArrayListJadwal;
+    ArrayList<Jadwal> ArrayListJadwal = new ArrayList<>();
     SharedPrefManager sharedPrefManager;
     RecyclerView rv;
     View rootView;
@@ -52,26 +52,23 @@ public class ClubResultFragment extends Fragment {
         rv = rootView.findViewById(R.id.rv_recycler_view_result);
         swiper = rootView.findViewById(R.id.swiperefresh_result);
         llm = new LinearLayoutManager(getActivity());
-        rv.setAdapter(adapter );
+        adapter = new AdapterJadwal(ArrayListJadwal);
+        rv.setAdapter(adapter);
         client = getOdooConnection(getContext());
         rv.setLayoutManager(llm); swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 loadResult();
-//                new ResultTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
         loadResult();
-//        new ResultTask().execute();
         return rootView;
     }
 
     public void loadResult(){
         swiper.setRefreshing(true);
         try {
-
-            ArrayListJadwal = new ArrayList<>();
             OArguments arguments = new OArguments();
             arguments.add(getActivity().getIntent().getStringExtra("id"));
             arguments.add(sharedPrefManager.getSPIdLiga());
@@ -81,6 +78,7 @@ public class ClubResultFragment extends Fragment {
                 @Override
                 public void onResult(OdooResult result) {
                     // response
+                    ArrayListJadwal.clear();
                     OdooRecord[] Records = result.getRecords();
                     for (final OdooRecord record : Records) {
                         String date = CommonUtils.convertTime(record.getString("date"));
@@ -103,8 +101,6 @@ public class ClubResultFragment extends Fragment {
                                 String.valueOf(record.getInt("id")),
                                 record.getString("status_jadwal")));
                     }
-                    adapter = new AdapterJadwal(ArrayListJadwal);
-                    rv.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     swiper.setRefreshing(false);
                 }
@@ -113,67 +109,4 @@ public class ClubResultFragment extends Fragment {
             Toast.makeText(getContext(),error.toString(),Toast.LENGTH_SHORT).show();
         }
     }
-
-//    public class ResultTask extends AsyncTask<Void, Void,Void> {
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//        }
-//
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListJadwal = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            // Success connection
-//
-//                            OArguments arguments = new OArguments();
-//                            arguments.add(getActivity().getIntent().getStringExtra("id"));
-//                            arguments.add(sharedPrefManager.getSPIdLiga());
-//                            arguments.add(Arrays.asList("selesai"));
-//
-//                            client.call_kw("persebaya.jadwal", "list_jadwal_club", arguments, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    // response
-//                                    OdooRecord[] Records = result.getRecords();
-//                                    for (final OdooRecord record : Records) {
-//                                        String tgl = tanggal(record.getString("date").substring(0,10));
-//                                        String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
-//                                        Integer status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
-//                                        if (record.getBoolean("is_home") == false){
-//                                            status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
-//                                        }else {
-//                                            status = getContext().getResources().getIdentifier("ic_home","drawable",getContext().getPackageName());
-//                                        }
-//                                        ArrayListJadwal.add(new Jadwal(
-//                                                record.getString("nama_club"),
-//                                                record.getString("foto_club"),
-//                                                status,
-//                                                record.getString("liga_id"),
-//                                                tgl,
-//                                                record.getString("stadion")
-//                                                , waktu,
-//                                                String.valueOf(record.getInt("id")),
-//                                                record.getString("status_jadwal")));
-//                                    }
-//                                    adapter = new AdapterJadwal(ArrayListJadwal);
-//                                    rv.setAdapter(adapter );
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//                            });
-//                        }
-//                    })
-//                    .build();
-//            return null;
-//        }
-//    }
-
 }

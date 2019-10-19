@@ -26,7 +26,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.waktu;
 
 public class TicketBarcodeActivity extends AppCompatActivity {
 
-    ArrayList<TicketBarcode> ArrayListTiketBarcode;
+    ArrayList<TicketBarcode> ArrayListTiketBarcode = new ArrayList<>();
     SharedPrefManager sharedPrefManager;
     int RecyclerViewItemPosition ;
     RecyclerView rv;
@@ -47,7 +47,8 @@ public class TicketBarcodeActivity extends AppCompatActivity {
         swiper = findViewById(R.id.swiperefresh_ticket_barcode);
         sharedPrefManager = new SharedPrefManager(this);
         llm = new LinearLayoutManager(this);
-        rv.setAdapter(adapter );
+        adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
+        rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         client = getOdooConnection1(this, new OdooErrorListener() {
             @Override
@@ -59,27 +60,13 @@ public class TicketBarcodeActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 loadBarcode();
-//                new TicketBarcodeTask().execute();
             }
         });
         loadBarcode();
-//        new TicketBarcodeTask().execute();
     }
 
     public void loadBarcode(){
         swiper.setRefreshing(true);
-        ArrayListTiketBarcode = new ArrayList<>();
-//        ODomain domain = new ODomain();
-//        domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-//        domain.add("state", "=", "open");
-//
-//        OdooFields fields = new OdooFields();
-//        fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");
-//
-//        int offset = 0;
-//        int limit = 80;
-//
-//        String sorting = "id ASC";
 
         OArguments arguments = new OArguments();
         arguments.add(sharedPrefManager.getSpIdPartner());
@@ -87,8 +74,8 @@ public class TicketBarcodeActivity extends AppCompatActivity {
         client.call_kw("event.registration", "search_ticket", arguments, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListTiketBarcode.clear();
                 OdooRecord[] records = result.getRecords();
-//                System.out.println(result.toString());
                 for (OdooRecord record : records) {
                     String date = CommonUtils.convertTime(record.getString("date_open"));
                     String tgl = tanggal(date.substring(0,10));
@@ -101,85 +88,9 @@ public class TicketBarcodeActivity extends AppCompatActivity {
                             record.getString("event_ticket_id"),
                             record.getString("barcode_image")));
                 }
-                adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
         });
-//        client.searchRead("event.registration", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//            @Override
-//            public void onResult(OdooResult result) {
-//                OdooRecord[] records = result.getRecords();
-//                System.out.println(result.toString());
-//                for (OdooRecord record : records) {
-//                    ArrayListTiketBarcode.add(new TicketBarcode(
-//                            String.valueOf(record.getInt("id")),
-//                            record.getString("name"),
-//                            record.getString("date_open"),
-//                            record.getString("event_id"),
-//                            record.getString("event_ticket_id"),
-//                            record.getString("barcode_image")));
-//                }
-//                adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
-//                rv.setAdapter(adapter);
-//                adapter.notifyDataSetChanged();
-//                swiper.setRefreshing(false);
-//            }
-//        });
     }
-
-//    public class TicketBarcodeTask extends AsyncTask<Void,Void,Void> {
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//        }
-//
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListTiketBarcode = new ArrayList<>();
-//            client = new OdooClient.Builder(getApplicationContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-//                            domain.add("state", "in", Arrays.asList("open","draft"));
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id","name","event_id","event_ticket_id","date_open","barcode_image");
-//
-//                            int offset = 0;
-//                            int limit = 80;
-//
-//                            String sorting = "id ASC";
-//
-//                            client.searchRead("event.registration", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        ArrayListTiketBarcode.add(new TicketBarcode(
-//                                                String.valueOf(record.getInt("id")),
-//                                                record.getString("name"),
-//                                                record.getString("date_open"),
-//                                                record.getString("event_id"),
-//                                                record.getString("event_ticket_id"),
-//                                                record.getString("barcode_image")));
-//                                    }
-//                                    adapter = new AdapterTicketBarcode(ArrayListTiketBarcode);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 }

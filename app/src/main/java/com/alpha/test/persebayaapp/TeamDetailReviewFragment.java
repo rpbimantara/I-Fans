@@ -30,7 +30,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
  */
 public class TeamDetailReviewFragment extends Fragment {
 
-    ArrayList<TeamReview> ArrayListReview;
+    ArrayList<TeamReview> ArrayListReview = new ArrayList<>();
     SharedPrefManager sharedPrefManager;
     RecyclerView rv;
     View rootView;
@@ -59,6 +59,7 @@ public class TeamDetailReviewFragment extends Fragment {
         swiper = rootView.findViewById(R.id.swiperefresh_team_review);
         sharedPrefManager = new SharedPrefManager(getActivity());
         rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new AdapterTeamDetailReview(ArrayListReview);
         rv.setAdapter(adapter);
         client = getOdooConnection1(getContext(), new OdooErrorListener() {
             @Override
@@ -73,13 +74,11 @@ public class TeamDetailReviewFragment extends Fragment {
             }
         });
         loadReview();
-//        new ReviewTask().execute();
         return rootView;
     }
 
     public void loadReview(){
         swiper.setRefreshing(true);
-        ArrayListReview = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("employee_id", "=",getActivity().getIntent().getExtras().get("id_atlete"));
 
@@ -94,16 +93,14 @@ public class TeamDetailReviewFragment extends Fragment {
         client.searchRead("persebaya.rating", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListReview.clear();
                 OdooRecord[] records = result.getRecords();
-                System.out.println(records.toString());
                 for (OdooRecord record : records) {
                     ArrayListReview.add(new TeamReview(
                             record.getInt("id"),
                             record.getInt("rating"),
                             record.getString("review")));
                 }
-                adapter = new AdapterTeamDetailReview(ArrayListReview);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
@@ -115,56 +112,5 @@ public class TeamDetailReviewFragment extends Fragment {
             }
         });
     }
-
-//    public class ReviewTask extends AsyncTask<Void,Void,Void> {
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListReview = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("employee_id", "=",getActivity().getIntent().getExtras().get("id_atlete"));
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id","jadwal_id","rating", "review");
-//
-//                            int offset = 0;
-//                            int limit = 80;
-//
-//                            String sorting = "id ASC";
-//
-//                            client.searchRead("persebaya.rating", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    System.out.println(records.toString());
-//                                    for (OdooRecord record : records) {
-//                                        ArrayListReview.add(new TeamReview(
-//                                                record.getInt("id"),
-//                                                record.getInt("rating"),
-//                                                record.getString("review")));
-//                                    }
-//                                    adapter = new AdapterTeamDetailReview(ArrayListReview);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 
 }

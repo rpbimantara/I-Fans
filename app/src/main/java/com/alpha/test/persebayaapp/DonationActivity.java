@@ -28,7 +28,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 
 public class DonationActivity extends AppCompatActivity {
 
-    ArrayList<Donation> ArrayListDonation;
+    ArrayList<Donation> ArrayListDonation = new ArrayList<>();
     SharedPrefManager sharedPrefManager;
     FloatingActionButton fab;
     int RecyclerViewItemPosition ;
@@ -51,6 +51,7 @@ public class DonationActivity extends AppCompatActivity {
         fab = findViewById(R.id.fab_donasi);
         llm = new LinearLayoutManager(this);
         sharedPrefManager = new SharedPrefManager(this);
+        adapter = new AdapterDonation(ArrayListDonation);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         client = getOdooConnection(getBaseContext());
@@ -58,7 +59,6 @@ public class DonationActivity extends AppCompatActivity {
             @Override
             public void onRefresh() {
                 loadDonation();
-//                new DonationTask().execute();
             }
         });
         rv.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
@@ -121,7 +121,6 @@ public class DonationActivity extends AppCompatActivity {
 
     public void loadDonation(){
         swiper.setRefreshing(true);
-        ArrayListDonation = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("status_donasi", "=", "jalan");
         domain.add("type", "=", "donasi");
@@ -137,6 +136,7 @@ public class DonationActivity extends AppCompatActivity {
         client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListDonation.clear();
                 OdooRecord[] Records = result.getRecords();
                 for (final OdooRecord record : Records) {
                     ArrayListDonation.add(new Donation(
@@ -147,8 +147,6 @@ public class DonationActivity extends AppCompatActivity {
                             record.getString("create_uid"),
                             record.getString("list_price")));
                 }
-                adapter = new AdapterDonation(ArrayListDonation);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
@@ -160,64 +158,4 @@ public class DonationActivity extends AppCompatActivity {
             }
         });
     }
-
-//    public class DonationTask extends AsyncTask<Void,Void,Void>{
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListDonation = new ArrayList<>();
-//            client = new OdooClient.Builder(getBaseContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-////                            domain.add("status_donasi", "=", "jalan");
-//                            domain.add("type", "=", "donasi");
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id","image_medium","name", "list_price","create_uid","due_date");
-//
-//                            int offset = 0;
-//                            int limit = 80;
-//
-//                            String sorting = "due_date ASC";
-//
-//                            client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] Records = result.getRecords();
-//                                    for (final OdooRecord record : Records) {
-//                                        ArrayListDonation.add(new Donation(
-//                                                String.valueOf(record.getInt("id")),
-//                                                record.getString("name"),
-//                                                record.getString("image_medium"),
-//                                                record.getString("due_date"),
-//                                                record.getString("create_uid"),
-//                                                record.getString("list_price")));
-//                                    }
-//                                    adapter = new AdapterDonation(ArrayListDonation);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//
-//                                @Override
-//                                public boolean onError(OdooErrorException error) {
-//                                    Toast.makeText(getBaseContext(),error.toString(),Toast.LENGTH_SHORT).show();
-//                                    return super.onError(error);
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 }

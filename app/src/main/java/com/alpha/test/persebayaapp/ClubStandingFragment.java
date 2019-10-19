@@ -30,7 +30,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
  */
 public class ClubStandingFragment extends Fragment {
 
-    ArrayList<Klasemen> ArrayListKlasemen;
+    ArrayList<Klasemen> ArrayListKlasemen =  new ArrayList<>();
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
     ProgressDialog progressDialog;
@@ -54,6 +54,7 @@ public class ClubStandingFragment extends Fragment {
         rv = rootView.findViewById(R.id.rv_recycler_view_standings);
         swiper = rootView.findViewById(R.id.swiperefresh_standings);
         llm = new LinearLayoutManager(getActivity());
+        adapter = new AdapterKlasemen(ArrayListKlasemen);
         rv.setAdapter(adapter);
         rv.setLayoutManager(llm);
         client = getOdooConnection(getContext());
@@ -61,7 +62,6 @@ public class ClubStandingFragment extends Fragment {
             @Override
             public void onRefresh() {
                 loadStandings();
-//                new StandingTask().execute();
             }
         });
         sharedPrefManager = new SharedPrefManager(getActivity());
@@ -100,13 +100,11 @@ public class ClubStandingFragment extends Fragment {
             }
         });
         loadStandings();
-//        new StandingTask().execute();
         return rootView;
     }
 
     public void loadStandings(){
         swiper.setRefreshing(true);
-        ArrayListKlasemen =  new ArrayList<>();
         OArguments arguments = new OArguments();
         arguments.add(sharedPrefManager.getSPIdLiga());
 
@@ -114,6 +112,7 @@ public class ClubStandingFragment extends Fragment {
             @Override
             public void onResult(OdooResult result) {
                 // response
+                ArrayListKlasemen.clear();
                 OdooRecord[] Records = result.getRecords();
                 Integer color = getResources().getColor(R.color.colorWhite);
 
@@ -144,8 +143,6 @@ public class ClubStandingFragment extends Fragment {
                             record.getInt("id")));
                     i++;
                 }
-                adapter = new AdapterKlasemen(ArrayListKlasemen);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }

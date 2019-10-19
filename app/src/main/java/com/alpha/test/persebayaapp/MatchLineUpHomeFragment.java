@@ -37,8 +37,8 @@ public class MatchLineUpHomeFragment extends Fragment {
     RecyclerView rvLineUpHomeCore,rvLineUpHome;
     int RecyclerViewItemPosition ;
     SwipeRefreshLayout swiper;
-    ArrayList<MatchLineUp> ArrayListMatchLineUpHomeCore;
-    ArrayList<MatchLineUp> ArrayListMatchLineUpHome;
+    ArrayList<MatchLineUp> ArrayListMatchLineUpHomeCore = new ArrayList<>();
+    ArrayList<MatchLineUp> ArrayListMatchLineUpHome = new ArrayList<>();
     OdooClient client;
     SharedPrefManager sharedPrefManager;
     AdapterLineUpHome adapterCore;
@@ -74,6 +74,8 @@ public class MatchLineUpHomeFragment extends Fragment {
                 }
             });
             sharedPrefManager = new  SharedPrefManager(getContext());
+            adapter = new AdapterLineUpHome(ArrayListMatchLineUpHome);
+            adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpHomeCore);
             rvLineUpHome.setAdapter(adapter);
             rvLineUpHome.setLayoutManager(new LinearLayoutManager(getActivity()));
             rvLineUpHomeCore.setAdapter(adapterCore);
@@ -157,16 +159,12 @@ public class MatchLineUpHomeFragment extends Fragment {
                 }
             });
             loadLineUpHome();
-//            new LineUpHomeTask().execute();
-
         }
         return rootView;
     }
 
     public void loadLineUpHome(){
         swiper.setRefreshing(true);
-        ArrayListMatchLineUpHome = new ArrayList<>();
-        ArrayListMatchLineUpHomeCore = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
 
@@ -181,6 +179,8 @@ public class MatchLineUpHomeFragment extends Fragment {
         client.searchRead("persebaya.line.up.home", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListMatchLineUpHome.clear();
+                ArrayListMatchLineUpHomeCore.clear();
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
                     if (record.getString("status_pemain").equalsIgnoreCase("core")){
@@ -207,10 +207,6 @@ public class MatchLineUpHomeFragment extends Fragment {
                         ));
                     }
                 }
-                adapter = new AdapterLineUpHome(ArrayListMatchLineUpHome);
-                adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpHomeCore);
-                rvLineUpHome.setAdapter(adapter);
-                rvLineUpHomeCore.setAdapter(adapterCore);
                 adapter.notifyDataSetChanged();
                 adapterCore.notifyDataSetChanged();
                 swiper.setRefreshing(false);

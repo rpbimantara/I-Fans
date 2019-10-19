@@ -38,8 +38,8 @@ public class MatchLineUpAwayFragment extends Fragment {
     RecyclerView rvLineUpAwayCore,rvLineUpAway;
     int RecyclerViewItemPosition ;
     SwipeRefreshLayout swiper;
-    ArrayList<MatchLineUp> ArrayListMatchLineUpAwayCore;
-    ArrayList<MatchLineUp> ArrayListMatchLineUpAway;
+    ArrayList<MatchLineUp> ArrayListMatchLineUpAwayCore = new ArrayList<>();
+    ArrayList<MatchLineUp> ArrayListMatchLineUpAway = new ArrayList<>();
     OdooClient client;
     SharedPrefManager sharedPrefManager;
     AdapterLineUpHome adapterCore;
@@ -69,9 +69,10 @@ public class MatchLineUpAwayFragment extends Fragment {
                 @Override
                 public void onRefresh() {
                     loadLineUpAway();
-//                    new LineUpAwayTask().execute();
                 }
             });
+            adapter = new AdapterLineUpHome(ArrayListMatchLineUpAway);
+            adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpAwayCore);
             sharedPrefManager = new  SharedPrefManager(getContext());
             rvLineUpAway.setAdapter(adapter);
             rvLineUpAway.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -156,7 +157,6 @@ public class MatchLineUpAwayFragment extends Fragment {
                 }
             });
             loadLineUpAway();
-//            new LineUpAwayTask().execute();
 
         }
         return rootView;
@@ -164,8 +164,6 @@ public class MatchLineUpAwayFragment extends Fragment {
 
     public void loadLineUpAway(){
         swiper.setRefreshing(true);
-        ArrayListMatchLineUpAway = new ArrayList<>();
-        ArrayListMatchLineUpAwayCore = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
 
@@ -180,6 +178,8 @@ public class MatchLineUpAwayFragment extends Fragment {
         client.searchRead("persebaya.line.up.away", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListMatchLineUpAway.clear();
+                ArrayListMatchLineUpAwayCore.clear();
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
                     if (record.getString("status_pemain").equalsIgnoreCase("core")){
@@ -206,10 +206,6 @@ public class MatchLineUpAwayFragment extends Fragment {
                         ));
                     }
                 }
-                adapter = new AdapterLineUpHome(ArrayListMatchLineUpAway);
-                adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpAwayCore);
-                rvLineUpAway.setAdapter(adapter);
-                rvLineUpAwayCore.setAdapter(adapterCore);
                 adapter.notifyDataSetChanged();
                 adapterCore.notifyDataSetChanged();
                 swiper.setRefreshing(false);
@@ -221,80 +217,6 @@ public class MatchLineUpAwayFragment extends Fragment {
             }
         });
     }
-
-//    public class LineUpAwayTask extends AsyncTask<Void,Void,Void>{
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//            ArrayListMatchLineUpAway = new ArrayList<>();
-//            ArrayListMatchLineUpAwayCore = new ArrayList<>();
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("jadwal_id", "=",getActivity().getIntent().getExtras().get("id_jadwal"));
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id","jadwal_id","away", "player_id","department_id","job_id","no_punggung","status_pemain");
-//
-//                            int offset = 0;
-//                            int limit = 0;
-//
-//                            String sorting = "id DESC";
-//
-//                            client.searchRead("persebaya.line.up.away", domain, fields, offset, limit, sorting, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] records = result.getRecords();
-//                                    for (OdooRecord record : records) {
-//                                        if (record.getString("status_pemain").equalsIgnoreCase("core")){
-//                                            ArrayListMatchLineUpAwayCore.add(new MatchLineUp(
-//                                                    String.valueOf(record.getInt("id")),
-//                                                    String.valueOf(record.getInt("jadwal_id")),
-//                                                    String.valueOf(record.getInt("player_id")),
-//                                                    record.getString("player_id"),
-//                                                    String.valueOf(Math.round(record.getFloat("no_punggung"))),
-//                                                    record.getString("job_id"),
-//                                                    record.getString("away"),
-//                                                    record.getString("status_pemain")
-//                                            ));
-//                                        }else {
-//                                            ArrayListMatchLineUpAway.add(new MatchLineUp(
-//                                                    String.valueOf(record.getInt("id")),
-//                                                    String.valueOf(record.getInt("jadwal_id")),
-//                                                    String.valueOf(record.getInt("player_id")),
-//                                                    record.getString("player_id"),
-//                                                    String.valueOf(Math.round(record.getFloat("no_punggung"))),
-//                                                    record.getString("job_id"),
-//                                                    record.getString("away"),
-//                                                    record.getString("status_pemain")
-//                                            ));
-//                                        }
-//                                    }
-//                                    adapter = new AdapterLineUpHome(ArrayListMatchLineUpAway);
-//                                    adapterCore = new AdapterLineUpHome(ArrayListMatchLineUpAwayCore);
-//                                    rvLineUpAway.setAdapter(adapter);
-//                                    rvLineUpAwayCore.setAdapter(adapterCore);
-//                                    adapter.notifyDataSetChanged();
-//                                    adapterCore.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//
-//        }
-//    }
 
     public void cekRating(final Integer id_jadwal, final Integer id_player){
         ODomain domain = new ODomain();

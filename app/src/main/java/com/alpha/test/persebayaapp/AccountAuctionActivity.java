@@ -24,7 +24,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 
 public class AccountAuctionActivity extends AppCompatActivity{
 
-    ArrayList<lelang> ArrayListLelang;
+    ArrayList<lelang> ArrayListLelang = new ArrayList<>();
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
     RecyclerView rv;
@@ -34,8 +34,6 @@ public class AccountAuctionActivity extends AppCompatActivity{
     OdooClient client;
     Toolbar toolbar;
     InterfaceLelang listener;
-
-//    public void Addbidder(final String idlelang, final String nilai, final String status, Context context,SharedPrefManager sharedPrefManager){}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,13 +46,13 @@ public class AccountAuctionActivity extends AppCompatActivity{
         sharedPrefManager = new SharedPrefManager(this);
         rv =  findViewById(R.id.rv_recycler_view_account_auction);
         swiper = findViewById(R.id.swiperefresh_account_auction);
-        rv.setAdapter(adapter );
+        adapter = new AdapterLelang(ArrayListLelang,getApplicationContext(),listener);
+        rv.setAdapter(adapter);
         client = getOdooConnection(getBaseContext());
         rv.setLayoutManager(new LinearLayoutManager(this));
         swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-//                new AccountAuctionTask().execute();
                 loadAuction();
             }
         });
@@ -81,6 +79,7 @@ public class AccountAuctionActivity extends AppCompatActivity{
         client.searchRead("product.template", domain, fields, offset, limit, sorting,new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListLelang.clear();
                 OdooRecord[] Records = result.getRecords();
                 System.out.println(result.toString());
                 for (final OdooRecord record : Records) {
@@ -94,8 +93,6 @@ public class AccountAuctionActivity extends AppCompatActivity{
                             String.valueOf(Math.round(record.getFloat("inc"))),
                             String.valueOf(record.getInt("create_uid"))));
                 }
-                adapter = new AdapterLelang(ArrayListLelang,getApplicationContext(),listener);
-                rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
             }
@@ -107,73 +104,4 @@ public class AccountAuctionActivity extends AppCompatActivity{
             }
         });
     }
-
-//    @Override
-//    protected void onResume() {
-//        new AccountAuctionTask().execute();
-//        super.onResume();
-//    }
-//
-//    public class AccountAuctionTask extends AsyncTask<Void,Void,Void>{
-//        @Override
-//        protected void onPreExecute() {
-//            swiper.setRefreshing(true);
-//        }
-//
-//
-//        @Override
-//        protected Void doInBackground(Void... voids) {
-//
-//            ArrayListLelang = new ArrayList<>();
-//            client = new OdooClient.Builder(getApplicationContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            ODomain domain = new ODomain();
-//                            domain.add("status_lelang", "=", "jalan");
-//                            domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
-//
-//                            OdooFields fields = new OdooFields();
-//                            fields.addAll("id","image_medium","name", "ob","inc","binow","due_date","create_uid");
-//
-//                            int offset = 0;
-//                            int limit = 80;
-//
-//                            String sorting = "id ASC";
-//
-//                            client.searchRead("persebaya.lelang", domain, fields, offset, limit, sorting,new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    OdooRecord[] Records = result.getRecords();
-//                                    for (final OdooRecord record : Records) {
-//                                        ArrayListLelang.add(new lelang(
-//                                                String.valueOf(record.getInt("id")),
-//                                                record.getString("name"),
-//                                                record.getString("image_medium"),
-//                                                record.getString("due_date"),
-//                                                String.valueOf(Math.round(record.getFloat("ob"))),
-//                                                String.valueOf(Math.round(record.getFloat("binow"))),
-//                                                String.valueOf(Math.round(record.getFloat("inc"))),
-//                                                String.valueOf(record.getInt("create_uid"))));
-//                                    }
-//                                    adapter = new AdapterLelang(ArrayListLelang,getApplicationContext(),listener);
-//                                    rv.setAdapter(adapter);
-//                                    adapter.notifyDataSetChanged();
-//                                    swiper.setRefreshing(false);
-//                                }
-//
-//                                @Override
-//                                public boolean onError(OdooErrorException error) {
-//                                    Toast.makeText(getApplicationContext(),error.toString(),Toast.LENGTH_SHORT).show();
-//                                    return super.onError(error);
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 }

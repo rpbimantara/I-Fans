@@ -30,7 +30,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.waktu;
  */
 public class ClubScheduleFragment extends Fragment {
 
-    ArrayList<Jadwal> ArrayListJadwal;
+    ArrayList<Jadwal> ArrayListJadwal = new ArrayList<>();
     SharedPrefManager sharedPrefManager;
     RecyclerView rv;
     View rootView;
@@ -52,7 +52,8 @@ public class ClubScheduleFragment extends Fragment {
         rv = rootView.findViewById(R.id.rv_recycler_view_schedule);
         swiper = rootView.findViewById(R.id.swiperefresh_schedule);
         llm = new LinearLayoutManager(getActivity());
-        rv.setAdapter(adapter );
+        adapter = new AdapterJadwal(ArrayListJadwal);
+        rv.setAdapter(adapter);
         client = getOdooConnection(getContext());
         rv.setLayoutManager(llm); swiper.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -70,7 +71,6 @@ public class ClubScheduleFragment extends Fragment {
     public void loadSchedule(){
         swiper.setRefreshing(true);
         try{
-            ArrayListJadwal = new ArrayList<>();
             OArguments arguments = new OArguments();
             arguments.add(getActivity().getIntent().getStringExtra("id"));
             arguments.add(sharedPrefManager.getSPIdLiga());
@@ -79,6 +79,7 @@ public class ClubScheduleFragment extends Fragment {
                 @Override
                 public void onResult(OdooResult result) {
                     // response
+                    ArrayListJadwal.clear();
                     OdooRecord[] Records = result.getRecords();
                     for (final OdooRecord record : Records) {
                         String date = CommonUtils.convertTime(record.getString("date"));
@@ -101,8 +102,6 @@ public class ClubScheduleFragment extends Fragment {
                                 String.valueOf(record.getInt("id")),
                                 record.getString("status_jadwal")));
                     }
-                    adapter = new AdapterJadwal(ArrayListJadwal);
-                    rv.setAdapter(adapter );
                     adapter.notifyDataSetChanged();
                     swiper.setRefreshing(false);
                 }

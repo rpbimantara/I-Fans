@@ -268,39 +268,4 @@ public class AccountFragment extends Fragment {
             }
         });
     }
-
-//    @Override
-//    public void setUserVisibleHint(boolean isVisibleToUser) {
-//        super.setUserVisibleHint(isVisibleToUser);
-//        if (isVisibleToUser){
-//            onResume();
-//        }
-//    }
-//
-//
-//    public class SaveImageTask extends AsyncTask<Bitmap,Void,Void>{
-//        @Override
-//        protected Void doInBackground(final Bitmap... params) {
-//            client = new OdooClient.Builder(getContext())
-//                    .setHost(sharedPrefManager.getSP_Host_url())
-//                    .setSession(sharedPrefManager.getSpSessionId())
-//                    .setSynchronizedRequests(false)
-//                    .setConnectListener(new OdooConnectListener() {
-//                        @Override
-//                        public void onConnected(OdooVersion version) {
-//                            OdooValues values = new OdooValues();
-//                            values.put("image", getBase64ImageString(params[0]));
-//
-//                            client.write("res.users", new Integer[]{sharedPrefManager.getSpIdUser()}, values, new IOdooResponse() {
-//                                @Override
-//                                public void onResult(OdooResult result) {
-//                                    // Success response
-//                                    Toast.makeText(getContext(),result.toString(),Toast.LENGTH_LONG).show();
-//                                }
-//                            });
-//                        }
-//                    }).build();
-//            return null;
-//        }
-//    }
 }
