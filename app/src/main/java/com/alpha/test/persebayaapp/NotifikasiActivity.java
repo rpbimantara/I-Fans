@@ -19,6 +19,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
+import static com.alpha.test.persebayaapp.CommonUtils.waktu;
 
 public class NotifikasiActivity extends AppCompatActivity {
 
@@ -77,8 +78,9 @@ public class NotifikasiActivity extends AppCompatActivity {
             public void onResult(OdooResult result) {
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
-                    String tgl = tanggal(record.getString("date").substring(0,10));
-                    String waktu = CommonUtils.waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
+                    String date = CommonUtils.convertTime(record.getString("date"));
+                    String tgl = tanggal(date.substring(0,10));
+                    String waktu = waktu(date.substring(11,17)) + " "+ "WIB";
                     ArrayListNotifikasi.add(new Notifikasi(
                             record.getInt("id"),
                             record.getString("subject"),

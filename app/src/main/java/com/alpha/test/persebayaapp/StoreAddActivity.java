@@ -102,9 +102,9 @@ public class StoreAddActivity extends AppCompatActivity {
 
     public Boolean is_Valid() {
         Boolean is_Success = true;
-        if(!TextUtils.isEmpty(getBase64ImageString(currentImage))){
-            Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
-        }
+//        if(!TextUtils.isEmpty(getBase64ImageString(currentImage))){
+//            Toast.makeText(getBaseContext(),"Choose at least 1 image!",Toast.LENGTH_SHORT).show();
+//        }
         if(TextUtils.isEmpty(etName.getText())){
             is_Success = false;
             etName.setError("Fill Name.");

@@ -29,6 +29,8 @@ import oogbox.api.odoo.client.listeners.AuthenticateListener;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
+import static com.alpha.test.persebayaapp.CommonUtils.getDatabase;
+
 public class LupaPasswordActivity extends AppCompatActivity {
     public final String TAG = this.getClass().getSimpleName();
     Button btnLupaPassword;
@@ -87,7 +89,7 @@ public class LupaPasswordActivity extends AppCompatActivity {
     }
 
     public void is_connect(){
-        client.authenticate("register","register", sharedPrefManager.getSP_db(), registerCallback);
+        client.authenticate("register","register", getDatabase(), registerCallback);
     }
 
     AuthenticateListener registerCallback = new AuthenticateListener() {

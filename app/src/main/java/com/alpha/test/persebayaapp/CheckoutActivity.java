@@ -31,7 +31,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 
 public class CheckoutActivity extends AppCompatActivity implements AdapterCheckout.CheckoutListener {
     TextView txtTotalAmount;
-    ArrayList<Checkout> ArrayListCheckout;
+    ArrayList<Checkout> ArrayListCheckout = new ArrayList<>();
     ArrayList<Checkout> ArrayListPaid;
     SharedPrefManager sharedPrefManager;
     RecyclerView rv;
@@ -46,19 +46,21 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
     @Override
     public void CheckoutCallback(Checkout checkout, Integer jumlah,String mode) {
         checkout.setQty(String.valueOf(jumlah));
-        if (mode.equalsIgnoreCase("onchange")){
-            updateQty(Integer.valueOf(checkout.getId()),jumlah);
+        if (mode.equalsIgnoreCase("onchange")){ // ketika mode onchange brati ada perubahan dari jumlah barang yg di beli oalah,
+            updateQty(Integer.valueOf(checkout.getId()),jumlah);// iki ngupdate ke database
         }
+        calcTotal();
+    }
+    void calcTotal(){
         int temp = 0;
-        for (Checkout c : ArrayListCheckout) {
+        for (Checkout c : ArrayListCheckout) { // lek iki jadi fungsi dewe seng isok dipanggil piye? tmbh enak emang ngnu kudune
             temp += (Integer.valueOf(c.getHarga()) * Integer.valueOf(c.getQty()));
         }
         txtTotalAmount.setText(CommonUtils.formater(Float.parseFloat(String.valueOf(temp))));
         total = temp;
     }
-
     @Override
-    public void CheckoutDeleted(final Checkout checkout) {
+    public void CheckoutDeleted(final Checkout checkout) { // lek dari sini haruse isi model terupdate kan setelah hapus? gpaham wkwkwk
         AlertDialog.Builder builder = new AlertDialog.Builder(CheckoutActivity.this);
         builder.setTitle(R.string.app_name);
         builder.setMessage("Do You Want Delete This Product Now?");
@@ -68,6 +70,8 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                 client.unlink("sale.order.line", new Integer[]{Integer.valueOf(checkout.getId())}, new IOdooResponse() {
                     @Override
                     public void onResult(OdooResult result) {
+                        loadCheckout();
+
                         Toast.makeText(CheckoutActivity.this,checkout.getNama()+" has been deleted!",Toast.LENGTH_SHORT).show();
                     }
                 });
@@ -82,7 +86,6 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
         });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
-
     }
 
     @Override
@@ -105,6 +108,9 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
             }
         });
         llm = new LinearLayoutManager(this);
+         // pinda on create, pindah no 3 iku bim okee
+        adapter = new AdapterCheckout(ArrayListCheckout,CheckoutActivity.this); //pinda on creeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeaaaaaaaaaaaate
+//        rv.setAdapter(adapter); // pinda oncreate
         sharedPrefManager = new SharedPrefManager(this);
         progressDialog = new ProgressDialog(this);
         rv.setAdapter(adapter);
@@ -135,8 +141,8 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
             }
         });
         client = getOdooConnection(getBaseContext());
-        loadCheckout();
-//        new LoadCheckoutAsync().execute();
+        loadCheckout(); //clear sek
+//        new LoadCheckoutAsync().execute(); //jajelen
     }
 
     public  void PayCheckout(){
@@ -331,13 +337,13 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
 
     public  void loadCheckout(){
         swiper.setRefreshing(true);
-        ArrayListCheckout = new ArrayList<>();
         OArguments arguments = new OArguments();
         arguments.add(Integer.valueOf(sharedPrefManager.getSpIdPartner()));
 
         client.call_kw("sale.order.line", "get_checkout_list", arguments, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
+                ArrayListCheckout.clear();
                 // response
                 OdooRecord[] Records = result.getRecords();
 
@@ -352,9 +358,8 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
                             record.getString("type")
                     ));
                 }
-                adapter = new AdapterCheckout(ArrayListCheckout,CheckoutActivity.this);
-                rv.setAdapter(adapter );
                 adapter.notifyDataSetChanged();
+                calcTotal();
                 swiper.setRefreshing(false);
             }
         });

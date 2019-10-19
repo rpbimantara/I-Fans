@@ -153,8 +153,9 @@ public class JadwalFragment extends Fragment {
                 // response
                 OdooRecord[] Records = result.getRecords();
                 for (final OdooRecord record : Records) {
-                    String tgl = tanggal(record.getString("date").substring(0,10));
-                    String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
+                    String date = CommonUtils.convertTime(record.getString("date"));
+                    String tgl = tanggal(date.substring(0,10));
+                    String waktu = waktu(date.substring(11,17)) + " "+ "WIB";
                     Integer status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());
                     if (record.getBoolean("is_home") == false){
                         status = getContext().getResources().getIdentifier("ic_away","drawable",getContext().getPackageName());

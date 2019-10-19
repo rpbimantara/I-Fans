@@ -21,6 +21,8 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
+import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
+import static com.alpha.test.persebayaapp.CommonUtils.waktu;
 
 public class TicketBarcodeActivity extends AppCompatActivity {
 
@@ -88,10 +90,13 @@ public class TicketBarcodeActivity extends AppCompatActivity {
                 OdooRecord[] records = result.getRecords();
 //                System.out.println(result.toString());
                 for (OdooRecord record : records) {
+                    String date = CommonUtils.convertTime(record.getString("date_open"));
+                    String tgl = tanggal(date.substring(0,10));
+                    String waktu = waktu(date.substring(11,17)) + " "+ "WIB";
                     ArrayListTiketBarcode.add(new TicketBarcode(
                             String.valueOf(record.getInt("id")),
                             record.getString("name"),
-                            record.getString("date_open"),
+                            tgl.concat(" ").concat(waktu),
                             record.getString("event_id"),
                             record.getString("event_ticket_id"),
                             record.getString("barcode_image")));

@@ -4,6 +4,7 @@ package com.alpha.test.persebayaapp;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
@@ -28,14 +29,13 @@ import oogbox.api.odoo.client.helper.utils.OdooFields;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
-import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StoreFragment extends Fragment {
+public class StoreFragment extends Fragment implements HomeActivity.ReloadCallback {
 
     ArrayList<Store> ArrayListStore;
     int RecyclerViewItemPosition ;
@@ -48,9 +48,11 @@ public class StoreFragment extends Fragment {
     OdooClient client;
     EditText editText_Search;
 
+
     public StoreFragment() {
         // Required empty public constructor
     }
+
 
     public static StoreFragment newInstance() {
         Bundle args = new Bundle();
@@ -160,7 +162,7 @@ public class StoreFragment extends Fragment {
 //        });
 //    }
 
-    public void loadStore(){
+    public void loadStore(){ //oke wait
         swiper.setRefreshing(true);
         ArrayListStore = new ArrayList<>();
         ODomain domain = new ODomain();
@@ -202,7 +204,16 @@ public class StoreFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onReloadCalled() {
+        loadStore();
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((HomeActivity)getActivity()).setReloadCallback(this);
+    }
 //    public class StoreTask extends AsyncTask<Void,Void,Void>{
 //        @Override
 //        protected void onPreExecute() {

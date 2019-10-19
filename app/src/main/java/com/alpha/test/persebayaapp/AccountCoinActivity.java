@@ -16,6 +16,7 @@ import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 
+
 import static com.alpha.test.persebayaapp.CommonUtils.formater;
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 import static com.alpha.test.persebayaapp.CommonUtils.tanggal;
@@ -72,8 +73,9 @@ public class AccountCoinActivity extends AppCompatActivity {
                 System.out.println(records.length);
                 for (OdooRecord record : records) {
 
-                    String tgl = tanggal(record.getString("date").substring(0,10));
-                    String waktu = waktu(record.getString("date").substring(11,17)) + " "+ "WIB";
+                    String date = CommonUtils.convertTime(record.getString("date"));
+                    String tgl = tanggal(date.substring(0,10));
+                    String waktu = waktu(date.substring(11,17)) + " "+ "WIB";
                     ArrayListCoin.add(new AccountCoin(
                             record.getString("id"),
                             record.getString("name"),

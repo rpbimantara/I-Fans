@@ -105,14 +105,14 @@ public class SharedPrefManager {
         return sp.getString(SP_FAB_Belanja,"Store");
     }
 
-    public String getSP_Host_url() {
+//    public String getSP_Host_url() {
 //        return sp.getString(SP_Host_url,"http://192.168.0.35:8069");
-        return sp.getString(SP_Host_url,"http://103.133.56.224:8069");
-    }
-
-    public String getSP_db() {
-        return sp.getString(SP_db,"development");
-    }
+////        return sp.getString(SP_Host_url,"http://103.133.56.224:8069");
+//    }
+//
+//    public String getSP_db() {
+//        return sp.getString(SP_db,"fans");
+//    }
 
     public String getSpSessionId() {
             return sp.getString(SP_SESSION_ID,"");

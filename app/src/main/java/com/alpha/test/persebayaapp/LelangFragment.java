@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,7 +36,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
  * A simple {@link Fragment} subclass.
  */
 public class LelangFragment extends Fragment implements InterfaceLelang {
-
+    public final String TAG = this.getClass().getSimpleName();
     ArrayList<lelang> ArrayListLelang;
     int RecyclerViewItemPosition ;
     SharedPrefManager sharedPrefManager;
@@ -79,7 +80,7 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                         client.create("persebaya.lelang.bid", values, new IOdooResponse() {
                             @Override
                             public void onResult(OdooResult result) {
-                                int serverId = result.getInt("result");
+                                final int serverId = result.getInt("result");
                                 if (serverId >0){
                                     OArguments arguments = new OArguments();
                                     arguments.add(sharedPrefManager.getSpIdPartner());
@@ -89,16 +90,23 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                                     client.call_kw("sale.order", "create_so_lelang", arguments, new IOdooResponse() {
                                         @Override
                                         public void onResult(OdooResult result) {
-                                            int serverId = 0;
+                                            int soId = 0;
                                             OdooRecord[] records = result.getRecords();
                                             for (OdooRecord record : records) {
-                                                serverId = serverId+record.getInt("id");
+                                                soId = soId+record.getInt("id");
                                             }
-                                            if (serverId > 0) {
-                                                Confirm_so(serverId,status,client,context,progressDialog);
-                                            }else {
-                                                Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
+                                            Log.d(TAG,"Lelang SO : " + soId);
+                                            if (soId > 0) {
+                                                Confirm_so(soId,status,client,context,progressDialog);
                                                 progressDialog.dismiss();
+                                            }else {
+                                                if (status.equalsIgnoreCase("BID")) {
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
+                                                }else{
+                                                    progressDialog.dismiss();
+                                                    Toast.makeText(context, "Product Purchased!", Toast.LENGTH_LONG).show();
+                                                }
                                             }
                                         }
 
@@ -130,11 +138,8 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
-                if (status.equalsIgnoreCase("BID")) {
-                    Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
-                }else{
-                    Toast.makeText(context, "Product Purchased!", Toast.LENGTH_LONG).show();
-                }
+                Log.d(TAG,"Confirm SO LELANG : " + status);
+
                 progressDialog.dismiss();
             }
 
@@ -190,6 +195,7 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
             @Override
             public void onError(OdooErrorException error) {
                 swiper.setRefreshing(false);
+                progressDialog.dismiss();
             }
         });
         loadLelang();

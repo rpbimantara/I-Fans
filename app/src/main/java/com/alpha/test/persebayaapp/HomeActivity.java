@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -45,7 +46,17 @@ public class HomeActivity extends AppCompatActivity {
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private static final String TAG = HomeActivity.class.getSimpleName();
     Context context;
+    boolean doubleBackToExitPressedOnce = false;
 
+    ReloadCallback rcListener;
+
+    public interface ReloadCallback{
+        void onReloadCalled();
+    }
+
+    public void setReloadCallback(ReloadCallback rcListener){
+        this.rcListener = rcListener;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +94,6 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
         navigation = findViewById(R.id.navigation);
@@ -106,10 +116,10 @@ public class HomeActivity extends AppCompatActivity {
                             Intent fabIntent = new Intent();
                             if (sharedPrefManager.getSpFab().equalsIgnoreCase("Store")) {
                                 fabIntent = new Intent(HomeActivity.this, StoreAddActivity.class);
-                                fabIntent.putExtra("id", "false");
+                                fabIntent.putExtra("id", "false"); // wkwk aku lali, jadi di dalam home activy punya fragment lagi sebelum storefragment
                             } else {
                                 fabIntent = new Intent(HomeActivity.this, LelangAddActivity.class);
-                                fabIntent.putExtra("id", "false");
+                                fabIntent.putExtra("id", "false"); // lek disini manggil lelangfragment
                             }
                             for (final OdooRecord record : Records) {
                                 if (record.getString("state").equalsIgnoreCase("draft")) {
@@ -294,7 +304,7 @@ public class HomeActivity extends AppCompatActivity {
                 case 1:
                     return BeritaFragment.newInstance();
                 case 2:
-                    return BelanjaFragment.newInstance();
+                    return BelanjaFragment.newInstance(); //hm jajal se kudune iso, nek act frag frag
                 case 3:
                     return AccountFragment.newInstance();
             }
@@ -307,4 +317,23 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void onBackPressed() {
+        if (doubleBackToExitPressedOnce) {
+            super.onBackPressed();
+            return;
+        }
+
+        this.doubleBackToExitPressedOnce = true;
+        Toast.makeText(this, "Please click BACK again to exit", Toast.LENGTH_SHORT).show();
+
+        new Handler().postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                doubleBackToExitPressedOnce=false;
+            }
+        }, 2000);
+    }
 }

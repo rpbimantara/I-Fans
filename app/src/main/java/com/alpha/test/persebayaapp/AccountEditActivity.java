@@ -176,21 +176,27 @@ public class AccountEditActivity extends AppCompatActivity {
             ETphone.setError("Fill Phone.");
         }
 
-        if(!txtbirthday.getText().toString().equalsIgnoreCase("false")){
-            DateFormat f = new SimpleDateFormat("dd MMM yyyy");
-            Date date = new Date();
-            try {
-                if (f.parse(txtbirthday.getText().toString()).after(f.parse(f.format(date)))){
-                    is_Success = false;
-                    Toast.makeText(getBaseContext(),"Must fill with different day after today!",Toast.LENGTH_SHORT).show();
+        if(!TextUtils.isEmpty(txtbirthday.getText())){
+            if(!txtbirthday.getText().toString().equalsIgnoreCase("false")){
+                DateFormat f = new SimpleDateFormat("dd MMM yyyy");
+                Date date = new Date();
+                try {
+                    if (f.parse(txtbirthday.getText().toString()).after(f.parse(f.format(date)))){
+                        is_Success = false;
+                        Toast.makeText(getBaseContext(),"Must fill with different day after today!",Toast.LENGTH_SHORT).show();
+                    }
+                } catch (ParseException e) {
+                    throw new IllegalArgumentException(e);
                 }
-            } catch (ParseException e) {
-                throw new IllegalArgumentException(e);
+            }else{
+                is_Success = false;
+                Toast.makeText(getBaseContext(),"Fill Birthday.",Toast.LENGTH_SHORT).show();
             }
         }else{
             is_Success = false;
             Toast.makeText(getBaseContext(),"Fill Birthday.",Toast.LENGTH_SHORT).show();
         }
+
         return is_Success;
     }
 

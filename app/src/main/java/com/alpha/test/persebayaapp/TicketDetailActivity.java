@@ -163,11 +163,12 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
                 OdooRecord[] records = result.getRecords();
 
                 for(OdooRecord record: records) {
-                    String tanggal = tanggal(record.getString("date_begin").substring(0,10));
-                    String time =  waktu(record.getString("date_begin").substring(11,17)) +" WIB ";
+                    String date = CommonUtils.convertTime(record.getString("date"));
+                    String tgl = tanggal(date.substring(0,10));
+                    String waktu = waktu(date.substring(11,17)) + " "+ "WIB";
                     txtNamatiket.setText(record.getString("name"));
-                    txtTanggaltiket.setText(tanggal);
-                    txtWaktutiket.setText(time);
+                    txtTanggaltiket.setText(tgl);
+                    txtWaktutiket.setText(waktu);
                     imageTiket.setImageBitmap(StringToBitMap(record.getString("image")));
                 }
             }
@@ -225,7 +226,7 @@ public class TicketDetailActivity extends AppCompatActivity implements AdapterTi
            }
         }
         arguments.addItems(listSource);
-        client.call_kw("sale.order","create_so" ,arguments, new IOdooResponse() {
+        client.call_kw("sale.order","create_so_ticket" ,arguments, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
                 int serverId = 0;

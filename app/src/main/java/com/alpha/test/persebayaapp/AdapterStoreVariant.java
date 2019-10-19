@@ -19,9 +19,15 @@ public class AdapterStoreVariant extends RecyclerView.Adapter<AdapterStoreVarian
     private ArrayList<Variant> dataList;
     private List<String> itemSelected = new ArrayList<>();
     private Context context;
+    StoreVariantListener callback;
 
-    public AdapterStoreVariant(ArrayList<Variant> dataList) {
+    public interface StoreVariantListener { // create an interface
+        void onCheckChange(Variant variant,Boolean is_checked); // create callback function
+    }
+
+    public AdapterStoreVariant(ArrayList<Variant> dataList,StoreVariantListener callback) {
         this.dataList = dataList;
+        this.callback = callback;
     }
 
     public class VariantViewHolder extends RecyclerView.ViewHolder{
@@ -62,17 +68,24 @@ public class AdapterStoreVariant extends RecyclerView.Adapter<AdapterStoreVarian
            holder.cbVariant.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                @Override
                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                   if (b){
-                       itemSelected.add(itemName);
-                       String jsonString = gson.toJson(getItemSelected());
-                       sharedPrefManager.saveSPString(sharedPrefManager.SP_RETURN_FROM_RV,jsonString);
-                   }else{
-                       itemSelected.remove(itemName);
-                       String jsonString = gson.toJson(getItemSelected());
-                       sharedPrefManager.saveSPString(sharedPrefManager.SP_RETURN_FROM_RV,jsonString);
-                   }
+                   callback.onCheckChange(dataList.get(position),b);
                }
            });
+
+//           holder.cbVariant.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+//               @Override
+//               public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+//                   if (b){
+//                       itemSelected.add(itemName);
+//                       String jsonString = gson.toJson(getItemSelected());
+//                       sharedPrefManager.saveSPString(sharedPrefManager.SP_RETURN_FROM_RV,jsonString);
+//                   }else{
+//                       itemSelected.remove(itemName);
+//                       String jsonString = gson.toJson(getItemSelected());
+//                       sharedPrefManager.saveSPString(sharedPrefManager.SP_RETURN_FROM_RV,jsonString);
+//                   }
+//               }
+//           });
        }
     }
 

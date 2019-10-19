@@ -65,7 +65,6 @@ public class AccountAuctionActivity extends AppCompatActivity{
 
     public void loadAuction(){
         swiper.setRefreshing(true);
-        ArrayListLelang = new ArrayList<>();
         ODomain domain = new ODomain();
         domain.add("active", "=", true);
         domain.add("type", "=", "lelang");

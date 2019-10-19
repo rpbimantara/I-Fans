@@ -4,10 +4,11 @@ public class Variant {
     String id,variant_text,qty;
     Boolean IsChecked;
 
-    public Variant(String id, String variant_text, String qty) {
+    public Variant(String id, String variant_text, String qty, Boolean isChecked) {
         this.id = id;
         this.variant_text = variant_text;
         this.qty = qty;
+        IsChecked = isChecked;
     }
 
     public Boolean getChecked() {

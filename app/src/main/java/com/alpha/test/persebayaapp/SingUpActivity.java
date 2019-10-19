@@ -31,6 +31,8 @@ import oogbox.api.odoo.client.helper.utils.OArguments;
 import oogbox.api.odoo.client.listeners.AuthenticateListener;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 
+import static com.alpha.test.persebayaapp.CommonUtils.getDatabase;
+
 public class SingUpActivity extends AppCompatActivity {
     public final String TAG = this.getClass().getSimpleName();
     private TextView _login;
@@ -63,9 +65,9 @@ public class SingUpActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 //                new SaveUser().execute();
-//                progressDialog.setMessage("Loading...");
-//                progressDialog.show();
-//                progressDialog.setCancelable(false);
+                progressDialog.setMessage("Loading...");
+                progressDialog.show();
+                progressDialog.setCancelable(false);
                 create_user();
             }
         });
@@ -144,7 +146,7 @@ public class SingUpActivity extends AppCompatActivity {
 
     public void create_user() {
         if (!is_Valid()) {
-//            progressDialog.dismiss();
+            progressDialog.dismiss();
             return;
         }else {
             is_connect();
@@ -193,7 +195,7 @@ public class SingUpActivity extends AppCompatActivity {
 
 
     public void is_connect(){
-        client.authenticate("register","register", sharedPrefManager.getSP_db(), registerCallback);
+        client.authenticate("register","register", getDatabase(), registerCallback);
     }
 
     AuthenticateListener registerCallback = new AuthenticateListener() {

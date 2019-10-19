@@ -71,7 +71,7 @@ public class AccountStoreActivity extends AppCompatActivity {
                 View ChildView = rv.findChildViewUnder(e.getX(), e.getY());
 
                 if(ChildView != null && gestureDetector.onTouchEvent(e)) {
-
+                    if (adapter.getItemCount()<=1) return false;
                     RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
                     Intent intent = new Intent(getApplicationContext(),StoreDetailActivity.class);
                     intent.putExtra("id",ArrayListStore.get(RecyclerViewItemPosition).getId());

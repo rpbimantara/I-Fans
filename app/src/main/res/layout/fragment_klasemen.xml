@@ -55,8 +55,8 @@
                                     android:id="@+id/txt_selisihgol"
                                     android:textColor="@color/colorTrueState"
                                     android:gravity="center"
-                                    android:text="Goal Difference"
-                                    android:layout_width="100dp"
+                                    android:text="+/-"
+                                    android:layout_width="50dp"
                                     android:layout_height="match_parent" />
                                 <TextView
                                     android:id="@+id/txt_point"

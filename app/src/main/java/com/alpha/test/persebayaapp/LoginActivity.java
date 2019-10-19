@@ -112,8 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                         sharedPrefManager.saveSPString(SharedPrefManager.SP_SESSION_ID, user.sessionId);
                     }
 
-                    startActivity(new Intent(LoginActivity.this, HomeActivity.class)
-                            .addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK));
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class));
                 }
             });
 

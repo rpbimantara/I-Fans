@@ -94,6 +94,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         lnOrder.setVisibility(View.INVISIBLE);
         lnEdit.setVisibility(View.INVISIBLE);
         sharedPrefManager = new SharedPrefManager(this);
+
         gson = new Gson();
         client = getOdooConnection1(getBaseContext(), new OdooErrorListener() {
             @Override
@@ -132,12 +133,21 @@ public class StoreDetailActivity extends AppCompatActivity {
         btn_buy_now.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Boolean checker_result = false;
+                for (Variant variant: ArrayListVariant){
+                    if (variant.getChecked() == Boolean.TRUE){
+                        checker_result = true;
+                    }
+                }
                 AlertDialog.Builder builder = new AlertDialog.Builder(StoreDetailActivity.this);
                 builder.setTitle(R.string.app_name);
                 builder.setMessage("Are You Sure to Buy This Item?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
+                        progressDialog.setMessage("Loading......");
+                        progressDialog.show();
+                        progressDialog.setCancelable(false);
                         PayNow();
                         dialogInterface.dismiss();
                     }
@@ -149,6 +159,7 @@ public class StoreDetailActivity extends AppCompatActivity {
                     }
                 });
                 final AlertDialog alertDialog = builder.create();
+                final Boolean finalChecker_result = checker_result;
                 getSaldo(context, new IOdooResponse() {
                     @Override
                     public void onResult(OdooResult result) {
@@ -163,7 +174,12 @@ public class StoreDetailActivity extends AppCompatActivity {
                                 if (record.getInt("saldo") < total_now ){
                                     Toast.makeText(getBaseContext(), "Top up now to finish this transaction!", Toast.LENGTH_SHORT).show();
                                 }else {
-                                    alertDialog.show();
+                                    if (finalChecker_result == Boolean.FALSE){
+                                        progressDialog.dismiss();
+                                        Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
+                                    }else{
+                                        alertDialog.show();
+                                    }
                                 }
                             }
                         }
@@ -217,7 +233,7 @@ public class StoreDetailActivity extends AppCompatActivity {
     public void AddToCartHeader(){
         ODomain domain = new ODomain();
         domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-        domain.add("state", "=", "draft");
+        domain.add("state", "=", "sent");
 
         OdooFields fields = new OdooFields();
         fields.addAll("id", "name");
@@ -278,14 +294,19 @@ public class StoreDetailActivity extends AppCompatActivity {
         OArguments arguments = new OArguments();
         arguments.add(sharedPrefManager.getSpIdPartner());
         List listSource = new ArrayList();
+        for (Variant variant: ArrayListVariant){
+            if (variant.getChecked() == Boolean.TRUE){
+                listSource.add(Integer.valueOf(variant.getId()));
+            }
+        }
         arguments.addItems(listSource);
-        client.call_kw("sale.order","create_so",arguments, new IOdooResponse() {
+        client.call_kw("sale.order","create_so_checkout",arguments, new IOdooResponse() {
             @Override
             public void onResult(final OdooResult result) {
-                Log.d(TAG,result.toString());
                 OdooRecord[] records = result.getRecords();
                 for (OdooRecord record : records) {
-                    AddToCartPayNow(record.getInt("id"));
+                    Confirm_so(record.getInt("id"));
+                    Toast.makeText(getBaseContext(),"Item purchased!",Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -374,17 +395,21 @@ public class StoreDetailActivity extends AppCompatActivity {
 //    }
 
     public void AddToCart (Integer order_id){
-        String jsonString = sharedPrefManager.getSpReturnFromRv();
-        String[] listItem = gson.fromJson(jsonString, String[].class);
-            if (listItem.length < 1){
-                progressDialog.dismiss();
-                Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
-            }else {
-                for (int j=0; j<listItem.length;j++){
+        Boolean checker_result = false;
+        for (Variant variant: ArrayListVariant){
+            if (variant.getChecked() == Boolean.TRUE){
+                checker_result = true;
+            }
+        }
+        if (checker_result == Boolean.FALSE){
+            progressDialog.dismiss();
+            Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
+        }else {
+            for (Variant variant: ArrayListVariant) {
+                if (variant.getChecked() == Boolean.TRUE){
                     OdooValues values = new OdooValues();
                     values.put("order_id", order_id );
-                    values.put("product_id", Integer.valueOf(listItem[j]));
-
+                    values.put("product_id", Integer.valueOf(variant.getId()));
                     client.create("sale.order.line", values, new IOdooResponse() {
                         @Override
                         public void onResult(final OdooResult result) {
@@ -396,7 +421,6 @@ public class StoreDetailActivity extends AppCompatActivity {
                                 }
                             });
                         }
-
                         @Override
                         public boolean onError(OdooErrorException error) {
                             Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
@@ -406,36 +430,73 @@ public class StoreDetailActivity extends AppCompatActivity {
                     });
                 }
             }
-    }
-
-    public void AddToCartPayNow (final Integer order_id){
-        String jsonString = sharedPrefManager.getSpReturnFromRv();
-        String[] listItem = gson.fromJson(jsonString, String[].class);
-        if (listItem.length < 1){
-            progressDialog.dismiss();
-            Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
-        }else {
-            for (int j=0; j<listItem.length;j++){
-                OdooValues values = new OdooValues();
-                values.put("order_id", order_id );
-                values.put("product_id", Integer.valueOf(listItem[j]));
-
-                client.create("sale.order.line", values, new IOdooResponse() {
-                    @Override
-                    public void onResult(final OdooResult result) {
-                        Confirm_so(order_id);
-                    }
-
-                    @Override
-                    public boolean onError(OdooErrorException error) {
-                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
-                        progressDialog.dismiss();
-                        return super.onError(error);
-                    }
-                });
-            }
         }
     }
+
+//    public void AddToCartPayNow (Integer order_id){
+//        Boolean checker_result = false;
+//        for (Variant variant: ArrayListVariant){
+//            if (variant.getChecked() == Boolean.TRUE){
+//                checker_result = true;
+//            }
+//        }
+//        if (checker_result == Boolean.FALSE){
+//            progressDialog.dismiss();
+//            Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
+//        }else {
+//            int count = 0;
+//            for (Variant variant: ArrayListVariant) {
+//                count = count +1;
+//                if (variant.getChecked() == Boolean.TRUE){
+//                    OdooValues values = new OdooValues();
+//                    values.put("order_id", order_id );
+//                    values.put("product_id", Integer.valueOf(variant.getId()));
+//                    client.create("sale.order.line", values, new IOdooResponse() {
+//                        @Override
+//                        public void onResult(final OdooResult result) {
+//                        }
+//                        @Override
+//                        public boolean onError(OdooErrorException error) {
+//                            Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+//                            progressDialog.dismiss();
+//                            return super.onError(error);
+//                        }
+//                    });
+//                }
+//                if (count == ArrayListVariant.size()){
+//                    Confirm_so(order_id);
+//                }
+//            }
+//        }
+//    }
+//    public void AddToCartPayNow (final Integer order_id){
+//        String jsonString = sharedPrefManager.getSpReturnFromRv();
+//        String[] listItem = gson.fromJson(jsonString, String[].class);
+//        if (listItem.length < 1){
+//            progressDialog.dismiss();
+//            Toast.makeText(context, "Choose The Variant Items!", Toast.LENGTH_SHORT).show();
+//        }else {
+//            for (int j=0; j<listItem.length;j++){
+//                OdooValues values = new OdooValues();
+//                values.put("order_id", order_id );
+//                values.put("product_id", Integer.valueOf(listItem[j]));
+//
+//                client.create("sale.order.line", values, new IOdooResponse() {
+//                    @Override
+//                    public void onResult(final OdooResult result) {
+//                        Confirm_so(order_id);
+//                    }
+//
+//                    @Override
+//                    public boolean onError(OdooErrorException error) {
+//                        Toast.makeText(getApplicationContext(),error.getMessage(),Toast.LENGTH_LONG).show();
+//                        progressDialog.dismiss();
+//                        return super.onError(error);
+//                    }
+//                });
+//            }
+//        }
+//    }
 
     public void Confirm_so(Integer order_id){
         OArguments arguments = new OArguments();
@@ -443,19 +504,19 @@ public class StoreDetailActivity extends AppCompatActivity {
         client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
-//                OdooRecord[] records = result.getRecords();
-//                for (OdooRecord record : records) {
-//                    if (record.getInt("id") > 0){
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    if (record.getInt("id") > 0){
                         Toast.makeText(getBaseContext(),"Item purchased!",Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-                Log.d(TAG,"SO Id : " + result.toString());
-                progressDialog.dismiss();
+                        Log.d(TAG,"Confirm SO : " + result.toString());
+                        progressDialog.dismiss();
+                    }
+                }
             }
 
             @Override
             public boolean onError(OdooErrorException error) {
-                Log.e(TAG,"SO Id : " + error.toString());
+                Log.e(TAG,"Confirm SO : " + error.toString());
                 progressDialog.dismiss();
                 return super.onError(error);
             }
@@ -484,7 +545,8 @@ public class StoreDetailActivity extends AppCompatActivity {
                     ArrayListVariant.add(new Variant(
                             String.valueOf(record.getInt("id")),
                             variant,
-                            String.valueOf(Math.round(record.getFloat("qty_available"))))
+                            String.valueOf(Math.round(record.getFloat("qty_available"))),
+                            false)
                     );
                     ownertgl = record.getString("ownername") + " - "+ tanggal(record.getString("date"));
                     if (record.getInt("owner") == sharedPrefManager.getSpIdUser()){
@@ -496,7 +558,12 @@ public class StoreDetailActivity extends AppCompatActivity {
                 txtOwner.setText(ownertgl);
                 imageStore.setImageBitmap(StringToBitMap(imageCurrent));
                 txtDeskripsi.setText(description);
-                adapter = new AdapterStoreVariant(ArrayListVariant);
+                adapter = new AdapterStoreVariant(ArrayListVariant, new AdapterStoreVariant.StoreVariantListener() {
+                    @Override
+                    public void onCheckChange(Variant variant, Boolean is_checked) {
+                        variant.setChecked(is_checked);
+                    }
+                });
                 rv.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
             }

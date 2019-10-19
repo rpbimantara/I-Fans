@@ -13,8 +13,12 @@ import java.io.ByteArrayOutputStream;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.text.NumberFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+import java.util.TimeZone;
 
 import oogbox.api.odoo.OdooClient;
 import oogbox.api.odoo.client.OdooVersion;
@@ -105,11 +109,12 @@ public class CommonUtils {
     }
 
     public static String getURL(){
-        return "http://103.133.56.224:8069";
+//        return "http://103.133.56.224:8069";
+        return "http://192.168.0.35:8069";
     }
 
     public static String getDatabase(){
-        return "development";
+        return "fans";
     }
 
     public static String changeTime(String time) {
@@ -119,10 +124,24 @@ public class CommonUtils {
         return time;
     }
 
+    public static String convertTime(String time) {
+        try {
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(sdf.parse(time));
+            calendar.add(Calendar.HOUR_OF_DAY, 7);
+            time = sdf.format(calendar.getTime());
+        }catch (ParseException e){
+            System.out.println(e);
+        }
+        System.out.println(time);
+        return time;
+    }
+
     public static OdooClient getOdooConnection(final Context context) {
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
         return new OdooClient.Builder(context)
-                .setHost(sharedPrefManager.getSP_Host_url())
+                .setHost(getURL())
                 .setSession(sharedPrefManager.getSpSessionId())
                 .setConnectListener(new OdooConnectListener() {
                     @Override
@@ -158,7 +177,7 @@ public class CommonUtils {
     public static OdooClient getOdooConnection1(final Context context, OdooErrorListener odooErrorListener) {
         SharedPrefManager sharedPrefManager = new SharedPrefManager(context);
         return new OdooClient.Builder(context)
-                .setHost(sharedPrefManager.getSP_Host_url())
+                .setHost(getURL())
                 .setSession(sharedPrefManager.getSpSessionId())
                 .setConnectListener(new OdooConnectListener() {
                     @Override
