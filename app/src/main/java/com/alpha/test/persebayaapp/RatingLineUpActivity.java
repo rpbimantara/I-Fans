@@ -98,7 +98,34 @@ public class RatingLineUpActivity extends AppCompatActivity {
         });
         client = getOdooConnection(getBaseContext());
         loadData();
+        if(Integer.valueOf(getIntent().getExtras().get("id_rating").toString())>0){
+            loadRating();
+        }
+    }
 
+    public void loadRating(){
+        ODomain domain = new ODomain();
+        domain.add("id", "=", getIntent().getExtras().get("id_rating"));
+
+        OdooFields fields = new OdooFields();
+        fields.addAll("id","rating","review");
+
+        int offset = 0;
+        int limit = 80;
+
+        String sorting = "id DESC";
+
+        client.searchRead("persebaya.rating", domain, fields, offset, limit, sorting, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                OdooRecord[] records = result.getRecords();
+                for (OdooRecord record : records) {
+                    ratingBar.setRating(record.getFloat("rating"));
+                    etComment.setText(record.getString("review"));
+
+                }
+            }
+        });
     }
 
     public void loadData(){

@@ -1,12 +1,15 @@
 package com.alpha.test.persebayaapp;
 
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -34,6 +37,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
  */
 public class MatchLineUpAwayFragment extends Fragment {
 
+    public final String TAG = this.getClass().getSimpleName();
     private View rootView;
     RecyclerView rvLineUpAwayCore,rvLineUpAway;
     int RecyclerViewItemPosition ;
@@ -96,11 +100,11 @@ public class MatchLineUpAwayFragment extends Fragment {
 
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                        Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
-                        intent.putExtra("id_jadwal", Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()));
-                        intent.putExtra("id_player", ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id());
-//                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
-                        startActivity(intent);
+//                        Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
+//                        intent.putExtra("id_jadwal", Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()));
+//                        intent.putExtra("id_player", ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id());
+                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
+//                        startActivity(intent);
                     }
                     return false;
                 }
@@ -132,11 +136,7 @@ public class MatchLineUpAwayFragment extends Fragment {
 
                     if (ChildView != null && gestureDetector.onTouchEvent(e)) {
                         RecyclerViewItemPosition = rv.getChildAdapterPosition(ChildView);
-                        Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
-                        intent.putExtra("id_jadwal", Integer.valueOf(ArrayListMatchLineUpAway.get(RecyclerViewItemPosition).getJadwal_id()));
-                        intent.putExtra("id_player", ArrayListMatchLineUpAway.get(RecyclerViewItemPosition).getPlayer_id());
-//                        cekRating(Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAwayCore.get(RecyclerViewItemPosition).getPlayer_id()));
-                        startActivity(intent);
+                        cekRating(Integer.valueOf(ArrayListMatchLineUpAway.get(RecyclerViewItemPosition).getJadwal_id()),Integer.valueOf(ArrayListMatchLineUpAway.get(RecyclerViewItemPosition).getPlayer_id()));
                     }
                     return false;
                 }
@@ -221,6 +221,7 @@ public class MatchLineUpAwayFragment extends Fragment {
     public void cekRating(final Integer id_jadwal, final Integer id_player){
         ODomain domain = new ODomain();
         domain.add("employee_id", "=", id_player);
+        domain.add("jadwal_id", "=", id_jadwal);
         domain.add("create_uid", "=", sharedPrefManager.getSpIdUser());
 
         OdooFields fields = new OdooFields();
@@ -234,17 +235,40 @@ public class MatchLineUpAwayFragment extends Fragment {
         client.searchRead("persebaya.rating", domain, fields, offset, limit, sorting, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
-                OdooRecord[] records = result.getRecords();
-                for (OdooRecord record : records) {
-                    if (record.getInt("id") > 0 ){
-                        Toast.makeText(getContext(),"Rating has been created!",Toast.LENGTH_LONG).show();
-                    }else{
-//                                        intent = new Intent(getActivity(), RatingLineUpActivity.class);
-//                                        intent.putExtra("id_jadwal", id_jadwal);
-//                                        intent.putExtra("id_player", id_player);
+                OdooRecord[] Records = result.getRecords();
+                System.out.println(result.toString());
+                if (result.getFloat("length") > 0 ){
+                    for (final OdooRecord record : Records) {
+                        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                        builder.setTitle(R.string.app_name);
+                        builder.setMessage("You Have been Give Rate, wanna edit now?");
+                        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
+                                intent.putExtra("id_jadwal", id_jadwal);
+                                intent.putExtra("id_player", id_player);
+                                intent.putExtra("id_rating", record.getInt("id"));
+                                startActivity(intent);
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                dialogInterface.dismiss();
+                            }
+                        });
+                        final AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
                     }
+                }else{
+                    Intent intent = new Intent(getActivity(), RatingLineUpActivity.class);
+                    intent.putExtra("id_jadwal", id_jadwal);
+                    intent.putExtra("id_player", id_player);
+                    intent.putExtra("id_rating", 0);
+                    startActivity(intent);
                 }
-
             }
 
             @Override
