@@ -85,7 +85,6 @@ public class AccountAuctionActivity extends AppCompatActivity implements Adapter
             public void onResult(OdooResult result) {
                 ArrayListLelang.clear();
                 OdooRecord[] Records = result.getRecords();
-                System.out.println(result.toString());
                 for (final OdooRecord record : Records) {
                     ArrayListLelang.add(new lelang(
                             String.valueOf(record.getInt("id")),

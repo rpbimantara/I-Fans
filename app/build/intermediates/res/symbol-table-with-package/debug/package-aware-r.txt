@@ -1132,6 +1132,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable goal
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
 drawable gradientbackground
@@ -2161,9 +2162,12 @@ drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
 drawable qv_bg_selector
 drawable qv_btn_selector
+drawable red
 drawable state_list
+drawable subtitute
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
+drawable yellow
 font aladin
 id ALT
 id Account_edit_toolbar
@@ -2216,6 +2220,7 @@ id all
 id always
 id appBar
 id app_bar
+id app_bar_history
 id appbar
 id appbar_belanja
 id appbar_berita
@@ -2346,6 +2351,9 @@ id ghost_view
 id gone
 id group_divider
 id groups
+id history
+id history_image
+id history_toolbar
 id home
 id homeAsUp
 id home_image
@@ -2508,6 +2516,8 @@ id rectangle
 id right
 id right_icon
 id right_side
+id rv_recycler_history_purchase
+id rv_recycler_history_sale
 id rv_recycler_view_account_auction
 id rv_recycler_view_account_coin
 id rv_recycler_view_account_store
@@ -2593,6 +2603,8 @@ id swiperefresh_account_store
 id swiperefresh_checkout
 id swiperefresh_club_player
 id swiperefresh_donasi
+id swiperefresh_history_purchase
+id swiperefresh_history_sale
 id swiperefresh_jadwal
 id swiperefresh_klasemen
 id swiperefresh_lelang
@@ -2616,6 +2628,7 @@ id tabMode
 id tabs_belanja
 id tabs_berita
 id tabs_detail_club
+id tabs_history
 id tabs_home
 id tabs_match_detail
 id tabs_match_line_up
@@ -2739,6 +2752,13 @@ id txt_emailAccount
 id txt_hargaBarangStore
 id txt_harga_tiket
 id txt_headline
+id txt_history_date
+id txt_history_harga
+id txt_history_item
+id txt_history_jumlah
+id txt_history_name
+id txt_history_state
+id txt_history_total
 id txt_hot_headline
 id txt_kategori
 id txt_kategori_tiket
@@ -2803,6 +2823,7 @@ id view_pager
 id viewpager_belanja
 id viewpager_berita
 id viewpager_detail_club
+id viewpager_history
 id viewpager_home
 id viewpager_match_detail
 id viewpager_match_line_up
@@ -2870,6 +2891,7 @@ layout activity_club_detail
 layout activity_donation
 layout activity_donation_add
 layout activity_donation_detail
+layout activity_history
 layout activity_home
 layout activity_lelang_add
 layout activity_lelang_detail
@@ -2890,6 +2912,7 @@ layout card_item_berita
 layout card_item_checkout
 layout card_item_coin
 layout card_item_donasi
+layout card_item_history
 layout card_item_hot_news
 layout card_item_jadwal
 layout card_item_klasemen
@@ -2930,6 +2953,8 @@ layout fragment_club_schedule
 layout fragment_club_standing
 layout fragment_club_statistic
 layout fragment_club_summary
+layout fragment_history_purchase
+layout fragment_history_sale
 layout fragment_home
 layout fragment_jadwal
 layout fragment_klasemen

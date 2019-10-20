@@ -19,15 +19,21 @@
         android:iconTint="@color/colorTrueState"
         app:showAsAction="always"/>
 
+    <item android:title="History"
+        android:id="@+id/history"
+        android:icon="@drawable/ic_history_black_24dp"
+        android:iconTint="@color/colorWhite"
+        app:showAsAction="withText"/>
+
     <item android:title="Notification"
         android:id="@+id/notifikasi"
-        android:icon="@drawable/ic_add"
-        android:iconTint="@color/colorTrueState"
+        android:icon="@drawable/ic_message_black_24dp"
+        android:iconTint="@color/colorWhite"
         app:showAsAction="withText"/>
 
     <item android:title="Logout"
         android:id="@+id/logout"
         android:icon="@drawable/ic_logout"
-        android:iconTint="@color/colorTrueState"
+        android:iconTint="@color/colorWhite"
         app:showAsAction="withText"/>
 </menu>

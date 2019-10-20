@@ -254,6 +254,10 @@ public class HomeActivity extends AppCompatActivity {
                 Intent DonationIntent = new Intent(HomeActivity.this,DonationActivity.class);
                 startActivity(DonationIntent);
                 break;
+            case R.id.history :
+                Intent HistoryIntent = new Intent(HomeActivity.this,HistoryActivity.class);
+                startActivity(HistoryIntent);
+                break;
             case R.id.notifikasi :
                 Intent NotifikasiIntent = new Intent(HomeActivity.this,NotifikasiActivity.class);
                 startActivity(NotifikasiIntent);

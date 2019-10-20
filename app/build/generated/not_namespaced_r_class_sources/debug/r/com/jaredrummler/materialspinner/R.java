@@ -42,25 +42,25 @@ public final class R {
     public static final class drawable {
         private drawable() {}
 
-        public static final int ms__arrow = 0x7f080467;
-        public static final int ms__drawable = 0x7f080468;
-        public static final int ms__drop_down_shadow = 0x7f080469;
-        public static final int ms__menu_down = 0x7f08046a;
-        public static final int ms__selector = 0x7f08046b;
-        public static final int ms__shadow_background = 0x7f08046c;
+        public static final int ms__arrow = 0x7f080468;
+        public static final int ms__drawable = 0x7f080469;
+        public static final int ms__drop_down_shadow = 0x7f08046a;
+        public static final int ms__menu_down = 0x7f08046b;
+        public static final int ms__selector = 0x7f08046c;
+        public static final int ms__shadow_background = 0x7f08046d;
     }
     public static final class id {
         private id() {}
 
-        public static final int fill_parent = 0x7f0a00ab;
-        public static final int match_parent = 0x7f0a0102;
-        public static final int tv_tinted_spinner = 0x7f0a020b;
-        public static final int wrap_content = 0x7f0a0286;
+        public static final int fill_parent = 0x7f0a00ac;
+        public static final int match_parent = 0x7f0a0106;
+        public static final int tv_tinted_spinner = 0x7f0a0214;
+        public static final int wrap_content = 0x7f0a0297;
     }
     public static final class layout {
         private layout() {}
 
-        public static final int ms__list_item = 0x7f0d0073;
+        public static final int ms__list_item = 0x7f0d0077;
     }
     public static final class styleable {
         private styleable() {}
