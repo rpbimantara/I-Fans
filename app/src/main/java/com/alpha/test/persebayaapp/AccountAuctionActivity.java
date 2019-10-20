@@ -22,7 +22,7 @@ import oogbox.api.odoo.client.listeners.IOdooResponse;
 
 import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection;
 
-public class AccountAuctionActivity extends AppCompatActivity{
+public class AccountAuctionActivity extends AppCompatActivity implements AdapterLelang.InterfaceLelang {
 
     ArrayList<lelang> ArrayListLelang = new ArrayList<>();
     int RecyclerViewItemPosition ;
@@ -33,7 +33,11 @@ public class AccountAuctionActivity extends AppCompatActivity{
     SwipeRefreshLayout swiper;
     OdooClient client;
     Toolbar toolbar;
-    InterfaceLelang listener;
+
+    @Override
+    public void Addbidder(String idlelang, String nilai, String status,ProgressDialog progressDialog) {
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +50,7 @@ public class AccountAuctionActivity extends AppCompatActivity{
         sharedPrefManager = new SharedPrefManager(this);
         rv =  findViewById(R.id.rv_recycler_view_account_auction);
         swiper = findViewById(R.id.swiperefresh_account_auction);
-        adapter = new AdapterLelang(ArrayListLelang,getApplicationContext(),listener);
+        adapter = new AdapterLelang(ArrayListLelang,getApplicationContext(),AccountAuctionActivity.this);
         rv.setAdapter(adapter);
         client = getOdooConnection(getBaseContext());
         rv.setLayoutManager(new LinearLayoutManager(this));

@@ -138,8 +138,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
             }
         });
         client = getOdooConnection(getBaseContext());
-        loadCheckout(); //clear sek
-//        new LoadCheckoutAsync().execute(); //jajelen
+        loadCheckout();
     }
 
     public  void PayCheckout(){

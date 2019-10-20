@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +21,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -37,7 +39,6 @@ import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 
 
 public class HomeActivity extends AppCompatActivity {
-
     private ViewPager viewPager;
     private BottomNavigationView navigation;
     private Toolbar toolbar;
@@ -47,15 +48,23 @@ public class HomeActivity extends AppCompatActivity {
     private static final String TAG = HomeActivity.class.getSimpleName();
     Context context;
     boolean doubleBackToExitPressedOnce = false;
+    StoreReloadCalled rcStoreListener;
+    LelangReloadCalled rcLelangListener;
 
-    ReloadCallback rcListener;
-
-    public interface ReloadCallback{
+    public interface StoreReloadCalled{
         void onReloadCalled();
     }
 
-    public void setReloadCallback(ReloadCallback rcListener){
-        this.rcListener = rcListener;
+    public void setReloadCallback(StoreReloadCalled rcStoreListener){
+        this.rcStoreListener = rcStoreListener;
+    }
+
+    public interface LelangReloadCalled {
+        void onReloadCalled();
+    }
+
+    public void setLelangReloadCallback(LelangReloadCalled rcLelangListener){
+        this.rcLelangListener = rcLelangListener;
     }
 
     @Override
@@ -114,18 +123,21 @@ public class HomeActivity extends AppCompatActivity {
                         public void onResult(OdooResult result) {
                             OdooRecord[] Records = result.getRecords();
                             Intent fabIntent = new Intent();
+                            Integer requestCode=0;
                             if (sharedPrefManager.getSpFab().equalsIgnoreCase("Store")) {
                                 fabIntent = new Intent(HomeActivity.this, StoreAddActivity.class);
-                                fabIntent.putExtra("id", "false"); // wkwk aku lali, jadi di dalam home activy punya fragment lagi sebelum storefragment
+                                fabIntent.putExtra("id", "false");
+                                requestCode = 1;
                             } else {
                                 fabIntent = new Intent(HomeActivity.this, LelangAddActivity.class);
-                                fabIntent.putExtra("id", "false"); // lek disini manggil lelangfragment
+                                fabIntent.putExtra("id", "false");
+                                requestCode = 0;
                             }
                             for (final OdooRecord record : Records) {
                                 if (record.getString("state").equalsIgnoreCase("draft")) {
                                     Toast.makeText(getBaseContext(), "Update your profile first!", Toast.LENGTH_SHORT).show();
                                 } else {
-                                    startActivity(fabIntent);
+                                    startActivityForResult(fabIntent,requestCode);
                                 }
                             }
                         }
@@ -153,6 +165,13 @@ public class HomeActivity extends AppCompatActivity {
                 }
             }
         };
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        Log.d(TAG, " Home Activity " + requestCode + " - " +resultCode);
+        rcStoreListener.onReloadCalled();
+//                rcLelangListener.onReloadCalled();
     }
 
     @Override
@@ -304,7 +323,7 @@ public class HomeActivity extends AppCompatActivity {
                 case 1:
                     return BeritaFragment.newInstance();
                 case 2:
-                    return BelanjaFragment.newInstance(); //hm jajal se kudune iso, nek act frag frag
+                    return BelanjaFragment.newInstance();
                 case 3:
                     return AccountFragment.newInstance();
             }

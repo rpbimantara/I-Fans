@@ -40,6 +40,10 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     static final int VIEW_TYPE_NORMAL = 1;
     private InterfaceLelang listener;
 
+    public interface InterfaceLelang {
+        void Addbidder(final String idlelang, final String nilai, final String status,ProgressDialog progressDialog);
+    }
+
     public AdapterLelang(ArrayList<lelang> dataList,Context context, InterfaceLelang listener) {
         this.dataList = dataList;
         this.context = context;
@@ -97,7 +101,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                             progressDialog.setMessage("Loading.....");
                             progressDialog.show();
                             progressDialog.setCancelable(false);
-                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID",context,sharedPrefManager,client,progressDialog);
+                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBidlelang(),"BID",progressDialog);
                             dialogInterface.dismiss();
                         }
                     });
@@ -124,7 +128,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                             progressDialog.setMessage("Loading.....");
                             progressDialog.show();
                             progressDialog.setCancelable(false);
-                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",context,sharedPrefManager,client,progressDialog);
+                            listener.Addbidder(dataList.get(position).getIdlelang(),dataList.get(position).getBinlelang(),"BIN",progressDialog);
                             dialogInterface.dismiss();
                         }
                     });

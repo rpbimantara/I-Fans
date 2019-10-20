@@ -4,6 +4,7 @@ package com.alpha.test.persebayaapp;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,7 +36,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getSaldo;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LelangFragment extends Fragment implements InterfaceLelang {
+public class LelangFragment extends Fragment implements AdapterLelang.InterfaceLelang, HomeActivity.LelangReloadCalled {
     public final String TAG = this.getClass().getSimpleName();
     ArrayList<lelang> ArrayListLelang = new ArrayList<>();
     int RecyclerViewItemPosition ;
@@ -47,6 +48,7 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
     SwipeRefreshLayout swiper;
     AdapterLelang adapter;
     OdooClient client;
+    Context context;
 
     public LelangFragment() {
         // Required empty public constructor
@@ -59,17 +61,18 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         return fragment;
     }
 
-    public void Addbidder(final String idlelang, final String nilai, final String status, final Context context, final SharedPrefManager sharedPrefManager, final  OdooClient client, final ProgressDialog progressDialog){
+    @Override
+    public void Addbidder(final String idlelang, final String nilai, final String status, final ProgressDialog pgdialog) {
         getSaldo(context, new IOdooResponse() {
             @Override
             public void onResult(OdooResult result) {
                 OdooRecord[] Records = result.getRecords();
                 for (final OdooRecord record : Records) {
                     if (record.getString("state").equalsIgnoreCase("draft")){
-                        progressDialog.dismiss();
+                        pgdialog.dismiss();
                         Toast.makeText(context, "Update your profile first!", Toast.LENGTH_SHORT).show();
                     }else  if(record.getFloat("saldo") < Float.parseFloat(nilai)){
-                        progressDialog.dismiss();
+                        pgdialog.dismiss();
                         Toast.makeText(context, "Top up your coin to finish this transaction!", Toast.LENGTH_SHORT).show();
                     }else {
                         OdooValues values = new OdooValues();
@@ -96,23 +99,22 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                                                 soId = soId+record.getInt("id");
                                             }
                                             Log.d(TAG,"Lelang SO : " + soId);
+                                            loadLelang();
                                             if (soId > 0) {
-                                                Confirm_so(soId,status,client,context,progressDialog);
-                                                progressDialog.dismiss();
+                                                Confirm_so(soId,status);
                                             }else {
                                                 if (status.equalsIgnoreCase("BID")) {
-                                                    progressDialog.dismiss();
                                                     Toast.makeText(context, "Bid Added!", Toast.LENGTH_LONG).show();
                                                 }else{
-                                                    progressDialog.dismiss();
                                                     Toast.makeText(context, "Product Purchased!", Toast.LENGTH_LONG).show();
                                                 }
                                             }
+                                            pgdialog.dismiss();
                                         }
 
                                         @Override
                                         public boolean onError(OdooErrorException error) {
-                                            progressDialog.dismiss();
+                                            pgdialog.dismiss();
                                             return super.onError(error);
                                         }
                                     });
@@ -121,7 +123,7 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
 
                             @Override
                             public boolean onError(OdooErrorException error) {
-                                progressDialog.dismiss();
+                                pgdialog.dismiss();
                                 Toast.makeText(context, String.valueOf(error.getMessage()), Toast.LENGTH_LONG).show();
                                 return super.onError(error);
                             }
@@ -132,7 +134,7 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         });
     }
 
-    public void Confirm_so(Integer order_id, final String status, OdooClient client, final Context context, final ProgressDialog progressDialog){
+    public void Confirm_so(Integer order_id, final String status){
         OArguments arguments = new OArguments();
         arguments.add(order_id);
         client.call_kw("sale.order", "confirm_so", arguments, new IOdooResponse() {
@@ -158,7 +160,8 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
         rootView = inflater.inflate(R.layout.fragment_lelang, container, false);
         rv =  rootView.findViewById(R.id.rv_recycler_view_lelang);
         swiper = rootView.findViewById(R.id.swiperefresh_lelang);
-        adapter = new AdapterLelang(ArrayListLelang,getContext(),LelangFragment.newInstance());
+        context = getContext();
+        adapter = new AdapterLelang(ArrayListLelang,context,LelangFragment.this);
         rv.setAdapter(adapter);
         llm = new LinearLayoutManager(getActivity());
         rv.setLayoutManager(llm);
@@ -169,9 +172,9 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                 loadLelang();
             }
         });
-        sharedPrefManager = new SharedPrefManager(getContext());
-        progressDialog = new ProgressDialog(getActivity());
-        client = getOdooConnection1(getContext(), new OdooErrorListener() {
+        sharedPrefManager = new SharedPrefManager(context);
+        progressDialog = new ProgressDialog(context);
+        client = getOdooConnection1(context, new OdooErrorListener() {
             @Override
             public void onError(OdooErrorException error) {
                 swiper.setRefreshing(false);
@@ -223,6 +226,17 @@ public class LelangFragment extends Fragment implements InterfaceLelang {
                 return super.onError(error);
             }
         });
+    }
+
+    @Override
+    public void onReloadCalled() {
+        loadLelang();
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        ((HomeActivity)getActivity()).setLelangReloadCallback(this);
     }
 }
 

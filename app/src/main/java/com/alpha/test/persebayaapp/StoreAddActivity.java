@@ -56,6 +56,11 @@ public class StoreAddActivity extends AppCompatActivity {
     String stok_float = "";
     String state = "create";
 
+
+    //Jadi intine, dari halaman store add ini setelah add/edit nanti mereload storefragment. bukakno apps e
+    //trus? buka no menu e, iki wes menu e
+    //IYO
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -224,6 +229,7 @@ public class StoreAddActivity extends AppCompatActivity {
                     public void onResult(OdooResult result) {
                         progressDialog.dismiss();
                         Toast.makeText(getBaseContext(),"Changes Saved!",Toast.LENGTH_LONG).show();
+//                        setResult(RESULT_OK);
                         finish();
                     }
 
@@ -262,6 +268,7 @@ public class StoreAddActivity extends AppCompatActivity {
                 // Success response
                 progressDialog.dismiss();
                 Toast.makeText(getBaseContext(),"Store Created!",Toast.LENGTH_LONG).show();
+//                setResult(RESULT_OK);
                 finish();
             }
 

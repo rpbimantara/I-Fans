@@ -17,6 +17,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StoreFragment extends Fragment implements HomeActivity.ReloadCallback {
+public class StoreFragment extends Fragment implements HomeActivity.StoreReloadCalled {
 
     ArrayList<Store> ArrayListStore = new ArrayList<>();
     int RecyclerViewItemPosition ;
@@ -123,7 +124,8 @@ public class StoreFragment extends Fragment implements HomeActivity.ReloadCallba
                     intent.putExtra("id",ArrayListStore.get(RecyclerViewItemPosition).getId());
                     intent.putExtra("nama",ArrayListStore.get(RecyclerViewItemPosition).getNamabarang());
                     intent.putExtra("harga",ArrayListStore.get(RecyclerViewItemPosition).getHargabarang());
-                    startActivity(intent);
+                    Integer requestCode = 1;
+                    startActivityForResult(intent,requestCode);
                 }
                 return false;
             }
