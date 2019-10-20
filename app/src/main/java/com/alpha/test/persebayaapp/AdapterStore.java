@@ -59,13 +59,14 @@ public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     public class StoreViewHolder extends RecyclerView.ViewHolder{
         public TextView txtNamaBarang,txtHargaBarang;
-        public ImageView imageStore;
+        public ImageView imageStore,iconStore;
 
         public StoreViewHolder(View itemView) {
             super(itemView);
             this.txtNamaBarang = (TextView) itemView.findViewById(R.id.txt_namaBarangStore);
             this.txtHargaBarang = (TextView) itemView.findViewById(R.id.txt_hargaBarangStore);
             this.imageStore = (ImageView) itemView.findViewById(R.id.store_image);
+            this.iconStore = (ImageView) itemView.findViewById(R.id.store_icon);
         }
     }
 
@@ -76,6 +77,9 @@ public class AdapterStore extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
             holder.txtNamaBarang.setText(dataListFilter.get(position).getNamabarang());
             holder.txtHargaBarang.setText(formater(Float.parseFloat(dataListFilter.get(position).getHargabarang())) );
             holder.imageStore.setImageBitmap(StringToBitMap(dataListFilter.get(position).getImageStore()));
+            if(dataListFilter.get(position).getOwner() > 1){
+                holder.iconStore.setVisibility(View.INVISIBLE);
+            }
         }else{
             ((CommonUtils.Emptyholder) viewHolder).onBind(position);
         }

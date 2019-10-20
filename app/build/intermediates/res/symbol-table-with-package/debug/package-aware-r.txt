@@ -2237,6 +2237,8 @@ id berita_detail_imageView
 id blocking
 id bottom
 id btn_login
+id btn_received
+id btn_send
 id btn_send_lupa_password
 id btn_signup
 id buttonPanel
@@ -2399,6 +2401,7 @@ id labeled
 id largeLabel
 id left
 id lelang_detail_imageView
+id lelang_icon
 id lelang_image
 id ligaterupdate_spinner
 id light
@@ -2588,6 +2591,7 @@ id standard
 id start
 id status_bar_latest_event_content
 id status_image
+id store_icon
 id store_image
 id store_imageView
 id stretch
@@ -2790,6 +2794,7 @@ id txt_namehomelast
 id txt_no_rating_line_up
 id txt_no_team_detail
 id txt_nostaff
+id txt_order_name
 id txt_phoneAccount
 id txt_player_club
 id txt_playklasemen

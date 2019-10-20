@@ -3,12 +3,14 @@ package com.alpha.test.persebayaapp;
 public class Store {
 
     private String id,imageStore,namabarang,hargabarang;
+    private Integer owner;
 
-    public Store(String id, String imageStore, String namabarang, String hargabarang) {
+    public Store(String id, String imageStore, String namabarang, String hargabarang,Integer owner) {
         this.id = id;
         this.imageStore = imageStore;
         this.namabarang = namabarang;
         this.hargabarang = hargabarang;
+        this.owner = owner;
     }
 
     public String getId() {
@@ -43,4 +45,11 @@ public class Store {
         this.hargabarang = hargabarang;
     }
 
+    public Integer getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Integer owner) {
+        this.owner = owner;
+    }
 }

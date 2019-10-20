@@ -1,6 +1,7 @@
 package com.alpha.test.persebayaapp;
 
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,6 +20,7 @@ import oogbox.api.odoo.client.helper.OdooErrorException;
 import oogbox.api.odoo.client.helper.data.OdooRecord;
 import oogbox.api.odoo.client.helper.data.OdooResult;
 import oogbox.api.odoo.client.helper.utils.OArguments;
+import oogbox.api.odoo.client.helper.utils.OdooValues;
 import oogbox.api.odoo.client.listeners.IOdooResponse;
 import oogbox.api.odoo.client.listeners.OdooErrorListener;
 
@@ -27,7 +30,7 @@ import static com.alpha.test.persebayaapp.CommonUtils.getOdooConnection1;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HistorySaleFragment extends Fragment {
+public class HistorySaleFragment extends Fragment implements AdapterHistory.ShippingListener {
 
 
     public HistorySaleFragment() {
@@ -49,7 +52,40 @@ public class HistorySaleFragment extends Fragment {
     SwipeRefreshLayout swiper;
     Context context;
     AdapterHistory adapter;
+    ProgressDialog progressDialog;
 
+    @Override
+    public void sendCallback(Integer line_id) {
+        progressDialog.setMessage("Saving Data........");
+        progressDialog.show();
+        progressDialog.setCancelable(false);
+        System.out.println(line_id);
+        OdooValues values = new OdooValues();
+        values.put("is_send", true);
+
+        client.write("sale.order.line", new Integer[]{line_id}, values, new IOdooResponse() {
+            @Override
+            public void onResult(OdooResult result) {
+                // Success response
+                if (result.getBoolean("result") ==  true){
+                    loadSale();
+                    progressDialog.dismiss();
+                }
+            }
+
+            @Override
+            public boolean onError(OdooErrorException error) {
+                Toast.makeText(context, String.valueOf(error.getLocalizedMessage()), Toast.LENGTH_SHORT).show();
+                progressDialog.dismiss();
+                return super.onError(error);
+            }
+        });
+    }
+
+    @Override
+    public void receivedCalback(Integer line_id) {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,7 +95,8 @@ public class HistorySaleFragment extends Fragment {
             rootView = inflater.inflate(R.layout.fragment_history_sale, container, false);
             context = getContext();
             sharedPrefManager = new SharedPrefManager(context);
-            adapter = new AdapterHistory(ArrayListHistory);
+            progressDialog = new ProgressDialog(context);
+            adapter = new AdapterHistory(ArrayListHistory,HistorySaleFragment.this);
             rv = rootView.findViewById(R.id.rv_recycler_history_sale);
             rv.setAdapter(adapter);
             rv.setLayoutManager(new LinearLayoutManager(context));
@@ -92,7 +129,6 @@ public class HistorySaleFragment extends Fragment {
                 ArrayListHistory.clear();
                 // response
                 OdooRecord[] Records = result.getRecords();
-
                 for (final OdooRecord record : Records) {
                     ArrayListHistory.add(new History(
                             String.valueOf(record.getInt("id")),
@@ -103,7 +139,9 @@ public class HistorySaleFragment extends Fragment {
                             String.valueOf(record.getInt("qty")),
                             String.valueOf(Math.round(record.getFloat("harga"))),
                             record.getString("image"),
-                            record.getString("date")
+                            record.getString("date"),
+                            record.getBoolean("is_send"),
+                            record.getBoolean("is_received")
                     ));
                 }
                 adapter.notifyDataSetChanged();

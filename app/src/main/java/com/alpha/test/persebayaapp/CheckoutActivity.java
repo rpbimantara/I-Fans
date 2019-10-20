@@ -144,7 +144,7 @@ public class CheckoutActivity extends AppCompatActivity implements AdapterChecko
     public  void PayCheckout(){
         ODomain domain = new ODomain();
         domain.add("partner_id", "=", sharedPrefManager.getSpIdPartner());
-        domain.add("state", "=", "draft");
+        domain.add("state", "=", "sent");
 
         OdooFields fields = new OdooFields();
         fields.addAll("id", "name");

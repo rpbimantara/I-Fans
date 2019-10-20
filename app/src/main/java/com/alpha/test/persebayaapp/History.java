@@ -2,8 +2,9 @@ package com.alpha.test.persebayaapp;
 
 public class History {
     String id,order_name,product_name,owner,state,qty,harga,image,date;
+    Boolean is_send,is_received;
 
-    public History(String id, String order_name, String product_name, String owner, String state, String qty, String harga, String image, String date) {
+    public History(String id, String order_name, String product_name, String owner, String state, String qty, String harga, String image, String date, Boolean is_send, Boolean is_received) {
         this.id = id;
         this.order_name = order_name;
         this.product_name = product_name;
@@ -13,6 +14,8 @@ public class History {
         this.harga = harga;
         this.image = image;
         this.date = date;
+        this.is_send = is_send;
+        this.is_received = is_received;
     }
 
     public String getId() {
@@ -85,5 +88,21 @@ public class History {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Boolean getIs_send() {
+        return is_send;
+    }
+
+    public void setIs_send(Boolean is_send) {
+        this.is_send = is_send;
+    }
+
+    public Boolean getIs_received() {
+        return is_received;
+    }
+
+    public void setIs_received(Boolean is_received) {
+        this.is_received = is_received;
     }
 }

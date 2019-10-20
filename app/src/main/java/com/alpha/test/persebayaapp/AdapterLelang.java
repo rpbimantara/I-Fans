@@ -53,7 +53,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     public class LelangViewHolder extends RecyclerView.ViewHolder{
         public TextView txtNamaLelang,txtWaktuLelang;
         public Button btnBidLelang,btnBinLelang;
-        public ImageView imageLelang;
+        public ImageView imageLelang,iconLelang;
 
         public LelangViewHolder(View itemView) {
             super(itemView);
@@ -62,6 +62,7 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
             this.btnBidLelang = (Button) itemView.findViewById(R.id.button_bid);
             this.btnBinLelang = (Button) itemView.findViewById(R.id.button_bin);
             this.imageLelang = (ImageView) itemView.findViewById(R.id.lelang_image);
+            this.iconLelang = (ImageView) itemView.findViewById(R.id.lelang_icon);
             progressDialog = new ProgressDialog(context);
             client = getOdooConnection(context);
             sharedPrefManager = new SharedPrefManager(context);
@@ -76,6 +77,10 @@ public class AdapterLelang extends RecyclerView.Adapter<RecyclerView.ViewHolder>
                 holder.btnBidLelang.setEnabled(false);
                 holder.btnBinLelang.setEnabled(false);
             }
+            if (Integer.valueOf(dataList.get(position).getPemiliklelang())> 1){
+                holder.iconLelang.setVisibility(View.INVISIBLE);
+            }
+
             holder.txtNamaLelang.setText(dataList.get(position).getNamalelang());
             holder.btnBidLelang.setText(formater(Float.parseFloat(dataList.get(position).getBidlelang())));
             holder.btnBinLelang.setText(formater(Float.parseFloat(dataList.get(position).getBinlelang())));

@@ -150,7 +150,7 @@ public class StoreFragment extends Fragment implements HomeActivity.StoreReloadC
         domain.add("type", "=", "product");
 
         OdooFields fields = new OdooFields();
-        fields.addAll("id","image_medium","name", "type","default_code","cated_ig","list_price");
+        fields.addAll("id","image_medium","name", "type","default_code","cated_ig","list_price","create_uid");
 
         int offset = 0;
         int limit = 80;
@@ -174,7 +174,8 @@ public class StoreFragment extends Fragment implements HomeActivity.StoreReloadC
                             String.valueOf(record.getInt("id")),
                             record.getString("image_medium"),
                             code +record.getString("name"),
-                            String.valueOf(Math.round(record.getFloat("list_price")))));
+                            String.valueOf(Math.round(record.getFloat("list_price"))),
+                            record.getInt("create_uid")));
                 }
                 adapter.notifyDataSetChanged();
                 swiper.setRefreshing(false);
